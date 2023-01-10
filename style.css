@@ -1,0 +1,871 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&family=Merriweather+Sans:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Playfair+Display:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=PT+Sans:wght@400;700&family=Playfair+Display:wght@500&display=swap');
+
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    font-size: 18px;
+    color: #0E1825;
+}
+
+body {
+    margin: 0;
+    font-family: "Playfair", serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Top style */
+.top {
+    background-color: white;
+    padding: 15px;
+    color: #0E1825;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 60;
+}
+
+.topLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Navbar container */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial;
+}
+
+/* Links inside the navbar */
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    font-family: inherit;
+    /* Important for vertical align on mobile phones */
+    margin: 0;
+    /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+    color: #990000;
+    background-color: #E2E7E9;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #E2E7E9;
+    width: 326px;
+    box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+    z-index: 15;
+    right: 15px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: rgb(202, 202, 202);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* General styles */
+.first-letter {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #dc231e;
+}
+
+.sectionTitle {
+    color: #0E1825;
+    background-color: white;
+    opacity: 1;
+    padding: 10px;
+    width: fit-content;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 40px;
+    font-weight: bold;
+    --border-size: 0.3rem;
+    border: var(--border-size) solid transparent;
+
+    /* Paint an image in the border */
+    border-image: conic-gradient(from var(--angle),
+            #990000 0deg 90deg,
+            #FF636A 90deg 180deg,
+            #F23A3F 180deg 270deg,
+            #DC231E 270deg 360deg) 1 stretch;
+    ;
+}
+
+.warning {
+    margin: 2em;
+    padding: 1em;
+    border: 1px solid #ccc;
+}
+
+.warning p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Animate when Houdini is available */
+@supports (background: paint(houdini)) {
+    @property --opacity {
+        syntax: "<number>";
+        initial-value: 0.5;
+        inherits: false;
+    }
+
+    @property --angle {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+    }
+
+    @keyframes opacityChange {
+        to {
+            --opacity: 1;
+        }
+    }
+
+    @keyframes rotate {
+        to {
+            --angle: 360deg;
+        }
+    }
+
+    .rainbow {
+        animation: rotate 4s linear infinite, opacityChange 3s infinite alternate;
+    }
+
+    /* Hide the warning */
+    .warning {
+        display: none;
+    }
+}
+
+.wave-top {
+    position: relative;
+}
+
+.wave-top::before,
+.wave-top::after {
+    border-bottom: 5px solid #05090E;
+}
+
+.wave-top::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10px;
+    background-size: 20px 40px;
+    background-image: radial-gradient(circle at 10px -15px, transparent 20px, #05090E 21px);
+}
+
+.wave-top::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 15px;
+    background-size: 40px 40px;
+    background-image: radial-gradient(circle at 10px 26px, #05090E 20px, transparent 21px);
+}
+
+.wave-mid {
+    background-color: #05090E;
+    height: 50px;
+}
+
+.wave-bottom {
+    position: relative;
+}
+
+.wave-bottom::before,
+.wave-bottom::after {
+    border-top: 5px solid #05090E;
+}
+
+.wave-bottom::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10px;
+    background-size: 20px 40px;
+    background-image: radial-gradient(circle at 10px -15px, transparent 20px, #FFD6DB 21px);
+}
+
+.wave-bottom::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 15px;
+    background-size: 40px 40px;
+    background-image: radial-gradient(circle at 10px 26px, #FFD6DB 20px, transparent 21px);
+}
+
+.container {
+    max-width: 1280px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.buttonNext {
+    border: 1px solid #dc231e;
+    color: #dc231e;
+    background-color: white;
+    width: 100px;
+    text-align: center;
+    padding: 4px;
+    border-radius: 16px;
+    align-self: center;
+    transition: 0.5s;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.buttonNext:hover {
+    color: #0E1825;
+    transition: 0.5s;
+    border-color: #0E1825;
+}
+
+@-webkit-keyframes action {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes action {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Pulse effect */
+@keyframes pulse-black {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+
+@keyframes pulse-white {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+a {
+    color: #0E1825;
+    text-decoration: none;
+    /* no underline */
+}
+
+/* Header/Intro section style */
+.introSection {
+    max-width: 500px;
+    position: relative;
+    z-index: 9;
+}
+
+.intro1 {
+    background-color: #FFD6DB;
+    background-image: linear-gradient(to right top, #ffd6db, #ffbbc2, #ff9fa6, #ff8289, #ff636a);
+}
+
+.intro2 {
+    background: rgb(237, 250, 253);
+    background: linear-gradient(90deg, rgba(237, 250, 253, 1) 0%, rgba(99, 177, 211, 1) 100%);
+}
+
+header {
+    margin-top: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: "Playfair", serif;
+    height: 100vh;
+}
+
+header .headerOne {
+    text-align: left !important;
+}
+
+header .headerTwo {
+    text-align: right !important;
+}
+
+header .headerLarge {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 3.1rem;
+    text-transform: uppercase;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    font-weight: 700;
+    text-align: center;
+}
+
+header h1 {
+    opacity: 0.7;
+    font-size: 2rem;
+}
+
+header h2 {
+    text-align: center;
+    margin-top: 60px;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: rgb(87, 87, 87)
+}
+
+.scrollArrow {
+    align-self: center;
+    font-size: 1.7rem;
+    -webkit-animation: action 1.2s infinite alternate;
+    animation: action 1.2s infinite alternate;
+    color: #0E1825;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    z-index: 20;
+}
+
+/*Section counters*/
+#sectionCounterdiv {
+    position: fixed;
+    color: white;
+    right: 4px;
+    top: 4px;
+    background-color: rgba(255, 255, 255, 0.501);
+    width: 40px;
+    height: 40px;
+    border-radius: 80px;
+    text-align: center;
+    z-index: 200;
+    background-color: transparent;
+}
+
+#sectionCounter {
+    margin-top: 11px;
+    display: none;
+}
+
+/* Containers*/
+.scroll-container {
+    min-height: 100vh;
+    padding: 1rem 1rem;
+    max-width: 942px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
+    margin: auto;
+}
+
+.logo {
+    width: 26px;
+    margin-right: 6px;
+}
+
+#section1-1 {
+    background-color: #fff;
+}
+
+#embed::-webkit-scrollbar {
+    display: none;
+    /* for Chrome, Safari, and Opera */
+}
+
+#embed {
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+    overflow: hidden !important;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+}
+
+#section1-2 {
+    background: linear-gradient(180deg, #0E1825, #000000);
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 21s ease infinite;
+    -moz-animation: AnimationName 21s ease infinite;
+    animation: AnimationName 21s ease infinite;
+}
+
+#section1-3 {
+    background: linear-gradient(180deg, #FFD6DB, #fff);
+}
+
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+.scroll-container:nth-of-type(even) {
+    flex-direction: row-reverse;
+}
+
+.scroll-element {
+    width: 40%;
+}
+
+.scroll-element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-element img {
+    max-width: 90%;
+}
+
+.scroll-element video {
+    max-width: 90%;
+}
+
+.textArrow {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.scroll-element {
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 600px;
+    background-repeat: no-repeat;
+    height: max-content;
+}
+
+@media screen and (max-width: 650px) {
+
+    .textArrow {
+        width: 100%;
+    }
+
+    .scroll-container,
+    .scroll-container:nth-of-type(even) {
+        flex-direction: column;
+        align-content: inherit;
+    }
+
+    .scroll-element {
+        height: 100%;
+    }
+
+    .scroll-element,
+    .scroll-caption {
+        width: 100%;
+    }
+}
+
+/**Styling scrollable elements*/
+
+.js-scroll {
+    opacity: 0;
+    transition: opacity 500ms;
+}
+
+.js-scroll.scrolled {
+    opacity: 1;
+}
+
+.scrolled.fade-in {
+    animation: fade-in 1s ease-in-out both;
+}
+
+.scrolled.fade-in-bottom {
+    animation: fade-in-bottom 1s ease-in-out both;
+}
+
+.scrolled.slide-left {
+    animation: slide-in-left 1s ease-in-out both;
+}
+
+.scrolled.slide-right {
+    animation: slide-in-right 1s ease-in-out both;
+}
+
+/* Animations */
+/* ----------------------------------------------
+ * Generated by Animista on 2021-2-11 23:32:31
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+@keyframes slide-in-left {
+    0% {
+        -webkit-transform: translateX(-100px);
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-right {
+    0% {
+        -webkit-transform: translateX(100px);
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-bottom {
+    0% {
+        -webkit-transform: translateY(50px);
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+canvas {
+    display: block;
+    vertical-align: bottom;
+}
+
+.progress-bar {
+    display: none;
+}
+
+/* ---- particles.js container ---- */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+
+#particles-js2 {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+
+/* ---- botNav---- */
+.botNav {
+    background-color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-family: 'PT Sans', sans-serif;
+    max-width: 942px;
+    margin: auto;
+}
+
+.next:hover,
+.previous:hover {
+    color: #dc231e;
+}
+
+.next,
+.previous {
+    max-width: 45%;
+}
+
+.nextTitle,
+.prevTitle {
+    opacity: 0.5;
+}
+
+/* ---- footer---- */
+footer {
+    text-align: center;
+    padding: 0.5rem 0;
+    background-color: #0E1825;
+    color: white;
+    padding: 40px;
+}
+
+footer p {
+    font-size: 0.45rem;
+    margin: 0.25rem 0;
+    color: #221133;
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* intro story list*/
+.storyList {
+    font-family: "PT Sans", sans-serif;
+    background-color: #FFF7F8;
+    justify-content: center;
+    padding: 40px;
+    display: flex;
+    height: 100vh;
+    padding-top: 100px;
+}
+
+.storyBox {
+    margin: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    min-width: 350px;
+    width: 90%;
+    height: fit-content;
+    background-color: #FFD6DB;
+}
+
+.indexTitle {
+    position: absolute;
+    background-color: #FF636A;
+    color: white;
+    box-shadow:
+        0 1px 1px #FF636A,
+        0 2px 2px #FF636A,
+        0 4px 4px hsl(0deg 0% 0% / 0.075),
+        0 9px 9px #ff636b92;
+    width: fit-content;
+    padding: 16px;
+    border-radius: 9px;
+    margin-left: -25%;
+    margin-top: -12px;
+    z-index: 2;
+}
+
+.rb-container {
+    margin: auto;
+    display: block;
+    position: relative;
+}
+
+.rb-container ul.rb {
+    margin: 2.7em 0 0 0;
+    padding: 0;
+    display: inline-block;
+    width: 100%;
+}
+
+.rb-container ul.rb li {
+    list-style: none;
+    margin-left: 40px;
+    min-height: 50px;
+    border-left: 1px dashed #0E1825;
+    padding: 0 0 50px 30px;
+    position: relative;
+}
+
+.item-title {
+    background-color: white;
+    border-radius: 6px;
+    padding: 10px;
+    width: 90%;
+}
+
+.rb-container ul.rb li:last-child {
+    border-left: 0;
+}
+
+.rb-container ul.rb li::before {
+    position: absolute;
+    left: -18px;
+    top: px;
+    content: " ";
+    border: 8px solid #0E1825;
+    border-radius: 500%;
+    background: #FF636A;
+    height: 20px;
+    width: 20px;
+    transition: all 500ms ease-in-out;
+}
+
+.rb-container ul.rb li:hover::before {
+    border-color: #ffffff6d;
+    transition: all 200ms ease-in-out;
+}
+
+ul.rb li .minititle {
+    background-color: #FF636A;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+    position: relative;
+    width: fit-content;
+    margin-bottom: -8px;
+    margin-left: -8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.item-title {
+    color: #0E1825;
+}
+
+/* 3D brain model */
+.brainmodel {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: calc(35% - 250px);
+    margin: auto;
+    z-index: -1;
+}
+
+@media screen and (min-width: 960px) {
+    .brainmodel {
+        left: 40%
+    }
+}
