@@ -363,8 +363,8 @@ a {
 }
 
 .intro2 {
-    background: rgb(237, 250, 253);
-    background: linear-gradient(90deg, rgba(237, 250, 253, 1) 0%, rgba(99, 177, 211, 1) 100%);
+    background: rgb(155, 237, 255);
+    background: linear-gradient(180deg, #C6ECF6 0%, rgb(255, 255, 255) 100%);
 }
 
 header {
@@ -490,6 +490,44 @@ header h2 {
 #section1-3 {
     background: linear-gradient(180deg, #FFD6DB, #fff);
 }
+
+#section2-1 {
+    height: 70vh;
+    padding: 10px;
+    margin: auto;
+    background-color: #C6ECF6 ;
+}
+
+#section2-1 h1 {
+text-align: center;}
+
+#section2-2  {
+padding: 0;
+margin: 0
+;}
+
+#section2-2 h1 {
+    text-align: center;}
+
+#section2-3{
+    text-align: center;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #C6ECF6;
+}
+
+.audiobutton {
+    background-color: black;
+    padding: 8px;
+    border-radius: 4px;
+    border: 0;
+    color: white;
+    cursor: pointer !important;
+}
+
+
 
 @-webkit-keyframes AnimationName {
     0% {
@@ -858,14 +896,14 @@ ul.rb li .minititle {
 .brainmodel {
     height: 100%;
     width: 100%;
-    position: absolute;
-    top: calc(35% - 250px);
+    position: relative;
+    top: calc(40% - 250px);
     margin: auto;
-    z-index: -1;
+    z-index: 10;
 }
 
-@media screen and (min-width: 960px) {
+/* @media screen and (min-width: 960px) {
     .brainmodel {
         left: 40%
     }
-}
+} */

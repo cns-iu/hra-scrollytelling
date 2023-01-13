@@ -11,7 +11,7 @@
     <link rel="icon" type="image/x-icon" href="img/logo.svg">
 </head>
 
-<body onclick="play()">
+<body>
     <!-- section counter -->
     <div id="sectionCounterdiv">
         <p id="sectionCounter"></p>
@@ -39,16 +39,13 @@
 
 
     <!-- section header/intro -->
-    <section class="intro2" id="intro">
+    <section class="intro2" id="intro2">
 
         <header class="container introSection">
             <h1 class="headerOne">Get to know your ...</h1>
             <p class="headerLarge">Anatomical Structures!</p>
-            <h2><em>Brought to you by <b>Todd Theriault</b> & <b>Sarah Davis</b></em>
+            <h2>Code tests</b></em>
             </h2>
-
-            <model-viewer class="brainmodel" src="img/Allen_F_Brain.glb"  alt="3D brain model"  loading="eager" auto-rotate  ios-src="img/Allen_F_Brain.glb" camera-controls touch-action="pan-y" disable-zoom disable-tap disable-pan>
-                <div id="progress-bar-d" slot="progress-bar" ></div></model-viewer>
 
             <a href="#section2-1" class="animate-arrow scrollArrow">&darr;
             </a>
@@ -57,9 +54,26 @@
 
     <!-- section one  -->
     <section id="section2-1">
+        <h1>3D GLB file test</h1>
+
+            <model-viewer class="brainmodel" src="img/Allen_F_Brain.glb"  alt="3D brain model"  loading="eager" auto-rotate  ios-src="img/Allen_F_Brain.glb" camera-controls touch-action="pan-y" disable-zoom disable-tap disable-pan>
+                <div id="progress-bar-d" slot="progress-bar" ></div></model-viewer>
+        
+    </section>
+
+    <!-- section two  -->
+    <section id="section2-2">
+        <h1>The data visualization test</h1>
+
         <iframe id="sankey" src="https://software.docs.hubmapconsortium.org/data-sankey/index.html" width="100%" height="900px" scrolling="no" style="border:none;">
         </iframe>
-        
+
+    </section>
+
+     <!-- section three  -->
+     <section id="section2-3">
+        <diV><h1>The music/audio test</h1>
+            <span class="audiobutton" onclick="play()">Press to play sound</span></diV> 
     </section>
 
 
@@ -94,7 +108,6 @@
      function play(){
        var audio = document.getElementById("audio");
        audio.play();
-       
        }
 
     // make sure to refresh hard to get the right values
