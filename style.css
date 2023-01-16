@@ -357,14 +357,169 @@ a {
     z-index: 9;
 }
 
-.intro1 {
+h1 {
+    text-align: center;
+}
+
+/* Story zero */
+#zero .intro {
+    background: #FFF3F0;
+    background: linear-gradient(180deg, #FFCDC0 0%, #fff8f6 100%);
+}
+
+#zero .TitleDivide {
+    background: linear-gradient(270deg, #FFF3F0 0%, #FFCDC0 100%);
+    padding: 10px;
+    text-align: center;
+    font-family: 'PT Sans', sans-serif;
+    margin-top: -5px;
+    margin-bottom: 0;
+}
+
+#zero #glbtest {
+    height: 70vh;
+    padding: 10px;
+    margin: auto;
+    background-color: #ffffff;
+}
+
+#zero #TiffExample {
+    text-align: center;
+}
+
+#zero #section2 {
+    background-color: #ffffff;
+    text-align: center;
+}
+
+#zero #section3 {
+    text-align: center;
+    background-color: #ffffff;
+}
+
+/* styles for magnifier*/
+.magnifier {
+    text-align: center;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* style for the DIV that is the magnifier lens */
+  .maglens {
+    position: absolute;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+  }
+  
+  /* style for the small IMG that appears on the page */
+  .magsmall {
+    position: absolute; 
+    border-style: none
+  }
+  
+  /* style for the magnified image, using a clip rectangle */
+  .maglarge {
+    position: absolute; 
+    border-style: none
+  }
+  
+.togetheridv {
+    margin: 20px;
+}
+
+#zero #section4 {
+    text-align: center;
+    background-color: #ffffff;
+}
+
+#fadetests{
+    text-align: center;
+}
+
+#categories {
+    font-family: 'PT Sans', sans-serif;
+    font-weight: bold;
+    opacity: 0;
+    position: fixed;
+    z-index: 50;
+    background-color: white;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0;
+    cursor: pointer;
+    width: 100%;
+}
+
+#categories span {
+    padding: 4px;
+    border-radius: 4px;
+    background-color: #FFD6DB;
+    margin: 3px;
+    margin-right: 25px;
+}
+
+#categories span:hover {
+    background-color: #f5a4ad;
+}
+
+/* Story one */
+#one .intro {
+    background: linear-gradient(180deg, #FFD6DB, #f5a4ad);
+}
+
+#one #section2 {
+    background: linear-gradient(180deg, #0E1825, #000000);
+    background-size: 400% 400%;
+    -webkit-animation: AnimationName 21s ease infinite;
+    -moz-animation: AnimationName 21s ease infinite;
+    animation: AnimationName 21s ease infinite;
+}
+
+#one #section3 {
+    background: linear-gradient(180deg, #FFD6DB, #fff);
+}
+
+#one #section1 {
+    background-color: #fff;
+}
+
+/* Story two */
+#two .intro {
     background-color: #FFD6DB;
     background-image: linear-gradient(to right top, #ffd6db, #ffbbc2, #ff9fa6, #ff8289, #ff636a);
 }
 
-.intro2 {
-    background: rgb(155, 237, 255);
-    background: linear-gradient(180deg, #C6ECF6 0%, rgb(255, 255, 255) 100%);
+#two #section1 {
+    height: 70vh;
+    padding: 10px;
+    margin: auto;
+    background-color: #C6ECF6;
+}
+
+#two #section1 h1 {
+    text-align: center;
+}
+
+#two #section2 {
+    padding: 0;
+    margin: 0;
+}
+
+#two #section2 h1 {
+    text-align: center;
+}
+
+#two #section3 {
+    text-align: center;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #C6ECF6;
 }
 
 header {
@@ -459,10 +614,6 @@ header h2 {
     margin-right: 6px;
 }
 
-#section1-1 {
-    background-color: #fff;
-}
-
 #embed::-webkit-scrollbar {
     display: none;
     /* for Chrome, Safari, and Opera */
@@ -478,45 +629,6 @@ header h2 {
     /* for Firefox */
 }
 
-#section1-2 {
-    background: linear-gradient(180deg, #0E1825, #000000);
-    background-size: 400% 400%;
-
-    -webkit-animation: AnimationName 21s ease infinite;
-    -moz-animation: AnimationName 21s ease infinite;
-    animation: AnimationName 21s ease infinite;
-}
-
-#section1-3 {
-    background: linear-gradient(180deg, #FFD6DB, #fff);
-}
-
-#section2-1 {
-    height: 70vh;
-    padding: 10px;
-    margin: auto;
-    background-color: #C6ECF6 ;
-}
-
-#section2-1 h1 {
-text-align: center;}
-
-#section2-2  {
-padding: 0;
-margin: 0
-;}
-
-#section2-2 h1 {
-    text-align: center;}
-
-#section2-3{
-    text-align: center;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #C6ECF6;
-}
 
 .audiobutton {
     background-color: black;
@@ -526,8 +638,6 @@ margin: 0
     color: white;
     cursor: pointer !important;
 }
-
-
 
 @-webkit-keyframes AnimationName {
     0% {

@@ -153,37 +153,3 @@ particlesJS("particles-js", {
     "retina_detect": true
 })
 }
-
-//section count
-window.addEventListener("scroll", function() {
-
-    var elementTarget4 = document.getElementById("intro");
-    if (window.scrollY < (elementTarget4.offsetTop-10 + elementTarget4.offsetHeight)) {
-        document.getElementById("sectionCounter").style.display = "none";
-        document.getElementById("sectionCounterdiv").style.backgroundColor = "transparent";
-    }else{
-        document.getElementById("sectionCounter").style.display = "block";
-    }
-
-    var elementTarget3 = document.getElementById("intro");
-    if (window.scrollY > (elementTarget3.offsetTop -10 + elementTarget3.offsetHeight)) {
-        document.getElementById("sectionCounter").innerHTML="1/3";
-        document.getElementById("sectionCounterdiv").style.backgroundColor = "#ff636a60";
-    }
-
-    if(document.body.contains(document.getElementById("section1-1"))){
-    var elementTarget2 = document.getElementById("section1-1");
-    if (window.scrollY > (elementTarget2.offsetTop -10+ elementTarget2.offsetHeight) ) {
-        document.getElementById("sectionCounter").innerHTML="2/3";
-        document.getElementById("sectionCounterdiv").style.backgroundColor = "#ffffff80";
-    }
-}
-
-if(document.body.contains(document.getElementById("section1-2"))){
-var elementTarget3 = document.getElementById("section1-2");
-if (window.scrollY > (elementTarget3.offsetTop -10+ elementTarget3.offsetHeight) ) {
-    document.getElementById("sectionCounter").innerHTML="3/3";
-    document.getElementById("sectionCounterdiv").style.backgroundColor = "#ffffff80";
-}
-}
-  });

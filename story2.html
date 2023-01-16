@@ -11,7 +11,7 @@
     <link rel="icon" type="image/x-icon" href="img/logo.svg">
 </head>
 
-<body>
+<body id="two">
     <!-- section counter -->
     <div id="sectionCounterdiv">
         <p id="sectionCounter"></p>
@@ -20,7 +20,7 @@
      <!-- section top  -->
     <section class="top">
         <a href="index.html" class="topLogo">
-            <img class="logo" src="img/logo.svg"> Human Atlas Design System
+            <img class="logo" src="img/logo.svg"> Human Atlas Stories
         </a>
         <div class="dropdown">
             <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
@@ -31,6 +31,7 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
+                <a href="story0.html">0. Scrollytelling Elements and Effects!</a>
                 <a href="story1.html">1. What Is An HRA?</a>
                 <a href="story2.html">2. Get to Know Your Anatomical Structures!</a>
             </div>
@@ -39,45 +40,17 @@
 
 
     <!-- section header/intro -->
-    <section class="intro2" id="intro2">
+    <section class="intro" id="intro">
 
         <header class="container introSection">
             <h1 class="headerOne">Get to know your ...</h1>
             <p class="headerLarge">Anatomical Structures!</p>
-            <h2>Code tests</b></em>
-            </h2>
+            <h2></h2>
 
-            <a href="#section2-1" class="animate-arrow scrollArrow">&darr;
+            <a href="#section1" class="animate-arrow scrollArrow">&darr;
             </a>
         </header>
     </section>
-
-    <!-- section one  -->
-    <section id="section2-1">
-        <h1>3D GLB file test</h1>
-
-            <model-viewer class="brainmodel" src="img/Allen_F_Brain.glb"  alt="3D brain model"  loading="eager" auto-rotate  ios-src="img/Allen_F_Brain.glb" camera-controls touch-action="pan-y" disable-zoom disable-tap disable-pan>
-                <div id="progress-bar-d" slot="progress-bar" ></div></model-viewer>
-        
-    </section>
-
-    <!-- section two  -->
-    <section id="section2-2">
-        <h1>The data visualization test</h1>
-
-        <iframe id="sankey" src="https://software.docs.hubmapconsortium.org/data-sankey/index.html" width="100%" height="900px" scrolling="no" style="border:none;">
-        </iframe>
-
-    </section>
-
-     <!-- section three  -->
-     <section id="section2-3">
-        <diV><h1>The music/audio test</h1>
-            <span class="audiobutton" onclick="play()">Press to play sound</span> 
-            <span class="audiobutton" onclick="turnOff()">Press to pause sound</span></diV> 
-
-    </section>
-
 
     <!-- BotNav -->
     <section class="botNav">
