@@ -3,7 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Playfair+Display:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=PT+Sans:wght@400;700&family=Playfair+Display:wght@500&display=swap');
 
-
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
@@ -436,6 +435,11 @@ h1 {
 
 #fadetests{
     text-align: center;
+}
+
+
+#fadetests img{
+    max-width: 500px;
 }
 
 #categories {
