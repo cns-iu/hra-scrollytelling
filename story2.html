@@ -73,7 +73,9 @@
      <!-- section three  -->
      <section id="section2-3">
         <diV><h1>The music/audio test</h1>
-            <span class="audiobutton" onclick="play()">Press to play sound</span></diV> 
+            <span class="audiobutton" onclick="play()">Press to play sound</span> 
+            <span class="audiobutton" onclick="turnOff()">Press to pause sound</span></diV> 
+
     </section>
 
 
@@ -108,6 +110,10 @@
      function play(){
        var audio = document.getElementById("audio");
        audio.play();
+       }
+       function turnOff(){
+       var audio = document.getElementById("audio");
+       audio.pause();
        }
 
     // make sure to refresh hard to get the right values
