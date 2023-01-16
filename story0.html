@@ -72,7 +72,7 @@
 
         <h1>Parallax example</h1>
         <div class="parallax" style="color:white;font-size:30px;text-align: center;vertical-align: middle;display: flex;
-        justify-content: center;align-items: center;">This stuff is parallaxed</div>
+        justify-content: center;align-items: center;">This background image is parallaxed</div>
 
 
         <div id="Zoom into Image">
@@ -82,7 +82,6 @@
                     <img src="img/explodeimg.jpeg" class="maglarge" style="height: 1344px; width: 1008px;" />
                 </div>
             </div>
-
         </div>
 
         <div id="glbtest">
@@ -94,6 +93,14 @@
             </model-viewer>
         </div>
 
+        <h1>Crossfade images</h1>
+        <div class="img-wrapper">
+            <div style="background-image: url(img/bg.jpg); color:white;font-size:30px;text-align: center;vertical-align: middle;display: flex;
+            justify-content: center;align-items: center;">Fade in Text</div>
+            <div class="front" style="background-image: url(img/bg2.png);"></div>
+        </div>
+
+
         <div id="fadetests">
             <h1>Fade In effects</h1>
             <h2>Fade In</h2>
@@ -102,11 +109,11 @@
             </div>
             <h2>Fade In From Bottom</h2>
             <div class="js-scroll fade-in-bottom">
-                <img src="img/image2.gif"  width="100%">
+                <img src="img/image2.gif" width="100%">
             </div>
             <h2>Fade in slide from left</h2>
             <div class="js-scroll slide-left">
-                <img src="img/image3.gif"  width="100%">
+                <img src="img/image3.gif" width="100%">
             </div>
         </div>
 
@@ -223,7 +230,22 @@
             document.getElementById("categories").style.opacity = "0";
         }
     };
-    
+
+    //crossfade imgs
+    const checkpoint = 2800;
+
+    window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+        console.log(currentScroll);
+console.log("lkfdajdfkl"+window.pageYOffset
+);
+        if (currentScroll <= checkpoint) {
+            opacity =1
+        } else {
+            opacity = 0;
+        }
+        document.querySelector(".front").style.opacity = opacity;
+    });
 </script>
 
 </html>

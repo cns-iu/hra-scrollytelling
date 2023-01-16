@@ -594,6 +594,24 @@ header h2 {
     z-index: 20;
 }
 
+/* img crossfade */
+#zero .img-wrapper {
+    display: grid;
+    height: 50vh;
+    width: 100%;
+  }
+  
+  #zero .img-wrapper div {
+    grid-column: 1;
+    grid-row: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--gray);
+    transition: opacity 0.1s;
+  }
+
+  
 /*Section counters*/
 #sectionCounterdiv {
     position: fixed;
