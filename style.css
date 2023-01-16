@@ -288,6 +288,20 @@ body {
     border-color: #0E1825;
 }
 
+.parallax {
+    /* The image used */
+    background-image: url("img/bg.jpg");
+  
+    /* Set a specific height */
+    min-height: 500px; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
 @-webkit-keyframes action {
     0% {
         transform: translateY(0);
@@ -437,7 +451,6 @@ h1 {
     text-align: center;
 }
 
-
 #fadetests img{
     max-width: 500px;
 }
@@ -547,7 +560,7 @@ header .headerTwo {
 
 header .headerLarge {
     font-family: 'PT Sans', sans-serif;
-    font-size: 3.1rem;
+    font-size: 3rem;
     text-transform: uppercase;
     margin-top: -10px;
     margin-bottom: -10px;
