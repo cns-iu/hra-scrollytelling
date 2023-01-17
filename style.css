@@ -416,6 +416,7 @@ h1 {
     margin: auto;
     overflow: hidden;
     position: relative;
+    margin-bottom: 5px;
   }
   
   /* style for the DIV that is the magnifier lens */
@@ -560,7 +561,7 @@ header .headerTwo {
 
 header .headerLarge {
     font-family: 'PT Sans', sans-serif;
-    font-size: 3rem;
+    font-size: 2.6rem;
     text-transform: uppercase;
     margin-top: -10px;
     margin-bottom: -10px;
@@ -597,7 +598,7 @@ header h2 {
 /* img crossfade */
 #zero .img-wrapper {
     display: grid;
-    height: 50vh;
+    height: 200px;
     width: 100%;
   }
   
@@ -1048,8 +1049,28 @@ ul.rb li .minititle {
     max-width: 600px;
 }
 
-/* @media screen and (min-width: 960px) {
-    .brainmodel {
-        left: 40%
-    }
-} */
+
+.comparisonSection {
+    position: relative;
+    padding-bottom: 56.25%; /* to maintain aspect ratio (responsive!) */
+  }
+  .comparisonImage {
+    width: 100%;
+    height: 100%;
+  }
+  .afterImage {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    transform: translate(100%, 0px);
+  }
+  .afterImage img {
+    transform: translate(-100%, 0px);
+  }
+  .comparisonImage img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+  }
+  

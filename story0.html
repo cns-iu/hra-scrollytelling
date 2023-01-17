@@ -19,10 +19,11 @@
 
     <!-- section categories  -->
     <section id="categories">
+        <span><a href="#scrolls">Scroll Effects</a></span>
         <span><a href="#images">Images</a></span>
+        <span><a href="#3D">3D</a></span>
         <span><a href="#dataviz">Data Visualizations</a></span>
         <span><a href="#sounds">Sounds</a></span>
-        <span>Animations</span>
         <span><a href="#movies">Movies</a></span>
         <span><a href="#game">Game Elements</a></span>
 
@@ -55,56 +56,37 @@
             <h1 class="headerOne">Get to know ...</h1>
             <p class="headerLarge">Scrollytelling Elements and Effects!</p>
             <h2></h2>
-
             <a href="#section1" class="animate-arrow scrollArrow">&darr;
             </a>
         </header>
     </section>
 
-    <h1 id="images" class="TitleDivide">Images</h1>
+    <h1 id="scrolls" class="TitleDivide">Scroll Effects</h1>
 
-    <!-- section one  -->
-    <section id="section1">
-        <div id="TiffExample">
-            <h1>Animation Using Animated WEBP File</h1>
-            <img src="img/bird-wings-flying-feature.webp" style="max-width: 600px;" width="100%">
+    <section>
+        <h1>Crossfade images</h1>
+        <div class="img-wrapper">
+            <div style="background-image: url(img/bg.jpg); color:white;font-size:30px;text-align: center;vertical-align: middle;display: flex;
+    justify-content: center;align-items: center;">Fade in Text</div>
+            <div class="front" style="background-image: url(img/bg2.png);"></div>
         </div>
+
+        <!-- gsap -->
+        <h1>Horizontal change</h1>
+        <p style="text-align:center;color:#aaaaaa;"><b>A cell &mdash; low floor, easy entry for anyone</b></p>
+        <section class="comparisonSection">
+            <div class="comparisonImage beforeImage">
+                <img src="img/cell1.png" alt="before">
+            </div>
+            <div class="comparisonImage afterImage">
+                <img src="img/cell2.png" alt="after">
+            </div>
+        </section>
+        <p style="text-align:center;color:#aaaaaa;"><b>A more detailed cell &mdash; fun zoom</b></p>
 
         <h1>Parallax example</h1>
         <div class="parallax" style="color:white;font-size:30px;text-align: center;vertical-align: middle;display: flex;
         justify-content: center;align-items: center;">This background image is parallaxed</div>
-
-
-        <div id="Zoom into Image">
-            <h1>Hover zoom in effect</h1>
-            <div class="magnifier" style="height: 612px; width: 320px;">
-                <div class="maglens">
-                    <img src="img/explodeimg.jpeg" class="maglarge" style="height: 1344px; width: 1008px;" />
-                </div>
-            </div>
-        </div>
-
-        <div id="glbtest">
-            <h1>3D GLB file test</h1>
-            <model-viewer class="brainmodel" src="img/Allen_F_Brain.glb" alt="3D brain model" loading="eager"
-                auto-rotate ios-src="img/Allen_F_Brain.glb" camera-controls touch-action="pan-y" disable-zoom
-                disable-tap disable-pan>
-                <div id="progress-bar-d" slot="progress-bar"></div>
-            </model-viewer>
-        </div>
-
-        <h1>On touch 3D animation</h1>
-        <p style="text-align:center">Using spline seems like the easiest option for making simple 3D animations from the models we have.</p>
-        <iframe src='https://my.spline.design/untitled-9ae334a07f9a68a7deef16b00a4693ff/' frameborder='0' width='100%'
-            height='800px' style="margin: auto; display: flex;"></iframe>
-
-        <h1>Crossfade images</h1>
-        <div class="img-wrapper">
-            <div style="background-image: url(img/bg.jpg); color:white;font-size:30px;text-align: center;vertical-align: middle;display: flex;
-            justify-content: center;align-items: center;">Fade in Text</div>
-            <div class="front" style="background-image: url(img/bg2.png);"></div>
-        </div>
-
 
         <div id="fadetests">
             <h1>Fade In effects</h1>
@@ -121,8 +103,44 @@
                 <img src="img/image3.gif" width="100%">
             </div>
         </div>
+    </section>
 
+    <h1 id="images" class="TitleDivide">Images</h1>
 
+    <!-- section one  -->
+    <section id="section1">
+        <div id="TiffExample">
+            <h1>Animation Using Animated WEBP File</h1>
+            <img src="img/bird-wings-flying-feature.webp" style="max-width: 600px;" width="100%">
+        </div>
+
+        <div id="Zoom into Image">
+            <h1>Hover zoom in effect</h1>
+            <div class="magnifier" style="height: 612px; width: 320px;">
+                <div class="maglens">
+                    <img src="img/explodeimg.jpeg" class="maglarge" style="height: 1344px; width: 1008px;" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h1 id="3D" class="TitleDivide">3D</h1>
+    <section>
+
+        <div id="glbtest">
+            <h1>3D GLB file test</h1>
+            <model-viewer class="brainmodel" src="img/Allen_F_Brain.glb" alt="3D brain model" loading="eager"
+                auto-rotate ios-src="img/Allen_F_Brain.glb" camera-controls touch-action="pan-y" disable-zoom
+                disable-tap disable-pan>
+                <div id="progress-bar-d" slot="progress-bar"></div>
+            </model-viewer>
+        </div>
+
+        <h1>On touch 3D animation</h1>
+        <p style="text-align:center">Using spline seems like the easiest option for making simple 3D animations from the
+            models we have.</p>
+        <iframe src='https://my.spline.design/untitled-9ae334a07f9a68a7deef16b00a4693ff/' frameborder='0' width='100%'
+            height='800px' style="margin: auto; display: flex;"></iframe>
     </section>
 
     <h1 id="dataviz" class="TitleDivide">Data Visualization</h1>
@@ -190,13 +208,21 @@
     <footer>
         © 2023 Human Atlas Design System at Indiana University
     </footer>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/ScrollTrigger.min.js"></script>
+
 </body>
 <script src="scripts.js"></script>
 <script type="text/javascript" src="js/magnifier.js"></script>
 
+
 <!--It helps to handle how the 3D Object would be displayed -->
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
 
 <!-- Add music  -->
 <audio id="audio" src="music/Piano.mp3" loop="" preload="auto"></audio>
@@ -237,19 +263,51 @@
     };
 
     //crossfade imgs
-    const checkpoint = 3690.5;
+    const checkpoint = 670;
 
     window.addEventListener("scroll", () => {
         const currentScroll = window.pageYOffset;
         //console.log(currentScroll);
-         /* console.log("lkfdajdfkl"+window.pageYOffset
-       ); */
+        console.log("lkfdajdfkl" + window.pageYOffset);
         if (currentScroll <= checkpoint) {
             opacity = 1
         } else {
             opacity = 0;
         }
         document.querySelector(".front").style.opacity = opacity;
+    });
+
+
+    // gsap
+    gsap.utils.toArray(".comparisonSection").forEach(section => {
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: section,
+                start: "center center",
+                // makes the height of the scrolling (while pinning) match the width, thus the speed remains constant (vertical/horizontal)
+                end: () => "+=" + section.offsetWidth,
+                scrub: true,
+                pin: true,
+                anticipatePin: 1
+            },
+            defaults: {
+                ease: "none"
+            }
+        });
+        // animate the container one way...
+        tl.fromTo(section.querySelector(".afterImage"), {
+                xPercent: 100,
+                x: 0
+            }, {
+                xPercent: 0
+            })
+            // ...and the image the opposite way (at the same time)
+            .fromTo(section.querySelector(".afterImage img"), {
+                xPercent: -100,
+                x: 0
+            }, {
+                xPercent: 0
+            }, 0);
     });
 </script>
 
