@@ -1081,7 +1081,7 @@ ul.rb li .minititle {
     max-width: 400px;
     margin:auto;
     display:flex;
-    padding-top: 150px;
+    padding-top: 250px;
   }
 
   .piece:not(.outsole) {
