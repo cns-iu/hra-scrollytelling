@@ -1049,7 +1049,7 @@ ul.rb li .minititle {
     max-width: 600px;
 }
 
-
+/* horizontal slide */
 .comparisonSection {
     position: relative;
     padding-bottom: 56.25%; /* to maintain aspect ratio (responsive!) */
