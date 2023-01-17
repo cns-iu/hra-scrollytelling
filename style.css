@@ -1090,11 +1090,13 @@ ul.rb li .minititle {
   }
   .midsole {
     width: 50%;
+    top: 30%;
     left: 10%;
   }
   .midsole2 {
     width: 50%;
-    left: 5%;
+    left: 40%;
+    top: 0;
   }
   .fullbody {
     width: 80%;
