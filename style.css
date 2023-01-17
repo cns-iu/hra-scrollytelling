@@ -1115,7 +1115,6 @@ ul.rb li .minititle {
     top:55%;
   }
 
-
   .fullbody {
     width: 80%;
   }
@@ -1124,6 +1123,44 @@ ul.rb li .minititle {
     width: 50%;
     left: 5%;
     top:10%;
+  }
+  
+  h1, h2, p, li {
+    max-width: none;
+  }
+  
+
+  /* drop in 2 */
+.personskull {
+    position: relative;
+    max-width: 360px;
+    margin:auto;
+    display:flex;
+    background: black;
+    height: 500px;
+  }
+  .fullface {
+    width: 100%;
+  }
+  
+  .brain1 {
+    width: 100%;
+  }
+ 
+  .brain2 {
+    width: 100%;
+  }
+
+  .skull {
+    width: 100%;
+  }
+
+  .skulltxt1{
+    left:34%;
+    top:180px;
+    color: white;
+    width: 100px;
+    text-align: center;
   }
   
   h1, h2, p, li {

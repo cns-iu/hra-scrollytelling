@@ -95,6 +95,17 @@
 
         </section>
 
+        <h1>Scroll in Images 2</h1>
+        <section class="personskull">
+
+            <img src="img/story1-1.png" class="fullface piece" alt="heel"> 
+            <img src="img/story1-2.png" class="skull piece" alt="outsole">
+            <img src="img/story1-3.png" class="brain1 piece" alt="midsole2">
+            <img src="img/story1-4.png" class="brain2 piece" alt="midsole">
+            <p class="piece skulltxt1">There are XX cells in the human body.</p>
+
+        </section>
+
         <h1>Parallax example</h1>
         <div class="parallax" style="color:white;font-size:30px;text-align: center;vertical-align: middle;display: flex;
         justify-content: center;align-items: center;">This background image is parallaxed</div>
@@ -350,6 +361,30 @@
         })
         .from(".txt2", {
             y: innerHeight * 1.5
+        });
+
+        //drop in  2
+    gsap.timeline({
+            scrollTrigger: {
+                trigger: ".personskull",
+                start: "center center",
+                end: "bottom top",
+                scrub: true,
+                pin: true
+            }
+        })
+        
+        .from(".skull", { 
+            opacity:0
+        })    
+        .from(".brain1", {
+            opacity:0
+        })
+        .from(".brain2", {
+            opacity:0
+        })
+        .from(".skulltxt1", {
+            opacity:0
         });
         
 </script>
