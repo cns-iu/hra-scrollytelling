@@ -75,11 +75,11 @@
         <h1>Horizontal change</h1>
         <p style="text-align:center;color:#aaaaaa;"><b>A cell &mdash; low floor, easy entry for anyone</b></p>
         <section class="comparisonSection">
-            <div class="comparisonImage beforeImage">
-                <img src="img/cell1.png" alt="before">
+            <div class="comparisonImage beforeImage" style="    overflow-x: hidden;">
+                <img src="img/cell1.png" alt="before" width="300px" height="300px">
             </div>
-            <div class="comparisonImage afterImage">
-                <img src="img/cell2.png" alt="after">
+            <div class="comparisonImage afterImage" style="overflow-x:hidden">
+                <img src="img/cell2.png" alt="after" width="300px" height="300px">
             </div>
         </section>
         <p style="text-align:center;color:#aaaaaa;"><b>A more detailed cell &mdash; fun zoom</b></p>
@@ -268,7 +268,7 @@
     window.addEventListener("scroll", () => {
         const currentScroll = window.pageYOffset;
         //console.log(currentScroll);
-        console.log("lkfdajdfkl" + window.pageYOffset);
+        //console.log("lkfdajdfkl" + window.pageYOffset);
         if (currentScroll <= checkpoint) {
             opacity = 1
         } else {
@@ -296,18 +296,20 @@
         });
         // animate the container one way...
         tl.fromTo(section.querySelector(".afterImage"), {
-                xPercent: 100,
-                x: 0
+                xPercent: 0,
+                x: 0,
             }, {
                 xPercent: 0
             })
             // ...and the image the opposite way (at the same time)
             .fromTo(section.querySelector(".afterImage img"), {
                 xPercent: -100,
-                x: 0
+                x: 0,
             }, {
                 xPercent: 0
             }, 0);
+             ScrollTrigger.clearScrollMemory()
+
     });
 </script>
 
