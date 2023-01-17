@@ -1093,11 +1093,29 @@ ul.rb li .minititle {
     top:30%;
     left: 40%;
   }
+ 
   .midsole2 {
     width: 50%;
     left:10%;
+    top:2%;
+  }
+
+  .txt3{
+    left:10%;
     top:0%;
   }
+
+  .txt4{
+    left:75%;
+    top:25%;
+  }
+
+  .txt2{
+    left:2%;
+    top:55%;
+  }
+
+
   .fullbody {
     width: 80%;
   }
