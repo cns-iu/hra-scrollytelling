@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+.dropbox {
+  cursor: pointer;
+  margin-bottom: 100px;
+  width: 83px;
+  height: 46px;
+}
+
+#equation {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+  </style>
+</head>
+
+<body>
+
+  <p>Drag the round equation into the box with the right answer.</p>
+
+  <img src="dragbox2.svg" id="gate" class="droppable dropbox">
+  <img src="dragbox1.svg" id="wrong" class="dropbox">
+  <img src="dragobj.svg" id="equation">
+
+  <script>
+    let currentDroppable = null;
+
+    equation.onmousedown = function(event) {
+
+      let shiftX = event.clientX - equation.getBoundingClientRect().left;
+      let shiftY = event.clientY - equation.getBoundingClientRect().top;
+
+      equation.style.position = 'absolute';
+      equation.style.zIndex = 1000;
+      document.body.append(equation);
+
+      moveAt(event.pageX, event.pageY);
+
+      function moveAt(pageX, pageY) {
+        equation.style.left = pageX - shiftX + 'px';
+        equation.style.top = pageY - shiftY + 'px';
+      }
+
+      function onMouseMove(event) {
+        moveAt(event.pageX, event.pageY);
+
+        equation.hidden = true;
+        let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+        equation.hidden = false;
+
+        if (!elemBelow) return;
+
+        let droppableBelow = elemBelow.closest('.droppable');
+        if (currentDroppable != droppableBelow) {
+          if (currentDroppable) { // null when we were not over a droppable before this event
+            leaveDroppable(currentDroppable);
+          }
+          currentDroppable = droppableBelow;
+          if (currentDroppable) { // null if we're not coming over a droppable now
+            // (maybe just left the droppable)
+            enterDroppable(currentDroppable);
+          }
+        }
+      }
+
+      document.addEventListener('mousemove', onMouseMove);
+
+      equation.onmouseup = function() {
+        document.removeEventListener('mousemove', onMouseMove);
+        equation.onmouseup = null;
+      };
+
+    };
+
+    function enterDroppable(elem) {
+      elem.style.background = 'green';
+    }
+
+    function leaveDroppable(elem) {
+      elem.style.background = '';
+    }
+
+    equation.ondragstart = function() {
+      return false;
+    };
+  </script>
+
+
+</body>
+</html>
