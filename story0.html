@@ -9,6 +9,13 @@
     <meta name="keywords" content="">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="img/logo.svg">
+    <link href="https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@2/rui/styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@2/rui/wc.js" defer></script>
+    <link href="styles.css" rel="stylesheet">
+
+    <script src="wc.js" async></script>
+
+
 </head>
 
 <body id="zero">
@@ -165,6 +172,19 @@
         <iframe id="sankey" src="https://software.docs.hubmapconsortium.org/data-sankey/index.html" width="100%"
             height="900px" scrolling="no" style="border:none;">
         </iframe>
+
+        <h1>Embed CCF </h1>
+        <section style="height:100vh;" class="mat-typography">
+  <!-- <ccf-organ-info
+    organ-iri="http://purl.obolibrary.org/obo/UBERON_0004538"
+    hubmap-data-service="search-api"
+    hubmap-portal-url="https://portal.test.hubmapconsortium.org/"
+    hubmap-data-url="https://search.api.hubmapconsortium.org/v3/entities/search"
+    hubmap-asset-url="https://assets.test.hubmapconsortium.org"
+  ></ccf-organ-info> -->
+  <ccf-organ-info organ-iri="http://purl.obolibrary.org/obo/UBERON_0002113"></ccf-organ-info>
+        </section>
+
     </section>
 
     <h1 id="sounds" class="TitleDivide">Sounds</h1>
