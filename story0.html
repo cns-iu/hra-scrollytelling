@@ -3,12 +3,16 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>0: Scrollytelling Elements and Effects!</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="img/logo.svg">
+
+    <base href="./">
+
+    <script src="js/wc.js" async></script>
+
 </head>
 
 <body id="zero">
@@ -165,6 +169,18 @@
         <iframe id="sankey" src="https://software.docs.hubmapconsortium.org/data-sankey/index.html" width="100%"
             height="900px" scrolling="no" style="border:none;">
         </iframe>
+
+        <h1>CCF Organ info example</h1>
+        <div class="mat-typography" style="height:100%;">
+            <!-- <ccf-organ-info
+              organ-iri="http://purl.obolibrary.org/obo/UBERON_0004538"
+              hubmap-data-service="search-api"
+              hubmap-portal-url="https://portal.test.hubmapconsortium.org/"
+              hubmap-data-url="https://search.api.hubmapconsortium.org/v3/entities/search"
+              hubmap-asset-url="https://assets.test.hubmapconsortium.org"
+            ></ccf-organ-info> -->
+            <ccf-organ-info organ-iri="http://purl.obolibrary.org/obo/UBERON_0002113"></ccf-organ-info>
+        </div>
     </section>
 
     <h1 id="sounds" class="TitleDivide">Sounds</h1>
