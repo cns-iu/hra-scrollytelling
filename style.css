@@ -147,6 +147,20 @@ body {
     ;
 }
 
+/*Movie stuff */
+#overlayText {
+    position:absolute;
+     top:30%;
+     left:20%;
+     z-index:1;
+   }
+   
+   #aboveText {
+     color: white;
+     font-size: 20px;
+     align-self: center;
+   }
+
 .warning {
     margin: 2em;
     padding: 1em;

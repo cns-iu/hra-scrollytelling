@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>0: Scrollytelling Elements and Effects!</title>
     <meta name="description" content="">
@@ -181,12 +182,7 @@
             ></ccf-organ-info> -->
             <ccf-organ-info organ-iri="http://purl.obolibrary.org/obo/UBERON_0002113"></ccf-organ-info>
         </div>
-        
-        
-        <div class="mat-typography" style="height:100vh;">
-        <hra-tissue-blocks y-axis-field="percentage" group-by="sex" order-type="ascending"></hra-tissue-blocks>
-        </div>
-
+      
     </section>
 
     <h1 id="sounds" class="TitleDivide">Sounds</h1>
@@ -204,6 +200,18 @@
 
     <!-- section three  -->
     <section id="section4">
+
+        <div class="container">
+            <video id="video" width="770" height="882" onclick="play();">
+                <source src="img/image4.mp4" type="video/mp4" />
+            </video>
+            <div class="overlayText">
+                <p id="aboveText">Content above your video</p>
+            </div>
+        </div>
+        
+
+
         <h1>Displaying an MP4 video</h1>
         <video loop="true" style="border-radius: 6px; max-width: 600px;" width="100%" autoplay="autoplay" muted>
             <source src="img/image4.mp4" type="video/mp4">
@@ -303,6 +311,16 @@
             document.getElementById("categories").style.opacity = "0";
         }
     };
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
 
     //crossfade imgs
     const checkpoint = 1000;
