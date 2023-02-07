@@ -155,6 +155,7 @@ body {
     justify-content: center;
     width: 100vw;
     height: 100%;
+    overflow: hidden;
   }
   #section-movie > #video-background{
     position: absolute;
@@ -162,6 +163,8 @@ body {
     left: 0;
     width: 100vw;
     height: 100%;
+    padding: 0;
+    margin: 0;
   }
   
   #section-movie > span{
