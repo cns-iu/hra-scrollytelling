@@ -90,25 +90,32 @@
         <h1>Scroll in Images</h1>
         <section class="body">
 
-            <img src="img/VHF w kidneys.png" class="fullbody piece" alt="heel">
+            <img src="img/VHF w kidneys.png" class="fullbody piece" alt="fullbody">
             <p class="piece txt2">Kidneys</p>
-            <img src="img/kidney flat.png" class="outsole piece" alt="outsole">
+            <img src="img/kidney flat.png" class="outsole piece" alt="Kidneys">
             <p class="piece txt3">protein</p>
-            <img src="img/protein3.png" class="midsole2 piece" alt="midsole2">
+            <img src="img/protein3.png" class="midsole2 piece" alt="protein">
             <p class="piece txt4">podo</p>
-            <img src="img/podo with data.png" class="midsole piece" alt="midsole">
+            <img src="img/podo with data.png" class="midsole piece" alt="podo">
 
         </section>
 
         <h1>Scroll in Images 2</h1>
         <section class="personskull">
 
-            <img src="img/story1-1.png" class="fullface piece" alt="heel">
-            <img src="img/story1-2.png" class="skull piece" alt="outsole">
-            <img src="img/story1-3.png" class="brain1 piece" alt="midsole2">
-            <img src="img/story1-4.png" class="brain2 piece" alt="midsole">
+            <img src="img/story1-1.png" class="fullface piece">
+            <img src="img/story1-2.png" class="skull piece">
+            <img src="img/story1-3.png" class="brain1 piece">
+            <img src="img/story1-4.png" class="brain2 piece">
             <p class="piece skulltxt1">There are XX cells in the human body.</p>
 
+        </section>
+
+        <h1>Move on image</h1>
+        <section class="moveimg">
+            <img src="img/graphbg.png" class="graphbg piece">
+            <img src="img/char1.png" class="char1 piece">
+            <img src="img/char1.png" class="char12 piece">
         </section>
 
         <h1>Parallax example</h1>
@@ -182,7 +189,7 @@
             ></ccf-organ-info> -->
             <ccf-organ-info organ-iri="http://purl.obolibrary.org/obo/UBERON_0002113"></ccf-organ-info>
         </div>
-      
+
     </section>
 
     <h1 id="sounds" class="TitleDivide">Sounds</h1>
@@ -195,20 +202,20 @@
             <span class="audiobutton" onclick="turnOff()">Press to pause sound</span>
         </diV>
     </section>
-    
+
     <!-- section four  -->
     <h1 id="movies" class="TitleDivide">Movies</h1>
-    
+
 
     <section id="section4">
         <h1>Displaying text over a video video</h1>
-    <div id="section-movie">
-        <video autoplay="" muted="" loop="" id="video-background"> 
-            <source src="img/image4.mp4" type="video/mp4">
-        </video>
-        <span>Text over video example</span>
-    </div>
-    
+        <div id="section-movie">
+            <video autoplay="" muted="" loop="" id="video-background">
+                <source src="img/image4.mp4" type="video/mp4">
+            </video>
+            <span>Text over video example</span>
+        </div>
+
         <h1>Displaying an MP4 video</h1>
         <video loop="true" style="border-radius: 6px; max-width: 600px;" width="100%" autoplay="autoplay" muted>
             <source src="img/image4.mp4" type="video/mp4">
@@ -231,7 +238,7 @@
         <h1>Drag and Drop Example</h1>
 
         <p>Drag the round equation into the box with the right answer.</p>
-      
+
         <img src="img/dragbox2.svg" id="gate" class="droppable dropbox">
         <img src="img/dragbox1.svg" id="wrong" class="dropbox">
         <img src="img/dragobj.svg" id="equation">
@@ -310,14 +317,14 @@
     };
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
-});
 
     //crossfade imgs
     const checkpoint = 1000;
@@ -419,67 +426,88 @@
             opacity: 0
         });
 
-        // drag drop 
-          let currentDroppable = null;
-      
-          equation.onmousedown = function(event) {
-      
-            let shiftX = event.clientX - equation.getBoundingClientRect().left;
-            let shiftY = event.clientY - equation.getBoundingClientRect().top;
-      
-            equation.style.position = 'absolute';
-            equation.style.zIndex = 1000;
-            document.body.append(equation);
-      
-            moveAt(event.pageX, event.pageY);
-      
-            function moveAt(pageX, pageY) {
-              equation.style.left = pageX - shiftX + 'px';
-              equation.style.top = pageY - shiftY + 'px';
+        //drop in  3
+    gsap.timeline({
+            scrollTrigger: {
+                trigger: ".moveimg",
+                start: "center center",
+                end: "bottom top",
+                scrub: true,
+                pin: true
             }
-      
-            function onMouseMove(event) {
-              moveAt(event.pageX, event.pageY);
-      
-              equation.hidden = true;
-              let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-              equation.hidden = false;
-      
-              if (!elemBelow) return;
-      
-              let droppableBelow = elemBelow.closest('.droppable');
-              if (currentDroppable != droppableBelow) {
+        })
+        .from(".char1", {
+            opacity: 100
+        })
+        .from(".char1", {
+            opacity: 0
+        })
+        .from(".char12", {
+            opacity: 0
+        })
+       
+
+    // drag drop 
+    let currentDroppable = null;
+
+    equation.onmousedown = function (event) {
+
+        let shiftX = event.clientX - equation.getBoundingClientRect().left;
+        let shiftY = event.clientY - equation.getBoundingClientRect().top;
+
+        equation.style.position = 'absolute';
+        equation.style.zIndex = 1000;
+        document.body.append(equation);
+
+        moveAt(event.pageX, event.pageY);
+
+        function moveAt(pageX, pageY) {
+            equation.style.left = pageX - shiftX + 'px';
+            equation.style.top = pageY - shiftY + 'px';
+        }
+
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+
+            equation.hidden = true;
+            let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+            equation.hidden = false;
+
+            if (!elemBelow) return;
+
+            let droppableBelow = elemBelow.closest('.droppable');
+            if (currentDroppable != droppableBelow) {
                 if (currentDroppable) { // null when we were not over a droppable before this event
-                  leaveDroppable(currentDroppable);
+                    leaveDroppable(currentDroppable);
                 }
                 currentDroppable = droppableBelow;
                 if (currentDroppable) { // null if we're not coming over a droppable now
-                  // (maybe just left the droppable)
-                  enterDroppable(currentDroppable);
+                    // (maybe just left the droppable)
+                    enterDroppable(currentDroppable);
                 }
-              }
             }
-      
-            document.addEventListener('mousemove', onMouseMove);
-      
-            equation.onmouseup = function() {
-              document.removeEventListener('mousemove', onMouseMove);
-              equation.onmouseup = null;
-            };
-      
-          };
-      
-          function enterDroppable(elem) {
-            elem.style.background = 'green';
-          }
-      
-          function leaveDroppable(elem) {
-            elem.style.background = '';
-          }
-      
-          equation.ondragstart = function() {
-            return false;
-          };
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        equation.onmouseup = function () {
+            document.removeEventListener('mousemove', onMouseMove);
+            equation.onmouseup = null;
+        };
+
+    };
+
+    function enterDroppable(elem) {
+        elem.style.background = 'green';
+    }
+
+    function leaveDroppable(elem) {
+        elem.style.background = '';
+    }
+
+    equation.ondragstart = function () {
+        return false;
+    };
 </script>
 
 </html>

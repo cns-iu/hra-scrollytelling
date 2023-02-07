@@ -1193,6 +1193,31 @@ ul.rb li .minititle {
     text-align: center;
   }
   
+/* drop in 3*/
+.moveimg {
+    position: relative;
+    max-width: 600px;
+    margin:auto;
+    display:flex;
+    padding-top: 550px;
+    background: black;
+  }
+  .graphbg {
+    width: 100%;
+  }
+  
+  .char12 {
+    width: 10%;
+    left:75%;
+    top:45%;
+  }
+ 
+  .char1 {
+    width: 10%;
+    left:55%;
+    top:33%;
+    opacity: 0;
+  }
 
 /* drag drop   */
 .dropbox {
