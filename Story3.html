@@ -72,8 +72,8 @@
     </section>
 
     <div class="threediv">
-        <img src="img/3-s-1.svg" class="r1">
-        <img src="img/3-s-2.svg" class="r2">
+        <img src="img/3-s-2.svg" class="r1">
+        <img src="img/3-s-1.svg" class="r2">
         <img src="img/3-s-3.svg" class="r3">
         <img src="img/3-s-4.svg" class="r4">
     </div>
@@ -171,7 +171,7 @@
         ease: Linear.easeNone,
         scrollTrigger: {
             trigger: ".r2",
-            start: "top 600px",
+            start: "top 500px",
             end: "top 200px",
             scrub: true,
             id: "scrub"
@@ -184,7 +184,7 @@
         ease: Linear.ease,
         scrollTrigger: {
             trigger: ".r3",
-            start: "top 490px",
+            start: "top 390px",
             end: "top 200px",
             scrub: true,
             id: "scrub"
@@ -194,11 +194,11 @@
     gsap.to(".r4", {
         autoAlpha: 1, 
         duration: .2,
-        ease: Linear.easeNone,
+        ease: Linear.ease,
         scrollTrigger: {
             trigger: ".r4",
-            start: "top 300px",
-            end: "top 200px",
+            start: "top 200px",
+            end: "top 00px",
             scrub: true,
             id: "scrub"
         }
