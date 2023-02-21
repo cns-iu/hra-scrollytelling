@@ -151,7 +151,7 @@ body {
 }
 
 /*Movie stuff */
-#section-movie{
+#section-movie {
     display: inline-flex;
     position: relative;
     align-items: center;
@@ -162,23 +162,24 @@ body {
     display: flex;
     justify-content: center;
     margin: auto;
-  }
-  #section-movie > #video-background{
+}
+
+#section-movie>#video-background {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%    !important;
-    height: auto   !important;
+    width: 100% !important;
+    height: auto !important;
     padding: 0;
     margin: 0;
-  }
-  
-  #section-movie > span{
+}
+
+#section-movie>span {
     color: white;
     z-index: 800;
     text-shadow: 5px 5px 2px black;
     font-size: 40px;
-  }
+}
 
 .warning {
     margin: 2em;
@@ -324,16 +325,16 @@ body {
 .parallax {
     /* The image used */
     background-image: url("img/bg.jpg");
-  
+
     /* Set a specific height */
-    min-height: 500px; 
-  
+    min-height: 500px;
+
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-  }
+}
 
 @-webkit-keyframes action {
     0% {
@@ -455,28 +456,28 @@ h1 {
     overflow: hidden;
     position: relative;
     margin-bottom: 5px;
-  }
-  
-  /* style for the DIV that is the magnifier lens */
-  .maglens {
+}
+
+/* style for the DIV that is the magnifier lens */
+.maglens {
     position: absolute;
     overflow: hidden;
     width: 150px;
     height: 150px;
-  }
-  
-  /* style for the small IMG that appears on the page */
-  .magsmall {
-    position: absolute; 
+}
+
+/* style for the small IMG that appears on the page */
+.magsmall {
+    position: absolute;
     border-style: none
-  }
-  
-  /* style for the magnified image, using a clip rectangle */
-  .maglarge {
-    position: absolute; 
+}
+
+/* style for the magnified image, using a clip rectangle */
+.maglarge {
+    position: absolute;
     border-style: none
-  }
-  
+}
+
 .togetheridv {
     margin: 20px;
 }
@@ -486,11 +487,11 @@ h1 {
     background-color: #ffffff;
 }
 
-#fadetests{
+#fadetests {
     text-align: center;
 }
 
-#fadetests img{
+#fadetests img {
     max-width: 500px;
 }
 
@@ -578,6 +579,125 @@ h1 {
     background-color: #C6ECF6;
 }
 
+
+#three .section1 {
+    margin-top: -18px;
+}
+
+#three .section1 {
+    padding: 10px;
+    max-width: 650px;
+    margin: auto;
+    justify-content: center;
+}
+
+.threediv {
+    display: flex;
+    justify-content: space-between;
+    overflow-y: scroll;
+    position: relative;
+    align-items: flex-end;
+    max-width: 600px;
+    justify-content: center;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 20px;
+    margin-bottom: 30px;
+}
+
+@media all and (max-width: 450px) {
+    .threediv {
+        padding-left: 50px;
+    }
+}
+
+.threediv2 {
+    display: flex;
+    justify-content: space-between;
+    overflow-y: scroll;
+    position: relative;
+    align-items: flex-end;
+    justify-content: center;
+    margin: auto;
+}
+
+.threediv img {
+    max-width: 100%;
+    flex-grow: 1;
+    margin: 15px;
+    bottom: 0
+}
+
+.threelung1 {
+    margin-right: 20px;
+    max-height: 180px;
+    width: 40% !important;
+}
+
+.divcol2 {
+    flex-grow: 2 !important;
+}
+
+#three .section2 {
+    padding: 10px;
+    max-width: 650px;
+    margin: auto;
+    justify-content: center;
+    background-color: #e1f4ff;
+}
+
+#three .section3 {
+    padding: 10px;
+    max-width: 650px;
+    margin: auto;
+    justify-content: center;
+}
+
+#three .section4 {
+    padding: 10px;
+    max-width: 650px;
+    margin: auto;
+    justify-content: center;
+}
+
+.threeimg {
+    width: 100%;
+}
+
+#three .r1 {
+    opacity: 0;
+}
+
+#three .r2 {
+    opacity: 0;
+}
+
+#three .r3 {
+    opacity: 0;
+}
+
+#three .r4 {
+    opacity: 0;
+}
+
+.lung2 {
+    width: 100%;
+}
+
+#vid {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    width: auto;
+    height: 40vh;
+    z-index: -1000;
+    opacity: 0.5;
+    overflow: hidden;
+}
+
+
 header {
     margin-top: -20px;
     display: flex;
@@ -587,6 +707,7 @@ header {
     margin-bottom: auto;
     font-family: "Playfair", serif;
     height: 100vh;
+    overflow-x: hidden;
 }
 
 header .headerOne {
@@ -638,9 +759,9 @@ header h2 {
     display: grid;
     height: 200px;
     width: 100%;
-  }
-  
-  #zero .img-wrapper div {
+}
+
+#zero .img-wrapper div {
     grid-column: 1;
     grid-row: 1;
     background-size: cover;
@@ -648,9 +769,8 @@ header h2 {
     background-repeat: no-repeat;
     background-color: var(--gray);
     transition: opacity 0.1s;
-  }
+}
 
-  
 /*Section counters*/
 #sectionCounterdiv {
     position: fixed;
@@ -974,7 +1094,7 @@ footer a {
 .storyList {
     font-family: "PT Sans", sans-serif;
     background-color: #FFF7F8;
-    
+
     justify-content: center;
     padding: 40px;
     display: flex;
@@ -987,12 +1107,13 @@ footer a {
 
 @keyframes animatedBackground {
     from {
-      background-position: 0 0;
+        background-position: 0 0;
     }
+
     to {
-      background-position: 100% 0;
+        background-position: 100% 0;
     }
-  }
+}
 
 .storyBox {
     margin: 30px;
@@ -1103,137 +1224,145 @@ ul.rb li .minititle {
 /* horizontal slide */
 .comparisonSection {
     position: relative;
-    padding-bottom: 56.25%; /* to maintain aspect ratio (responsive!) */
-  }
-  .comparisonImage {
+    padding-bottom: 56.25%;
+    /* to maintain aspect ratio (responsive!) */
+}
+
+.comparisonImage {
     width: 100%;
     height: 100%;
-  }
-  .afterImage {
+}
+
+.afterImage {
     position: absolute;
     overflow: hidden;
     top: 0;
     transform: translate(100%, 0px);
-  }
-  .afterImage img {
+}
+
+.afterImage img {
     transform: translate(-100%, 0px);
-  }
-  .comparisonImage img {
+}
+
+.comparisonImage img {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
-  }
+}
 
 /* drop in  */
 .body {
     position: relative;
     padding: 20px;
     max-width: 400px;
-    margin:auto;
-    display:flex;
+    margin: auto;
+    display: flex;
     padding-top: 250px;
-  }
+}
 
-  .piece:not(.outsole) {
+.piece:not(.outsole) {
     position: absolute;
     bottom: 7vw;
-  }
-  .midsole {
+}
+
+.midsole {
     width: 50%;
-    top:30%;
+    top: 30%;
     left: 40%;
-  }
- 
-  .midsole2 {
+}
+
+.midsole2 {
     width: 50%;
-    left:10%;
-    top:2%;
-  }
+    left: 10%;
+    top: 2%;
+}
 
-  .txt3{
-    left:10%;
-    top:0%;
-  }
+.txt3 {
+    left: 10%;
+    top: 0%;
+}
 
-  .txt4{
-    left:75%;
-    top:25%;
-  }
+.txt4 {
+    left: 75%;
+    top: 25%;
+}
 
-  .txt2{
-    left:2%;
-    top:55%;
-  }
+.txt2 {
+    left: 2%;
+    top: 55%;
+}
 
-  .fullbody {
+.fullbody {
     width: 80%;
-  }
-  
-  .outsole {
+}
+
+.outsole {
     width: 50%;
     left: 5%;
-    top:10%;
-  }
+    top: 10%;
+}
 
-  /* drop in 2 */
+/* drop in 2 */
 .personskull {
     position: relative;
     max-width: 360px;
-    margin:auto;
-    display:flex;
+    margin: auto;
+    display: flex;
     background: black;
     height: 500px;
-  }
-  .fullface {
-    width: 100%;
-  }
-  
-  .brain1 {
-    width: 100%;
-  }
- 
-  .brain2 {
-    width: 100%;
-  }
+}
 
-  .skull {
+.fullface {
     width: 100%;
-  }
+}
 
-  .skulltxt1{
-    left:34%;
-    top:170px;
+.brain1 {
+    width: 100%;
+}
+
+.brain2 {
+    width: 100%;
+}
+
+.skull {
+    width: 100%;
+}
+
+.skulltxt1 {
+    left: 34%;
+    top: 170px;
     color: white;
     width: 100px;
     text-align: center;
-  }
-  
+}
+
 /* drop in 3*/
 .moveimg {
     position: relative;
     max-width: 600px;
-    margin:auto;
-    display:flex;
+    margin: auto;
+    display: flex;
     padding-top: 550px;
     background: black;
-  }
-  .graphbg {
+}
+
+.graphbg {
     width: 100%;
-  }
-  
-  .char12 {
+}
+
+.char12 {
     width: 10%;
-    left:75%;
-    top:45%;
-  }
- 
-  .char1 {
+    left: 75%;
+    top: 45%;
+}
+
+.char1 {
     width: 10%;
-    left:55%;
-    top:33%;
+    left: 55%;
+    top: 33%;
     opacity: 0;
-  }
+}
 
 /* drag drop   */
 .dropbox {
@@ -1241,10 +1370,10 @@ ul.rb li .minititle {
     margin-bottom: 100px;
     width: 83px;
     height: 46px;
-  }
-  
-  #equation {
+}
+
+#equation {
     cursor: pointer;
     width: 40px;
     height: 40px;
-  }
+}

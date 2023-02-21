@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="58px" height="100px" viewBox="0 0 58 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>3-s-2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0.624812204,2.20718866 C0.731298967,1.05228957 1.75385424,0.202383449 2.90875333,0.308870213 C4.06365242,0.415356976 4.91355854,1.43791225 4.80707178,2.59281134 L4.73908374,3.36883035 C4.08106911,11.3034047 4.80121854,16.6239196 6.69348654,19.2273184 C7.73633763,20.6620819 8.79098719,21.4366107 10.1204463,21.9062426 L10.3165626,21.9733625 C10.7699486,22.1232226 11.2110453,22.2303185 12.0019401,22.3892625 L12.5621218,22.4995142 C15.6902638,23.105612 17.2198925,23.7025375 18.9447129,25.5048165 C21.8758648,28.567601 23.3294753,36.010909 23.6990446,48.2587772 C23.7340247,49.4180475 22.8226073,50.3861787 21.6633369,50.4211588 C20.5040666,50.4561388 19.5359354,49.5447214 19.5009554,48.3854511 L19.4758493,47.6136324 C19.1019898,36.9074495 17.7912717,30.3741081 15.9103753,28.408744 L15.7260208,28.2233294 C14.8676973,27.3949262 14.0095542,27.0688486 11.9846721,26.6662807 L11.1406757,26.5002222 C10.0600706,26.2827456 9.47952645,26.1341861 8.72151309,25.8664176 C6.60044331,25.1171489 4.84544822,23.8282903 3.29610428,21.6966895 C0.582444975,17.9632135 -0.232440533,11.5044983 0.624812204,2.20718866 Z" id="path-1"></path>
+        <filter x="-12.8%" y="-6.0%" width="125.6%" height="112.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="2.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.46819798   0 0 0 0 0.550553036   0 0 0 0 0.950266078  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <path d="M0.624812204,2.20718866 C0.731298967,1.05228957 1.75385424,0.202383449 2.90875333,0.308870213 C4.06365242,0.415356976 4.91355854,1.43791225 4.80707178,2.59281134 L4.73908374,3.36883035 C4.08106911,11.3034047 4.80121854,16.6239196 6.69348654,19.2273184 C7.73633763,20.6620819 8.79098719,21.4366107 10.1204463,21.9062426 L10.3165626,21.9733625 C10.7699486,22.1232226 11.2110453,22.2303185 12.0019401,22.3892625 L12.5621218,22.4995142 C15.6902638,23.105612 17.2198925,23.7025375 18.9447129,25.5048165 C21.8758648,28.567601 23.3294753,36.010909 23.6990446,48.2587772 C23.7340247,49.4180475 22.8226073,50.3861787 21.6633369,50.4211588 C20.5040666,50.4561388 19.5359354,49.5447214 19.5009554,48.3854511 L19.4758493,47.6136324 C19.1019898,36.9074495 17.7912717,30.3741081 15.9103753,28.408744 L15.7260208,28.2233294 C14.8676973,27.3949262 14.0095542,27.0688486 11.9846721,26.6662807 L11.1406757,26.5002222 C10.0600706,26.2827456 9.47952645,26.1341861 8.72151309,25.8664176 C6.60044331,25.1171489 4.84544822,23.8282903 3.29610428,21.6966895 C0.582444975,17.9632135 -0.232440533,11.5044983 0.624812204,2.20718866 Z" id="path-3"></path>
+        <filter x="-12.8%" y="-6.0%" width="125.6%" height="112.0%" filterUnits="objectBoundingBox" id="filter-4">
+            <feGaussianBlur stdDeviation="2.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.46819798   0 0 0 0 0.550553036   0 0 0 0 0.950266078  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-45.000000, -132.000000)">
+            <g id="3-s-2" transform="translate(45.000000, 132.000000)">
+                <g id="Group-3" transform="translate(17.000000, 49.000000)" fill-rule="nonzero">
+                    <g id="Group-2">
+                        <g id="Line">
+                            <use fill="#BAD6FF" xlink:href="#path-1"></use>
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        </g>
+                    </g>
+                    <g id="Group-2" transform="translate(12.000000, 25.500000) scale(-1, 1) translate(-12.000000, -25.500000) ">
+                        <g id="Line">
+                            <use fill="#BAD6FF" xlink:href="#path-3"></use>
+                            <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                        </g>
+                    </g>
+                </g>
+                <polyline id="Line-3" stroke="#000000" stroke-linecap="round" points="17 40.564293 17 36 41 36 41 40.564293"></polyline>
+                <text id="10-nanometers-in-len" font-family="PTSans-Regular, PT Sans" font-size="9" font-weight="normal" fill="#000000">
+                    <tspan x="0" y="19">10 nanometers</tspan>
+                    <tspan x="0" y="29">in length</tspan>
+                </text>
+                <text id="Chromosome" font-family="PTSans-Bold, PT Sans" font-size="9" font-weight="bold" fill="#000000">
+                    <tspan x="4" y="8">Chromosome</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="63px" height="96px" viewBox="0 0 63 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>3-s-1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <ellipse id="path-1" cx="30.5" cy="21.5" rx="30.5" ry="21.5"></ellipse>
+        <filter x="-9.8%" y="-14.0%" width="119.7%" height="127.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="3.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="-5" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <ellipse id="path-3" cx="30.5" cy="14.5" rx="21.5" ry="9.5"></ellipse>
+        <filter x="-10.5%" y="-23.7%" width="120.9%" height="147.4%" filterUnits="objectBoundingBox" id="filter-4">
+            <feGaussianBlur stdDeviation="2.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="4" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-115.000000, -136.000000)">
+            <g id="3-s-1" transform="translate(115.000000, 136.000000)">
+                <g id="Group" transform="translate(2.000000, 53.000000)">
+                    <g id="Oval">
+                        <use fill="#DE5454" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    </g>
+                    <g id="Oval">
+                        <use fill="#BA3939" fill-rule="evenodd" xlink:href="#path-3"></use>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                    </g>
+                </g>
+                <polyline id="Line-3" stroke="#000000" stroke-linecap="round" points="1 40.564293 1 36 62 36 62 40.564293"></polyline>
+                <text id="7-8-micrometers-in-l" font-family="PTSans-Regular, PT Sans" font-size="9" font-weight="normal" fill="#000000">
+                    <tspan x="0" y="19">7-8 micrometers</tspan>
+                    <tspan x="0" y="29">in length</tspan>
+                </text>
+                <text id="Red-Blood-Cell" font-family="PTSans-Bold, PT Sans" font-size="9" font-weight="bold" fill="#000000">
+                    <tspan x="4" y="8">Red Blood Cell</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
