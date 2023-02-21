@@ -691,6 +691,47 @@ h1 {
     width: 100%;
 }
 
+
+.kidneybody {
+    position: relative;
+    max-width: 360px;
+    height: 500px !important;
+    width: auto;    margin: auto;
+    display: flex;
+    height: 500px;
+    margin: auto;
+    justify-content: center;
+}
+
+.bodypart:not(.outsole) {
+    position: absolute;
+    bottom: 0vw;
+    height: 500px !important;
+    width: auto;
+}
+
+
+.three1 {
+    width: 100%;
+opacity: .5;
+}
+
+.three2 {
+    width: 100%;
+    opacity: 100;
+
+}
+
+.three3 {
+    width: 100%;
+    opacity: 100;
+}
+
+.three4 {
+    width: 100%;
+    opacity: 100;
+}
+
 #vid {
     position: absolute;
     top: 50%;

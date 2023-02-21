@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Number of cells in the human body</title>
+    <title>3: Learn about Visualizing Cells in the Human Body</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" href="style.css">
@@ -50,8 +50,8 @@
                 Your browser does not support the video tag.
             </video>
 
-            <h1 class="headerOne">Learn about the ...</h1>
-            <p class="headerLarge">Number of cells in the human body</p>
+            <h1 class="headerOne">Learn about ...</h1>
+            <p class="headerLarge">Visualizing Cells in the Human Body</p>
         </header>
     </section>
 
@@ -84,12 +84,13 @@
             allows us to examine in some detail: the renal corpuscle in kidney and crypt of lieberkuhn in the large
             intestine.</p>
     </section>
-
+        
     <section class="section3">
-
-        <div class="threediv2">
-            <img src="img/3-kidney.png" class="threeimg change threelung1">
-            <div class="divcol2">
+                <div class="kidneybody">
+                    <img src="img/3-l-1.png" class="three1 bodypart">
+                    <img src="img/3-l-2.png" class="three2 bodypart">
+                    <img src="img/3-l-3.png" class="three3 bodypart">
+                </div>
                 <h3>Kidney</h3>
 
                 <p>In simple terms, the renal corpuscle is located in the kidney and works to filter out toxins through
@@ -159,7 +160,7 @@
         ease: Linear.easeNone,
         scrollTrigger: {
             trigger: ".r1",
-            start: "top 750px",
+            start: "top 650px",
             end: "top 200px",
             scrub: true,
             id: "scrub"
@@ -171,7 +172,7 @@
         ease: Linear.easeNone,
         scrollTrigger: {
             trigger: ".r2",
-            start: "top 500px",
+            start: "top 400px",
             end: "top 200px",
             scrub: true,
             id: "scrub"
@@ -184,7 +185,7 @@
         ease: Linear.ease,
         scrollTrigger: {
             trigger: ".r3",
-            start: "top 390px",
+            start: "top 290px",
             end: "top 200px",
             scrub: true,
             id: "scrub"
@@ -197,12 +198,37 @@
         ease: Linear.ease,
         scrollTrigger: {
             trigger: ".r4",
-            start: "top 200px",
+            start: "top 90px",
             end: "top 00px",
             scrub: true,
             id: "scrub"
         }
     });
+
+    //drop in 1
+    gsap.timeline({
+            scrollTrigger: {
+                autoAlpha: 1, 
+                duration: .6,
+                trigger: ".kidneybody",
+                start: "top 300px",
+                end: "top 0px",
+                scrub: true,
+                pin: false,
+                markers: "true"
+            }
+        })
+        .from(".three1", {
+            opacity: 100,
+            
+        })
+        .from(".three2", {
+            opacity: 0
+        })
+        .from(".three3", {
+            opacity: 0
+        })
+       
 </script>
 
 </html>
