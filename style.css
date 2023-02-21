@@ -585,10 +585,12 @@ h1 {
 }
 
 #three .section1 {
-    padding: 10px;
+    padding: 30px;
     max-width: 650px;
     margin: auto;
     justify-content: center;
+    margin-bottom: -60px;
+    margin-top: -20px;
 }
 
 .threediv {
@@ -639,22 +641,28 @@ h1 {
 }
 
 #three .section2 {
-    padding: 10px;
+    padding: 30px;
     max-width: 650px;
     margin: auto;
     justify-content: center;
-    background-color: #e1f4ff;
 }
 
 #three .section3 {
-    padding: 10px;
+    padding: 30px;
     max-width: 650px;
     margin: auto;
     justify-content: center;
 }
 
 #three .section4 {
-    padding: 10px;
+    padding: 30px;
+    max-width: 650px;
+    margin: auto;
+    justify-content: center;
+}
+
+#three .section5 {
+    padding: 30px;
     max-width: 650px;
     margin: auto;
     justify-content: center;
