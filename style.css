@@ -980,7 +980,7 @@ footer a {
     display: flex;
     height: 100vh;
     padding-top: 100px;
-    background-image: url("img/bgindex2.png");
+    background-image: url("img/bgindex.png");
     background-size: cover;
     animation: animatedBackground 20s linear infinite alternate;
 }
