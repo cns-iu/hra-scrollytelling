@@ -581,12 +581,16 @@ h1 {
 
 
 #three .section1 {
+    background-color: rgb(240, 240, 240);
+}
+
+#three .section1-text{
     padding: 30px;
     max-width: 650px;
     margin: auto;
     justify-content: center;
-    margin-bottom: -60px;
-    margin-top: -20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .threediv {
@@ -637,6 +641,10 @@ h1 {
 }
 
 #three .section2 {
+    background-color: rgb(240, 240, 240);
+}
+
+#three .section2-text {
     padding: 30px;
     max-width: 650px;
     margin: auto;
@@ -668,28 +676,65 @@ h1 {
     width: 100%;
 }
 
+#three .section3 img{
+width: 100%;
+}
+
+.renal {
+    position: relative;
+    height: 200px ;    
+    margin: auto;
+    display: flex;
+    margin: auto;
+    overflow-x: scroll;
+    justify-content: center;
+}
+
+@media all and (max-width: 523px) {
+    #three .r1 {
+        height: 140px  !important;  
+    }
+    #three .r2 {
+        height: 140px  !important;  
+    }
+    #three .r3 {
+        height: 140px  !important;  
+    }
+}
+
+@media all and (min-width: 523px) {
+    #three .r1 {
+        height: 200px  !important;  
+    }
+    #three .r2 {
+        height: 200px  !important;  
+    }
+    #three .r3 {
+        height: 200px  !important;  
+    }
+}
+
 #three .r1 {
     opacity: 0;
-    width: 2%;
+
 }
 
 #three .r2 {
     opacity: 0;
-    width: 4%;
+
+
 }
 
 #three .r3 {
     opacity: 0;
-    width: 15%;
+
 }
 
-#three .r4 {
-    opacity: 0;
-}
 
 .lung2 {
     width: 100%;
 }
+
 
 
 .kidneybody {
@@ -735,7 +780,7 @@ opacity: .5;
 #vid {
     position: absolute;
     top: 50%;
-    left: 65%;
+    left: 45%;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     width: auto;
