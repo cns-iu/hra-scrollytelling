@@ -666,10 +666,16 @@ h1 {
 }
 
 #three .section5 {
+    display: flex;
     padding: 30px;
     max-width: 650px;
     margin: auto;
     justify-content: center;
+}
+
+.intestineimg{
+    max-width: 300px;
+    float: left;
 }
 
 .threeimg {
