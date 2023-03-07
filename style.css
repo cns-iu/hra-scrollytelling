@@ -785,6 +785,10 @@ width: 100%;
     justify-content: center;
 }
 
+#sortsvg:hover{
+    cursor: pointer;
+}
+
 .organ {
     position: absolute;
     bottom: 0vw;
