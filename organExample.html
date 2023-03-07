@@ -48,9 +48,10 @@
                     <img src="img/Organ-body.png" class="organ">
                     <img src="img/Organ-brain.png" class="organ" id="brainImg">
 
-                    <canvas id="kidneyImg"  class="organ" height="650" width="350"></canvas>
+                    <img src="img/Organ-kidney.png" class="organ" id="kidneyImg">
 
-                    <canvas id="heartImg"  class="organ" height="650" width="350"></canvas>
+                    <img src="img/Organ-heart.png" class="organ" id="heartImg">
+
 
                 </div>
 
@@ -199,45 +200,6 @@ function sortTable(n) {
     }
 }
 
-// select the canvas element with jQuery, and set up
-$('#heartImg').on('click', function(e) {
-    console.log("started")
 
-    function findPos(obj) {
-        var curleft = 0, curtop = 0;
-        if (obj.offsetParent) {
-            do {
-                curleft += obj.offsetLeft;
-                curtop += obj.offsetTop;
-            } while (obj = obj.offsetParent);
-            return { x: curleft, y: curtop };
-        }
-        return undefined;
-    }
-    var pos = findPos(this);
-    var x = e.pageX - pos.x;
-    var y = e.pageY - pos.y;
-    var canvas = this.getContext('2d');
-    var pixel = canvas.getImageData(x, y, 1, 1).data;
-    if(pixel[3] != 0){
-        console.log("Clicked the dice!");
-    }
-});
-
-// heart
-var canvas = $('#heartImg')[0];
-var context = canvas.getContext('2d');
-var img = new Image();
-img.onload = function () {
-    context.drawImage(img, 11, 0, 328, 650);
-}
-img.src = "img/Organ-heart.png";
-
-// kidey
-canvas2 = $('#kidneyImg')[0];
-context2 = canvas2.getContext('2d');
-img2 = new Image();
-img2.onload = function () {
-    context2.drawImage(img2, 11, 0, 328, 650);
-}
-img2.src = "img/Organ-kidney.png";</script></html>
+</script>
+</html>
