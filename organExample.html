@@ -46,20 +46,26 @@
 
                 <div class="organParts">
                     <img src="img/Organ-body.png" class="organ">
-                    <img src="img/Organ-kidney.png" class="organ" id="kidneyImg">
                     <img src="img/Organ-brain.png" class="organ" id="brainImg">
-                    <img src="img/Organ-heart.png" class="organ" id="heartImg">
+
+                    <canvas id="kidneyImg"  class="organ" height="650" width="350"></canvas>
+
+                    <canvas id="heartImg"  class="organ" height="650" width="350"></canvas>
+
                 </div>
 
                 <div class="tableExample">
+                    <div id="log">Organ information will appear here.</div>
                     <table
                         id="organTable">
                         <!--Header -->
                         <tr>
-                            <th>Organ <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-alpha-down" viewBox="0 -3 20 16" onclick="sortTable(0)">
-                                <path fill-rule="evenodd" d="M10.082 5.629 9.664 7H8.598l1.789-5.332h1.234L13.402 7h-1.12l-.419-1.371h-1.781zm1.57-.785L11 2.687h-.047l-.652 2.157h1.351z"/>
-                                <path d="M12.96 14H9.028v-.691l2.579-3.72v-.054H9.098v-.867h3.785v.691l-2.567 3.72v.054h2.645V14zM4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z"/>
-                              </svg></th>
+                            <th>Organ
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-alpha-down" viewbox="0 -3 20 16" onclick="sortTable(0)">
+                                    <path fill-rule="evenodd" d="M10.082 5.629 9.664 7H8.598l1.789-5.332h1.234L13.402 7h-1.12l-.419-1.371h-1.781zm1.57-.785L11 2.687h-.047l-.652 2.157h1.351z"/>
+                                    <path d="M12.96 14H9.028v-.691l2.579-3.72v-.054H9.098v-.867h3.785v.691l-2.567 3.72v.054h2.645V14zM4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z"/>
+                                </svg>
+                            </th>
                             <th>Uberon Term
                             </th>
                             <th>Sampling Site</th>
@@ -72,17 +78,18 @@
                         </tr>
                         <tr>
                             <td id="brain">Brain</td>
-                            <td class="brain">Brain 2 Uberon term</td>
-                            <td class="brain">Brain 2 Sampling Site</td>
+                            <td class="brain">Brain Uberon term</td>
+                            <td class="brain">Brain Sampling Site</td>
                         </tr>
                         <tr>
                             <td id="heart">Heart</td>
                             <td class="heart">Heart Uberon term</td>
-                            <td class="heart">Heart 2 Sampling Site</td>
+                            <td class="heart">Heart Sampling Site</td>
                         </tr>
                     </table>
 
-                    <textarea id="log">Hover Information will appear here.</textarea>
+                   
+
                 </div>
             </div>
         </section>
@@ -90,23 +97,21 @@
 
         <!-- BotNav -->
     <!--     <section class="botNav">
-                            <a href="story2.html" class="previous"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                                </svg> Story 2: <span class="prevTitle">What Is An HRA?</span></a> -->
+                                <a href="story2.html" class="previous"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                                    </svg> Story 2: <span class="prevTitle">What Is An HRA?</span></a> -->
 
         <!--  <a href="story2.html" class="next">Story 3: <span class="nextTitle">Get to Know Your Anatomical
-                                                        Structures!</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                                        class="bi bi-arrow-right" viewBox="0 -3 16 16">
-                                                        <path fill-rule="evenodd"
-                                                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                                                    </svg></a> -->
+                                                                Structures!</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                                                class="bi bi-arrow-right" viewBox="0 -3 16 16">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                                            </svg></a> -->
     </body>
 </html></section><footer>
-© 2023 Human Atlas Design System at Indiana University</footer></body><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/ScrollTrigger.min.js"></script><script src="scripts.js"></script><script>
-
-organTable.onmouseover = organTable.onmouseout = handler;
+© 2023 Human Atlas Design System at Indiana University</footer></body><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/ScrollTrigger.min.js"></script><script src="scripts.js"></script><script>organTable.onmouseover = organTable.onmouseout = handler;
 
 function handler(event) {
 
@@ -114,17 +119,18 @@ function handler(event) {
         if (! el) 
             return "null"
 
+
         
+
 
         return el.id || el.tagName;
     }
     if (str(event.target) != "TH" & str(event.target) != "TD" & str(event.target) != "svg" & str(event.target) != "path" & str(event.target) != "organTable") {
-        log.value += "\n" + 'Organ:' + str(event.target);
-        log.scrollTop = log.scrollHeight;
 
         var newName = str(event.target) + "Img";
 
         if (event.type == 'mouseover') {
+            document.getElementById("log").innerHTML = 'Organ: ' + str(event.target).charAt(0).toUpperCase() + str(event.target).slice(1); 
             event.target.style.background = '#FFECAA'
             document.getElementById(newName).style.opacity = "1";
 
@@ -135,6 +141,7 @@ function handler(event) {
         }
 
         if (event.type == 'mouseout') {
+            document.getElementById("log").innerHTML = "Hover over an organ name to get more information";
             event.target.style.background = ''
             document.getElementById(newName).style.opacity = ".5";
 
@@ -148,40 +155,89 @@ function handler(event) {
 
 
 function sortTable(n) {
-  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("organTable");
-  switching = true;
-  dir = "asc"; 
-  while (switching) {
-    switching = false;
-    rows = table.rows;
-    for (i = 1; i < (rows.length - 1); i++) {
-      shouldSwitch = false;
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
-      if (dir == "asc") {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          shouldSwitch= true;
-          break;
+    var table,
+        rows,
+        switching,
+        i,
+        x,
+        y,
+        shouldSwitch,
+        dir,
+        switchcount = 0;
+    table = document.getElementById("organTable");
+    switching = true;
+    dir = "asc";
+    while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            if (dir == "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir == "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
         }
-      } else if (dir == "desc") {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-          shouldSwitch = true;
-          break;
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount++;
+        } else {
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
         }
-      }
     }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      switchcount ++;      
-    } else {
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
-        switching = true;
-      }
-    }
-  }
 }
 
-</script></html>
+// select the canvas element with jQuery, and set up
+$('#heartImg').on('click', function(e) {
+    console.log("started")
+
+    function findPos(obj) {
+        var curleft = 0, curtop = 0;
+        if (obj.offsetParent) {
+            do {
+                curleft += obj.offsetLeft;
+                curtop += obj.offsetTop;
+            } while (obj = obj.offsetParent);
+            return { x: curleft, y: curtop };
+        }
+        return undefined;
+    }
+    var pos = findPos(this);
+    var x = e.pageX - pos.x;
+    var y = e.pageY - pos.y;
+    var canvas = this.getContext('2d');
+    var pixel = canvas.getImageData(x, y, 1, 1).data;
+    if(pixel[3] != 0){
+        console.log("Clicked the dice!");
+    }
+});
+
+// heart
+var canvas = $('#heartImg')[0];
+var context = canvas.getContext('2d');
+var img = new Image();
+img.onload = function () {
+    context.drawImage(img, 11, 0, 328, 650);
+}
+img.src = "img/Organ-heart.png";
+
+// kidey
+canvas2 = $('#kidneyImg')[0];
+context2 = canvas2.getContext('2d');
+img2 = new Image();
+img2.onload = function () {
+    context2.drawImage(img2, 11, 0, 328, 650);
+}
+img2.src = "img/Organ-kidney.png";</script></html>

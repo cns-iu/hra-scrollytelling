@@ -764,6 +764,7 @@ width: 100%;
     flex-direction: row;
     max-width: 900px;
     margin: auto;
+    margin-bottom: 20px;
 }
 
 @media all and (max-width: 650px) {
@@ -790,15 +791,18 @@ width: 100%;
     height: 650px !important;
     width: auto;
     opacity: .5;
-
 }
 
 #log{
+    background-color: #000000a0;
     width: 90%;
-    height: 80px;
+    height: auto;
     margin: auto;
+    padding: 9px;
+    border-radius: 9px;
+    color: white;
     margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     display: block;
     box-sizing: border-box;
 }
@@ -914,7 +918,7 @@ header h2 {
 table {
     margin: auto;
     width: 90%;
-    max-width: 800px;
+    max-width: 860px;
   }
   
   /* Default Table Style */
