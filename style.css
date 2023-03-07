@@ -736,18 +736,16 @@ width: 100%;
 
 }
 
-
 .lung2 {
     width: 100%;
 }
-
-
 
 .kidneybody {
     position: relative;
     max-width: 360px;
     height: 500px !important;
-    width: auto;    margin: auto;
+    width: auto;    
+    margin: auto;
     display: flex;
     height: 500px;
     margin: auto;
@@ -761,10 +759,46 @@ width: 100%;
     width: auto;
 }
 
+.organflex{
+    display: flex;
+    flex-direction: row;
+}
+
+.organParts {
+    position: relative;
+    max-width: 360px;
+    width: auto;    
+    margin: auto;
+    display: flex;
+    height: 650px !important;;
+    margin: auto;
+    justify-content: center;
+}
+
+.organ {
+    position: absolute;
+    bottom: 0vw;
+    height: 650px !important;
+    width: auto;
+}
+
+.organ {
+    width: 100%;
+    opacity: .5;
+}
+
+#log{
+    width: 90%;
+    height: 80px;
+    margin: auto;
+    margin-top: 10px;
+    display: block;
+    box-sizing: border-box;
+}
 
 .three1 {
     width: 100%;
-opacity: .5;
+    opacity: .5;
 }
 
 .three2 {
@@ -783,6 +817,14 @@ opacity: .5;
     opacity: 100;
 }
 
+#organs .organparts{
+    opacity: 1;
+}
+
+.organparts{
+    opacity: 1;
+}
+
 #vid {
     position: absolute;
     top: 50%;
@@ -796,7 +838,6 @@ opacity: .5;
     opacity: 0.5;
     overflow: hidden;
 }
-
 
 header {
     margin-top: -20px;
@@ -853,6 +894,45 @@ header h2 {
     text-align: center;
     z-index: 20;
 }
+
+/*Table styles*/
+.tableExample{
+    margin-bottom: 20px;
+}
+/* Center tables for demo */
+table {
+    margin: auto;
+    width: 90%;
+    max-width: 800px;
+  }
+  
+  /* Default Table Style */
+  table {
+    color: #333;
+    background: white;
+    border: 1px solid grey;
+    font-size: 12pt;
+    border-collapse: collapse;
+  }
+
+  tr:hover:not(:first-child) td{
+    background-color: rgba(255, 238, 184, 0.441);
+  }
+
+  table th,
+  table tfoot th {
+    color: #777;
+    background: rgba(0,0,0,.1);
+  }
+  table caption {
+    padding:.5em;
+  }
+  table th,
+  table td {
+    padding: .5em;
+    border: 1px solid lightgrey;
+  }
+/*End Table styles*/
 
 /* img crossfade */
 #zero .img-wrapper {
