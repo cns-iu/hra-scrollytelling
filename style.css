@@ -830,11 +830,9 @@ width: 100%;
 
 #organs .organparts{
     opacity: 1;
+    flex: 0 0 40%;
 }
 
-.organparts{
-    opacity: 1;
-}
 
 #vid {
     position: absolute;
@@ -913,6 +911,7 @@ header h2 {
     margin-right: 0px;
     max-height: 600px;
     overflow-y: scroll;
+    flex: 0 0 60%;
 }
 /* Center tables for demo */
 table {
