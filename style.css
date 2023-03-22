@@ -28,9 +28,9 @@ body {
 
 /* Top style */
 .top {
-    background-color: white;
+    background-color: #444c65;
     padding: 15px;
-    color: #0E1825;
+    color: white;
     font-family: 'PT Sans', sans-serif;
     font-weight: 700;
     display: flex;
@@ -44,6 +44,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 
 /* Navbar container */
@@ -581,7 +582,7 @@ h1 {
 
 
 #three .section1 {
-    background-color: rgb(240, 240, 240);
+    background-color: #FAFAFA;
 }
 
 #three .section1-text{
@@ -641,7 +642,7 @@ h1 {
 }
 
 #three .section2 {
-    background-color: rgb(240, 240, 240);
+    background-color: #FAFAFA;
 }
 
 #three .section2-text {
@@ -1005,6 +1006,7 @@ table {
 .logo {
     width: 26px;
     margin-right: 6px;
+    color: white !important;
 }
 
 #embed::-webkit-scrollbar {
