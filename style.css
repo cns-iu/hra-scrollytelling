@@ -19,7 +19,7 @@ p {
 
 body {
     margin: 0;
-    font-family: "Playfair", serif;
+    font-family: "Inter", serif;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -31,9 +31,9 @@ body {
     background-color: #444c65;
     padding: 15px;
     color: white;
-    font-family: 'PT Sans', sans-serif;
-    font-weight: 700;
+    font-family: 'Impact', sans-serif;
     display: flex;
+    font-size: 20px;
     justify-content: space-between;
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -1274,15 +1274,14 @@ canvas {
 footer {
     text-align: center;
     padding: 0.5rem 0;
-    background-color: #0E1825;
-    color: white;
+    background-color: #c2cae5;
+    color: #444a65;
     padding: 40px;
 }
 
 footer p {
     font-size: 0.45rem;
     margin: 0.25rem 0;
-    color: #221133;
 }
 
 footer a {
@@ -1294,7 +1293,7 @@ footer a {
 /* intro story list*/
 .storyList {
     font-family: "PT Sans", sans-serif;
-    background-color: #DCDCDC;
+    background-color: white;
     justify-content: center;
     padding: 40px;
     display: flex;
@@ -1327,13 +1326,8 @@ footer a {
 
 .indexTitle {
     position: absolute;
-    background-color: #FF636A;
-    color: white;
-    box-shadow:
-        0 1px 1px #FF636A,
-        0 2px 2px #FF636A,
-        0 4px 4px hsl(0deg 0% 0% / 0.075),
-        0 9px 9px #ff636b92;
+    background-color: #C1CAE5;
+    color: black;
     width: fit-content;
     padding: 16px;
     border-radius: 9px;
@@ -1365,7 +1359,7 @@ footer a {
 }
 
 .item-title {
-    background-color: rgb(220, 220, 220);
+    background-color: #e1e2e3;
     border-radius: 6px;
     padding: 10px;
     width: 90%;
@@ -1380,9 +1374,9 @@ footer a {
     left: -18px;
     top: px;
     content: " ";
-    border: 8px solid #DCDCDC;
+    border: 8px solid white;
     border-radius: 500%;
-    background: #FF636A;
+    background: #C1CAE5;
     height: 20px;
     width: 20px;
     transition: all 500ms ease-in-out;
@@ -1394,10 +1388,10 @@ footer a {
 }
 
 ul.rb li .minititle {
-    background-color: #FF636A;
+    background-color: #C1CAE5;
     padding: 4px;
     border-radius: 4px;
-    color: white;
+    color: black;
     position: relative;
     width: fit-content;
     margin-bottom: -8px;
