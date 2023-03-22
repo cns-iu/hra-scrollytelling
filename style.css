@@ -400,7 +400,7 @@ a {
 }
 
 /* Header/Intro section style */
-#three .introSection {
+.introSection {
     max-width: 500px;
     position: relative;
     z-index: 9;
@@ -706,28 +706,28 @@ h1 {
     background-color: #FAFAFA;
 }
 
-#three .section2-text {
+.section2-text {
     padding: 30px;
     max-width: 650px;
     margin: auto;
     justify-content: center;
 }
 
-#three .section3 {
+.section3 {
     padding: 30px;
     max-width: 650px;
     margin: auto;
     justify-content: center;
 }
 
-#three .section4 {
+.section4 {
     padding: 30px;
     max-width: 650px;
     margin: auto;
     justify-content: center;
 }
 
-#three .section5 {
+.section5 {
     display: flex;
     padding: 30px;
     max-width: 650px;
@@ -744,7 +744,7 @@ h1 {
     width: 100%;
 }
 
-#three .section3 img{
+.section3 img{
 width: 100%;
 }
 
