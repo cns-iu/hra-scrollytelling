@@ -1294,8 +1294,7 @@ footer a {
 /* intro story list*/
 .storyList {
     font-family: "PT Sans", sans-serif;
-    background-color: #FFF7F8;
-
+    background-color: #DCDCDC;
     justify-content: center;
     padding: 40px;
     display: flex;
