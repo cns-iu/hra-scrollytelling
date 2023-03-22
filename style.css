@@ -400,8 +400,13 @@ a {
 }
 
 /* Header/Intro section style */
-.introSection {
+#three .introSection {
     max-width: 500px;
+    position: relative;
+    z-index: 9;
+}
+
+#one .introSection {
     position: relative;
     z-index: 9;
 }
@@ -525,10 +530,6 @@ h1 {
 }
 
 /* Story one */
-#one .intro {
-    background: linear-gradient(180deg, #FFD6DB, #f5a4ad);
-}
-
 #one #section2 {
     background: linear-gradient(180deg, #0E1825, #000000);
     background-size: 400% 400%;
@@ -543,12 +544,72 @@ h1 {
 
 #one #section1 {
     background-color: #fff;
+    display: flex;
+}
+
+.img-three{
+    display: flex;
+}
+
+.img-above-text{
+   display: flex;
+   flex-direction: column;
+   width: 30%;
+   margin-left:10px ;
+   margin-right:10px ;
+}
+
+.storyimg {
+    width: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.storyimagetext img {
+    float: right;
+    width: 45%;
+    margin: 0 10px;
+}
+
+@media only screen and (max-width: 500px) {
+    .storyimagetext img {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+    .img-three{
+        display: flex;
+        flex-direction: column;
+    }
+    .img-above-text{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin-left:10px ;
+        margin-right:10px ;
+     }
+}
+
+.cell1{
+    opacity: 1;
+}
+
+.cell2{
+    opacity: 1;
+}
+
+.cell3{
+    opacity: 1;
 }
 
 /* Story two */
 #two .intro {
-    background-color: #C1CAE5;
-    
+    background-color: #C1CAE5;  
 }
 
 #two #section1 {
@@ -585,7 +646,7 @@ h1 {
     background-color: #FAFAFA;
 }
 
-#three .section1-text{
+.section1-text{
     padding: 30px;
     max-width: 650px;
     margin: auto;
@@ -1257,7 +1318,7 @@ canvas {
 
 .next:hover,
 .previous:hover {
-    color: #dc231e;
+    color: #454C65;
 }
 
 .next,
@@ -1326,13 +1387,12 @@ footer a {
 
 .indexTitle {
     position: absolute;
-    background-color: #C1CAE5;
     color: black;
     width: fit-content;
     padding: 16px;
     border-radius: 9px;
     margin-left: -25%;
-    margin-top: -12px;
+    margin-top: -22px;
     z-index: 2;
 }
 
@@ -1394,9 +1454,8 @@ ul.rb li .minititle {
     color: black;
     position: relative;
     width: fit-content;
-    margin-bottom: -8px;
-    margin-left: -8px;
     font-size: 14px;
+    margin-bottom: 2px;
     font-weight: bold;
 }
 

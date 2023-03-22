@@ -11,7 +11,8 @@
     <link rel="icon" type="image/x-icon" href="img/logo.svg">
 </head>
 
-<body id="one">
+
+<body id="three">
     <!-- section counter -->
     <div id="sectionCounterdiv">
         <p id="sectionCounter"></p>
@@ -23,7 +24,7 @@
             <img class="logo" src="img/logo.svg"> Human Atlas Stories
         </a>
         <div class="dropdown">
-            <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+            <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#C2CAE5"
                     class="bi bi-list" viewBox="-1 -4 20 20">
                     <path fill-rule="evenodd"
                         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
@@ -39,137 +40,104 @@
         </div>
     </section>
 
+
     <!-- section header/intro -->
     <section class="intro" id="intro">
 
-        <!-- particles -->
-        <div id="particles-js"></div>
-        <script src="js/jquery-3.6.3.min.js"></script>
-        <script src="js/particles.js"></script>
-        <script src="js/app.js"></script>
-
-        <header class="container introSection">
+        <header class="container introSection" style="height:40vh;min-height: 250px;overflow: hidden;
+        ">
+            <video id="vid" width="100%" height="40vh" muted autoplay loop video autobuffer>
+                <source src="img/bg-3.webm" type="video/webm">
+                <source src="img/3-bg.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <h1 class="headerOne">What is a</h1>
-            <p class="headerLarge">human reference atlas</p>
-            <h1 class="headerTwo">... and why do we really, <i>really</i> need one?
-            </h1>
-            <h2><em>Brought to you by <b>Todd Theriault</b> & <b>Sarah Davis</b></em>
-            </h2>
-
-            <a href="#section1" class="animate-arrow scrollArrow">&darr;
-            </a>
+            <p class="headerLarge">Human Reference Atlas?</p>
+            <h1 class="headerOne">... and why do we really, <i>really</i> need one?</h1>
         </header>
     </section>
 
-    <!-- section one  -->
-    <section id="section1">
-        <div class="scroll-container" style=" -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px); padding:40px;background-color: rgba(255, 255, 255, 0.5);
-        padding: 10px;">
-            <div class="scroll-element js-scroll fade-in " style="margin: 18px;"><img src="img/image1.gif"></div>
+    <section class="section1">
+        <div class="section1-text">
+            <!-- <span class="storyimagetext">
+            <img src="img/image1.gif" class="storyimg"> -->
+            <h3>An Introduction</h3>
 
-            <div class="textArrow">
-                <div class="scroll-caption">
-                    <p class="sectionTitle rainbow">The basics</p>
-                    <div class="whitebg ">
-                        <p><span class="first-letter">T</span>here are <b>37 trillion cells</b> in the human body, each
-                            with its own set of distinct characteristics and functions. But until recently, scientists
-                            had no good way of honing in on single cells to analyze their individual traits.</p>
+            <p>There are 37 trillion cells in the human body, each with its own set of distinct characteristics and
+                functions. But until recently, scientists had no good way of honing in on single cells to analyze their
+                individual traits.</p>
 
-                        <p>Over the past ten years, however, a boom of scientific and research technology has led to
-                            many
-                            advances in
-                            the realm of single-cell analysis. We can now see single cells and their environment with
-                            unprecedented
-                            detail, and we are learning more each day about how individual cells behave and function
-                            over
-                            time.
-                        </p>
+            <p>Over the past ten years, however, a boom of scientific and research technology has led to many advances
+                in the realm of single-cell analysis. We can now see single cells and their environment with
+                unprecedented detail, and we are learning more each day about how individual cells behave and function
+                over time. </p>
 
-                        <p>Such research promises to lead to major advances in health care.</p>
-                    </div>
-                </div>
-                <a href="#section2" class="buttonNext">Continue
-                </a>
-            </div>
-
-
-    </section>
-
-    <!-- section two  -->
-    <section id="section2">
-
-        <div id="particles-js2"></div>
-        <script src="js/jquery-3.6.3.min.js"></script>
-        <script src="js/particles.js"></script>
-        <script src="js/app.js"></script>
-
-        <div class="scroll-container js-scroll fade-in-bottom" style="flex-direction:column">
-            <div class="textArrow" style="margin-top:50px;margin-right: auto;
-        margin-left: 0; flex-direction: row; justify-content: center; align-items: center;">
-                <div class="scroll-element pulse-white " style="width: 100%; max-width: 400px;animation: pulse-white 2s infinite;
-            "><img src="img/image1.gif"></div>
-                <div class="scroll-caption">
-                    <p style="color: white !important;  margin-left: 18px;">Single-cell analysis can reveal information
-                        about the mechanics of infection and the progress of disease ...</p>
-                </div>
-            </div>
-
-            <div class="textArrow" style="margin-left: auto;
-        margin-right: 0; flex-direction: row;justify-content: center; align-items: center;">
-                <div class="scroll-caption">
-                    <p style="color: white !important; margin-right: 8px;">... the regeneration of tissue ...</p>
-                </div>
-                <div class="scroll-element" style="width: 100%; max-width: 400px; animation: pulse-white 2s infinite;
-            "><img src="img/image2.gif"></div>
-            </div>
-
-            <div class="textArrow" style="margin-top:50px;margin-right: auto;
-        margin-left: 0; flex-direction: row; justify-content: center; align-items: center;">
-
-                <div class="scroll-element pulse-white " style="width: 100%; max-width: 400px;animation: pulse-white 2s infinite;
-            "><img src="img/image3.gif"></div>
-
-                <div class="scroll-caption">
-                    <p style="color: white !important;  margin-left: 18px;">... and the changes our bodies experience as
-                        we age.</p>
-                </div>
-            </div>
-
-            <a href="#section3" class="buttonNext" style="border: 1px solid white;
-        color: black; margin-top:80px;">Continue
-            </a>
+            <p>Such research promises to lead to major advances in health care.</p>
+            <!-- </span> -->
         </div>
-    </section>
 
-    <div class="wave-mid"></div>
-    <div class="wave-bottom"></div>
-
-    <!-- section three  -->
-    <section id="section3">
-        <div class="scroll-container">
-            <div class="textArrow" style="background-color: white; padding:10px">
-                <div class="scroll-caption">
-                    <p><span class="first-letter">S</span>uppose <b>Researcher A</b> and <b>Researcher B</b> come across
-                        the same cell type in their own individual studies.</p>
-
-                    <p>Because there exists no agreed-upon system of cell type identification and naming, it’s possible
-                        that each researcher could give a different name to the very same thing.</p>
-
-                    <p>This makes it extremely difficult to perform comparisons across studies since each researcher is
-                        speaking a different language.</p>
-
-                    <p>Without the ability to <b>compare experimental data</b>, scientists will be unable to establish a
-                        shared knowledge bank upon which future studies can build.</p>
-
+        <div class="section2-text img-three" style="padding:0;">
+            <div class="img-above-text cell1">
+                <img src="img/image1.gif">
+                <div class="scroll-caption ">
+                    <p>Single-cell analysis can reveal information about the mechanics of infection and the progress of
+                        disease,</p>
                 </div>
-                <video loop="true" style="border-radius: 6px;" autoplay="autoplay" muted>
-                    <source src="img/image4.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <!-- <a href="#section4" class="buttonNext" >Continue
-                </a> -->
             </div>
+            <div class="img-above-text cell2">
+                <img src="img/image2.gif">
+                <div class="scroll-caption">
+                    <p>the regeneration of tissue,</p>
+                </div>
+            </div>
+            <div class="img-above-text cell3">
+                <img src="img/image3.gif">
+                <div class="scroll-caption">
+                    <p>and the changes our bodies experience as we age.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section1-text">
+            <h3>The Problem We Want to Solve</h3>
+            <p>Suppose <b>Researcher A</b> and <b>Researcher B</b> come across
+                the same cell type in their own individual studies.</p>
+
+            <p>Because there exists no agreed-upon system of cell type identification and naming, it's possible
+                that each researcher could give a different name to the very same thing.</p>
+
+            <p>This makes it extremely difficult to perform comparisons across studies since each researcher is
+                speaking a different language.</p>
+
+            <p>Without the ability to <b>compare experimental data</b>, scientists will be unable to establish a
+                shared knowledge bank upon which future studies can build.</p>
+
+            <video loop="true" style="border-radius: 6px; width: 100%;margin-top:10px;" autoplay="autoplay" muted>
+                <source src="img/image4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <p>Like other atlases, the HRA is a collection of maps that captures the human body's three-dimensional
+                reality at differing scales: from the whole body on down to the level of organs, tissues, cell types,
+                and biomarkers.
+            </p>
+            <div class="panel one scrollsection" style=" overflow-x:scroll;">
+            <img src="img/story1-meso.png" class="horizontalimg">
+        </div>
+            <p>Throughout the atlas, a shared terminology and unifying spatial coordinate system is employed to ensure that anatomical structures and cell types are consistently named and aligned from map to map.</p>
+
+            <p>Importantly, for future research, the HRA provides a community-created, unified reference framework that allows data from different sources to be managed, compared, and efficiently utilized. The HRA's anatomical structures, cell types, and biomarkers (ASCT+B) tables act as a kind of Rosetta Stone across existing anatomical naming systems.
+            </p>
+            <video loop="true" style="border-radius: 6px; width: 100%;margin-top:10px;" autoplay="autoplay" muted>
+                <source src="img/story1-vid2.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+            <p>This allows researchers both to harmonize data from existing studies and to register new data using a shared, expert-approved consensus nomenclature. Likewise, the HRA's 3D anatomical reference objects allow researchers to spatially register new data and explore the relative locations of different cell types throughout the body.</p>
+
+            <p>The final HRA atlas will encompass the three-dimensional (3D) organization of whole organs and thousands of anatomical structures, the interdependencies between trillions of cells, and the biomarkers that characterize and distinguish cell types. It will make the human body computable, supporting spatial and semantic queries run over 3D structures linked to their scientific terminology and existing ontologies. It will establish a benchmark reference that helps us to understand how the healthy human body works and what changes during aging or disease.
+
+            </p>
+
         </div>
     </section>
 
@@ -181,7 +149,7 @@
                     d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
             </svg> Go to Home</a>
         <a href="story2.html" class="next">Story 2: <span class="nextTitle">Get to Know Your Anatomical
-                Structures!</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#c2cae5"
+                Structures!</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-arrow-right" viewBox="0 -3 16 16">
                 <path fill-rule="evenodd"
                     d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
@@ -192,41 +160,57 @@
         &commat; 2023 Human Atlas Design System at Indiana University
     </footer>
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/ScrollTrigger.min.js"></script>
+
 <script src="scripts.js"></script>
+<!--It helps to handle how the 3D Object would be displayed -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
 <script>
-    //section count
-    window.addEventListener("scroll", function () {
-
-        var elementTarget4 = document.getElementById("intro");
-        if (window.scrollY < (elementTarget4.offsetTop - 10 + elementTarget4.offsetHeight)) {
-            document.getElementById("sectionCounter").style.display = "none";
-            document.getElementById("sectionCounterdiv").style.backgroundColor = "transparent";
-        } else {
-            document.getElementById("sectionCounter").style.display = "block";
+    // You can use a ScrollTrigger in a tween or timeline
+   
+    //horizontal
+    gsap.timeline({
+        scrollTrigger: {
+            autoAlpha: 1,
+            duration: 2,
+            trigger: ".horizontalimg",
+            start: "top 200px",
+            end: "top 0px",
+            scrub: true,
+            pin: false,
         }
+    })
+    .from(".horizontalimg", {
+            x: -1000,
+     })
 
-        var elementTarget3 = document.getElementById("intro");
-        if (window.scrollY > (elementTarget3.offsetTop - 10 + elementTarget3.offsetHeight)) {
-            document.getElementById("sectionCounter").innerHTML = "1/3";
-            document.getElementById("sectionCounterdiv").style.backgroundColor = "#ff636a60";
-        }
 
-        if (document.body.contains(document.getElementById("section1-1"))) {
-            var elementTarget2 = document.getElementById("section1-1");
-            if (window.scrollY > (elementTarget2.offsetTop - 10 + elementTarget2.offsetHeight)) {
-                document.getElementById("sectionCounter").innerHTML = "2/3";
-                document.getElementById("sectionCounterdiv").style.backgroundColor = "#ffffff80";
+     gsap.timeline({
+            scrollTrigger: {
+                autoAlpha: 1,
+                duration: 3,
+                trigger: ".cell1",
+                start: "top 600px",
+                end: "top 0px",
+                scrub: true,
+                pin: false,
             }
-        }
+        })
+        .from(".cell1", {
+            opacity: 0,
 
-        if (document.body.contains(document.getElementById("section1-2"))) {
-            var elementTarget3 = document.getElementById("section1-2");
-            if (window.scrollY > (elementTarget3.offsetTop - 10 + elementTarget3.offsetHeight)) {
-                document.getElementById("sectionCounter").innerHTML = "3/3";
-                document.getElementById("sectionCounterdiv").style.backgroundColor = "#ffffff80";
-            }
-        }
-    });
+        })
+        .from(".cell2", {
+            opacity: 0
+        })
+        .from(".cell3", {
+            opacity: 0
+        })
+
 </script>
 
 </html>
