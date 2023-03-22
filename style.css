@@ -68,6 +68,7 @@ body {
 .dropdown {
     float: left;
     overflow: hidden;
+    font-family: "Inter", serif !important;
 }
 
 /* Dropdown button */
@@ -93,7 +94,7 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #E2E7E9;
+    background-color: #ffffff;
     width: 326px;
     box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
     z-index: 15;
@@ -114,7 +115,7 @@ body {
 
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
-    background-color: rgb(202, 202, 202);
+    background-color: #F7F7F7;
 }
 
 /* Show the dropdown menu on hover */
@@ -412,11 +413,10 @@ h1 {
 /* Story zero */
 #zero .intro {
     background: #FFF3F0;
-    background: linear-gradient(180deg, #FFCDC0 0%, #fff8f6 100%);
 }
 
 #zero .TitleDivide {
-    background: linear-gradient(270deg, #FFF3F0 0%, #FFCDC0 100%);
+    background: linear-gradient(270deg, rgb(248, 248, 248) 0%, #C1CAE5 100%);
     padding: 10px;
     text-align: center;
     font-family: 'PT Sans', sans-serif;
@@ -515,7 +515,7 @@ h1 {
 #categories span {
     padding: 4px;
     border-radius: 4px;
-    background-color: #FFD6DB;
+    background-color: #C1CAE5;
     margin: 3px;
     margin-right: 25px;
 }
@@ -547,8 +547,8 @@ h1 {
 
 /* Story two */
 #two .intro {
-    background-color: #FFD6DB;
-    background-image: linear-gradient(to right top, #ffd6db, #ffbbc2, #ff9fa6, #ff8289, #ff636a);
+    background-color: #C1CAE5;
+    
 }
 
 #two #section1 {
