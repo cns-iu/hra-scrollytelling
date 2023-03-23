@@ -482,16 +482,16 @@ h1 {
 
 /* Reusable styles  */
 
-.img-three{
+.img-three {
     display: flex;
 }
 
-.img-above-text{
-   display: flex;
-   flex-direction: column;
-   width: 30%;
-   margin-left:10px ;
-   margin-right:10px ;
+.img-above-text {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .storyimg {
@@ -517,20 +517,22 @@ h1 {
         margin: 0;
         margin-bottom: 10px;
     }
-    .img-three{
+
+    .img-three {
         display: flex;
         flex-direction: column;
     }
-    .img-above-text{
+
+    .img-above-text {
         display: flex;
         flex-direction: column;
         width: 90%;
         margin: auto;
-     }
+    }
 }
 
 
-.section1-text{
+.section1-text {
     padding: 30px;
     max-width: 650px;
     margin: auto;
@@ -578,25 +580,179 @@ h1 {
 
 
 /* Story one */
-#one .cell1{
+#one .cell1 {
     opacity: 1;
 }
 
-#one .cell2{
+#one .cell2 {
     opacity: 1;
 }
 
-#one .cell3{
+#one .cell3 {
     opacity: 1;
 }
 
 /* Story two */
-#two #section1 {
-    height: 70vh;
-    padding: 10px;
-    margin: auto;
-    background-color: #C6ECF6;
+#two .section1 {
+    background-color: black;
 }
+
+#two .scene1 {
+    background-image: url("img/2scene1.svg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.opacitytxt {
+    text-align: center;
+    color: white;
+    font-size: 1.8rem;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.defaulttalk {
+    padding: 12px;
+    color: black !important;
+    max-width: 400px;
+    width: 80%;
+    background-color: white;
+    border-radius: 8px;
+    margin: auto;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.defaulttalk:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.squiggytalk {
+    padding: 12px;
+    color: black !important;
+    max-width: 400px;
+    width: 80%;
+    background-color: rgb(243, 167, 167);
+    border-radius: 8px;
+    margin: auto;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    right:20px;
+}
+
+.squiggytalk:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(243, 167, 167) transparent transparent transparent;
+}
+
+.cecetalk {
+    padding: 12px;
+    color: black !important;
+    max-width: 400px;
+    width: 80%;
+    background-color: rgb(153, 202, 244);
+    border-radius: 8px;
+    margin: auto;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    left:20px;
+}
+
+.cecetalk:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 80%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(153, 202, 244) transparent transparent transparent;
+}
+
+.spritecontainer {
+    overflow: hidden;
+    position: relative;
+    width: auto;
+    height: 100vh;
+}
+
+.frames {
+    will-change: transform;
+}
+
+.overtext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    font-size: 2.5rem;
+}
+
+.fadeinimg {
+    position: absolute;
+    width: 300px;
+    top: 90%;
+    left: 149px;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    opacity: 0;
+}
+
+
+#two .wrap-all {
+    position: relative;
+}
+
+.talkdivider{
+    height: 10px;
+}
+
+#two .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-image: url("img/2scene1.svg");
+    background-size: auto 100vh;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+#two .panel {
+    width: 100%;
+    height: 100vh;
+}
+
+#two .wrap {
+    position: relative;
+    top: 50%;
+    overflow: hidden;
+    font-size: 1.2rem;
+}
+
 
 /* Story three */
 #three .section1 {
@@ -646,7 +802,7 @@ h1 {
     justify-content: center;
 }
 
-.intestineimg{
+.intestineimg {
     max-width: 300px;
     float: left;
 }
@@ -655,13 +811,13 @@ h1 {
     width: 100%;
 }
 
-#three .section3 img{
-width: 100%;
+#three .section3 img {
+    width: 100%;
 }
 
 .renal {
     position: relative;
-    height: 200px ;    
+    height: 200px;
     margin: auto;
     display: flex;
     margin: auto;
@@ -671,25 +827,29 @@ width: 100%;
 
 @media all and (max-width: 523px) {
     #three .r1 {
-        height: 140px  !important;  
+        height: 140px !important;
     }
+
     #three .r2 {
-        height: 140px  !important;  
+        height: 140px !important;
     }
+
     #three .r3 {
-        height: 140px  !important;  
+        height: 140px !important;
     }
 }
 
 @media all and (min-width: 523px) {
     #three .r1 {
-        height: 200px  !important;  
+        height: 200px !important;
     }
+
     #three .r2 {
-        height: 200px  !important;  
+        height: 200px !important;
     }
+
     #three .r3 {
-        height: 200px  !important;  
+        height: 200px !important;
     }
 }
 
@@ -714,7 +874,7 @@ width: 100%;
     position: relative;
     max-width: 360px;
     height: 500px !important;
-    width: auto;    
+    width: auto;
     margin: auto;
     display: flex;
     height: 500px;
@@ -750,7 +910,7 @@ width: 100%;
     opacity: 100;
 }
 
-#organs .organparts{
+#organs .organparts {
     opacity: 1;
     flex: 0 0 40%;
 }
@@ -770,7 +930,7 @@ width: 100%;
 }
 
 /*Table styles*/
-.tableExample{
+.tableExample {
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 0px;
@@ -778,40 +938,44 @@ width: 100%;
     overflow-y: scroll;
     flex: 0 0 60%;
 }
+
 /* Center tables for demo */
 table {
     margin: auto;
     width: 90%;
     max-width: 860px;
-  }
-  
-  /* Default Table Style */
-  table {
+}
+
+/* Default Table Style */
+table {
     color: #333;
     background: white;
     border: 1px solid grey;
     font-size: 12pt;
     border-collapse: collapse;
-  }
+}
 
-  tr:hover:not(:first-child) td{
+tr:hover:not(:first-child) td {
     /* background-color: rgba(255, 238, 184, 0.441); */
     cursor: pointer;
-  }
+}
 
-  table th,
-  table tfoot th {
+table th,
+table tfoot th {
     color: #777;
-    background: rgba(0,0,0,.1);
-  }
-  table caption {
-    padding:.5em;
-  }
-  table th,
-  table td {
+    background: rgba(0, 0, 0, .1);
+}
+
+table caption {
+    padding: .5em;
+}
+
+table th,
+table td {
     padding: .5em;
     border: 1px solid lightgrey;
-  }
+}
+
 /*End Table styles*/
 
 /* img crossfade */
@@ -1432,7 +1596,7 @@ ul.rb li .minititle {
 
 
 /*organ page*/
-.organflex{
+.organflex {
     display: flex;
     flex-direction: row;
     max-width: 900px;
@@ -1441,7 +1605,7 @@ ul.rb li .minititle {
 }
 
 @media all and (max-width: 650px) {
-    .organflex{
+    .organflex {
         display: flex;
         flex-direction: column;
     }
@@ -1450,15 +1614,16 @@ ul.rb li .minititle {
 .organParts {
     position: relative;
     max-width: 360px;
-    width: auto;    
+    width: auto;
     margin: auto;
     display: flex;
-    height: 650px !important;;
+    height: 650px !important;
+    ;
     margin: auto;
     justify-content: center;
 }
 
-#sortsvg:hover{
+#sortsvg:hover {
     cursor: pointer;
 }
 
@@ -1470,7 +1635,7 @@ ul.rb li .minititle {
     opacity: .5;
 }
 
-#log{
+#log {
     background-color: #000000a0;
     width: 90%;
     height: auto;
