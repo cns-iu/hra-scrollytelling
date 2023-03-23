@@ -352,7 +352,6 @@ a {
 
 /* Header/Intro section style */
 .introSection {
-    max-width: 500px;
     position: relative;
     z-index: 9;
 }
