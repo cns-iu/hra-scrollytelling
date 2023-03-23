@@ -107,7 +107,9 @@
                 </div>
             </div>
         </div>
+    </section>
 
+    <section class="section2">
         <div class="section1-text">
             <h3>The Problem We Want to Solve</h3>
             <p>Suppose <b>Researcher A</b> and <b>Researcher B</b> come across
@@ -126,29 +128,43 @@
                 <source src="img/image4.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+        </div>
+    </section>
 
+    <section>
+        <div class="section1-text">
             <h3 style="margin-top:50px;">How the HRA Can Help</h3>
             <p>Like other atlases, the HRA is a collection of maps that captures the human body's three-dimensional
                 reality at differing scales: from the whole body on down to the level of organs, tissues, cell types,
                 and biomarkers.
             </p>
             <div class="panel one scrollsection" style=" overflow-x:scroll;">
-            <img src="img/story1-meso.png" class="horizontalimg">
-        </div>
-            <p>Throughout the atlas, a shared terminology and unifying spatial coordinate system is employed to ensure that anatomical structures and cell types are consistently named and aligned from map to map.</p>
+                <img src="img/story1-meso.png" class="horizontalimg">
+            </div>
+            <p>Throughout the atlas, a shared terminology and unifying spatial coordinate system is employed to ensure
+                that anatomical structures and cell types are consistently named and aligned from map to map.</p>
 
-            <p>Importantly, for future research, the HRA provides a community-created, unified reference framework that allows data from different sources to be managed, compared, and efficiently utilized. The HRA's anatomical structures, cell types, and biomarkers (ASCT+B) tables act as a kind of Rosetta Stone across existing anatomical naming systems.
+            <p>Importantly, for future research, the HRA provides a community-created, unified reference framework that
+                allows data from different sources to be managed, compared, and efficiently utilized. The HRA's
+                anatomical structures, cell types, and biomarkers (ASCT+B) tables act as a kind of Rosetta Stone across
+                existing anatomical naming systems.
             </p>
             <video loop="true" style="border-radius: 6px; width: 100%;margin-top:10px;" autoplay="autoplay" muted>
                 <source src="img/story1-vid2.webm" type="video/webm">
                 Your browser does not support the video tag.
             </video>
-            <p>This allows researchers both to harmonize data from existing studies and to register new data using a shared, expert-approved consensus nomenclature. Likewise, the HRA's 3D anatomical reference objects allow researchers to spatially register new data and explore the relative locations of different cell types throughout the body.</p>
+            <p>This allows researchers both to harmonize data from existing studies and to register new data using a
+                shared, expert-approved consensus nomenclature. Likewise, the HRA's 3D anatomical reference objects
+                allow researchers to spatially register new data and explore the relative locations of different cell
+                types throughout the body.</p>
 
-            <p>The final HRA atlas will encompass the three-dimensional (3D) organization of whole organs and thousands of anatomical structures, the interdependencies between trillions of cells, and the biomarkers that characterize and distinguish cell types. It will make the human body computable, supporting spatial and semantic queries run over 3D structures linked to their scientific terminology and existing ontologies. It will establish a benchmark reference that helps us to understand how the healthy human body works and what changes during aging or disease.
-
+            <p>The final HRA atlas will encompass the three-dimensional (3D) organization of whole organs and thousands
+                of anatomical structures, the interdependencies between trillions of cells, and the biomarkers that
+                characterize and distinguish cell types. It will make the human body computable, supporting spatial and
+                semantic queries run over 3D structures linked to their scientific terminology and existing ontologies.
+                It will establish a benchmark reference that helps us to understand how the healthy human body works and
+                what changes during aging or disease.
             </p>
-
         </div>
     </section>
 
@@ -182,7 +198,7 @@
 
 <script>
     // You can use a ScrollTrigger in a tween or timeline
-   
+
     //horizontal
     gsap.timeline({
         scrollTrigger: {
@@ -195,21 +211,22 @@
             pin: false,
         }
     })
-    .to(".horizontalimg", {
+        .to(".horizontalimg", {
             x: -1000,
-     })
-
-     gsap.timeline({
-            scrollTrigger: {
-                autoAlpha: 1,
-                duration: 2,
-                trigger: ".cell1",
-                start: "top 600px",
-                end: "top 0px",
-                scrub: true,
-                pin: false,
-            }
+            scrub: 0.25,
         })
+
+    gsap.timeline({
+        scrollTrigger: {
+            autoAlpha: 1,
+            duration: 2,
+            trigger: ".cell1",
+            start: "top 600px",
+            end: "top 0px",
+            scrub: true,
+            pin: false,
+        }
+    })
         .from(".cell1", {
             opacity: 0,
 

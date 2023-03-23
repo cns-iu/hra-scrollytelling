@@ -362,6 +362,10 @@ a {
     z-index: 9;
 }
 
+#one .section2{
+    background-color: #FAFAFA;
+}
+
 h1 {
     text-align: center;
 }
@@ -1049,7 +1053,6 @@ table td {
     scrollbar-width: none;
     /* for Firefox */
 }
-
 
 .audiobutton {
     background-color: black;
