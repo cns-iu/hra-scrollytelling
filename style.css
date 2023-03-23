@@ -698,6 +698,8 @@ h1 {
 
 .frames {
     will-change: transform;
+    margin: auto;
+    display: flex;
 }
 
 .overtext {
@@ -712,8 +714,8 @@ h1 {
 .fadeinimg {
     position: absolute;
     width: 300px;
-    top: 90%;
-    left: 149px;
+    top: 80vh;
+    left: 220px;
     transform: translate(-50%, -50%);
     z-index: 200;
     opacity: 0;

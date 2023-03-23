@@ -119,7 +119,7 @@
         </section>
     </div>
 
-    <section id="holdstart" class="panel" style="background-color: white;">
+    <section id="holdstart" class="panel panelend" style="background-color: white;">
         <div class="wrap center">
           <h1>Next Background</h1>
         </div>
@@ -328,6 +328,23 @@
             end: '+=300%',
         },
     })
+
+    gsap.timeline({
+        scrollTrigger: {
+            autoAlpha: 1,
+            duration: 10,
+            trigger: ".panelend",
+            start: "top 300px",
+            end: "top 0px",
+            scrub: true,
+            pin: false,
+        }
+    })
+    .to(".bg", {
+            opacity: 0,
+            
+        })
+
 
 
 </script>
