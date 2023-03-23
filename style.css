@@ -738,7 +738,7 @@ h1 {
     height: 100vh;
     z-index: -1;
     background-image: url("img/2scene1.svg");
-    background-size: auto 100vh;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
 }
