@@ -36,7 +36,7 @@ body {
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     width: auto;
-    height: 40vh;
+    height: 50vh;
     min-height: 250px;
     z-index: -1000;
     opacity: 0.5;
