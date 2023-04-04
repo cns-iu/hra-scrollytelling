@@ -202,21 +202,25 @@
     // You can use a ScrollTrigger in a tween or timeline
 
     //horizontal
-    gsap.timeline({
-        scrollTrigger: {
-            autoAlpha: 1,
-            duration: 1,
-            trigger: ".horizontalimg",
-            start: "top 100px",
-            end: "top 0px",
-            scrub: true,
-            pin: false,
-        }
-    })
-        .to(".horizontalimg", {
-            x: -1000,
-            scrub: 0.25,
-        })
+    // gsap.timeline({
+    //     scrollTrigger: {
+    //         autoAlpha: 1,
+    //         duration: 1,
+    //         trigger: ".horizontalimg",
+    //         start: "top 300px",
+    //         end: "center 20px",
+    //         scrub: true,
+    //         pin: false,
+    //     }
+    // })
+    //     .to(".horizontalimg", {
+    //         x: -500,
+    //         scrub: 0.50,
+    //     })
+    //     .to(".horizontalimg", {
+    //         x: -1000,
+    //         scrub: 0.25,
+    //     })
 
     gsap.timeline({
         scrollTrigger: {

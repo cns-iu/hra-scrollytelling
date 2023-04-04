@@ -4,11 +4,21 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>2: Get to Know Your Anatomical Structures!</title>
+    <title>2: Identity Crisis</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="img/logo.svg">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1811WRJJD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-E1811WRJJD');
+    </script>
 </head>
 
 <body id="two">
@@ -17,13 +27,13 @@
         <p id="sectionCounter"></p>
     </div>
 
-     <!-- section top  -->
+    <!-- section top  -->
     <section class="top">
         <a href="index.html" class="topLogo">
             <img class="logo" src="img/logo.svg"> Human Atlas Stories
         </a>
         <div class="dropdown">
-            <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#c2cae5"
+            <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#C2CAE5"
                     class="bi bi-list" viewBox="-1 -4 20 20">
                     <path fill-rule="evenodd"
                         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
@@ -42,16 +52,92 @@
 
     <!-- section header/intro -->
     <section class="intro" id="intro">
+        <h3 class="overtext" id="introTypeLine"></h3>
 
-        <header class="container introSection">
-            <h1 class="headerOne">Get to know your ...</h1>
-            <p class="headerLarge">Anatomical Structures!</p>
-            <h2></h2>
-
-            <a href="#section1" class="animate-arrow scrollArrow">&darr;
-            </a>
-        </header>
+        <div class="spritecontainer">
+            <img class="frames" src="img/spritesheet.jpg">
+            <img class="fadeinimg" src="img/3-kidney.png">
+        </div>
     </section>
+
+    <section class="section1">
+        <div class="section1-text">
+
+            <h3 class="headerLarge" id="introTypeLine"></h3>
+
+            <div class="two-textlines">
+                <p class="txt1 opacitytxt">This is the story of two of them</p>
+
+                <p class="txt2 opacitytxt">Join CeCe and Squiggy as they experience...</p>
+
+                <p class="txt3 opacitytxt">Life on the Inside </p>
+
+                <p class="txt4 opacitytxt" style="margin-top: 180px;margin-bottom: 180px;">(of the body) </p>
+
+                <h3 class="txt5 opacitytxt">On this week's episode:</h3>
+
+                <h1 class="txt6 opacitytxt" style="margin-top:0px; font-size:2rem;">
+                    Squiggy's Identity Crisis!
+                </h1>
+            </div>
+        </div>
+    </section>
+    
+    <div class="wrap-all">
+        <div class="bg"></div>
+
+        <div class="start-trig"></div>
+        <section id="holdone" class="panel">
+            <div class="wrap center">
+                <div class="defaulttalk" style="margin-bottom:160px;"><b>TV narrator:</b> In conclusion, the Human Reference Atlas is a
+                    comprehensive, high-resolution, three-dimensional atlas of all the cells in the healthy human body.
+                    <br><br>
+                    With the HRA, everyone will be able to find the names and locations of all their favorite cells!
+                </div>
+                <div class="squiggytalk"><b>Squiggy:</b> Hey, CeCe?
+                </div>
+                <p class="talkdivider"></p>
+                <div class="cecetalk"><b>CeCe:</b> What is it, Squiggy?
+                </div>
+                <p class="talkdivider"></p>
+                <div class="squiggytalk"><b>Squiggy:</b> Have you ever wondered about the big questions? You know: Who
+                    am I? Where Do I Belong? What Is My Purpose?
+                </div>
+                <p class="talkdivider"></p>
+                <div class="cecetalk"><b>CeCe:</b> Sure, Squig. I think everybody does.
+                </div>
+                <p class="talkdivider"></p>
+                <div class="squiggytalk"><b>Squiggy:</b> But I have so many questions, and I don't know any of the
+                    answers. This identity crisis has me all bent out of shape!
+                </div>
+                <p class="talkdivider"></p>
+            </div>
+        </section>
+
+        <section id="holdtwo" class="panel">
+                
+        </section>
+    </div>
+
+    <section id="holdstart" class="panel panelend" style="background-color: white;">
+        <div class="wrap center">
+          <h1>Next Background</h1>
+        </div>
+      </section>
+
+    <!-- 
+    <section class="section2">
+        <div class="scene1">
+        </div>
+
+        <div class="scene1talk">
+            <div class="defaulttalk">In conclusion, the Human Reference Atlas is  a comprehensive, high-resolution, three-dimensional atlas of all the cells in the healthy human body.
+            </div>
+
+            <div class="defaulttalk">With the HRA, everyone will be able to find the names and locations of all their favorite cells
+            </div>
+        </div>
+    </section> -->
 
     <!-- BotNav -->
     <section class="botNav">
@@ -60,7 +146,8 @@
                 <path fill-rule="evenodd"
                     d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
             </svg> Story 1: <span class="prevTitle">What Is An HRA?</span></a>
-        <a href="story3.html" class="next">Story 3: <span class="nextTitle">Learn about Visualizing Cells in the Human Body</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        <a href="story3.html" class="next">Story 3: <span class="nextTitle">Learn about Visualizing Cells in the Human
+                Body</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-arrow-right" viewBox="0 -3 16 16">
                 <path fill-rule="evenodd"
                     d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
@@ -71,39 +158,198 @@
         &commat; 2023 Human Atlas Design System at Indiana University
     </footer>
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/ScrollTrigger.min.js"></script>
+
 <script src="scripts.js"></script>
 <!--It helps to handle how the 3D Object would be displayed -->
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js" ></script>
-
-<!-- Add music  -->    
-<audio id="audio" src="music/Piano.mp3" loop="" preload="auto"></audio>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 
 <script>
-     function play(){
-       var audio = document.getElementById("audio");
-       audio.play();
-       }
-       function turnOff(){
-       var audio = document.getElementById("audio");
-       audio.pause();
-       }
+    //typewriter
+    var m = 0;
+    var txt = 'There are roughly 37 trillion cells in the human body.';
+    var speed = 50;
 
-    // make sure to refresh hard to get the right values
-        var rand = Math.floor((Math.random()*1000000)+1);
-        var iframe = document.getElementById('sankey');
-        iframe.src = "https://software.docs.hubmapconsortium.org/data-sankey/index.html?uid="+rand;
+    function typeWriter() {
+        if (m < txt.length) {
+            document.getElementById("introTypeLine").innerHTML += txt.charAt(m);
+            m++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+    window.onload = typeWriter;
 
-        // set initial size
+    //fade in txt 
+    gsap.timeline({
+        scrollTrigger: {
+            autoAlpha: 1,
+            duration: 10,
+            trigger: ".txt1",
+            start: "top 300px",
+            end: "top 0px",
+            scrub: true,
+            pin: false,
+        }
+    })
+        .from(".txt1", {
+            opacity: 0,
+            duration: 2,
+            scrub: 0.25,
+        })
 
-// resize on window resize
+    gsap.timeline({
+        scrollTrigger: {
+            autoAlpha: 1,
+            duration: 10,
+            trigger: ".txt2",
+            start: "top 300px",
+            end: "top 0px",
+            scrub: true,
+            pin: false,
+        }
+    })
+        .from(".txt2", {
+            opacity: 0,
+            duration: 2,
+            scrub: 0.25,
+        })
+        .from(".txt3", {
+            opacity: 0,
+            duration: 2,
+            scrub: 0.25,
+        })
+        .to(".txt1", {
+            opacity: 0,
+            duration: 2,
+            scrub: 0.25,
+        })
+        .to(".txt2", {
+            opacity: 0,
+            duration: 2,
+            scrub: 0.25,
+        })
+        .to(".txt3", {
+            opacity: 0,
+            duration: 2,
+            scrub: 0.25,
+        })
 
-function reload(){
-        iframe.src = "https://software.docs.hubmapconsortium.org/data-sankey/index.html?uid="+rand;
-}
+    gsap.timeline({
+        scrollTrigger: {
+            autoAlpha: 1,
+            duration: 10,
+            trigger: ".txt4",
+            start: "top 300px",
+            end: "top 0px",
+            scrub: true,
+            pin: false,
+        }
+    })
+        .from(".txt4", {
+            opacity: 0,
+            duration: 2,
+            scrub: 0.25,
+        })
 
-window.onresize = reload;
+        .from(".txt5", {
+            opacity: 0,
+            duration: 2,
+            scrub: 0.25,
+        })
+        .to(".txt4", {
+            opacity: 0,
+            duration: 2,
+            scrub: 0.25,
+        })
 
+    gsap.timeline({
+        scrollTrigger: {
+            autoAlpha: 1,
+            duration: 10,
+            trigger: ".txt5",
+            start: "top 300px",
+            end: "top 0px",
+            scrub: true,
+            pin: false,
+        }
+    })
+        .from(".txt6", {
+            opacity: 0,
+            duration: 2,
+            scrub: 0.25,
+        })
+
+
+    //spritesheet animation
+    var spriteSheet = {
+        width: 900,
+        height: 1200,
+        total: 20,
+        cols: 1,
+        rows: 20,
+        duration: 1,
+    };
+
+    var tl = gsap.timeline({
+        scrollTrigger: {
+            scrub: 0.25,
+            pin: ".spritecontainer",
+        }
+    });
+
+    tl.from(".spritecontainer", {
+        duration: 0.25,
+    }, 0)
+        .to(".spritecontainer", {
+            duration: 0.25,
+        }, 0.75)
+        .to(".fadeinimg", {
+            opacity: 1,
+            duration: 0.25,
+        }, 0.75)
+
+    for (var i = 0; i < spriteSheet.total; i++) {
+        tl.set(".frames", {
+            x: (i % spriteSheet.cols) * -spriteSheet.width,
+            y: Math.floor(i / spriteSheet.cols) * -spriteSheet.height
+        }, i / (spriteSheet.total - 1) * spriteSheet.duration);
+    }
+
+    var largeTL = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.start-trig',
+            pin: '.bg',
+            pinSpacing: false,
+            start: "top top",
+            markers: false,
+            end: '+=300%',
+        },
+    })
+
+    gsap.timeline({
+        scrollTrigger: {
+            autoAlpha: 1,
+            duration: 10,
+            trigger: ".panelend",
+            start: "top 300px",
+            end: "top 0px",
+            scrub: true,
+            pin: false,
+        }
+    })
+    .to(".bg", {
+            opacity: 0,
+            
+        })
+
+
+        window.addEventListener("load", () => {
+  ScrollSmoother.get().scrollTop(window.pageYOffset);
+  window.history.scrollRestoration = "auto";
+});
 </script>
 
 </html>
