@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="584px" height="375px" viewBox="0 0 584 375" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="584px" height="420px" viewBox="0 0 584 420" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
-    <title>Artboard</title>
+    <title>2scene1 (1)</title>
     <desc>Created with Sketch.</desc>
-    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" stroke="#979797" fill="#686868" x="0.5" y="0.5" width="583" height="374"></rect>
-        <rect id="Rectangle" stroke="#979797" fill="#554844" x="158.5" y="75.5" width="268" height="205"></rect>
-        <rect id="Rectangle" stroke="#979797" fill="#6F6F6F" x="182.5" y="98.5" width="221" height="160"></rect>
-        <circle id="Oval" stroke="#979797" fill="#D8D8D8" cx="292" cy="179" r="67.5"></circle>
-        <circle id="Oval" stroke="#979797" fill="#FF8686" cx="142.5" cy="318.5" r="104"></circle>
-        <circle id="Oval" stroke="#979797" fill="#A0C0FF" cx="447.5" cy="336.5" r="104"></circle>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2scene1-(1)" fill-rule="nonzero" stroke="#979797">
+            <rect id="Rectangle" fill="#686868" x="0.5" y="0.5" width="583" height="419"></rect>
+            <rect id="Rectangle" fill="#554844" x="158.5" y="75.5" width="268" height="205"></rect>
+            <rect id="Rectangle" fill="#6F6F6F" x="182.5" y="98.5" width="221" height="160"></rect>
+            <circle id="Oval" fill="#D8D8D8" cx="292" cy="179" r="67.5"></circle>
+            <circle id="Oval" fill="#FF8686" cx="189" cy="315" r="104"></circle>
+            <circle id="Oval" fill="#A0C0FF" cx="404" cy="315" r="104"></circle>
+        </g>
     </g>
 </svg>

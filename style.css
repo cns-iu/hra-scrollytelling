@@ -537,7 +537,6 @@ h1 {
 
 .section1-text {
     padding: 30px;
-    max-width: 650px;
     margin: auto;
     justify-content: center;
     margin-bottom: 0px;
@@ -597,11 +596,133 @@ h1 {
 
 /* Story two */
 #two .section1 {
-    background-color: black;
+  background:black;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#two .section2 {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  #two .talkbubble {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 8rem;
+    visibility: hidden;
+    font-size: 1.5rem;
+    text-align: center;
+    flex-direction: column;
+  }  
+
+  #two .talkbubble2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 8rem;
+    visibility: hidden;
+    font-size: 1.5rem;
+    text-align: center;
+    flex-direction: column;
+  }  
+
+  #two .section3 {
+    background:black;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+  }
+
+  #two .overlaybubble{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 8rem;
+    visibility: hidden;
+    font-size: 1.5rem;
+    text-align: center;
+    flex-direction: column;
+  }
+
+#two .container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 8rem;
+  visibility: hidden;
+  font-family: 'Cutive', serif;
+  font-size: 1.5rem;
+  text-align: center;
+  flex-direction: column;
+}
+
+#two .container h1{
+    line-height: 60px;
+}
+
+#two .container p{
+    color: white;
+}
+
+#two .spacer{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 8rem;
+    visibility: hidden;
 }
 
 #two .scene1 {
     background-image: url("img/2scene1.svg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#two .scene2 {
+    background-image: url("img/2scene2.svg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#two .scene3 {
+    background-image:none;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: black;
+}
+
+#two .scene4 {
+    background-image: url("img/2scene3.png");
     height: 100vh;
     background-repeat: no-repeat;
     background-position: center center;
@@ -624,22 +745,12 @@ h1 {
     max-width: 400px;
     width: 80%;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 22px;
     margin: auto;
     position: relative;
     margin-top: 30px;
     margin-bottom: 30px;
-}
-
-.defaulttalk:after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: white transparent transparent transparent;
+    top:-30%;
 }
 
 .squiggytalk {
@@ -648,19 +759,20 @@ h1 {
     max-width: 400px;
     width: 80%;
     background-color: rgb(243, 167, 167);
-    border-radius: 8px;
+    border-radius: 22px;
     margin: auto;
     position: relative;
     margin-top: 30px;
     margin-bottom: 30px;
     right:20px;
+    top:-30%;
 }
 
 .squiggytalk:after {
     content: "";
     position: absolute;
     top: 100%;
-    left: 10%;
+    left: 80%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
@@ -673,19 +785,20 @@ h1 {
     max-width: 400px;
     width: 80%;
     background-color: rgb(153, 202, 244);
-    border-radius: 8px;
+    border-radius: 22px;
     margin: auto;
     position: relative;
     margin-top: 30px;
     margin-bottom: 30px;
     left:20px;
+    top:-30%;
 }
 
 .cecetalk:after {
     content: "";
     position: absolute;
     top: 100%;
-    left: 80%;
+    left: 10%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
@@ -718,7 +831,7 @@ h1 {
     position: absolute;
     width: 300px;
     top: 80vh;
-    left: 220px;
+    left: 140px;
     transform: translate(-50%, -50%);
     z-index: 200;
     opacity: 0;
@@ -750,6 +863,7 @@ h1 {
     width: 100%;
     height: 100vh;
 }
+
 
 #two .wrap {
     position: relative;
@@ -1290,6 +1404,7 @@ canvas {
 
 .next,
 .previous {
+    z-index: -1;
     max-width: 45%;
 }
 
