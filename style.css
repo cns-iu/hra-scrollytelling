@@ -612,6 +612,12 @@ h1 {
     background-size: cover;
   }
 
+  #two .section2 {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+  }
+
   #two .talkbubble {
     width: 100%;
     height: 100%;
@@ -641,11 +647,10 @@ h1 {
   }  
 
   #two .section3 {
-    background:black;
+    background-image: none;
+    background:white;
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100vh;
   }
 
   #two .overlaybubble{
@@ -699,6 +704,8 @@ h1 {
 #two .scene1 {
     background-image: url("img/2scene1.svg");
     height: 100vh;
+    margin: 0;
+    top: 0;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -707,6 +714,8 @@ h1 {
 #two .scene2 {
     background-image: url("img/2scene2.svg");
     height: 100vh;
+    margin: 0;
+    top: 0;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -715,6 +724,8 @@ h1 {
 #two .scene3 {
     background-image:none;
     height: 100vh;
+    margin: 0;
+    top: 0;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -724,9 +735,40 @@ h1 {
 #two .scene4 {
     background-image: url("img/2scene3.png");
     height: 100vh;
+    margin: 0;
+    top: 0;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+}
+
+#two .scene5 {
+    background-image: url("img/2scene3.png");
+    height: 100vh;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#two .scene6 {
+    background-image: url("img/2scene2.svg");
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#two .acknowledgements{
+    background-color: #f1f1f1;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-family: 'PT Sans', sans-serif;
+    max-width: 942px;
+    margin: auto;
 }
 
 .opacitytxt {
@@ -1404,7 +1446,6 @@ canvas {
 
 .next,
 .previous {
-    z-index: -1;
     max-width: 45%;
 }
 
