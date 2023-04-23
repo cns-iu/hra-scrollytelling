@@ -22,7 +22,6 @@ body {
     font-family: "Inter", serif;
     width: 100%;
     height: 100%;
-    margin: 0;
     padding: 0;
 }
 
@@ -619,7 +618,7 @@ h1 {
   }
 
   #two .talkbubble {
-    width: 100%;
+    width: 90%;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -710,6 +709,8 @@ h1 {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    min-width:100%;
+
 }
 
 #two .scene2 {
@@ -721,6 +722,8 @@ h1 {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    min-width:100%;
+
 }
 
 #two .scene3 {
@@ -744,11 +747,12 @@ h1 {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+
 }
 
 #two .scene5 {
     background-image: url("img/2scene3.png");
-    height: 100vh;
+    height: 101vh;
     margin: 0;
     overflow: hidden;
     top: 0;
@@ -758,15 +762,9 @@ h1 {
 }
 
 #two .scene6 {
-    background-image: none !important;
-    background-color: rgba(255, 255, 255, 0);
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
-    top: 0;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+background-color: red;
+    height: 1px;
+   
 }
 
 #two .acknowledgements{

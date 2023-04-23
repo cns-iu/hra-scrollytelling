@@ -90,20 +90,20 @@
 
     <section class="section2">
         <div class="limit" style="height: 200vh;">
-        <div class="scene1"></div>
-        <div class="talkbubble">
-            <div class="defaulttalk "><b>TV narrator:</b> In conclusion, the Human
-                Reference Atlas is a
-                comprehensive, high-resolution, three-dimensional atlas of all the cells in the healthy human body.
+            <div class="scene1"></div>
+            <div class="talkbubble">
+                <div class="defaulttalk "><b>TV narrator:</b> In conclusion, the Human
+                    Reference Atlas is a
+                    comprehensive, high-resolution, three-dimensional atlas of all the cells in the healthy human body.
+                </div>
             </div>
-        </div>
 
-        <div class="talkbubble">
-            <div class="defaulttalk "><b>TV narrator:</b> With the HRA, everyone will be able to find the names and
-                locations of all their favorite cells!
+            <div class="talkbubble">
+                <div class="defaulttalk "><b>TV narrator:</b> With the HRA, everyone will be able to find the names and
+                    locations of all their favorite cells!
+                </div>
             </div>
         </div>
-    </div>
         <div class="scene2"></div>
 
         <div class="talkbubble">
@@ -189,7 +189,7 @@
             </div>
         </div>
 
-        <div class="scene5" style="transform: none !important;"></div>
+        <div class="scene5" id="lastbg"></div>
 
         <div class="talkbubble">
             <div class="cecetalk "><b>CeCe:</b> We start on the left with the organs that everybody knows: organs like
@@ -200,17 +200,16 @@
             <div class="squiggytalk "><b>Squiggy:</b> Yeah, those sound familiar.
             </div>
         </div>
+
         <div class="talkbubble">
             <div class="cecetalk "><b>CeCe:</b> Let's check out my favorite organ: the lungs!
             </div>
         </div>
 
-        <div class="scene6"></div>
-
-        
+        <div class="scene6" id="lastbg"></div>
 
         <!-- Video -->
-        <div class="section3" style="">
+        <div class="section3">
             <iframe width="100%" style="max-width:800px;margin:auto;display:flex;width: 98%;" height="315"
                 src="https://www.youtube.com/embed/pzUFmDhQEO8" title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -336,25 +335,51 @@
     //bg6
     ScrollTrigger.create({
         trigger: ".scene5",
-        start: "bottom bottom",
-        end: "+=350%",
+        start: "top top",
+        end: "+=400%",
         invalidateOnRefresh: true,
         pin: true,
-
         scrub: 1,
-        pinSpacing: false
+        pinSpacing: false,
     });
 
-    //bg6
-    ScrollTrigger.create({
-        trigger: ".scene6",
-        start: "top top",
-        end: "+=100%",
-        invalidateOnRefresh: true,
-        pin: false,
-        scrub: 1,
-        pinSpacing: false
-    });
+const newtime = gsap.timeline({
+  scrollTrigger: {
+        trigger: '.scene6',
+        start: 'top top',
+        end: '-=100%',
+        scrub: true
+  }
+})
+
+newtime
+.to('#lastbg', {
+      opacity: 1,
+    })
+.to('#lastbg', {
+      opacity: 0,
+    }, "<")
+
+
+
+
+
+/* 
+    function onleavefunc() {
+        console.log("leave");
+        console.log(document.getElementById('lastbg').style.backgroundImage);
+        if (document.getElementById('lastbg').style.backgroundImage != "none") {
+            document.getElementById('lastbg').style.backgroundImage = "none"; // specify the image path here
+        }
+    }
+
+    function onenterfunc() {
+        console.log("enter");
+        if(document.getElementById('lastbg').style.backgroundImage != "url('img/2scene3.png')"){
+            document.getElementById('lastbg').style.backgroundImage = "url('img/2scene3.png')";
+        }
+    } */
+
 
     //fade in txt 
     const containers = gsap.utils.toArray(".container");
