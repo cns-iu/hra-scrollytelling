@@ -89,6 +89,7 @@
     </section>
 
     <section class="section2">
+        <div class="limit" style="height: 200vh;">
         <div class="scene1"></div>
         <div class="talkbubble">
             <div class="defaulttalk "><b>TV narrator:</b> In conclusion, the Human
@@ -102,7 +103,7 @@
                 locations of all their favorite cells!
             </div>
         </div>
-
+    </div>
         <div class="scene2"></div>
 
         <div class="talkbubble">
@@ -188,7 +189,7 @@
             </div>
         </div>
 
-        <div class="scene5"></div>
+        <div class="scene5" style="transform: none !important;"></div>
 
         <div class="talkbubble">
             <div class="cecetalk "><b>CeCe:</b> We start on the left with the organs that everybody knows: organs like
@@ -206,12 +207,14 @@
 
         <div class="scene6"></div>
 
-
+        
 
         <!-- Video -->
-        <div class="section3">
+        <div class="section3" style="">
             <iframe width="100%" style="max-width:800px;margin:auto;display:flex;width: 98%;" height="315"
-            src="https://www.youtube.com/embed/pzUFmDhQEO8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                src="https://www.youtube.com/embed/pzUFmDhQEO8" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
         </div>
 
         <!-- Link section-->
@@ -245,9 +248,6 @@
         </footer>
         </div>
     </section>
-
-
-
 
 
 </body>
@@ -288,7 +288,7 @@
     function playsound() {
         var audio = new Audio('music/dramatic.swf.mp3');
         audio.play();
-        audio.volume=0.5;
+        audio.volume = 0.5;
     }
 
     //bg1
@@ -336,10 +336,11 @@
     //bg6
     ScrollTrigger.create({
         trigger: ".scene5",
-        start: "top top",
-        end: "+=300%",
+        start: "bottom bottom",
+        end: "+=350%",
         invalidateOnRefresh: true,
         pin: true,
+
         scrub: 1,
         pinSpacing: false
     });
@@ -475,7 +476,6 @@
         window.scrollTo(0, 0);
     }
 
-    ScrollTrigger.clearScrollMemory();
     window.history.scrollRestoration = "manual";
 
 </script>
