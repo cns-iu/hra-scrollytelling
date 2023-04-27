@@ -215,8 +215,10 @@
                 allowfullscreen></iframe>
         </div>
 
+        
+
         <!-- Link section-->
-        <div class="acknowledgements">
+        <div class="externalLinks">
             External links
         </div>
 
@@ -276,7 +278,6 @@
         trigger: ".introline",
         start: "top top",
         end: "bottom bottom",
-        invalidateOnRefresh: true,
         onEnter: playsound,
         pin: false,
         pinSpacing: false,
@@ -295,7 +296,6 @@
         start: "top top",
         end: "+=300%",
         anticipatePin: 1,
-        invalidateOnRefresh: true,
         pin: true,
         pinSpacing: false
     });
@@ -306,7 +306,6 @@
         anticipatePin: 1,
         start: "top top",
         end: "+=900%",
-        invalidateOnRefresh: true,
         pin: true,
         pinSpacing: false
     });
@@ -316,7 +315,6 @@
         trigger: ".scene3",
         start: "top top",
         end: "+=400%",
-        invalidateOnRefresh: true,
         pin: true,
         pinSpacing: false
     });
@@ -326,7 +324,6 @@
         trigger: ".scene4",
         start: "top top",
         end: "+=700%",
-        invalidateOnRefresh: true,
         pin: true,
         pinSpacing: false
     });
@@ -336,7 +333,6 @@
         trigger: ".scene5",
         start: "top top",
         end: "+=400%",
-        invalidateOnRefresh: true,
         pin: true,
         scrub: 1,
         pinSpacing: false,
@@ -439,7 +435,6 @@ newtime
                 start: "top top",
                 scrub: 0.5,
                 pin: true,
-                invalidateOnRefresh: true,
                 pinSpacing: false,
                 scrub: true,
                 markers: false
@@ -471,22 +466,18 @@ newtime
         scrollTrigger: {
             scrub: 0.25,
             pin: ".spritecontainer",
-            invalidateOnRefresh: true,
         }
     });
 
     tl.from(".spritecontainer", {
         duration: 0.25,
-        invalidateOnRefresh: true
     }, 0)
         .to(".spritecontainer", {
             duration: 0.25,
-            invalidateOnRefresh: true
         }, 0.75)
         .to(".fadeinimg", {
             opacity: 1,
             duration: 0.25,
-            invalidateOnRefresh: true
         }, 0.75)
 
     for (var i = 0; i < spriteSheet.total; i++) {

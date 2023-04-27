@@ -656,12 +656,12 @@ h1 {
     margin: auto;
 }
 
-#two .section3 video {
-    max-width: 800px;
+#two .section3 iframe {
     margin: auto;
     display: flex;
     width: 100%;
     height: 100%;
+    z-index: 1000;
 }
 
 #two .overlaybubble {
@@ -781,6 +781,18 @@ h1 {
     background-color: red;
     height: 1px;
 
+}
+
+#two .externalLinks {
+    background-color: #f1f1f1;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-family: 'PT Sans', sans-serif;
+    max-width: 942px;
+    margin: auto;
+    margin-top: 50px;
 }
 
 #two .acknowledgements {
