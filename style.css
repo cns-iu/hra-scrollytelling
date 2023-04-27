@@ -835,7 +835,7 @@ h1 {
     color: black !important;
     max-width: 400px;
     width: 80%;
-    background-color: rgb(243, 167, 167);
+    background-color: rgb(153, 202, 244);
     border-radius: 22px;
     margin: auto;
     position: relative;
@@ -853,7 +853,7 @@ h1 {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: rgb(243, 167, 167) transparent transparent transparent;
+    border-color:  rgb(153, 202, 244) transparent transparent transparent;
 }
 
 .cecetalk {
@@ -861,7 +861,7 @@ h1 {
     color: black !important;
     max-width: 400px;
     width: 80%;
-    background-color: rgb(153, 202, 244);
+    background-color: rgb(243, 167, 167);
     border-radius: 22px;
     margin: auto;
     position: relative;
@@ -879,7 +879,7 @@ h1 {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: rgb(153, 202, 244) transparent transparent transparent;
+    border-color:  rgb(243, 167, 167) transparent transparent transparent;
 }
 
 .spritecontainer {
