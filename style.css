@@ -360,7 +360,7 @@ a {
     z-index: 9;
 }
 
-#one .section2{
+#one .section2 {
     background-color: #FAFAFA;
 }
 
@@ -595,10 +595,10 @@ h1 {
 
 /* Story two */
 #two .section1 {
-  background:black;
-  margin: 0;
-  padding: 0;
-  width: 100%;
+    background: black;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 #two .section2 {
@@ -609,15 +609,15 @@ h1 {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-  }
+}
 
-  #two .section2 {
+#two .section2 {
     margin: 0;
     padding: 0;
     background-color: white;
-  }
+}
 
-  #two .talkbubble {
+#two .talkbubble {
     width: 90%;
     height: 100vh;
     display: flex;
@@ -629,67 +629,79 @@ h1 {
     font-size: 1.5rem;
     text-align: center;
     flex-direction: column;
-  }  
-
-  #two .talkbubble2 {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 8rem;
-    visibility: hidden;
-    font-size: 1.5rem;
-    text-align: center;
-    flex-direction: column;
-  }  
-
-  #two .section3 {
-    background-image: none;
-    background:white;
-    margin: 0;
-    padding: 0;
-  }
-
-  #two .overlaybubble{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 8rem;
-    visibility: hidden;
-    font-size: 1.5rem;
-    text-align: center;
-    flex-direction: column;
-  }
-
-#two .container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 8rem;
-  visibility: hidden;
-  font-family: 'Cutive', serif;
-  font-size: 1.5rem;
-  text-align: center;
-  flex-direction: column;
 }
 
-#two .container h1{
+#two .talkbubble2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 8rem;
+    visibility: hidden;
+    font-size: 1.5rem;
+    text-align: center;
+    flex-direction: column;
+}
+
+#two .section3 {
+    background-image: none;
+    background: white;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+#two .section3 video {
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+#two .overlaybubble {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 8rem;
+    visibility: hidden;
+    font-size: 1.5rem;
+    text-align: center;
+    flex-direction: column;
+}
+
+#two .container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 8rem;
+    visibility: hidden;
+    font-family: 'Cutive', serif;
+    font-size: 1.5rem;
+    text-align: center;
+    flex-direction: column;
+}
+
+#two .container h1 {
     line-height: 60px;
 }
 
-#two .container p{
+#two .container p {
     color: white;
 }
 
-#two .spacer{
+#two .spacer {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -702,6 +714,7 @@ h1 {
 
 #two .scene1 {
     background-image: url("img/2scene1.svg");
+    background-color: black;
     height: 100vh;
     margin: 0;
     overflow: hidden;
@@ -709,12 +722,13 @@ h1 {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    min-width:100%;
+    min-width: 100%;
 
 }
 
 #two .scene2 {
     background-image: url("img/2scene2.svg");
+    background-color: black;
     height: 100vh;
     overflow: hidden;
     margin: 0;
@@ -722,12 +736,12 @@ h1 {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    min-width:100%;
+    min-width: 100%;
 
 }
 
 #two .scene3 {
-    background-image:none;
+    background-image: none;
     height: 100vh;
     overflow: hidden;
     margin: 0;
@@ -740,6 +754,7 @@ h1 {
 
 #two .scene4 {
     background-image: url("img/2scene3.png");
+    background-color: white;
     height: 100vh;
     overflow: hidden;
     margin: 0;
@@ -752,7 +767,8 @@ h1 {
 
 #two .scene5 {
     background-image: url("img/2scene3.png");
-    height: 101vh;
+    background-color: white;
+    height: 100vh;
     margin: 0;
     overflow: hidden;
     top: 0;
@@ -762,12 +778,12 @@ h1 {
 }
 
 #two .scene6 {
-background-color: red;
+    background-color: red;
     height: 1px;
-   
+
 }
 
-#two .acknowledgements{
+#two .acknowledgements {
     background-color: #f1f1f1;
     padding: 15px;
     display: flex;
@@ -799,7 +815,7 @@ background-color: red;
     position: relative;
     margin-top: 30px;
     margin-bottom: 30px;
-    top:-30%;
+    top: -30%;
 }
 
 .squiggytalk {
@@ -813,8 +829,8 @@ background-color: red;
     position: relative;
     margin-top: 30px;
     margin-bottom: 30px;
-    right:20px;
-    top:-30%;
+    right: 20px;
+    top: -30%;
 }
 
 .squiggytalk:after {
@@ -839,8 +855,8 @@ background-color: red;
     position: relative;
     margin-top: 30px;
     margin-bottom: 30px;
-    left:20px;
-    top:-30%;
+    left: 20px;
+    top: -30%;
 }
 
 .cecetalk:after {
@@ -891,7 +907,7 @@ background-color: red;
     position: relative;
 }
 
-.talkdivider{
+.talkdivider {
     height: 10px;
 }
 
