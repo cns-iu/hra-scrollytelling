@@ -535,12 +535,13 @@ h1 {
 
 
 .section1-text {
-    padding: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
     margin: auto;
     justify-content: center;
     margin-bottom: 0px;
     margin-top: 0px;
-    max-width:650px;
+    max-width: 650px;
 }
 
 .threediv {
@@ -573,32 +574,32 @@ h1 {
     margin: auto;
 }
 
-.scrollsection{
+.scrollsection {
     overflow-y: scroll;
     margin-top: 2em;
     margin-bottom: 2em;
 }
 
 .scrollsection::-webkit-scrollbar {
-  width: 1em;
-  height: 10px;
+    width: 1em;
+    height: 10px;
 }
 
 .scrollsection::-webkit-scrollbar-track {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .scrollsection::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #454C65;
+    border-radius: 10px;
+    background-color: #454C65;
 }
 
 .scrollsection::-webkit-scrollbar:vertical {
     display: none;
-  }
+}
 
-.togetherdiv{
+.togetherdiv {
     display: flex;
     flex-direction: row;
 }
@@ -606,6 +607,13 @@ h1 {
 @media screen and (max-width: 650px) {
     .togetherdiv {
         flex-direction: column;
+    }
+    #one .togetherimg {
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    .notop{
+        margin-top:0!important;
     }
 }
 
@@ -618,6 +626,25 @@ h1 {
 
 
 /* Story one */
+
+#one .section1 {
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+#one .togetherimg {
+    border-radius: 10px;
+    width: 50%;
+    height: 100%;
+    margin-top: 18px;
+    margin-left: 15px;
+}
+
+#one .section2 {
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
 #one .cell1 {
     opacity: 1;
 }
@@ -711,7 +738,7 @@ h1 {
     margin: auto;
 }
 
-.cecevidtalk{
+.cecevidtalk {
     top: -100%;
     position: relative;
     float: right;
@@ -722,7 +749,7 @@ h1 {
     align-items: center;
 }
 
-.cecevidtalk img{
+.cecevidtalk img {
     width: 30%;
 }
 
@@ -824,7 +851,7 @@ h1 {
 }
 
 #two .scene4 {
-    background-image: url("img/2scene3.png");
+    background-image: url("img/2scene3.svg");
     background-color: white;
     height: 100vh;
     overflow: hidden;
@@ -837,7 +864,7 @@ h1 {
 }
 
 #two .scene5 {
-    background-image: url("img/2scene3.png");
+    background-image: url("img/2scene4.svg");
     background-color: white;
     height: 100vh;
     margin: 0;
@@ -851,7 +878,6 @@ h1 {
 #two .scene6 {
     background-color: red;
     height: 1px;
-
 }
 
 #two .externalLinks {
@@ -893,12 +919,13 @@ h1 {
     max-width: 400px;
     width: 80%;
     background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.54) 0px 3px 4px;
     border-radius: 22px;
     margin: auto;
     position: relative;
     margin-top: 30px;
     margin-bottom: 30px;
-    top: -30%;
+    top: -20%;
 }
 
 .squiggytalk {
@@ -907,24 +934,26 @@ h1 {
     max-width: 400px;
     width: 80%;
     background-color: rgb(153, 202, 244);
+    box-shadow: rgba(0, 0, 0, 0.54) 0px 3px 8px;
     border-radius: 22px;
     margin: auto;
     position: relative;
     margin-top: 30px;
     margin-bottom: 30px;
-    right: 20px;
-    top: -30%;
+    right: 0;
+    top: -20%;
 }
 
 .squiggytalk:after {
     content: "";
     position: absolute;
     top: 100%;
-    left: 80%;
+    left: 70%;
     margin-left: -5px;
     border-width: 5px;
+    margin-top: -1px;
     border-style: solid;
-    border-color:  rgb(153, 202, 244) transparent transparent transparent;
+    border-color: rgb(153, 202, 244) transparent transparent transparent;
 }
 
 .cecetalk {
@@ -933,6 +962,7 @@ h1 {
     max-width: 400px;
     width: 80%;
     background-color: rgb(243, 167, 167);
+    box-shadow: rgba(0, 0, 0, 0.54) 0px 3px 8px;
     border-radius: 22px;
     margin: auto;
     position: relative;
@@ -946,11 +976,12 @@ h1 {
     content: "";
     position: absolute;
     top: 100%;
-    left: 10%;
+    left: 40%;
     margin-left: -5px;
+    margin-top: -1px;
     border-width: 5px;
     border-style: solid;
-    border-color:  rgb(243, 167, 167) transparent transparent transparent;
+    border-color: rgb(243, 167, 167) transparent transparent transparent;
 }
 
 .spritecontainer {
@@ -978,8 +1009,8 @@ h1 {
 .fadeinimg {
     position: absolute;
     width: 300px;
-    top: 80vh;
-    left: 140px;
+    top: 50%;
+    left: 40%;
     transform: translate(-50%, -50%);
     z-index: 200;
     opacity: 0;
