@@ -25,6 +25,18 @@ body {
     padding: 0;
 }
 
+.underconstruction{
+    height: 70vh;
+    background-color: #FAFAFA;
+    text-align: center;
+}
+
+.constructionmid{
+    padding: 10px;
+    padding-top: 30vh;
+    font-size: 1.5rem;
+}
+
 /* Top style */
 
 /*header style*/
