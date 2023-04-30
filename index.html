@@ -9,6 +9,16 @@
     <meta name="keywords" content="">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="img/logo.svg">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1811WRJJD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-E1811WRJJD');
+    </script>
 </head>
 
 <body id="index">
@@ -23,7 +33,7 @@
             <img class="logo" src="img/logo.svg"> Human Atlas Stories
         </a>
         <div class="dropdown">
-            <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+            <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#c2cae5"
                     class="bi bi-list" viewBox="-1 -4 20 20">
                     <path fill-rule="evenodd"
                         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
@@ -50,7 +60,8 @@
                             Story 0
                         </div>
                         <a href="story0.html">
-                            <div class="item-title">Scrollytelling Elements and Effects</div></a>
+                            <div class="item-title">Scrollytelling Elements and Effects </div>
+                        </a>
                     </li>
 
                     <li class="rb-item" ng-repeat="itembx">
@@ -58,35 +69,33 @@
                             Story 1
                         </div>
                         <a href="story1.html">
-                            <div class="item-title">What Is An HRA?</div></a>
+                            <div class="item-title">What Is An HRA? </div>
+                        </a>
                     </li>
-                
+
                     <li class="rb-item" ng-repeat="itembx">
                         <div class="minititle">
                             Story 2
                         </div>
                         <a href="story2.html">
                             <div class="item-title">Get to Know Your Anatomical Structures!</div>
-                            </a>
+                        </a>
                     </li>
-                    
+
                     <li class="rb-item" ng-repeat="itembx">
                         <div class="minititle">
                             Story 3
                         </div>
-                        <div class="item-title"> <a href="story3.html">Learn about Visualizing Cells in the Human Body</a></div>
+                        <div class="item-title"> <a href="story3.html">Learn about Visualizing Cells in the Human
+                                Body</a></div>
                     </li>
-
                 </ul>
             </div>
         </div>
-
     </section>
 
-
-
     <footer>
-        © 2023 Human Atlas Design System at Indiana University
+        &commat; 2023 Human Atlas Design System at Indiana University
     </footer>
 </body>
 <script src="scripts.js"></script>

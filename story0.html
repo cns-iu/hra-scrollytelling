@@ -11,9 +11,17 @@
     <link rel="icon" type="image/x-icon" href="img/logo.svg">
 
     <base href="./">
-
     <script src="js/wc.js" async></script>
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1811WRJJD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-E1811WRJJD');
+    </script>
 </head>
 
 <body id="zero">
@@ -40,7 +48,7 @@
             <img class="logo" src="img/logo.svg"> Human Atlas Stories
         </a>
         <div class="dropdown">
-            <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+            <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#c2cae5"
                     class="bi bi-list" viewBox="-1 -4 20 20">
                     <path fill-rule="evenodd"
                         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
@@ -54,17 +62,6 @@
                 <a href="story3.html">3. Learn about Visualizing Cells in the Human Body</a>
             </div>
         </div>
-    </section>
-
-    <!-- section header/intro -->
-    <section class="intro" id="intro0">
-        <header class="container introSection">
-            <h1 class="headerOne">Get to know ...</h1>
-            <p class="headerLarge">Scrollytelling Elements and Effects!</p>
-            <h2></h2>
-            <a href="#section1" class="animate-arrow scrollArrow">&darr;
-            </a>
-        </header>
     </section>
 
     <h1 id="scrolls" class="TitleDivide">Scroll Effects</h1>
@@ -262,10 +259,8 @@
 
 
     <footer>
-        © 2023 Human Atlas Design System at Indiana University
+        &commat; 2023 Human Atlas Design System at Indiana University
     </footer>
-
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/ScrollTrigger.min.js"></script>
