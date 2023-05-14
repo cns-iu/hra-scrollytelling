@@ -1556,7 +1556,6 @@ table td {
 
 canvas {
     display: block;
-    vertical-align: bottom;
 }
 
 .progress-bar {

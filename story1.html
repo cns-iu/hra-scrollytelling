@@ -151,7 +151,7 @@
                 reality at differing scales: from the whole body on down to the level of organs, tissues, cell types,
                 and biomarkers.
             </p>
-            <div class="panel one scrollsection" style=" overflow-x:scroll; overflow-y: hidden;">
+            <div class="panel one scrollsection" style=" overflow-x:hidden; overflow-y: hidden;">
                 <img src="img/story1-meso.png" class="horizontalimg" style="height: 320px;">
             </div>
 
@@ -236,25 +236,71 @@
     // You can use a ScrollTrigger in a tween or timeline
 
     //horizontal
-    // gsap.timeline({
-    //     scrollTrigger: {
-    //         autoAlpha: 1,
-    //         duration: 1,
-    //         trigger: ".horizontalimg",
-    //         start: "top 300px",
-    //         end: "center 20px",
-    //         scrub: true,
-    //         pin: false,
-    //     }
-    // })
-    //     .to(".horizontalimg", {
-    //         x: -500,
-    //         scrub: 0.50,
-    //     })
-    //     .to(".horizontalimg", {
-    //         x: -1000,
-    //         scrub: 0.25,
-    //     })
+    
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 700px)", () => {
+        gsap.timeline({
+            scrollTrigger: {
+                duration: 4,
+                autoAlpha: 1,
+                duration: 1,
+                trigger: ".horizontalimg",
+                start: "center 400px",
+                end: "center 0",
+                scrub: true,
+                pin: false,
+            }
+        })
+            .to(".horizontalimg", {
+                x: "-30%",
+                scrub: 0.20,
+            })
+
+        let mm = gsap.matchMedia();
+    });
+
+     mm.add("(max-width: 699px) and (min-width:400px)", () => {
+            gsap.timeline({
+                scrollTrigger: {
+                    duration: 4,
+                    autoAlpha: 1,
+                    duration: 1,
+                    trigger: ".horizontalimg",
+                    start: "center 300px",
+                    end: "center 0px",
+                    scrub: true,
+                    pin: false,
+                }
+            })
+                .to(".horizontalimg", {
+                    x: "-60%",
+                    scrub: 0.20,
+                })
+
+            let mm = gsap.matchMedia();
+        });
+
+    mm.add("(max-width: 399px)", () => {
+        gsap.timeline({
+            scrollTrigger: {
+                duration: 4,
+                autoAlpha: 1,
+                duration: 1,
+                trigger: ".horizontalimg",
+                start: "center 400px",
+                end: "center 100px",
+                scrub: true,
+                pin: false,
+            }
+        })
+            .to(".horizontalimg", {
+                x: "-60%",
+                scrub: 0.20,
+            })
+
+        let mm = gsap.matchMedia();
+    });
 
     gsap.timeline({
         scrollTrigger: {
