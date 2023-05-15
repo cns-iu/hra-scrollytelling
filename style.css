@@ -42,7 +42,7 @@ body {
 /*header style*/
 #vid {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 45%;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
