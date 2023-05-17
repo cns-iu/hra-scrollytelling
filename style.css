@@ -25,12 +25,24 @@ body {
     padding: 0;
 }
 
+.underconstruction{
+    height: 80vh;
+    background-color: #FAFAFA;
+    text-align: center;
+}
+
+.constructionmid{
+    padding: 10px;
+    padding-top: 30vh;
+    font-size: 1.5rem;
+}
+
 /* Top style */
 
 /*header style*/
 #vid {
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 45%;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
@@ -64,7 +76,7 @@ header .headerTwo {
 
 header .headerLarge {
     font-family: 'PT Sans', sans-serif;
-    font-size: 2.6rem;
+    font-size: 2.2rem;
     text-transform: uppercase;
     margin-top: -10px;
     margin-bottom: -10px;
@@ -486,6 +498,7 @@ h1 {
 
 .img-three {
     display: flex;
+    
 }
 
 .img-above-text {
@@ -1544,7 +1557,6 @@ table td {
 
 canvas {
     display: block;
-    vertical-align: bottom;
 }
 
 .progress-bar {
