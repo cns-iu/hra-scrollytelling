@@ -25,13 +25,13 @@ body {
     padding: 0;
 }
 
-.underconstruction{
+.underconstruction {
     height: 80vh;
     background-color: #FAFAFA;
     text-align: center;
 }
 
-.constructionmid{
+.constructionmid {
     padding: 10px;
     padding-top: 30vh;
     font-size: 1.5rem;
@@ -498,7 +498,7 @@ h1 {
 
 .img-three {
     display: flex;
-    
+
 }
 
 .img-above-text {
@@ -621,12 +621,14 @@ h1 {
     .togetherdiv {
         flex-direction: column;
     }
+
     #one .togetherimg {
         margin: 0 !important;
         width: 100% !important;
     }
-    .notop{
-        margin-top:0!important;
+
+    .notop {
+        margin-top: 0 !important;
     }
 }
 
@@ -739,16 +741,15 @@ h1 {
 
 #two .section3 {
     background-image: none;
-    background: white;
+    background: black;
     margin: 0;
     padding: 0;
     width: 100vw;
     height: calc(100vw/1.77);
+    height: 100vh;
     max-width: 942px;
     display: flex;
     justify-content: center;
-    z-index: 1000;
-    margin: auto;
 }
 
 .cecevidtalk {
