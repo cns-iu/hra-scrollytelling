@@ -806,6 +806,12 @@ h1 {
     flex-direction: column;
 }
 
+.introlineimg{
+    position: absolute;
+    width: 10%;
+    top: 35%;
+}
+
 #two .container h1 {
     line-height: 60px;
 }
@@ -1210,7 +1216,6 @@ h1 {
 .three2 {
     width: 100%;
     opacity: 100;
-
 }
 
 .three3 {
@@ -1227,7 +1232,6 @@ h1 {
     opacity: 1;
     flex: 0 0 40%;
 }
-
 
 .scrollArrow {
     align-self: center;
