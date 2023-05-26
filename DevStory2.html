@@ -55,16 +55,14 @@
     <!-- section header/intro -->
     <section class="intro" id="intro">
         <h3 class="overtext" id="introTypeLine"></h3>
-
-        <div class="spritecontainer">
-            <img class="frames" src="img/spritesheet.jpg">
-            <img class="fadeinimg" src="img/telescope.svg">
+        <div class="fadeimage">
+            <img src="img/2-bodyintro1.png">
+            <img src="img/2-bodyintro2.png" class="picture2  imagepart">
+            <img src="img/telescope.svg" class="picture3  imagepart" style="width:140px;">
         </div>
     </section>
 
     <section class="section1">
-        <div class="container">
-        </div>
         <div class="container">
             This is the story of two of them.
         </div>
@@ -82,11 +80,13 @@
         </div>
         <div class="container introline">
             <p style="z-index:200">On this week's episode:&nbsp;</p>
-            <h1 style="z-index:200">Squiggy's Identity Crisis!</h1>
+            <h1 style="z-index:200;font-size: 1.6em;">Squiggy's Identity Crisis!</h1>
             <div class="popupsection">
-                <img class="introlineimg" src="img/charcece.svg" style="left: 10%;">
-                <img class="introlineimg" src="img/charsquiggy.svg" style=" right: 10%;top: 40%; width: 15%;">
+                <img class="introlineimg introcharcece" src="img/charcece.svg">
+                <img class="introlineimg introcharsquiggy" src="img/charsquiggy.svg">
             </div>
+        </div>
+        <div class="container">
         </div>
     </section>
 
@@ -137,6 +137,8 @@
                 your membrane!
             </div>
         </div>
+        <div class="talkbubble">  
+        </div>
 
         <div class="scene2" id="lastbg1"></div>
         <div class="talkbubble">
@@ -148,9 +150,10 @@
             <div class="cecetalk "><b>CeCe:</b> And I think I know just the perfect place to start!
             </div>
         </div>
+        <div class="talkbubble">
+        </div>
 
         <div class="scene3"></div>
-
         <div class="talkbubble">
             <div class="squiggytalk "><b>Squiggy:</b> Ahh! Who just turned out all the lights?
             </div>
@@ -163,9 +166,10 @@
             <div class="squiggytalk "><b>Squiggy:</b> Oh, well, I am NOT a fan.
             </div>
         </div>
+        <div class="talkbubble">
+        </div>
 
         <div class="scene4"></div>
-
         <div class="talkbubble">
             <div class="squiggytalk "><b>Squiggy:</b> Where are we now?
             </div>
@@ -182,22 +186,21 @@
             <div class="cecetalk "><b>CeCe:</b> Well, it can help us solve your identity crisis!
             </div>
         </div>
-
         <div class="talkbubble">
             <div class="cecetalk "><b>CeCe:</b> You see, the ASCT+B Reporter allows researchers to explore anatomical
                 structures, cell types, and biomarkers that make up different organs.
             </div>
         </div>
-
         <div class="talkbubble">
             <div class="cecetalk "><b>CeCe:</b> The data tables from which the Reporter gets its information are
                 authored
                 and reviewed by experts in their field.
             </div>
         </div>
+        <div class="talkbubble">
+        </div>
 
         <div class="scene5" id="lastbg"></div>
-
         <div class="talkbubble">
             <div class="cecetalk "><b>CeCe:</b> We start on the left with the organs that everybody knows: organs like
                 the large intestines, the kidney, the heart.
@@ -207,10 +210,11 @@
             <div class="squiggytalk "><b>Squiggy:</b> Yeah, those sound familiar.
             </div>
         </div>
-
         <div class="talkbubble">
             <div class="cecetalk "><b>CeCe:</b> Let's check out my favorite organ: the lungs!
             </div>
+        </div>
+        <div class="talkbubble">
         </div>
 
         <div class="scene6" id="lastbg"></div>
@@ -267,10 +271,34 @@
 
 <script>
 
+    //intro part 
+    gsap.timeline({
+        scrollTrigger: {
+            autoAlpha: 1,
+            duration: 1.6,
+            trigger: ".fadeimage",
+            start: "center 400px",
+            end: "center 0px",
+            scrub: true,
+            pin: true,
+        }
+    })
+        .from(".picture1", {
+            opacity: 100,
+        })
+        .from(".picture2", {
+            opacity: 0,
+        })
+        .from(".picture3", {
+            opacity: 0,
+        })
+        .to(".picture3", { scale: 1.8, duration: 1.8 })
+
+
     //typewriter
     var m = 0;
     var txt = 'There are roughly 37 trillion cells in the human body.';
-    var speed = 50;
+    var speed = 40;
 
     function typeWriter() {
         if (m < txt.length) {
@@ -285,10 +313,10 @@
     ScrollTrigger.create({
         trigger: ".introline",
         start: "top top",
-        end: "bottom bottom",
+        end: "+=300%",
         onEnter: playsound,
         pin: false,
-        pinSpacing: false,
+        pinSpacing: true,
         once: true
     });
 
@@ -301,6 +329,7 @@
     //bg1
     ScrollTrigger.create({
         trigger: ".scene1",
+        anticipatePin: 1,
         start: "top top",
         end: "+=900%",
         anticipatePin: 1,
@@ -362,25 +391,6 @@
         .to('#lastbg', {
             opacity: 0,
         }, "<")
-
-
-
-    /* 
-        function onleavefunc() {
-            console.log("leave");
-            console.log(document.getElementById('lastbg').style.backgroundImage);
-            if (document.getElementById('lastbg').style.backgroundImage != "none") {
-                document.getElementById('lastbg').style.backgroundImage = "none"; // specify the image path here
-            }
-        }
-    
-        function onenterfunc() {
-            console.log("enter");
-            if(document.getElementById('lastbg').style.backgroundImage != "url('img/2scene3.png')"){
-                document.getElementById('lastbg').style.backgroundImage = "url('img/2scene3.png')";
-            }
-        } */
-
 
     //fade in txt 
     const containers = gsap.utils.toArray(".container");
@@ -457,41 +467,6 @@
             0.5
         );
     });
-
-    //spritesheet animation
-    var spriteSheet = {
-        width: 900,
-        height: 1200,
-        total: 20,
-        cols: 1,
-        rows: 20,
-        duration: 1,
-    };
-
-    var tl = gsap.timeline({
-        scrollTrigger: {
-            scrub: 0.25,
-            pin: ".spritecontainer",
-        }
-    });
-
-    tl.from(".spritecontainer", {
-        duration: 0.25,
-    }, 0)
-        .to(".spritecontainer", {
-            duration: 0.25,
-        }, 0.75)
-        .to(".fadeinimg", {
-            opacity: 1,
-            duration: 0.25,
-        }, 0.75)
-
-    for (var i = 0; i < spriteSheet.total; i++) {
-        tl.set(".frames", {
-            x: (i % spriteSheet.cols) * -spriteSheet.width,
-            y: Math.floor(i / spriteSheet.cols) * -spriteSheet.height
-        }, i / (spriteSheet.total - 1) * spriteSheet.duration);
-    }
 
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);

@@ -678,6 +678,8 @@ h1 {
     margin: 0;
     padding: 0;
     width: 100%;
+    padding-left: 10px;
+        padding-right: 10px;
 }
 
 #two .section2 {
@@ -806,11 +808,37 @@ h1 {
     flex-direction: column;
 }
 
-.introlineimg{
+.introlineimg {
     position: absolute;
     width: 10%;
     top: 32%;
     animation: pulse-white 3.5s infinite;
+}
+
+.introcharcece {
+    left: 10%;
+    top: 24%;
+}
+
+.introcharsquiggy {
+    right: 10%;
+    top: 35%;
+    width: 15%;
+}
+
+
+@media all and (max-width:750px) {
+    .introcharcece {
+        left: 25%;
+        width: 12%;
+        top: 68%;
+    }
+
+    .introcharsquiggy {
+        top: 74%;
+        width: 22%;
+        right: 25%;
+    }
 }
 
 @keyframes pulse-white {
@@ -822,9 +850,9 @@ h1 {
         transform: scale(1.5);
     }
 
-    100%{
-            transform: scale(1);
-        }
+    100% {
+        transform: scale(1);
+    }
 }
 
 #two .container h1 {
@@ -844,6 +872,23 @@ h1 {
     color: white;
     font-size: 8rem;
     visibility: hidden;
+}
+
+#two .fadeimage {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+    height: 100vh;
+    width: auto;
+    margin: auto;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+#two .imagepart {
+    position: absolute;
+    height: 100vh;
 }
 
 #two .scene1 {
@@ -1040,6 +1085,7 @@ h1 {
     transform: translate(-50%, -50%);
     z-index: 200;
     font-size: 2.5rem;
+    text-shadow: 1px 1px 2px white;
 }
 
 .fadeinimg {
