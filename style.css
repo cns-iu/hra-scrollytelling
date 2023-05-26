@@ -792,7 +792,7 @@ h1 {
 }
 
 #two .container {
-    width: 100%;
+    width: 90%;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -815,7 +815,7 @@ h1 {
 
 .introcharcece {
     left: 10%;
-    top: 24%;
+    top: 25%;
 }
 
 .introcharsquiggy {
