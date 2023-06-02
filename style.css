@@ -1007,7 +1007,7 @@ h1 {
 }
 
 #two .scene4 {
-    background-image: url("img/ASCT-1.svg");
+    background-image: url("img/ASCT-2.svg");
     background-color: white;
     height: 100vh;
     overflow: hidden;
@@ -1020,7 +1020,7 @@ h1 {
 }
 
 #two .scene5 {
-    background-image: url("img/2scene4.svg");
+    background-image: url("img/ASCT-3.svg");
     background-color: white;
     height: 100vh;
     margin: 0;
@@ -1039,6 +1039,18 @@ h1 {
 #two .scene7 {
     background-color: white;
     height: 1px;
+}
+
+#two .scene8 {
+    background-image: url("img/ASCT-4.svg");
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 #two .externalLinks {

@@ -188,14 +188,15 @@
         </div>
 
 
-        <div class="scene4" id="lastbg2"></div>
+        <div class="scene4"><img src="img/vis2.svg" style="margin: auto;
+    top: 40%;
+    position: relative;
+    justify-self: center;
+    left: 40%;">
+        </div>
 
         <div class="talkbubble">
-            <div class="squiggytalk "><b>Squiggy:</b> Where are we now?
-            </div>
-        </div>
-        <div class="talkbubble">
-            <div class="cecetalk "><b>CeCe:</b> We're standing on top of the Human Reference Atlas's ASCT+B Reporter!
+            <div class="cecetalk "><b>CeCe:</b> We're standing on top a simplified version of the Human Reference Atlas's ASCT+B Reporter!
             </div>
         </div>
         <div class="talkbubble">
@@ -220,7 +221,11 @@
         <div class="talkbubble">
         </div>
 
-        <div class="scene5" id="lastbg"></div>
+        <div class="scene5"><img src="img/vis2.svg" style="margin: auto;
+            top: 40%;
+            position: relative;
+            justify-self: center;
+            left: 40%;"></div>
         <div class="talkbubble">
             <div class="cecetalk "><b>CeCe:</b> We start on the left with the organs that everybody knows: organs like
                 the large intestines, the kidney, the heart.
@@ -228,6 +233,40 @@
         </div>
         <div class="talkbubble">
             <div class="squiggytalk "><b>Squiggy:</b> Yeah, those sound familiar.
+            </div>
+        </div>
+        <div class="talkbubble">
+            <div class="cecetalk "><b>CeCe:</b> Let's check out my favorite organ: the lungs!
+            </div>
+        </div>
+        <div class="talkbubble">
+        </div>
+
+        <div class="scene8" id="lastbg2"><img src="img/vis2.svg" style="margin: auto;
+            top: 40%;
+            position: relative;
+            justify-self: center;
+            left: 40%;"></div>
+        <div class="talkbubble">
+            <div class="cecetalk "><b>CeCe:</b> The ASCT+B Reporter is arranged as a tree diagram, which means that a
+                lot of information can be expressed in a clear and
+                compact way.
+            </div>
+        </div>
+        <div class="talkbubble">
+            <div class="cecetalk "><b>CeCe:</b> You see, Squig, the ASCT +B Tables are arranged as a partonomy.
+            </div>
+        </div>
+        <div class="talkbubble">
+            <div class="cecetalk "><b>CeCe:</b> Just as
+                the "lungs" are part of the larger "body"
+                category, our next stop, the "lobe of the lung," is part of the larger lung category.
+            </div>
+        </div>
+        <div class="talkbubble">
+            <div class="squiggytalk "><b>Squiggy:</b> I get it! So, where we're headed next, the lobar bronchus, is part
+                of the lobe of the lung.
+
             </div>
         </div>
         <div class="talkbubble">
@@ -398,7 +437,7 @@
     ScrollTrigger.create({
         trigger: ".scene4",
         start: "top top",
-        end: "+=400%",
+        end: "+=700%",
         pin: true,
         pinSpacing: false
     });
@@ -407,7 +446,16 @@
     ScrollTrigger.create({
         trigger: ".scene5",
         start: "top top",
-        end: "+=400%",
+        end: "+=600%",
+        pin: true,
+        scrub: 1,
+        pinSpacing: false,
+    });
+
+    ScrollTrigger.create({
+        trigger: ".scene8",
+        start: "top top",
+        end: "+=700%",
         pin: true,
         scrub: 1,
         pinSpacing: false,
@@ -420,7 +468,7 @@
             end: '-=100%',
             scrub: true
         }
-    })
+    });
     newtime
         .to('#lastbg', {
             opacity: 1,
@@ -436,7 +484,7 @@
             end: '-=100%',
             scrub: true
         }
-    })
+    });
     newtime2
         .to('#lastbg2', {
             opacity: 1,
@@ -445,14 +493,46 @@
             opacity: 0,
         }, "<")
 
+    const newtime3 = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.scene5',
+            start: 'top top',
+            end: 'top +=100%',
+            scrub: true
+        }
+    });
+    newtime3
+        .from('.scene5', {
+            opacity: 0
+        })
+        .to('.scene5', {
+            opacity: 1
+        }, "<")
+
+    const newtime4 = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.scene8',
+            start: 'top top',
+            end: 'top +=100%',
+            scrub: true
+        }
+    });
+    newtime4
+        .from('.scene8', {
+            opacity: 0
+        })
+        .to('.scene8', {
+            opacity: 1
+        }, "<")
+
     //laptop zoom part 
     gsap.timeline({
         scrollTrigger: {
             autoAlpha: 1,
-            duration: 2.6,
+            duration: 20,
             trigger: ".videozoom",
             start: "top",
-            end: "center 0px",
+            end: "+=800px",
             scrub: true,
             pin: true,
             defaults: { overwrite: "auto" }
@@ -462,16 +542,13 @@
         .from(".zoompic1", {
             opacity: 0,
         })
-        .to(".zoompic1", { scale: 2, duration: 10.8 })
-                .to(".zoompic1", { scale: 2, duration: 10.8 })
+        .to(".zoompic1", { scale: 2 })
 
         .from(".zoompic2", {
             opacity: 0,
             scale: .5
-        })
-        .to(".zoompic2", { opacity: 1, scale: 1, duration: 10.8 }, "+=2")
-
-
+        }, "+=10")
+        .to(".zoompic2", { opacity: 1, scale: 1 }, "+=6")
 
 
     //fade in txt 
