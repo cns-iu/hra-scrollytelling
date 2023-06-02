@@ -753,6 +753,50 @@ h1 {
     margin: auto;
 }
 
+#two .videozoom {
+    background-image: none;
+    background: black;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    overflow: hidden;
+}
+
+#two .videozoom img {
+    width: 40%;
+    margin: auto;
+}
+
+.videozoom p {
+    text-align: center;
+    color: white;
+    opacity: .7;
+}
+
+.videozoom a {
+    color: white;
+    opacity: .7;
+    text-decoration: underline;
+}
+
+.videozoom h1 {
+    margin-top: 40px;
+    color: white;
+}
+
+@media all and (max-width:750px) {
+    #two .videozoom img {
+        width: 90%;
+        margin: auto;
+    }
+}
+
 .cecevidtalk {
     top: -100%;
     position: relative;
@@ -884,6 +928,15 @@ h1 {
     justify-content: center;
 }
 
+
+#two .fadeimage2 {
+    position: relative;
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+    top: -10%;
+}
+
 #two .imagepart {
     position: absolute;
     height: 100vh;
@@ -900,7 +953,32 @@ h1 {
     background-position: center center;
     background-size: cover;
     min-width: 100%;
+}
 
+#two .scene1-1 {
+    background-image: url("img/2scene2.svg");
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#two .scene1-2 {
+    background-image: url("img/2scene1.svg");
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
 }
 
 #two .scene2 {
@@ -914,7 +992,6 @@ h1 {
     background-position: center center;
     background-size: cover;
     min-width: 100%;
-
 }
 
 #two .scene3 {
@@ -930,7 +1007,7 @@ h1 {
 }
 
 #two .scene4 {
-    background-image: url("img/2scene3.svg");
+    background-image: url("img/ASCT-1.svg");
     background-color: white;
     height: 100vh;
     overflow: hidden;
@@ -955,7 +1032,12 @@ h1 {
 }
 
 #two .scene6 {
-    background-color: red;
+    background-color: black;
+    height: 1px;
+}
+
+#two .scene7 {
+    background-color: white;
     height: 1px;
 }
 

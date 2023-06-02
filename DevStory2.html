@@ -47,7 +47,6 @@
         </div>
     </section>
 
-
     <!-- section header/intro -->
     <section class="intro" id="intro">
         <h3 class="overtext" id="introTypeLine"></h3>
@@ -78,8 +77,8 @@
             <p style="z-index:200">On this week's episode:&nbsp;</p>
             <h1 style="z-index:200;font-size: 1.6em;">Squiggy's Identity Crisis!</h1>
             <div class="popupsection">
-                <img class="introlineimg introcharcece" src="img/charcece.svg">
-                <img class="introlineimg introcharsquiggy" src="img/charsquiggy.svg">
+                <img class="introlineimg introcharcece" src="img/charcece2.svg">
+                <img class="introlineimg introcharsquiggy" src="img/charsquiggy2.svg">
             </div>
         </div>
         <div class="container">
@@ -102,26 +101,35 @@
                 </div>
             </div>
         </div>
+        <div class="talkbubble">
+        </div>
+
+        <div class="scene1-1"></div>
 
         <div class="talkbubble">
-            <div class="defaulttalk" style="background-color: rgb(153, 202, 244);"><b>Squiggy:</b> Hey, CeCe?
+            <div class="squiggytalk" style="background-color: rgb(153, 202, 244);"><b>Squiggy:</b> Hey, CeCe?
             </div>
         </div>
         <div class="talkbubble">
-            <div class="defaulttalk" style="background-color: rgb(243, 167, 167);"><b>CeCe:</b> What is it, Squiggy?
+            <div class="cecetalk" style="background-color: rgb(243, 167, 167);"><b>CeCe:</b> What is it, Squiggy?
             </div>
         </div>
         <div class="talkbubble">
-            <div class="defaulttalk" style="background-color: rgb(153, 202, 244);"><b>Squiggy:</b> Have you ever
+            <div class="squiggytalk" style="background-color: rgb(153, 202, 244);"><b>Squiggy:</b> Have you ever
                 wondered about the big questions? You know: Who
                 am I? Where Do I Belong? What Is My Purpose?
             </div>
         </div>
         <div class="talkbubble">
-            <div class="defaulttalk" style="background-color: rgb(243, 167, 167);"><b>CeCe:</b> Sure, Squig. I think
+            <div class="cecetalk" style="background-color: rgb(243, 167, 167);"><b>CeCe:</b> Sure, Squig. I think
                 everybody does.
             </div>
         </div>
+        <div class="talkbubble">
+        </div>
+
+        <div class="scene1-2"></div>
+
         <div class="talkbubble">
             <div class="defaulttalk" style="background-color: rgb(153, 202, 244);"><b>Squiggy:</b> But I have so many
                 questions, and I don't know any of the
@@ -133,10 +141,11 @@
                 your membrane!
             </div>
         </div>
-        <div class="talkbubble">  
+        <div class="talkbubble">
         </div>
 
         <div class="scene2" id="lastbg1"></div>
+
         <div class="talkbubble">
             <div class="cecetalk "><b>CeCe:</b> If you'd been paying attention, you would know that we can use the
                 Human Reference Atlas to figure out what you are and where you belong!
@@ -165,7 +174,22 @@
         <div class="talkbubble">
         </div>
 
-        <div class="scene4"></div>
+        <div class="scene6"></div>
+
+        <div class="videozoom">
+            <h1>This is the Human Reference Atlas's ASCT+B Reporter</h1>
+            <div class="fadeimage2">
+                <img src="img/vis.svg" class="zoompic1 imagepart">
+                <img src="img/vis2.svg" class="zoompic2 imagepart" style="height:20vh;top:50%;">
+            </div>
+
+            <p>Visit the site at <a href="https://hubmapconsortium.github.io/ccf-asct-reporter/"
+                    target="_blank">https://hubmapconsortium.github.io/ccf-asct-reporter/</a></p>
+        </div>
+
+
+        <div class="scene4" id="lastbg2"></div>
+
         <div class="talkbubble">
             <div class="squiggytalk "><b>Squiggy:</b> Where are we now?
             </div>
@@ -213,7 +237,7 @@
         <div class="talkbubble">
         </div>
 
-        <div class="scene6" id="lastbg"></div>
+        <div class="scene7"></div>
 
         <!-- Video -->
         <div class="section3" style="margin-top: 60px;">
@@ -222,8 +246,6 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
         </div>
-
-
 
         <!-- Link section-->
         <div class="externalLinks">
@@ -327,7 +349,27 @@
         trigger: ".scene1",
         anticipatePin: 1,
         start: "top top",
-        end: "+=900%",
+        end: "+=300%",
+        anticipatePin: 1,
+        pin: true,
+        pinSpacing: false
+    });
+
+    ScrollTrigger.create({
+        trigger: ".scene1-1",
+        anticipatePin: 1,
+        start: "top top",
+        end: "+=500%",
+        anticipatePin: 1,
+        pin: true,
+        pinSpacing: false
+    });
+
+    ScrollTrigger.create({
+        trigger: ".scene1-2",
+        anticipatePin: 1,
+        start: "top top",
+        end: "+=300%",
         anticipatePin: 1,
         pin: true,
         pinSpacing: false
@@ -338,7 +380,7 @@
         trigger: ".scene2",
         anticipatePin: 1,
         start: "top top",
-        end: "+=300%",
+        end: "+=400%",
         pin: true,
         pinSpacing: false
     });
@@ -347,7 +389,7 @@
     ScrollTrigger.create({
         trigger: ".scene3",
         start: "top top",
-        end: "+=400%",
+        end: "+=500%",
         pin: true,
         pinSpacing: false
     });
@@ -356,7 +398,7 @@
     ScrollTrigger.create({
         trigger: ".scene4",
         start: "top top",
-        end: "+=700%",
+        end: "+=400%",
         pin: true,
         pinSpacing: false
     });
@@ -379,7 +421,6 @@
             scrub: true
         }
     })
-
     newtime
         .to('#lastbg', {
             opacity: 1,
@@ -387,6 +428,51 @@
         .to('#lastbg', {
             opacity: 0,
         }, "<")
+
+    const newtime2 = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.scene7',
+            start: 'top top',
+            end: '-=100%',
+            scrub: true
+        }
+    })
+    newtime2
+        .to('#lastbg2', {
+            opacity: 1,
+        })
+        .to('#lastbg2', {
+            opacity: 0,
+        }, "<")
+
+    //laptop zoom part 
+    gsap.timeline({
+        scrollTrigger: {
+            autoAlpha: 1,
+            duration: 2.6,
+            trigger: ".videozoom",
+            start: "top",
+            end: "center 0px",
+            scrub: true,
+            pin: true,
+            defaults: { overwrite: "auto" }
+
+        }
+    })
+        .from(".zoompic1", {
+            opacity: 0,
+        })
+        .to(".zoompic1", { scale: 2, duration: 10.8 })
+                .to(".zoompic1", { scale: 2, duration: 10.8 })
+
+        .from(".zoompic2", {
+            opacity: 0,
+            scale: .5
+        })
+        .to(".zoompic2", { opacity: 1, scale: 1, duration: 10.8 }, "+=2")
+
+
+
 
     //fade in txt 
     const containers = gsap.utils.toArray(".container");
