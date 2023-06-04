@@ -860,26 +860,27 @@ h1 {
 .introcharcece {
     left: 10%;
     top: 25%;
+        width: 15%;
 }
 
 .introcharsquiggy {
     right: 10%;
-    top: 35%;
+    top: 31%;
     width: 15%;
 }
 
 
 @media all and (max-width:750px) {
     .introcharcece {
-        left: 25%;
-        width: 12%;
-        top: 68%;
+        left: 20%;
+        width: 22%;
+        top: 70%;
     }
 
     .introcharsquiggy {
         top: 74%;
         width: 22%;
-        right: 25%;
+        right: 20%;
     }
 }
 
@@ -982,7 +983,7 @@ h1 {
 }
 
 #two .scene2 {
-    background-image: url("img/2scene2.svg");
+    background-image: url("img/2scene2-2.svg");
     background-color: black;
     height: 100vh;
     overflow: hidden;
