@@ -754,22 +754,21 @@ h1 {
 }
 
 #two .videozoom {
-    background-image: none;
-    background: black;
-    margin: 0;
-    padding: 0;
-    width: 100vw;
+   
+    background-color: black;
     height: 100vh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: auto;
     overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
 }
 
 #two .videozoom img {
-    width: 40%;
+    width: 80%;
     margin: auto;
 }
 

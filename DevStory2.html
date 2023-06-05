@@ -176,7 +176,10 @@
 
         <div class="scene6"></div>
 
+        
+
         <div class="videozoom">
+
             <h1>This is the Human Reference Atlas's ASCT+B Reporter</h1>
             <div class="fadeimage2">
                 <img src="img/vis.svg" class="zoompic1 imagepart">
@@ -184,42 +187,45 @@
             </div>
 
             <p>Visit the site at <a href="https://hubmapconsortium.github.io/ccf-asct-reporter/"
-                    target="_blank">https://hubmapconsortium.github.io/ccf-asct-reporter/</a></p>
-        </div>
-
-
-        <div class="scene4"><img src="img/vis2.svg" style="margin: auto;
-    top: 40%;
-    position: relative;
-    justify-self: center;
-    left: 40%;">
-        </div>
-
+                    target="_blank">https://hubmapconsortium.github.io/ccf-asct-reporter/</a></p>                
+        </div>   
+       
         <div class="talkbubble">
-            <div class="cecetalk "><b>CeCe:</b> We're standing on top a simplified version of the Human Reference Atlas's ASCT+B Reporter!
+            <div class="cecetalk" style="margin-top:239px"><b>CeCe:</b> This is the Human Reference Atlas's ASCT+B Reporter!
+            </div>
+        </div>
+        
+        <div class="talkbubble">
+            <div class="squiggytalk" style="margin-top:257px"><b>Squiggy:</b> What does it do?
             </div>
         </div>
         <div class="talkbubble">
-            <div class="squiggytalk "><b>Squiggy:</b> What does it do?
+            <div class="cecetalk" style="margin-top:239px"><b>CeCe:</b> Well, it can help us solve your identity crisis!
             </div>
         </div>
         <div class="talkbubble">
-            <div class="cecetalk "><b>CeCe:</b> Well, it can help us solve your identity crisis!
-            </div>
-        </div>
-        <div class="talkbubble">
-            <div class="cecetalk "><b>CeCe:</b> You see, the ASCT+B Reporter allows researchers to explore anatomical
+            <div class="cecetalk" style="margin-top:239px"><b>CeCe:</b> You see, the ASCT+B Reporter allows researchers to explore anatomical
                 structures, cell types, and biomarkers that make up different organs.
             </div>
         </div>
         <div class="talkbubble">
-            <div class="cecetalk "><b>CeCe:</b> The data tables from which the Reporter gets its information are
+            <div class="cecetalk" style="margin-top:283px"><b>CeCe:</b> The data tables from which the Reporter gets its information are
                 authored
                 and reviewed by experts in their field.
             </div>
         </div>
         <div class="talkbubble">
         </div>
+       
+
+
+<!-- 
+        <div class="scene4"><img src="img/vis2.svg" style="margin: auto;
+    top: 40%;
+    position: relative;
+    justify-self: center;
+    left: 40%;">
+        </div> -->
 
         <div class="scene5"><img src="img/vis2.svg" style="margin: auto;
             top: 40%;
@@ -453,6 +459,17 @@
     });
 
     ScrollTrigger.create({
+        trigger: ".videozoom",
+        start: "top top",
+        end: "+=600%",
+        pin: true,
+        scrub: 1,
+        pinSpacing: false,
+    });
+
+    
+
+    ScrollTrigger.create({
         trigger: ".scene8",
         start: "top top",
         end: "+=700%",
@@ -525,30 +542,7 @@
             opacity: 1
         }, "<")
 
-    //laptop zoom part 
-    gsap.timeline({
-        scrollTrigger: {
-            autoAlpha: 1,
-            duration: 20,
-            trigger: ".videozoom",
-            start: "top",
-            end: "+=800px",
-            scrub: true,
-            pin: true,
-            defaults: { overwrite: "auto" }
-
-        }
-    })
-        .from(".zoompic1", {
-            opacity: 0,
-        })
-        .to(".zoompic1", { scale: 2 })
-
-        .from(".zoompic2", {
-            opacity: 0,
-            scale: .5
-        }, "+=10")
-        .to(".zoompic2", { opacity: 1, scale: 1 }, "+=6")
+    
 
 
     //fade in txt 
