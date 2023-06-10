@@ -285,6 +285,9 @@ header h2 {
     margin: 0 auto;
 }
 
+/*Line section*/
+
+
 /*extra effects*/
 .parallax {
     /* The image used */
@@ -1190,6 +1193,11 @@ h1 {
     opacity: 0;
 }
 
+.linesection{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
 
 #two .wrap-all {
     position: relative;
