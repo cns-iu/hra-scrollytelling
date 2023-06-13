@@ -185,38 +185,35 @@
 
         <div class="videozoom">
 
-            <h1>This is the Human Reference Atlas's ASCT+B Reporter</h1>
             <div class="fadeimage2">
                 <img src="img/vis.svg" class="zoompic1 imagepart">
                 <img src="img/vis2.svg" class="zoompic2 imagepart" style="height:20vh;top:50%;">
             </div>
 
-            <p>Visit the site at <a href="https://hubmapconsortium.github.io/ccf-asct-reporter/"
-                    target="_blank">https://hubmapconsortium.github.io/ccf-asct-reporter/</a></p>
         </div>
 
         <div class="talkbubble">
-            <div class="cecetalk" style="margin-top:239px"><b>CeCe:</b> This is the Human Reference Atlas's ASCT+B
+            <div class="cecetalk" style="margin-top:80px"><b>CeCe:</b> This is the Human Reference Atlas's ASCT+B
                 Reporter!
             </div>
         </div>
 
         <div class="talkbubble">
-            <div class="squiggytalk" style="margin-top:257px"><b>Squiggy:</b> What does it do?
+            <div class="squiggytalk" style="margin-top:26px"><b>Squiggy:</b> What does it do?
             </div>
         </div>
         <div class="talkbubble">
-            <div class="cecetalk" style="margin-top:239px"><b>CeCe:</b> Well, it can help us solve your identity crisis!
+            <div class="cecetalk" style="margin-top:80px"><b>CeCe:</b> Well, it can help us solve your identity crisis!
             </div>
         </div>
         <div class="talkbubble">
-            <div class="cecetalk" style="margin-top:239px"><b>CeCe:</b> You see, the ASCT+B Reporter allows researchers
+            <div class="cecetalk" style="margin-top:80px"><b>CeCe:</b> You see, the ASCT+B Reporter allows researchers
                 to explore anatomical
                 structures, cell types, and biomarkers that make up different organs.
             </div>
         </div>
         <div class="talkbubble">
-            <div class="cecetalk" style="margin-top:283px"><b>CeCe:</b> The data tables from which the Reporter gets its
+            <div class="cecetalk" style="margin-top:80px"><b>CeCe:</b> The data tables from which the Reporter gets its
                 information are
                 authored
                 and reviewed by experts in their field.
@@ -226,75 +223,9 @@
         </div>
 
 
-
-        <!-- 
-        <div class="scene4"><img src="img/vis2.svg" style="margin: auto;
-    top: 40%;
-    position: relative;
-    justify-self: center;
-    left: 40%;">
-        </div> -->
-
-        <!--  <div class="scene5"><img src="img/vis2.svg" style="margin: auto;
-            top: 40%;
-            position: relative;
-            justify-self: center;
-            left: 40%;"></div>
-        <div class="talkbubble">
-            <div class="cecetalk "><b>CeCe:</b> We start on the left with the organs that everybody knows: organs like
-                the large intestines, the kidney, the heart.
-            </div>
-        </div>
-        <div class="talkbubble">
-            <div class="squiggytalk "><b>Squiggy:</b> Yeah, those sound familiar.
-            </div>
-        </div>
-        <div class="talkbubble">
-            <div class="cecetalk "><b>CeCe:</b> Let's check out my favorite organ: the lungs!
-            </div>
-        </div>
-        <div class="talkbubble">
-        </div>
-
-        <div class="scene8" id="lastbg2"><img src="img/vis2.svg" style="margin: auto;
-            top: 40%;
-            position: relative;
-            justify-self: center;
-            left: 40%;"></div>
-        <div class="talkbubble">
-            <div class="cecetalk "><b>CeCe:</b> The ASCT+B Reporter is arranged as a tree diagram, which means that a
-                lot of information can be expressed in a clear and
-                compact way.
-            </div>
-        </div>
-        <div class="talkbubble">
-            <div class="cecetalk "><b>CeCe:</b> You see, Squig, the ASCT +B Tables are arranged as a partonomy.
-            </div>
-        </div>
-        <div class="talkbubble">
-            <div class="cecetalk "><b>CeCe:</b> Just as
-                the "lungs" are part of the larger "body"
-                category, our next stop, the "lobe of the lung," is part of the larger lung category.
-            </div>
-        </div>
-        <div class="talkbubble">
-            <div class="squiggytalk "><b>Squiggy:</b> I get it! So, where we're headed next, the lobar bronchus, is part
-                of the lobe of the lung.
-
-            </div>
-        </div>
-        <div class="talkbubble">
-            <div class="cecetalk "><b>CeCe:</b> Let's check out my favorite organ: the lungs!
-            </div>
-        </div>
-        <div class="talkbubble">
-        </div>
-
-        <div class="scene7"></div> -->
-
         <section class="linesection">
 
-            <svg width="90%" height="auto" viewBox="0 0 1493 3187" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <svg width="100%" viewBox="0 0 1493 3187" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                  <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
     <title>other</title>
     <desc>Created with Sketch.</desc>
@@ -564,26 +495,24 @@
     gsap.timeline({
             scrollTrigger: {
                 autoAlpha: 1,
-                duration: 1.6,
                 trigger: ".fadeimage",
-                start: "center 400px",
-                end: "center 0px",
-                scrub: true,
+                start: "top 00px",
+                end: "bottom 0px",
+                scrub: 1,
+                duration: 1,
                 pin: true,
             }
         })
-        .from(".picture1", {
-            opacity: 100,
-        })
+        
         .from(".picture2", {
             opacity: 0,
         })
         .from(".picture3", {
             opacity: 0,
+
         })
         .to(".picture3", {
             scale: 1.8,
-            duration: 1.8
         })
 
 
@@ -677,15 +606,6 @@
         pinSpacing: false
     });
 
-    //bg6
-    ScrollTrigger.create({
-        trigger: ".scene5",
-        start: "top top",
-        end: "+=600%",
-        pin: true,
-        scrub: 1,
-        pinSpacing: false,
-    });
 
     ScrollTrigger.create({
         trigger: ".videozoom",
@@ -697,17 +617,7 @@
     });
 
 
-
-    ScrollTrigger.create({
-        trigger: ".scene8",
-        start: "top top",
-        end: "+=700%",
-        pin: true,
-        scrub: 1,
-        pinSpacing: false,
-    });
-
-    const newtime = gsap.timeline({
+/*     const newtime = gsap.timeline({
         scrollTrigger: {
             trigger: '.scene6',
             start: 'top top',
@@ -737,41 +647,7 @@
         })
         .to('#lastbg2', {
             opacity: 0,
-        }, "<")
-
-    const newtime3 = gsap.timeline({
-        scrollTrigger: {
-            trigger: '.scene5',
-            start: 'top top',
-            end: 'top +=100%',
-            scrub: true
-        }
-    });
-    newtime3
-        .from('.scene5', {
-            opacity: 0
-        })
-        .to('.scene5', {
-            opacity: 1
-        }, "<")
-
-    const newtime4 = gsap.timeline({
-        scrollTrigger: {
-            trigger: '.scene8',
-            start: 'top top',
-            end: 'top +=100%',
-            scrub: true
-        }
-    });
-    newtime4
-        .from('.scene8', {
-            opacity: 0
-        })
-        .to('.scene8', {
-            opacity: 1
-        }, "<")
-
-
+        }, "<") */
 
 
     //fade in txt 
