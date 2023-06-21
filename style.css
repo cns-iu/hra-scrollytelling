@@ -1233,6 +1233,43 @@ h1 {
     font-size: 1.2rem;
 }
 
+#two .quizp{
+    width: 80%;
+    justify-content: center;
+    margin: auto;
+}
+
+#two .quizp details{
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+
+#two .choiceresult{
+    background-color: #596ba1;
+    border: none;
+    margin-top: 3px;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#two .radiochoice{
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+
+#two #result{
+    margin-top: 10px;
+    padding: 10px;
+    border: 3px dashed #f1f1f1;
+    visibility: hidden;
+    
+}
+
 
 /* Story three */
 #three .section1 {
