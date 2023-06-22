@@ -1040,12 +1040,43 @@ h1 {
 }
 
 #two .scene7 {
+    background-image: url("img/2scene5.svg");
     background-color: white;
-    height: 1px;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 #two .scene8 {
-    background-image: url("img/ASCT-4.svg");
+    background-image: url("img/2scene6.svg");
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#two .scene9 {
+    background-image: url("img/2scene7.svg");
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#two .scene10 {
+    background-image: url("img/2scene8.svg");
     background-color: white;
     height: 100vh;
     margin: 0;

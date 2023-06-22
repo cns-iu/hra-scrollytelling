@@ -182,7 +182,6 @@
         <div class="scene6"></div>
 
 
-
         <div class="videozoom">
 
             <div class="fadeimage2">
@@ -817,6 +816,60 @@
             </svg>
         </section>
 
+
+        <!--last talking section-->
+        <div>
+
+            <div class="scene7"></div>
+
+            <div class="talkbubble">
+                <div class="squiggytalk" style="background-color: rgb(153, 202, 244);"><b>Squiggy:</b> Do you think I
+                    have biomarkers that would help scientists identify what kind of cell type I am?
+                </div>
+            </div>
+            <div class="talkbubble">
+                <div class="cecetalk" style="background-color: rgb(243, 167, 167);"><b>CeCe:</b> You bet, Squig!
+                    Scientists have many ways of detecting the presence of characteristic biomarkers.
+                </div>
+            </div>
+            <div class="talkbubble">
+                <div class="cecetalk" style="background-color: rgb(243, 167, 167);"><b>CeCe:</b> Unfortunately, those
+                    are way too complicated to get into right now, so let me just look at that tag on your back.
+                </div>
+            </div>
+
+            <div class="talkbubble">
+            </div>
+
+            <div class="scene8"></div>
+
+            <div class="talkbubble">
+                <div class="squiggytalk" style="background-color: rgb(153, 202, 244);"><b>Squiggy:</b> Tag? What tag?
+                </div>
+            </div>
+            <div class="talkbubble">
+            </div>
+
+            <div class="scene9"></div>
+
+            <div class="talkbubble">
+                <div class="cecetalk" style="background-color: rgb(243, 167, 167);"><b>CeCe:</b> Right here!
+                </div>
+            </div>
+            <div class="talkbubble">
+            </div>
+
+            <div class="scene10"></div>
+
+            <div class="talkbubble">
+                <div class="squiggytalk" style="background-color: rgb(153, 202, 244);"><b>Squiggy:</b> Ooooh!
+                </div>
+            </div>
+            <div class="talkbubble">
+            </div>
+
+        </div>
+
         <!-- Video -->
         <div class="section3" style="margin-top: 60px;">
             <iframe width="100%" height="315" src="https://www.youtube.com/embed/pzUFmDhQEO8"
@@ -825,7 +878,7 @@
                 allowfullscreen></iframe>
         </div>
 
-        <!-- Quiz< -->
+        <!-- Quiz -->
         <div class="sectionquiz" style="margin-top: 60px;">
             <div class="quizp">
                 <h1>What are Cece's biomarkers?</h1>
@@ -878,11 +931,6 @@
                     }
                 }
             </script>
-
-        </div>
-
-
-
         </div>
 
         <!-- Link section-->
@@ -932,16 +980,16 @@
 <script>
     //intro part 
     gsap.timeline({
-            scrollTrigger: {
-                autoAlpha: 1,
-                trigger: ".fadeimage",
-                start: "top 00px",
-                end: "bottom 0px",
-                scrub: 1,
-                duration: 1,
-                pin: true,
-            }
-        })
+        scrollTrigger: {
+            autoAlpha: 1,
+            trigger: ".fadeimage",
+            start: "top 00px",
+            end: "bottom 0px",
+            scrub: 1,
+            duration: 1,
+            pin: true,
+        }
+    })
 
         .from(".picture2", {
             opacity: 0,
@@ -1045,6 +1093,40 @@
         pinSpacing: false
     });
 
+    //bg7
+    ScrollTrigger.create({
+        trigger: ".scene7",
+        start: "top top",
+        end: "+=400%",
+        pin: true,
+        pinSpacing: false
+    });
+
+    //bg8
+    ScrollTrigger.create({
+        trigger: ".scene8",
+        start: "top top",
+        end: "+=200%",
+        pin: true,
+        pinSpacing: false
+    });
+
+    ScrollTrigger.create({
+        trigger: ".scene9",
+        start: "top top",
+        end: "+=200%",
+        pin: true,
+        pinSpacing: false
+    });
+
+    ScrollTrigger.create({
+        trigger: ".scene10",
+        start: "top top",
+        end: "+=200%",
+        pin: true,
+        pinSpacing: false
+    });
+
 
     ScrollTrigger.create({
         trigger: ".videozoom",
@@ -1054,39 +1136,6 @@
         scrub: 1,
         pinSpacing: false,
     });
-
-
-    /*     const newtime = gsap.timeline({
-            scrollTrigger: {
-                trigger: '.scene6',
-                start: 'top top',
-                end: '-=100%',
-                scrub: true
-            }
-        });
-        newtime
-            .to('#lastbg', {
-                opacity: 1,
-            })
-            .to('#lastbg', {
-                opacity: 0,
-            }, "<")
-
-        const newtime2 = gsap.timeline({
-            scrollTrigger: {
-                trigger: '.scene7',
-                start: 'top top',
-                end: '-=100%',
-                scrub: true
-            }
-        });
-        newtime2
-            .to('#lastbg2', {
-                opacity: 1,
-            })
-            .to('#lastbg2', {
-                opacity: 0,
-            }, "<") */
 
 
     //fade in txt 
@@ -1108,8 +1157,8 @@
             autoAlpha: 1
         }).to(
             container, {
-                autoAlpha: 0
-            },
+            autoAlpha: 0
+        },
             0.5
         );
     });
@@ -1131,8 +1180,8 @@
             autoAlpha: 1
         }).to(
             obubble, {
-                autoAlpha: 0
-            },
+            autoAlpha: 0
+        },
             0.5
         );
     });
@@ -1156,8 +1205,8 @@
             autoAlpha: 1
         }).to(
             bubble, {
-                autoAlpha: 0
-            },
+            autoAlpha: 0
+        },
             0.5
         );
     });
@@ -1195,7 +1244,7 @@
     // helper function that returns and ease that bends time to ensure the tractor stays relatively centered. Requires MotionPathPlugin of course
     function pathEase(path, axis = "y", precision = 1) {
         let rawPath = MotionPathPlugin.cacheRawPathMeasurements(MotionPathPlugin.getRawPath(gsap.utils.toArray(path)[
-                0]), Math.round(precision * 12)),
+            0]), Math.round(precision * 12)),
             useX = axis === "x",
             start = rawPath[0][useX ? 0 : 1],
             end = rawPath[rawPath.length - 1][rawPath[rawPath.length - 1].length - (useX ? 2 : 1)],
@@ -1206,7 +1255,7 @@
             a = [],
             minIndex = 0,
             getClosest = p => {
-                while (positions[minIndex] <= p && minIndex++ < l) {}
+                while (positions[minIndex] <= p && minIndex++ < l) { }
                 a.push((p - positions[minIndex - 1]) / (positions[minIndex] - positions[minIndex - 1]) * inc +
                     minIndex * inc);
             },
