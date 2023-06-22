@@ -798,6 +798,10 @@ h1 {
     }
 }
 
+#two b{
+    text-shadow: 1px 1px 2px #00000061;
+}
+
 .cecevidtalk {
     top: -100%;
     position: relative;
@@ -1225,6 +1229,35 @@ h1 {
     border-style: solid;
     border-color: rgb(243, 167, 167) transparent transparent transparent;
 }
+
+.cecetalk2 {
+    padding: 12px;
+    color: black !important;
+    max-width: 400px;
+    width: 80%;
+    background-color: rgb(243, 167, 167);
+    box-shadow: rgba(0, 0, 0, 0.54) 0px 3px 8px;
+    border-radius: 22px;
+    margin: auto;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    left: 20px;
+    top: -30%;
+}
+
+.cecetalk2:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 100%; /* To the right of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    transform: rotate(-90deg);
+    border-color: rgb(243, 167, 167) transparent transparent transparent;
+}
+
 
 .spritecontainer {
     overflow: hidden;
