@@ -226,7 +226,6 @@
 
             <svg width="98%" height="auto" viewBox="0 0 1433 5010" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
-                <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
                 <title>other</title>
                 <desc>Created with Sketch.</desc>
                 <defs>
@@ -871,13 +870,17 @@
             <div class="scene11"></div>
 
             <div class="talkbubble">
-                <div class="squiggytalk" style="background-color: rgb(153, 202, 244);"><b>Squiggy:</b>But how will these help me find out what kind of cell I am?
+                <div class="squiggytalk" style="background-color: rgb(153, 202, 244);"><b>Squiggy:</b> But how will these help me find out what kind of cell I am?
                 </div>
             </div>
             <div class="talkbubble">
                 <div class="cecetalk" style="background-color: rgb(243, 167, 167);"><b>CeCe:</b> I'll show you. Ready to go on another journey, Squiggy?
                 </div>
             </div>
+            <div class="talkbubble">
+            </div>
+
+            <div class="scene12"></div>
             <div class="talkbubble">
                 <div class="squiggytalk" style="background-color: rgb(153, 202, 244);"><b>Squiggy:</b>Oh, CeCe, please... no more! Don't make me ride this crazy thing again. I haven't recovered from the last trip!
                 </div>
@@ -898,6 +901,11 @@
                 <div class="cecetalk" style="background-color: rgb(243, 167, 167);"><b>CeCe:</b> Those nice people out there who have been scrolling along and reading our adventure.
                 </div>
             </div>
+            <div class="talkbubble">
+            </div>
+
+            <div class="scene13"></div>
+
             <div class="talkbubble">
                 <div class="cecetalk" style="background-color: rgb(243, 167, 167);"><b>CeCe:</b> How about it readers? Want to help out our friend?
                 </div>
@@ -1021,7 +1029,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/MotionPathPlugin.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
 
 
@@ -1180,12 +1187,26 @@
     ScrollTrigger.create({
         trigger: ".scene11",
         start: "top top",
-        end: "+=1200%",
+        end: "+=300%",
         pin: true,
         pinSpacing: false
     });
 
+    ScrollTrigger.create({
+        trigger: ".scene12",
+        start: "top top",
+        end: "+=600%",
+        pin: true,
+        pinSpacing: false
+    });
 
+    ScrollTrigger.create({
+        trigger: ".scene13",
+        start: "top top",
+        end: "+=500%",
+        pin: true,
+        pinSpacing: false
+    });
 
     ScrollTrigger.create({
         trigger: ".videozoom",

@@ -748,7 +748,6 @@ h1 {
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: calc(100vw/1.77);
     height: 100vh;
     max-width: 942px;
     display: flex;
@@ -1089,6 +1088,30 @@ h1 {
 
 #two .scene11 {
     background-image: url("img/2scene9.svg");
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#two .scene12 {
+    background-image: url("img/2scene10.svg");
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#two .scene13 {
+    background-image: url("img/2scene11.svg");
     background-color: white;
     height: 100vh;
     margin: 0;
