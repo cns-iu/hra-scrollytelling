@@ -1087,6 +1087,18 @@ h1 {
     background-size: cover;
 }
 
+#two .scene11 {
+    background-image: url("img/2scene9.svg");
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
 #two .externalLinks {
     background-color: #f1f1f1;
     padding: 15px;
