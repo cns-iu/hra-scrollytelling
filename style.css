@@ -675,7 +675,14 @@ h1 {
     opacity: 1;
 }
 
+
 /* Story two */
+.expandtext{
+    transform:scale(1.5);
+    -webkit-transform:scale(1.5);
+    
+}
+
 #two .section1 {
     background: black;
     margin: 0;
@@ -706,7 +713,6 @@ h1 {
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 8rem;
     visibility: hidden;
     font-size: 1.5rem;
     text-align: center;
@@ -720,7 +726,6 @@ h1 {
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 8rem;
     visibility: hidden;
     font-size: 1.5rem;
     text-align: center;
@@ -736,7 +741,6 @@ h1 {
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 8rem;
     font-size: 1.5rem;
     text-align: center;
     flex-direction: column;
@@ -1289,9 +1293,10 @@ h1 {
 }
 
 .linesection{
-    margin: 20px;
+    margin: 10px;
     display: flex;
     justify-content: center;
+    overflow-x: hidden;
 }
 
 #two .wrap-all {
