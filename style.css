@@ -798,10 +798,6 @@ h1 {
     }
 }
 
-#two .talkbubble b{
-    text-shadow: 1px 1px 2px #00000061;
-}
-
 .cecevidtalk {
     top: -100%;
     position: relative;
