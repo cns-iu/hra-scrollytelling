@@ -76,17 +76,25 @@
         <div class="container">
             (of the body)
         </div>
+
+        
+       
+    </section>
+
+    <section class="section13">
+   
         <div class="container2 introline">
-            <p style="z-index:200">On this week's episode:&nbsp;</p>
-            <h1 style="z-index:200;font-size: 1.6em;">Squiggy's Identity Crisis!</h1>
+            <p>On this week's episode:&nbsp;</p>
+            <h1 style="font-size: 1.6em;">Squiggy's Identity Crisis!</h1>
             <div class="popupsection">
                 <img class="introlineimg introcharcece" src="img/charcece_popup.svg">
                 <img class="introlineimg introcharsquiggy" src="img/charsquigg_popup.svg">
             </div>
         </div>
-        <div class="container">
-        </div>
+       
     </section>
+
+   
 
     <section class="section2">
         <div class="limit">
@@ -887,13 +895,29 @@
     }
     window.onload = typeWriter;
 
-    //play sound
-     ScrollTrigger.create({
-        trigger: ".introline",
-        start: "top top",
-        end: "+=400%",
-        pin: true,
-        pinSpacing: true,
+   //fade in txt 
+   const containers2 = gsap.utils.toArray(".container2");
+    containers2.forEach((container2) => {
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                onRefresh: self => self.progress && self.animation.progress(1),
+                start: "top top",
+                end:"+=400%",
+                trigger: container2,
+                pin: true,
+                scrub: true,
+                markers: false
+            }
+        });
+
+        tl.to(container2, {
+            autoAlpha: 1
+        }).to(
+            container2, {
+            autoAlpha: 0
+        },
+            0.5
+        );
     });
 
    /*  function playsound() {

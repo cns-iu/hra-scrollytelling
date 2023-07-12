@@ -690,6 +690,13 @@ h1 {
     width: 100%;
 }
 
+#two .section13 {
+    background: black;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
 #two .section2 {
     margin: 0;
     padding: 0;
@@ -855,6 +862,22 @@ h1 {
     flex-direction: column;
 }
 
+#two .container2 {
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 8rem;
+    visibility: hidden;
+    font-family: 'Cutive', serif;
+    font-size: 1.5rem;
+    text-align: center;
+    flex-direction: column;
+}
+
+
 .introlineimg {
     position: absolute;
     width: 10%;
@@ -908,6 +931,15 @@ h1 {
 }
 
 #two .container p {
+    color: white;
+}
+
+
+#two .container2 h1 {
+    line-height: 60px;
+}
+
+#two .container2 p {
     color: white;
 }
 
