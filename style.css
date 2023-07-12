@@ -1129,13 +1129,21 @@ h1 {
 #two .externalLinks {
     background-color: #f1f1f1;
     padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    font-weight: 600;
     font-family: 'PT Sans', sans-serif;
     max-width: 942px;
     margin: auto;
     margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#two .externalLinks a {
+    color: #596ba1;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#two .scrollbubble{
+    opacity: 0;
 }
 
 #two .acknowledgements {
