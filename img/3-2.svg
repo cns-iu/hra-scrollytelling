@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1923px" height="1131px" viewBox="0 0 1923 1131" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Group 14</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-14">
+            <g id="Group-6">
+                <g id="2scene1-(2)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g id="Layer_3">
+                        <polygon id="Path" points="1922 1082 0.5 1082 0.5 0.5 1921 0.5"></polygon>
+                    </g>
+                </g>
+                <rect id="Rectangle" fill="#3E3E3E" x="0" y="909" width="1923" height="222"></rect>
+            </g>
+            <g id="Group-11" transform="translate(440.000000, 187.000000)">
+                <rect id="Rectangle" fill="#7E6E60" x="160" y="308" width="103" height="187" rx="8"></rect>
+                <ellipse id="Oval" fill="#7E6E60" cx="51" cy="213.5" rx="41" ry="45.5"></ellipse>
+                <ellipse id="Oval" fill="#7E6E60" cx="374" cy="213.5" rx="41" ry="45.5"></ellipse>
+                <ellipse id="Oval" fill="#908073" cx="211" cy="186" rx="162" ry="183"></ellipse>
+                <path d="M270.364407,92.8911097 C351.176025,92.8911097 367,175.830582 367,116.782923 C367,57.7352629 295.217769,0 214.406151,0 C133.594533,0 59,57.7352629 59,116.782923 C59,164.391607 83.5386821,92.8911097 150.141377,92.8911097 C196.534715,92.8911097 254.70922,92.8911097 270.364407,92.8911097 Z" id="Oval" fill="#5C5C5C"></path>
+                <g id="Group-10" transform="translate(80.000000, 125.000000)">
+                    <rect id="Rectangle" stroke="#393939" stroke-width="8" fill="#D8D8D8" x="4" y="4" width="116.356846" height="94" rx="8"></rect>
+                    <rect id="Rectangle" stroke="#393939" stroke-width="8" fill="#D8D8D8" x="149.643154" y="4" width="116.356846" height="94" rx="8"></rect>
+                    <polygon id="Rectangle" fill="#F4F4F4" points="261.037344 8.96703297 261.037344 93.032967 164.688797 93.032967"></polygon>
+                    <rect id="Rectangle" stroke="#393939" stroke-width="8" fill="#393939" x="120.514523" y="48.8351648" width="26.7302905" height="5.45054945" rx="2.72527473"></rect>
+                </g>
+                <path d="M180,281 C195.161377,285.666667 207.161377,288 216,288 C224.838623,288 236.838623,285.666667 252,281" id="Line-2" stroke="#393939" stroke-width="3" stroke-linecap="square"></path>
+                <path d="M384.942911,910.942911 C367.298882,928.586941 342.923882,939.5 316,939.5 L99,939.5 C72.0761184,939.5 47.7011184,928.586941 30.0570888,910.942911 C12.4130592,893.298882 1.5,868.923882 1.5,842 L1.5,488 C1.5,461.076118 12.4130592,436.701118 30.0570888,419.057089 C47.7011184,401.413059 72.0761184,390.5 99,390.5 L157.09315,390.5 L216.010277,474.014581 L264.644389,390.5 L316,390.5 C342.923882,390.5 367.298882,401.413059 384.942911,419.057089 C402.586941,436.701118 413.5,461.076118 413.5,488 L413.5,842 C413.5,868.923882 402.586941,893.298882 384.942911,910.942911 Z" id="Rectangle" stroke="#979797" stroke-width="3" fill="#D8D8D8"></path>
+                <path d="M288.651503,438.17692 L217.247496,468.942747 L263.006325,384.209992 L288.651503,438.17692 Z" id="Triangle" stroke="#979797" stroke-width="2" fill="#D8D8D8"></path>
+                <path d="M216.733706,435.299889 L142.734816,469.628916 L197.644117,385.194286 L216.733706,435.299889 Z" id="Triangle" stroke="#979797" stroke-width="2" fill="#D8D8D8" transform="translate(179.000000, 427.500000) scale(-1, 1) translate(-179.000000, -427.500000) "></path>
+                <rect id="Rectangle" stroke="#8C8C8C" stroke-width="2" fill="#8C8C8C" x="217" y="467" width="1" height="476"></rect>
+                <rect id="Rectangle" stroke="#8C8C8C" stroke-width="2" fill="#8C8C8C" transform="translate(349.000000, 688.500000) scale(-1, 1) translate(-349.000000, -688.500000) " x="349" y="540" width="1" height="297"></rect>
+                <rect id="Rectangle" stroke="#8C8C8C" stroke-width="2" fill="#8C8C8C" x="57" y="540" width="1" height="307"></rect>
+                <g id="Group-12" transform="translate(490.000000, 523.000000)" stroke-width="2">
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="8" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="24" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="40" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="56" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="72" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="88" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="104" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="120" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="136" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="152" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="168" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="184" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="200" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="216" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="232" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#3D3D3D" fill="#969696" x="248" y="1" width="11" height="41"></rect>
+                    <rect id="Rectangle" stroke="#333333" fill="#636366" x="1" y="26" width="268" height="41"></rect>
+                </g>
+                <g id="Group-16" transform="translate(666.000000, 230.000000)" stroke="#333333" stroke-width="3">
+                    <rect id="Rectangle" fill="#B7B7B7" x="1.5" y="1.5" width="373" height="512"></rect>
+                    <rect id="Rectangle" fill="#D8D8D8" x="1.5" y="1.5" width="32" height="512"></rect>
+                </g>
+                <g id="Group-15" transform="translate(462.500000, 685.000000) rotate(60.000000) translate(-462.500000, -685.000000) translate(366.000000, 527.000000)">
+                    <ellipse id="Oval" fill="#908073" transform="translate(60.500000, 57.000000) scale(-1, 1) translate(-60.500000, -57.000000) " cx="60.5" cy="57" rx="60.5" ry="57"></ellipse>
+                    <rect id="Rectangle" stroke="#979797" stroke-width="3" fill="#D8D8D8" transform="translate(112.250404, 195.769156) scale(-1, 1) rotate(20.000000) translate(-112.250404, -195.769156) " x="68.7504038" y="86.2691556" width="87" height="219"></rect>
+                </g>
+            </g>
+            <rect id="Rectangle" fill="#535353" x="0" y="909" width="1923" height="222"></rect>
+        </g>
+    </g>
+</svg>

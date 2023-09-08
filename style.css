@@ -889,7 +889,7 @@ h1 {
 .introcharcece {
     left: 10%;
     top: 25%;
-        width: 15%;
+    width: 15%;
 }
 
 .introcharsquiggy {
@@ -1409,6 +1409,72 @@ h1 {
     border: 3px dashed #f1f1f1;
     visibility: hidden;
     
+}
+
+#two .scene3-1 {
+    background-image: url("img/3-4.svg");
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#two .scene3-2 {
+    background-image: url("img/3-5.svg");
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+.imageintrosec {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+.imageparts:not(.outsole) {
+    position: absolute;
+}
+
+.imageparts svg{
+    height:100vh;
+}
+
+.imageintro1 {
+    width: 100%;
+    height:100vh;
+
+}
+
+.imageintro2 {
+    width: 100%;
+    height:100vh;
+
+    opacity: 100;
+}
+
+.imageintro3 {
+    width: 100%;
+    height:100vh;
+
+    opacity: 100;
 }
 
 

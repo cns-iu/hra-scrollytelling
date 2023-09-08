@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1923px" height="1131px" viewBox="0 0 1923 1131" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Group 21</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-21">
+            <g id="Group-6">
+                <g id="2scene1-(2)">
+                    <g id="Layer_3">
+                        <polygon id="Path" fill="#FBFBFB" fill-rule="nonzero" points="1922 1082 0.5 1082 0.5 0.5 1921 0.5"></polygon>
+                        <path d="M1046.54574,1124.13968 C1433.86152,1124.13968 1769.71823,1124.13968 1907.4696,1124.13968 C1969.6211,1124.13968 1862.05389,57.665218 919.683199,57.665218 C76.6652655,57.665218 -37.526892,1124.13968 9.882837,1124.13968 C443.381708,1124.13968 510.000424,1124.13968 1046.54574,1124.13968 Z" id="Oval" fill="#D5D5D5"></path>
+                    </g>
+                </g>
+                <rect id="Rectangle" fill="#3E3E3E" x="0" y="909" width="1923" height="222"></rect>
+            </g>
+            <rect id="Rectangle" stroke="#979797" fill="#CC7E7E" x="448.5" y="298.5" width="965" height="609"></rect>
+            <text id="TISSUE-BLOCK-STAND-I" font-family="HoeflerText-Black, Hoefler Text" font-size="50" font-weight="bold" fill="#131313">
+                <tspan x="718.95" y="589">TISSUE BLOCK</tspan>
+                <tspan x="738.8" y="649">STAND IN ART</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
