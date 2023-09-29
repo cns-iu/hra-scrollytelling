@@ -92,11 +92,11 @@
        
     </section>
 
-    <section id="introImageSection" style="height: 84vh;">
+    <section id="introImageSection" style="height: 100vh;">
         <div class="imageintrosec" style="overflow: hidden;">
-            <img src="img/3-1.svg" class="imageintro1 imageparts" style="width: 100%; height: 100vh;">
-            <img src="img/3-2.svg" class="imageintro2 imageparts" style="width: 100%;height: 100vh;" >
-            <img src="img/3-3.svg" class="imageintro3 imageparts" style="width: 100%;height: 100vh;">
+            <img src="img/3-1.svg" class="imageintro1 imageparts" style="width: auto; height: 100%;">
+            <img src="img/3-2.svg" class="imageintro2 imageparts" style="width: auto; height: 100%;">
+            <img src="img/3-3.svg" class="imageintro3 imageparts" style="width: auto; height: 100%;">
         </div>
     </section>
 
@@ -196,6 +196,14 @@
         </div>
         
         <div class="talkbubble">
+        </div>
+
+        <div class="videozoom">
+            <div class="fadeimage2">
+                <img src="img/3vis.svg" class="zoompic1 imagepart">
+                <img src="img/vis2.svg" class="zoompic2 imagepart" style="height:20vh;top:50%;">
+            </div>
+
         </div>
 
         <div class="scene3-6"></div>
@@ -487,6 +495,15 @@ Tissue storage unit
         end: "+=600%",
         pin: true,
         pinSpacing: false
+    });
+
+    ScrollTrigger.create({
+        trigger: ".videozoom",
+        start: "top top",
+        end: "+=600%",
+        pin: true,
+        scrub: 1,
+        pinSpacing: false,
     });
 
     //fade in txt 

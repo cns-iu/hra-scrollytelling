@@ -1489,7 +1489,7 @@ h1 {
     min-width: 100%;
 }
 #two .scene3-5 {
-    background-image: url("img/3-4.svg");
+    background-image: url("img/3-6-1.svg");
     background-color: black;
     height: 100vh;
     overflow: hidden;
@@ -1562,6 +1562,9 @@ h1 {
     background-position: center center;
     background-size: cover;
     min-width: 100%;
+    margin: auto;
+    justify-content: center;
+    display: flex;
 }
 
 .imageparts:not(.outsole) {
