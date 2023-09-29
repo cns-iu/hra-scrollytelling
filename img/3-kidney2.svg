@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="287px" height="441px" viewBox="0 0 287 441" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Oval</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M65.9279252,441 C209.531753,441 287,386.23231 287,264.453523 C287,142.674736 209.531753,0 65.9279252,0 C19.5978171,0 5.95496946,44.2195726 8.14228286,59.7401284 C12.7410423,92.3716216 34.8230287,102.304054 34.8230287,133.822878 C34.8230287,168.730198 8.14228286,181.646898 8.14228286,208.979636 C8.14228286,244.776872 34.8230287,291.47575 28.4023562,311.076082 C4.02735496,385.485439 -35.4631319,441 65.9279252,441 Z" id="path-1"></path>
+        <filter x="-4.9%" y="-3.2%" width="109.8%" height="106.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="13" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="2" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Oval">
+            <use fill="#532430" fill-rule="evenodd" xlink:href="#path-1"></use>
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>
