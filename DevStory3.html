@@ -229,7 +229,7 @@
         <div class="talkbubble">
         </div>
 
-        <div class="scene3-7"></div>
+        <div class="scene3-7" id="changehere"></div>
         <div class="talkbubble">
             <div class="squiggytalk"><b>Squiggy:</b> Look at us, CeCe, we're registering tissue!
             </div>
@@ -675,29 +675,28 @@ Tissue storage unit
         })
 
 
-
-
+//change expression
 const timeline = gsap.timeline({
   scrollTrigger: {
     trigger: "#triggerworriedface",
-    toggleActions: 'play none none none',
+    onEnter: changebg,
+    onEnterBack: rechangebg,
     markers: false,
-    start: "top+=1 top",
+    start: "top",
+    end: "+=100%",
     id: "scene3-6"
   }
 });
 
-timeline.to(
-  ".scene3-6",{
-    backgroundImage: 'url("https://cns-iu.github.io/hra-scrollytelling/img/3-9-2.svg")',
+    function changebg()  {
+            var changebg = document.getElementById("changehere");
+            changebg.style.backgroundImage = "url('img/392.svg')";
   }
-);
-       
 
- /*        function changebg()  {
-            console.log("what the fuck");
-            document.getElementsByClassName("scene3-6").style.backgroundImage = "url('img/3-9-2.svg')";
-  } */
+  function rechangebg()  {          
+            var changebg = document.getElementById("changehere");
+            changebg.style.backgroundImage = "url('img/3-9.svg')";
+  }
        
        
 </script>
