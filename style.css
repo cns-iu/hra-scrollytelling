@@ -1299,6 +1299,11 @@ h1 {
     border-color: rgb(243, 167, 167) transparent transparent transparent;
 }
 
+
+#charsquiggyworried{
+    opacity: 0;
+}
+
 .cecetalk3 {
     padding: 12px;
     color: black !important;

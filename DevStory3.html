@@ -207,7 +207,8 @@
         <div class="talkbubble">
         </div>
 
-        <div class="scene3-6"></div>
+        <div class="scene3-6" id="changethisbg"></div>
+     
         <div class="talkbubble">
             <div class="cecetalk"  style="top: -10%; left:0%"><b>Cece:</b> All researchers need to do is select the correct organ. 
             </div>
@@ -230,7 +231,7 @@
 
         <div class="scene3-7"></div>
         <div class="talkbubble">
-            <div class="squiggytalk"><b>Squiggy:</b> Look at us, Ce Ce, we're registering tissue!
+            <div class="squiggytalk"><b>Squiggy:</b> Look at us, CeCe, we're registering tissue!
             </div>
         </div>
         <div class="talkbubble">
@@ -238,7 +239,7 @@
             top: 20%;"><b>Cece:</b> Now this is kind of cool. Watch as we move into the space of the 3D model, we'll see an example of what's known as "collision detection."
             </div>
         </div>
-        <div class="talkbubble">
+        <div class="talkbubble" id="triggerworriedface">
             <div class="squiggytalk"><b>Squiggy:</b> Collision!! Ahhh!!! Ce Ce, I knew your crazy adventures would be the end of me! Oh, goodbye cruel world!
             </div>
         </div>
@@ -673,8 +674,31 @@ Tissue storage unit
             delay: 1
         })
 
-     
 
+
+
+const timeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#triggerworriedface",
+    toggleActions: 'play none none none',
+    markers: false,
+    start: "top+=1 top",
+    id: "scene3-6"
+  }
+});
+
+timeline.to(
+  ".scene3-6",{
+    backgroundImage: 'url("https://cns-iu.github.io/hra-scrollytelling/img/3-9-2.svg")',
+  }
+);
+       
+
+ /*        function changebg()  {
+            console.log("what the fuck");
+            document.getElementsByClassName("scene3-6").style.backgroundImage = "url('img/3-9-2.svg')";
+  } */
+       
        
 </script>
 
