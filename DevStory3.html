@@ -121,7 +121,7 @@
 
         <div class="scene3-2"></div>
         <div class="talkbubble">
-            <div class="defaulttalk" style="top:-30%;background-color: rgb(243, 167, 167);"><b>CeCe:</b> Oh, I really hate seeing this!
+            <div class="defaulttalk" style="top:-30%;background-color: rgb(243, 167, 167);"><b>CeCe:</b> Oh, I do <b>NOT</b> like seeing that!
             </div>
         </div>
         <div class="talkbubble">
@@ -272,7 +272,11 @@
             </div>
         </div>
         <div class="talkbubble">
-            <div class="cecetalk" style="top: -25%; left:0%"><b>Cece:</b> The more tissue that's registered, and the more other researchers can benefit from your correctly identified data, the more complete our picture of the human body becomes. And that's a very good thing for understanding our body in health and disease! 
+            <div class="cecetalk" style="top: -25%; left:0%"><b>Cece:</b> The more tissue that's registered, and the more other researchers can benefit from your correctly identified data, the more complete our picture of the human body becomes. 
+            </div>
+        </div>
+        <div class="talkbubble">
+            <div class="cecetalk" style="top: -25%; left:0%"><b>Cece:</b>And that's a very good thing for understanding our body in health and disease! 
             </div>
         </div>
         
@@ -281,7 +285,7 @@
 
         <div class="scene3-9"></div>
         <div class="talkbubble">
-            <div class="cecetalk"><b>Cece:</b> So click on <a href="https://hubmapconsortium.github.io/ccf-ui/rui/">this link</a> to the Registration User Interface and register your tissue data today!
+            <div class="cecetalk"><b>Cece:</b> So click on <b><a href="https://hubmapconsortium.github.io/ccf-ui/rui/" target="_blank" style="text-decoration: underline;">this link</a></b> to the Registration User Interface and register your tissue data today!
             </div>
         </div>
         <div class="talkbubble">
@@ -309,10 +313,13 @@
         <div class="externalLinks">
             <b>External links</b>
             <ul>
-                <li>See the <a href="https://humanatlas.io/asctb-tables" target="_blank">ASCT+B</a> tables in all their Excel spreadsheet glory!</li>
-                <li>Want to look at some cool <a href="https://humanatlas.io/3d-reference-library" target="_blank">3D organs</a>? Why, of course you do!</li>
-                <li>Or are <a href="https://humanatlas.io/2d-ftu-illustrations" target="_blank" >2D functional tissue units</a> more your style?</li>
-                <li>Ready to go deeper? Check out this paper on <a href="https://www.nature.com/articles/s41556-021-00788-6" target="_blank">ASCT+B tables from <i>Nature Cell Biology</i></a>.</li>
+                <li>If you prefer your demos conducted by whole human beings (and not just individual cells), check out this video on the <a href="https://www.youtube.com/watch?v=gY3_-LIoKaU" target="_blank">Registration User Interface</a>.</li>
+                <li>Now that you've learned about registering tissue data, it's time to go exploring! Visit the <a href="https://humanatlas.io/exploration-user-interface" target="_blank">Exploration User Interface</a>.
+                </li>
+                <li>Alright smarty pants, I bet you're ready to read a paper about this! Check out <a href="https://cns.iu.edu/docs/publications/2022-Borner_Tissue-Registration-and-EUIs.pdf" target="_blank">this one from the journal <i>Communications Biology</i></a>.
+                </li>
+                <li>Did you miss CeCe and Squiggy's first adventure? Simply <a href="https://cns-iu.github.io/hra-scrollytelling/story2.html#section2-1" target="_blank">click here</a>!
+                </li>
             </ul>
         </div>
 
@@ -496,7 +503,7 @@ Tissue storage unit
         trigger: ".scene3-8",
         anticipatePin: 1,
         start: "top top",
-        end: "+=400%",
+        end: "+=500%",
         pin: true,
         pinSpacing: false
     });
@@ -681,6 +688,7 @@ const timeline = gsap.timeline({
     trigger: "#triggerworriedface",
     onEnter: changebg,
     onEnterBack: rechangebg,
+    onLeave: rechangebg,
     markers: false,
     start: "top",
     end: "+=100%",
