@@ -1545,6 +1545,7 @@ h1 {
     background-size: cover;
     min-width: 100%;
 }
+
 #two .scene3-8 {
     background-image: url("img/3-10.svg");
     background-color: black;
@@ -1561,6 +1562,18 @@ h1 {
 #two .scene3-9 {
     background-color: black;
     height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#two .scene3-10 {
+    background-color: white;
+    height: auto;
     overflow: hidden;
     margin: 0;
     top: 0;
@@ -1629,6 +1642,21 @@ opacity: 1;
 
 #kidneypart2{
     opacity: 0;
+}
+#kidneypart3{
+    opacity: 0;
+}
+
+#kidneypart4{
+    opacity: 0;
+}
+
+#changehere{
+    overflow: hidden;
+}
+
+.externalLinks li a {
+    z-index: 10000;
 }
 
 .threelung1 {
