@@ -878,6 +878,13 @@ h1 {
     flex-direction: column;
 }
 
+.introline .descriptionsection{
+    font-family: "Inter", serif !important;
+    opacity: .5;
+    max-width: 80%;
+    margin-top: -10px;
+
+}
 
 .introlineimg {
     position: absolute;
