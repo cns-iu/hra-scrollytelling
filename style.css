@@ -1551,8 +1551,11 @@ h1 {
     opacity: 0;
 }
 
+#Rectangle7{
+    opacity: 0;
+}
+
 #two .scene3-6 {
-    background-image: url("img/3-8.svg");
     background-color: black;
     height: 100vh;
     overflow: hidden;
