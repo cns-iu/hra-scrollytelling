@@ -1525,6 +1525,8 @@ h1 {
     background-position: center center;
     background-size: cover;
     min-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 #Rectangle1{
@@ -1565,6 +1567,8 @@ h1 {
     background-position: center center;
     background-size: cover;
     min-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 #two .scene3-7 {
