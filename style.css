@@ -1559,7 +1559,7 @@ h1 {
     background-color: black;
     height: 100vh;
     overflow: hidden;
-    margin: 0;
+    margin: auto;
     top: 0;
     background-repeat: no-repeat;
     background-position: center center;
