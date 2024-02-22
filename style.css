@@ -1863,6 +1863,94 @@ opacity: 1;
     z-index: 20;
 }
 
+
+/* Story four */
+#four .talkbubble{
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    color: black;
+    top:20vh;
+    visibility: hidden;
+    font-size: 1.5rem;
+    text-align: center;
+    flex-direction: column;
+}
+
+#four .scene1 {
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#four .externalLinks {
+    background-color: #f1f1f1;
+    padding: 15px;
+    font-family: 'PT Sans', sans-serif;
+    max-width: 942px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#four .scene3{
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+    margin: auto;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#four #SideLogos{
+    opacity: 0;
+}
+
+#four #Locks{
+    opacity: 0;
+}
+
+#four #Mess{
+    opacity: 0;
+}
+
+#four #TypeLogos{
+    opacity: 0;
+}
+
+#LogoLine1,#Line,#LogoLine2,#LogoLine3{
+    stroke:url(#gradient1);
+    stroke-width: 5;
+}
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
 /*Table styles*/
 .tableExample {
     margin-top: auto;
