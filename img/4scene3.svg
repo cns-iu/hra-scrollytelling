@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1921px" height="1180px" viewBox="0 0 1921 1180" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="99.5038007%" id="radialGradient-1">
+            <stop stop-color="#FF0043" offset="0%"></stop>
+            <stop stop-color="#AF0221" offset="100%"></stop>
+        </radialGradient>
+        <radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="99.5038007%" id="radialGradient-2">
+            <stop stop-color="#0075FF" offset="0%"></stop>
+            <stop stop-color="#1F02AF" offset="100%"></stop>
+        </radialGradient>
+        <radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="99.5038007%" id="radialGradient-3">
+            <stop stop-color="#B276FF" offset="0%"></stop>
+            <stop stop-color="#8E4AB6" offset="100%"></stop>
+        </radialGradient>
+        <circle id="path-4" cx="666.5" cy="480.5" r="22.5"></circle>
+        <circle id="path-5" cx="1119.5" cy="463.5" r="22.5"></circle>
+        <circle id="path-6" cx="959.5" cy="686.5" r="22.5"></circle>
+    </defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Initial" transform="translate(322.000000, 230.000000)">
+            <path d="M667.167647,548.527852 C758.219005,548.527852 862,487.46859 862,416.5 C862,375.618869 805.042067,336.96524 746,308.424697 C702.546561,287.419594 666.70663,270.209225 607,270.209225 C466.167389,270.209225 352,345.53141 352,416.5 C352,466.8312 408.923898,484.686564 495.929319,501 C549.262915,511 607,548.527852 667.167647,548.527852 Z" id="Purple" fill-opacity="0.5" fill="#DBC0FF"></path>
+            <path d="M266.182476,739 C433.976261,739 570,622.370616 570,478.500979 C570,417.03036 515.105541,362.371409 473.573354,317.818914 C417.901045,258.097996 362.283664,218 266.182476,218 C98.3886902,218 0,232.343451 0,376.213088 C0,435.823074 11.8283833,560.236535 51.1158371,604.135535 C106.64927,666.187462 167.911248,739 266.182476,739 Z" id="Oval" fill-opacity="0.2" fill="#EA013A"></path>
+            <circle id="Oval" fill="url(#radialGradient-1)" cx="101.5" cy="378.5" r="19.5"></circle>
+            <circle id="Oval" fill="url(#radialGradient-1)" cx="428.5" cy="416.5" r="19.5"></circle>
+            <circle id="Oval" fill="url(#radialGradient-1)" cx="265.5" cy="605.5" r="19.5"></circle>
+            <path d="M972.685452,739 C1140.47924,739 1276.50298,622.370616 1276.50298,478.500979 C1276.50298,417.03036 1245.00329,326.052495 1203.4711,281.5 C1147.79879,221.779083 1068.78664,218 972.685452,218 C804.891667,218 706.502977,232.343451 706.502977,376.213088 C706.502977,435.823074 699.388281,602.880983 738.675735,646.779983 C794.209168,708.83191 874.414225,739 972.685452,739 Z" id="Oval" fill-opacity="0.2" fill="#0F73F8" transform="translate(991.251488, 478.500000) scale(-1, 1) translate(-991.251488, -478.500000) "></path>
+            <g id="Systempt2" transform="translate(43.000000, 298.000000)" fill="#000000" font-family="Helvetica-Bold, Helvetica" font-size="30" font-weight="bold">
+                <text id="Tuft-cell">
+                    <tspan x="703.497559" y="99">Tuft cell</tspan>
+                </text>
+                <text id="Large-Intestine">
+                    <tspan x="1055.15283" y="29">Large</tspan>
+                    <tspan x="1034.32275" y="65">Intestine</tspan>
+                </text>
+                <text id="Digestive-System">
+                    <tspan x="891.305664" y="349">Digestive</tspan>
+                    <tspan x="904.635742" y="385">System</tspan>
+                </text>
+                <text id="Trachea">
+                    <tspan x="0.468261719" y="41">Trachea</tspan>
+                </text>
+                <text id="Tuft-cell">
+                    <tspan x="328.497559" y="80">Tuft cell</tspan>
+                </text>
+                <text id="Respiratory-System">
+                    <tspan x="138.635742" y="363">Respiratory</tspan>
+                    <tspan x="168.635742" y="399">System</tspan>
+                </text>
+            </g>
+            <g id="Systempt3" transform="translate(834.000000, 378.000000)" fill="#1B12BA">
+                <text id="Is-part-of" font-family="Helvetica-Bold, Helvetica" font-size="20" font-weight="bold">
+                    <tspan x="243.273438" y="138">Is part of</tspan>
+                </text>
+                <text id="Contains-cell-type" transform="translate(156.000000, 20.000000) rotate(-5.000000) translate(-156.000000, -20.000000) " font-family="Helvetica-Bold, Helvetica" font-size="20" font-weight="bold">
+                    <tspan x="70.4238281" y="27">Contains cell type</tspan>
+                </text>
+                <path id="Line-9" d="M283.922718,39.0114763 L291.988524,44.9227177 L289.032903,48.9556207 L213.953,151.4 L231.698379,164.404999 L178,192 L188.143027,132.484296 L205.888,145.488 L280.967097,43.0443793 L283.922718,39.0114763 Z" fill-rule="nonzero"></path>
+                <path id="Line-9" d="M277.443862,23.49981 L278.50019,33.4438621 L273.528164,33.972026 L54.225,57.267 L56.5499664,79.14477 L0,58 L50.8457959,25.4468889 L53.169,47.323 L272.471836,24.027974 L277.443862,23.49981 Z" fill-rule="nonzero"></path>
+            </g>
+            <g id="Systempt4" transform="translate(419.000000, 467.000000) scale(-1, 1) translate(-419.000000, -467.000000) translate(63.000000, 357.000000)">
+                <text id="Is-part-of" transform="translate(669.500000, 109.000000) scale(-1, 1) translate(-669.500000, -109.000000) " font-family="Helvetica-Bold, Helvetica" font-size="20" font-weight="bold" fill="#B50324">
+                    <tspan x="627.273438" y="116">Is part of</tspan>
+                </text>
+                <text id="Contains-cell-type" transform="translate(529.000000, 21.000000) scale(-1, 1) rotate(6.000000) translate(-529.000000, -21.000000) " font-family="Helvetica-Bold, Helvetica" font-size="20" font-weight="bold" fill="#B50324">
+                    <tspan x="443.423828" y="28">Contains cell type</tspan>
+                </text>
+                <path id="Line-9" d="M644.556849,41.0777666 L652.922233,46.5568489 L650.182692,50.7395411 L567.769,176.566 L586.173582,188.620446 L534,219 L541.000506,159.033402 L559.404,171.087 L641.817308,45.2604589 L644.556849,41.0777666 Z" fill="#B50324" fill-rule="nonzero"></path>
+                <path id="Line-9" d="M638.431344,25.4897198 L639.51028,35.4313442 L634.539468,35.9708122 L430.223,58.144 L432.597899,80.0161317 L376,59 L426.771645,26.3313596 L429.145,48.203 L633.460532,26.0291878 L638.431344,25.4897198 Z" fill="#B50324" fill-rule="nonzero"></path>
+                <line x1="1.5" y1="64" x2="309.5" y2="84" id="Line-10" stroke="#B276FF" stroke-width="5" stroke-linecap="square" transform="translate(155.500000, 74.000000) scale(-1, 1) translate(-155.500000, -74.000000) "></line>
+                <line x1="1" y1="53.5" x2="309" y2="73.5" id="Line-10" stroke="#B276FF" stroke-width="5" stroke-linecap="square" transform="translate(155.000000, 63.500000) scale(-1, 1) translate(-155.000000, -63.500000) "></line>
+            </g>
+            <circle id="Oval" fill="url(#radialGradient-2)" cx="803.5" cy="435.5" r="19.5"></circle>
+            <circle id="Oval" fill="url(#radialGradient-2)" cx="1138.5" cy="398.5" r="19.5"></circle>
+            <circle id="Oval" fill="url(#radialGradient-2)" cx="1001.5" cy="589.5" r="19.5"></circle>
+            <g id="Group" transform="translate(157.000000, 0.000000)">
+                <circle id="Oval" fill="url(#radialGradient-1)" cx="128.5" cy="128.5" r="128.5"></circle>
+                <g id="lungs-fill-(1)" transform="translate(41.000000, 51.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <path d="M87.5036082,0 C90.6156321,0 93.1384259,2.50812962 93.1384259,5.60206431 L93.1384259,64.3453107 L98.7732436,68.3451846 L98.7732436,41.6793585 C98.7732436,31.0354363 107.450863,22.4082572 118.157017,22.4082572 C124.062306,22.4082572 129.685854,25.433372 134.419101,29.0411014 C139.276313,32.7608721 143.964482,37.7018928 148.122977,42.8109754 C156.417429,52.9843242 163.303176,64.6142097 165.929001,70.5972144 C167.912457,75.1348865 170.357968,83.5940036 172.194919,93.1287171 C174.054408,102.730655 175.384225,113.934784 174.899631,124.040908 C174.448846,133.754887 172.285076,144.096298 165.466946,150.146528 C157.91629,156.869005 147.187598,156.376023 134.576875,150.101711 L114.34788,140.051608 C104.803047,135.307112 98.7736064,125.608514 98.7732436,114.999176 L98.7732436,82.1150586 L87.5036082,74.1041067 L76.2339728,82.1150586 L76.2339728,69.6224552 C75.1070092,69.6224552 73.9575064,69.9585791 72.9657785,70.6644392 L44.7916899,90.6750129 C43.0805355,91.8076595 42.1255953,93.7768716 42.2999653,95.8132764 C42.4743352,97.8496812 43.7503409,99.6300798 45.6294459,100.458869 C47.5085509,101.287658 49.6925215,101.033301 51.3280784,99.7951736 L76.2339728,82.1150586 L76.2339728,114.999176 C76.2336101,125.608514 70.2041698,135.307112 60.6593366,140.051608 L40.430341,150.101711 C27.8083493,156.376023 17.1021956,156.857801 9.54027022,150.146528 C2.72214078,144.096298 0.547101141,133.754887 0.0963157234,124.040908 C-0.377008965,113.934784 0.952808017,102.730655 2.80102823,93.1287171 C4.64924844,83.5827995 7.0834897,75.1348865 9.08948481,70.5860103 C11.7040402,64.6142097 18.5897875,52.9843242 26.8842392,42.8109754 C31.0540043,37.7018928 35.730903,32.7608721 40.5881159,29.0411014 C45.3213628,25.433372 50.9449108,22.4082572 56.8501998,22.4082572 C67.5563535,22.4082572 76.2339728,31.0354363 76.2339728,41.6793585 L76.2339728,68.3451846 L81.8687905,64.3453107 L81.8687905,5.60206431 C81.8687905,2.50812962 84.3915843,0 87.5036082,0 M123.679138,99.7951736 C125.314695,101.033301 127.498666,101.287658 129.377771,100.458869 C131.256875,99.6300798 132.532881,97.8496812 132.707251,95.8132764 C132.881621,93.7768716 131.926681,91.8076595 130.215527,90.6750129 L102.041438,70.6644392 C101.087529,69.9876919 99.9451223,69.6234635 98.7732436,69.6224552 L98.7732436,82.1262628 L123.679138,99.7951736 Z" id="Shape"></path>
+                </g>
+            </g>
+            <g id="Group-2" transform="translate(862.000000, 0.000000)">
+                <g id="Group">
+                    <circle id="Oval" fill="url(#radialGradient-2)" cx="128.5" cy="128.5" r="128.5"></circle>
+                    <g id="lungs-fill-(1)" transform="translate(41.000000, 51.000000)"></g>
+                </g>
+                <path d="M137.360448,197.750575 C181.543228,197.750575 206.318712,166.310019 209.916119,131.057924 C212.339226,107.313146 206.318712,79.43729 200.062648,64.0988927 C197.631799,58.1390222 190.156035,38 182.8124,38 C175.778687,38 175.778687,38 168.859409,38 C162.98783,38 168.859409,50.3766745 168.859409,64.0988927 C168.859409,103.077714 156.173462,91.6673683 128.732428,106.937682 C97.1336015,124.521714 67.895147,137.879641 53.846173,157.663021 C50.9789679,161.70054 47.0965794,167.16625 47.0965794,175.786811 C47.0965794,184.407372 46.2016121,200.65929 49.8604479,209.722729 C51.6626732,214.18709 51.6583049,219.098893 65.1072388,219.098893 C78.5561728,219.098893 71.9442024,205.584126 77.214562,189.267558 C83.9123189,168.531895 107.234525,197.750575 137.360448,197.750575 Z" id="Oval" fill="#FFFFFF"></path>
+            </g>
+            <text id="BreathingSystem" font-family="Helvetica-BoldOblique, Helvetica" font-size="35" font-style="italic" font-weight="bold" fill="#000000">
+                <tspan x="131.707275" y="507">Breathing System</tspan>
+            </text>
+            <text id="EatingSystem" font-family="Helvetica-BoldOblique, Helvetica" font-size="35" font-style="italic" font-weight="bold" fill="#000000">
+                <tspan x="880.405518" y="497">Eating System</tspan>
+            </text>
+        </g>
+        <g id="Combined" transform="translate(287.000000, 169.000000)">
+            <path d="M832.413375,922 C1072.89608,922 1347,776.327574 1347,607.013918 C1347,509.481563 1196.56405,417.263482 1040.62353,349.172746 C925.855329,299.05972 831.195747,258 673.5,258 C301.536221,258 0,437.700263 0,607.013918 C0,727.091821 135.185612,821.339791 364.982282,860.259649 C505.845721,884.117197 673.5,922 832.413375,922 Z" id="PUrple" fill-opacity="0.5" fill="#DBC0FF"></path>
+            <circle id="Oval" fill="url(#radialGradient-3)" cx="235.5" cy="441.5" r="22.5"></circle>
+            <circle id="Oval" fill="url(#radialGradient-3)" cx="426.5" cy="705.5" r="22.5"></circle>
+            <g id="Oval">
+                <use fill="url(#radialGradient-1)" xlink:href="#path-4"></use>
+                <use fill="url(#radialGradient-3)" xlink:href="#path-4"></use>
+            </g>
+            <text id="Large-Intestine" font-family="Helvetica-Bold, Helvetica" font-size="30" font-weight="bold" fill="#000000">
+                <tspan x="1078.65283" y="382">Large</tspan>
+                <tspan x="1057.82275" y="418">Intestine</tspan>
+            </text>
+            <text id="Digestive-System" font-family="Helvetica-Bold, Helvetica" font-size="30" font-weight="bold" fill="#000000">
+                <tspan x="892.305664" y="755">Digestive</tspan>
+                <tspan x="905.635742" y="791">System</tspan>
+            </text>
+            <text id="Trachea" font-family="Helvetica-Bold, Helvetica" font-size="30" font-weight="bold" fill="#000000">
+                <tspan x="177.968262" y="393">Trachea</tspan>
+            </text>
+            <text id="Tuft-cell" font-family="Helvetica-Bold, Helvetica" font-size="30" font-weight="bold" fill="#000000">
+                <tspan x="608.997559" y="435">Tuft cell</tspan>
+            </text>
+            <text id="Respiratory-System" font-family="Helvetica-Bold, Helvetica" font-size="30" font-weight="bold" fill="#000000">
+                <tspan x="342.635742" y="770">Respiratory</tspan>
+                <tspan x="372.635742" y="806">System</tspan>
+            </text>
+            <g id="Systempt3" transform="translate(704.000000, 436.000000)" fill="#AB6EED">
+                <text id="Is-part-of" font-family="Helvetica-Bold, Helvetica" font-size="20" font-weight="bold">
+                    <tspan x="351.357427" y="164.70696">Is part of</tspan>
+                </text>
+                <text id="Contains-cell-type" transform="translate(237.196863, 19.940828) rotate(-4.000000) translate(-237.196863, -19.940828) " font-family="Helvetica-Bold, Helvetica" font-size="20" font-weight="bold">
+                    <tspan x="151.620691" y="26.9408282">Contains cell type</tspan>
+                </text>
+                <path id="Line-9" d="M391.911674,51.4819778 L399.989028,57.3774304 L397.041301,61.4161071 L304.465,188.255 L322.234849,201.225247 L268.590551,228.925234 L278.617141,169.389803 L296.387,182.359 L388.963948,55.5206546 L391.911674,51.4819778 Z" fill-rule="nonzero"></path>
+                <path id="Line-9" d="M52.5142913,28.6816522 L53.664,50.652 L378.788418,33.6275054 L383.781578,33.3660548 L384.304479,43.3523742 L379.311319,43.6138248 L54.187,60.637 L55.3379578,82.6077767 L0,58.4683809 L52.5142913,28.6816522 Z" fill-rule="nonzero"></path>
+            </g>
+            <g id="Systempt4" transform="translate(413.000000, 544.500000) scale(-1, 1) translate(-413.000000, -544.500000) translate(191.000000, 418.000000)">
+                <text id="Is-part-of" transform="translate(394.602094, 125.371080) scale(-1, 1) translate(-394.602094, -125.371080) " font-family="Helvetica-Bold, Helvetica" font-size="20" font-weight="bold" fill="#AA6CEF">
+                    <tspan x="352.375532" y="132.37108">Is part of</tspan>
+                </text>
+                <text id="Contains-cell-type" transform="translate(231.298429, 23.288566) scale(-1, 1) rotate(6.000000) translate(-231.298429, -23.288566) " font-family="Helvetica-Bold, Helvetica" font-size="20" font-weight="bold" fill="#AA6CEF">
+                    <tspan x="145.722257" y="30.2885659">Contains cell type</tspan>
+                </text>
+                <path id="Line-9" d="M365.851027,47.6858101 L374.211485,53.1724056 L371.468187,57.3526349 L270.918,210.571 L289.310802,222.641552 L237.109948,252.974222 L244.164325,193.013937 L262.557,205.084 L363.107729,51.8660394 L365.851027,47.6858101 Z" fill="#A96BED" fill-rule="nonzero"></path>
+                <path id="Line-9" d="M357.736853,29.3507615 L358.878404,39.2853909 L353.911089,39.8561663 L54.217,74.292 L56.7291859,96.1489769 L0,75.4898513 L50.564812,42.501978 L53.076,64.358 L352.769539,29.9215369 L357.736853,29.3507615 Z" fill="#A96BED" fill-rule="nonzero"></path>
+            </g>
+            <g id="Oval">
+                <use fill="url(#radialGradient-2)" xlink:href="#path-5"></use>
+                <use fill="url(#radialGradient-3)" xlink:href="#path-5"></use>
+            </g>
+            <g id="Oval">
+                <use fill="url(#radialGradient-2)" xlink:href="#path-6"></use>
+                <use fill="url(#radialGradient-3)" xlink:href="#path-6"></use>
+            </g>
+            <g id="Group" transform="translate(300.000000, 0.000000)">
+                <circle id="Oval" fill="url(#radialGradient-1)" cx="149.5" cy="149.5" r="149.5"></circle>
+                <g id="lungs-fill-(1)" transform="translate(47.700389, 59.334630)" fill="#FFFFFF" fill-rule="nonzero">
+                    <path d="M101.803809,0 C105.424412,0 108.359492,2.91801851 108.359492,6.51757676 L108.359492,74.8608867 L114.915175,79.5144365 L114.915175,48.4907711 C114.915175,36.1073753 125.010926,26.0703071 137.466724,26.0703071 C144.337079,26.0703071 150.879651,29.5897985 156.386424,33.7871179 C162.037423,38.1147889 167.491751,43.8632916 172.329845,49.8073216 C181.97981,61.643241 189.990855,75.1737304 193.045803,82.1345024 C195.353403,87.4137396 198.19857,97.2552805 200.335722,108.348196 C202.499098,119.519323 204.046239,132.554476 203.48245,144.312185 C202.957996,155.613663 200.440613,167.64511 192.508237,174.684092 C183.723622,182.505185 171.241602,181.931638 156.569983,174.631952 L133.035082,162.939419 C121.930393,157.419558 114.915597,146.135975 114.915175,133.792816 L114.915175,95.5346402 L101.803809,86.2145054 L88.692443,95.5346402 L88.692443,81.000444 C87.3813064,81.000444 86.0439471,81.3914986 84.890147,82.2127133 L52.1117326,105.493498 C50.1209343,106.811246 49.0099339,109.102275 49.2128,111.471477 C49.4156662,113.84068 50.9002021,115.912038 53.0863982,116.876272 C55.2725942,117.840505 57.8134783,117.544579 59.7163247,116.104112 L88.692443,95.5346402 L88.692443,133.792816 C88.692021,146.135975 81.6772248,157.419558 70.5725356,162.939419 L47.037634,174.631952 C32.3529044,181.931638 19.8971069,182.492149 11.0993805,174.684092 C3.16700426,167.64511 0.636510666,155.613663 0.112056036,144.312185 C-0.438621325,132.554476 1.10851983,119.519323 3.25878382,108.348196 C5.4090478,97.2422453 8.2411028,87.4137396 10.5749259,82.1214672 C13.6167628,75.1737304 21.6278072,61.643241 31.2777724,49.8073216 C36.1289777,43.8632916 41.5701945,38.1147889 47.2211932,33.7871179 C52.7279668,29.5897985 59.2705383,26.0703071 66.1408939,26.0703071 C78.5966914,26.0703071 88.692443,36.1073753 88.692443,48.4907711 L88.692443,79.5144365 L95.2481259,74.8608867 L95.2481259,6.51757676 C95.2481259,2.91801851 98.1832051,0 101.803809,0 M143.891293,116.104112 C145.794139,117.544579 148.335023,117.840505 150.521219,116.876272 C152.707415,115.912038 154.191951,113.84068 154.394817,111.471477 C154.597684,109.102275 153.486683,106.811246 151.495885,105.493498 L118.717471,82.2127133 C117.60767,81.4253692 116.278566,81.001617 114.915175,81.000444 L114.915175,95.5476754 L143.891293,116.104112 Z" id="Shape"></path>
+                </g>
+            </g>
+            <g id="Group-2" transform="translate(798.000000, 0.000000)">
+                <g id="Group">
+                    <circle id="Oval" fill="url(#radialGradient-2)" cx="149.5" cy="149.5" r="149.5"></circle>
+                    <g id="lungs-fill-(1)" transform="translate(47.700389, 59.334630)"></g>
+                </g>
+                <path d="M159.808459,230.06779 C211.211771,230.06779 240.036167,193.489088 244.221476,152.47595 C247.040578,124.850703 240.036167,92.4192596 232.757711,74.5741982 C229.929602,67.640341 221.232119,44.2101167 212.688356,44.2101167 C204.505165,44.2101167 204.505165,44.2101167 196.45511,44.2101167 C189.623973,44.2101167 196.45511,58.6094384 196.45511,74.5741982 C196.45511,119.923099 181.695973,106.648028 149.770412,124.413879 C113.007575,144.871566 78.990852,160.412501 62.6459366,183.428962 C59.3101611,188.12631 54.7932967,194.485249 54.7932967,204.514617 C54.7932967,214.543985 53.7520701,233.451858 58.0088479,243.996483 C60.1056004,249.190427 60.1005182,254.904937 75.7473323,254.904937 C91.3941465,254.904937 83.7016206,239.181532 89.8332842,220.198443 C97.6256162,196.074072 124.759233,230.06779 159.808459,230.06779 Z" id="Oval" fill="#FFFFFF"></path>
+            </g>
+        </g>
+        <text id="txt1" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" fill="#696969">
+            <tspan x="826.417969" y="895">Two Areas of research</tspan>
+            <tspan x="826.460693" y="925">Two groups of experts</tspan>
+            <tspan x="862.569092" y="955">Two sets of data</tspan>
+        </text>
+        <text id="txt2" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" fill="#696969">
+            <tspan x="836.83667" y="909">Semantic labels map</tspan>
+            <tspan x="761.861084" y="939">all individual data points to terms</tspan>
+            <tspan x="832.686279" y="969">in a shared language.</tspan>
+            <tspan x="708.375977" y="999">Data points are connected using common,</tspan>
+            <tspan x="770.888184" y="1029">agreed-upon relationship types.</tspan>
+        </text>
+        <text id="txt3" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" fill="#696969">
+            <tspan x="826" y="748">What can we learn by</tspan>
+            <tspan x="826" y="778">comparing/contrasting: </tspan>
+            <tspan x="826" y="808">   * Cell structure </tspan>
+            <tspan x="826" y="838">   * Cell function</tspan>
+            <tspan x="826" y="868">   * Cell-cell interaction, etc.</tspan>
+            <tspan x="826" y="898">between Tuft cells in</tspan>
+            <tspan x="826" y="928">two different organs from</tspan>
+            <tspan x="826" y="958">two different systems?</tspan>
+        </text>
+    </g>
+</svg>

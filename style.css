@@ -1873,19 +1873,43 @@ opacity: 1;
     justify-content: center;
     margin: auto;
     color: black;
-    top:20vh;
+    top:23vh;
     visibility: hidden;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: center;
     flex-direction: column;
 }
 
+#four .scene2{
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    top: 150px;
+    margin-bottom: 100px;
+}
+
 #four .scene1 {
+    max-width: 1100px;
     background-color: white;
     height: 100vh;
     margin: 0;
     overflow: hidden;
     top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#four .scene15 {
+    max-width: 1100px;
+    max-height: 700px;
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 100px;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -1916,8 +1940,73 @@ opacity: 1;
     vertical-align: middle;
 }
 
+#four #Systempt4{
+    opacity: 0;
+}
+#four #Systempt3{
+    opacity: 0;
+}
+#four #Systempt2{
+    opacity: 0;
+}
+
+#four #Purple{
+    opacity: 0;
+}
+
+#four #Combined{
+    opacity: 0;
+}
+
 #four #SideLogos{
     opacity: 0;
+}
+
+#four #Data2{
+    opacity: 0;
+}
+
+#four #particles-js{
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-size: cover;
+    background-position: 50% 50%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+
+#four .header{
+    margin: auto;
+    padding: 40px;
+    padding-top:20%;
+    padding-bottom:20%;
+    margin: 0;
+    text-align: center;
+    color: white;
+    background: linear-gradient(270deg, #ff0037, #d4143e, #e5718a);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 
 #four #Locks{
@@ -1931,6 +2020,15 @@ opacity: 1;
 #four #TypeLogos{
     opacity: 0;
 }
+
+#four #txt3{
+    opacity: 0;
+}
+
+#four #txt2{
+    opacity: 0;
+}
+
 
 #LogoLine1,#Line,#LogoLine2,#LogoLine3{
     stroke:url(#gradient1);
