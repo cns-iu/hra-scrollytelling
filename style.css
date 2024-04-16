@@ -678,10 +678,10 @@ h1 {
 
 
 /* Story two */
-.expandtext{
-    transform:scale(1.5);
-    -webkit-transform:scale(1.5);
-    
+.expandtext {
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+
 }
 
 #two .section1 {
@@ -768,7 +768,7 @@ h1 {
 }
 
 #two .videozoom {
-   
+
     background-color: black;
     height: 100vh;
     width: 100%;
@@ -878,7 +878,7 @@ h1 {
     flex-direction: column;
 }
 
-.introline .descriptionsection{
+.introline .descriptionsection {
     font-family: "Inter", serif !important;
     opacity: .5;
     max-width: 80%;
@@ -1183,7 +1183,7 @@ h1 {
     text-decoration: underline;
 }
 
-#two .scrollbubble{
+#two .scrollbubble {
     opacity: 0;
 }
 
@@ -1299,7 +1299,8 @@ h1 {
     content: " ";
     position: absolute;
     top: 50%;
-    left: 100%; /* To the right of the tooltip */
+    left: 100%;
+    /* To the right of the tooltip */
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
@@ -1308,7 +1309,7 @@ h1 {
 }
 
 
-#charsquiggyworried{
+#charsquiggyworried {
     opacity: 0;
 }
 
@@ -1330,12 +1331,12 @@ h1 {
 
 .cecetalk3:after {
     content: "";
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  margin-top: -5px;
-  border-width: 15px;
-  border-style: solid;
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 15px;
+    border-style: solid;
     border-color: transparent rgb(243, 167, 167) transparent transparent;
 }
 
@@ -1373,7 +1374,7 @@ h1 {
     opacity: 0;
 }
 
-.linesection{
+.linesection {
     margin: 10px;
     display: flex;
     justify-content: center;
@@ -1414,18 +1415,18 @@ h1 {
     font-size: 1.2rem;
 }
 
-#two .quizp{
+#two .quizp {
     width: 80%;
     justify-content: center;
     margin: auto;
 }
 
-#two .quizp details{
+#two .quizp details {
     padding: 10px;
     background-color: #f1f1f1;
 }
 
-#two .choiceresult{
+#two .choiceresult {
     background-color: #596ba1;
     border: none;
     margin-top: 3px;
@@ -1436,19 +1437,19 @@ h1 {
     cursor: pointer;
 }
 
-#two .radiochoice{
+#two .radiochoice {
     margin: 0;
     margin-bottom: 5px;
     padding: 10px;
     background-color: #f1f1f1;
 }
 
-#two #result{
+#two #result {
     margin-top: 10px;
     padding: 10px;
     border: 3px dashed #f1f1f1;
     visibility: hidden;
-    
+
 }
 
 #two .scene3-1 {
@@ -1502,6 +1503,7 @@ h1 {
     background-size: cover;
     min-width: 100%;
 }
+
 #two .scene3-5 {
     background-image: url("img/3-6-1.svg");
     background-color: black;
@@ -1529,31 +1531,31 @@ h1 {
     vertical-align: middle;
 }
 
-#Rectangle1{
+#Rectangle1 {
     opacity: 0;
 }
 
-#Rectangle2{
+#Rectangle2 {
     opacity: 0;
 }
 
-#Rectangle3{
+#Rectangle3 {
     opacity: 0;
 }
 
-#Rectangle4{
+#Rectangle4 {
     opacity: 0;
 }
 
-#Rectangle5{
+#Rectangle5 {
     opacity: 0;
 }
 
-#Rectangle6{
+#Rectangle6 {
     opacity: 0;
 }
 
-#Rectangle7{
+#Rectangle7 {
     opacity: 0;
 }
 
@@ -1640,26 +1642,26 @@ h1 {
     position: absolute;
 }
 
-.imageparts svg{
-    height:100vh;
+.imageparts svg {
+    height: 100vh;
 }
 
 .imageintro1 {
     width: 100%;
-    height:100vh;
+    height: 100vh;
 
 }
 
 .imageintro2 {
     width: 100%;
-    height:100vh;
+    height: 100vh;
 
     opacity: 100;
 }
 
 .imageintro3 {
     width: 100%;
-    height:100vh;
+    height: 100vh;
 
     opacity: 100;
 }
@@ -1668,26 +1670,28 @@ h1 {
 #three .section1 {
     background-color: #FAFAFA;
 }
-#kidneyorgan{
-opacity: 1;
+
+#kidneyorgan {
+    opacity: 1;
 }
 
-#kidneypart1{
+#kidneypart1 {
     opacity: 0;
 }
 
-#kidneypart2{
-    opacity: 0;
-}
-#kidneypart3{
+#kidneypart2 {
     opacity: 0;
 }
 
-#kidneypart4{
+#kidneypart3 {
     opacity: 0;
 }
 
-#changehere{
+#kidneypart4 {
+    opacity: 0;
+}
+
+#changehere {
     overflow: hidden;
 }
 
@@ -1865,7 +1869,7 @@ opacity: 1;
 
 
 /* Story four */
-#four .talkbubble{
+#four .talkbubble {
     width: 80%;
     height: 100vh;
     display: flex;
@@ -1873,14 +1877,14 @@ opacity: 1;
     justify-content: center;
     margin: auto;
     color: black;
-    top:23vh;
+    top: 23vh;
     visibility: hidden;
     font-size: 1.4rem;
     text-align: center;
     flex-direction: column;
 }
 
-#four .scene2{
+#four .scene2 {
     max-width: 1100px;
     margin: auto;
     display: flex;
@@ -1916,17 +1920,123 @@ opacity: 1;
     min-width: 100%;
 }
 
+
+#four .scene16 {
+    max-width: 1100px;
+    max-height: 700px;
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 100px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#four .scene17 {
+    max-width: 1100px;
+    max-height: 700px;
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 100px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#four .scene18 {
+    max-width: 1100px;
+    max-height: 700px;
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 100px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#four .scene19 {
+    max-width: 1100px;
+    max-height: 700px;
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 100px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#four .scene20 {
+    max-width: 1100px;
+    max-height: 700px;
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 100px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#four .scene20 {
+
+    background-color: white;
+
+}
+
+#four svg {
+    max-width: 900px !important;
+    display: flex;
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+#four .sceneEnd {
+    background-color: white;
+    height: auto;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
 #four .externalLinks {
     background-color: #f1f1f1;
     padding: 15px;
     font-family: 'PT Sans', sans-serif;
     max-width: 942px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 100px;
     margin-bottom: 50px;
 }
 
-#four .scene3{
+#four .externalLinks a {
+    color: #596ba1;
+    cursor: pointer;
+    text-decoration: underline;
+    z-index: 999;
+    position: relative;
+}
+
+#four .scene3 {
     background-color: black;
     height: 100vh;
     overflow: hidden;
@@ -1940,33 +2050,55 @@ opacity: 1;
     vertical-align: middle;
 }
 
-#four #Systempt4{
-    opacity: 0;
-}
-#four #Systempt3{
-    opacity: 0;
-}
-#four #Systempt2{
+#four #Systempt4 {
     opacity: 0;
 }
 
-#four #Purple{
+#four #Systempt3 {
     opacity: 0;
 }
 
-#four #Combined{
+#four #Systempt2 {
     opacity: 0;
 }
 
-#four #SideLogos{
+#four #Purple {
     opacity: 0;
 }
 
-#four #Data2{
+#four #Combined {
     opacity: 0;
 }
 
-#four #particles-js{
+#four #SideLogos {
+    opacity: 0;
+}
+
+#four #SideLogos {
+    opacity: 0;
+}
+
+#RDF1,
+#RDF2 {
+    opacity: 0;
+}
+
+#Brand1,
+#Brand2,
+#Brand3,
+#Brand4 {
+    opacity: 0;
+}
+
+#four #Data2 {
+    opacity: 0;
+}
+
+#four #likedthing {
+    opacity: 0;
+}
+
+#four #particles-js {
     width: 100%;
     height: 100%;
     opacity: 0.4;
@@ -1975,13 +2107,13 @@ opacity: 1;
     position: absolute;
     left: 0px;
     top: 0px;
-  }
+}
 
-#four .header{
+#four .header {
     margin: auto;
     padding: 40px;
-    padding-top:20%;
-    padding-bottom:20%;
+    padding-top: 20%;
+    padding-bottom: 20%;
     margin: 0;
     text-align: center;
     color: white;
@@ -1994,44 +2126,101 @@ opacity: 1;
 }
 
 @-webkit-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
 }
+
 @-moz-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
 }
+
 @keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
 }
 
-#four #Locks{
+#four #Locks {
     opacity: 0;
 }
 
-#four #Mess{
+#four #Mess {
     opacity: 0;
 }
 
-#four #TypeLogos{
+#four #TypeLogos {
     opacity: 0;
 }
 
-#four #txt3{
+#four #txt3 {
     opacity: 0;
 }
 
-#four #txt2{
+#four #txt2 {
     opacity: 0;
 }
 
+#four #Like1,
+#Like2,
+#Like3,
+#Like4,
+#Like5,
+#Like6,
+#Like7,
+#Like8 {
+    opacity: 0;
+}
 
-#LogoLine1,#Line,#LogoLine2,#LogoLine3{
-    stroke:url(#gradient1);
+#four #closeuplinks1,
+#closeuplinks2,
+#closeuplinks3,
+#closeuplinks4,
+#closeuplinks5,
+#closeuplinks6,
+#closeuplinks65,
+#closeuplinks66,
+#closeuplinks68,
+#closeuplinks7,
+#closeuplinks8,
+#closeuplinks9,
+#closeuplinks10,
+#predicatehighlight,
+#objecthighlight,
+#subjecthighlight {
+    opacity: 0;
+}
+
+#LogoLine1,
+#LogoLine2,
+#LogoLine3 {
+    stroke: url(#gradient1);
     stroke-width: 5;
 }
 
