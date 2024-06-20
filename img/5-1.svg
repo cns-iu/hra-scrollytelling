@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1922px" height="1082px" viewBox="0 0 1922 1082" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="48.8349452%" cy="54.3460082%" fx="48.8349452%" fy="54.3460082%" r="68.6138795%" gradientTransform="translate(0.488349,0.543460),scale(0.562955,1.000000),rotate(90.000000),translate(-0.488349,-0.543460)" id="radialGradient-1">
+            <stop stop-color="#F1B0B0" offset="0%"></stop>
+            <stop stop-color="#986A6A" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="url(#radialGradient-1)" x="0" y="0" width="1922" height="1082"></rect>
+        <rect id="Rectangle" fill="#513636" x="0" y="905" width="1922" height="177"></rect>
+    </g>
+</svg>

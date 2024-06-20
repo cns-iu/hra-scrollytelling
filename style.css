@@ -2224,6 +2224,364 @@ h1 {
     stroke-width: 5;
 }
 
+/*story 5*/
+
+#two .scene5-1 {
+    background-image: url("img/5-1.svg");
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+#two .scene5-2 {
+    background-image: url("img/5-2.svg");
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+#two .scene5-3 {
+    background-image: url("img/5-3.svg");
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+#two .scene5-4 {
+    background-image: url("img/5-4.svg");
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#two .scene5-5 {
+    background-image: url("img/5-5.svg");
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#two .scene5-6 {
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+    margin: auto;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#two .scene5-7 {
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+    margin: auto;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#two #sign {
+    width:15%;
+    right: 20%;
+    bottom:9%;
+    max-width: 500px;
+    min-width: 100px;
+    overflow: hidden;
+}
+#two #move1 {
+    animation: MoveUpDown2 2s linear infinite;
+    width:50%;
+    left: 20%;
+    bottom:5%;
+    max-width: 500px;
+    min-width: 100px;
+}
+@keyframes MoveUpDown2 {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(5%);
+    }
+  }
+
+.falling5 {
+    animation: MoveUpDown 2s linear infinite;
+    width: 100%;
+    max-width: 800px; 
+    display: flex; 
+    margin: auto;
+    position: relative;
+    top: 35%;
+  }
+  @keyframes MoveUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(20%);
+    }
+  }
+
+  .imgsequence5{
+    position: relative;
+
+  }
+
+      storyimg5{
+        width: 100%;
+       border-radius: 5px;
+       margin-bottom: 1rem;
+       height: auto;
+       display: block;
+       margin: auto;
+       margin-bottom: 10px;   
+       }
+
+       #two .imagepart5 {
+        position: absolute;
+        width: 100%;
+    }
+
+.cecetalk5 {
+    padding: 12px;
+    color: black !important;
+    max-width: 400px;
+    width: 80%;
+    background-color: rgb(243, 167, 167);
+    box-shadow: rgba(0, 0, 0, 0.54) 0px 3px 8px;
+    border-radius: 22px;
+    margin: auto;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    left: 10%;
+    top: -10%;
+}
+
+.cecetalk5:after {
+    content: "";
+    position: absolute;
+    top: 38%;
+    right: 99%;
+    margin-top: -5px;
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent rgb(243, 167, 167) transparent transparent;
+}
+
+.cecetalk6 {
+    padding: 12px;
+    color: black !important;
+    max-width: 400px;
+    width: 80%;
+    background-color: rgb(243, 167, 167);
+    box-shadow: rgba(0, 0, 0, 0.54) 0px 3px 8px;
+    border-radius: 22px;
+    margin: auto;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    left: 2%;
+    top: 30%;
+}
+
+.cecetalk6:after {
+    content: "";
+    position: absolute;
+    top: 60%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent rgb(243, 167, 167) transparent transparent;
+}
+
+.squiggytalk5 {
+    padding: 12px;
+    color: black !important;
+    max-width: 400px;
+    width: 80%;
+    background-color: rgb(153, 202, 244);
+    box-shadow: rgba(0, 0, 0, 0.54) 0px 3px 8px;
+    border-radius: 22px;
+    margin: auto;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    right: -6%;
+    top: -5%;
+}
+
+.squiggytalk5:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 30%;
+    margin-left: -5px;
+    border-width: 18px;
+    margin-top: -1px;
+    border-style: solid;
+    border-color: rgb(153, 202, 244) transparent transparent transparent;
+}
+
+
+.squiggytalk6 {
+    padding: 12px;
+    color: black !important;
+    max-width: 400px;
+    width: 80%;
+    background-color: rgb(153, 202, 244);
+    box-shadow: rgba(0, 0, 0, 0.54) 0px 3px 8px;
+    border-radius: 22px;
+    margin: auto;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    right: -6%;
+    top: 10%;
+}
+
+.squiggytalk6:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 30%;
+    margin-left: -5px;
+    border-width: 18px;
+    margin-top: -1px;
+    border-style: solid;
+    border-color: rgb(153, 202, 244) transparent transparent transparent;
+}
+
+.mactalk {
+    padding: 12px;
+    color: black !important;
+    max-width: 400px;
+    width: 80%;
+    background-color: rgb(244, 169, 196);
+    box-shadow: rgba(0, 0, 0, 0.54) 0px 3px 8px;
+    border-radius: 22px;
+    margin: auto;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    left: 10%;
+    top: -7%;
+}
+
+.mactalk:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 70%;
+    margin-left: -5px;
+    border-width: 18px;
+    margin-top: -1px;
+    border-style: solid;
+    border-color: rgb(244, 169, 196) transparent transparent transparent;
+}
+
+.mactalk2 {
+    padding: 12px;
+    color: black !important;
+    max-width: 400px;
+    width: 80%;
+    background-color: rgb(244, 169, 196);
+    box-shadow: rgba(0, 0, 0, 0.54) 0px 3px 8px;
+    border-radius: 22px;
+    margin: auto;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    left: -5%;
+    top: 34%;
+}
+
+.mactalk2:after {
+    content: "";
+    position: absolute;
+    top: 65%;
+    left: 99%;
+    margin-top: -5px;
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(244, 169, 196);
+}
+
+#bubble1,#bubble2{
+    opacity:0;
+}
+
+
+
+.sceneEnd {
+    background-color: white;
+    height: auto;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+.externalLinks {
+    background-color: #f1f1f1;
+    padding: 15px;
+    font-family: 'PT Sans', sans-serif;
+    max-width: 942px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.externalLinks a {
+    color: #596ba1;
+    cursor: pointer;
+    text-decoration: underline;
+    z-index: 999;
+    position: relative;
+}
+
+
 /*Table styles*/
 .tableExample {
     margin-top: auto;
