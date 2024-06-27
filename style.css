@@ -2262,6 +2262,18 @@ h1 {
     background-size: cover;
     min-width: 100%;
 }
+#two .scene5-35 {
+    background-image: url("img/5-35.svg");
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
 #two .scene5-4 {
     background-image: url("img/5-4.svg");
     background-color: white;
@@ -2419,18 +2431,19 @@ h1 {
     margin-top: 30px;
     margin-bottom: 30px;
     left: 2%;
-    top: 30%;
+    top: -20%;
 }
 
 .cecetalk6:after {
     content: "";
     position: absolute;
-    top: 60%;
-    right: 100%;
-    margin-top: -5px;
-    border-width: 15px;
+    top: 100%;
+    left: 40%;
+    margin-left: -5px;
+    margin-top: -1px;
+    border-width: 18px;
     border-style: solid;
-    border-color: transparent rgb(243, 167, 167) transparent transparent;
+    border-color: rgb(243, 167, 167) transparent transparent transparent;
 }
 
 .squiggytalk5 {
@@ -2531,7 +2544,7 @@ h1 {
     margin-top: 30px;
     margin-bottom: 30px;
     left: -5%;
-    top: 34%;
+    top: 10%;
 }
 
 .mactalk2:after {

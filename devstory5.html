@@ -77,10 +77,10 @@
             <h1 style="font-size: 1.6em;">Know Your Neighbors</h1>
             <p class="descriptionsection">In which...Neque porro quisquam est qui dolorem ipsum quia dolor.
             </p>
-          <!--   <div class="popupsection">
-                <img class="introlineimg introcharcece" src="img/charcece_popup2.svg" style="width:12%;">
-                <img class="introlineimg introcharsquiggy" src="img/charsquigg_popup2.svg" style="width:12%;">
-            </div> -->
+            <div class="popupsection">
+                <img class="introlineimg introcharcece" src="img/popup5left.svg" style="width:12%;">
+                <img class="introlineimg introcharsquiggy" src="img/popup5right.svg" style="width:10%;">
+            </div>
         </div>
     </section>
 
@@ -137,9 +137,7 @@
 
         <div class="scene5-3">
             <img src="img/5bubble1.svg" id="bubble1" class="imageparts"
-            style="width:40%; left: 32%;top:20%;max-width: 500px;min-width: 100px;">
-        <img src="img/5bubble2.svg" id="bubble2" class="imageparts"
-            style="width:40%; right: 25%;top:20%;max-width: 500px;min-width: 100px;">
+            style="width:40%; left: 32%;top:10%;max-width: 500px;min-width: 100px;">
         </div>
         <div class="talkbubble" id="showbubble1">
             <div class="mactalk2 "><b>Mac:</b> Who were these cells that all lived on my tissue block? What did they do? What were they like? What could we talk about? 
@@ -148,13 +146,18 @@
         <div class="talkbubble">
             <div class="mactalk2 "><b>Mac:</b> In short, my friends, I suddenly realized I did not know my neighbors. 
             </div>
+        </div> 
+        
+        <div class="talkbubble">
         </div>
+
+        <div class="scene5-35"></div>
+
         <div class="talkbubble">
             <div class="squiggytalk6" id="showbubble2"><b>Squiggy:</b> That's not a problem, Mac. How about the three of us go door-to-door and meet all your neighbors one at a time?
             </div>
         </div>
-        <div class="talkbubble">
-        </div>
+      
         <div class="talkbubble">
             <div class="cecetalk6"><b>CeCe:</b> No can do, Squiggy. Depending upon the size of Mac's tissue block and its location in the kidney, he could have millions of neighbors!
             </div>
@@ -394,7 +397,15 @@
         trigger: ".scene5-3",
         anticipatePin: 1,
         start: "top top",
-        end: "+=600%",
+        end: "+=300%",
+        pin: true,
+        pinSpacing: false
+    });
+    ScrollTrigger.create({
+        trigger: ".scene5-35",
+        anticipatePin: 1,
+        start: "top top",
+        end: "+=300%",
         pin: true,
         pinSpacing: false
     });
@@ -543,30 +554,8 @@
         .to("#bubble1", {
             opacity: 1,
         })
-        .to("#bubble2", {
-            opacity: 0,
-        })
-
-        gsap.timeline({
-        scrollTrigger: {
-            autoAlpha: 1,
-            trigger: "#showbubble2",
-            start: "top",
-            end: "+=50%",
-            scrub: true,
-            duration: 1,
-            pin: false,
-        }
-    })
-        .to("#bubble1", {
-            opacity: 0,
-        })
-        .to("#bubble2", {
-            opacity: 1,
-        })
-
-        
        
+     
       gsap.timeline({
         scrollTrigger: {
           autoAlpha: 1,
