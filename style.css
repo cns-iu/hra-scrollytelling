@@ -49,6 +49,7 @@ body {
     width: auto;
     height: 50vh;
     min-height: 250px;
+    max-width:100vh;
     z-index: -1000;
     opacity: 0.5;
     overflow: hidden;
@@ -2314,6 +2315,7 @@ h1 {
     vertical-align: middle;
 }
 
+
 #two .scene5-7 {
     background-color: black;
     height: 100vh;
@@ -2326,6 +2328,102 @@ h1 {
     min-width: 100%;
     display: inline-block;
     vertical-align: middle;
+    display: flex;
+    align-items: center;
+
+}
+
+#two .scene5-8 {
+    background-color: black;
+    background-image: url("img/5-8.png");
+    height: 100vh;
+    overflow: hidden;
+    margin: auto;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#two .scene5-9 {
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+    margin: auto;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+}
+
+#two .scene5-10 {
+    background-color: black;
+    background-image: url("img/5-10.png");
+    height: 100vh;
+    overflow: hidden;
+    margin: auto;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#two .scene5-11 {
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+    margin: auto;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+}
+
+#two .scene5-12 {
+    background-color: black;
+    background-image: url("img/5-12.png");
+    height: 100vh;
+    overflow: hidden;
+    margin: auto;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#two .scene5-13 {
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+    margin: auto;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
 }
 
 #two #sign {
@@ -2371,25 +2469,54 @@ h1 {
     }
   }
 
-  .imgsequence5{
-    position: relative;
-
+  .video5{
+    width: 100%;
   }
 
-      storyimg5{
-        width: 100%;
-       border-radius: 5px;
-       margin-bottom: 1rem;
-       height: auto;
-       display: block;
-       margin: auto;
-       margin-bottom: 10px;   
-       }
+  .vidcontrols{
+    position: relative;
+    opacity: 0;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto; 
+    margin-right: 15px;
+    width: 50%;
+  }
 
-       #two .imagepart5 {
-        position: absolute;
-        width: 100%;
+  #buttons1{
+    opacity: 0;
+  }
+  #buttons2{
+    opacity: 0;
+  }
+  #buttons3{
+    opacity: 0;
+  }
+  #buttons4{
+    opacity: 0;
+  }
+
+  .nextsectionbutton{
+    animation: float-up-down 2s ease-in-out infinite both;
+  }
+
+  @-webkit-keyframes float-up-down {
+    0% {
+        -webkit-transform:translateY(0)
     }
+
+    50% {
+        -webkit-transform: translateY(-8%);
+        transform:translateY(-8%)
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform:translateY(0)
+    }
+}
+
+
 
 .cecetalk5 {
     padding: 12px;
