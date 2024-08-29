@@ -224,7 +224,7 @@
             <img src="img/5falling.svg" class="falling5">
         </div>
 
-        <div class="talkbubble">
+        <div class="talkbubble" id="scrollupto1">
             <div style="top: -30%;position: relative;">And so down they went...
             </div>
         </div>
@@ -235,6 +235,8 @@
 
         <div class="scene5-7" id="scrollto0">
             <div class="vid">
+                <img src="img/uparrowbutton.svg" class="nextsectionbutton toparrowbutton" id="toparrow1"
+                    onclick="scrollup1()">
                 <video playsinline autoplay muted class="video5" id="sample" onended="onend1()">
                     <source src="img/video5-1.mov">
                 </video>
@@ -263,7 +265,8 @@
             </div>
         </div>
         <div class="talkbubble">
-            <div class="cecetalk5"><b>CeCe:</b> And if I'm not mistaken, your tissue block is right here.
+            <div class="cecetalk5" id="scrollupto2"><b>CeCe:</b> And if I'm not mistaken, your tissue block is right
+                here.
             </div>
         </div>
 
@@ -272,6 +275,8 @@
 
         <div class="scene5-9" id="scrollto2">
             <div class="vid">
+                <img src="img/uparrowbutton.svg" class="nextsectionbutton toparrowbutton" id="toparrow2"
+                    onclick="scrollup2()">
                 <video playsinline autoplay muted class="video5" id="sample2" onended="onend2()">
                     <source src="img/video5-2.mov">
                 </video>
@@ -305,7 +310,8 @@
             </div>
         </div>
         <div class="talkbubble">
-            <div class="cecetalk5"><b>CeCe:</b> That's exactly what I'm saying. So it's a good idea to learn a bit more
+            <div class="cecetalk5" id="scrollupto3"><b>CeCe:</b> That's exactly what I'm saying. So it's a good idea to
+                learn a bit more
                 about them.
             </div>
         </div>
@@ -315,6 +321,9 @@
 
         <div class="scene5-11" id="scrollto4">
             <div class="vid">
+                <img src="img/uparrowbutton.svg" class="nextsectionbutton toparrowbutton" id="toparrow3"
+                    onclick="scrollup3()">
+
                 <video playsinline autoplay muted class="video5" id="sample3" onended="onend3()">
                     <source src="img/video5-3.mov">
                 </video>
@@ -339,7 +348,8 @@
             </div>
         </div>
         <div class="talkbubble">
-            <div class="cecetalk5"><b>CeCe:</b> These datasets are typically found in scholarly papers or in online
+            <div class="cecetalk5" id="scrollupto4"><b>CeCe:</b> These datasets are typically found in scholarly papers
+                or in online
                 collections of data, which are called portals.
             </div>
         </div>
@@ -349,6 +359,9 @@
 
         <div class="scene5-13" id="scrollto6">
             <div class="vid">
+                <img src="img/uparrowbutton.svg" class="nextsectionbutton toparrowbutton" id="toparrow4"
+                    onclick="scrollup4()">
+
                 <video playsinline autoplay muted class="video5" id="sample4" onended="onend4()">
                     <source src="img/video5-4.mov">
                 </video>
@@ -359,8 +372,110 @@
             </div>
         </div>
 
+        <div class="scene5-14"></div>
+        <div class="talkbubble">
+            <div class="cecetalk5"><b>CeCe:</b> Now, if you add all that data to the spatial data collected when
+                researchers register tissue samples using the RUI, then we get a pretty good sense of which cell types
+                appear in a given organ.
+            </div>
+        </div>
+        <div style="height: 20vh;background-color: black;"></div>
+        <div id="scrollto7"></div>
+        <div class="talkbubble">
+            <div class="cecetalk5" id="scrollupto5"><b>CeCe:</b> We can even get an estimation of where in the organ they appear. And
+                that estimation gets more accurate the more data is collected from studies and tissue registration.
+            </div>
+        </div>
 
-        <div class="sceneEnd" id="scrollto7">
+        <div class="talkbubble">
+        </div>
+
+        <div class="scene5-15" id="scrollto8">
+            <div class="vid">
+                <img src="img/uparrowbutton.svg" class="nextsectionbutton toparrowbutton" id="toparrow5"
+                    onclick="scrollup5()">
+
+                <video playsinline autoplay muted class="video5" id="sample5" onended="onend5()">
+                    <source src="img/video5-5.mov">
+                </video>
+                <div class="vidcontrols" id="buttons5">
+                    <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll5()">
+                    <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie5()">
+                </div>
+            </div>
+        </div>
+
+        <div class="scene5-16"></div>
+        <div class="talkbubble">
+            <div class="cecetalk5"><b>CeCe:</b> For instance, Mac, we see that in your area of the kidney—which
+                researchers call the “renal pyramid”—these cell types make up the general population.
+            </div>
+        </div>
+        <div style="height: 20vh;background-color: black;"></div>
+        <div id="scrollto9"></div>
+        <div class="talkbubble">
+            <div class="mactalk"><b>Mac:</b> Wow, that's so many cell types to learn about! I'm overwhelmed!
+            </div>
+        </div>
+        <div class="talkbubble">
+            <div class="squiggytalk5"><b>Squiggy:</b> I can't believe I'm the one saying this, Mac, but you really need
+                to relax.
+            </div>
+        </div>
+        <div class="talkbubble">
+            <div class="squiggytalk5"><b>Squiggy:</b> Just pick a cell type with a high population and start from there.
+                It looks like there are quite a few inner medullary collecting duct cells.
+            </div>
+        </div>
+        <div class="talkbubble">
+            <div class="cecetalk5"><b>CeCe:</b> Squiggy's right, Mac. Why don't you start with those and work your way
+                through all the large populations.
+            </div>
+        </div>
+        <div class="talkbubble">
+            <div class="cecetalk5"><b>CeCe:</b> You can learn about a cell type's structure, its function, its relation
+                to other cells…all that cool stuff.
+            </div>
+        </div>
+        <div class="talkbubble">
+            <div class="mactalk"><b>Mac:</b> Yes, that does sound interesting. But for the purposes of my block party, I
+                just want to know which cell types play pickleball and which prefer badminton!
+            </div>
+        </div>
+        <div class="talkbubble">
+            <div class="squiggytalk5"><b>Squiggy:</b> Don't worry Mac, we'll help you learn all about cell types AND
+                help you set up for your party. Let's get started!
+            </div>
+        </div>
+        <div class="talkbubble">
+            <div class="cecetalk5"><b>CeCe:</b> OK, but let's say "goodbye" to our readers.
+            </div>
+        </div>
+        <div class="talkbubble">
+            <div class="squiggytalk5" id="scrollupto6"><b>Squiggy:</b> Bye, everyone! See you next time!
+            </div>
+        </div>
+
+        <div class="talkbubble">
+        </div>
+
+        <div class="scene5-17" id="scrollto10">
+            <div class="vid">
+                <img src="img/uparrowbutton.svg" class="nextsectionbutton toparrowbutton" id="toparrow6"
+                    onclick="scrollup6()">
+
+                <video playsinline autoplay muted class="video5" id="sample6" onended="onend6()">
+                    <source src="img/video5-6.mov">
+                </video>
+                <div class="vidcontrols" id="buttons6">
+                    <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll6()">
+                    <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie6()">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="sceneEnd" id="scrollto11">
             <!-- Link section-->
             <div class="externalLinks">
                 <b>External links</b>
@@ -601,6 +716,36 @@
         end: "+=100%",
         //onBackEnter: replayvideo4,
     });
+    ScrollTrigger.create({
+        trigger: ".scene5-14",
+        anticipatePin: 1,
+        start: "top top",
+        end: "+=320%",
+        pin: true,
+        pinSpacing: false
+    });
+    ScrollTrigger.create({
+        trigger: ".scene5-15",
+        onEnter: replayvideo5,
+        start: "top top",
+        end: "+=100%",
+        //onBackEnter: replayvideo4,
+    });
+    ScrollTrigger.create({
+        trigger: ".scene5-16",
+        anticipatePin: 1,
+        start: "top top",
+        end: "+=1120%",
+        pin: true,
+        pinSpacing: false
+    });
+    ScrollTrigger.create({
+        trigger: ".scene5-17",
+        onEnter: replayvideo6,
+        start: "top top",
+        end: "+=100%",
+        //onBackEnter: replayvideo4,
+    });
 
     //fade in txt 
     const containers = gsap.utils.toArray(".container");
@@ -738,6 +883,15 @@
         document.getElementById("sample4").currentTime = 0;
         scrolls4();
     }
+    function replayvideo5() {
+        document.getElementById("sample5").currentTime = 0;
+        scrolls5();
+    }
+    function replayvideo6() {
+        document.getElementById("sample6").currentTime = 0;
+        scrolls6();
+    }
+
 
 
     //BUtton stuff
@@ -756,6 +910,12 @@
     };
 
     //scroll
+    function scrollup1() {
+        const scrollupitem1 = document.getElementById("scrollupto1");
+        scrollupitem1.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        enableScrolling();
+    }
+
     function scroll1() {
         const scrollitem1 = document.getElementById("scrollto1");
         scrollitem1.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
@@ -774,6 +934,7 @@
     //Show repeat and down arrow buttons
     function onend1() {
         document.getElementById("buttons1").style.opacity = "0.8";
+        document.getElementById("toparrow1").style.opacity = "0.8";
     };
 
     //BUtton stuff
@@ -792,6 +953,12 @@
     };
 
     //scroll
+    function scrollup2() {
+        const scrollupitem2 = document.getElementById("scrollupto2");
+        scrollupitem2.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        enableScrolling();
+    }
+
     function scroll2() {
         const scrollitem2 = document.getElementById("scrollto3");
         scrollitem2.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
@@ -810,6 +977,7 @@
     //Show repeat and down arrow buttons
     function onend2() {
         document.getElementById("buttons2").style.opacity = "0.8";
+        document.getElementById("toparrow2").style.opacity = "0.8";
     };
 
     //BUtton stuff
@@ -828,6 +996,12 @@
     };
 
     //scroll
+    function scrollup3() {
+        const scrollupitem3 = document.getElementById("scrollupto3");
+        scrollupitem3.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        enableScrolling();
+    }
+
     function scroll3() {
         const scrollitem3 = document.getElementById("scrollto5");
         scrollitem3.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
@@ -846,12 +1020,13 @@
     //Show repeat and down arrow buttons
     function onend3() {
         document.getElementById("buttons3").style.opacity = "0.8";
+        document.getElementById("toparrow3").style.opacity = "0.8";
     };
 
     //Button stuff
     //4
     //repeat
-   function repeatmovie4() {
+    function repeatmovie4() {
         scrolls4();
 
         let myVid4 = document.getElementById("sample4");
@@ -864,6 +1039,12 @@
     };
 
     //scroll
+    function scrollup4() {
+        const scrollupitem4 = document.getElementById("scrollupto4");
+        scrollupitem4.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        enableScrolling();
+    }
+
     function scroll4() {
         const scrollitem4 = document.getElementById("scrollto7");
         scrollitem4.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
@@ -871,7 +1052,6 @@
     }
 
     function scrolls4() {
-
         const element4 = document.getElementById("scrollto6");
         const y = element4.getBoundingClientRect().top + window.scrollY + 5;
         window.scrollTo({ top: y, block: "center", behavior: 'instant' });
@@ -882,7 +1062,101 @@
     //Show repeat and down arrow buttons
     function onend4() {
         document.getElementById("buttons4").style.opacity = "0.8";
-    }; 
+        document.getElementById("toparrow4").style.opacity = "0.8";
+    };
+
+
+    //Enable and disable scrolling
+    function disableScrolling() {
+        var x = window.scrollX;
+        var y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    //Button stuff
+    //5
+    //repeat
+    function repeatmovie5() {
+        scrolls5();
+
+        let myVid5 = document.getElementById("sample5");
+        myVid5.pause();
+
+        if (myVid5.seekable.length > 0) {
+            myVid5.currentTime = 0;
+        }
+        myVid5.play();
+    };
+
+    //scroll
+    function scrollup5() {
+        const scrollupitem5 = document.getElementById("scrollupto5");
+        scrollupitem5.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        enableScrolling();
+    }
+
+    function scroll5() {
+        const scrollitem5 = document.getElementById("scrollto9");
+        scrollitem5.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        enableScrolling();
+    }
+
+    function scrolls5() {
+        const element5 = document.getElementById("scrollto8");
+        const y = element5.getBoundingClientRect().top + window.scrollY + 5;
+        window.scrollTo({ top: y, block: "center", behavior: 'instant' });
+        disableScrolling();
+    }
+
+    //Show repeat and down arrow buttons
+    function onend5() {
+        document.getElementById("buttons5").style.opacity = "0.8";
+        document.getElementById("toparrow5").style.opacity = "0.8";
+    };
+
+    //Button stuff
+    //6
+    //repeat
+    function repeatmovie6() {
+        scrolls6();
+
+        let myVid6 = document.getElementById("sample6");
+        myVid6.pause();
+
+        if (myVid6.seekable.length > 0) {
+            myVid6.currentTime = 0;
+        }
+        myVid6.play();
+    };
+
+    //scroll
+    function scrollup6() {
+        const scrollupitem6 = document.getElementById("scrollupto6");
+        scrollupitem6.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        enableScrolling();
+    }
+    function scroll6() {
+        const scrollitem6 = document.getElementById("scrollto11");
+        scrollitem6.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        enableScrolling();
+    }
+
+    function scrolls6() {
+        const element6 = document.getElementById("scrollto10");
+        const y = element6.getBoundingClientRect().top + window.scrollY + 5;
+        window.scrollTo({ top: y, block: "center", behavior: 'instant' });
+        disableScrolling();
+    }
+
+    //Show repeat and down arrow buttons
+    function onend6() {
+        document.getElementById("buttons6").style.opacity = "0.8";
+        document.getElementById("toparrow6").style.opacity = "0.8";
+    };
 
 
     //Enable and disable scrolling
