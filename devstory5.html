@@ -301,7 +301,8 @@
             </div>
         </div>
         <div class="talkbubble">
-            <div class="cecetalk5" id="scrollupto3"><b>CeCe:</b> When we do that, we'll see a list of the anatomical structures within
+            <div class="cecetalk5" id="scrollupto3"><b>CeCe:</b> When we do that, we'll see a list of the anatomical
+                structures within
                 the kidney that the tissue block collides with.
             </div>
         </div>
@@ -327,7 +328,8 @@
 
         <div class="scene5-12"></div>
         <div class="talkbubble">
-            <div class="mactalk2" style="top:18%;"><b>Mac:</b> Are you saying that the tissue block where I live intersects all of those
+            <div class="mactalk2" style="top:18%;"><b>Mac:</b> Are you saying that the tissue block where I live
+                intersects all of those
                 anatomical structures?
             </div>
         </div>
@@ -341,18 +343,21 @@
             </div>
         </div>
         <div class="talkbubble">
-            <div class="cecetalk5" style="top:18%;"><b>CeCe:</b> The HRA has already collected quite a bit of information about these
+            <div class="cecetalk5" style="top:18%;"><b>CeCe:</b> The HRA has already collected quite a bit of
+                information about these
                 anatomical structures from experimental datasets.
             </div>
         </div>
         <div class="talkbubble">
-            <div class="cecetalk5" style="top:18%;"><b>CeCe:</b> Experimental datasets are tissue data from healthy donors for which
+            <div class="cecetalk5" style="top:18%;"><b>CeCe:</b> Experimental datasets are tissue data from healthy
+                donors for which
                 it
                 is possible to derive cell counts.
             </div>
         </div>
         <div class="talkbubble">
-            <div class="cecetalk5" id="scrollupto4" style="top:18%;"><b>CeCe:</b> These datasets are typically found in scholarly
+            <div class="cecetalk5" id="scrollupto4" style="top:18%;"><b>CeCe:</b> These datasets are typically found in
+                scholarly
                 papers
                 or in online
                 collections of data, which are called portals.
@@ -1055,7 +1060,7 @@
     });
     ScrollTrigger.create({
         trigger: ".scene5-7",
-        onEnter: replayvideo1,
+        onEnter: repeatmovie1,
         // onBackEnter: replayvideo1,
         start: "top top",
         end: "+=100%",
@@ -1070,7 +1075,7 @@
     });
     ScrollTrigger.create({
         trigger: ".scene5-9",
-        onEnter: replayvideo2,
+        onEnter: repeatmovie2,
         // onBackEnter: replayvideo2,
         start: "top top",
         end: "+=100%",
@@ -1085,7 +1090,7 @@
     });
     ScrollTrigger.create({
         trigger: ".scene5-11",
-        onEnter: replayvideo3,
+        onEnter: repeatmovie3,
         start: "top top",
         end: "+=100%",
         //onBackEnter: replayvideo3,
@@ -1100,7 +1105,7 @@
     });
     ScrollTrigger.create({
         trigger: ".scene5-13",
-        onEnter: replayvideo4,
+        onEnter: repeatmovie4,
         start: "top top",
         end: "+=100%",
         //onBackEnter: replayvideo4,
@@ -1115,7 +1120,7 @@
     });
     ScrollTrigger.create({
         trigger: ".scene5-15",
-        onEnter: replayvideo5,
+        onEnter: repeatmovie5,
         start: "top top",
         end: "+=100%",
         //onBackEnter: replayvideo4,
@@ -1135,7 +1140,7 @@
     });
     ScrollTrigger.create({
         trigger: ".scene5-17",
-        onEnter: replayvideo6,
+        onEnter: repeatmovie6,
         start: "top top",
         end: "+=100%",
         //onBackEnter: replayvideo4,
@@ -1260,34 +1265,6 @@
             opacity: 1,
         })
 
-    //Reset videos
-    function replayvideo1() {
-        document.getElementById("sample").currentTime = 0;
-        scrolls1();
-    }
-    function replayvideo2() {
-        document.getElementById("sample2").currentTime = 0;
-        scrolls2();
-    }
-    function replayvideo3() {
-        document.getElementById("sample3").currentTime = 0;
-        scrolls3();
-    }
-    function replayvideo4() {
-        document.getElementById("sample4").currentTime = 0;
-        scrolls4();
-    }
-    function replayvideo5() {
-        document.getElementById("sample5").currentTime = 0;
-        scrolls5();
-    }
-    function replayvideo6() {
-        document.getElementById("sample6").currentTime = 0;
-        scrolls6();
-    }
-
-
-
     //BUtton stuff
     //1
     //repeat
@@ -1317,11 +1294,9 @@
     }
 
     function scrolls1() {
-
         const element = document.getElementById("scrollto0");
         const y = element.getBoundingClientRect().top + window.scrollY + 5;
         window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-
         disableScrolling();
     }
 
