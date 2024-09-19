@@ -2086,7 +2086,10 @@ h1 {
 #Brand1,
 #Brand2,
 #Brand3,
-#Brand4,#closeup3,#closeup2,#closeup1 {
+#Brand4,
+#closeup3,
+#closeup2,
+#closeup1 {
     opacity: 0;
 }
 
@@ -2238,6 +2241,7 @@ h1 {
     background-size: cover;
     min-width: 100%;
 }
+
 #two .scene5-2 {
     background-image: url("img/5-2.svg");
     background-color: white;
@@ -2250,6 +2254,7 @@ h1 {
     background-size: cover;
     min-width: 100%;
 }
+
 #two .scene5-3 {
     background-image: url("img/5-3.svg");
     background-color: white;
@@ -2262,6 +2267,7 @@ h1 {
     background-size: cover;
     min-width: 100%;
 }
+
 #two .scene5-35 {
     background-image: url("img/5-35.svg");
     background-color: white;
@@ -2274,6 +2280,7 @@ h1 {
     background-size: cover;
     min-width: 100%;
 }
+
 #two .scene5-4 {
     background-image: url("img/5-4.svg");
     background-color: white;
@@ -2456,6 +2463,14 @@ h1 {
     align-items: center;
 }
 
+.scene5-155 {
+    background-image: linear-gradient(180deg, #190509 38%, #54324A 100%);
+    height: 100vh;
+    width: 100%;
+    margin: auto;
+    display: flex;
+}
+
 #two .scene5-16 {
     background-color: black;
     background-image: url("img/5-16.png");
@@ -2487,117 +2502,174 @@ h1 {
     align-items: center;
 }
 
+#bar1,
+#bar2,
+#bar3,
+#bar4,
+#bar5,
+#bar6,
+#bar7,
+#bar8,
+#bar9 {
+    opacity: .3;
+}
 
+#label1,
+#label2,
+#label3,
+#label4,
+#label5,
+#label6,
+#label7,
+#label8,
+#label9 {
+    opacity: 0;
+}
 
+#bar1:hover,
+#bar2:hover,
+#bar3:hover,
+#bar4:hover,
+#bar5:hover,
+#bar6:hover,
+#bar7:hover,
+#bar8:hover,
+#bar9:hover {
+    opacity: 1;
+}
+
+body:has(#bar1:hover) #label1,
+body:has(#bar2:hover) #label2,
+body:has(#bar3:hover) #label3,
+body:has(#bar4:hover) #label4,
+body:has(#bar5:hover) #label5,
+body:has(#bar6:hover) #label6,
+body:has(#bar7:hover) #label7,
+body:has(#bar8:hover) #label8,
+body:has(#bar9:hover) #label9 {
+    opacity: 1;
+}
 
 #two #sign {
-    width:15%;
+    width: 15%;
     right: 20%;
-    bottom:9%;
+    bottom: 9%;
     max-width: 500px;
     min-width: 100px;
     overflow: hidden;
 }
+
 #two #move1 {
     animation: MoveUpDown2 2s linear infinite;
-    width:50%;
+    width: 50%;
     left: 20%;
-    bottom:5%;
+    bottom: 5%;
     max-width: 500px;
     min-width: 100px;
 }
+
 @keyframes MoveUpDown2 {
-    0%, 100% {
-      transform: translateY(0);
+
+    0%,
+    100% {
+        transform: translateY(0);
     }
+
     50% {
-      transform: translateY(5%);
+        transform: translateY(5%);
     }
-  }
+}
 
 .falling5 {
     animation: MoveUpDown 2s linear infinite;
     width: 100%;
-    max-width: 800px; 
-    display: flex; 
+    max-width: 800px;
+    display: flex;
     margin: auto;
     position: relative;
     top: 35%;
-  }
-  @keyframes MoveUpDown {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(20%);
-    }
-  }
+}
 
-  .video5{
+@keyframes MoveUpDown {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(20%);
+    }
+}
+
+.video5 {
     width: 100%;
     max-height: 100vh;
-  }
+}
 
-  .vid{
+.vid {
     display: flex;
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
-  }
+}
 
-  .toparrowbutton{
+.toparrowbutton {
     display: flex;
-    margin: auto;bottom:5px; top: 8vh;
+    margin: auto;
+    bottom: 5px;
+    top: 8vh;
     position: relative;
     z-index: 1000;
-    opacity:0;
-  }
+    opacity: 0;
+}
 
-  .vidcontrols{
+.vidcontrols {
     position: relative;
     opacity: 0;
     display: flex;
     justify-content: space-between;
-    margin-left: auto; 
+    margin-left: auto;
     margin-right: 15px;
     width: 50%;
     top: -8vh;
-  }
+}
 
-  #buttons1{
+#buttons1 {
     opacity: 0;
-  }
-  #buttons2{
-    opacity: 0;
-  }
-  #buttons3{
-    opacity: 0;
-  }
-  #buttons4{
-    opacity: 0;
-  }
+}
 
-  .nextsectionbutton{
+#buttons2 {
+    opacity: 0;
+}
+
+#buttons3 {
+    opacity: 0;
+}
+
+#buttons4 {
+    opacity: 0;
+}
+
+.nextsectionbutton {
     animation: float-up-down 2s ease-in-out infinite both;
-  }
+}
 
-  @-webkit-keyframes float-up-down {
+@-webkit-keyframes float-up-down {
     0% {
-        -webkit-transform:translateY(0)
+        -webkit-transform: translateY(0)
     }
 
     50% {
         -webkit-transform: translateY(-8%);
-        transform:translateY(-8%)
+        transform: translateY(-8%)
     }
 
     100% {
         -webkit-transform: translateY(0);
-        transform:translateY(0)
+        transform: translateY(0)
     }
 }
-
-
 
 .cecetalk5 {
     padding: 12px;
@@ -2766,8 +2838,9 @@ h1 {
     border-color: transparent transparent transparent rgb(244, 169, 196);
 }
 
-#bubble1,#bubble2{
-    opacity:0;
+#bubble1,
+#bubble2 {
+    opacity: 0;
 }
 
 
