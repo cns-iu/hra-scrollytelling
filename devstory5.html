@@ -1270,10 +1270,10 @@
     }
 
     function scrolls1() {
-        /* let element = document.getElementById("scrollto0");
+         let element = document.getElementById("scrollto0");
         let y = element.getBoundingClientRect().top + window.scrollY + 5;
         window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-        disableScrolling(); */
+        disableScrolling();
     }
 
     //Show repeat and down arrow buttons
@@ -1409,18 +1409,6 @@
         document.getElementById("toparrow4").style.opacity = "0.8";
     };
 
-
-    //Enable and disable scrolling
-    function disableScrolling() {
-        /* var x = window.scrollX;
-        var y = window.scrollY;
-        window.onscroll = function () { window.scrollTo(x, y); }; */
-    }
-
-    function enableScrolling() {
-        window.onscroll = function () { };
-    }
-
     //Button stuff
     //5
     //repeat
@@ -1505,9 +1493,9 @@
 
     //Enable and disable scrolling
     function disableScrolling() {
-       /*  var x = window.scrollX;
+        var x = window.scrollX;
         var y = window.scrollY;
-        window.onscroll = function () { window.scrollTo(x, y); }; */
+        window.onscroll = function () { window.scrollTo(x, y); };
     }
 
     function enableScrolling() {
