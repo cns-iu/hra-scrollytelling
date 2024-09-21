@@ -236,15 +236,14 @@
 
         <div class="scene5-7" id="scrollto0">
             <div class="vid">
-                <img src="img/uparrowbutton.svg" class="nextsectionbutton toparrowbutton" id="toparrow1"
+                <img src="img/uparrowbutton.svg" class="toparrowbutton" id="toparrow1"
                     onclick="scrollup1()">
                 
                 <video playsinline autoplay muted class="video5" id="sample" onended="onend1()">
                     <source src="img/video5-1.mov">
                 </video>
-                <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll1()" style="width: 40px;position: relative;
-    margin: auto;">
-                    <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie1()" style="width: 40px;"> 
+                <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll1()" >
+                    <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie1()" > 
                 
             </div>
         </div>
@@ -254,9 +253,9 @@
             <div class="squiggytalk5"><b>Squiggy:</b> Hey, I remember this place from the time we rescued that lost
                 tissue block! Isn't this the RUI?
             </div>
+            <div id="scrollto1"></div>
+                <div style="height: 20vh;background-color: black;"></div>
         </div>
-        <div id="scrollto1"></div>
-        <div style="height: 20vh;background-color: black;"></div>
         <div class="talkbubble">
             <div class="cecetalk5"><b>CeCe:</b> That's right, and this RUI, or Registration User Interface, is where our
                 story begins.
@@ -1279,7 +1278,7 @@
 
     //Show repeat and down arrow buttons
     function onend1() {
-        document.getElementById("buttons1").style.opacity = "0.8";
+        // document.getElementById("buttons1").style.opacity = "0.8";
         document.getElementById("toparrow1").style.opacity = "0.8";
     };
 
