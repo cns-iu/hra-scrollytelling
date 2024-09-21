@@ -2638,7 +2638,14 @@ body:has(#bar9:hover) #label9 {
 
 .vidcontrols img,
 .toparrowbutton {
- 
+    -moz-window-dragging: none;
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
 }
 
 #buttons1 {
