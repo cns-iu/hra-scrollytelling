@@ -242,9 +242,8 @@
                 <video playsinline autoplay muted class="video5" id="sample" onended="onend1()">
                     <source src="img/video5-1.mov">
                 </video>
-                <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll1()" style="width:40px;">
-
                 <div class="vidcontrols" id="buttons1">
+                    <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll1()">
                     <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie1()">
                 </div>
             </div>
@@ -256,8 +255,8 @@
                 tissue block! Isn't this the RUI?
             </div>
         </div>
-        <div style="height: 20vh;background-color: black;"></div>
         <div id="scrollto1"></div>
+        <div style="height: 20vh;background-color: black;"></div>
         <div class="talkbubble">
             <div class="cecetalk5"><b>CeCe:</b> That's right, and this RUI, or Registration User Interface, is where our
                 story begins.
@@ -272,6 +271,7 @@
                 here.
             </div>
         </div>
+
 
         <div class="talkbubble">
         </div>
@@ -1265,16 +1265,16 @@
     }
 
     function scroll1() {
-        let scrollupitem11 = document.getElementById("scrollto1");
-        scrollupitem11.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        let scrollitem1 = document.getElementById("scrollto1");
+        scrollitem1.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
         enableScrolling();
     }
 
     function scrolls1() {
-        let element = document.getElementById("scrollto0");
+        /* let element = document.getElementById("scrollto0");
         let y = element.getBoundingClientRect().top + window.scrollY + 5;
         window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-        disableScrolling();
+        disableScrolling(); */
     }
 
     //Show repeat and down arrow buttons
