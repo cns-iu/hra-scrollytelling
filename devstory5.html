@@ -243,7 +243,7 @@
                 </video>
                 <div class="vidcontrols" id="buttons1">
                     <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll1()">
-                    <img src="img/repeatbutton.svg" class="repeatbutton" >
+                    <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie1()">
                 </div>
             </div>
         </div>
@@ -1289,8 +1289,11 @@
 
     function scroll1() {
         const scrollitem1 = document.getElementById("scrollto1");
-        scrollitem1.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
-        enableScrolling();
+
+        setTimeout(() => {
+            scrollitem1.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+        }, 10);        enableScrolling();
+
     }
 
     function scrolls1() {
