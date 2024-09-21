@@ -241,10 +241,8 @@
                 <video playsinline autoplay muted class="video5" id="sample" onended="onend1()">
                     <source src="img/video5-1.mov">
                 </video>
-                <img src="img/downarrowbutton.svg" class="nextsectionbutton" id="scroller1" style="width: 30px;    top: -8vh;
-    position: relative;">
-
                 <div class="vidcontrols" id="buttons1">
+                    <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll1()">
                     <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie1()">
                 </div>
             </div>
@@ -1259,25 +1257,23 @@
 
     //scroll
     function scrollup1() {
-        const scrollupitem1 = document.getElementById("scrollupto1");
+        let scrollupitem1 = document.getElementById("scrollupto1");
         scrollupitem1.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
         enableScrolling();
     }
 
-    document.getElementById("scroller1").addEventListener("click", scroll1);
-
     function scroll1() {
-        const scrollitem1 = document.getElementById("scrollto1");
+        let scrollitem11 = document.getElementById("scrollto1");
         setTimeout(() => {
-            scrollitem1.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+            scrollitem11.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
         }, 10);        
         enableScrolling();
 
     }
 
     function scrolls1() {
-        const element = document.getElementById("scrollto0");
-        const y = element.getBoundingClientRect().top + window.scrollY + 5;
+        let element = document.getElementById("scrollto0");
+        let y = element.getBoundingClientRect().top + window.scrollY + 5;
         window.scrollTo({ top: y, block: "center", behavior: 'instant' });
         disableScrolling();
     }
