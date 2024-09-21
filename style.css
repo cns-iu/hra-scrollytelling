@@ -2621,23 +2621,29 @@ body:has(#bar9:hover) #label9 {
     top: 8vh;
     position: relative;
     z-index: 1000;
-    opacity: 0;
+    opacity: 1;
 }
 
 .vidcontrols {
     position: relative;
-    opacity: 0;
+    opacity: 1;
     display: flex;
     justify-content: space-between;
     margin-left: auto;
     margin-right: 15px;
     width: 50%;
     top: -8vh;
+    z-index: 1000;
 
+}
+
+.nextsectionbutton{
+    opacity:1;
 }
 
 .vidcontrols img,
 .toparrowbutton {
+    opacity: 1;
     -moz-window-dragging: none;
     user-drag: none;
     user-select: none;
@@ -2648,7 +2654,7 @@ body:has(#bar9:hover) #label9 {
 
 }
 
-#buttons1 {
+/* #buttons1 {
     opacity: 0;
 }
 
@@ -2662,7 +2668,7 @@ body:has(#bar9:hover) #label9 {
 
 #buttons4 {
     opacity: 0;
-}
+} */
 
 .nextsectionbutton {
     animation: float-up-down 2s ease-in-out infinite both;

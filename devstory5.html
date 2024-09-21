@@ -242,7 +242,7 @@
                     <source src="img/video5-1.mov">
                 </video>
                 <div class="vidcontrols" id="buttons1">
-                    <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll1()">
+                    <img src="img/downarrowbutton.svg" class="nextsectionbutton" id="scroller1">
                     <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie1()">
                 </div>
             </div>
@@ -1225,31 +1225,6 @@
 
     window.history.scrollRestoration = "manual";
 
-    //drop in 1
-    /* gsap.timeline({
-        scrollTrigger: {
-            autoAlpha: 1,
-            scrub: 0.2,
-            trigger: ".imageintrosec",
-            start: "-=50%",
-            end: "top",
-            scrub: true,
-            pin: false,
-        }
-    })
-        .from(".imageintro1", {
-            opacity: 100,
-
-        })
-        .from(".imageintro2", {
-            opacity: 0,
-
-        })
-        .from(".imageintro3", {
-            opacity: 0,
-        }) */
-
-
     gsap.timeline({
         scrollTrigger: {
             autoAlpha: 1,
@@ -1287,12 +1262,14 @@
         enableScrolling();
     }
 
+    document.getElementById("scroller1").addEventListener("click", scroll1);
+
     function scroll1() {
         const scrollitem1 = document.getElementById("scrollto1");
-
         setTimeout(() => {
             scrollitem1.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
-        }, 10);        enableScrolling();
+        }, 10);        
+        enableScrolling();
 
     }
 
