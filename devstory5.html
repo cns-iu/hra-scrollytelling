@@ -236,15 +236,14 @@
 
         <div class="scene5-7" id="scrollto0">
             <div class="vid">
-                <img src="img/uparrowbutton.svg" class="toparrowbutton" id="toparrow1"
-                    onclick="scrollup1()">
-                
+                <img src="img/uparrowbutton.svg" class="toparrowbutton" id="toparrow1" onclick="scrollup1()">
+
                 <video playsinline autoplay muted class="video5" id="sample" onended="onend1()">
                     <source src="img/video5-1.mov">
                 </video>
-                <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll1()" >
-                    <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie1()" > 
-                
+                <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll1()">
+                <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie1()">
+
             </div>
         </div>
 
@@ -254,7 +253,7 @@
                 tissue block! Isn't this the RUI?
             </div>
             <div id="scrollto1"></div>
-                <div style="height: 20vh;background-color: black;"></div>
+            <div style="height: 20vh;background-color: black;"></div>
         </div>
         <div class="talkbubble">
             <div class="cecetalk5"><b>CeCe:</b> That's right, and this RUI, or Registration User Interface, is where our
@@ -282,10 +281,8 @@
                 <video playsinline autoplay muted class="video5" id="sample2" onended="onend2()">
                     <source src="img/video5-2.mov">
                 </video>
-                <div class="vidcontrols" id="buttons2">
                     <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll2()">
                     <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie2()">
-                </div>
             </div>
         </div>
 
@@ -319,10 +316,8 @@
                 <video playsinline autoplay muted class="video5" id="sample3" onended="onend3()">
                     <source src="img/video5-3.mov">
                 </video>
-                <div class="vidcontrols" id="buttons3">
                     <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll3()">
                     <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie3()">
-                </div>
             </div>
 
         </div>
@@ -376,10 +371,8 @@
                 <video playsinline autoplay muted class="video5" id="sample4" onended="onend4()">
                     <source src="img/video5-4.mov">
                 </video>
-                <div class="vidcontrols" id="buttons4">
                     <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll4()">
                     <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie4()">
-                </div>
             </div>
         </div>
 
@@ -411,10 +404,8 @@
                 <video playsinline autoplay muted class="video5" id="sample5" onended="onend5()">
                     <source src="img/video5-5.mov">
                 </video>
-                <div class="vidcontrols" id="buttons5">
                     <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll5()">
                     <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie5()">
-                </div>
             </div>
         </div>
 
@@ -864,10 +855,8 @@
                 <video playsinline autoplay muted class="video5" id="sample6" onended="onend6()">
                     <source src="img/video5-6.mov">
                 </video>
-                <div class="vidcontrols" id="buttons6">
                     <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll6()">
                     <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie6()">
-                </div>
             </div>
         </div>
 
@@ -1270,10 +1259,10 @@
     }
 
     function scrolls1() {
-     /*     let element = document.getElementById("scrollto0");
-        let y = element.getBoundingClientRect().top + window.scrollY + 5;
-        window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-        disableScrolling(); */
+        /*     let element = document.getElementById("scrollto0");
+           let y = element.getBoundingClientRect().top + window.scrollY + 5;
+           window.scrollTo({ top: y, block: "center", behavior: 'instant' });
+           disableScrolling(); */
     }
 
     //Show repeat and down arrow buttons
@@ -1320,8 +1309,8 @@
 
     //Show repeat and down arrow buttons
     function onend2() {
-        document.getElementById("buttons2").style.opacity = "0.8";
-        document.getElementById("toparrow2").style.opacity = "0.8";
+        /* document.getElementById("buttons2").style.opacity = "0.8";
+        document.getElementById("toparrow2").style.opacity = "0.8"; */
     };
 
     //BUtton stuff
@@ -1353,18 +1342,18 @@
     }
 
     function scrolls3() {
-/* 
-        const element3 = document.getElementById("scrollto4");
-        const y = element3.getBoundingClientRect().top + window.scrollY + 5;
-        window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-
-        disableScrolling(); */
+        /* 
+                const element3 = document.getElementById("scrollto4");
+                const y = element3.getBoundingClientRect().top + window.scrollY + 5;
+                window.scrollTo({ top: y, block: "center", behavior: 'instant' });
+        
+                disableScrolling(); */
     }
 
     //Show repeat and down arrow buttons
     function onend3() {
-        document.getElementById("buttons3").style.opacity = "0.8";
-        document.getElementById("toparrow3").style.opacity = "0.8";
+        /* document.getElementById("buttons3").style.opacity = "0.8";
+        document.getElementById("toparrow3").style.opacity = "0.8"; */
     };
 
     //Button stuff
@@ -1396,17 +1385,17 @@
     }
 
     function scrolls4() {
-/*         const element4 = document.getElementById("scrollto6");
-        const y = element4.getBoundingClientRect().top + window.scrollY + 5;
-        window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-
-        disableScrolling(); */
+        /*         const element4 = document.getElementById("scrollto6");
+                const y = element4.getBoundingClientRect().top + window.scrollY + 5;
+                window.scrollTo({ top: y, block: "center", behavior: 'instant' });
+        
+                disableScrolling(); */
     }
 
     //Show repeat and down arrow buttons
     function onend4() {
-        document.getElementById("buttons4").style.opacity = "0.8";
-        document.getElementById("toparrow4").style.opacity = "0.8";
+        /* document.getElementById("buttons4").style.opacity = "0.8";
+        document.getElementById("toparrow4").style.opacity = "0.8"; */
     };
 
     //Button stuff
@@ -1438,16 +1427,16 @@
     }
 
     function scrolls5() {
-  /*       const element5 = document.getElementById("scrollto8");
-        const y = element5.getBoundingClientRect().top + window.scrollY + 5;
-        window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-        disableScrolling(); */
+        /*       const element5 = document.getElementById("scrollto8");
+              const y = element5.getBoundingClientRect().top + window.scrollY + 5;
+              window.scrollTo({ top: y, block: "center", behavior: 'instant' });
+              disableScrolling(); */
     }
 
     //Show repeat and down arrow buttons
     function onend5() {
-        document.getElementById("buttons5").style.opacity = "0.8";
-        document.getElementById("toparrow5").style.opacity = "0.8";
+       /*  document.getElementById("buttons5").style.opacity = "0.8";
+        document.getElementById("toparrow5").style.opacity = "0.8"; */
     };
 
     //Button stuff
@@ -1478,24 +1467,24 @@
     }
 
     function scrolls6() {
-   /*      const element6 = document.getElementById("scrollto10");
-        const y = element6.getBoundingClientRect().top + window.scrollY + 5;
-        window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-        disableScrolling(); */
+        /*      const element6 = document.getElementById("scrollto10");
+             const y = element6.getBoundingClientRect().top + window.scrollY + 5;
+             window.scrollTo({ top: y, block: "center", behavior: 'instant' });
+             disableScrolling(); */
     }
 
     //Show repeat and down arrow buttons
     function onend6() {
-        document.getElementById("buttons6").style.opacity = "0.8";
-        document.getElementById("toparrow6").style.opacity = "0.8";
+        /* document.getElementById("buttons6").style.opacity = "0.8";
+        document.getElementById("toparrow6").style.opacity = "0.8"; */
     };
 
 
     //Enable and disable scrolling
     function disableScrolling() {
-       /*  var x = window.scrollX;
-        var y = window.scrollY;
-        window.onscroll = function () { window.scrollTo(x, y); }; */
+        /*  var x = window.scrollX;
+         var y = window.scrollY;
+         window.onscroll = function () { window.scrollTo(x, y); }; */
     }
 
     function enableScrolling() {
