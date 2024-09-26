@@ -2604,7 +2604,12 @@ body:has(#bar9:hover) #label9 {
 
 .video5 {
     width: 100%;
-    max-height: 100vh;
+    max-height: 90vh;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    top: 2vh;
+    position: relative;
 }
 
 .vid {
