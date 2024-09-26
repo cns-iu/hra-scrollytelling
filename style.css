@@ -2229,6 +2229,11 @@ h1 {
 
 /*story 5*/
 
+.story5section2{
+    background-color: black !important;
+    background: black;
+}
+
 #two .scene5-1 {
     background-image: url("img/5-1.svg");
     background-color: white;
@@ -2244,7 +2249,7 @@ h1 {
 
 #two .scene5-2 {
     background-image: url("img/5-2.svg");
-    background-color: white;
+    background-color: black;
     height: 100vh;
     margin: 0;
     overflow: hidden;
@@ -2257,7 +2262,7 @@ h1 {
 
 #two .scene5-3 {
     background-image: url("img/5-3.svg");
-    background-color: white;
+    background-color: black;
     height: 100vh;
     margin: 0;
     overflow: hidden;
@@ -2270,7 +2275,7 @@ h1 {
 
 #two .scene5-35 {
     background-image: url("img/5-35.svg");
-    background-color: white;
+    background-color: black;
     height: 100vh;
     margin: 0;
     overflow: hidden;
@@ -2283,7 +2288,7 @@ h1 {
 
 #two .scene5-4 {
     background-image: url("img/5-4.svg");
-    background-color: white;
+    background-color: black;
     height: 100vh;
     margin: 0;
     overflow: hidden;
@@ -2296,7 +2301,7 @@ h1 {
 
 #two .scene5-5 {
     background-image: url("img/5-5.svg");
-    background-color: white;
+    background-color: black;
     height: 100vh;
     margin: 0;
     overflow: hidden;
