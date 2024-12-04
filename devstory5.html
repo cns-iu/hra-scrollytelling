@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="img/logo.svg">
+    <link rel="icon" type="image/x-icon" href="img/favicon.svg">
 
     <link href="https://fonts.googleapis.com/css2?family=Cutive&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
@@ -32,22 +32,25 @@
 <body id="two" class="story5section2">
 
     <!-- section top  -->
-    <section class="top">
-        <a href="index.html" class="topLogo">
-            <img class="logo" src="img/logo.svg"> Human Atlas Stories
-        </a>
+    <section class="scrollynav">
+        <a href="index.html"><img draggable="false" src="img/UI Assets/navlogo.svg" class="navlogo"></a>
+
         <div class="dropdown">
-            <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#C2CAE5"
-                    class="bi bi-list" viewBox="-1 -4 20 20">
-                    <path fill-rule="evenodd"
-                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                </svg>
+            <button class="dropbtn"><img draggable="false" src="img/UI Assets/navhamburger.svg" class="navmenu">
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="story1.html">1. What Is An HRA?</a>
-                <a href="story2.html">2. Squiggy's Identity Crisis!</a>
-                <a href="story3.html">3. Something's NOT Registering!</a>
+                <a href="story1.html"><img src="img/UI Assets/count1.svg" style="vertical-align:middle">&nbsp;&nbsp;What
+                    Is An HRA?</a>
+                <a href="story2.html"><img src="img/UI Assets/count2.svg"
+                        style="vertical-align:middle">&nbsp;&nbsp;Squiggy's Identity Crisis!</a>
+                <a href="story3.html"> <img src="img/UI Assets/count3.svg"
+                        style="vertical-align:middle">&nbsp;&nbsp;Something's NOT Registering!</a>
+                <hr>
+                <a href="https://humanatlas.io/" target="_blank"><img src="img/UI Assets/nav_logo.svg"
+                        style="vertical-align:middle">&nbsp;&nbsp;Human Reference Atlas</a>
+                <a href="https://apps.humanatlas.io/" target="_blank"><img src="img/UI Assets/nav_apps.svg"
+                        style="vertical-align:middle">&nbsp;&nbsp;App Library</a>
             </div>
         </div>
     </section>
@@ -858,49 +861,107 @@
 
         <div class="sceneEnd" id="scrollto11">
             <!-- Link section-->
-            <div class="externalLinks">
-                <b>External links</b>
-                <ul>
-                    <li>If you want to see how researchers use the tools introduced in this scrollytale, check out
-                        this
-                        video on <a href="https://www.youtube.com/watch?v=KuZ_bwLHipM&t=1s" target="_blank">improving
-                            cell-type annotation</a>.</li>
-                    <li>Want to see more animation that explains features of the Human Reference Atlas? You won't
-                        want
-                        to miss this <a href="https://www.youtube.com/watch?v=zQeMgxo8n_U" target="_blank"> animated
-                            video</a> that provides a user-friendly explanation of the Vasculature Common Coordinate
-                        Framework (VCCF).
-                    </li>
-                    <li>Did you miss CeCe and Squiggy's first two adventures? Check out <a
-                            href="https://cns-iu.github.io/hra-scrollytelling/story2.html" target="_blank">"Squiggy's
-                            Identity Crisis"</a> and <a href="https://cns-iu.github.io/hra-scrollytelling/story3.html"
-                            target="_blank">"Something's NOT Registering."</a>
-                    </li>
 
-                </ul>
+            <div class="Externallinkssection">
+                <p class="indexTitle" style="margin-bottom: 80px;">External Links</p>
+                <div class="ExternalLinkCards">
+                    <div class="ExternalLinkCard">
+                        <img class="ExternalLinkImg" src="img/Link5-1.png">
+                        <div class="ExternalLinkTitle">Cell-Type Annotation Video</div>
+                        <div class="ExternalLinkDesc">If you want to see how researchers use the tools introduced in
+                            this scrollytale, check out this video on improving cell-type annotation.</div>
+                        <a href="https://www.youtube.com/watch?v=KuZ_bwLHipM&t=1s" target="_blank"
+                            class="linkbutton">Watch Video <img src="img/UI Assets/arrow.svg"
+                                style="vertical-align:middle">
+                        </a>
+                    </div>
+
+                    <div class="ExternalLinkCard">
+                        <img class="ExternalLinkImg" src="img/Link5-2.png">
+                        <div class="ExternalLinkTitle">HRA Animation</div>
+                        <div class="ExternalLinkDesc">Want to see more animation that explains features of the Human
+                            Reference Atlas?</div>
+                        <a href="https://www.youtube.com/watch?v=zQeMgxo8n_U" target="_blank" class="linkbutton">Watch
+                            Video <img src="img/UI Assets/arrow.svg" style="vertical-align:middle">
+                        </a>
+                    </div>
+
+                    <div class="ExternalLinkCard">
+                        <img class="ExternalLinkImg" src="img/Link5-3.png">
+                        <div class="ExternalLinkTitle">Data Detangle</div>
+                        <div class="ExternalLinkDesc">Did you miss the previous episode?</div>
+                        <a href="https://cns-iu.github.io/hra-scrollytelling/story3.html" target="_blank"
+                            class="linkbutton">Read Story <img src="img/UI Assets/arrow.svg"
+                                style="vertical-align:middle">
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- BotNav -->
-         <div style="background-color: white !important;">
-        <div class="botNav">
-            <a href="devstory4.html" class="previous"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16">
-                    <path fill-rule="evenodd"
-                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                </svg> Story 4: <span class="prevTitle">Data Detangle</span></a>
-            <!--  <a href="story3.html" class="next">Story 3: <span class="nextTitle">Learn about Visualizing Cells in the
+            <!-- BotNav -->
+            <div style="background-color: white !important;">
+                <div class="botNav">
+                    <a href="devstory4.html" class="previous"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                            height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16">
+                            <path fill-rule="evenodd"
+                                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                        </svg> Story 4: <span class="prevTitle">Data Detangle</span></a>
+                    <!--  <a href="story3.html" class="next">Story 3: <span class="nextTitle">Learn about Visualizing Cells in the
                     Human
                     Body</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-arrow-right" viewBox="0 -3 16 16">
                     <path fill-rule="evenodd"
                         d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                 </svg></a> -->
-        </div>
-</div>
-        <footer>
-            &commat; 2024 Human Atlas Design System at Indiana University
-        </footer>
+                </div>
+            </div>
+            <div class="hrafooter">
+                <div class="leftsidefooter">
+                    <img src="img/UI Assets/logo.svg" height="102px" width="246px">
+                    <div class="footercopyright">
+                        <a href="https://humanatlas.io/" target="_blank"><img
+                                src="img/UI Assets/copyrightsymbol.svg"></a>
+                        2024 CNS at Indiana University
+                    </div>
+                </div>
+                <div class="rightsidefooter">
+                    <div class="centeritems">
+                        <div class="footerlogocenter">
+                            <div class="footerlogos">
+                                <a href="https://twitter.com/cnscenter" target="_blank"><img
+                                        src="img/UI Assets/social media.svg"></a>
+                                <a href="https://www.facebook.com/cnscenter/" target="_blank"><img
+                                        src="img/UI Assets/social media-1.svg"></a>
+                                <a href="https://www.instagram.com/cns_at_iu/" target="_blank"><img
+                                        src="img/UI Assets/social media-2.svg"></a>
+                                <a href="https://www.youtube.com/@CNSCenter/" target="_blank"><img
+                                        src="img/UI Assets/social media-3.svg"></a>
+                                <a href="https://www.linkedin.com/company/cns-indiana-university-bloomington"
+                                    target="_blank"><img src="img/UI Assets/social media-4.svg"></a>
+                                <a href="https://twitter.com/cnscenter" target="_blank"><img
+                                        src="img/UI Assets/social media-5.svg"></a>
+                            </div>
+                            <div class="footerfounders">
+                                <p>Funded By:</p>
+                                <div class="founderlogos">
+                                    <a href="https://www.nih.gov/" target="_blank"><img
+                                            src="img/UI Assets/icon_ funder.svg"></a>
+                                    <a href="https://cifar.ca/" target="_blank"><img
+                                            src="img/UI Assets/icon_ funder-1.svg"></a>
+                                    <a href="https://www.iu.edu/index.html" target="_blank"><img
+                                            src="img/UI Assets/icon_ funder-2.svg"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medicaldisclaimer">Medical Disclaimer: This resource is intended for research
+                            purposes
+                            only.
+                            It
+                            should not be used for
+                            emergencies or medical or professional advice. </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </body>

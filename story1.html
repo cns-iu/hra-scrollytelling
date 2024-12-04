@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="img/logo.svg">
+    <link rel="icon" type="image/x-icon" href="img/favicon.svg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1811WRJJD"></script>
@@ -29,22 +29,25 @@
     </div>
 
     <!-- section top  -->
-    <section class="top">
-        <a href=" https://humanatlas.io" class="topLogo">
-            <img class="logo" src="img/logo.svg"> Human Atlas Stories
-        </a>
+    <section class="scrollynav">
+        <a href="index.html"><img draggable="false" src="img/UI Assets/navlogo.svg" class="navlogo"></a>
+
         <div class="dropdown">
-            <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#C2CAE5"
-                    class="bi bi-list" viewBox="-1 -4 20 20">
-                    <path fill-rule="evenodd"
-                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                </svg>
+            <button class="dropbtn"><img draggable="false" src="img/UI Assets/navhamburger.svg" class="navmenu">
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="story1.html">1. What Is An HRA?</a>
-                <a href="story2.html">2. Squiggy's Identity Crisis!</a>
-                <a href="story3.html">3. Something's NOT Registering!</a>
+                <a href="story1.html"><img src="img/UI Assets/count1.svg" style="vertical-align:middle">&nbsp;&nbsp;What
+                    Is An HRA?</a>
+                <a href="story2.html"><img src="img/UI Assets/count2.svg"
+                        style="vertical-align:middle">&nbsp;&nbsp;Squiggy's Identity Crisis!</a>
+                <a href="story3.html"> <img src="img/UI Assets/count3.svg"
+                        style="vertical-align:middle">&nbsp;&nbsp;Something's NOT Registering!</a>
+                <hr>
+                <a href="https://humanatlas.io/" target="_blank"><img src="img/UI Assets/nav_logo.svg"
+                        style="vertical-align:middle">&nbsp;&nbsp;Human Reference Atlas</a>
+                <a href="https://apps.humanatlas.io/" target="_blank"><img src="img/UI Assets/nav_apps.svg"
+                        style="vertical-align:middle">&nbsp;&nbsp;App Library</a>
             </div>
         </div>
     </section>
@@ -52,8 +55,8 @@
 
     <!-- section header/intro -->
     <section class="intro" id="intro">
-
-        <header class="containertop introSection" style="height:50vh;min-height: 250px;padding: 0;margin: 0;width: 100%;overflow: hidden;top:20px; max-height: 400px; margin:auto;">
+        <header class="containertop introSection"
+            style="height:50vh;min-height: 250px;padding: 0;margin: 0;width: 100%;overflow: hidden;top:20px; max-height: 400px; margin:auto;">
             <video id="vid" width="100%" height="51vh" muted autoplay loop video autobuffer>
                 <source src="img/bg-3.webm" type="video/webm">
                 <source src="img/3-bg.mp4" type="video/mp4">
@@ -71,7 +74,7 @@
         <div class="section1-text">
             <!-- <span class="storyimagetext">
             <img src="img/image1.gif" class="storyimg"> -->
-            <h3>An Introduction</h3>
+            <h3 class="IndexTitle">An Introduction</h3>
 
             <p>There are <b>37 trillion cells</b> in the human body, each with its own set of distinct characteristics
                 and
@@ -124,7 +127,7 @@
 
     <section class="section2">
         <div class="section1-text">
-            <h3>The Problem We Want to Solve</h3>
+            <h3 class="IndexTitle">The Problem We Want to Solve</h3>
             <p>Suppose <b>Researcher A</b> and <b>Researcher B</b> come across
                 the same cell type in their own individual studies.</p>
 
@@ -151,7 +154,7 @@
 
     <section class="section1">
         <div class="section1-text">
-            <h3>How the HRA Can Help</h3>
+            <h3 class="IndexTitle">How the HRA Can Help</h3>
             <p>Like other atlases, the HRA is a collection of maps that captures the human body's three-dimensional
                 reality at differing scales: from the whole body on down to the level of organs, tissues, cell types,
                 and biomarkers.
@@ -187,7 +190,7 @@
 
     <section class="section2">
         <div class="section1-text">
-            <h3>Putting It All Together</h3>
+            <h3 class="IndexTitle">Putting It All Together</h3>
             <p>The final HRA atlas will encompass the three-dimensional (3D) organization of whole organs and thousands
                 of anatomical structures, the interdependencies between trillions of cells, and the biomarkers that
                 characterize and distinguish cell types. </p>
@@ -202,34 +205,70 @@
 
     <section class="section1">
         <div class="section1-text">
-            <b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-flag-fill" viewBox="0 0 16 16">
-                    <path
-                        d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001" />
-                </svg> Ready to learn more about the Human Reference Atlas?</b> Just click on <a
-                href="https://humanatlas.io/" style="text-decoration:underline #C1CAE5;"
-                target="_blank">humanatlas.io</a> to
-            get started!
+            <b>Ready to learn more about the Human Reference Atlas?</b> <a href="https://www.nature.com/articles/s41556-021-00788-6" target="_blank"class="linkbutton">Visit the website <img
+                src="img/UI Assets/arrow.svg" style="vertical-align:middle">
+            </a>
         </div>
     </section>
 
     <!-- BotNav -->
-     <section class="botNav">
-        <a href="index.html" class="previous"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+    <section class="botNav">
+        <a href="index.html" class="previous storylink"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                 fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16">
                 <path fill-rule="evenodd"
                     d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-            </svg> Go to Home</a>
-        <a href="story2.html" class="next">Story 2: <span class="nextTitle">Squiggy's Identity Crisis!</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-arrow-right" viewBox="0 -3 16 16">
+            </svg>&nbsp;&nbsp;Go to Home</a>
+        <a href="story2.html" class="next">Story 2: <span class="nextTitle">Squiggy's Identity Crisis!&nbsp;&nbsp;</span><svg
+                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right"
+                viewBox="0 -3 16 16">
                 <path fill-rule="evenodd"
                     d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
             </svg></a>
     </section>
 
-    <footer>
-        &commat; 2024 Human Atlas Design System at Indiana University
-    </footer>
+    <div class="hrafooter">
+        <div class="leftsidefooter">
+            <img src="img/UI Assets/logo.svg" height="102px" width="246px">
+            <div class="footercopyright">
+                <a href="https://humanatlas.io/" target="_blank"><img src="img/UI Assets/copyrightsymbol.svg"></a>
+                2024 CNS at Indiana University
+            </div>
+        </div>
+        <div class="rightsidefooter">
+            <div class="centeritems">
+                <div class="footerlogocenter">
+                    <div class="footerlogos">
+                        <a href="https://twitter.com/cnscenter" target="_blank"><img
+                                src="img/UI Assets/social media.svg"></a>
+                        <a href="https://www.facebook.com/cnscenter/" target="_blank"><img
+                                src="img/UI Assets/social media-1.svg"></a>
+                        <a href="https://www.instagram.com/cns_at_iu/" target="_blank"><img
+                                src="img/UI Assets/social media-2.svg"></a>
+                        <a href="https://www.youtube.com/@CNSCenter/" target="_blank"><img
+                                src="img/UI Assets/social media-3.svg"></a>
+                        <a href="https://www.linkedin.com/company/cns-indiana-university-bloomington"
+                            target="_blank"><img src="img/UI Assets/social media-4.svg"></a>
+                        <a href="https://twitter.com/cnscenter" target="_blank"><img
+                                src="img/UI Assets/social media-5.svg"></a>
+                    </div>
+                    <div class="footerfounders">
+                        <p>Funded By:</p>
+                        <div class="founderlogos">
+                            <a href="https://www.nih.gov/" target="_blank"><img
+                                    src="img/UI Assets/icon_ funder.svg"></a>
+                            <a href="https://cifar.ca/" target="_blank"><img src="img/UI Assets/icon_ funder-1.svg"></a>
+                            <a href="https://www.iu.edu/index.html" target="_blank"><img
+                                    src="img/UI Assets/icon_ funder-2.svg"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="medicaldisclaimer">Medical Disclaimer: This resource is intended for research purposes only.
+                    It
+                    should not be used for
+                    emergencies or medical or professional advice. </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
