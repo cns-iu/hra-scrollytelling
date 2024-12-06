@@ -2200,7 +2200,7 @@ h1 {
     display: flex;
     justify-content: center;
     top: 150px;
-    margin-bottom: 100px;
+    height: 100vh;
 }
 
 #four .scene1 {
@@ -2218,7 +2218,6 @@ h1 {
 
 #four .scene15 {
     max-width: 1100px;
-    max-height: 700px;
     background-color: white;
     height: 100vh;
     margin: 0;
@@ -2233,7 +2232,6 @@ h1 {
 
 #four .scene16 {
     max-width: 1100px;
-    max-height: 700px;
     background-color: white;
     height: 100vh;
     margin: 0;
@@ -2247,7 +2245,6 @@ h1 {
 
 #four .scene17 {
     max-width: 1100px;
-    max-height: 700px;
     background-color: white;
     height: 100vh;
     margin: 0;
@@ -2261,7 +2258,6 @@ h1 {
 
 #four .scene18 {
     max-width: 1100px;
-    max-height: 700px;
     background-color: white;
     height: 100vh;
     margin: 0;
@@ -2275,7 +2271,6 @@ h1 {
 
 #four .scene19 {
     max-width: 1100px;
-    max-height: 700px;
     background-color: white;
     height: 100vh;
     margin: 0;
@@ -2289,7 +2284,6 @@ h1 {
 
 #four .scene20 {
     max-width: 1100px;
-    max-height: 700px;
     background-color: white;
     height: 100vh;
     margin: 0;
@@ -2302,18 +2296,20 @@ h1 {
 }
 
 #four .scene20 {
-
     background-color: white;
-
 }
 
-#four svg {
+#four .svgparts{
+    overflow: hidden;
+}
+
+#four .svgparts svg {
     max-width: 900px !important;
     display: flex;
     margin: auto;
     position: relative;
-    top: 50%;
-    transform: translateY(-50%)
+    top: 50vh;
+    transform: translateY(-50%);
 }
 
 #four .sceneEnd {
@@ -3579,6 +3575,10 @@ canvas {
     font-size: 14px;
     cursor: pointer;
     padding: 9px 16px 9px 16px;
+}
+
+.ExternalLinkCard .linkbutton{
+    float: left !important;
 }
 
 .next:hover,
