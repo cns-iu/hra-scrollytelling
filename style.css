@@ -2962,7 +2962,7 @@ body:has(#bar9:hover) #label9 {
     margin-left: auto;
     width: 50%;
     top: -16vh;
-    z-index: 1000;
+    z-index: 100;
     right: 10%;
     width: 40px;
 }
