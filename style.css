@@ -2942,7 +2942,7 @@ body:has(#bar9:hover) #label9 {
     bottom: 5px;
     top: 8vh;
     position: relative;
-    z-index: 1000;
+    z-index: 100;
     opacity: 1;
 }
 
@@ -2952,7 +2952,7 @@ body:has(#bar9:hover) #label9 {
     margin: auto;
     width: 50%;
     top: -8vh;
-    z-index: 1000;
+    z-index: 100;
     width: 40px;
 }
 
