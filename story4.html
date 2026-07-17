@@ -1984,74 +1984,74 @@
     });
 
     //fade in txt 
-    const scrollbubbles = gsap.utils.toArray(".scrollbubble");
-    scrollbubbles.forEach((scrollbubble) => {
-        let tl2 = gsap.timeline({
-            scrollTrigger: {
-                onRefresh: self => self.progress && self.animation.progress(1),
-                start: "top +=200%",
-                trigger: scrollbubble,
-                pin: false,
-                pinSpacing: false,
-                scrub: true,
-                markers: false
-            }
-        });
+    // const scrollbubbles = gsap.utils.toArray(".scrollbubble");
+    // scrollbubbles.forEach((scrollbubble) => {
+    //     let tl2 = gsap.timeline({
+    //         scrollTrigger: {
+    //             onRefresh: self => self.progress && self.animation.progress(1),
+    //             start: "top +=200%",
+    //             trigger: scrollbubble,
+    //             pin: false,
+    //             pinSpacing: false,
+    //             scrub: true,
+    //             markers: false
+    //         }
+    //     });
 
-        tl2.to(scrollbubble, {
-            autoAlpha: 1
-        },
-            0.5
-        );
-    });
-
-    //fade in txt 
-    const containers = gsap.utils.toArray(".container");
-    containers.forEach((container) => {
-        let tl = gsap.timeline({
-            scrollTrigger: {
-                onRefresh: self => self.progress && self.animation.progress(1),
-                start: "top top",
-                trigger: container,
-                pin: true,
-                pinSpacing: false,
-                scrub: true,
-                markers: false
-            }
-        });
-
-        tl.to(container, {
-            autoAlpha: 1
-        }).to(
-            container, {
-            autoAlpha: 0
-        },
-            0.5
-        );
-    });
+    //     tl2.to(scrollbubble, {
+    //         autoAlpha: 1
+    //     },
+    //         0.5
+    //     );
+    // });
 
     //fade in txt 
-    const overlays = gsap.utils.toArray(".overlaybubbles");
-    overlays.forEach((obubble) => {
-        let tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: obubble,
-                pin: true,
-                pinSpacing: false,
-                scrub: true,
-                markers: false
-            }
-        });
+    // const containers = gsap.utils.toArray(".container");
+    // containers.forEach((container) => {
+    //     let tl = gsap.timeline({
+    //         scrollTrigger: {
+    //             onRefresh: self => self.progress && self.animation.progress(1),
+    //             start: "top top",
+    //             trigger: container,
+    //             pin: true,
+    //             pinSpacing: false,
+    //             scrub: true,
+    //             markers: false
+    //         }
+    //     });
 
-        tl.to(obubble, {
-            autoAlpha: 1
-        }).to(
-            obubble, {
-            autoAlpha: 0
-        },
-            0.5
-        );
-    });
+    //     tl.to(container, {
+    //         autoAlpha: 1
+    //     }).to(
+    //         container, {
+    //         autoAlpha: 0
+    //     },
+    //         0.5
+    //     );
+    // });
+
+    //fade in txt 
+    // const overlays = gsap.utils.toArray(".overlaybubbles");
+    // overlays.forEach((obubble) => {
+    //     let tl = gsap.timeline({
+    //         scrollTrigger: {
+    //             trigger: obubble,
+    //             pin: true,
+    //             pinSpacing: false,
+    //             scrub: true,
+    //             markers: false
+    //         }
+    //     });
+
+    //     tl.to(obubble, {
+    //         autoAlpha: 1
+    //     }).to(
+    //         obubble, {
+    //         autoAlpha: 0
+    //     },
+    //         0.5
+    //     );
+    // });
 
     //fade in txt 
     const bubbles = gsap.utils.toArray(".talkbubble");
