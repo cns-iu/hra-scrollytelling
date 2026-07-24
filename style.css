@@ -3902,39 +3902,36 @@ footer a {
 
 #six .phase-text {
   position: absolute;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
   width: min(91%, 890px);
-  background: rgba(255, 255, 255, 0.62);
-  border: 1px solid #d0d8eb;
-  border-radius: 12px;
-  padding: 14px 16px;
   color: #234865;
   font-size: 0.95rem;
   line-height: 1.5;
   text-align: center;
-  box-shadow: 0 8px 18px rgba(20, 44, 66, 0.14);
-  opacity: 0;
-  backdrop-filter: blur(2px);
+  opacity: 1;
+  visibility: hidden;
 }
 
-#six .part1-body {
+#six .body-outline {
   position: absolute;
-  width: 42%;
+  max-height: 80%;
   opacity: 0;
   bottom: 0;
+  z-index: 1;
+
+  img {
+    height: 66vh;
+  }
 }
 
-#six .text-1 {
-  bottom: 5%;
-}
-
-#six .text-2 {
-  bottom: 5%;
-}
-
-#six .text-3 {
-  top: 4%;
+#six .viruses {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  inset: 0;
+  z-index: 2;
 }
 
 #six .virus {
@@ -3942,47 +3939,6 @@ footer a {
   width: 48px;
   height: 48px;
   opacity: 0;
-}
-
-#six .v1 {
-  left: 18%;
-  top: 18%;
-}
-#six .v2 {
-  left: 14%;
-  top: 36%;
-}
-#six .v3 {
-  left: 20%;
-  top: 56%;
-}
-#six .v4 {
-  left: 25%;
-  top: 74%;
-}
-#six .v5 {
-  right: 18%;
-  top: 17%;
-}
-#six .v6 {
-  right: 14%;
-  top: 34%;
-}
-#six .v7 {
-  right: 20%;
-  top: 54%;
-}
-#six .v8 {
-  right: 26%;
-  top: 73%;
-}
-#six .v9 {
-  left: 46%;
-  top: 4%;
-}
-#six .v10 {
-  left: 47%;
-  top: 82%;
 }
 
 #six .part3-images {
@@ -3995,6 +3951,7 @@ footer a {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   opacity: 0;
+  z-index: 1;
 
   .senescent-cells-illustration,
   .sasp-cell-illustration {
@@ -4004,23 +3961,20 @@ footer a {
     background: #fff;
     box-shadow: 0 8px 18px rgba(23, 35, 65, 0.16);
     transform: scale(0.95);
-    opacity: 0;
   }
-}
-
-#six .text-4 {
-  top: 4%;
 }
 
 #six .disease-points {
   position: absolute;
   inset: 0;
+  z-index: 2;
 }
 
 #six .disease {
   position: absolute;
   opacity: 0;
   transform: scale(0.78);
+  z-index: 2;
 }
 
 #six .disease-dot {
@@ -4057,23 +4011,19 @@ footer a {
 
 #six .disease-ra {
   left: 39%;
-  top: 67%;
+  top: 47%;
 }
 #six .disease-nd {
   left: 43%;
-  top: 24%;
+  top: 4%;
 }
 #six .disease-cv {
   left: 52%;
-  top: 42%;
+  top: 22%;
 }
 #six .disease-ca {
   left: 59%;
-  top: 58%;
-}
-
-#six .text-5 {
-  top: 5%;
+  top: 38%;
 }
 
 #six .research-microscope {
@@ -4083,11 +4033,6 @@ footer a {
   width: 320px;
   height: 300px;
   opacity: 0;
-}
-
-#six .text-6,
-.text-7 {
-  top: 5%;
 }
 
 #six .immune-map {
@@ -4124,58 +4069,180 @@ footer a {
 
 #six .site-brain {
   left: 46%;
-  top: 18%;
+  top: 4%;
 }
 #six .site-lymph {
-  left: 38%;
-  top: 29%;
+  left: 53%;
+  top: 15%;
 }
 #six .site-thymus {
-  left: 52%;
-  top: 28%;
+  left: 50%;
+  top: 20%;
 }
 #six .site-heart {
   left: 53%;
-  top: 36%;
+  top: 25%;
 }
 #six .site-liver {
-  left: 39%;
-  top: 45%;
+  left: 43%;
+  top: 34%;
 }
 #six .site-spleen {
-  left: 54%;
-  top: 47%;
+  left: 57%;
+  top: 36%;
 }
 #six .site-kidney {
-  left: 39%;
-  top: 54%;
+  left: 43%;
+  top: 39%;
 }
 #six .site-gi {
-  left: 53%;
-  top: 58%;
+  left: 49%;
+  top: 45%;
 }
 #six .site-bone {
-  left: 45%;
-  top: 72%;
-}
-
-#six .text-8 {
-  top: 5%;
+  left: 58%;
+  top: 63%;
 }
 
 #six .cell-types-illustration {
   position: absolute;
   left: 50%;
-  top: 30%;
   transform: translateX(-50%);
-  width: min(88%, 720px);
-  border-radius: 14px;
+  width: min(84vw, 560px);
+  aspect-ratio: 1;
   opacity: 0;
-  border-radius: 10px;
 }
 
-#six .text-9 {
-  top: 5%;
+#six .cell-type-icon {
+  position: absolute;
+  width: clamp(88px, 11vw, 130px);
+  height: auto;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+}
+
+#six .icon-dendritic {
+  transform: translate(-50%, -50%) translateY(-175%);
+}
+
+#six .icon-bcell {
+  transform: translate(-50%, -50%) rotate(60deg) translateY(-175%) rotate(-60deg);
+}
+
+#six .icon-tcell {
+  transform: translate(-50%, -50%) rotate(120deg) translateY(-175%) rotate(-120deg);
+}
+
+#six .icon-neutrophil {
+  transform: translate(-50%, -50%) rotate(180deg) translateY(-175%) rotate(-180deg);
+}
+
+#six .icon-naturalkiller {
+  transform: translate(-50%, -50%) rotate(240deg) translateY(-175%) rotate(-240deg);
+}
+
+#six .icon-macrophage {
+  transform: translate(-50%, -50%) rotate(300deg) translateY(-175%) rotate(-300deg);
+}
+
+#six .cell-type-name {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+  font-size: clamp(0.68rem, 1vw, 0.82rem);
+  font-weight: 700;
+  color: #24425f;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(145, 170, 201, 0.6);
+  border-radius: 999px;
+  padding: 3px 8px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+#six .name-dendritic {
+  transform: translate(-50%, -50%) translateY(-175%) translate(0, -78%);
+}
+
+#six .name-bcell {
+  transform: translate(-50%, -50%) rotate(60deg) translateY(-175%) rotate(-60deg) translate(68%, -28%);
+}
+
+#six .name-tcell {
+  transform: translate(-50%, -50%) rotate(120deg) translateY(-175%) rotate(-120deg) translate(68%, 28%);
+}
+
+#six .name-neutrophil {
+  transform: translate(-50%, -50%) rotate(180deg) translateY(-175%) rotate(-180deg) translate(0, 78%);
+}
+
+#six .name-naturalkiller {
+  transform: translate(-50%, -50%) rotate(240deg) translateY(-175%) rotate(-240deg) translate(-68%, 28%);
+}
+
+#six .name-macrophage {
+  transform: translate(-50%, -50%) rotate(300deg) translateY(-175%) rotate(-300deg) translate(-68%, -28%);
+}
+
+@media (max-width: 900px) {
+  #six .cell-type-icon {
+    width: clamp(68px, 15vw, 100px);
+  }
+
+  #six .icon-dendritic {
+    transform: translate(-50%, -50%) translateY(-155%);
+  }
+
+  #six .icon-bcell {
+    transform: translate(-50%, -50%) rotate(60deg) translateY(-155%) rotate(-60deg);
+  }
+
+  #six .icon-tcell {
+    transform: translate(-50%, -50%) rotate(120deg) translateY(-155%) rotate(-120deg);
+  }
+
+  #six .icon-neutrophil {
+    transform: translate(-50%, -50%) rotate(180deg) translateY(-155%) rotate(-180deg);
+  }
+
+  #six .icon-naturalkiller {
+    transform: translate(-50%, -50%) rotate(240deg) translateY(-155%) rotate(-240deg);
+  }
+
+  #six .icon-macrophage {
+    transform: translate(-50%, -50%) rotate(300deg) translateY(-155%) rotate(-300deg);
+  }
+
+  #six .cell-type-name {
+    font-size: clamp(0.62rem, 2.3vw, 0.74rem);
+    padding: 2px 6px;
+  }
+
+  #six .name-dendritic {
+    transform: translate(-50%, -50%) translateY(-155%) translate(0, -72%);
+  }
+
+  #six .name-bcell {
+    transform: translate(-50%, -50%) rotate(60deg) translateY(-155%) rotate(-60deg) translate(58%, -24%);
+  }
+
+  #six .name-tcell {
+    transform: translate(-50%, -50%) rotate(120deg) translateY(-155%) rotate(-120deg) translate(58%, 24%);
+  }
+
+  #six .name-neutrophil {
+    transform: translate(-50%, -50%) rotate(180deg) translateY(-155%) rotate(-180deg) translate(0, 72%);
+  }
+
+  #six .name-naturalkiller {
+    transform: translate(-50%, -50%) rotate(240deg) translateY(-155%) rotate(-240deg) translate(-58%, 24%);
+  }
+
+  #six .name-macrophage {
+    transform: translate(-50%, -50%) rotate(300deg) translateY(-155%) rotate(-300deg) translate(-58%, -24%);
+  }
 }
 
 #six .senescence-patterns-illustration {
@@ -4189,79 +4256,82 @@ footer a {
   border-radius: 10px;
 }
 
-#six .text-10 {
-  top: 5%;
-}
-
-#six .text-11 {
-  top: 5%;
-}
-
-.mouse {
+#six .mouse {
   top: 31%;
-  width: min(40%, 360px);
-  display: block;
+  display: flex;
   position: absolute;
   min-height: 360px;
-  overflow: hidden;
   opacity: 0;
+  height: 360px;
+  width: fit-content;
+  flex-direction: column;
+  width: 256px;
+  align-items: center;
+  overflow-x: hidden;
+  overflow: visible;
+
+  img {
+    height: 100%;
+    width: fit-content;
+  }
 }
 
+#six .mouse-frame {
+  position: absolute;
+  height: 100%;
+  width: fit-content;
+  opacity: 0;
+  /* visibility: hidden; */
+}
+
+/* #six .mouse-old .frame-liver {
+  visibility: visible;
+} */
+
 #six .mouse-old {
-  right: 4%;
+  /* right: 4%; */
   top: 31%;
 }
 
-#six .site10 {
+#six .site-m {
   position: absolute;
   opacity: 0;
   transform: scale(0.72);
+
+  .site-label {
+    font-size: 0.86rem;
+    font-weight: 600;
+    background: white;
+    border: 1px solid #d3dded;
+    border-radius: 999px;
+    padding: 2px 6px;
+    white-space: nowrap;
+  }
 }
 
-#six .site10-m-brain {
+.site-m-thymus {
   left: 52%;
-  top: 26%;
+  top: 27%;
 }
-#six .site10-m-lymph {
-  left: 44%;
-  top: 36%;
+.site-m-liver {
+  left: 50%;
+  top: 47%;
 }
-#six .site10-m-thymus {
-  left: 58%;
-  top: 35%;
+.site-m-spleen {
+  left: 65%;
+  top: 48%;
 }
-#six .site10-m-heart {
-  left: 59%;
-  top: 44%;
-}
-#six .site10-m-liver {
-  left: 45%;
-  top: 52%;
-}
-#six .site10-m-spleen {
-  left: 60%;
-  top: 54%;
-}
-#six .site10-m-kidney {
+.site-m-kidney {
   left: 46%;
   top: 61%;
 }
-#six .site10-m-gi {
-  left: 59%;
-  top: 65%;
-}
-#six .site10-m-bone {
-  left: 52%;
-  top: 76%;
-}
-
-#six .text-12 {
-  top: 5%;
+.site-m-pancreas {
+  left: 62%;
+  top: 53%;
 }
 
 #six .mouse-young {
-  left: 4%;
-  right: auto;
+  left: 25%;
 }
 
 #six .mouse-age-label {
@@ -4275,6 +4345,7 @@ footer a {
   color: #24425f;
   padding: 4px 10px;
   white-space: nowrap;
+  opacity: 0;
 }
 
 #six .proteomics-wrap {
@@ -4374,10 +4445,6 @@ footer a {
   width: 64px;
 }
 
-#six .text-13 {
-  top: 5%;
-}
-
 #six .part13-images {
   position: absolute;
   left: 50%;
@@ -4385,23 +4452,46 @@ footer a {
   transform: translateX(-50%);
   width: min(94%, 980px);
   display: flex;
-  flex-direction: column;
   gap: 14px;
   opacity: 0;
 }
 
 #six .part13-image {
-  width: 100%;
-}
-
-#six .text-14 {
-  top: 5%;
+  width: 50%;
 }
 
 #six .cde {
   position: absolute;
   top: 27%;
   opacity: 0;
+  pointer-events: none;
+  display: flex;
+  height: calc(100vh - 300px);
+
+  cde-visualization {
+    display: flex;
+  }
+
+  cde-node-dist-visualization {
+    min-width: 40rem;
+  }
+
+  .metadata,
+  .header,
+  cde-violin,
+  cde-histogram {
+    display: none;
+  }
+}
+
+#six .text-15 {
+  top: 50%;
+}
+
+#six .text-16,
+#six .text-17 {
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @keyframes sixpartPulse {
