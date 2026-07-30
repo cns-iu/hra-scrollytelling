@@ -9,25 +9,6 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <!-- Apply the saved shared-chrome appearance before styles paint. -->
-    <script>
-        (() => {
-            try {
-                const savedTheme = localStorage.getItem('hra-landing-theme');
-
-                if (savedTheme === 'system' || savedTheme === 'light' || savedTheme === 'dark') {
-                    document.documentElement.dataset.themeMode = savedTheme;
-
-                    if (savedTheme === 'light' || savedTheme === 'dark') {
-                        document.documentElement.dataset.theme = savedTheme;
-                    }
-                }
-            } catch {
-                // System settings remain the fallback when storage is unavailable.
-            }
-        })();
-    </script>
-
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="shared/css/fonts.css">
     <link rel="stylesheet" href="shared/css/tokens.css">
@@ -53,11 +34,9 @@
 <body id="one">
     <a class="site-skip-link site-chrome" href="#main-content">Skip to main content</a>
 
-    <details class="site-menu site-chrome" data-site-menu>
+    <details class="site-menu site-chrome site-chrome--light" data-site-menu>
         <summary>
-            <svg class="site-menu-icon site-menu-icon-menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M4 7h16M4 12h16M4 17h16"></path>
-            </svg>
+            <span class="site-menu-icon site-menu-icon-menu" aria-hidden="true"></span>
             <svg class="site-menu-icon site-menu-icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="m6 6 12 12M18 6 6 18"></path>
             </svg>
@@ -86,34 +65,8 @@
                 </ul>
             </nav>
 
-            <nav class="site-menu-nav" aria-labelledby="site-resources-label">
-                <p class="site-menu-label" id="site-resources-label">Explore the atlas</p>
-                <ul role="list">
-                    <li><a href="https://humanatlas.io/">Human Reference Atlas</a></li>
-                    <li><a href="https://apps.humanatlas.io/">Human Reference Atlas App Library</a></li>
-                </ul>
-            </nav>
-
-            <fieldset class="site-appearance">
-                <legend>Appearance</legend>
-                <label class="site-appearance-choice">
-                    <input type="radio" name="site-color-theme" value="system" data-site-theme-choice checked>
-                    <span>System settings</span>
-                </label>
-                <label class="site-appearance-choice">
-                    <input type="radio" name="site-color-theme" value="light" data-site-theme-choice>
-                    <span>Light</span>
-                </label>
-                <label class="site-appearance-choice">
-                    <input type="radio" name="site-color-theme" value="dark" data-site-theme-choice>
-                    <span>Dark</span>
-                </label>
-            </fieldset>
         </div>
     </details>
-
-    <span class="site-chrome site-chrome-visually-hidden" data-site-theme-status aria-live="polite"
-        aria-atomic="true"></span>
 
     <main class="site-main-target" id="main-content" tabindex="-1">
         <!-- section counter -->

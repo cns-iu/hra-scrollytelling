@@ -13,9 +13,13 @@
     --site-chrome-color-action: #95001e;
     --site-chrome-color-on-action: #ffffff;
     --site-chrome-color-surface: #ffffff;
+    --site-chrome-color-panel: #fafbfc;
     --site-chrome-color-surface-muted: #e4eaf0;
     --site-chrome-color-surface-hover: #eef2f6;
     --site-chrome-color-selected: #d4dde6;
+    --site-chrome-color-menu-active: #e3dfff;
+    --site-chrome-color-on-menu-active: #171533;
+    --site-chrome-color-menu-indicator: #95001e;
     --site-chrome-color-border: #6f7b8c;
     --site-chrome-color-footer: #201e3d;
     --site-chrome-color-on-footer: #ffffff;
@@ -26,6 +30,19 @@
     --site-chrome-color-focus-contrast: #ffffff;
     --site-chrome-shadow-color: rgb(32 30 61 / 18%);
     --site-chrome-shadow-menu: 0 1rem 2.5rem var(--site-chrome-shadow-color);
+    --site-chrome-fab-container: #26282b;
+    --site-chrome-fab-content: #eff2f5;
+    --site-chrome-fab-state-layer: #eff2f5;
+    --site-chrome-fab-focus-ring: var(--site-chrome-color-focus);
+    --site-chrome-fab-hover-state-opacity: 8%;
+    --site-chrome-fab-pressed-state-opacity: 12%;
+    --site-chrome-fab-focus-state-opacity: 12%;
+    --site-chrome-shadow-fab: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%),
+        0 1px 18px 0 rgb(0 0 0 / 12%);
+    --site-chrome-shadow-fab-raised: 0 5px 5px -3px rgb(0 0 0 / 20%), 0 8px 10px 1px rgb(0 0 0 / 14%),
+        0 3px 14px 2px rgb(0 0 0 / 12%);
+    --site-chrome-shadow-fab-pressed: 0 7px 8px -4px rgb(0 0 0 / 20%), 0 12px 17px 2px rgb(0 0 0 / 14%),
+        0 5px 22px 4px rgb(0 0 0 / 12%);
     --site-chrome-font-body: var(
         --font-body,
         "Nunito Sans Variable",
@@ -65,7 +82,7 @@
     --site-chrome-headline-line-height: 2rem;
 }
 
-:root[data-theme="dark"] .site-chrome {
+:root[data-theme="dark"] .site-chrome:not(.site-chrome--light) {
     color-scheme: dark;
     --site-chrome-color-text: #d4dde6;
     --site-chrome-color-heading: #e3dfff;
@@ -73,9 +90,13 @@
     --site-chrome-color-action: #ffb3b3;
     --site-chrome-color-on-action: #680015;
     --site-chrome-color-surface: #101113;
+    --site-chrome-color-panel: #161719;
     --site-chrome-color-surface-muted: #1f2023;
     --site-chrome-color-surface-hover: #22262a;
     --site-chrome-color-selected: #2f3337;
+    --site-chrome-color-menu-active: #171533;
+    --site-chrome-color-on-menu-active: #e3dfff;
+    --site-chrome-color-menu-indicator: #ffb3b3;
     --site-chrome-color-border: #aab4c5;
     --site-chrome-color-footer: #101113;
     --site-chrome-color-on-footer: #d4dde6;
@@ -85,10 +106,13 @@
     --site-chrome-color-focus: #ffb3b3;
     --site-chrome-color-focus-contrast: #101113;
     --site-chrome-shadow-color: rgb(0 0 0 / 58%);
+    --site-chrome-fab-container: #d4dde6;
+    --site-chrome-fab-content: #26282b;
+    --site-chrome-fab-state-layer: #26282b;
 }
 
 @media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) .site-chrome {
+    :root:not([data-theme]) .site-chrome:not(.site-chrome--light) {
         color-scheme: dark;
         --site-chrome-color-text: #d4dde6;
         --site-chrome-color-heading: #e3dfff;
@@ -96,9 +120,13 @@
         --site-chrome-color-action: #ffb3b3;
         --site-chrome-color-on-action: #680015;
         --site-chrome-color-surface: #101113;
+        --site-chrome-color-panel: #161719;
         --site-chrome-color-surface-muted: #1f2023;
         --site-chrome-color-surface-hover: #22262a;
         --site-chrome-color-selected: #2f3337;
+        --site-chrome-color-menu-active: #171533;
+        --site-chrome-color-on-menu-active: #e3dfff;
+        --site-chrome-color-menu-indicator: #ffb3b3;
         --site-chrome-color-border: #aab4c5;
         --site-chrome-color-footer: #101113;
         --site-chrome-color-on-footer: #d4dde6;
@@ -108,5 +136,8 @@
         --site-chrome-color-focus: #ffb3b3;
         --site-chrome-color-focus-contrast: #101113;
         --site-chrome-shadow-color: rgb(0 0 0 / 58%);
+        --site-chrome-fab-container: #d4dde6;
+        --site-chrome-fab-content: #26282b;
+        --site-chrome-fab-state-layer: #26282b;
     }
 }
