@@ -32,15 +32,32 @@
     --hra-inverse-primary: #ffb3b3;
 
     /* Component roles use AAA-safe pairings from the HRA palette. */
-    --color-ink: var(--hra-on-surface);
+    --color-ink: var(--hra-on-surface-variant);
+    --color-card-ink: var(--hra-on-surface);
     --color-heading: var(--hra-secondary);
     --color-accent-text: var(--hra-on-primary-container);
-    --color-page: var(--hra-background);
+    --color-page: var(--hra-surface-variant);
     --color-surface: var(--hra-surface);
     --color-surface-muted: var(--hra-surface-container);
-    --color-card: var(--hra-surface-container-lowest);
+    --color-card: var(--hra-surface);
     --color-card-hover: var(--hra-surface-container-low);
     --color-border: #6f7b8c;
+    --color-card-outline-start: var(--hra-on-primary-container);
+    --color-card-outline-highlight: var(--hra-primary);
+    --color-card-outline-middle: var(--hra-secondary);
+    --color-card-outline-deep: var(--hra-on-secondary-container);
+    --color-card-outline-end: var(--hra-tertiary);
+    --color-card-outline-neutral: var(--color-border);
+    --color-card-outline-inverse: var(--hra-inverse-surface);
+    --color-menu-active: var(--hra-secondary-container);
+    --color-on-menu-active: var(--hra-on-secondary-container);
+    --color-menu-indicator: var(--color-accent-text);
+    --color-tonal-button: var(--hra-secondary-container);
+    --color-on-tonal-button: var(--hra-on-secondary-container);
+    --color-tonal-button-state-layer: var(--hra-on-secondary-container);
+    --tonal-button-hover-state-opacity: 8%;
+    --tonal-button-pressed-state-opacity: 12%;
+    --tonal-button-focus-state-opacity: 12%;
     --color-action: var(--hra-on-primary-container);
     --color-on-action: var(--hra-on-primary);
     --color-badge: var(--hra-secondary);
@@ -56,13 +73,36 @@
     --hero-overlay-start: rgb(250 251 252 / 100%);
     --hero-overlay-middle: rgb(250 251 252 / 82%);
     --hero-overlay-end: rgb(250 251 252 / 14%);
+    --hero-artwork: url("../assets/backgrounds/splash-human-light.png");
+    --hero-mesh:
+        radial-gradient(circle at 8% 12%, rgb(255 218 217 / 78%) 0%, transparent 34%),
+        radial-gradient(circle at 92% 8%, rgb(227 223 255 / 82%) 0%, transparent 32%),
+        radial-gradient(circle at 12% 92%, rgb(198 194 234 / 56%) 0%, transparent 36%),
+        radial-gradient(circle at 90% 90%, rgb(255 179 179 / 42%) 0%, transparent 34%);
     --shadow-color: rgb(32 30 61 / 18%);
     --shadow-menu: 0 1rem 2.5rem var(--shadow-color);
 
+    /* Material-inspired extended FAB roles, mapped to HRA theme colors. */
+    --fab-container: var(--hra-inverse-surface);
+    --fab-content: var(--hra-inverse-on-surface);
+    --fab-state-layer: var(--hra-inverse-on-surface);
+    --fab-focus-ring: var(--focus-color);
+    --fab-hover-state-opacity: 8%;
+    --fab-pressed-state-opacity: 12%;
+    --fab-focus-state-opacity: 12%;
+    --shadow-fab: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%),
+        0 1px 18px 0 rgb(0 0 0 / 12%);
+    --shadow-fab-raised: 0 5px 5px -3px rgb(0 0 0 / 20%), 0 8px 10px 1px rgb(0 0 0 / 14%),
+        0 3px 14px 2px rgb(0 0 0 / 12%);
+    --shadow-fab-pressed: 0 7px 8px -4px rgb(0 0 0 / 20%), 0 12px 17px 2px rgb(0 0 0 / 14%),
+        0 5px 22px 4px rgb(0 0 0 / 12%);
+
     /* Layout tokens shared by landing-page components. */
     --content-width: 72rem;
+    --landing-content-width: 76rem;
     --reading-width: 65ch;
     --radius-small: 0.5rem;
+    --radius-card: 0.75rem;
     --radius-large: 1rem;
 }
 
@@ -110,6 +150,12 @@
     --hero-overlay-start: rgb(22 23 25 / 100%);
     --hero-overlay-middle: rgb(22 23 25 / 88%);
     --hero-overlay-end: rgb(22 23 25 / 36%);
+    --hero-artwork: url("../assets/backgrounds/splash-human-dark.png");
+    --hero-mesh:
+        radial-gradient(circle at 8% 12%, rgb(149 0 30 / 44%) 0%, transparent 34%),
+        radial-gradient(circle at 92% 8%, rgb(23 21 51 / 88%) 0%, transparent 32%),
+        radial-gradient(circle at 12% 92%, rgb(75 75 94 / 62%) 0%, transparent 36%),
+        radial-gradient(circle at 90% 90%, rgb(255 179 179 / 16%) 0%, transparent 34%);
     --shadow-color: rgb(0 0 0 / 58%);
 }
 
@@ -159,6 +205,12 @@
         --hero-overlay-start: rgb(22 23 25 / 100%);
         --hero-overlay-middle: rgb(22 23 25 / 88%);
         --hero-overlay-end: rgb(22 23 25 / 36%);
+        --hero-artwork: url("../assets/backgrounds/splash-human-dark.png");
+        --hero-mesh:
+            radial-gradient(circle at 8% 12%, rgb(149 0 30 / 44%) 0%, transparent 34%),
+            radial-gradient(circle at 92% 8%, rgb(23 21 51 / 88%) 0%, transparent 32%),
+            radial-gradient(circle at 12% 92%, rgb(75 75 94 / 62%) 0%, transparent 36%),
+            radial-gradient(circle at 90% 90%, rgb(255 179 179 / 16%) 0%, transparent 34%);
         --shadow-color: rgb(0 0 0 / 58%);
     }
 }

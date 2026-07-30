@@ -37,7 +37,7 @@
 
     <!-- Apply the saved appearance before styles paint. -->
     <meta name="color-scheme" content="light dark">
-    <meta name="theme-color" content="#fafbfc" data-light-color="#fafbfc" data-dark-color="#161719">
+    <meta name="theme-color" content="#dee5f1" data-light-color="#dee5f1" data-dark-color="#393f45">
     <script>
         (() => {
             try {
@@ -108,22 +108,15 @@
                 </button>
             </div>
 
-            <nav class="quick-navigation" aria-labelledby="stories-navigation-label">
-                <p class="site-controls-label" id="stories-navigation-label">Stories</p>
+            <nav class="quick-navigation" aria-labelledby="site-navigation-label">
+                <p class="site-controls-label" id="site-navigation-label">Navigate</p>
                 <ul role="list">
+                    <li><a href="index.html" aria-current="page">Home</a></li>
                     <li><a href="story1.html">What Is a Human Reference Atlas?</a></li>
                     <li><a href="story2.html">Squiggy's Identity Crisis!</a></li>
                     <li><a href="story3.html">Something's Not Registering!</a></li>
                     <li><a href="story4.html">Data Detangle</a></li>
                     <li><a href="story5.html">Know Your Body Buddies</a></li>
-                </ul>
-            </nav>
-
-            <nav class="quick-navigation quick-navigation-secondary" aria-labelledby="resources-navigation-label">
-                <p class="site-controls-label" id="resources-navigation-label">Explore the atlas</p>
-                <ul role="list">
-                    <li><a href="https://humanatlas.io/">Human Reference Atlas</a></li>
-                    <li><a href="https://apps.humanatlas.io/">Human Reference Atlas App Library</a></li>
                 </ul>
             </nav>
 
@@ -145,10 +138,7 @@
         </div>
 
         <button class="site-controls-toggle" type="button" aria-controls="site-menu" aria-expanded="false" hidden>
-            <svg class="site-controls-icon site-controls-icon-menu" viewBox="0 0 24 24" aria-hidden="true"
-                focusable="false">
-                <path d="M4 7h16M4 12h16M4 17h16"></path>
-            </svg>
+            <span class="site-controls-icon site-controls-icon-menu" aria-hidden="true"></span>
             <svg class="site-controls-icon site-controls-icon-close" viewBox="0 0 24 24" aria-hidden="true"
                 focusable="false">
                 <path d="m6 6 12 12M18 6 6 18"></path>
@@ -161,86 +151,75 @@
 
     <!-- Primary landing-page content -->
     <main id="main-content" tabindex="-1">
-        <!-- Hero introduction -->
-        <section class="hero" aria-labelledby="page-title">
-            <div class="hero-inner">
-                <div class="hero-copy">
-                    <a class="hero-brand-link" href="index.html" aria-label="Human Atlas Stories home"
-                        aria-current="page">
-                        <img src="img/UI Assets/navlogo.svg" alt="" width="215" height="42">
-                    </a>
-                    <p class="eyebrow">Human Reference Atlas stories</p>
-                    <h1 id="page-title">Explore the Human Reference Atlas</h1>
-                    <p class="hero-summary">Discover how scientists map the human body through five mixed-media
-                        stories made for curious learners.</p>
-                    <a class="primary-action" href="#stories">Browse stories</a>
-                </div>
-            </div>
-        </section>
+        <section class="landing-hero" aria-labelledby="page-title">
+            <div class="landing-content">
+                <a class="hero-brand-link" href="https://humanatlas.io/"
+                    aria-label="Visit the Human Reference Atlas">
+                    <img class="hero-brand-logo hero-brand-logo-light" src="img/UI Assets/logo2.svg" alt="" width="116"
+                        height="48">
+                    <img class="hero-brand-logo hero-brand-logo-dark" src="img/UI Assets/logo.svg" alt="" width="116"
+                        height="48">
+                </a>
 
-        <!-- Story collection -->
-        <section class="stories-section" id="stories" aria-labelledby="stories-title">
-            <div class="content-wrapper">
-                <div class="section-heading">
-                    <p class="eyebrow">Choose your path</p>
-                    <h2 id="stories-title">Five stories, one shared atlas</h2>
-                    <p>Start with an introduction or jump to the question that interests you most.</p>
-                </div>
+                <header class="hero-heading">
+                    <h1 id="page-title">Explore how scientists map biology</h1>
+                    <p>Learn about atlas efforts through mixed-media stories</p>
+                </header>
 
-                <ol class="story-grid" role="list">
+                <ol class="story-grid" role="list" aria-label="Human Atlas stories">
                     <li>
                         <a class="story-card" href="story1.html">
-                            <span class="story-number" aria-hidden="true">01</span>
-                            <div class="story-card-copy">
-                                <h3 class="story-title">What Is a Human Reference Atlas?</h3>
-                                <span class="story-description">Meet the atlas and learn why a shared map of the human
-                                    body matters.</span>
-                            </div>
-                            <span class="story-arrow" aria-hidden="true">→</span>
+                            <span class="story-number">
+                                <span aria-hidden="true">01</span>
+                                <span class="visually-hidden">Story 1:</span>
+                            </span>
+                            <h2 class="story-title">What Is a Human Reference Atlas?</h2>
+                            <span class="story-description">Meet the atlas and learn why a shared map of the human body
+                                matters.</span>
                         </a>
                     </li>
                     <li>
                         <a class="story-card" href="story2.html">
-                            <span class="story-number" aria-hidden="true">02</span>
-                            <div class="story-card-copy">
-                                <h3 class="story-title">Squiggy's Identity Crisis!</h3>
-                                <span class="story-description">Explore how clear, consistent identities help connect
-                                    biological information.</span>
-                            </div>
-                            <span class="story-arrow" aria-hidden="true">→</span>
+                            <span class="story-number">
+                                <span aria-hidden="true">02</span>
+                                <span class="visually-hidden">Story 2:</span>
+                            </span>
+                            <h2 class="story-title">Squiggy's Identity Crisis!</h2>
+                            <span class="story-description">Explore how clear, consistent identities help connect
+                                biological information.</span>
                         </a>
                     </li>
                     <li>
                         <a class="story-card" href="story3.html">
-                            <span class="story-number" aria-hidden="true">03</span>
-                            <div class="story-card-copy">
-                                <h3 class="story-title">Something's Not Registering!</h3>
-                                <span class="story-description">See how anatomical information is aligned to a common
-                                    reference.</span>
-                            </div>
-                            <span class="story-arrow" aria-hidden="true">→</span>
+                            <span class="story-number">
+                                <span aria-hidden="true">03</span>
+                                <span class="visually-hidden">Story 3:</span>
+                            </span>
+                            <h2 class="story-title">Something's Not Registering!</h2>
+                            <span class="story-description">See how anatomical information is aligned to a common
+                                reference.</span>
                         </a>
                     </li>
                     <li>
                         <a class="story-card" href="story4.html">
-                            <span class="story-number" aria-hidden="true">04</span>
-                            <div class="story-card-copy">
-                                <h3 class="story-title">Data Detangle</h3>
-                                <span class="story-description">Follow the work of organizing complex biological data
-                                    into something people can use.</span>
-                            </div>
-                            <span class="story-arrow" aria-hidden="true">→</span>
+                            <span class="story-number">
+                                <span aria-hidden="true">04</span>
+                                <span class="visually-hidden">Story 4:</span>
+                            </span>
+                            <h2 class="story-title">Data Detangle</h2>
+                            <span class="story-description">Follow the work of organizing complex biological data into
+                                something people can use.</span>
                         </a>
                     </li>
                     <li>
                         <a class="story-card" href="story5.html">
-                            <span class="story-number" aria-hidden="true">05</span>
-                            <div class="story-card-copy">
-                                <h3 class="story-title">Know Your Body Buddies</h3>
-                                <span class="story-description">Get to know the cells and structures that work together
-                                    throughout the body.</span>
-                            </div>
-                            <span class="story-arrow" aria-hidden="true">→</span>
+                            <span class="story-number">
+                                <span aria-hidden="true">05</span>
+                                <span class="visually-hidden">Story 5:</span>
+                            </span>
+                            <h2 class="story-title">Know Your Body Buddies</h2>
+                            <span class="story-description">Get to know the cells and structures that work together
+                                throughout the body.</span>
                         </a>
                     </li>
                 </ol>
@@ -251,77 +230,13 @@
     <!-- Site footer -->
     <footer class="site-footer">
         <div class="footer-inner">
-            <div class="footer-brand">
-                <a class="footer-brand-link" href="https://humanatlas.io/" aria-label="Visit the Human Reference Atlas">
-                    <img src="img/UI Assets/logo.svg" alt="" width="246" height="102">
-                </a>
-                <p>© 2026 CNS at Indiana University</p>
-            </div>
-
-            <div class="footer-content">
-                <nav class="social-nav" aria-labelledby="social-title">
-                    <h2 id="social-title">Follow the Cyberinfrastructure for Network Science Center</h2>
-                    <ul class="social-list" role="list">
-                        <li>
-                            <a href="https://twitter.com/cnscenter"
-                                aria-label="Cyberinfrastructure for Network Science Center on X, formerly Twitter">
-                                <img src="img/UI Assets/social media.svg" alt="" width="48" height="48">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/cnscenter/"
-                                aria-label="Cyberinfrastructure for Network Science Center on Facebook">
-                                <img src="img/UI Assets/social media-1.svg" alt="" width="49" height="48">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/cns_at_iu/"
-                                aria-label="Cyberinfrastructure for Network Science Center on Instagram">
-                                <img src="img/UI Assets/social media-2.svg" alt="" width="49" height="48">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.youtube.com/@CNSCenter/"
-                                aria-label="Cyberinfrastructure for Network Science Center on YouTube">
-                                <img src="img/UI Assets/social media-3.svg" alt="" width="49" height="48">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/company/cns-indiana-university-bloomington"
-                                aria-label="Cyberinfrastructure for Network Science Center on LinkedIn">
-                                <img src="img/UI Assets/social media-4.svg" alt="" width="49" height="48">
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
-                <section class="funders" aria-labelledby="funders-title">
-                    <h2 id="funders-title">Funded by</h2>
-                    <ul class="funder-list" role="list">
-                        <li>
-                            <a href="https://www.nih.gov/" aria-label="National Institutes of Health">
-                                <img src="img/UI Assets/icon_ funder.svg" alt="" width="48" height="48">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://cifar.ca/" aria-label="CIFAR">
-                                <img src="img/UI Assets/icon_ funder-1.svg" alt="" width="49" height="48">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.iu.edu/index.html" aria-label="Indiana University">
-                                <img src="img/UI Assets/icon_ funder-2.svg" alt="" width="49" height="48">
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-
-                <section class="medical-disclaimer" aria-labelledby="disclaimer-title">
-                    <h2 id="disclaimer-title">Medical disclaimer</h2>
-                    <p>This resource is intended for research purposes only. It should not be used for emergencies or
-                        for medical or professional advice.</p>
-                </section>
-            </div>
+            <a class="footer-brand-link" href="https://humanatlas.io/"
+                aria-label="Visit the Human Reference Atlas">
+                <img src="img/UI Assets/logo.svg" alt="" width="246" height="102">
+            </a>
+            <a class="back-to-top" href="#main-content">
+                <span>Back to top</span>
+            </a>
         </div>
     </footer>
 </body>
