@@ -6,8 +6,8 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 ## Stability rules
 
 - Keep `index.html` and the root `story*.html` entry points at their current URLs.
-- Keep `VisualizingCells.html` and `organExample.html` as compatibility entry points for the organized prototype
-  implementations.
+- Keep `story0.html`, `VisualizingCells.html`, and `organExample.html` as compatibility entry points for the organized
+  prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
 - Treat `style.css`, `img/`, and `js/` as shared legacy resources until each consumer has been mapped.
@@ -23,7 +23,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, shared HRA fonts, and `landing/js/` |
 | Shared page chrome | `index.html` and `story1.html` through `story5.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; Story 1 is the integration pilot |
 | Primary stories | `story1.html` through `story5.html` | Shared `style.css`, shared or story-specific scripts, `img/`, `music/`, and gradually organized files under `stories/` |
-| Prototypes | `story0.html`, `img/test.html`, and the compatibility pages `VisualizingCells.html` and `organExample.html` | Organized implementations and Story 0 behavior under `prototypes/` plus shared legacy files |
+| Prototypes | `img/test.html` and the compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations under `prototypes/` plus shared legacy files |
 | Generated game | `Game/index.html` | Everything under `Game/` |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
@@ -50,6 +50,7 @@ Root HTML files remain stable public entry points while their implementation fil
 │   ├── organ-example/
 │   │   └── index.html
 │   ├── scrollytelling-effects/
+│   │   ├── index.html
 │   │   └── scripts.js
 │   └── visualizing-cells/
 │       └── index.html

@@ -35,9 +35,9 @@ There is no installation or build command.
 | `story4.html` | Data Detangle |
 | `story5.html` | Know Your Body Buddies |
 
-The repository also contains older prototypes and demonstrations. The Organ Example and Visualizing Cells
-implementations are organized under `prototypes/`, with their original root URLs retained as compatibility pages.
-`story0.html` and `img/test.html` remain legacy demonstrations. These are not primary entry points.
+The repository also contains older prototypes and demonstrations. The Scrollytelling Effects, Organ Example, and
+Visualizing Cells implementations are organized under `prototypes/`, with their original URLs retained as
+compatibility pages. `img/test.html` remains a legacy demonstration. These are not primary entry points.
 
 ## Repository structure
 

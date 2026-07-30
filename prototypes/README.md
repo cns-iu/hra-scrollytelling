@@ -7,6 +7,7 @@ not maintained as part of the primary story collection.
 
 | Prototype | Implementation | Compatibility URL |
 | --- | --- | --- |
+| Scrollytelling Effects | `scrollytelling-effects/index.html` | `story0.html` at the repository root |
 | Organ Example | `organ-example/index.html` | `organExample.html` at the repository root |
 | Visualizing Cells | `visualizing-cells/index.html` | `VisualizingCells.html` at the repository root |
 
@@ -18,10 +19,10 @@ The Organ Example and Visualizing Cells prototypes continue to use the root lega
 coupling is intentional for this organizational phase; separating their assets or remediating their interfaces should
 happen in independent, explicitly reviewed changes.
 
-Story 0's scroll-effect behavior is owned by `scrollytelling-effects/scripts.js`, while its published
-`story0.html` entry point remains at the repository root. `img/test.html` and the generated `Game/` application also
-remain in their established locations. `Game/` is a published application embedded by `story0.html`, not a prototype
-folder to move without a dedicated migration plan.
+The Scrollytelling Effects prototype owns its behavior in `scrollytelling-effects/scripts.js` while continuing to use
+the root legacy `style.css`, `img/`, `music/`, and `js/wc.js` resources. `img/test.html` and the generated `Game/`
+application remain in their established locations. `Game/` is a published application embedded by the prototype, not
+a prototype folder to move without a dedicated migration plan.
 
 ## Maintenance rules
 
