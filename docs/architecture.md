@@ -17,7 +17,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 
 | Area | Entry points | Implementation |
 | --- | --- | --- |
-| Landing page | `index.html` | `landing/assets/`, `landing/css/`, and `landing/js/` |
+| Landing page | `index.html` | `landing/assets/`, including self-hosted fonts and licenses, `landing/css/`, and `landing/js/` |
 | Primary stories | `story1.html` through `story5.html` | Shared `style.css`, shared or story-specific scripts, `img/`, `music/`, and gradually organized files under `stories/` |
 | Prototypes | `story0.html`, `VisualizingCells.html`, `organExample.html`, and `img/test.html` | Shared legacy files |
 | Generated game | `Game/index.html` | Everything under `Game/` |
@@ -77,6 +77,20 @@ move independently when their ownership is unambiguous.
 
 Copying before deleting keeps the original experience recoverable during validation. A move is complete only when the
 old path has no remaining consumers.
+
+## Reviewable commit boundaries
+
+Keep repository migrations easy to review by separating ownership changes from visual or behavioral changes:
+
+1. Add or organize isolated assets, licenses, and documentation.
+2. Establish shared story foundations and component styles without migrating a story.
+3. Migrate one story's CSS and update only that story's stylesheet references.
+4. Migrate that story's assets and paths in a separate commit.
+5. Apply accessibility or visual improvements to the migrated story in focused component commits.
+6. Remove a legacy file only after all consumers have migrated, using a dedicated cleanup commit.
+
+Avoid combining multiple story migrations, large binary additions, broad formatting, and behavior changes in one
+commit. A reviewer should be able to identify the affected story or shared component from the commit subject.
 
 ## Validation boundaries
 

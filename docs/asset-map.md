@@ -8,6 +8,7 @@ orphan-file deletion list: some animation and generated-application paths may be
 | Location | Current role | Migration status |
 | --- | --- | --- |
 | `landing/assets/` | Landing-page hero and social-preview artwork | Organized; keep isolated |
+| `landing/assets/fonts/` | Landing-page HRA WOFF2 files and their original licenses | Organized; keep isolated |
 | `img/` | Shared story media, story-specific sequences, legacy UI assets, fonts, and prototypes | Unsorted legacy area |
 | `img/TestSeq/` | Image sequence used by a legacy story or prototype | Ownership must be verified |
 | `img/UI Assets/` | Legacy shared interface images and font files | Shared paths contain spaces; do not rename broadly |

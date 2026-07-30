@@ -74,8 +74,8 @@ When reviewing screenshots, distinguish real mobile-browser behavior from deskto
 
 - Use semantic design tokens rather than scattering raw colors through component rules.
 - Keep light and dark theme tokens in `landing/css/tokens.css`.
-- Keep font stacks and any future `@font-face` declarations in `landing/css/fonts.css`; do not add remote or
-  self-hosted font files without explicit approval.
+- Keep font stacks and `@font-face` declarations in `landing/css/fonts.css`. Keep approved self-hosted landing fonts
+  and their license files under `landing/assets/fonts/`; do not add or replace font files without explicit approval.
 - Keep component and accessibility rules in `landing/css/styles.css` rather than duplicating tokens in component
   selectors.
 - Keep the fixed top-left Menu control visibly labeled. Use ordinary navigation links, not `role="menu"`, for page and
