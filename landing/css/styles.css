@@ -358,7 +358,7 @@ h2,
 h3 {
     color: var(--color-heading);
     font-family: var(--font-heading);
-    font-weight: 750;
+    font-weight: 700;
     letter-spacing: -0.025em;
     line-height: 1.18;
 }
@@ -391,7 +391,7 @@ h2 {
     border-radius: var(--radius-small);
     color: var(--color-on-action);
     background: var(--color-action);
-    font-weight: 750;
+    font-weight: 700;
     line-height: 1.35;
     text-decoration: none;
 }

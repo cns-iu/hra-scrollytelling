@@ -46,7 +46,8 @@ The repository also contains older prototypes and demonstrations, including `sto
 ├── landing/            # Isolated landing-page implementation
 │   ├── assets/
 │   │   ├── hero.png           # Responsive decorative hero artwork
-│   │   └── social-preview.png # 1200×630 link-preview artwork
+│   │   ├── social-preview.png # 1200×630 link-preview artwork
+│   │   └── fonts/             # Self-hosted HRA webfonts and licenses
 │   ├── css/
 │   │   ├── fonts.css   # Typography stacks and future font declarations
 │   │   ├── tokens.css  # HRA themes and shared design tokens
@@ -85,7 +86,7 @@ The landing page is deliberately separated from the legacy story implementation:
 
 - `index.html` owns its semantic structure and editorial content.
 - `landing/assets/hero.png` is the optimized decorative hero artwork.
-- `landing/css/fonts.css` owns typography stacks and is the only location for future landing-page font declarations.
+- `landing/css/fonts.css` owns the self-hosted HRA font declarations and resilient typography stacks.
 - `landing/css/tokens.css` owns light/dark HRA colors, semantic roles, and shared layout tokens.
 - `landing/css/styles.css` owns components, layout, responsive rules, and accessibility adaptations.
 - `landing/js/main.js` is the module entry point and initializes independent landing-page features.
@@ -154,6 +155,7 @@ reader, 200–400% zoom, text-spacing, forced-colors, reduced-motion, and mobile
 
 - Keep the site dependency-free.
 - Use semantic HTML, modern CSS, and small vanilla JavaScript.
+- Keep landing-page webfonts and their licenses under `landing/assets/fonts/`; retain only required WOFF2 files.
 - Preserve progressive enhancement and no-JavaScript access.
 - Keep landing-page work isolated to `index.html` and `landing/`.
 - Do not make broad edits to generated `Game/` files or large embedded story documents.
