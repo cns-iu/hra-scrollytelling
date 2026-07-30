@@ -1,157 +1,329 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
+    <!-- Core document metadata -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Explore the Human Reference Atlas | Human Atlas Stories</title>
+    <meta name="description"
+        content="Explore five accessible, mixed-media stories that introduce the Human Reference Atlas and the data behind it.">
+    <link rel="canonical" href="https://cns-iu.github.io/hra-scrollytelling/">
 
-    <title>Home</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="img/favicon.svg">
+    <!-- Search and link-preview metadata -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Human Atlas Stories">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Explore the Human Reference Atlas">
+    <meta property="og:description"
+        content="Explore five accessible, mixed-media stories that introduce the Human Reference Atlas and the data behind it.">
+    <meta property="og:url" content="https://cns-iu.github.io/hra-scrollytelling/">
+    <meta property="og:image"
+        content="https://cns-iu.github.io/hra-scrollytelling/landing/assets/social-preview.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"
+        content="A translucent human figure with its heart and blood vessels visible stands against a pale blue background.">
 
-    <!-- Google tag (gtag.js) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Explore the Human Reference Atlas">
+    <meta name="twitter:description"
+        content="Explore five accessible, mixed-media stories that introduce the Human Reference Atlas.">
+    <meta name="twitter:image"
+        content="https://cns-iu.github.io/hra-scrollytelling/landing/assets/social-preview.png">
+    <meta name="twitter:image:alt"
+        content="A translucent human figure with its heart and blood vessels visible stands against a pale blue background.">
+
+    <!-- Apply the saved appearance before styles paint. -->
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#fafbfc" data-light-color="#fafbfc" data-dark-color="#161719">
+    <script>
+        (() => {
+            try {
+                const savedTheme = localStorage.getItem('hra-landing-theme');
+                const systemTheme = typeof window.matchMedia === 'function'
+                    && window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ? 'dark'
+                    : 'light';
+                const activeTheme = savedTheme === 'light' || savedTheme === 'dark'
+                    ? savedTheme
+                    : systemTheme;
+                const themeColor = document.querySelector('meta[name="theme-color"]');
+
+                if (savedTheme === 'system' || savedTheme === 'light' || savedTheme === 'dark') {
+                    document.documentElement.dataset.themeMode = savedTheme;
+                    if (savedTheme === 'light' || savedTheme === 'dark') {
+                        document.documentElement.dataset.theme = savedTheme;
+                    }
+                }
+
+                if (themeColor) {
+                    themeColor.content = activeTheme === 'dark'
+                        ? themeColor.dataset.darkColor
+                        : themeColor.dataset.lightColor;
+                }
+            } catch {
+                // The system theme remains the fallback when storage is unavailable.
+            }
+        })();
+    </script>
+
+    <!-- Landing-page assets -->
+    <link rel="stylesheet" href="landing/css/fonts.css">
+    <link rel="stylesheet" href="landing/css/tokens.css">
+    <link rel="stylesheet" href="landing/css/styles.css">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+    <!-- Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1811WRJJD"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
 
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
         gtag('config', 'G-E1811WRJJD');
     </script>
+
+    <!-- Progressive enhancement -->
+    <script type="module" src="landing/js/main.js"></script>
 </head>
 
-<body id="index">
-    <!-- section counter -->
-    <div id="sectionCounterdiv">
-        <p id="sectionCounter"></p>
+<body>
+    <!-- Skip navigation -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Floating navigation and appearance controls -->
+    <div class="site-controls">
+        <div class="site-controls-panel" id="site-menu" aria-labelledby="site-menu-title" tabindex="-1" hidden>
+            <div class="site-controls-header">
+                <p class="site-controls-title" id="site-menu-title">Menu</p>
+                <button class="site-controls-close" type="button" aria-label="Close Menu">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="m6 6 12 12M18 6 6 18"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="quick-navigation" aria-labelledby="stories-navigation-label">
+                <p class="site-controls-label" id="stories-navigation-label">Stories</p>
+                <ul role="list">
+                    <li><a href="story1.html">What Is a Human Reference Atlas?</a></li>
+                    <li><a href="story2.html">Squiggy's Identity Crisis!</a></li>
+                    <li><a href="story3.html">Something's Not Registering!</a></li>
+                    <li><a href="story4.html">Data Detangle</a></li>
+                    <li><a href="story5.html">Know Your Body Buddies</a></li>
+                </ul>
+            </nav>
+
+            <nav class="quick-navigation quick-navigation-secondary" aria-labelledby="resources-navigation-label">
+                <p class="site-controls-label" id="resources-navigation-label">Explore the atlas</p>
+                <ul role="list">
+                    <li><a href="https://humanatlas.io/">Human Reference Atlas</a></li>
+                    <li><a href="https://apps.humanatlas.io/">Human Reference Atlas App Library</a></li>
+                </ul>
+            </nav>
+
+            <fieldset class="appearance-controls">
+                <legend>Appearance</legend>
+                <label class="appearance-choice">
+                    <input type="radio" name="color-theme" value="system" checked>
+                    <span>System settings</span>
+                </label>
+                <label class="appearance-choice">
+                    <input type="radio" name="color-theme" value="light">
+                    <span>Light</span>
+                </label>
+                <label class="appearance-choice">
+                    <input type="radio" name="color-theme" value="dark">
+                    <span>Dark</span>
+                </label>
+            </fieldset>
+        </div>
+
+        <button class="site-controls-toggle" type="button" aria-controls="site-menu" aria-expanded="false" hidden>
+            <svg class="site-controls-icon site-controls-icon-menu" viewBox="0 0 24 24" aria-hidden="true"
+                focusable="false">
+                <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+            <svg class="site-controls-icon site-controls-icon-close" viewBox="0 0 24 24" aria-hidden="true"
+                focusable="false">
+                <path d="m6 6 12 12M18 6 6 18"></path>
+            </svg>
+            <span>Menu</span>
+        </button>
+
+        <span class="visually-hidden" id="preference-status" aria-live="polite" aria-atomic="true"></span>
     </div>
 
-    <!-- section top  -->
-    <section class="scrollynav">
-        <a href="index.html"><img draggable="false" src="img/UI Assets/navlogo.svg" class="navlogo"></a>
-
-        <div class="dropdown">
-            <button class="dropbtn"><img draggable="false" src="img/UI Assets/navhamburger.svg" class="navmenu">
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="story1.html"><img src="img/UI Assets/count1.svg" style="vertical-align:middle">&nbsp;&nbsp;What
-                    Is An HRA?</a>
-                <a href="story2.html"><img src="img/UI Assets/count2.svg"
-                        style="vertical-align:middle">&nbsp;&nbsp;Squiggy's Identity Crisis!</a>
-                <a href="story3.html"> <img src="img/UI Assets/count3.svg"
-                        style="vertical-align:middle">&nbsp;&nbsp;Something's NOT Registering!</a>
-                <a href="story4.html"> <img src="img/UI Assets/count4.svg"
-                            style="vertical-align:middle">&nbsp;&nbsp;Data Detangle</a>
-                <a href="story5.html"> <img src="img/UI Assets/count5.svg"
-                                style="vertical-align:middle">&nbsp;&nbsp;Know Your Body Buddies</a>
-                <hr>
-                <a href="https://humanatlas.io/" target="_blank"><img src="img/UI Assets/nav_logo.svg"
-                        style="vertical-align:middle">&nbsp;&nbsp;Human Reference Atlas</a>
-                <a href="https://apps.humanatlas.io/" target="_blank"><img src="img/UI Assets/nav_apps.svg"
-                        style="vertical-align:middle">&nbsp;&nbsp;App Library</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="middlesectionindex">
-        <div class="storyList">
-            <p class="indexTitle">Explore mixed-media animated essays designed to introduce the Human Reference Atlas to a general audience</p>
-
-            <div class="IndexStories">
-                <div class="indexstory">
-                    <img src="img/UI Assets/count1.svg" style="vertical-align:middle">
-
-                    <div class="storylink"> <a href="https://cns-iu.github.io/hra-scrollytelling/story1.html">
-                            <p class="indextext">What is a Human Reference Atlas? <img src="img/UI Assets/arrow.svg"
-                                    style="vertical-align:middle"></p>
-                        </a></div>
-                </div>
-
-                <div class="indexstory">
-                    <img src="img/UI Assets/count2.svg" style="vertical-align:middle">
-
-                    <div class="storylink"> <a href="https://cns-iu.github.io/hra-scrollytelling/story2.html">
-                            <p class="indextext">Squiggy's Identity Crisis! <img src="img/UI Assets/arrow.svg"
-                                    style="vertical-align:middle"></p>
-                        </a></div>
-                </div>
-
-                <div class="indexstory">
-                    <img src="img/UI Assets/count3.svg" style="vertical-align:middle">
-
-                    <div class="storylink"> <a href="https://cns-iu.github.io/hra-scrollytelling/story3.html">
-                            <p class="indextext">Something's NOT Registering <img src="img/UI Assets/arrow.svg"
-                                    style="vertical-align:middle"></p>
-                        </a></div>
-                </div>
-
-                <div class="indexstory">
-                    <img src="img/UI Assets/count4.svg" style="vertical-align:middle">
-
-                    <div class="storylink"> <a href="https://cns-iu.github.io/hra-scrollytelling/story4.html">
-                            <p class="indextext">Data Detangle <img src="img/UI Assets/arrow.svg"
-                                    style="vertical-align:middle"></p>
-                        </a></div>
-                </div>
-
-                <div class="indexstory">
-                    <img src="img/UI Assets/count5.svg" style="vertical-align:middle">
-
-                    <div class="storylink"> <a href="https://cns-iu.github.io/hra-scrollytelling/story5.html">
-                            <p class="indextext">Know Your Body Buddies <img src="img/UI Assets/arrow.svg"
-                                    style="vertical-align:middle"></p>
-                        </a></div>
+    <!-- Primary landing-page content -->
+    <main id="main-content" tabindex="-1">
+        <!-- Hero introduction -->
+        <section class="hero" aria-labelledby="page-title">
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <a class="hero-brand-link" href="index.html" aria-label="Human Atlas Stories home"
+                        aria-current="page">
+                        <img src="img/UI Assets/navlogo.svg" alt="" width="215" height="42">
+                    </a>
+                    <p class="eyebrow">Human Reference Atlas stories</p>
+                    <h1 id="page-title">Explore the Human Reference Atlas</h1>
+                    <p class="hero-summary">Discover how scientists map the human body through five mixed-media
+                        stories made for curious learners.</p>
+                    <a class="primary-action" href="#stories">Browse stories</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <div class="hrafooter">
-        <div class="leftsidefooter">
-            <img src="img/UI Assets/logo.svg" height="102px" width="246px">
-            <div class="footercopyright">
-                <a href="https://humanatlas.io/" target="_blank"><img src="img/UI Assets/copyrightsymbol.svg"></a>
-                2024 CNS at Indiana University
-            </div>
-        </div>
-        <div class="rightsidefooter">
-            <div class="centeritems">
-                <div class="footerlogocenter">
-                    <div class="footerlogos">
-                        <a href="https://twitter.com/cnscenter" target="_blank"><img
-                                src="img/UI Assets/social media.svg"></a>
-                        <a href="https://www.facebook.com/cnscenter/" target="_blank"><img
-                                src="img/UI Assets/social media-1.svg"></a>
-                        <a href="https://www.instagram.com/cns_at_iu/" target="_blank"><img
-                                src="img/UI Assets/social media-2.svg"></a>
-                        <a href="https://www.youtube.com/@CNSCenter/" target="_blank"><img
-                                src="img/UI Assets/social media-3.svg"></a>
-                        <a href="https://www.linkedin.com/company/cns-indiana-university-bloomington"
-                            target="_blank"><img src="img/UI Assets/social media-4.svg"></a>
-                        <a href="https://twitter.com/cnscenter" target="_blank"><img
-                                src="img/UI Assets/social media-5.svg"></a>
-                    </div>
-                    <div class="footerfounders">
-                        <p>Funded By:</p>
-                        <div class="founderlogos">
-                            <a href="https://www.nih.gov/" target="_blank"><img
-                                    src="img/UI Assets/icon_ funder.svg"></a>
-                            <a href="https://cifar.ca/" target="_blank"><img src="img/UI Assets/icon_ funder-1.svg"></a>
-                            <a href="https://www.iu.edu/index.html" target="_blank"><img
-                                    src="img/UI Assets/icon_ funder-2.svg"></a>
-                        </div>
-                    </div>
+        <!-- Story collection -->
+        <section class="stories-section" id="stories" aria-labelledby="stories-title">
+            <div class="content-wrapper">
+                <div class="section-heading">
+                    <p class="eyebrow">Choose your path</p>
+                    <h2 id="stories-title">Five stories, one shared atlas</h2>
+                    <p>Start with an introduction or jump to the question that interests you most.</p>
                 </div>
-                <div class="medicaldisclaimer">Medical Disclaimer: This resource is intended for research purposes only.
-                    It
-                    should not be used for
-                    emergencies or medical or professional advice. </div>
+
+                <ol class="story-grid" role="list">
+                    <li>
+                        <a class="story-card" href="story1.html">
+                            <span class="story-number" aria-hidden="true">01</span>
+                            <div class="story-card-copy">
+                                <h3 class="story-title">What Is a Human Reference Atlas?</h3>
+                                <span class="story-description">Meet the atlas and learn why a shared map of the human
+                                    body matters.</span>
+                            </div>
+                            <span class="story-arrow" aria-hidden="true">→</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="story-card" href="story2.html">
+                            <span class="story-number" aria-hidden="true">02</span>
+                            <div class="story-card-copy">
+                                <h3 class="story-title">Squiggy's Identity Crisis!</h3>
+                                <span class="story-description">Explore how clear, consistent identities help connect
+                                    biological information.</span>
+                            </div>
+                            <span class="story-arrow" aria-hidden="true">→</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="story-card" href="story3.html">
+                            <span class="story-number" aria-hidden="true">03</span>
+                            <div class="story-card-copy">
+                                <h3 class="story-title">Something's Not Registering!</h3>
+                                <span class="story-description">See how anatomical information is aligned to a common
+                                    reference.</span>
+                            </div>
+                            <span class="story-arrow" aria-hidden="true">→</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="story-card" href="story4.html">
+                            <span class="story-number" aria-hidden="true">04</span>
+                            <div class="story-card-copy">
+                                <h3 class="story-title">Data Detangle</h3>
+                                <span class="story-description">Follow the work of organizing complex biological data
+                                    into something people can use.</span>
+                            </div>
+                            <span class="story-arrow" aria-hidden="true">→</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="story-card" href="story5.html">
+                            <span class="story-number" aria-hidden="true">05</span>
+                            <div class="story-card-copy">
+                                <h3 class="story-title">Know Your Body Buddies</h3>
+                                <span class="story-description">Get to know the cells and structures that work together
+                                    throughout the body.</span>
+                            </div>
+                            <span class="story-arrow" aria-hidden="true">→</span>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a class="footer-brand-link" href="https://humanatlas.io/" aria-label="Visit the Human Reference Atlas">
+                    <img src="img/UI Assets/logo.svg" alt="" width="246" height="102">
+                </a>
+                <p><span aria-hidden="true">©</span> 2026 CNS at Indiana University</p>
+            </div>
+
+            <div class="footer-content">
+                <nav class="social-nav" aria-labelledby="social-title">
+                    <h2 id="social-title">Follow the Cyberinfrastructure for Network Science Center</h2>
+                    <ul class="social-list" role="list">
+                        <li>
+                            <a href="https://twitter.com/cnscenter"
+                                aria-label="Cyberinfrastructure for Network Science Center on X, formerly Twitter">
+                                <img src="img/UI Assets/social media.svg" alt="" width="48" height="48">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/cnscenter/"
+                                aria-label="Cyberinfrastructure for Network Science Center on Facebook">
+                                <img src="img/UI Assets/social media-1.svg" alt="" width="49" height="48">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/cns_at_iu/"
+                                aria-label="Cyberinfrastructure for Network Science Center on Instagram">
+                                <img src="img/UI Assets/social media-2.svg" alt="" width="49" height="48">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/@CNSCenter/"
+                                aria-label="Cyberinfrastructure for Network Science Center on YouTube">
+                                <img src="img/UI Assets/social media-3.svg" alt="" width="49" height="48">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/cns-indiana-university-bloomington"
+                                aria-label="Cyberinfrastructure for Network Science Center on LinkedIn">
+                                <img src="img/UI Assets/social media-4.svg" alt="" width="49" height="48">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <section class="funders" aria-labelledby="funders-title">
+                    <h2 id="funders-title">Funded by</h2>
+                    <ul class="funder-list" role="list">
+                        <li>
+                            <a href="https://www.nih.gov/" aria-label="National Institutes of Health">
+                                <img src="img/UI Assets/icon_ funder.svg" alt="" width="48" height="48">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://cifar.ca/" aria-label="CIFAR">
+                                <img src="img/UI Assets/icon_ funder-1.svg" alt="" width="49" height="48">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.iu.edu/index.html" aria-label="Indiana University">
+                                <img src="img/UI Assets/icon_ funder-2.svg" alt="" width="49" height="48">
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="medical-disclaimer" aria-labelledby="disclaimer-title">
+                    <h2 id="disclaimer-title">Medical disclaimer</h2>
+                    <p>This resource is intended for research purposes only. It should not be used for emergencies or
+                        for medical or professional advice.</p>
+                </section>
             </div>
         </div>
-    </div>
+    </footer>
 </body>
-<script src="scripts.js"></script>
 
 </html>

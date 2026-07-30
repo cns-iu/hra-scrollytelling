@@ -1,0 +1,11 @@
+/*
+ * Landing-page typography tokens and resilient font stacks.
+ *
+ * These local and system stacks keep the page dependency-free. Add any future
+ * self-hosted HRA @font-face declarations here and retain the fallbacks.
+ */
+
+:root {
+    --font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-heading: var(--font-body);
+}
