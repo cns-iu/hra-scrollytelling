@@ -6,7 +6,8 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 ## Stability rules
 
 - Keep `index.html` and the root `story*.html` entry points at their current URLs.
-- Keep the landing-page implementation isolated under `landing/`.
+- Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
+  under `shared/`.
 - Treat `style.css`, `scripts.js`, `img/`, and `js/` as shared legacy resources until each consumer has been mapped.
 - Treat `Game/` as an isolated generated application. Preserve its directory name, internal paths, manifest, and service
   worker scope.
@@ -17,8 +18,8 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 
 | Area | Entry points | Implementation |
 | --- | --- | --- |
-| Landing page | `index.html` | `landing/assets/`, including self-hosted fonts and licenses, `landing/css/`, and `landing/js/` |
-| Shared page chrome | `index.html` and `story1.html` through `story5.html` | Migrating to namespaced styles and progressive-enhancement modules under `shared/` |
+| Landing page | `index.html` | `landing/assets/`, `landing/css/`, shared HRA fonts, and `landing/js/` |
+| Shared page chrome | `index.html` and `story1.html` through `story5.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; Story 1 is the integration pilot |
 | Primary stories | `story1.html` through `story5.html` | Shared `style.css`, shared or story-specific scripts, `img/`, `music/`, and gradually organized files under `stories/` |
 | Prototypes | `story0.html`, `VisualizingCells.html`, `organExample.html`, and `img/test.html` | Shared legacy files |
 | Generated game | `Game/index.html` | Everything under `Game/` |
@@ -40,6 +41,7 @@ Root HTML files remain stable public entry points while their implementation fil
 ├── story5.html
 ├── landing/
 ├── shared/
+│   ├── assets/
 │   ├── css/
 │   └── js/
 ├── stories/
@@ -59,6 +61,9 @@ Root HTML files remain stable public entry points while their implementation fil
 
 The `img/` directory remains in place until each asset has a verified owner. Empty target directories should not be
 created in advance.
+
+`landing/css/fonts.css` remains as a compatibility bridge for cached landing-page documents. Maintained HTML entry
+points load `shared/css/fonts.css` directly; do not expand the compatibility file into a second font source.
 
 ## Shared page chrome
 
@@ -115,9 +120,9 @@ old path has no remaining consumers.
 
 Migrate shared page chrome independently from broader story reorganization:
 
-1. Establish the namespaced shared styles and modules without changing any entry point.
-2. Migrate `index.html` as the reference implementation.
-3. Migrate `story1.html` as the first story-page pilot and complete rendered accessibility checks.
+1. Establish the namespaced shared fonts, styles, and modules without changing any component markup.
+2. Migrate `story1.html` as the first integration pilot while the landing-page redesign is in progress.
+3. Migrate `index.html` after its design direction is approved.
 4. Migrate one remaining story per commit, leaving each story's visual and animation implementation unchanged.
 5. Remove legacy navigation, footer, or story-navigation rules only after a repository-wide search confirms that no
    maintained or prototype page still consumes them.

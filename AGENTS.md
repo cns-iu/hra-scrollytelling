@@ -16,7 +16,8 @@ Landing-page work is intentionally isolated to:
 - `index.html` for content and semantic structure.
 - `landing/assets/hero.png` for optimized decorative hero artwork.
 - `landing/assets/social-preview.png` for the canonical 1200-by-630-pixel link-preview artwork.
-- `landing/css/fonts.css` for landing-page typography stacks and font declarations.
+- `shared/css/fonts.css` for typography stacks and font declarations used by the landing page and shared page chrome.
+- `landing/css/fonts.css` as a compatibility bridge for cached documents that still request the former font URL.
 - `landing/css/tokens.css` for landing-page themes and shared design tokens.
 - `landing/css/styles.css` for landing-page components, layout, and accessibility adaptations.
 - `landing/js/main.js` for initializing landing-page modules.
@@ -24,8 +25,9 @@ Landing-page work is intentionally isolated to:
 - `landing/js/theme.js` for appearance selection, persistence, and system-preference behavior.
 
 Do not reconnect the landing page to the legacy `style.css` or `scripts.js`. Do not allow landing-page selectors or
-behavior to affect the story pages. Do not overwrite or repurpose legacy files directly under `js/`. Keep the
-stylesheet order `fonts.css`, `tokens.css`, then `styles.css`, and load `landing/js/main.js` as an ES module.
+behavior to affect the story pages. Do not overwrite or repurpose legacy files directly under `js/`. Keep the landing
+stylesheet order `shared/css/fonts.css`, `landing/css/tokens.css`, then `landing/css/styles.css`, and load
+`landing/js/main.js` as an ES module.
 
 ## Shared page-chrome architecture
 
@@ -33,6 +35,7 @@ The maintained public pages are `index.html` and `story1.html` through `story5.h
 footer, and end-of-story navigation are migrating to namespaced foundations under:
 
 - `shared/css/tokens.css` for component-scoped Light and Dark appearance roles.
+- `shared/css/fonts.css` and `shared/assets/fonts/` for approved HRA typography and licenses.
 - `shared/css/navigation.css` for the skip link and native Menu disclosure.
 - `shared/css/footer.css` for the canonical site footer.
 - `shared/css/story-navigation.css` for previous and next story links.
@@ -43,9 +46,10 @@ Keep essential shared component markup in every consuming HTML page; do not inje
 System settings, Light, and Dark apply only to shared page chrome. Preserve `hra-landing-theme` as the storage key
 during migration.
 
-Adopt the foundation one page at a time, beginning with `index.html` and then `story1.html`. Do not remove a legacy
-component rule until repository-wide search confirms that no maintained or prototype page consumes it. Prototype
-pages and `Game/` are excluded from the shared page-chrome rollout.
+Adopt the foundation one page at a time. Story 1 is the integration pilot while the landing-page redesign is in
+progress; migrate `index.html` after its revised design is approved. Do not remove a legacy component rule until
+repository-wide search confirms that no maintained or prototype page consumes it. Prototype pages and `Game/` are
+excluded from the shared page-chrome rollout.
 
 Preserve existing uncommitted work and follow the repository's active branch and review workflow. Do not rewrite,
 discard, commit, push, or publish changes unless those operations are explicitly in scope.
@@ -95,8 +99,8 @@ When reviewing screenshots, distinguish real mobile-browser behavior from deskto
 - Use semantic design tokens rather than scattering raw colors through component rules.
 - Keep landing-page theme tokens in `landing/css/tokens.css` and shared page-chrome tokens in
   `shared/css/tokens.css`.
-- Keep font stacks and `@font-face` declarations in `landing/css/fonts.css`. Keep approved self-hosted landing fonts
-  and their license files under `landing/assets/fonts/`; do not add or replace font files without explicit approval.
+- Keep font stacks and `@font-face` declarations in `shared/css/fonts.css`. Keep approved self-hosted fonts and their
+  license files under `shared/assets/fonts/`; do not add or replace font files without explicit approval.
 - Keep component and accessibility rules in `landing/css/styles.css` rather than duplicating tokens in component
   selectors.
 - Keep the fixed top-left Menu control visibly labeled. Use ordinary navigation links, not `role="menu"`, for page and

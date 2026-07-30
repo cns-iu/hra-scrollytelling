@@ -46,10 +46,9 @@ The repository also contains older prototypes and demonstrations, including `sto
 ├── landing/            # Isolated landing-page implementation
 │   ├── assets/
 │   │   ├── hero.png           # Responsive decorative hero artwork
-│   │   ├── social-preview.png # 1200×630 link-preview artwork
-│   │   └── fonts/             # Self-hosted HRA webfonts and licenses
+│   │   └── social-preview.png # 1200×630 link-preview artwork
 │   ├── css/
-│   │   ├── fonts.css   # Typography stacks and future font declarations
+│   │   ├── fonts.css   # Compatibility bridge for cached landing pages
 │   │   ├── tokens.css  # HRA themes and shared design tokens
 │   │   └── styles.css  # Components, layout, and accessibility adaptations
 │   └── js/
@@ -57,7 +56,9 @@ The repository also contains older prototypes and demonstrations, including `sto
 │       ├── menu.js     # Menu disclosure and focus behavior
 │       └── theme.js    # Appearance preferences and persistence
 ├── shared/             # Landing-and-story page-chrome foundation
-│   ├── css/            # Namespaced navigation, footer, and story-navigation styles
+│   ├── assets/
+│   │   └── fonts/      # Self-hosted HRA webfonts and licenses
+│   ├── css/            # Fonts, tokens, navigation, footer, and story-navigation styles
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── docs/               # Architecture and asset-migration records
 ├── tools/              # Dependency-free repository validation
@@ -89,7 +90,8 @@ The landing page is deliberately separated from the legacy story implementation:
 
 - `index.html` owns its semantic structure and editorial content.
 - `landing/assets/hero.png` is the optimized decorative hero artwork.
-- `landing/css/fonts.css` owns the self-hosted HRA font declarations and resilient typography stacks.
+- `shared/css/fonts.css` owns the self-hosted HRA font declarations and resilient typography stacks.
+- `landing/css/fonts.css` preserves the former font URL for cached landing-page documents.
 - `landing/css/tokens.css` owns light/dark HRA colors, semantic roles, and shared layout tokens.
 - `landing/css/styles.css` owns components, layout, responsive rules, and accessibility adaptations.
 - `landing/js/main.js` is the module entry point and initializes independent landing-page features.
@@ -125,7 +127,7 @@ The landing page includes light and dark themes derived from the Human Reference
 
 ### Typography
 
-The landing page implements the HRA Figma typography scale as reusable tokens in `landing/css/fonts.css`:
+The landing page implements the HRA Figma typography scale as reusable tokens in `shared/css/fonts.css`:
 
 - Metropolis Medium and Bold for display and headline roles.
 - Nunito Sans Regular, Medium, Semibold, and Bold for titles, labels, body copy, and controls.
@@ -152,13 +154,14 @@ navigation system under `shared/`. Because GitHub Pages serves the source files 
 component markup in its HTML while sharing namespaced CSS and small JavaScript modules. Essential links and landmarks
 are never injected at runtime.
 
-The shared foundation is present but is not connected to an entry point until each page receives its own reviewed
-migration commit. Component loading order and markup hooks are documented in
-[`shared/README.md`](shared/README.md).
+Story 1 is the first shared page-chrome integration pilot. The landing page continues to use its existing component
+markup while its redesign is in progress, but both experiences load the same shared font declarations. Component
+loading order and markup hooks are documented in [`shared/README.md`](shared/README.md).
 
 During the staged migration:
 
-- `index.html` remains the reference implementation for Menu, appearance, and footer accessibility.
+- `story1.html` is the first integration pilot for shared Menu, appearance, story navigation, and footer behavior.
+- `index.html` will adopt the shared markup after its revised design is approved.
 - Story pages apply Light, Dark, and System settings only to shared page chrome; story artwork is unchanged.
 - The accessible landing-page footer is the canonical footer for maintained public pages.
 - Each story is adopted and validated in a separate commit.
@@ -192,9 +195,10 @@ reader, 200–400% zoom, text-spacing, forced-colors, reduced-motion, and mobile
 
 - Keep the site dependency-free.
 - Use semantic HTML, modern CSS, and small vanilla JavaScript.
-- Keep landing-page webfonts and their licenses under `landing/assets/fonts/`; retain only required WOFF2 files.
+- Keep shared webfonts and their licenses under `shared/assets/fonts/`; retain only required WOFF2 files.
 - Preserve progressive enhancement and no-JavaScript access.
-- Keep landing-page work isolated to `index.html` and `landing/`.
+- Keep landing-specific work isolated to `index.html` and `landing/`; place approved cross-page foundations under
+  `shared/`.
 - Do not make broad edits to generated `Game/` files or large embedded story documents.
 - Avoid reorganizing files as part of unrelated feature work.
 - Explain and approve dependency or repository-structure changes before implementing them.

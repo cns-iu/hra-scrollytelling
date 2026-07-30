@@ -23,6 +23,10 @@
     transform: translateY(0);
 }
 
+.site-main-target {
+    scroll-margin-block-start: 6rem;
+}
+
 .site-menu {
     position: fixed;
     z-index: 100000;

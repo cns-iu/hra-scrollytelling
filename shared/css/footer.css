@@ -2,9 +2,11 @@
 
 .site-chrome-footer {
     box-sizing: border-box;
+    padding: 0;
     color: var(--site-chrome-color-on-footer);
     background: var(--site-chrome-color-footer);
     font-family: var(--site-chrome-font-body);
+    text-align: start;
 }
 
 .site-chrome-footer *,
@@ -31,6 +33,7 @@
 
 .site-chrome-footer__brand p {
     margin: 0;
+    color: var(--site-chrome-color-on-footer);
     font-size: var(--site-chrome-body-size);
     letter-spacing: var(--site-chrome-body-letter-spacing);
     line-height: var(--site-chrome-body-line-height);
@@ -109,6 +112,7 @@
 
 .site-chrome-footer__disclaimer p {
     margin: 0;
+    color: var(--site-chrome-color-on-footer);
     font-size: var(--site-chrome-body-size);
     letter-spacing: var(--site-chrome-body-letter-spacing);
     line-height: var(--site-chrome-body-line-height);

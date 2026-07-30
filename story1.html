@@ -1,13 +1,39 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>1: What Is An HRA?</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
+
+    <!-- Apply the saved shared-chrome appearance before styles paint. -->
+    <script>
+        (() => {
+            try {
+                const savedTheme = localStorage.getItem('hra-landing-theme');
+
+                if (savedTheme === 'system' || savedTheme === 'light' || savedTheme === 'dark') {
+                    document.documentElement.dataset.themeMode = savedTheme;
+
+                    if (savedTheme === 'light' || savedTheme === 'dark') {
+                        document.documentElement.dataset.theme = savedTheme;
+                    }
+                }
+            } catch {
+                // System settings remain the fallback when storage is unavailable.
+            }
+        })();
+    </script>
+
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shared/css/fonts.css">
+    <link rel="stylesheet" href="shared/css/tokens.css">
+    <link rel="stylesheet" href="shared/css/navigation.css">
+    <link rel="stylesheet" href="shared/css/story-navigation.css">
+    <link rel="stylesheet" href="shared/css/footer.css">
     <link rel="icon" type="image/x-icon" href="img/favicon.svg">
 
     <!-- Google tag (gtag.js) -->
@@ -19,42 +45,81 @@
 
         gtag('config', 'G-E1811WRJJD');
     </script>
+
+    <script type="module" src="shared/js/main.js"></script>
 </head>
 
 
 <body id="one">
-    <!-- section counter -->
-    <div id="sectionCounterdiv">
-        <p id="sectionCounter"></p>
-    </div>
+    <a class="site-skip-link site-chrome" href="#main-content">Skip to main content</a>
 
-<!-- section top  -->
-<section class="scrollynav">
-    <a href="index.html"><img draggable="false" src="img/UI Assets/navlogo.svg" class="navlogo"></a>
+    <details class="site-menu site-chrome" data-site-menu>
+        <summary>
+            <svg class="site-menu-icon site-menu-icon-menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+            <svg class="site-menu-icon site-menu-icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="m6 6 12 12M18 6 6 18"></path>
+            </svg>
+            <span>Menu</span>
+        </summary>
 
-    <div class="dropdown">
-        <button class="dropbtn"><img draggable="false" src="img/UI Assets/navhamburger.svg" class="navmenu">
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="story1.html"><img src="img/UI Assets/count1.svg" style="vertical-align:middle">&nbsp;&nbsp;What
-                Is An HRA?</a>
-            <a href="story2.html"><img src="img/UI Assets/count2.svg"
-                    style="vertical-align:middle">&nbsp;&nbsp;Squiggy's Identity Crisis!</a>
-            <a href="story3.html"> <img src="img/UI Assets/count3.svg"
-                    style="vertical-align:middle">&nbsp;&nbsp;Something's NOT Registering!</a>
-            <a href="story4.html"> <img src="img/UI Assets/count4.svg"
-                        style="vertical-align:middle">&nbsp;&nbsp;Data Detangle</a>
-            <a href="story5.html"> <img src="img/UI Assets/count5.svg"
-                            style="vertical-align:middle">&nbsp;&nbsp;Know Your Body Buddies</a>
-            <hr>
-            <a href="https://humanatlas.io/" target="_blank"><img src="img/UI Assets/nav_logo.svg"
-                    style="vertical-align:middle">&nbsp;&nbsp;Human Reference Atlas</a>
-            <a href="https://apps.humanatlas.io/" target="_blank"><img src="img/UI Assets/nav_apps.svg"
-                    style="vertical-align:middle">&nbsp;&nbsp;App Library</a>
+        <div class="site-menu-panel" data-site-menu-panel role="region" aria-labelledby="site-menu-title" tabindex="-1">
+            <div class="site-menu-header">
+                <p class="site-menu-title" id="site-menu-title">Menu</p>
+                <button class="site-menu-close" type="button" aria-label="Close Menu" data-site-menu-close>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="m6 6 12 12M18 6 6 18"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="site-menu-nav" aria-labelledby="site-navigation-label">
+                <p class="site-menu-label" id="site-navigation-label">Navigate</p>
+                <ul role="list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="story1.html" aria-current="page">What Is a Human Reference Atlas?</a></li>
+                    <li><a href="story2.html">Squiggy's Identity Crisis!</a></li>
+                    <li><a href="story3.html">Something's Not Registering!</a></li>
+                    <li><a href="story4.html">Data Detangle</a></li>
+                    <li><a href="story5.html">Know Your Body Buddies</a></li>
+                </ul>
+            </nav>
+
+            <nav class="site-menu-nav" aria-labelledby="site-resources-label">
+                <p class="site-menu-label" id="site-resources-label">Explore the atlas</p>
+                <ul role="list">
+                    <li><a href="https://humanatlas.io/">Human Reference Atlas</a></li>
+                    <li><a href="https://apps.humanatlas.io/">Human Reference Atlas App Library</a></li>
+                </ul>
+            </nav>
+
+            <fieldset class="site-appearance">
+                <legend>Appearance</legend>
+                <label class="site-appearance-choice">
+                    <input type="radio" name="site-color-theme" value="system" data-site-theme-choice checked>
+                    <span>System settings</span>
+                </label>
+                <label class="site-appearance-choice">
+                    <input type="radio" name="site-color-theme" value="light" data-site-theme-choice>
+                    <span>Light</span>
+                </label>
+                <label class="site-appearance-choice">
+                    <input type="radio" name="site-color-theme" value="dark" data-site-theme-choice>
+                    <span>Dark</span>
+                </label>
+            </fieldset>
         </div>
-    </div>
-</section>
+    </details>
+
+    <span class="site-chrome site-chrome-visually-hidden" data-site-theme-status aria-live="polite"
+        aria-atomic="true"></span>
+
+    <main class="site-main-target" id="main-content" tabindex="-1">
+        <!-- section counter -->
+        <div id="sectionCounterdiv">
+            <p id="sectionCounter"></p>
+        </div>
 
     <!-- section header/intro -->
     <section class="intro" id="intro">
@@ -214,64 +279,101 @@
         </div>
     </section>
 
-    <!-- BotNav -->
-    <section class="botNav">
-        <a href="index.html" class="previous storylink"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16">
-                <path fill-rule="evenodd"
-                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-            </svg>&nbsp;&nbsp;Go to Home</a>
-        <a href="story2.html" class="next">Story 2: <span class="nextTitle">Squiggy's Identity Crisis!&nbsp;&nbsp;</span><svg
-                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right"
-                viewBox="0 -3 16 16">
-                <path fill-rule="evenodd"
-                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-            </svg></a>
-    </section>
+    </main>
 
-    <div class="hrafooter">
-        <div class="leftsidefooter">
-            <img src="img/UI Assets/logo.svg" height="102px" width="246px">
-            <div class="footercopyright">
-                <a href="https://humanatlas.io/" target="_blank"><img src="img/UI Assets/copyrightsymbol.svg"></a>
-                2024 CNS at Indiana University
+    <nav class="site-story-navigation site-chrome" aria-label="Story navigation">
+        <ul class="site-story-navigation__list" role="list">
+            <li class="site-story-navigation__item">
+                <a class="site-story-navigation__link" href="index.html">
+                    <span class="site-story-navigation__arrow" aria-hidden="true">←</span>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="site-story-navigation__item">
+                <a class="site-story-navigation__link" href="story2.html">
+                    <span>Story 2: Squiggy's Identity Crisis!</span>
+                    <span class="site-story-navigation__arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <footer class="site-chrome-footer site-chrome">
+        <div class="site-chrome-footer__inner">
+            <div class="site-chrome-footer__brand">
+                <a class="site-chrome-footer__brand-link" href="https://humanatlas.io/"
+                    aria-label="Visit the Human Reference Atlas">
+                    <img src="img/UI Assets/logo.svg" alt="" width="246" height="102">
+                </a>
+                <p><span aria-hidden="true">©</span> 2026 CNS at Indiana University</p>
+            </div>
+
+            <div class="site-chrome-footer__content">
+                <nav aria-labelledby="social-title">
+                    <h2 id="social-title">Follow the Cyberinfrastructure for Network Science Center</h2>
+                    <ul class="site-chrome-footer__link-list" role="list">
+                        <li>
+                            <a href="https://twitter.com/cnscenter"
+                                aria-label="Cyberinfrastructure for Network Science Center on X, formerly Twitter">
+                                <img src="img/UI Assets/social media.svg" alt="" width="48" height="48">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/cnscenter/"
+                                aria-label="Cyberinfrastructure for Network Science Center on Facebook">
+                                <img src="img/UI Assets/social media-1.svg" alt="" width="49" height="48">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/cns_at_iu/"
+                                aria-label="Cyberinfrastructure for Network Science Center on Instagram">
+                                <img src="img/UI Assets/social media-2.svg" alt="" width="49" height="48">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/@CNSCenter/"
+                                aria-label="Cyberinfrastructure for Network Science Center on YouTube">
+                                <img src="img/UI Assets/social media-3.svg" alt="" width="49" height="48">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/cns-indiana-university-bloomington"
+                                aria-label="Cyberinfrastructure for Network Science Center on LinkedIn">
+                                <img src="img/UI Assets/social media-4.svg" alt="" width="49" height="48">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <section aria-labelledby="funders-title">
+                    <h2 id="funders-title">Funded by</h2>
+                    <ul class="site-chrome-footer__link-list site-chrome-footer__funder-list" role="list">
+                        <li>
+                            <a href="https://www.nih.gov/" aria-label="National Institutes of Health">
+                                <img src="img/UI Assets/icon_ funder.svg" alt="" width="48" height="48">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://cifar.ca/" aria-label="CIFAR">
+                                <img src="img/UI Assets/icon_ funder-1.svg" alt="" width="49" height="48">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.iu.edu/index.html" aria-label="Indiana University">
+                                <img src="img/UI Assets/icon_ funder-2.svg" alt="" width="49" height="48">
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="site-chrome-footer__disclaimer" aria-labelledby="disclaimer-title">
+                    <h2 id="disclaimer-title">Medical disclaimer</h2>
+                    <p>This resource is intended for research purposes only. It should not be used for emergencies or
+                        for medical or professional advice.</p>
+                </section>
             </div>
         </div>
-        <div class="rightsidefooter">
-            <div class="centeritems">
-                <div class="footerlogocenter">
-                    <div class="footerlogos">
-                        <a href="https://twitter.com/cnscenter" target="_blank"><img
-                                src="img/UI Assets/social media.svg"></a>
-                        <a href="https://www.facebook.com/cnscenter/" target="_blank"><img
-                                src="img/UI Assets/social media-1.svg"></a>
-                        <a href="https://www.instagram.com/cns_at_iu/" target="_blank"><img
-                                src="img/UI Assets/social media-2.svg"></a>
-                        <a href="https://www.youtube.com/@CNSCenter/" target="_blank"><img
-                                src="img/UI Assets/social media-3.svg"></a>
-                        <a href="https://www.linkedin.com/company/cns-indiana-university-bloomington"
-                            target="_blank"><img src="img/UI Assets/social media-4.svg"></a>
-                        <a href="https://twitter.com/cnscenter" target="_blank"><img
-                                src="img/UI Assets/social media-5.svg"></a>
-                    </div>
-                    <div class="footerfounders">
-                        <p>Funded By:</p>
-                        <div class="founderlogos">
-                            <a href="https://www.nih.gov/" target="_blank"><img
-                                    src="img/UI Assets/icon_ funder.svg"></a>
-                            <a href="https://cifar.ca/" target="_blank"><img src="img/UI Assets/icon_ funder-1.svg"></a>
-                            <a href="https://www.iu.edu/index.html" target="_blank"><img
-                                    src="img/UI Assets/icon_ funder-2.svg"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="medicaldisclaimer">Medical Disclaimer: This resource is intended for research purposes only.
-                    It
-                    should not be used for
-                    emergencies or medical or professional advice. </div>
-            </div>
-        </div>
-    </div>
+    </footer>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
