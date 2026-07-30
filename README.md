@@ -63,6 +63,7 @@ implementations are organized under `prototypes/`, with their original root URLs
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── prototypes/         # Organized legacy experiences and their maintenance notes
 │   ├── organ-example/
+│   ├── scrollytelling-effects/
 │   └── visualizing-cells/
 ├── docs/               # Architecture and asset-migration records
 ├── tools/              # Dependency-free repository validation
@@ -76,7 +77,6 @@ implementations are organized under `prototypes/`, with their original root URLs
 │       └── config/
 │           └── particles.json # Preserved particle configuration reference
 ├── style.css           # Legacy shared story styles
-├── scripts.js          # Legacy shared story behavior
 ├── img/                # Shared and story-specific visual assets
 ├── js/                 # Story runtimes, utilities, and legacy scripts
 ├── music/              # Audio used by story experiences
@@ -104,7 +104,7 @@ The landing page is deliberately separated from the legacy story implementation:
 
 Load the three stylesheets in the order shown above so font and design tokens exist before component rules use them.
 The inline script in `index.html` applies a saved theme before paint; keep its storage key aligned with `theme.js`.
-The landing page does not load `style.css`, `scripts.js`, remote fonts, or a JavaScript framework.
+The landing page does not load `style.css`, prototype or story scripts, remote fonts, or a JavaScript framework.
 
 ### Page metadata
 

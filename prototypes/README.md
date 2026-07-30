@@ -14,13 +14,14 @@ The compatibility pages at the repository root preserve previously published Git
 with JavaScript to the organized implementation and provide an ordinary link when JavaScript is unavailable. Do not
 remove these pages without confirming that no external links or bookmarks still depend on them.
 
-These prototypes continue to use the root legacy `style.css`, `scripts.js`, and `img/` paths. That coupling is
-intentional for this organizational phase; separating their assets or remediating their interfaces should happen in
-independent, explicitly reviewed changes.
+The Organ Example and Visualizing Cells prototypes continue to use the root legacy `style.css` and `img/` paths. That
+coupling is intentional for this organizational phase; separating their assets or remediating their interfaces should
+happen in independent, explicitly reviewed changes.
 
-`story0.html`, `img/test.html`, and the generated `Game/` application remain in their established locations. `Game/`
-is a published application embedded by `story0.html`, not a prototype folder to move without a dedicated migration
-plan.
+Story 0's scroll-effect behavior is owned by `scrollytelling-effects/scripts.js`, while its published
+`story0.html` entry point remains at the repository root. `img/test.html` and the generated `Game/` application also
+remain in their established locations. `Game/` is a published application embedded by `story0.html`, not a prototype
+folder to move without a dedicated migration plan.
 
 ## Maintenance rules
 

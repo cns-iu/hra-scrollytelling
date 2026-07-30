@@ -24,10 +24,10 @@ Landing-page work is intentionally isolated to:
 - `landing/js/menu.js` for the navigation disclosure and focus behavior.
 - `landing/js/theme.js` for appearance selection, persistence, and system-preference behavior.
 
-Do not reconnect the landing page to the legacy `style.css` or `scripts.js`. Do not allow landing-page selectors or
-behavior to affect the story pages. Do not overwrite or repurpose legacy files directly under `js/`. Keep the landing
-stylesheet order `shared/css/fonts.css`, `landing/css/tokens.css`, then `landing/css/styles.css`, and load
-`landing/js/main.js` as an ES module.
+Do not reconnect the landing page to the legacy `style.css` or to prototype or story scripts. Do not allow
+landing-page selectors or behavior to affect the story pages. Do not overwrite or repurpose legacy files directly
+under `js/`. Keep the landing stylesheet order `shared/css/fonts.css`, `landing/css/tokens.css`, then
+`landing/css/styles.css`, and load `landing/js/main.js` as an ES module.
 
 ## Shared page-chrome architecture
 
@@ -128,6 +128,8 @@ prototype pages.
   targets the game.
 - Avoid broad formatting or mechanical rewrites of `story3.html` and `story4.html`; they contain large embedded data.
 - Preserve `story0.html` and `img/test.html` as legacy/prototype material unless cleanup is explicitly in scope.
+- Keep Story 0's scroll-effect behavior under `prototypes/scrollytelling-effects/`; do not restore a root
+  `scripts.js` or load the prototype script from maintained pages.
 - Preserve `VisualizingCells.html` and `organExample.html` as compatibility entry points for the implementations under
   `prototypes/`; do not delete or repurpose those published URLs without explicit approval.
 - Do not rewrite Git history to reduce repository size without explicit approval.
