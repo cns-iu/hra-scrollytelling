@@ -11,16 +11,36 @@ installed dependencies.
 
 ## Preview locally
 
-Clone the repository, enter its directory, and start a small local web server:
+### First-time setup
+
+Clone the repository only if a local copy does not already exist. Run this command from the directory where the new
+project folder should be created:
 
 ```bash
 git clone https://github.com/cns-iu/hra-scrollytelling.git
+```
+
+This creates a new `hra-scrollytelling` directory containing the repository.
+
+Move into the new repository directory:
+
+```bash
 cd hra-scrollytelling
+```
+
+This makes the repository root the terminal's current working directory.
+
+### Start the local preview
+
+If the repository is already cloned, skip the first-time setup and open a terminal in the existing
+`hra-scrollytelling` directory. Start a small local web server from the repository root:
+
+```bash
 python3 -m http.server 8000
 ```
 
-Open [http://localhost:8000/](http://localhost:8000/) in a browser. Keep the terminal running while previewing and
-press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop the server.
+This serves the current directory at [http://localhost:8000/](http://localhost:8000/). Open that address in a browser,
+keep the terminal running while previewing, and press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop the server.
 
 There is no installation or build command.
 
@@ -46,8 +66,11 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 ├── index.html          # Accessible landing-page structure and content
 ├── landing/            # Isolated landing-page implementation
 │   ├── assets/
-│   │   ├── hero.png           # Responsive decorative hero artwork
-│   │   └── social-preview.png # 1200×630 link-preview artwork
+│   │   ├── backgrounds/
+│   │   │   ├── splash-human-dark.png  # Dark-theme decorative splash artwork
+│   │   │   └── splash-human-light.png # Light-theme decorative splash artwork
+│   │   ├── hero.png            # Previous single-theme hero artwork
+│   │   └── social-preview.png  # 1200×630 link-preview artwork
 │   ├── css/
 │   │   ├── fonts.css   # Compatibility bridge for cached landing pages
 │   │   ├── tokens.css  # HRA themes and shared design tokens
@@ -58,7 +81,9 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │       └── theme.js    # Appearance preferences and persistence
 ├── shared/             # Landing-and-story page-chrome foundation
 │   ├── assets/
-│   │   └── fonts/      # Self-hosted HRA webfonts and licenses
+│   │   ├── fonts/      # Self-hosted HRA webfonts and licenses
+│   │   └── icons/
+│   │       └── menu.svg # Material Menu glyph shared by maintained page chrome
 │   ├── css/            # Fonts, tokens, navigation, footer, and story-navigation styles
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── prototypes/         # Organized legacy experiences and their maintenance notes
@@ -93,7 +118,8 @@ validating every HTML, CSS, JavaScript, JSON, and service-worker reference. See
 The landing page is deliberately separated from the legacy story implementation:
 
 - `index.html` owns its semantic structure and editorial content.
-- `landing/assets/hero.png` is the optimized decorative hero artwork.
+- `landing/assets/backgrounds/` contains the Light and Dark decorative splash artwork.
+- `shared/assets/icons/menu.svg` is the Material Menu glyph used by the landing and shared-story extended FABs.
 - `shared/css/fonts.css` owns the self-hosted HRA font declarations and resilient typography stacks.
 - `landing/css/fonts.css` preserves the former font URL for cached landing-page documents.
 - `landing/css/tokens.css` owns light/dark HRA colors, semantic roles, and shared layout tokens.
@@ -112,8 +138,9 @@ The landing page identifies `https://cns-iu.github.io/hra-scrollytelling/` as it
 Graph and large-card metadata for consistent search and link previews. The browser theme color follows both the system
 preference and an explicit Light or Dark selection.
 
-The visible hero uses `landing/assets/hero.png`, while link previews use the dedicated
-`landing/assets/social-preview.png` artwork. Follow-up metadata work should:
+The visible hero uses the theme-specific artwork under `landing/assets/backgrounds/`, while link previews use the
+dedicated `landing/assets/social-preview.png` artwork. The previous `landing/assets/hero.png` remains unreferenced
+during redesign review. Follow-up metadata work should:
 
 - Evaluate `CollectionPage` structured data once story ownership, authorship, and publishing details are confirmed.
 - Add page-specific metadata to each story as those pages receive accessibility remediation.
@@ -143,31 +170,37 @@ tokens but are not used for essential landing-page content.
 
 ### Navigation and appearance
 
-The fixed top-left Menu control provides quick access to every story, Human Reference Atlas resources, and appearance
-preferences. Its panel uses ordinary navigation links and native radio controls rather than application-menu roles.
+The fixed top-left Menu control provides quick access to the landing page, every story, and appearance preferences.
+Its panel uses ordinary navigation links and native radio controls rather than application-menu roles.
 Opening the panel moves focus to it; its close button, the <kbd>Escape</kbd> key, or a pointer press outside the panel
 closes it. Keyboard-initiated closing restores focus to the Menu control.
 
 The control and panel account for device safe areas, retain 44-by-44-pixel targets, and allow the panel content to
-scroll within short or highly zoomed viewports.
+scroll within short or highly zoomed viewports. Appearance controls belong only on pages that initialize theme
+selection; omit the fieldset when appearance is not an available page option. A page without appearance selection
+uses the shared Menu's light treatment rather than changing it with the operating-system preference.
 
 ## Shared page chrome
 
-The maintained landing page and five story pages are migrating toward a common Menu, footer, and end-of-story
-navigation system under `shared/`. Because GitHub Pages serves the source files directly, each page retains semantic
-component markup in its HTML while sharing namespaced CSS and small JavaScript modules. Essential links and landmarks
-are never injected at runtime.
+The maintained landing page and story pages use related Menu and footer foundations while retaining page-specific
+presentation. Story-page Menu, footer, and end-of-story navigation components are migrating under `shared/`. Because
+GitHub Pages serves the source files directly, each page retains semantic component markup in its HTML while sharing
+namespaced CSS and small JavaScript modules. Essential links and landmarks are never injected at runtime.
 
-Story 1 is the first shared page-chrome integration pilot. The landing page continues to use its existing component
-markup while its redesign is in progress, but both experiences load the same shared font declarations. Component
-loading order and markup hooks are documented in [`shared/README.md`](shared/README.md).
+Story 1 is the first shared page-chrome integration pilot. The landing page retains its existing component markup
+while its redesign is in progress, but both experiences share the approved Menu icon and matching FAB, panel, list,
+active-state, and scrollbar presentation. Appearance controls remain page-specific and are shown only when visitors
+can change that page's presentation. Component loading order and markup hooks are documented in
+[`shared/README.md`](shared/README.md).
 
 During the staged migration:
 
-- `story1.html` is the first integration pilot for shared Menu, appearance, story navigation, and footer behavior.
-- `index.html` will adopt the shared markup after its revised design is approved.
-- Story pages apply Light, Dark, and System settings only to shared page chrome; story artwork is unchanged.
-- The accessible landing-page footer is the canonical footer for maintained public pages.
+- `story1.html` is the first integration pilot for the shared Menu, story navigation, and footer; it intentionally
+  omits appearance choices and keeps its Menu light because Story 1 does not offer page-level theme selection.
+- `index.html` retains a landing-specific Menu and a vertically stacked logo-and-tonal-button footer.
+- Story pages that offer Light, Dark, and System settings apply them only to shared page chrome; story artwork is
+  unchanged.
+- The namespaced shared footer is the canonical footer for story-page migration.
 - Each story is adopted and validated in a separate commit.
 - Prototype pages and `Game/` remain outside the shared page-chrome rollout.
 

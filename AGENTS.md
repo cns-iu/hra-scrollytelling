@@ -14,8 +14,9 @@ improvements.
 Landing-page work is intentionally isolated to:
 
 - `index.html` for content and semantic structure.
-- `landing/assets/hero.png` for optimized decorative hero artwork.
+- `landing/assets/backgrounds/` for theme-specific decorative splash artwork.
 - `landing/assets/social-preview.png` for the canonical 1200-by-630-pixel link-preview artwork.
+- `shared/assets/icons/menu.svg` for the approved Menu icon shared with maintained page chrome.
 - `shared/css/fonts.css` for typography stacks and font declarations used by the landing page and shared page chrome.
 - `landing/css/fonts.css` as a compatibility bridge for cached documents that still request the former font URL.
 - `landing/css/tokens.css` for landing-page themes and shared design tokens.
@@ -36,15 +37,18 @@ footer, and end-of-story navigation are migrating to namespaced foundations unde
 
 - `shared/css/tokens.css` for component-scoped Light and Dark appearance roles.
 - `shared/css/fonts.css` and `shared/assets/fonts/` for approved HRA typography and licenses.
+- `shared/assets/icons/menu.svg` for the canonical Menu glyph.
 - `shared/css/navigation.css` for the skip link and native Menu disclosure.
 - `shared/css/footer.css` for the canonical site footer.
 - `shared/css/story-navigation.css` for previous and next story links.
 - `shared/js/main.js`, `shared/js/menu.js`, and `shared/js/theme.js` for progressive enhancement.
 
 Keep essential shared component markup in every consuming HTML page; do not inject it with JavaScript. Add the
-`site-chrome` class to each component root so story appearance changes do not affect story artwork. On story pages,
-System settings, Light, and Dark apply only to shared page chrome. Preserve `hra-landing-theme` as the storage key
-during migration.
+`site-chrome` class to each component root so story appearance changes do not affect story artwork. On story pages
+that offer appearance selection, System settings, Light, and Dark apply only to shared page chrome. Preserve
+`hra-landing-theme` as the storage key during migration. Include the appearance fieldset only when a page initializes
+theme selection; omit it when appearance is not an available option. Add `site-chrome--light` to the Menu root on
+pages without appearance selection so the Menu does not follow the operating-system dark preference.
 
 Adopt the foundation one page at a time. Story 1 is the integration pilot while the landing-page redesign is in
 progress; migrate `index.html` after its revised design is approved. Do not remove a legacy component rule until
@@ -107,9 +111,10 @@ When reviewing screenshots, distinguish real mobile-browser behavior from deskto
   story navigation.
 - Preserve the Menu panel's explicit close control, Escape behavior, outside-pointer dismissal, and focus restoration.
   Ensure the fixed control does not obscure focused content at high zoom.
-- Keep appearance options in a native radio-group fieldset with System settings, Light, and Dark choices.
-- The appearance control must respect the initial system preference, persist the selected mode, avoid a load-time
-  theme flash, and remain accessible without color alone.
+- When appearance selection is offered, keep its options in a native radio-group fieldset with System settings,
+  Light, and Dark choices.
+- An offered appearance control must respect the initial system preference, persist the selected mode, avoid a
+  load-time theme flash, and remain accessible without color alone.
 - Keep the prepaint storage key in each migrated page aligned with the active landing or shared theme module.
 - Figma or Material color tokens are inputs, not automatic proof of AAA contrast. Verify every applied foreground and
   background pairing.

@@ -7,9 +7,12 @@ orphan-file deletion list: some animation and generated-application paths may be
 
 | Location | Current role | Migration status |
 | --- | --- | --- |
-| `landing/assets/` | Landing-page hero and social-preview artwork | Organized; keep isolated |
+| `landing/assets/backgrounds/` | Light and Dark decorative splash artwork | Organized; landing page only |
+| `landing/assets/hero.png` | Previous single-theme hero artwork | Retained during redesign review; currently unreferenced |
+| `landing/assets/social-preview.png` | Canonical link-preview artwork | Organized; landing page only |
 | `landing/css/fonts.css` | Compatibility bridge for the former landing font URL | Retain while cached documents may request the old path |
 | `shared/assets/fonts/` | HRA WOFF2 files and their original licenses | Organized; shared by the landing page and maintained page chrome |
+| `shared/assets/icons/` | Canonical interface icons for maintained page chrome | Material Menu glyph shared by the landing page and Story 1 pilot |
 | `shared/` | Namespaced page-chrome fonts, styles, and progressive-enhancement modules for maintained public pages | Foundation added; Story 1 is the integration pilot |
 | `prototypes/` | Organized legacy prototype implementations and maintenance notes | Scrollytelling Effects, Organ Example, and Visualizing Cells organized; published entry URLs retained |
 | `img/` | Shared story media, story-specific sequences, legacy UI assets, fonts, and prototypes | Unsorted legacy area |
@@ -48,7 +51,7 @@ Remove the corresponding baseline entry from `tools/check-local-links.mjs` whene
 | Area | Status | Notes |
 | --- | --- | --- |
 | Landing page | Organized | Owned by `index.html`, `landing/`, and shared HRA fonts |
-| Story 1 | Page chrome adopted | Shared Menu, appearance, story navigation, and footer pilot; broader story migration has not started |
+| Story 1 | Page chrome adopted | Shared Menu, story navigation, and footer pilot; appearance selection is intentionally omitted; broader story migration has not started |
 | Story 2 | Not started | Shares global styling, animation libraries, and mixed assets |
 | Story 3 | Deferred | Contains large embedded data; avoid broad rewrites |
 | Story 4 | Config organized | Particle JSON ownership is established; broader migration remains deferred because the page contains large embedded data |

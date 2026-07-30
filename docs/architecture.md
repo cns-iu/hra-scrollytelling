@@ -80,9 +80,8 @@ points load `shared/css/fonts.css` directly; do not expand the compatibility fil
 The maintained public pages are `index.html` and `story1.html` through `story5.html`. They share three interface
 patterns:
 
-- A fixed, visibly labeled Menu disclosure with links to the landing page, all five stories, and approved external
-  resources.
-- A canonical site footer derived from the accessible landing-page footer.
+- A fixed, visibly labeled Menu disclosure with links to the landing page and all maintained stories.
+- A canonical shared footer for story pages; the landing page retains its minimal page-specific footer.
 - Previous and next story navigation on story pages.
 
 These components use namespaced selectors and modules under `shared/` so their behavior and presentation remain
@@ -94,19 +93,27 @@ therefore contains its own small copy of the semantic component markup. Shared J
 must not fetch or inject essential navigation or footer content. This keeps landmarks and links available when
 JavaScript is unavailable.
 
-The Menu uses ordinary navigation links and a native radio-group fieldset for System settings, Light, and Dark
-appearance choices. On story pages, the selected appearance applies only to the shared page chrome; story artwork and
-story-specific colors remain unchanged. On the landing page, the existing full-page appearance behavior remains in
-scope. The established `hra-landing-theme` storage key is retained during migration so existing preferences continue
-to work.
+The Menu uses ordinary navigation links. Pages that initialize theme selection also include a native radio-group
+fieldset for System settings, Light, and Dark appearance choices; pages without that capability omit the fieldset.
+Menus on pages without appearance selection use the `site-chrome--light` modifier so their presentation remains
+light instead of following the operating-system dark preference.
+On story pages, the selected appearance applies only to the shared page chrome; story artwork and story-specific
+colors remain unchanged. On the landing page, the existing full-page appearance behavior remains in scope. The
+established `hra-landing-theme` storage key is retained during migration so existing preferences continue to work.
+
+The landing page and each migrated story share the canonical Menu icon and matching FAB, panel, list-row,
+current-page indicator, and scrollbar presentation. Pages that offer appearance selection also share the
+appearance-control presentation. Their disclosure markup may remain page-appropriate as long as keyboard behavior,
+accessible state, dismissal, and focus restoration stay equivalent.
 
 The shared Menu must remain a direct child of `body`. Story animation wrappers use transforms, pinned positioning, and
 high stacking values that can otherwise change fixed positioning or obscure the control. Its implementation must
 account for safe areas, short viewports, 320-pixel reflow, 400% zoom, focus visibility, Escape dismissal,
 outside-pointer dismissal, and focus restoration.
 
-The footer is semantic, has accessible names for functional images and links, and reflows without fixed heights. Story
-navigation is a separate labeled `nav` landmark and is not structurally coupled to the footer.
+The shared story footer and minimal landing footer are semantic, have accessible names for functional images and
+links, and reflow without fixed heights. Story navigation is a separate labeled `nav` landmark and is not structurally
+coupled to either footer.
 
 ## Migration workflow
 
