@@ -127,8 +127,9 @@ prototype pages.
 - Treat `Game/` as an isolated generated application. Do not reorganize or hand-edit it unless the task specifically
   targets the game.
 - Avoid broad formatting or mechanical rewrites of `story3.html` and `story4.html`; they contain large embedded data.
-- Preserve `story0.html`, `VisualizingCells.html`, `organExample.html`, and `img/test.html` as legacy/prototype material
-  unless cleanup is explicitly in scope.
+- Preserve `story0.html` and `img/test.html` as legacy/prototype material unless cleanup is explicitly in scope.
+- Preserve `VisualizingCells.html` and `organExample.html` as compatibility entry points for the implementations under
+  `prototypes/`; do not delete or repurpose those published URLs without explicit approval.
 - Do not rewrite Git history to reduce repository size without explicit approval.
 - Do not expand a task into adjacent story pages or shared components without explaining the relationship and getting
   approval.

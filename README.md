@@ -35,8 +35,9 @@ There is no installation or build command.
 | `story4.html` | Data Detangle |
 | `story5.html` | Know Your Body Buddies |
 
-The repository also contains older prototypes and demonstrations, including `story0.html`, `VisualizingCells.html`,
-`organExample.html`, and `img/test.html`. These are not primary entry points.
+The repository also contains older prototypes and demonstrations. The Organ Example and Visualizing Cells
+implementations are organized under `prototypes/`, with their original root URLs retained as compatibility pages.
+`story0.html` and `img/test.html` remain legacy demonstrations. These are not primary entry points.
 
 ## Repository structure
 
@@ -60,6 +61,9 @@ The repository also contains older prototypes and demonstrations, including `sto
 │   │   └── fonts/      # Self-hosted HRA webfonts and licenses
 │   ├── css/            # Fonts, tokens, navigation, footer, and story-navigation styles
 │   └── js/             # Progressive-enhancement navigation and appearance modules
+├── prototypes/         # Organized legacy experiences and their maintenance notes
+│   ├── organ-example/
+│   └── visualizing-cells/
 ├── docs/               # Architecture and asset-migration records
 ├── tools/              # Dependency-free repository validation
 ├── story1.html         # Story experiences
@@ -238,7 +242,7 @@ Also verify:
 - Several filenames contain spaces, making path changes more error-prone.
 - Some story documents contain large embedded image data.
 - The generated game has its own service worker and runtime assumptions.
-- Legacy prototype pages and production pages are stored together.
+- Some legacy demonstrations and prototype assets still share root files with maintained stories.
 
 Repository cleanup should be performed incrementally, with local-reference checks before and after every move.
 The documented missing-reference baseline is maintained in [`docs/asset-map.md`](docs/asset-map.md). Run

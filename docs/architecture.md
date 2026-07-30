@@ -6,6 +6,8 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 ## Stability rules
 
 - Keep `index.html` and the root `story*.html` entry points at their current URLs.
+- Keep `VisualizingCells.html` and `organExample.html` as compatibility entry points for the organized prototype
+  implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
 - Treat `style.css`, `scripts.js`, `img/`, and `js/` as shared legacy resources until each consumer has been mapped.
@@ -21,7 +23,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, shared HRA fonts, and `landing/js/` |
 | Shared page chrome | `index.html` and `story1.html` through `story5.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; Story 1 is the integration pilot |
 | Primary stories | `story1.html` through `story5.html` | Shared `style.css`, shared or story-specific scripts, `img/`, `music/`, and gradually organized files under `stories/` |
-| Prototypes | `story0.html`, `VisualizingCells.html`, `organExample.html`, and `img/test.html` | Shared legacy files |
+| Prototypes | `story0.html`, `img/test.html`, and the compatibility pages `VisualizingCells.html` and `organExample.html` | Organized implementations under `prototypes/` plus shared legacy files |
 | Generated game | `Game/index.html` | Everything under `Game/` |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
@@ -44,6 +46,11 @@ Root HTML files remain stable public entry points while their implementation fil
 │   ├── assets/
 │   ├── css/
 │   └── js/
+├── prototypes/
+│   ├── organ-example/
+│   │   └── index.html
+│   └── visualizing-cells/
+│       └── index.html
 ├── stories/
 │   ├── story-1/
 │   │   └── assets/
@@ -115,6 +122,11 @@ move independently when their ownership is unambiguous.
 
 Copying before deleting keeps the original experience recoverable during validation. A move is complete only when the
 old path has no remaining consumers.
+
+For a previously published prototype page, preserve its original root filename as a compatibility page. The
+compatibility page should identify the new canonical URL, forward the query string and fragment when JavaScript is
+available, and provide a normal link to the new location without JavaScript. Keep the complete prototype
+implementation under `prototypes/`; do not duplicate it at the old path.
 
 ### Shared page-chrome rollout
 

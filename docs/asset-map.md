@@ -11,6 +11,7 @@ orphan-file deletion list: some animation and generated-application paths may be
 | `landing/css/fonts.css` | Compatibility bridge for the former landing font URL | Retain while cached documents may request the old path |
 | `shared/assets/fonts/` | HRA WOFF2 files and their original licenses | Organized; shared by the landing page and maintained page chrome |
 | `shared/` | Namespaced page-chrome fonts, styles, and progressive-enhancement modules for maintained public pages | Foundation added; Story 1 is the integration pilot |
+| `prototypes/` | Organized legacy prototype implementations and maintenance notes | Organ Example and Visualizing Cells organized; root compatibility URLs retained |
 | `img/` | Shared story media, story-specific sequences, legacy UI assets, fonts, and prototypes | Unsorted legacy area |
 | `img/TestSeq/` | Image sequence used by a legacy story or prototype | Ownership must be verified |
 | `img/UI Assets/` | Legacy shared interface images and font files | Shared paths contain spaces; do not rename broadly |
@@ -52,7 +53,7 @@ Remove the corresponding baseline entry from `tools/check-local-links.mjs` whene
 | Story 3 | Deferred | Contains large embedded data; avoid broad rewrites |
 | Story 4 | Config organized | Particle JSON ownership is established; broader migration remains deferred because the page contains large embedded data |
 | Story 5 | Not started | Shares global styling and mixed assets |
-| Prototypes | Deferred | Preserve existing paths until their publication status is decided |
+| Prototypes | Partially organized | Organ Example and Visualizing Cells implementations moved under `prototypes/`; root compatibility pages preserve their published URLs; `story0.html` and `img/test.html` remain in place |
 | Generated game | Excluded | Keep `Game/` intact |
 
 ## Naming rules for future migrations
