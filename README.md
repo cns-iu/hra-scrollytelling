@@ -56,6 +56,9 @@ The repository also contains older prototypes and demonstrations, including `sto
 │       ├── main.js     # Landing-page entry point
 │       ├── menu.js     # Menu disclosure and focus behavior
 │       └── theme.js    # Appearance preferences and persistence
+├── shared/             # Approved target for landing-and-story page chrome
+│   ├── css/            # Namespaced navigation, footer, and story-navigation styles
+│   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── docs/               # Architecture and asset-migration records
 ├── tools/              # Dependency-free repository validation
 ├── story1.html         # Story experiences
@@ -141,6 +144,24 @@ closes it. Keyboard-initiated closing restores focus to the Menu control.
 
 The control and panel account for device safe areas, retain 44-by-44-pixel targets, and allow the panel content to
 scroll within short or highly zoomed viewports.
+
+## Shared page chrome
+
+The maintained landing page and five story pages are migrating toward a common Menu, footer, and end-of-story
+navigation system under `shared/`. Because GitHub Pages serves the source files directly, each page retains semantic
+component markup in its HTML while sharing namespaced CSS and small JavaScript modules. Essential links and landmarks
+are never injected at runtime.
+
+During the staged migration:
+
+- `index.html` remains the reference implementation for Menu, appearance, and footer accessibility.
+- Story pages apply Light, Dark, and System settings only to shared page chrome; story artwork is unchanged.
+- The accessible landing-page footer is the canonical footer for maintained public pages.
+- Each story is adopted and validated in a separate commit.
+- Prototype pages and `Game/` remain outside the shared page-chrome rollout.
+
+See [`docs/architecture.md`](docs/architecture.md#shared-page-chrome) for component boundaries and the migration
+sequence.
 
 ## Accessibility
 

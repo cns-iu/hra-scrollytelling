@@ -18,6 +18,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | Area | Entry points | Implementation |
 | --- | --- | --- |
 | Landing page | `index.html` | `landing/assets/`, including self-hosted fonts and licenses, `landing/css/`, and `landing/js/` |
+| Shared page chrome | `index.html` and `story1.html` through `story5.html` | Migrating to namespaced styles and progressive-enhancement modules under `shared/` |
 | Primary stories | `story1.html` through `story5.html` | Shared `style.css`, shared or story-specific scripts, `img/`, `music/`, and gradually organized files under `stories/` |
 | Prototypes | `story0.html`, `VisualizingCells.html`, `organExample.html`, and `img/test.html` | Shared legacy files |
 | Generated game | `Game/index.html` | Everything under `Game/` |
@@ -38,11 +39,10 @@ Root HTML files remain stable public entry points while their implementation fil
 ├── story4.html
 ├── story5.html
 ├── landing/
+├── shared/
+│   ├── css/
+│   └── js/
 ├── stories/
-│   ├── shared/
-│   │   ├── css/
-│   │   ├── js/
-│   │   └── assets/
 │   ├── story-1/
 │   │   └── assets/
 │   ├── story-2/
@@ -59,6 +59,39 @@ Root HTML files remain stable public entry points while their implementation fil
 
 The `img/` directory remains in place until each asset has a verified owner. Empty target directories should not be
 created in advance.
+
+## Shared page chrome
+
+The maintained public pages are `index.html` and `story1.html` through `story5.html`. They share three interface
+patterns:
+
+- A fixed, visibly labeled Menu disclosure with links to the landing page, all five stories, and approved external
+  resources.
+- A canonical site footer derived from the accessible landing-page footer.
+- Previous and next story navigation on story pages.
+
+These components use namespaced selectors and modules under `shared/` so their behavior and presentation remain
+separate from landing-page layout and story artwork. Shared component selectors must not use legacy generic names such
+as `.dropdown`, `.next`, or `.footer`.
+
+GitHub Pages serves this repository without a build step or server-side includes. Each maintained HTML entry point
+therefore contains its own small copy of the semantic component markup. Shared JavaScript enhances existing markup; it
+must not fetch or inject essential navigation or footer content. This keeps landmarks and links available when
+JavaScript is unavailable.
+
+The Menu uses ordinary navigation links and a native radio-group fieldset for System settings, Light, and Dark
+appearance choices. On story pages, the selected appearance applies only to the shared page chrome; story artwork and
+story-specific colors remain unchanged. On the landing page, the existing full-page appearance behavior remains in
+scope. The established `hra-landing-theme` storage key is retained during migration so existing preferences continue
+to work.
+
+The shared Menu must remain a direct child of `body`. Story animation wrappers use transforms, pinned positioning, and
+high stacking values that can otherwise change fixed positioning or obscure the control. Its implementation must
+account for safe areas, short viewports, 320-pixel reflow, 400% zoom, focus visibility, Escape dismissal,
+outside-pointer dismissal, and focus restoration.
+
+The footer is semantic, has accessible names for functional images and links, and reflows without fixed heights. Story
+navigation is a separate labeled `nav` landmark and is not structurally coupled to the footer.
 
 ## Migration workflow
 
@@ -77,6 +110,20 @@ move independently when their ownership is unambiguous.
 
 Copying before deleting keeps the original experience recoverable during validation. A move is complete only when the
 old path has no remaining consumers.
+
+### Shared page-chrome rollout
+
+Migrate shared page chrome independently from broader story reorganization:
+
+1. Establish the namespaced shared styles and modules without changing any entry point.
+2. Migrate `index.html` as the reference implementation.
+3. Migrate `story1.html` as the first story-page pilot and complete rendered accessibility checks.
+4. Migrate one remaining story per commit, leaving each story's visual and animation implementation unchanged.
+5. Remove legacy navigation, footer, or story-navigation rules only after a repository-wide search confirms that no
+   maintained or prototype page still consumes them.
+
+Prototype pages and `Game/` are excluded from this rollout. Their existing navigation and footer behavior must not
+change incidentally.
 
 ## Reviewable commit boundaries
 

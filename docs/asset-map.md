@@ -9,6 +9,7 @@ orphan-file deletion list: some animation and generated-application paths may be
 | --- | --- | --- |
 | `landing/assets/` | Landing-page hero and social-preview artwork | Organized; keep isolated |
 | `landing/assets/fonts/` | Landing-page HRA WOFF2 files and their original licenses | Organized; keep isolated |
+| `shared/` | Namespaced page-chrome styles and progressive-enhancement modules for maintained public pages | Approved migration target; add foundations before changing entry points |
 | `img/` | Shared story media, story-specific sequences, legacy UI assets, fonts, and prototypes | Unsorted legacy area |
 | `img/TestSeq/` | Image sequence used by a legacy story or prototype | Ownership must be verified |
 | `img/UI Assets/` | Legacy shared interface images and font files | Shared paths contain spaces; do not rename broadly |
@@ -60,4 +61,5 @@ Remove the corresponding baseline entry from `tools/check-local-links.mjs` whene
 - Keep file extensions accurate and preserve case-sensitive paths.
 - Place story-exclusive assets under that story's directory.
 - Place an asset under `stories/shared/` only when at least two maintained stories consume it.
+- Place page-chrome code under `shared/` only when it serves the landing page and at least one maintained story.
 - Record provenance or licensing information alongside assets when it is known.
