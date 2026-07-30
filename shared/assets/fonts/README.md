@@ -1,7 +1,7 @@
-# Landing-page fonts
+# Shared HRA fonts
 
-These webfont assets were downloaded from [Fontsource](https://fontsource.org/) and are isolated to the landing-page
-experience.
+These webfont assets were downloaded from [Fontsource](https://fontsource.org/) and support maintained public pages
+and shared page chrome.
 
 ## Included files
 
@@ -13,7 +13,8 @@ Only WOFF2 files used by the HRA typography scale are retained. Source ZIP archi
 styles, and unrelated language subsets are intentionally excluded.
 
 Each family directory includes the license distributed with its Fontsource download. Do not replace a font without
-reviewing its source, supported characters, license, file size, and effect on landing-page layout.
+reviewing its source, supported characters, license, file size, and effect on maintained page layouts.
 
 The exact HRA display, headline, title, label, body, and mono scale is represented as reusable custom properties in
-`landing/css/fonts.css`. Component-to-role mappings live in `landing/css/styles.css`.
+`shared/css/fonts.css`. Landing-page component mappings live in `landing/css/styles.css`; shared page-chrome mappings
+live in `shared/css/`.

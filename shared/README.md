@@ -8,6 +8,7 @@ the maintained landing page and story pages.
 Pages adopting the shared components load the stylesheets directly:
 
 ```html
+<link rel="stylesheet" href="shared/css/fonts.css">
 <link rel="stylesheet" href="shared/css/tokens.css">
 <link rel="stylesheet" href="shared/css/navigation.css">
 <link rel="stylesheet" href="shared/css/story-navigation.css">
@@ -20,14 +21,15 @@ Only pages with the shared Menu and appearance controls load the module entry po
 <script type="module" src="shared/js/main.js"></script>
 ```
 
-The current page may omit a component stylesheet it does not use. Token styles must remain first.
+The current page may omit a component stylesheet it does not use. Font declarations and typography roles must load
+before component tokens and styles.
 
 ## Markup contract
 
 - Add `site-chrome` to each shared component root, including the skip link, so theme tokens remain scoped away from
   story artwork.
 - Implement the Menu with a `details[data-site-menu]` root and a visible `summary` labeled “Menu.”
-- Add `data-site-menu-panel` and `tabindex="-1"` to the disclosure panel.
+- Add `data-site-menu-panel`, `role="region"`, an accessible label, and `tabindex="-1"` to the disclosure panel.
 - Add `data-site-menu-close` to the explicit close button.
 - Add `data-site-theme-choice` to each System settings, Light, and Dark radio input.
 - Add `data-site-theme-status` to the visually hidden polite status region.
