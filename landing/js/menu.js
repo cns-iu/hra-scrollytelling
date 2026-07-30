@@ -53,7 +53,7 @@ export const initializeSiteMenu = () => {
 
     document.addEventListener('pointerdown', (event) => {
         if (isMenuOpen() && !controls.contains(event.target)) {
-            closeMenu({ restoreFocus: false });
+            closeMenu();
         }
     });
 

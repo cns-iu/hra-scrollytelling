@@ -42,7 +42,7 @@ export const initializeSiteMenus = () => {
 
         document.addEventListener('pointerdown', (event) => {
             if (menu.open && !menu.contains(event.target)) {
-                closeMenu({ restoreFocus: false });
+                closeMenu();
             }
         });
 
