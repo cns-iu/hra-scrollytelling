@@ -27,6 +27,26 @@ Do not reconnect the landing page to the legacy `style.css` or `scripts.js`. Do 
 behavior to affect the story pages. Do not overwrite or repurpose legacy files directly under `js/`. Keep the
 stylesheet order `fonts.css`, `tokens.css`, then `styles.css`, and load `landing/js/main.js` as an ES module.
 
+## Shared page-chrome architecture
+
+The maintained public pages are `index.html` and `story1.html` through `story5.html`. Their Menu, appearance controls,
+footer, and end-of-story navigation are migrating to namespaced foundations under:
+
+- `shared/css/tokens.css` for component-scoped Light and Dark appearance roles.
+- `shared/css/navigation.css` for the skip link and native Menu disclosure.
+- `shared/css/footer.css` for the canonical site footer.
+- `shared/css/story-navigation.css` for previous and next story links.
+- `shared/js/main.js`, `shared/js/menu.js`, and `shared/js/theme.js` for progressive enhancement.
+
+Keep essential shared component markup in every consuming HTML page; do not inject it with JavaScript. Add the
+`site-chrome` class to each component root so story appearance changes do not affect story artwork. On story pages,
+System settings, Light, and Dark apply only to shared page chrome. Preserve `hra-landing-theme` as the storage key
+during migration.
+
+Adopt the foundation one page at a time, beginning with `index.html` and then `story1.html`. Do not remove a legacy
+component rule until repository-wide search confirms that no maintained or prototype page consumes it. Prototype
+pages and `Game/` are excluded from the shared page-chrome rollout.
+
 Preserve existing uncommitted work and follow the repository's active branch and review workflow. Do not rewrite,
 discard, commit, push, or publish changes unless those operations are explicitly in scope.
 
@@ -73,7 +93,8 @@ When reviewing screenshots, distinguish real mobile-browser behavior from deskto
 ## Styling and themes
 
 - Use semantic design tokens rather than scattering raw colors through component rules.
-- Keep light and dark theme tokens in `landing/css/tokens.css`.
+- Keep landing-page theme tokens in `landing/css/tokens.css` and shared page-chrome tokens in
+  `shared/css/tokens.css`.
 - Keep font stacks and `@font-face` declarations in `landing/css/fonts.css`. Keep approved self-hosted landing fonts
   and their license files under `landing/assets/fonts/`; do not add or replace font files without explicit approval.
 - Keep component and accessibility rules in `landing/css/styles.css` rather than duplicating tokens in component
@@ -85,7 +106,7 @@ When reviewing screenshots, distinguish real mobile-browser behavior from deskto
 - Keep appearance options in a native radio-group fieldset with System settings, Light, and Dark choices.
 - The appearance control must respect the initial system preference, persist the selected mode, avoid a load-time
   theme flash, and remain accessible without color alone.
-- Keep the prepaint storage key in `index.html` aligned with `landing/js/theme.js`.
+- Keep the prepaint storage key in each migrated page aligned with the active landing or shared theme module.
 - Figma or Material color tokens are inputs, not automatic proof of AAA contrast. Verify every applied foreground and
   background pairing.
 - Do not alter shared story-page styles while implementing landing-page visual changes.

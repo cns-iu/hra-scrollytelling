@@ -1,0 +1,112 @@
+/*
+ * Shared page-chrome tokens.
+ *
+ * Keep these roles scoped to `.site-chrome` so story artwork and legacy page
+ * styles do not inherit theme changes during the staged migration.
+ */
+
+.site-chrome {
+    color-scheme: light;
+    --site-chrome-color-text: #1c1b1e;
+    --site-chrome-color-heading: #201e3d;
+    --site-chrome-color-accent: #95001e;
+    --site-chrome-color-action: #95001e;
+    --site-chrome-color-on-action: #ffffff;
+    --site-chrome-color-surface: #ffffff;
+    --site-chrome-color-surface-muted: #e4eaf0;
+    --site-chrome-color-surface-hover: #eef2f6;
+    --site-chrome-color-selected: #d4dde6;
+    --site-chrome-color-border: #6f7b8c;
+    --site-chrome-color-footer: #201e3d;
+    --site-chrome-color-on-footer: #ffffff;
+    --site-chrome-color-footer-border: #9392a3;
+    --site-chrome-color-logo-tile: #ffffff;
+    --site-chrome-color-logo-border: #6f7b8c;
+    --site-chrome-color-focus: #201e3d;
+    --site-chrome-color-focus-contrast: #ffffff;
+    --site-chrome-shadow-color: rgb(32 30 61 / 18%);
+    --site-chrome-shadow-menu: 0 1rem 2.5rem var(--site-chrome-shadow-color);
+    --site-chrome-font-body: var(
+        --font-body,
+        "Nunito Sans Variable",
+        "Nunito Sans",
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif
+    );
+    --site-chrome-font-heading: var(
+        --font-heading,
+        "Metropolis",
+        "Nunito Sans Variable",
+        "Nunito Sans",
+        ui-sans-serif,
+        system-ui,
+        sans-serif
+    );
+    --site-chrome-content-width: 72rem;
+    --site-chrome-reading-width: 65ch;
+    --site-chrome-radius-small: 0.5rem;
+    --site-chrome-radius-large: 1rem;
+    --site-chrome-label-size: 0.75rem;
+    --site-chrome-label-line-height: 1rem;
+    --site-chrome-label-letter-spacing: 0.03125rem;
+    --site-chrome-body-size: 0.875rem;
+    --site-chrome-body-line-height: 1.3125rem;
+    --site-chrome-body-letter-spacing: 0.0125rem;
+    --site-chrome-title-size: 1rem;
+    --site-chrome-title-line-height: 1.5rem;
+    --site-chrome-title-letter-spacing: 0.009375rem;
+    --site-chrome-title-large-size: 1.375rem;
+    --site-chrome-title-large-line-height: 1.75rem;
+    --site-chrome-headline-size: 1.5rem;
+    --site-chrome-headline-line-height: 2rem;
+}
+
+:root[data-theme="dark"] .site-chrome {
+    color-scheme: dark;
+    --site-chrome-color-text: #d4dde6;
+    --site-chrome-color-heading: #e3dfff;
+    --site-chrome-color-accent: #ffb3b3;
+    --site-chrome-color-action: #ffb3b3;
+    --site-chrome-color-on-action: #680015;
+    --site-chrome-color-surface: #101113;
+    --site-chrome-color-surface-muted: #1f2023;
+    --site-chrome-color-surface-hover: #22262a;
+    --site-chrome-color-selected: #2f3337;
+    --site-chrome-color-border: #aab4c5;
+    --site-chrome-color-footer: #101113;
+    --site-chrome-color-on-footer: #d4dde6;
+    --site-chrome-color-footer-border: #aab4c5;
+    --site-chrome-color-logo-tile: #ffffff;
+    --site-chrome-color-logo-border: #aab4c5;
+    --site-chrome-color-focus: #ffb3b3;
+    --site-chrome-color-focus-contrast: #101113;
+    --site-chrome-shadow-color: rgb(0 0 0 / 58%);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .site-chrome {
+        color-scheme: dark;
+        --site-chrome-color-text: #d4dde6;
+        --site-chrome-color-heading: #e3dfff;
+        --site-chrome-color-accent: #ffb3b3;
+        --site-chrome-color-action: #ffb3b3;
+        --site-chrome-color-on-action: #680015;
+        --site-chrome-color-surface: #101113;
+        --site-chrome-color-surface-muted: #1f2023;
+        --site-chrome-color-surface-hover: #22262a;
+        --site-chrome-color-selected: #2f3337;
+        --site-chrome-color-border: #aab4c5;
+        --site-chrome-color-footer: #101113;
+        --site-chrome-color-on-footer: #d4dde6;
+        --site-chrome-color-footer-border: #aab4c5;
+        --site-chrome-color-logo-tile: #ffffff;
+        --site-chrome-color-logo-border: #aab4c5;
+        --site-chrome-color-focus: #ffb3b3;
+        --site-chrome-color-focus-contrast: #101113;
+        --site-chrome-shadow-color: rgb(0 0 0 / 58%);
+    }
+}

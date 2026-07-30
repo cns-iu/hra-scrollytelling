@@ -56,7 +56,7 @@ The repository also contains older prototypes and demonstrations, including `sto
 │       ├── main.js     # Landing-page entry point
 │       ├── menu.js     # Menu disclosure and focus behavior
 │       └── theme.js    # Appearance preferences and persistence
-├── shared/             # Approved target for landing-and-story page chrome
+├── shared/             # Landing-and-story page-chrome foundation
 │   ├── css/            # Namespaced navigation, footer, and story-navigation styles
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── docs/               # Architecture and asset-migration records
@@ -152,6 +152,10 @@ navigation system under `shared/`. Because GitHub Pages serves the source files 
 component markup in its HTML while sharing namespaced CSS and small JavaScript modules. Essential links and landmarks
 are never injected at runtime.
 
+The shared foundation is present but is not connected to an entry point until each page receives its own reviewed
+migration commit. Component loading order and markup hooks are documented in
+[`shared/README.md`](shared/README.md).
+
 During the staged migration:
 
 - `index.html` remains the reference implementation for Menu, appearance, and footer accessibility.
@@ -208,6 +212,9 @@ git diff --check
 node --check landing/js/main.js
 node --check landing/js/menu.js
 node --check landing/js/theme.js
+node --check shared/js/main.js
+node --check shared/js/menu.js
+node --check shared/js/theme.js
 node tools/check-local-links.mjs --allow-known
 ```
 
