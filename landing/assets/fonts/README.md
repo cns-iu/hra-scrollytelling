@@ -14,3 +14,6 @@ styles, and unrelated language subsets are intentionally excluded.
 
 Each family directory includes the license distributed with its Fontsource download. Do not replace a font without
 reviewing its source, supported characters, license, file size, and effect on landing-page layout.
+
+The exact HRA display, headline, title, label, body, and mono scale is represented as reusable custom properties in
+`landing/css/fonts.css`. Component-to-role mappings live in `landing/css/styles.css`.

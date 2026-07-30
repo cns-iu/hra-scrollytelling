@@ -120,6 +120,18 @@ The landing page includes light and dark themes derived from the Human Reference
 - Uses AAA-safe component pairings rather than assuming every brand-token pairing is suitable for normal text.
 - Continues to respect forced-colors and reduced-motion preferences.
 
+### Typography
+
+The landing page implements the HRA Figma typography scale as reusable tokens in `landing/css/fonts.css`:
+
+- Metropolis Medium and Bold for display and headline roles.
+- Nunito Sans Regular, Medium, Semibold, and Bold for titles, labels, body copy, and controls.
+- Roboto Mono Regular for monospaced roles.
+
+Component rules in `landing/css/styles.css` use discrete scale roles rather than arbitrary font sizes. Display headings
+step down to the approved Display Small role on narrow viewports. The 11- and 12-pixel scale roles are retained as
+tokens but are not used for essential landing-page content.
+
 ### Navigation and appearance
 
 The fixed top-left Menu control provides quick access to every story, Human Reference Atlas resources, and appearance

@@ -79,4 +79,86 @@
         "Segoe UI", sans-serif;
     --font-heading: "Metropolis", "Nunito Sans Variable", "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "Roboto Mono", ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+
+    /* Display: Metropolis Medium or Bold. */
+    --type-display-primary-weight: 500;
+    --type-display-emphasized-weight: 700;
+    --type-display-large-size: 2.875rem;
+    --type-display-large-line-height: 3.875rem;
+    --type-display-large-letter-spacing: -0.0625rem;
+    --type-display-medium-size: 2.4375rem;
+    --type-display-medium-line-height: 3.375rem;
+    --type-display-medium-letter-spacing: -0.046875rem;
+    --type-display-small-size: 2.25rem;
+    --type-display-small-line-height: 2.75rem;
+    --type-display-small-letter-spacing: -0.03125rem;
+
+    /* Headline: Metropolis Medium or Bold. */
+    --type-headline-primary-weight: 500;
+    --type-headline-emphasized-weight: 700;
+    --type-headline-large-size: 2rem;
+    --type-headline-large-line-height: 2.5rem;
+    --type-headline-large-primary-letter-spacing: -0.03125rem;
+    --type-headline-large-emphasized-letter-spacing: 0;
+    --type-headline-medium-size: 1.75rem;
+    --type-headline-medium-line-height: 2.25rem;
+    --type-headline-medium-primary-letter-spacing: -0.025rem;
+    --type-headline-medium-emphasized-letter-spacing: 0;
+    --type-headline-small-size: 1.5rem;
+    --type-headline-small-line-height: 2rem;
+    --type-headline-small-primary-letter-spacing: -0.0125rem;
+    --type-headline-small-emphasized-letter-spacing: 0;
+
+    /* Title: Nunito Sans Medium or Semibold/Bold. */
+    --type-title-large-size: 1.375rem;
+    --type-title-large-line-height: 1.75rem;
+    --type-title-large-primary-weight: 500;
+    --type-title-large-emphasized-weight: 600;
+    --type-title-large-letter-spacing: 0;
+    --type-title-medium-size: 1rem;
+    --type-title-medium-line-height: 1.5rem;
+    --type-title-medium-primary-weight: 600;
+    --type-title-medium-emphasized-weight: 700;
+    --type-title-medium-letter-spacing: 0.009375rem;
+    --type-title-small-size: 0.875rem;
+    --type-title-small-line-height: 1.25rem;
+    --type-title-small-primary-weight: 600;
+    --type-title-small-emphasized-weight: 700;
+    --type-title-small-letter-spacing: 0.00625rem;
+
+    /* Label: Nunito Sans Medium or Bold. */
+    --type-label-primary-weight: 500;
+    --type-label-emphasized-weight: 700;
+    --type-label-large-size: 0.875rem;
+    --type-label-large-line-height: 1.25rem;
+    --type-label-large-letter-spacing: 0.00625rem;
+    --type-label-medium-size: 0.75rem;
+    --type-label-medium-line-height: 1rem;
+    --type-label-medium-letter-spacing: 0.03125rem;
+    --type-label-small-size: 0.6875rem;
+    --type-label-small-line-height: 1rem;
+    --type-label-small-letter-spacing: 0.03125rem;
+
+    /* Body: Nunito Sans Regular or Semibold. */
+    --type-body-primary-weight: 400;
+    --type-body-emphasized-weight: 600;
+    --type-body-large-size: 1rem;
+    --type-body-large-line-height: 1.5rem;
+    --type-body-large-letter-spacing: 0;
+    --type-body-medium-size: 0.875rem;
+    --type-body-medium-line-height: 1.3125rem;
+    --type-body-medium-letter-spacing: 0.0125rem;
+    --type-body-small-size: 0.75rem;
+    --type-body-small-line-height: 1.125rem;
+    --type-body-small-letter-spacing: 0.025rem;
+
+    /* Mono: Roboto Mono Regular for primary and emphasized roles. */
+    --type-mono-weight: 400;
+    --type-mono-large-size: 1rem;
+    --type-mono-large-line-height: 1.5rem;
+    --type-mono-medium-size: 0.875rem;
+    --type-mono-medium-line-height: 1.3125rem;
+    --type-mono-small-size: 0.75rem;
+    --type-mono-small-line-height: 1.125rem;
+    --type-mono-letter-spacing: 0;
 }

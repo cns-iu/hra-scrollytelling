@@ -19,9 +19,10 @@ body {
     color: var(--color-ink);
     background: var(--color-page);
     font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.6;
+    font-size: var(--type-body-large-size);
+    font-weight: var(--type-body-primary-weight);
+    letter-spacing: var(--type-body-large-letter-spacing);
+    line-height: var(--type-body-large-line-height);
 }
 
 img {
@@ -43,6 +44,15 @@ a {
 
 button {
     font: inherit;
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: var(--font-mono);
+    font-weight: var(--type-mono-weight);
+    letter-spacing: var(--type-mono-letter-spacing);
 }
 
 :focus {
@@ -77,7 +87,10 @@ button {
     border-radius: var(--radius-small);
     color: var(--color-heading);
     background: var(--color-card);
-    font-weight: 700;
+    font-size: var(--type-label-large-size);
+    font-weight: var(--type-label-emphasized-weight);
+    letter-spacing: var(--type-label-large-letter-spacing);
+    line-height: var(--type-label-large-line-height);
     transform: translateY(-150%);
 }
 
@@ -106,8 +119,10 @@ button {
     background: var(--color-action);
     box-shadow: var(--shadow-menu);
     cursor: pointer;
-    font-weight: 800;
-    line-height: 1.25;
+    font-size: var(--type-title-medium-size);
+    font-weight: var(--type-title-medium-emphasized-weight);
+    letter-spacing: var(--type-title-medium-letter-spacing);
+    line-height: var(--type-title-medium-line-height);
     touch-action: manipulation;
 }
 
@@ -165,9 +180,11 @@ button {
 .site-controls-title {
     margin: 0;
     color: var(--color-heading);
-    font-size: 1.5rem;
-    font-weight: 800;
-    line-height: 1.25;
+    font-family: var(--font-heading);
+    font-size: var(--type-headline-small-size);
+    font-weight: var(--type-headline-emphasized-weight);
+    letter-spacing: var(--type-headline-small-emphasized-letter-spacing);
+    line-height: var(--type-headline-small-line-height);
 }
 
 .site-controls-close {
@@ -200,10 +217,10 @@ button {
 .site-controls-label,
 .appearance-controls legend {
     color: var(--color-heading);
-    font-size: 0.8125rem;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    line-height: 1.4;
+    font-size: var(--type-label-medium-size);
+    font-weight: var(--type-label-emphasized-weight);
+    letter-spacing: var(--type-label-medium-letter-spacing);
+    line-height: var(--type-label-medium-line-height);
     text-transform: uppercase;
 }
 
@@ -231,8 +248,10 @@ button {
     align-items: center;
     border-radius: var(--radius-small);
     color: var(--color-heading);
-    font-weight: 700;
-    line-height: 1.4;
+    font-size: var(--type-title-medium-size);
+    font-weight: var(--type-title-medium-emphasized-weight);
+    letter-spacing: var(--type-title-medium-letter-spacing);
+    line-height: var(--type-title-medium-line-height);
     text-decoration: none;
 }
 
@@ -267,7 +286,10 @@ button {
     color: var(--color-heading);
     background: var(--color-surface-muted);
     cursor: pointer;
-    font-weight: 700;
+    font-size: var(--type-title-medium-size);
+    font-weight: var(--type-title-medium-emphasized-weight);
+    letter-spacing: var(--type-title-medium-letter-spacing);
+    line-height: var(--type-title-medium-line-height);
 }
 
 .appearance-choice:hover {
@@ -339,10 +361,10 @@ button {
 .eyebrow {
     margin: 0 0 0.75rem;
     color: var(--color-accent-text);
-    font-size: 0.95rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    line-height: 1.5;
+    font-size: var(--type-label-large-size);
+    font-weight: var(--type-label-emphasized-weight);
+    letter-spacing: var(--type-label-large-letter-spacing);
+    line-height: var(--type-label-large-line-height);
     text-transform: uppercase;
 }
 
@@ -358,28 +380,41 @@ h2,
 h3 {
     color: var(--color-heading);
     font-family: var(--font-heading);
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    line-height: 1.18;
 }
 
 h1 {
     max-width: 15ch;
     margin-bottom: 1.25rem;
-    font-size: clamp(2.4rem, 7vw, 4.5rem);
+    font-size: var(--type-display-large-size);
+    font-weight: var(--type-display-emphasized-weight);
+    letter-spacing: var(--type-display-large-letter-spacing);
+    line-height: var(--type-display-large-line-height);
 }
 
 h2 {
     margin-bottom: 1rem;
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-size: var(--type-headline-large-size);
+    font-weight: var(--type-headline-emphasized-weight);
+    letter-spacing: var(--type-headline-large-emphasized-letter-spacing);
+    line-height: var(--type-headline-large-line-height);
 }
 
-.hero-summary,
+.hero-summary {
+    max-width: var(--reading-width);
+    margin-bottom: 1.75rem;
+    font-size: var(--type-title-large-size);
+    font-weight: var(--type-title-large-primary-weight);
+    letter-spacing: var(--type-title-large-letter-spacing);
+    line-height: var(--type-title-large-line-height);
+}
+
 .section-heading > p:last-child {
     max-width: var(--reading-width);
     margin-bottom: 1.75rem;
-    font-size: clamp(1.125rem, 2vw, 1.3rem);
-    line-height: 1.65;
+    font-size: var(--type-body-large-size);
+    font-weight: var(--type-body-primary-weight);
+    letter-spacing: var(--type-body-large-letter-spacing);
+    line-height: var(--type-body-large-line-height);
 }
 
 .primary-action {
@@ -391,8 +426,10 @@ h2 {
     border-radius: var(--radius-small);
     color: var(--color-on-action);
     background: var(--color-action);
-    font-weight: 700;
-    line-height: 1.35;
+    font-size: var(--type-title-medium-size);
+    font-weight: var(--type-title-medium-emphasized-weight);
+    letter-spacing: var(--type-title-medium-letter-spacing);
+    line-height: var(--type-title-medium-line-height);
     text-decoration: none;
 }
 
@@ -468,22 +505,29 @@ h2 {
     border-radius: 50%;
     color: var(--color-on-badge);
     background: var(--color-badge);
-    font-size: 0.875rem;
-    font-weight: 800;
+    font-size: var(--type-label-large-size);
+    font-weight: var(--type-label-emphasized-weight);
+    letter-spacing: var(--type-label-large-letter-spacing);
+    line-height: var(--type-label-large-line-height);
 }
 
 .story-title {
     margin-bottom: 0;
     color: var(--color-accent-text);
-    font-size: clamp(1.15rem, 2vw, 1.35rem);
-    font-weight: 800;
-    line-height: 1.35;
+    font-family: var(--font-body);
+    font-size: var(--type-title-large-size);
+    font-weight: var(--type-title-large-emphasized-weight);
+    letter-spacing: var(--type-title-large-letter-spacing);
+    line-height: var(--type-title-large-line-height);
 }
 
 .story-description {
     max-width: 42ch;
     color: var(--color-ink);
-    line-height: 1.65;
+    font-size: var(--type-body-large-size);
+    font-weight: var(--type-body-primary-weight);
+    letter-spacing: var(--type-body-large-letter-spacing);
+    line-height: var(--type-body-large-line-height);
 }
 
 .story-arrow {
@@ -516,6 +560,9 @@ h2 {
 
 .footer-brand p {
     margin: 0;
+    font-size: var(--type-body-medium-size);
+    letter-spacing: var(--type-body-medium-letter-spacing);
+    line-height: var(--type-body-medium-line-height);
 }
 
 .footer-brand-link {
@@ -540,9 +587,11 @@ h2 {
 .footer-content h2 {
     margin-bottom: 1rem;
     color: var(--color-on-footer);
-    font-size: 1.15rem;
-    letter-spacing: 0;
-    line-height: 1.4;
+    font-family: var(--font-body);
+    font-size: var(--type-title-large-size);
+    font-weight: var(--type-title-large-emphasized-weight);
+    letter-spacing: var(--type-title-large-letter-spacing);
+    line-height: var(--type-title-large-line-height);
 }
 
 .social-list,
@@ -590,6 +639,9 @@ h2 {
 
 .medical-disclaimer p {
     margin-bottom: 0;
+    font-size: var(--type-body-medium-size);
+    letter-spacing: var(--type-body-medium-letter-spacing);
+    line-height: var(--type-body-medium-line-height);
 }
 
 @media (max-width: 52rem) {
@@ -639,6 +691,12 @@ h2 {
 
     .hero-copy {
         padding: 1.25rem;
+    }
+
+    h1 {
+        font-size: var(--type-display-small-size);
+        letter-spacing: var(--type-display-small-letter-spacing);
+        line-height: var(--type-display-small-line-height);
     }
 
     .story-card {
