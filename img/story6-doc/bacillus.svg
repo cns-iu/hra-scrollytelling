@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 500 500">
+  <metadata><title>Bacillus Bacteria</title><description>Bacillus Bacteria</description><license>Public Domain</license><creator>Ryan Kissinger</creator><creationDate>2024-09-05T15:57:26-06:00</creationDate><credit>Courtesy of NIAID</credit><illustrationSoftwares>[{'name': 'Adobe Illustrator', 'version': '28.6'}]</illustrationSoftwares><caption>Bacillus Bacteria</caption><imageColor>Multicolor</imageColor><isDiscoverThumbnail>True</isDiscoverThumbnail></metadata><ns0:defs>
+    <ns0:style>
+      .cls-1 {
+        isolation: isolate;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #c5f8f6;
+      }
+
+      .cls-3, .cls-4 {
+        stroke: #465b5a;
+        stroke-miterlimit: 10;
+        stroke-width: 2.19px;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+
+      .cls-6 {
+        mix-blend-mode: hard-light;
+      }
+
+      .cls-7 {
+        fill: #a4dfdf;
+      }
+    </ns0:style>
+    <ns0:clipPath id="clippath">
+      <ns0:path class="cls-3" d="M196.44,291.52c-7.82,0-12.69-.4-13.46-.47-13.27-1.17-23.07-12.87-21.9-26.13,1.17-13.25,12.77-23.05,26.08-21.91,1.08.08,65.35,4.8,113.66-29.98,10.81-7.78,25.88-5.33,33.65,5.48,7.78,10.81,5.33,25.87-5.48,33.65-48.62,35.01-106.7,39.36-132.55,39.36Z" />
+    </ns0:clipPath>
+  </ns0:defs>
+  
+  <ns0:g class="cls-1">
+    <ns0:g id="Layer_2">
+      <ns0:g class="cls-6">
+        <ns0:path class="cls-2" d="M196.44,291.52c-7.82,0-12.69-.4-13.46-.47-13.27-1.17-23.07-12.87-21.9-26.13,1.17-13.25,12.77-23.05,26.08-21.91,1.08.08,65.35,4.8,113.66-29.98,10.81-7.78,25.88-5.33,33.65,5.48,7.78,10.81,5.33,25.87-5.48,33.65-48.62,35.01-106.7,39.36-132.55,39.36Z" />
+        <ns0:g class="cls-5">
+          <ns0:path class="cls-7" d="M158.6,247.36s4.54,18.92,21.57,21.19c17.03,2.27,80.61-9.08,92.72-12.11,12.11-3.03,15.9-30.28,14.38-40.87-1.51-10.6-.76-18.54,14-23.09,14.76-4.54,84.77,9.08,84.77,9.08,0,0-20.82,115.81-85.53,135.49-64.72,19.68-183.93,4.54-190.36-12.87-6.43-17.41,48.44-76.83,48.44-76.83Z" />
+        </ns0:g>
+        <ns0:path class="cls-4" d="M196.44,291.52c-7.82,0-12.69-.4-13.46-.47-13.27-1.17-23.07-12.87-21.9-26.13,1.17-13.25,12.77-23.05,26.08-21.91,1.08.08,65.35,4.8,113.66-29.98,10.81-7.78,25.88-5.33,33.65,5.48,7.78,10.81,5.33,25.87-5.48,33.65-48.62,35.01-106.7,39.36-132.55,39.36Z" />
+      </ns0:g>
+    </ns0:g>
+  </ns0:g>
+  </ns0:svg>
