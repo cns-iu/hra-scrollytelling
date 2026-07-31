@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Merriweather+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Playfair+Display:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=PT+Sans:wght@400;700&family=Playfair+Display:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=PT+Sans:wght@400;700&family=Playfair+Display:wght@500&display=swap');
 
 @font-face {
   font-family: 'Metropolis';
@@ -136,18 +136,18 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto 100%;
-  height: calc(100vh - 214px);
+  flex-grow: 1;
 }
 
 .storyList {
   display: flex;
   flex-direction: column;
   margin: auto;
+  padding-bottom: 253px;
+  padding-top: 253px;
   max-width: 560px;
   padding-right: 12px;
   padding-left: 12px;
-  justify-content: center;
-  height: 100%;
 }
 
 .storylink a {
@@ -2521,7 +2521,7 @@ h1 {
   background: black;
 }
 
-#five .scene5-1 {
+#two .scene5-1 {
   background-image: url('img/5-1.svg');
   background-color: white;
   height: 100vh;
@@ -2534,7 +2534,7 @@ h1 {
   min-width: 100%;
 }
 
-#five .scene5-2 {
+#two .scene5-2 {
   background-image: url('img/5-2.svg');
   background-color: black;
   height: 100vh;
@@ -2547,7 +2547,7 @@ h1 {
   min-width: 100%;
 }
 
-#five .scene5-3 {
+#two .scene5-3 {
   background-image: url('img/5-3.svg');
   background-color: black;
   height: 100vh;
@@ -2560,7 +2560,7 @@ h1 {
   min-width: 100%;
 }
 
-#five .scene5-35 {
+#two .scene5-35 {
   background-image: url('img/5-35.svg');
   background-color: black;
   height: 100vh;
@@ -2575,7 +2575,7 @@ h1 {
   border-bottom: 1px solid black;
 }
 
-#five .scene5-4 {
+#two .scene5-4 {
   background-image: url('img/5-4.svg');
   background-color: black;
   height: 100vh;
@@ -2588,7 +2588,7 @@ h1 {
   min-width: 100%;
 }
 
-#five .scene5-5 {
+#two .scene5-5 {
   background-image: url('img/5-5.svg');
   background-color: black;
   height: 100vh;
@@ -2601,7 +2601,7 @@ h1 {
   min-width: 100%;
 }
 
-#five .scene5-6 {
+#two .scene5-6 {
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -2615,7 +2615,7 @@ h1 {
   vertical-align: middle;
 }
 
-#five .scene5-7 {
+#two .scene5-7 {
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -2631,7 +2631,7 @@ h1 {
   align-items: center;
 }
 
-#five .scene5-8 {
+#two .scene5-8 {
   background-color: black;
   background-image: url('img/5-8.png');
   height: 100vh;
@@ -2646,7 +2646,7 @@ h1 {
   vertical-align: middle;
 }
 
-#five .scene5-9 {
+#two .scene5-9 {
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -2662,7 +2662,7 @@ h1 {
   align-items: center;
 }
 
-#five .scene5-10 {
+#two .scene5-10 {
   background-color: black;
   background-image: url('img/5-10.png');
   height: 100vh;
@@ -2677,7 +2677,7 @@ h1 {
   vertical-align: middle;
 }
 
-#five .scene5-11 {
+#two .scene5-11 {
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -2693,7 +2693,7 @@ h1 {
   align-items: center;
 }
 
-#five .scene5-12 {
+#two .scene5-12 {
   background-color: black;
   background-image: url('img/5-12.png');
   height: 100vh;
@@ -2708,7 +2708,7 @@ h1 {
   vertical-align: middle;
 }
 
-#five .scene5-13 {
+#two .scene5-13 {
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -2724,7 +2724,7 @@ h1 {
   align-items: center;
 }
 
-#five .scene5-14 {
+#two .scene5-14 {
   background-color: black;
   background-image: url('img/5-14.png');
   height: 100vh;
@@ -2739,7 +2739,7 @@ h1 {
   vertical-align: middle;
 }
 
-#five .scene5-15 {
+#two .scene5-15 {
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -2763,7 +2763,7 @@ h1 {
   display: flex;
 }
 
-#five .scene5-16 {
+#two .scene5-16 {
   background-color: black;
   background-image: url('img/5-16.png');
   height: 100vh;
@@ -2778,7 +2778,7 @@ h1 {
   vertical-align: middle;
 }
 
-#five .scene5-17 {
+#two .scene5-17 {
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -2842,7 +2842,7 @@ body:has(#bar9:hover) #label9 {
   opacity: 1;
 }
 
-#five #sign {
+#two #sign {
   width: 15%;
   right: 20%;
   bottom: 9%;
@@ -2851,7 +2851,7 @@ body:has(#bar9:hover) #label9 {
   overflow: hidden;
 }
 
-#five #move1 {
+#two #move1 {
   animation: MoveUpDown2 2s linear infinite;
   width: 50%;
   left: 20%;
@@ -3869,638 +3869,4 @@ footer a {
   margin-bottom: 10px;
   display: block;
   box-sizing: border-box;
-}
-
-/* Story six */
-
-#six {
-  background: #eaf0f6;
-}
-
-#six .page-header {
-  margin: 0;
-  padding: 44px 24px;
-  padding-top: 16%;
-  padding-bottom: 14%;
-  text-align: center;
-  color: #fff;
-  background: linear-gradient(140deg, #1f3657, #2e5f88, #4998b8);
-  background-size: 220% 220%;
-}
-
-#six .scene6main {
-  height: calc(100vh - 72px);
-  display: flex;
-  margin: auto;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  max-width: 900px;
-  top: 72px;
-  overflow: visible;
-}
-
-#six .phase-text {
-  position: absolute;
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(91%, 890px);
-  color: #234865;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  text-align: center;
-  opacity: 1;
-  visibility: hidden;
-}
-
-#six .body-outline {
-  position: absolute;
-  max-height: 80%;
-  opacity: 0;
-  bottom: 0;
-  z-index: 1;
-
-  img {
-    height: 66vh;
-  }
-}
-
-#six .viruses {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  inset: 0;
-  z-index: 2;
-}
-
-#six .virus {
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  opacity: 0;
-}
-
-#six .part3-images {
-  position: absolute;
-  left: 50%;
-  top: 34%;
-  transform: translateX(-50%);
-  width: min(92%, 900px);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  opacity: 0;
-  z-index: 1;
-
-  .senescent-cells-illustration,
-  .sasp-cell-illustration {
-    width: 100%;
-    border-radius: 12px;
-    border: 1px solid #d6d8e4;
-    background: #fff;
-    box-shadow: 0 8px 18px rgba(23, 35, 65, 0.16);
-    transform: scale(0.95);
-  }
-}
-
-#six .disease-points {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-}
-
-#six .disease {
-  position: absolute;
-  opacity: 0;
-  transform: scale(0.78);
-  z-index: 2;
-}
-
-#six .disease-dot {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
-  background: #b33439;
-  box-shadow: 0 0 0 6px rgba(179, 52, 57, 0.2);
-}
-
-#six .disease-ring {
-  position: absolute;
-  left: -9px;
-  top: -9px;
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  border: 2px solid rgba(179, 52, 57, 0.55);
-  animation: sixpartPulse 1.8s ease-out infinite;
-}
-
-#six .disease-label {
-  position: absolute;
-  left: 24px;
-  top: -5px;
-  white-space: nowrap;
-  color: #6a2b32;
-  font-size: 0.86rem;
-  font-weight: 600;
-}
-
-#six .disease-ra {
-  left: 39%;
-  top: 47%;
-}
-#six .disease-nd {
-  left: 43%;
-  top: 4%;
-}
-#six .disease-cv {
-  left: 52%;
-  top: 22%;
-}
-#six .disease-ca {
-  left: 59%;
-  top: 38%;
-}
-
-#six .research-microscope {
-  position: absolute;
-  right: 6%;
-  top: 22%;
-  width: 320px;
-  height: 300px;
-  opacity: 0;
-}
-
-#six .immune-map {
-  position: absolute;
-  inset: 0;
-}
-
-#six .immune-site {
-  position: absolute;
-  opacity: 0;
-  transform: scale(0.76);
-}
-
-#six .site-dot {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  background: #2f73b7;
-  box-shadow: 0 0 0 5px rgba(47, 115, 183, 0.2);
-}
-
-#six .site-label {
-  position: absolute;
-  left: 20px;
-  top: -5px;
-  color: #214a70;
-  font-size: 0.78rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-#six .site-brain {
-  left: 46%;
-  top: 4%;
-}
-#six .site-lymph {
-  left: 53%;
-  top: 15%;
-}
-#six .site-thymus {
-  left: 50%;
-  top: 20%;
-}
-#six .site-heart {
-  left: 53%;
-  top: 25%;
-}
-#six .site-liver {
-  left: 43%;
-  top: 34%;
-}
-#six .site-spleen {
-  left: 57%;
-  top: 36%;
-}
-#six .site-kidney {
-  left: 43%;
-  top: 39%;
-}
-#six .site-gi {
-  left: 49%;
-  top: 45%;
-}
-#six .site-bone {
-  left: 58%;
-  top: 63%;
-}
-
-#six .cell-types-illustration {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(84vw, 560px);
-  aspect-ratio: 1;
-  opacity: 0;
-}
-
-#six .cell-type-icon {
-  position: absolute;
-  width: clamp(88px, 11vw, 130px);
-  height: auto;
-  left: 50%;
-  top: 50%;
-  transform-origin: center;
-}
-
-#six .icon-dendritic {
-  transform: translate(-50%, -50%) translateY(-175%);
-}
-
-#six .icon-bcell {
-  transform: translate(-50%, -50%) rotate(60deg) translateY(-175%) rotate(-60deg);
-}
-
-#six .icon-tcell {
-  transform: translate(-50%, -50%) rotate(120deg) translateY(-175%) rotate(-120deg);
-}
-
-#six .icon-neutrophil {
-  transform: translate(-50%, -50%) rotate(180deg) translateY(-175%) rotate(-180deg);
-}
-
-#six .icon-naturalkiller {
-  transform: translate(-50%, -50%) rotate(240deg) translateY(-175%) rotate(-240deg);
-}
-
-#six .icon-macrophage {
-  transform: translate(-50%, -50%) rotate(300deg) translateY(-175%) rotate(-300deg);
-}
-
-#six .cell-type-name {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform-origin: center;
-  font-size: clamp(0.68rem, 1vw, 0.82rem);
-  font-weight: 700;
-  color: #24425f;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(145, 170, 201, 0.6);
-  border-radius: 999px;
-  padding: 3px 8px;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-#six .name-dendritic {
-  transform: translate(-50%, -50%) translateY(-175%) translate(0, -78%);
-}
-
-#six .name-bcell {
-  transform: translate(-50%, -50%) rotate(60deg) translateY(-175%) rotate(-60deg) translate(68%, -28%);
-}
-
-#six .name-tcell {
-  transform: translate(-50%, -50%) rotate(120deg) translateY(-175%) rotate(-120deg) translate(68%, 28%);
-}
-
-#six .name-neutrophil {
-  transform: translate(-50%, -50%) rotate(180deg) translateY(-175%) rotate(-180deg) translate(0, 78%);
-}
-
-#six .name-naturalkiller {
-  transform: translate(-50%, -50%) rotate(240deg) translateY(-175%) rotate(-240deg) translate(-68%, 28%);
-}
-
-#six .name-macrophage {
-  transform: translate(-50%, -50%) rotate(300deg) translateY(-175%) rotate(-300deg) translate(-68%, -28%);
-}
-
-@media (max-width: 900px) {
-  #six .cell-type-icon {
-    width: clamp(68px, 15vw, 100px);
-  }
-
-  #six .icon-dendritic {
-    transform: translate(-50%, -50%) translateY(-155%);
-  }
-
-  #six .icon-bcell {
-    transform: translate(-50%, -50%) rotate(60deg) translateY(-155%) rotate(-60deg);
-  }
-
-  #six .icon-tcell {
-    transform: translate(-50%, -50%) rotate(120deg) translateY(-155%) rotate(-120deg);
-  }
-
-  #six .icon-neutrophil {
-    transform: translate(-50%, -50%) rotate(180deg) translateY(-155%) rotate(-180deg);
-  }
-
-  #six .icon-naturalkiller {
-    transform: translate(-50%, -50%) rotate(240deg) translateY(-155%) rotate(-240deg);
-  }
-
-  #six .icon-macrophage {
-    transform: translate(-50%, -50%) rotate(300deg) translateY(-155%) rotate(-300deg);
-  }
-
-  #six .cell-type-name {
-    font-size: clamp(0.62rem, 2.3vw, 0.74rem);
-    padding: 2px 6px;
-  }
-
-  #six .name-dendritic {
-    transform: translate(-50%, -50%) translateY(-155%) translate(0, -72%);
-  }
-
-  #six .name-bcell {
-    transform: translate(-50%, -50%) rotate(60deg) translateY(-155%) rotate(-60deg) translate(58%, -24%);
-  }
-
-  #six .name-tcell {
-    transform: translate(-50%, -50%) rotate(120deg) translateY(-155%) rotate(-120deg) translate(58%, 24%);
-  }
-
-  #six .name-neutrophil {
-    transform: translate(-50%, -50%) rotate(180deg) translateY(-155%) rotate(-180deg) translate(0, 72%);
-  }
-
-  #six .name-naturalkiller {
-    transform: translate(-50%, -50%) rotate(240deg) translateY(-155%) rotate(-240deg) translate(-58%, 24%);
-  }
-
-  #six .name-macrophage {
-    transform: translate(-50%, -50%) rotate(300deg) translateY(-155%) rotate(-300deg) translate(-58%, -24%);
-  }
-}
-
-#six .senescence-patterns-illustration {
-  position: absolute;
-  left: 50%;
-  top: 22%;
-  transform: translateX(-50%);
-  width: min(92%, 800px);
-  border-radius: 14px;
-  opacity: 0;
-  border-radius: 10px;
-}
-
-#six .mouse {
-  top: 31%;
-  display: flex;
-  position: absolute;
-  min-height: 360px;
-  opacity: 0;
-  height: 360px;
-  width: fit-content;
-  flex-direction: column;
-  width: 256px;
-  align-items: center;
-  overflow-x: hidden;
-  overflow: visible;
-
-  img {
-    height: 100%;
-    width: fit-content;
-  }
-}
-
-#six .mouse-frame {
-  position: absolute;
-  height: 100%;
-  width: fit-content;
-  opacity: 0;
-  /* visibility: hidden; */
-}
-
-/* #six .mouse-old .frame-liver {
-  visibility: visible;
-} */
-
-#six .mouse-old {
-  /* right: 4%; */
-  top: 31%;
-}
-
-#six .site-m {
-  position: absolute;
-  opacity: 0;
-  transform: scale(0.72);
-
-  .site-label {
-    font-size: 0.86rem;
-    font-weight: 600;
-    background: white;
-    border: 1px solid #d3dded;
-    border-radius: 999px;
-    padding: 2px 6px;
-    white-space: nowrap;
-  }
-}
-
-.site-m-thymus {
-  left: 52%;
-  top: 27%;
-}
-.site-m-liver {
-  left: 50%;
-  top: 47%;
-}
-.site-m-spleen {
-  left: 65%;
-  top: 48%;
-}
-.site-m-kidney {
-  left: 46%;
-  top: 61%;
-}
-.site-m-pancreas {
-  left: 62%;
-  top: 53%;
-}
-
-#six .mouse-young {
-  left: 25%;
-}
-
-#six .mouse-age-label {
-  position: absolute;
-  left: 50%;
-  bottom: 10px;
-  transform: translateX(-50%);
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  color: #24425f;
-  padding: 4px 10px;
-  white-space: nowrap;
-  opacity: 0;
-}
-
-#six .proteomics-wrap {
-  position: absolute;
-  left: 50%;
-  top: 20%;
-  transform: translateX(-50%);
-  width: min(90%, 820px);
-  border: 1px solid #d3dded;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 10px 24px rgba(19, 42, 66, 0.16);
-  padding: 10px;
-  opacity: 0;
-}
-
-#six .proteomics-image {
-  width: 100%;
-  display: block;
-  border-radius: 10px;
-}
-
-#six .effect-arrow {
-  position: absolute;
-  opacity: 0;
-}
-
-#six .arrow-line {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 44px;
-  height: 2px;
-  background: red;
-  transform-origin: left center;
-}
-
-#six .arrow-line::after {
-  content: '';
-  position: absolute;
-  right: -1px;
-  top: -4px;
-  width: 0;
-  height: 0;
-  border-left: 8px solid #1f78b4;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-}
-
-#six .arrow-label {
-  position: absolute;
-  left: 48px;
-  top: -10px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: #1d4465;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid #cfe0ef;
-  border-radius: 999px;
-  padding: 2px 7px;
-  white-space: nowrap;
-}
-
-#six .effect-shape {
-  left: 16%;
-  top: 46%;
-}
-#six .effect-shape .arrow-line {
-  transform: rotate(-30deg);
-  width: 58px;
-}
-
-#six .effect-composition {
-  left: 58%;
-  top: 30%;
-}
-#six .effect-composition .arrow-line {
-  transform: rotate(155deg);
-  width: 52px;
-}
-
-#six .effect-organization {
-  left: 22%;
-  top: 74%;
-}
-#six .effect-organization .arrow-line {
-  transform: rotate(-8deg);
-  width: 52px;
-}
-
-#six .effect-expression {
-  left: 68%;
-  top: 67%;
-}
-#six .effect-expression .arrow-line {
-  transform: rotate(168deg);
-  width: 64px;
-}
-
-#six .part13-images {
-  position: absolute;
-  left: 50%;
-  top: 23%;
-  transform: translateX(-50%);
-  width: min(94%, 980px);
-  display: flex;
-  gap: 14px;
-  opacity: 0;
-}
-
-#six .part13-image {
-  width: 50%;
-}
-
-#six .cde {
-  position: absolute;
-  top: 27%;
-  opacity: 0;
-  pointer-events: none;
-  display: flex;
-  height: calc(100vh - 300px);
-
-  cde-visualization {
-    display: flex;
-  }
-
-  cde-node-dist-visualization {
-    min-width: 40rem;
-  }
-
-  .metadata,
-  .header,
-  cde-violin,
-  cde-histogram {
-    display: none;
-  }
-}
-
-#six .text-15 {
-  top: 50%;
-}
-
-#six .text-16,
-#six .text-17 {
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@keyframes sixpartPulse {
-  0% {
-    transform: scale(0.6);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1.35);
-    opacity: 0;
-  }
 }
