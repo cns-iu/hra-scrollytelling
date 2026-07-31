@@ -24,6 +24,7 @@ Landing-page work is intentionally isolated to:
 - `landing/js/main.js` for initializing landing-page modules.
 - `landing/js/menu.js` for the navigation disclosure and focus behavior.
 - `landing/js/theme.js` for appearance selection, persistence, and system-preference behavior.
+- `shared/js/contrast.js` for the persistent High contrast switch used by landing and shared page chrome.
 
 Do not reconnect the landing page to the legacy `style.css` or to prototype or story scripts. Do not allow
 landing-page selectors or behavior to affect the story pages. Do not overwrite or repurpose legacy files directly
@@ -38,17 +39,21 @@ footer, and end-of-story navigation are migrating to namespaced foundations unde
 - `shared/css/tokens.css` for component-scoped Light and Dark appearance roles.
 - `shared/css/fonts.css` and `shared/assets/fonts/` for approved HRA typography and licenses.
 - `shared/assets/icons/menu.svg` for the canonical Menu glyph.
+- `shared/css/selection.css` for theme-aware text selection scoped to shared page chrome.
 - `shared/css/navigation.css` for the skip link and native Menu disclosure.
 - `shared/css/footer.css` for the canonical site footer.
 - `shared/css/story-navigation.css` for previous and next story links.
-- `shared/js/main.js`, `shared/js/menu.js`, and `shared/js/theme.js` for progressive enhancement.
+- `shared/js/main.js`, `shared/js/menu.js`, `shared/js/theme.js`, and `shared/js/contrast.js` for progressive
+  enhancement.
 
 Keep essential shared component markup in every consuming HTML page; do not inject it with JavaScript. Add the
 `site-chrome` class to each component root so story appearance changes do not affect story artwork. On story pages
 that offer appearance selection, System settings, Light, and Dark apply only to shared page chrome. Preserve
 `hra-landing-theme` as the storage key during migration. Include the appearance fieldset only when a page initializes
 theme selection; omit it when appearance is not an available option. Add `site-chrome--light` to the Menu root on
-pages without appearance selection so the Menu does not follow the operating-system dark preference.
+pages without appearance selection so the Menu does not follow the operating-system dark preference. Keep the High
+contrast switch available in every enhanced Menu. On story pages, its visual changes must remain inside
+`.site-chrome` roots.
 
 Adopt the foundation one page at a time. Story 1 is the integration pilot while the landing-page redesign is in
 progress; migrate `index.html` after its revised design is approved. Do not remove a legacy component rule until
@@ -90,7 +95,7 @@ At minimum:
 - Meet 3:1 non-text contrast for meaningful controls and boundaries.
 - Support reflow at 320 CSS pixels and browser zoom up to 400%.
 - Allow text-spacing overrides without clipping or loss of content.
-- Respect reduced-motion preferences and forced-colors mode.
+- Respect reduced-motion, reduced-transparency, increased-contrast, and forced-colors preferences.
 - Give functional images accessible names and decorative images `alt=""`.
 - Avoid unexpected new windows or clearly communicate them when essential.
 - Test disclosure controls for state announcement, Escape, outside click, and focus behavior.
@@ -115,9 +120,12 @@ When reviewing screenshots, distinguish real mobile-browser behavior from deskto
   Light, and Dark choices.
 - An offered appearance control must respect the initial system preference, persist the selected mode, avoid a
   load-time theme flash, and remain accessible without color alone.
+- Implement High contrast as a visibly labeled `button` with `role="switch"`, synchronized `aria-checked` and visible
+  On/Off text, operating-system fallback, and persistence under the `hra-high-contrast` storage key.
 - Keep the prepaint storage key in each migrated page aligned with the active landing or shared theme module.
 - Figma or Material color tokens are inputs, not automatic proof of AAA contrast. Verify every applied foreground and
   background pairing.
+- Keep custom text-selection colors tokenized, scoped away from story artwork, and disabled in forced-colors mode.
 - Do not alter shared story-page styles while implementing landing-page visual changes.
 
 ## Repository safety
@@ -159,5 +167,6 @@ After changes:
 4. Confirm IDs are unique and all fragment and ARIA ID references resolve.
 5. Recalculate affected contrast pairs.
 6. Test keyboard and disclosure behavior.
-7. Inspect at 320 CSS pixels, 200% and 400% zoom, reduced motion, and forced colors when a browser is available.
+7. Inspect at 320 CSS pixels, 200% and 400% zoom, reduced motion, reduced transparency, increased contrast, and forced
+   colors when a browser is available.
 8. Report what changed, what was intentionally unchanged, which validations passed, and which manual checks remain.

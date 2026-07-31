@@ -73,6 +73,18 @@
     }
 }
 
+:root[data-contrast="more"] .site-story-navigation__link {
+    border-color: currentColor;
+    border-width: 0.25rem;
+}
+
+@media (prefers-contrast: more) {
+    :root:not([data-contrast="standard"]) .site-story-navigation__link {
+        border-color: currentColor;
+        border-width: 0.25rem;
+    }
+}
+
 @media (forced-colors: active) {
     .site-story-navigation__link {
         border: 2px solid CanvasText;

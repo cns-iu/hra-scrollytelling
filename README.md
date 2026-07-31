@@ -154,7 +154,7 @@ The landing page includes light and dark themes derived from the Human Reference
 - Remembers the selected mode in local storage; System settings continues to follow operating-system changes.
 - Restores a saved selection before paint to avoid flashing the wrong theme.
 - Uses AAA-safe component pairings rather than assuming every brand-token pairing is suitable for normal text.
-- Continues to respect forced-colors and reduced-motion preferences.
+- Continues to respect reduced-motion, reduced-transparency, increased-contrast, and forced-colors preferences.
 
 ### Typography
 
@@ -179,6 +179,10 @@ The control and panel account for device safe areas, retain 44-by-44-pixel targe
 scroll within short or highly zoomed viewports. Appearance controls belong only on pages that initialize theme
 selection; omit the fieldset when appearance is not an available page option. A page without appearance selection
 uses the shared Menu's light treatment rather than changing it with the operating-system preference.
+
+Every enhanced Menu includes an Accessibility group with a persistent High contrast switch. The switch follows the
+operating-system contrast preference until a visitor explicitly turns it on or off. On the landing page it changes the
+complete experience; on story pages it changes only namespaced shared chrome and never story artwork or animation.
 
 ## Shared page chrome
 
@@ -217,16 +221,19 @@ The landing page targets WCAG 2.2 Level AAA and includes:
 - Visible focus indicators and 44-by-44-pixel minimum targets.
 - AAA-oriented text contrast and non-text control contrast.
 - Content-driven responsive sizing and 320-pixel reflow support.
-- Reduced-motion and forced-colors support.
+- Reduced-motion, reduced-transparency, increased-contrast, and forced-colors support.
+- Theme-aware text-selection colors that defer to operating-system colors in forced-colors mode.
 - A floating navigation disclosure with a persistent visible label, state announcement, Escape, outside click, and
   focus restoration.
 - A persistent three-state appearance preference grouped with a native fieldset and radio controls.
+- A persistent High contrast switch with visible state text and an announced switch state.
 
 The story pages predate this work and have not yet received the same accessibility remediation. The repository as a
 whole should not be described as WCAG AAA conformant until each story has been audited and tested.
 
 Automated checks are not sufficient for conformance. Final validation must include real-browser keyboard, screen
-reader, 200–400% zoom, text-spacing, forced-colors, reduced-motion, and mobile-browser testing.
+reader, 200–400% zoom, text-spacing, reduced motion, reduced transparency, increased contrast, forced colors, and
+mobile-browser testing.
 
 ## Development guidelines
 

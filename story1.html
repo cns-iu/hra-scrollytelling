@@ -9,9 +9,25 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
+    <!-- Apply a saved contrast preference before shared chrome paints. -->
+    <script>
+        (() => {
+            try {
+                const savedContrast = localStorage.getItem('hra-high-contrast');
+
+                if (savedContrast === 'more' || savedContrast === 'standard') {
+                    document.documentElement.dataset.contrast = savedContrast;
+                }
+            } catch {
+                // The operating-system preference remains the fallback.
+            }
+        })();
+    </script>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="shared/css/fonts.css">
     <link rel="stylesheet" href="shared/css/tokens.css">
+    <link rel="stylesheet" href="shared/css/selection.css">
     <link rel="stylesheet" href="shared/css/navigation.css">
     <link rel="stylesheet" href="shared/css/story-navigation.css">
     <link rel="stylesheet" href="shared/css/footer.css">
@@ -64,6 +80,18 @@
                     <li><a href="story5.html">Know Your Body Buddies</a></li>
                 </ul>
             </nav>
+
+            <fieldset class="site-accessibility" data-contrast-controls hidden>
+                <legend>Accessibility</legend>
+                <button class="site-contrast-switch" type="button" role="switch" aria-checked="false"
+                    data-contrast-toggle>
+                    <span class="site-contrast-switch__label">High contrast</span>
+                    <span class="site-contrast-switch__track" aria-hidden="true">
+                        <span class="site-contrast-switch__thumb"></span>
+                    </span>
+                    <span class="site-contrast-switch__state" data-contrast-state aria-hidden="true">Off</span>
+                </button>
+            </fieldset>
 
         </div>
     </details>

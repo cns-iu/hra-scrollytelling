@@ -88,6 +88,15 @@ These components use namespaced selectors and modules under `shared/` so their b
 separate from landing-page layout and story artwork. Shared component selectors must not use legacy generic names such
 as `.dropdown`, `.next`, or `.footer`.
 
+Theme-aware text selection is a shared foundation under `shared/css/selection.css`. It applies only within
+`.site-chrome` roots, uses roles from `shared/css/tokens.css`, and defers to operating-system colors in forced-colors
+mode so story artwork and high-contrast preferences remain unaffected.
+
+The enhanced Menu also exposes a persistent High contrast switch. `shared/js/contrast.js` owns its state and the
+`hra-high-contrast` storage key. With no saved choice, CSS and JavaScript follow `prefers-contrast`; an explicit On or
+Off choice is applied before paint. Landing-page contrast affects the full landing experience, while story-page
+contrast selectors remain namespaced to `.site-chrome` Menu, footer, and story-navigation components.
+
 GitHub Pages serves this repository without a build step or server-side includes. Each maintained HTML entry point
 therefore contains its own small copy of the semantic component markup. Shared JavaScript enhances existing markup; it
 must not fetch or inject essential navigation or footer content. This keeps landmarks and links available when

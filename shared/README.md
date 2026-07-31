@@ -10,6 +10,7 @@ Pages adopting the shared components load the stylesheets directly:
 ```html
 <link rel="stylesheet" href="shared/css/fonts.css">
 <link rel="stylesheet" href="shared/css/tokens.css">
+<link rel="stylesheet" href="shared/css/selection.css">
 <link rel="stylesheet" href="shared/css/navigation.css">
 <link rel="stylesheet" href="shared/css/story-navigation.css">
 <link rel="stylesheet" href="shared/css/footer.css">
@@ -38,6 +39,9 @@ before component tokens and styles.
   input and `data-site-theme-status` to the visually hidden polite status region.
 - Omit the complete appearance fieldset and theme-status region when appearance is not an available page option, and
   apply the light-only Menu modifier described above.
+- Add a hidden fieldset with `data-contrast-controls`, a visible High contrast button with `role="switch"`,
+  `aria-checked`, and `data-contrast-toggle`, plus visible state text marked with `data-contrast-state`. The shared
+  module reveals the fieldset only after the control is functional.
 - Use `aria-current="page"` on the current internal page link.
 - Keep the footer in a native `footer` and each link collection in an appropriately named `nav`.
 - Keep previous and next story links in a separate `nav` labeled “Story navigation.”
@@ -45,6 +49,14 @@ before component tokens and styles.
 Essential landmarks and links must remain in the page HTML. Shared JavaScript enhances the native disclosure and any
 available appearance controls; it does not fetch or inject component markup. Appearance choices remain hidden if
 JavaScript is unavailable so the page does not present controls that cannot change the saved preference.
+
+`selection.css` applies theme-aware selection colors only inside `.site-chrome` components. Light chrome uses deep
+plum with white text, while Dark chrome uses pale pink with deep burgundy text. The stylesheet defers to operating-
+system selection colors when forced-colors mode is active.
+
+`contrast.js` follows `prefers-contrast` until a visitor explicitly selects On or Off, persists the choice under
+`hra-high-contrast`, and synchronizes every switch's visible and announced state. Story contrast rules must remain
+inside `.site-chrome` roots so legacy story content is never recolored by this control.
 
 ## Ownership
 

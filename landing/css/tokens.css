@@ -52,6 +52,13 @@
     --color-menu-active: var(--hra-secondary-container);
     --color-on-menu-active: var(--hra-on-secondary-container);
     --color-menu-indicator: var(--color-accent-text);
+    --color-selection: var(--hra-secondary);
+    --color-on-selection: var(--hra-on-secondary);
+    --color-switch-track: var(--hra-surface-container-highest);
+    --color-switch-border: var(--color-border);
+    --color-switch-thumb: var(--hra-on-surface-variant);
+    --color-switch-track-selected: var(--hra-on-primary-container);
+    --color-switch-thumb-selected: var(--hra-on-primary);
     --color-tonal-button: var(--hra-secondary-container);
     --color-on-tonal-button: var(--hra-on-secondary-container);
     --color-tonal-button-state-layer: var(--hra-on-secondary-container);
@@ -146,6 +153,8 @@
     --color-header-logo-tile: #ffffff;
     --color-header-logo-outline: var(--hra-outline);
     --color-footer-outline: var(--hra-outline);
+    --color-selection: var(--hra-primary-fixed);
+    --color-on-selection: var(--hra-on-primary-fixed);
     --focus-color: var(--hra-primary);
     --hero-overlay-start: rgb(22 23 25 / 100%);
     --hero-overlay-middle: rgb(22 23 25 / 88%);
@@ -201,6 +210,8 @@
         --color-header-logo-tile: #ffffff;
         --color-header-logo-outline: var(--hra-outline);
         --color-footer-outline: var(--hra-outline);
+        --color-selection: var(--hra-primary-fixed);
+        --color-on-selection: var(--hra-on-primary-fixed);
         --focus-color: var(--hra-primary);
         --hero-overlay-start: rgb(22 23 25 / 100%);
         --hero-overlay-middle: rgb(22 23 25 / 88%);

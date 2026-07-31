@@ -135,6 +135,26 @@
     }
 }
 
+:root[data-contrast="more"] .site-chrome-footer__brand-link,
+:root[data-contrast="more"] .site-chrome-footer__link-list a {
+    border: 0.25rem solid currentColor;
+}
+
+:root[data-contrast="more"] .site-chrome-footer__disclaimer {
+    border-top-width: 0.25rem;
+}
+
+@media (prefers-contrast: more) {
+    :root:not([data-contrast="standard"]) .site-chrome-footer__brand-link,
+    :root:not([data-contrast="standard"]) .site-chrome-footer__link-list a {
+        border: 0.25rem solid currentColor;
+    }
+
+    :root:not([data-contrast="standard"]) .site-chrome-footer__disclaimer {
+        border-top-width: 0.25rem;
+    }
+}
+
 @media (forced-colors: active) {
     .site-chrome-footer__brand-link,
     .site-chrome-footer__link-list a {

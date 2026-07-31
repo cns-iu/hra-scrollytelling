@@ -35,13 +35,14 @@
     <meta name="twitter:image:alt"
         content="A translucent human figure with its heart and blood vessels visible stands against a pale blue background.">
 
-    <!-- Apply the saved appearance before styles paint. -->
+    <!-- Apply saved appearance and contrast preferences before styles paint. -->
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#dee5f1" data-light-color="#dee5f1" data-dark-color="#393f45">
     <script>
         (() => {
             try {
                 const savedTheme = localStorage.getItem('hra-landing-theme');
+                const savedContrast = localStorage.getItem('hra-high-contrast');
                 const systemTheme = typeof window.matchMedia === 'function'
                     && window.matchMedia('(prefers-color-scheme: dark)').matches
                     ? 'dark'
@@ -56,6 +57,10 @@
                     if (savedTheme === 'light' || savedTheme === 'dark') {
                         document.documentElement.dataset.theme = savedTheme;
                     }
+                }
+
+                if (savedContrast === 'more' || savedContrast === 'standard') {
+                    document.documentElement.dataset.contrast = savedContrast;
                 }
 
                 if (themeColor) {
@@ -134,6 +139,18 @@
                     <input type="radio" name="color-theme" value="dark">
                     <span>Dark</span>
                 </label>
+            </fieldset>
+
+            <fieldset class="accessibility-controls" data-contrast-controls hidden>
+                <legend>Accessibility</legend>
+                <button class="contrast-switch" type="button" role="switch" aria-checked="false"
+                    data-contrast-toggle>
+                    <span class="contrast-switch-label">High contrast</span>
+                    <span class="contrast-switch-track" aria-hidden="true">
+                        <span class="contrast-switch-thumb"></span>
+                    </span>
+                    <span class="contrast-switch-state" data-contrast-state aria-hidden="true">Off</span>
+                </button>
             </fieldset>
         </div>
 
