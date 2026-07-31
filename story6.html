@@ -66,23 +66,23 @@
       <div class="fadeimage">
         <img class="body-outline picture1" src="img/2-bodyintro1.png" />
         <img class="body-outline picture2" src="img/2-bodyintro2.png" />
-        <!-- <div class="viruses">
-          <img src="img/story6-doc/virus.svg" class="virus v1" />
-          <img src="img/story6-doc/virus.svg" class="virus v2" />
-          <img src="img/story6-doc/virus.svg" class="virus v3" />
-          <img src="img/story6-doc/virus.svg" class="virus v4" />
-          <img src="img/story6-doc/virus.svg" class="virus v5" />
-          <img src="img/story6-doc/virus.svg" class="virus v6" />
-          <img src="img/story6-doc/virus.svg" class="virus v7" />
-          <img src="img/story6-doc/virus.svg" class="virus v8" />
-          <img src="img/story6-doc/virus.svg" class="virus v9" />
-          <img src="img/story6-doc/virus.svg" class="virus v10" />
-        </div> -->
+        <div class="viruses" aria-hidden="true">
+          <span class="virus v1"><img src="img/story6-doc/virus.svg" alt="" /></span>
+          <span class="virus v2"><img src="img/story6-doc/virus.svg" alt="" /></span>
+          <span class="virus v3"><img src="img/story6-doc/virus.svg" alt="" /></span>
+          <span class="virus v4"><img src="img/story6-doc/virus.svg" alt="" /></span>
+          <span class="virus v5"><img src="img/story6-doc/virus.svg" alt="" /></span>
+          <span class="virus v6"><img src="img/story6-doc/virus.svg" alt="" /></span>
+          <span class="virus v7"><img src="img/story6-doc/virus.svg" alt="" /></span>
+          <span class="virus v8"><img src="img/story6-doc/virus.svg" alt="" /></span>
+          <span class="virus v9"><img src="img/story6-doc/virus.svg" alt="" /></span>
+          <span class="virus v10"><img src="img/story6-doc/virus.svg" alt="" /></span>
+        </div>
       </div>
-      <div class="narrator">
+      <div class="narrator" id="showpicture2">
         The immune system is a complex network of cells, tissues, organs, and the substances they make. It helps the body fight infections and other diseases.
       </div>
-      <div class="narrator">
+      <div class="narrator" id="showviruses">
         As we age, our immune system function becomes impaired. Our bodies have a harder time fighting off infections, controlling malignancies, and maintaining
         immune tolerance.
       </div>
@@ -97,11 +97,11 @@
         Cell senescence has some very important benefits for our health. It aids in embryo development, helps our bodies respond to injury, and works to keep
         cancer cells from replicating.
       </div>
-      <div class="narrator">
+      <div class="narrator" id="inflammation">
         However, as we age, senescent cells accumulate. This may contribute to “inflammaging,” a chronic, low-grade inflammation that can damage healthy tissue,
         promote disease progression, and accelerate the aging process.
       </div>
-      <div class="narrator" id="showpicture2">In many cases, the body relies on immune cells to clear senescent cells and prevent them from accumulating.</div>
+      <div class="narrator">In many cases, the body relies on immune cells to clear senescent cells and prevent them from accumulating.</div>
       <div class="narrator">
         However, this function is impaired when immune cells themselves become senescent. Immune-cell senescence can also weaken the immune system’s ability to
         detect disease and migrate to sites of infection or injury.
@@ -399,7 +399,7 @@
       scrollTrigger: {
         trigger: '.intro',
         start: 'top 72px',
-        end: '+=2300%',
+        end: '+=3600%',
         pin: true,
       },
     });
@@ -451,7 +451,12 @@
         scrollTrigger: {
           trigger: bubble,
           start: 'top 16px',
-          end: bubble.id === 'changemouse' ? '+=500%' : '+=100%',
+          end:
+            bubble.id === 'showviruses'
+              ? '+=1000%'
+              : bubble.id === 'changemouse' || bubble.id === 'showpicture2'
+                ? '+=500%'
+                : '+=100%',
           pin: true,
           scrub: true,
         },
@@ -466,7 +471,15 @@
       });
 
       if (bubble.id === 'showpicture2') {
-        tl.to('.picture2', { opacity: 1 });
+        tl.to('.picture2', { opacity: 1, duration: 10 });
+      }
+
+      if (bubble.id === 'showviruses') {
+        tl.to('.viruses', { opacity: 1, duration: 0.5 }, '<')
+          .to(bubble, { autoAlpha: 1, duration: 8.8 })
+          .to(bubble, { autoAlpha: 0, duration: 0.2 });
+
+        return;
       }
 
       if (bubble.id === 'changemouse') {
@@ -499,6 +512,113 @@
         },
         1.8,
       );
+    });
+
+    const virusMotion = gsap.matchMedia();
+
+    virusMotion.add('(prefers-reduced-motion: no-preference)', () => {
+      const virusContainer = document.querySelector('.viruses');
+      const viruses = gsap.utils.toArray('.viruses .virus');
+      const breachingViruses = gsap.utils.toArray('.viruses .v2, .viruses .v5, .viruses .v9');
+      const blockedViruses = viruses.filter((virus) => !breachingViruses.includes(virus));
+
+      const moveTowardCenter = (virus, progress, axis) => {
+        const isHorizontal = axis === 'x';
+        const containerSize = isHorizontal ? virusContainer.clientWidth : virusContainer.clientHeight;
+        const virusPosition = isHorizontal ? virus.offsetLeft : virus.offsetTop;
+        const virusSize = isHorizontal ? virus.offsetWidth : virus.offsetHeight;
+
+        return (containerSize / 2 - (virusPosition + virusSize / 2)) * progress;
+      };
+
+      const virusAttackTimeline = gsap.timeline({
+        defaults: { ease: 'none' },
+        scrollTrigger: {
+          trigger: '#showviruses',
+          start: 'top 16px',
+          end: '+=1000%',
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      virusAttackTimeline
+        .addLabel('initialBobbing')
+        .to(
+          viruses,
+          {
+            x: 0,
+            y: 0,
+            scale: 1,
+            rotation: 0,
+            duration: 0.8705, // 20% of this timeline: two of the ten viewport lengths
+          },
+          'initialBobbing',
+        )
+        .addLabel('firstAttack')
+        .to(
+          viruses,
+          {
+            x: (index, virus) => moveTowardCenter(virus, 0.3, 'x'),
+            y: (index, virus) => moveTowardCenter(virus, 0.3, 'y'),
+            scale: 1.06,
+            rotation: (index) => (index % 2 === 0 ? 8 : -8),
+            duration: 0.55,
+            stagger: 0.025,
+          },
+          'firstAttack',
+        )
+        .addLabel('firstDefense')
+        .to(
+          viruses,
+          {
+            x: (index, virus) => moveTowardCenter(virus, 0.06, 'x'),
+            y: (index, virus) => moveTowardCenter(virus, 0.06, 'y'),
+            scale: 1,
+            rotation: 0,
+            duration: 0.38,
+            stagger: 0.018,
+          },
+          'firstDefense',
+        )
+        .addLabel('secondAttack')
+        .to(
+          viruses,
+          {
+            x: (index, virus) => moveTowardCenter(virus, 0.3, 'x'),
+            y: (index, virus) => moveTowardCenter(virus, 0.3, 'y'),
+            scale: 1.06,
+            rotation: (index) => (index % 2 === 0 ? 8 : -8),
+            duration: 0.55,
+            stagger: 0.025,
+          },
+          'secondAttack',
+        )
+        .addLabel('secondAttackOutcome')
+        .to(
+          blockedViruses,
+          {
+            x: (index, virus) => moveTowardCenter(virus, 0.2, 'x'),
+            y: (index, virus) => moveTowardCenter(virus, 0.2, 'y'),
+            scale: 1,
+            rotation: 0,
+            duration: 0.4,
+            stagger: 0.018,
+          },
+          'secondAttackOutcome',
+        )
+        .to(
+          breachingViruses,
+          {
+            x: (index, virus) => moveTowardCenter(virus, 0.88, 'x'),
+            y: (index, virus) => moveTowardCenter(virus, 0.88, 'y') - virusContainer.clientHeight * 0.12,
+            scale: 0.82,
+            rotation: (index) => (index % 2 === 0 ? 12 : -12),
+            duration: 1.15,
+            stagger: 0.12,
+          },
+          'secondAttackOutcome',
+        );
     });
 
     //Scene transitions
