@@ -67,12 +67,12 @@
         <img class="body-outline picture1" src="img/2-bodyintro1.png" />
         <img class="body-outline picture2" src="img/2-bodyintro2.png" />
         <div class="viruses" aria-hidden="true">
-          <span class="virus v1"><img src="img/story6-doc/covid19.svg" alt="" /></span>
+          <span class="virus v1"><img src="img/story6-doc/covid.png" alt="" /></span>
           <span class="virus v2"><img src="img/story6-doc/spirochete.svg" alt="" /></span>
-          <span class="virus v3"><img src="img/story6-doc/hantavirus.svg" alt="" /></span>
+          <span class="virus v3"><img src="img/story6-doc/hantavirus.png" alt="" /></span>
           <span class="virus v4"><img src="img/story6-doc/adenovirus.svg" alt="" /></span>
           <span class="virus v5"><img src="img/story6-doc/rna_virus.svg" alt="" /></span>
-          <span class="virus v6"><img src="img/story6-doc/nipah.svg" alt="" /></span>
+          <span class="virus v6"><img src="img/story6-doc/nipah.png" alt="" /></span>
           <span class="virus v7"><img src="img/story6-doc/filovirus.png" alt="" /></span>
           <span class="virus v8"><img src="img/story6-doc/epstein_barr.svg" alt="" /></span>
           <span class="virus v9"><img src="img/story6-doc/vsv.svg" alt="" /></span>
@@ -148,7 +148,7 @@
 
     <section class="section2">
       <div class="scene5-1">
-        <!-- <model-viewer class="mouse all" src="img/story6-doc/mouse/mouse-organs-highlighted.glb" ar camera-controls touch-action="pan-y" ></model-viewer> -->
+        <!-- <model-viewer class="mouse all" src="img/story6-doc/mouse/mouse-organs-highlighted.glb" ar camera-controls touch-action="pan-y"></model-viewer> -->
         <img src="img/story6-doc/mouse.png" class="mouse all" />
         <div class="mouse thymus">
           <img src="img/story6-doc/mouse_thymus.png" />
@@ -404,7 +404,7 @@
       scrollTrigger: {
         trigger: '.intro',
         start: 'top 72px',
-        end: '+=3600%',
+        end: '+=2900%',
         pin: true,
       },
     });
@@ -456,7 +456,7 @@
         scrollTrigger: {
           trigger: bubble,
           start: 'top 16px',
-          end: bubble.id === 'showviruses' ? '+=1000%' : bubble.id === 'changemouse' || bubble.id === 'showpicture2' ? '+=500%' : '+=100%',
+          end: bubble.id === 'showviruses' ? '+=600%' : bubble.id === 'changemouse' || bubble.id === 'showpicture2' ? '+=200%' : '+=100%',
           pin: true,
           scrub: true,
         },
@@ -534,8 +534,8 @@
         scrollTrigger: {
           trigger: '#showviruses',
           start: 'top 16px',
-          end: '+=1000%',
-          scrub: 0.6,
+          end: '+=600%',
+          scrub: true,
           invalidateOnRefresh: true,
         },
       });

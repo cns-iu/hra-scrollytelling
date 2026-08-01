@@ -23,14 +23,6 @@
     height: calc(100vh - 72px);
   }
 
-  .intro,
-  .section2,
-  .section3,
-  .section4,
-  .section5 {
-    overflow: clip;
-  }
-
   .transition {
     background: #505250;
   }
