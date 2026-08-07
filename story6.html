@@ -257,10 +257,24 @@
     </div>
 
     <section class="section5">
-      <div class="cde cde-lazy">
+      <div class="cde">
         <div class="cde-header">Use the Cell Distance Explorer to interact with visualizations of a young mouse dataset.</div>
+        <div class="tutorial-images">
+          <img class="tutorial tutorial1" src="img/story6-doc/tutorial1.png" />
+          <img class="tutorial tutorial2" src="img/story6-doc/tutorial2.png" />
+          <img class="tutorial tutorial3" src="img/story6-doc/tutorial3.png" />
+          <img class="tutorial tutorial4" src="img/story6-doc/tutorial4.png" />
+          <img class="tutorial tutorial5" src="img/story6-doc/tutorial5.png" />
+        </div>
+
+        <button class="cde-placeholder">
+          <img src="img/story6-doc/CDE-Placeholder.png" />
+        </button>
         <template class="mouse-young">
-          <cde-visualization nodes="https://cns-iu.github.io/hra-scrollytelling/story6_data/senm-young.nodes.csv"></cde-visualization>
+          <cde-visualization
+            nodes="https://cns-iu.github.io/hra-scrollytelling/story6_data/senm-young.nodes.csv"
+            edges="https://cns-iu.github.io/hra-scrollytelling/story6_data/senm-young.edges.csv"
+          ></cde-visualization>
         </template>
       </div>
       <div class="blurb blurb1">
@@ -286,13 +300,16 @@
     </section>
 
     <section class="section6">
-      <div class="cde active">
+      <div class="cde">
         <div class="cde-header">Explore old mouse data in the Cell Distance Explorer.</div>
         <button class="cde-placeholder">
-          <img src="img/story6-doc/cde_placeholder.png" />
+          <img src="img/story6-doc/CDE-Placeholder.png" />
         </button>
         <template class="mouse-old">
-          <cde-visualization nodes="https://cns-iu.github.io/hra-scrollytelling/story6_data/senm-old.nodes.csv"></cde-visualization>
+          <cde-visualization
+            nodes="https://cns-iu.github.io/hra-scrollytelling/story6_data/senm-old.nodes.csv"
+            edges="https://cns-iu.github.io/hra-scrollytelling/story6_data/senm-old.edges.csv"
+          ></cde-visualization>
         </template>
       </div>
       <div class="blurb">There is strong external evidence that immune senescence is implicated in tissue reorganization.</div>
@@ -346,7 +363,7 @@
             <p>
               Andreas Bueckle, Bruce W. Herr II, Lu Chen, Daniel Bolin, Danial Qaurooni, Michael Ginda, Yashvardhan Jain, Aleix Puig-Barbe, Kristin Ardlie,
               Fusheng Wang, and Katy Börner. 2026. “Cell Type Populations for 3D Anatomical Structures of the Human Reference Atlas.” Nature Scientific Data,
-              accepted March 19, 2026, March 19. doi.org/10.1038/s41597-026-06642-4.
+              2026, March 19. doi.org/10.1038/s41597-026-06642-4.
             </p>
             <p>
               Yashvardhan Jain, Jodie Jepson, Roy Chen, Elizabeth Maier, Bruce W. Herr II, Aleix Puig-Barbe, Ellen M Quardokus, Danial Qaurooni, Clarence Yapp,
@@ -613,20 +630,41 @@
 
     createTextboxTransition('.transition3');
 
-    document.querySelectorAll('.cde-lazy').forEach((container) => {
-      ScrollTrigger.create({
-        trigger: container,
-        start: 'top top', // Load the CDE when the container reaches the top of the viewport
-        once: true,
+    const section5CdeContainers = Array.from(document.querySelectorAll('.section5 .cde'));
 
-        async onEnter() {
+    function syncSection5CdeVisibility() {
+      section5CdeContainers.forEach((container) => {
+        const tutorialImages = container.querySelector('.tutorial-images');
+        const cdeVisualization = container.querySelector('cde-visualization');
+
+        if (!tutorialImages || !cdeVisualization) {
+          return;
+        }
+
+        const tutorialsVisible = window.getComputedStyle(tutorialImages).display !== 'none';
+        cdeVisualization.style.display = tutorialsVisible ? 'none' : '';
+      });
+    }
+
+    section5CdeContainers.forEach((container) => {
+      const placeholder = container.querySelector('.cde-placeholder');
+
+      if (!placeholder) {
+        return;
+      }
+
+      placeholder.addEventListener(
+        'click',
+        async () => {
           try {
-            await renderCdeTemplate(container, '.mouse-young');
+            await renderCdeTemplate(container, '.mouse-young', placeholder);
+            syncSection5CdeVisibility();
           } catch (error) {
             console.error('CDE loading failed:', error);
           }
         },
-      });
+        { once: true },
+      );
     });
 
     document.querySelectorAll('.section6 .cde').forEach((container) => {
@@ -650,98 +688,42 @@
     });
 
     gsap.set('.blurb', { autoAlpha: 0 });
+    gsap.set('.section5 .tutorial, .section5 .cde-placeholder', { autoAlpha: 0 });
+    gsap.set('.section5 .tutorial-images', { display: 'block' });
+    gsap.set('.section5 .cde-placeholder', { display: 'none' });
 
     const section5Timeline = gsap.timeline({
       scrollTrigger: {
         trigger: '.section5',
         start: 'top 72px',
-        end: '+=500%',
+        end: '+=600%',
         pin: true,
         scrub: true,
         invalidateOnRefresh: true,
+        onUpdate: syncSection5CdeVisibility,
       },
     });
 
     section5Timeline
-      .to('.blurb1', { autoAlpha: 1, duration: 0.1 })
-      .to('.blurb1', { autoAlpha: 1, duration: 0.8 })
-      .to('.blurb1', { autoAlpha: 0, duration: 0.1 })
-      .to('.blurb2', { autoAlpha: 1, duration: 0.1 }, '<')
-      .to('.blurb2', { autoAlpha: 1, duration: 0.8 })
-      .to('.blurb2', { autoAlpha: 0, duration: 0.1 })
-      .to('.blurb3', { autoAlpha: 1, duration: 0.1 }, '<')
-      .to('.blurb3', { autoAlpha: 1, duration: 0.8 })
-      .to('.blurb3', { autoAlpha: 0, duration: 0.1 })
-      .to('.blurb4', { autoAlpha: 1, duration: 0.1 }, '<')
-      .to('.blurb4', { autoAlpha: 1, duration: 0.8 })
-      .to('.blurb4', { autoAlpha: 0, duration: 0.1 })
-      .to('.blurb4', { autoAlpha: 0, duration: 1 });
-
-    ScrollTrigger.create({
-      trigger: '.section5',
-      start: () => section5Timeline.scrollTrigger.start,
-      end: () => section5Timeline.scrollTrigger.start + window.innerHeight * 4,
-      invalidateOnRefresh: true,
-      toggleClass: {
-        targets: '.section5',
-        className: 'tutorial-active',
-      },
-    });
-
-    ScrollTrigger.create({
-      trigger: '.section5',
-      start: () => section5Timeline.scrollTrigger.start,
-      end: () => section5Timeline.scrollTrigger.start + window.innerHeight,
-      invalidateOnRefresh: true,
-      toggleClass: {
-        targets: '.section5',
-        className: 'tutorial1',
-      },
-    });
-
-    ScrollTrigger.create({
-      trigger: '.section5',
-      start: () => section5Timeline.scrollTrigger.start + window.innerHeight,
-      end: () => section5Timeline.scrollTrigger.start + window.innerHeight * 2,
-      invalidateOnRefresh: true,
-      toggleClass: {
-        targets: '.section5',
-        className: 'tutorial2',
-      },
-    });
-
-    ScrollTrigger.create({
-      trigger: '.section5',
-      start: () => section5Timeline.scrollTrigger.start + window.innerHeight * 2,
-      end: () => section5Timeline.scrollTrigger.start + window.innerHeight * 3,
-      invalidateOnRefresh: true,
-      toggleClass: {
-        targets: '.section5',
-        className: 'tutorial3',
-      },
-    });
-
-    ScrollTrigger.create({
-      trigger: '.section5',
-      start: () => section5Timeline.scrollTrigger.start + window.innerHeight * 3,
-      end: () => section5Timeline.scrollTrigger.start + window.innerHeight * 4,
-      invalidateOnRefresh: true,
-      toggleClass: {
-        targets: '.section5',
-        className: 'tutorial4',
-      },
-    });
-
-    ScrollTrigger.create({
-      trigger: '.section5',
-      start: () => section5Timeline.scrollTrigger.start + window.innerHeight * 4,
-      end: () => section5Timeline.scrollTrigger.end,
-      invalidateOnRefresh: true,
-      toggleClass: {
-        targets: '.section5',
-        className: 'active',
-      },
-    });
+      .to('.tutorial1', { autoAlpha: 1, duration: 0.1 })
+      .to('.tutorial1', { autoAlpha: 1, duration: 0.8 })
+      .to('.tutorial1', { autoAlpha: 0, duration: 0.1 })
+      .to('.blurb1, .tutorial2', { autoAlpha: 1, duration: 0.1 }, '<')
+      .to('.blurb1, .tutorial2', { autoAlpha: 1, duration: 0.8 })
+      .to('.blurb1, .tutorial2', { autoAlpha: 0, duration: 0.1 })
+      .to('.blurb2, .tutorial3', { autoAlpha: 1, duration: 0.1 }, '<')
+      .to('.blurb2, .tutorial3', { autoAlpha: 1, duration: 0.8 })
+      .to('.blurb2, .tutorial3', { autoAlpha: 0, duration: 0.1 })
+      .to('.blurb3, .tutorial4', { autoAlpha: 1, duration: 0.1 }, '<')
+      .to('.blurb3, .tutorial4', { autoAlpha: 1, duration: 0.8 })
+      .to('.blurb3, .tutorial4', { autoAlpha: 0, duration: 0.1 })
+      .to('.blurb4, .tutorial5', { autoAlpha: 1, duration: 0.1 }, '<')
+      .to('.blurb4, .tutorial5', { autoAlpha: 1, duration: 0.8 })
+      .to('.blurb4, .tutorial5', { autoAlpha: 0, duration: 0.1 })
+      .set('.section5 .tutorial-images', { display: 'none' })
+      .set('.section5 .cde-placeholder', { display: 'block' })
+      .to('.section5 .cde-placeholder', { autoAlpha: 1, duration: 0.1 }, '<')
+      .to('.section5 .cde-placeholder', { autoAlpha: 1, duration: 0.9 });
 
     createTextboxTransition('.transition4');
 
@@ -753,17 +735,6 @@
         pin: true,
       },
     });
-
-    // ScrollTrigger.create({
-    //   trigger: '.section6',
-    //   start: () => section6Timeline.scrollTrigger.start,
-    //   end: () => section6Timeline.scrollTrigger.start + window.innerHeight * 5,
-    //   invalidateOnRefresh: true,
-    //   toggleClass: {
-    //     targets: '.section6',
-    //     className: 'active',
-    //   },
-    // });
 
     createTextboxTransition('.transition5');
 

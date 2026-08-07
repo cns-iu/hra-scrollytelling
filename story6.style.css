@@ -489,6 +489,10 @@
     line-height: 1.5rem;
     letter-spacing: 0.15px;
     font-weight: 600;
+
+    img {
+      max-height: calc(100vh - 20rem);
+    }
   }
 
   .cde {
@@ -537,11 +541,11 @@
     }
   }
 
-  .active {
+  /* .active {
     cde-visualization {
       z-index: 1;
     }
-  }
+  } */
 
   .tutorial1 cde-cell-types,
   .tutorial2 cde-node-dist-visualization,
@@ -563,7 +567,7 @@
   }
 
   cde-visualization {
-    z-index: -1;
+    z-index: 1;
     width: min-content;
     max-height: 720px;
     border: 1px solid #909bad; /* outline */
@@ -572,6 +576,7 @@
     grid-template-columns: 22.75rem minmax(914px, calc(100% - 22.75rem));
     grid-template-rows: 3.5rem minmax(548px, calc(100% - 3.5rem));
     overflow: hidden;
+    margin: 20px;
 
     .mat-mdc-table {
       background-color: inherit;
@@ -595,10 +600,6 @@
         background-color: inherit;
       }
 
-      /* hra-expansion-panel {
-        background-color: #000;
-      } */
-
       .content {
         background-color: #000;
         height: calc(100% - 4rem + 8px);
@@ -614,12 +615,22 @@
     }
   }
 
-  .cde-placeholder {
-    width: 1280px;
-    height: 720px;
+  .tutorial-images {
+    position: relative;
+    width: 1320px;
+    height: 760px;
+  }
+
+  .tutorial {
+    position: absolute;
+  }
+
+  .cde-placeholder,
+  .tutorial {
+    width: 1320px;
+    height: 760px;
     border: none;
     background: transparent;
-    cursor: pointer;
 
     img {
       width: 100%;
