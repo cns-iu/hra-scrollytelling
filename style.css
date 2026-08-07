@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Playfair+Display:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=PT+Sans:wght@400;700&family=Playfair+Display:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
 @font-face {
   font-family: 'Metropolis';
@@ -211,6 +212,10 @@ body {
 }
 
 .footercopyright {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 0;
   margin-top: 24px;
   font-size: 14px;
 }
