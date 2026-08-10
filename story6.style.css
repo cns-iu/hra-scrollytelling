@@ -863,7 +863,6 @@
 
   .story-footer {
     --story-footer-foreground: var(--hra-neutral-10);
-    --story-footer-focus: var(--hra-primary-35);
     --story-footer-interaction: rgb(28 27 30 / 8%);
 
     display: flex;
@@ -897,7 +896,7 @@
       }
 
       &:focus-visible {
-        outline: 3px solid var(--story-footer-focus);
+        outline: 3px solid var(--story-footer-foreground);
         outline-offset: 3px;
       }
     }
@@ -1025,10 +1024,20 @@
   }
 }
 
+#six .references a:focus,
+#six .sceneEnd a:focus {
+  outline: 3px solid var(--hra-neutral-10);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+
+#six .story-footer a:focus {
+  outline-color: var(--story-footer-foreground);
+}
+
 @media (prefers-color-scheme: dark) {
   #six .story-footer {
     --story-footer-foreground: var(--hra-neutral-95);
-    --story-footer-focus: var(--hra-primary-80);
     --story-footer-interaction: rgb(233 238 243 / 10%);
 
     background: var(--hra-neutral-variant-30);

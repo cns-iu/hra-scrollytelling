@@ -835,6 +835,13 @@
     createTextboxTransition('.transition5');
     }
 
+    const backToTopLink = document.querySelector('.story-footer__back-to-top');
+
+    backToTopLink?.addEventListener('click', (event) => {
+      event.preventDefault();
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    });
+
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);
     };
