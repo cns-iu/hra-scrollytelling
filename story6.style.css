@@ -810,7 +810,7 @@
   }
 
   .more-info,
-  .acknowledgements,
+  .acknowledgments,
   .references {
     .content {
       display: flex;
@@ -848,12 +848,12 @@
     }
   }
 
-  .acknowledgements,
+  .acknowledgments,
   .references p {
     color: var(--hra-tertiary-30);
   }
 
-  .acknowledgements {
+  .acknowledgments {
     background: var(--hra-tertiary-90);
   }
 
