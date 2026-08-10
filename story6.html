@@ -30,8 +30,10 @@
   </head>
 
   <body id="six">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <!-- section top  -->
-    <section class="scrollynav">
+    <nav class="scrollynav" aria-label="Story navigation">
       <a href="index.html"><img draggable="false" src="img/UI Assets/navlogo.svg" class="navlogo" alt="Human Reference Atlas stories home" /></a>
 
       <div class="dropdown">
@@ -55,22 +57,31 @@
           >
         </div>
       </div>
-    </section>
+    </nav>
 
-    <section class="page-header">
+    <aside class="screen-size-notice" aria-label="Screen size notice">
+      <div class="text">
+        <p><strong>Heads up:</strong> The interactive Cell Distance Explorer is designed for a resolution of 1440x900 or higher.</p>
+        <p>Downloadable versions of both datasets are provided before each visualization for people using smaller screens or high zoom levels.</p>
+      </div>
+      <button class="screen-size-notice__close" type="button" aria-label="Close screen size notice">Close</button>
+    </aside>
+
+    <main id="main-content" tabindex="-1">
+    <header class="page-header">
       <img class="splash-image" src="img/story6-doc/splash-bg.png" alt="" />
       <div class="title-card">
         <div class="top">
           <img class="sennet-logo" src="img/story6-doc/SenNet-logo.svg" alt="Cellular Senescence Network" />
           <div class="title">
-            <div class="main">Pan-organ immunosenescence atlas</div>
+            <h1 class="main">Pan-organ Immunosenescence Atlas</h1>
             <div class="subtitle">A story about how cells change over time</div>
           </div>
         </div>
-        <div class="bottom">Cyberinfrastructure for Network Science Center at Indiana University and Fan Lab at Yale University</div>
+        <div class="bottom">Story by <a href="https://www.fan-lab.org">Fan Lab</a> at Yale University and the Cyberinfrastructure for Network Science Center at Indiana University</div>
       </div>
-      <div class="textbox-transition1">What is immunosenescence?</div>
-    </section>
+      <h2 class="textbox-transition1">What is immunosenescence?</h2>
+    </header>
 
     <!-- section header/intro -->
     <div class="intro" id="intro">
@@ -102,6 +113,7 @@
     </div>
 
     <section class="section2">
+      <h2 class="visually-hidden">How senescent cells accumulate throughout the body</h2>
       <div class="fadeimage">
         <div class="body-image picture1">
           <img class="body-outline" src="img/2-bodyintro1.png" alt="" />
@@ -159,12 +171,14 @@
     </div>
 
     <section class="transition transition1" style="background-image: url('img/story6-doc/transition1.png')">
+      <h2 class="visually-hidden">Why researchers use laboratory mice</h2>
       <div class="textbox-transition">
         To study how senescent cells behave in a living organism, scientists often conduct their research using samples from <span>laboratory mice</span>.
       </div>
     </section>
 
     <section class="section3">
+      <h2 class="visually-hidden">Mouse anatomy used in senescence research</h2>
       <div class="scene5-1">
         <!-- <model-viewer class="mouse all" src="img/story6-doc/mouse/mouse-organs-highlighted.glb" ar camera-controls touch-action="pan-y"></model-viewer> -->
         <div class="mouse">
@@ -214,7 +228,7 @@
     </div>
 
     <section class="transition transition2" style="background-image: url('img/story6-doc/transition2.png')">
-      <div class="textbox-transition">What does it look like to visualize the changes in mouse cells over time?</div>
+      <h2 class="textbox-transition">What does it look like to visualize the changes in mouse cells over time?</h2>
     </section>
 
     <div class="setup setup2">
@@ -228,6 +242,7 @@
     </div>
 
     <section class="section4">
+      <h3 class="visually-hidden">Young and old mouse cell samples</h3>
       <div class="section4-images">
         <div class="young">
           Young mouse cells
@@ -251,7 +266,7 @@
     </div>
 
     <section class="transition transition3" style="background-image: url('img/story6-doc/transition3.png')">
-      <div class="textbox-transition">What software exists to visualize cell differences over time?</div>
+      <h2 class="textbox-transition">What software exists to visualize cell differences over time?</h2>
     </section>
 
     <div class="setup setup3">
@@ -269,8 +284,8 @@
 
     <section class="section5">
       <div class="cde">
-        <div class="cde-header">Use the Cell Distance Explorer to interact with visualizations of a young mouse dataset.</div>
-        <div class="tutorial-images">
+        <h3 class="cde-header">Use the Cell Distance Explorer to interact with visualizations of a young mouse dataset.</h3>
+        <div class="tutorial-images" aria-hidden="true">
           <img class="tutorial tutorial1" src="img/story6-doc/tutorial1.png" alt="" />
           <img class="tutorial tutorial2" src="img/story6-doc/tutorial2.png" alt="" />
           <img class="tutorial tutorial3" src="img/story6-doc/tutorial3.png" alt="" />
@@ -296,31 +311,33 @@
           ></cde-visualization>
         </template>
       </div>
-      <div class="blurb blurb1">
-        Show/hide cell types in the visualization and plots. Hide cell links from this table view. Update colors for individual cell types. Download CSVs for
-        the current configurations of cell types, cell links, and cell type color map formatting.
-      </div>
-      <div class="blurb blurb2">
-        Use the Visualization panel to navigate the cells spatially:
-        <ul>
-          <li>Zoom in and out with the mouse pinwheel or pinch using the trackpad</li>
-          <li>Pan using CTRL/CMD + mouse drag, right click + mouse drag, or use the keyboard arrows</li>
-          <li>Rotate the visualization using CTRL/CMD + keyboard arrows or with a mouse drag</li>
-        </ul>
-      </div>
-      <div class="blurb blurb3">This violin plot shows a cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.</div>
-      <div class="blurb blurb4">
-        This histogram plot shows the cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
-      </div>
+      <ol class="cde-tutorial-steps" aria-label="Cell Distance Explorer tutorial steps">
+        <li class="blurb blurb1">
+          Show/hide cell types in the visualization and plots. Hide cell links from this table view. Update colors for individual cell types. Download CSVs for
+          the current configurations of cell types, cell links, and cell type color map formatting.
+        </li>
+        <li class="blurb blurb2">
+          Use the Visualization panel to navigate the cells spatially:
+          <ul>
+            <li>Zoom in and out with the mouse pinwheel or pinch using the trackpad</li>
+            <li>Pan using CTRL/CMD + mouse drag, right click + mouse drag, or use the keyboard arrows</li>
+            <li>Rotate the visualization using CTRL/CMD + keyboard arrows or with a mouse drag</li>
+          </ul>
+        </li>
+        <li class="blurb blurb3">This violin plot shows a cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.</li>
+        <li class="blurb blurb4">
+          This histogram plot shows the cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
+        </li>
+      </ol>
     </section>
 
     <section class="transition transition4" style="background-image: url('img/story6-doc/transition4.png')">
-      <div class="textbox-transition">How does old mouse cell data appear in the Cell Distance Explorer?</div>
+      <h2 class="textbox-transition">How does old mouse cell data appear in the Cell Distance Explorer?</h2>
     </section>
 
     <section class="section6">
       <div class="cde">
-        <div class="cde-header">Explore old mouse data in the Cell Distance Explorer.</div>
+        <h3 class="cde-header">Explore old mouse data in the Cell Distance Explorer.</h3>
         <p class="cde-accessibility-note" id="old-cde-note">
           The Cell Distance Explorer has a fixed desktop layout and may not fit smaller screens or high zoom levels. As an alternative, you can download the
           <a href="story6_data/senm-old.nodes.csv">old mouse cell data</a> and <a href="story6_data/senm-old.edges.csv">old mouse cell links</a>.
@@ -346,6 +363,7 @@
     </section>
 
     <section class="transition transition5" style="background-image: url('img/story6-doc/transition5.png')">
+      <h2 class="visually-hidden">Why studying immune senescence matters</h2>
       <div class="textbox-transition">
         There is strong external evidence that immune senescence is implicated in tissue reorganization. Thus, monitoring the effects of senescence on the
         surrounding tissue, evaluating them, and treating them could vastly improve our health.
@@ -355,6 +373,7 @@
     <div class="end">
       <div class="more-info">
         <div class="content">
+          <h2 class="visually-hidden">Learn more</h2>
           <div class="info-text">
             For more information, check out additional data in the <a href="https://data.sennetconsortium.org/" target="_blank">SenNet Data Portal</a>, explore
             the evolving Human Reference Atlas via the <a href="https://humanatlas.io/" target="_blank">HRA Portal</a>, or connect with senescence experts via
@@ -369,7 +388,7 @@
       </div>
       <div class="acknowledgements">
         <div class="content">
-          <div class="header">Acknowledgements</div>
+          <h2 class="header">Acknowledgements</h2>
           <ul>
             <li>Story authors: Todd Theriault (Indiana University), Anthony Fung (Yale University), and Katy Börner (Indiana University)</li>
             <li>Data: Anthony Fung (Yale University), Rong Fan (Yale University), and Andreas Bueckle (Indiana University)</li>
@@ -385,7 +404,7 @@
 
       <div class="references">
         <div class="content">
-          <div class="header">References</div>
+          <h2 class="header">References</h2>
           <div>
             <p>
               Andreas Bueckle, Bruce W. Herr II, Lu Chen, Daniel Bolin, Danial Qaurooni, Michael Ginda, Yashvardhan Jain, Aleix Puig-Barbe, Kristin Ardlie,
@@ -403,11 +422,12 @@
         </div>
       </div>
     </div>
+    </main>
 
     <div class="sceneEnd" id="scrollto11">
       <!-- BotNav -->
       <div style="background-color: white !important">
-        <div class="botNav">
+        <nav class="botNav" aria-label="Story pagination">
           <a href="story5.html" class="previous"
             ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16">
               <path
@@ -424,9 +444,9 @@
                     <path fill-rule="evenodd"
                         d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                 </svg></a> -->
-        </div>
+        </nav>
       </div>
-      <div class="hrafooter">
+      <footer class="hrafooter">
         <div class="leftsidefooter">
           <img src="img/UI Assets/logo.svg" height="102" width="246" alt="Human Reference Atlas" />
           <div class="footercopyright">
@@ -473,16 +493,8 @@
             </div>
           </div>
         </div>
-      </div>
+      </footer>
     </div>
-
-    <aside class="screen-size-notice" aria-label="Screen size notice">
-      <div class="text">
-        <p><strong>Heads up:</strong> The interactive Cell Distance Explorer is designed for a resolution of 1440x900 or higher.</p>
-        <p>Downloadable versions of both datasets are provided before each visualization for people using smaller screens or high zoom levels.</p>
-      </div>
-      <button class="screen-size-notice__close" type="button" aria-label="Close screen size notice">Close</button>
-    </aside>
   </body>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
