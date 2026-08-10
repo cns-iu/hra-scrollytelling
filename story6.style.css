@@ -1028,6 +1028,17 @@
 #six .sceneEnd a:focus {
   outline: 3px solid var(--hra-neutral-10);
   outline-offset: 3px;
+}
+
+#six a:focus {
+  border-radius: 0.125rem;
+}
+
+#six button:focus,
+#six .skip-link:focus,
+#six .scrollynav > a:focus,
+#six .story-footer__logo-link:focus,
+#six .story-footer__back-to-top:focus {
   border-radius: 0.5rem;
 }
 
