@@ -861,6 +861,75 @@
     background: var(--hra-neutral-96);
   }
 
+  .story-footer {
+    --story-footer-foreground: var(--hra-neutral-10);
+    --story-footer-focus: var(--hra-primary-35);
+    --story-footer-interaction: rgb(28 27 30 / 8%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 4rem clamp(1rem, 5vw, 5rem);
+    background: var(--hra-neutral-variant-90);
+    color: var(--story-footer-foreground);
+    font-family: var(--hra-font-plain);
+    text-align: center;
+
+    .story-footer__logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .story-footer__logo-link,
+    .story-footer__back-to-top {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.75rem;
+      color: inherit;
+
+      &:hover {
+        background: var(--story-footer-interaction);
+      }
+
+      &:focus-visible {
+        outline: 3px solid var(--story-footer-focus);
+        outline-offset: 3px;
+      }
+    }
+
+    .story-footer__logo-link {
+      min-height: 4rem;
+      padding: 0.75rem 1rem;
+
+      picture,
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    .story-footer__back-to-top {
+      gap: 0.5rem;
+      padding: 0.625rem 0.875rem;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .story-footer__copyright {
+      margin: 0;
+      color: inherit;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+
   @keyframes MoveUpDown2 {
     0%,
     100% {
@@ -953,6 +1022,16 @@
       list-style: decimal;
       list-style-position: inside;
     }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  #six .story-footer {
+    --story-footer-foreground: var(--hra-neutral-95);
+    --story-footer-focus: var(--hra-primary-80);
+    --story-footer-interaction: rgb(233 238 243 / 10%);
+
+    background: var(--hra-neutral-variant-30);
   }
 }
 
