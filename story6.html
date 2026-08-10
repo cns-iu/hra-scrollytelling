@@ -69,7 +69,7 @@
 
     <main id="main-content" tabindex="-1">
     <header class="page-header">
-      <img class="splash-image" src="img/story6-doc/splash-bg.png" alt="" />
+      <img class="splash-image" src="img/story6-doc/splash-bg.webp" alt="" />
       <div class="title-card">
         <div class="top">
           <img class="sennet-logo" src="img/story6-doc/SenNet-logo.svg" alt="Cellular Senescence Network" />
@@ -93,17 +93,23 @@
           controlling malignancies, and maintaining immune tolerance. This age-related deficiency in immune system function is called
           <strong>immunosenescence</strong>.
         </p>
-        <img src="img/story6-doc/immune_cells.png" alt="Illustrations of immune cells with a variety of shapes and internal structures" />
+        <img
+          class="story-illustration story-illustration--from-left"
+          src="img/story6-doc/immune_cells.webp"
+          alt="Illustrations of immune cells with a variety of shapes and internal structures"
+        />
         <p>
           A key contributor to the immune system’s deterioration is cell senescence. This occurs when stress or damage to the cell causes it to exit the cell
           cycle. In this state of cell cycle arrest, the cell stops dividing but remains metabolically active. The senescent cell secretes a combination of
           bioactive molecules known as SASP—the senescence-associated secretory phenotype. This occurs when stress or damage to the cell causes it to exit the
           cell cycle.
         </p>
-        <img
-          src="img/story6-doc/image 220.png"
-          alt="Stress or damage changes a normal cell into a senescent cell that secretes molecules associated with inflammation"
-        />
+        <figure class="story-illustration story-illustration--from-right image-card">
+          <img
+            src="img/story6-doc/cell-senescence-transition.webp"
+            alt="Stress or damage changes a normal cell into a senescent cell that secretes molecules associated with inflammation"
+          />
+        </figure>
         <p>
           In this state of cell cycle arrest, the cell stops dividing but remains metabolically active. The senescent cell secretes a combination of bioactive
           molecules known as SASP—the senescence-associated secretory phenotype. Cell senescence has some very important benefits for our health. It aids in
@@ -116,10 +122,10 @@
       <h2 class="visually-hidden">How senescent cells accumulate throughout the body</h2>
       <div class="fadeimage">
         <div class="body-image picture1">
-          <img class="body-outline" src="img/2-bodyintro1.png" alt="" />
+          <img class="body-outline" src="img/2-bodyintro1.webp" alt="" />
         </div>
         <div class="body-image picture2">
-          <img class="body-outline" src="img/2-bodyintro2.png" alt="" />
+          <img class="body-outline" src="img/2-bodyintro2.webp" alt="" />
         </div>
       </div>
       <div id="showpicture2"></div>
@@ -140,7 +146,8 @@
           </p>
         </div>
         <img
-          src="img/story6-doc/image 221.png"
+          class="story-illustration story-illustration--from-left"
+          src="img/story6-doc/image-221.webp"
           alt="Comparison of a normal cell and a senescent cell, whose changes include cell-cycle arrest, secretions, enlarged shape, organelle dysfunction, and molecular damage"
         />
         <div>
@@ -158,7 +165,8 @@
           </p>
         </div>
         <img
-          src="img/story6-doc/cells.png"
+          class="story-illustration story-illustration--from-right"
+          src="img/story6-doc/cells.webp"
           alt="Examples of immune-related cell types: basophil, natural killer cell, B cell, plasma cell, T cell, neutrophil, dendritic cell, mast cell, eosinophil, endothelial cell, macrophage, and fibroblast"
         />
         <p>
@@ -589,6 +597,37 @@
     }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /**
+     * Reveals narrative illustrations once as they enter the viewport.
+     *
+     * @returns {void}
+     */
+    function setupIllustrationReveals() {
+      const illustrations = document.querySelectorAll('.story-illustration');
+
+      if (prefersReducedMotion || !('IntersectionObserver' in window) || illustrations.length === 0) {
+        return;
+      }
+
+      document.body.classList.add('illustration-reveals-enabled');
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -10%' },
+      );
+
+      illustrations.forEach((illustration) => observer.observe(illustration));
+    }
+
+    setupIllustrationReveals();
 
     if (!prefersReducedMotion) {
       gsap.set('.textbox-transition1', { autoAlpha: 0 });
