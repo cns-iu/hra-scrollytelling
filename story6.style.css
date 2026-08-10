@@ -104,6 +104,14 @@
     outline-color: var(--hra-primary-35);
   }
 
+  .scrollynav a {
+    text-decoration: none;
+  }
+
+  .dropdown-content a:focus-visible {
+    background-color: rgb(32 30 61 / 8%);
+  }
+
   .blurb :is(a, button):focus-visible {
     outline-color: var(--hra-neutral-100);
   }
