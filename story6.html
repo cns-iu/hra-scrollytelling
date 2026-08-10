@@ -178,7 +178,16 @@
       </div>
     </div>
 
-    <section class="transition transition1" style="background-image: url('img/story6-doc/transition1.png')">
+    <section class="transition transition1" data-drift="1">
+      <picture class="transition__picture">
+        <source
+          type="image/webp"
+          srcset="img/story6-doc/transition1-1920.webp 1920w, img/story6-doc/transition1-3840.webp 3840w"
+          sizes="100vw"
+        />
+        <img class="transition__background" src="img/story6-doc/transition1.png" alt="" loading="lazy" decoding="async" />
+      </picture>
+      <div class="transition__overlay" aria-hidden="true"></div>
       <h2 class="visually-hidden">Why researchers use laboratory mice</h2>
       <div class="textbox-transition">
         To study how senescent cells behave in a living organism, scientists often conduct their research using samples from <span>laboratory mice</span>.
@@ -235,7 +244,16 @@
       </div>
     </div>
 
-    <section class="transition transition2" style="background-image: url('img/story6-doc/transition2.png')">
+    <section class="transition transition2" data-drift="-1">
+      <picture class="transition__picture">
+        <source
+          type="image/webp"
+          srcset="img/story6-doc/transition2-1920.webp 1920w, img/story6-doc/transition2-3840.webp 3840w"
+          sizes="100vw"
+        />
+        <img class="transition__background" src="img/story6-doc/transition2.png" alt="" loading="lazy" decoding="async" />
+      </picture>
+      <div class="transition__overlay" aria-hidden="true"></div>
       <h2 class="textbox-transition">What does it look like to visualize the changes in mouse cells over time?</h2>
     </section>
 
@@ -273,7 +291,16 @@
       </div>
     </div>
 
-    <section class="transition transition3" style="background-image: url('img/story6-doc/transition3.png')">
+    <section class="transition transition3" data-drift="1">
+      <picture class="transition__picture">
+        <source
+          type="image/webp"
+          srcset="img/story6-doc/transition3-1920.webp 1920w, img/story6-doc/transition3-3840.webp 3840w"
+          sizes="100vw"
+        />
+        <img class="transition__background" src="img/story6-doc/transition3.png" alt="" loading="lazy" decoding="async" />
+      </picture>
+      <div class="transition__overlay" aria-hidden="true"></div>
       <h2 class="textbox-transition">What software exists to visualize cell differences over time?</h2>
     </section>
 
@@ -339,7 +366,16 @@
       </ol>
     </section>
 
-    <section class="transition transition4" style="background-image: url('img/story6-doc/transition4.png')">
+    <section class="transition transition4" data-drift="-1">
+      <picture class="transition__picture">
+        <source
+          type="image/webp"
+          srcset="img/story6-doc/transition4-1920.webp 1920w, img/story6-doc/transition4-3840.webp 3840w"
+          sizes="100vw"
+        />
+        <img class="transition__background" src="img/story6-doc/transition4.png" alt="" loading="lazy" decoding="async" />
+      </picture>
+      <div class="transition__overlay" aria-hidden="true"></div>
       <h2 class="textbox-transition">How does old mouse cell data appear in the Cell Distance Explorer?</h2>
     </section>
 
@@ -370,7 +406,16 @@
       </div>
     </section>
 
-    <section class="transition transition5" style="background-image: url('img/story6-doc/transition5.png')">
+    <section class="transition transition5" data-drift="1">
+      <picture class="transition__picture">
+        <source
+          type="image/webp"
+          srcset="img/story6-doc/transition5-1920.webp 1920w, img/story6-doc/transition5-3840.webp 3840w"
+          sizes="100vw"
+        />
+        <img class="transition__background" src="img/story6-doc/transition5.png" alt="" loading="lazy" decoding="async" />
+      </picture>
+      <div class="transition__overlay" aria-hidden="true"></div>
       <h2 class="visually-hidden">Why studying immune senescence matters</h2>
       <div class="textbox-transition">
         There is strong external evidence that immune senescence is implicated in tissue reorganization. Thus, monitoring the effects of senescence on the
@@ -571,29 +616,47 @@
     }
 
     /**
-     * Creates a pinned transition that reveals the section's text as the user scrolls.
+     * Creates a pinned transition with a shared text-card entrance and exit.
      *
      * @param {string} trigger The selector for the transition section
      * @returns {gsap.core.Timeline} The configured GSAP timeline
      */
     function createTextboxTransition(trigger) {
-      const textbox = document.querySelector(`${trigger} .textbox-transition`);
+      const section = document.querySelector(trigger);
+      const textbox = section.querySelector('.textbox-transition');
+      const background = section.querySelector('.transition__background');
+      const overlay = section.querySelector('.transition__overlay');
+      const driftDirection = Number(section.dataset.drift) || 1;
 
       return gsap
         .timeline({
-          defaults: { ease: 'none' },
           scrollTrigger: {
-            trigger,
+            trigger: section,
             start: 'top 72px',
-            end: '+=210%',
+            end: '+=240%',
             pin: true,
-            scrub: true,
+            scrub: 0.35,
             invalidateOnRefresh: true,
           },
         })
-        .to(textbox, { autoAlpha: 0, duration: 1 })
-        .to(textbox, { autoAlpha: 1, duration: 0.1 })
-        .to(textbox, { autoAlpha: 1, duration: 1 });
+        .fromTo(
+          background,
+          { scale: 1.07, xPercent: -1.5 * driftDirection },
+          { scale: 1.04, xPercent: 1.5 * driftDirection, duration: 3.2, ease: 'none', force3D: true },
+          0,
+        )
+        .to(overlay, { opacity: 0.2, duration: 0.55, ease: 'power1.out' }, 0.15)
+        .fromTo(
+          textbox,
+          { autoAlpha: 0, y: 32, scale: 0.94 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.55, ease: 'power2.out', force3D: true },
+          0.25,
+        )
+        .to(textbox, { scale: 1.015, duration: 0.12, ease: 'power1.out' }, 0.72)
+        .to(textbox, { scale: 1, duration: 0.12, ease: 'power1.inOut' })
+        .to(textbox, { autoAlpha: 1, duration: 1.35, ease: 'none' })
+        .to(textbox, { autoAlpha: 0, y: 32, scale: 0.94, duration: 0.45, ease: 'power2.in', force3D: true })
+        .to(overlay, { opacity: 0, duration: 0.45, ease: 'power1.in' }, '<');
     }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
