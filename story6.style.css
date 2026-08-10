@@ -2,6 +2,39 @@
   background: #fafbfc;
   font-family: 'Nunito Sans', sans-serif;
 
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
+
+  .dropdown.is-open .dropdown-content {
+    display: block;
+  }
+
+  :is(a, button, [tabindex]):focus-visible {
+    outline: 3px solid #1c1b1e;
+    outline-offset: 3px;
+  }
+
+  .scrollynav :is(a, button):focus-visible {
+    outline-color: #b20a2f;
+  }
+
+  .blurb :is(a, button):focus-visible {
+    outline-color: #ffffff;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   .page-header {
     display: flex;
     flex-direction: column;
@@ -404,7 +437,7 @@
 
     .info-text {
       width: 448px;
-      height: 176px;
+      min-height: 176px;
     }
 
     .mouse-image {
@@ -501,6 +534,24 @@
     z-index: 0;
     top: 0;
     bottom: auto;
+  }
+
+  .cde-accessibility-note,
+  .cde-status {
+    width: min(100% - 2rem, 44rem);
+    margin: 0;
+    color: #393f45;
+    line-height: 1.5;
+
+    a {
+      color: #8e0825;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+  }
+
+  .cde-status:empty {
+    display: none;
   }
 
   .blurb {
@@ -637,6 +688,15 @@
     }
   }
 
+  .cde-placeholder {
+    cursor: pointer;
+
+    &:disabled {
+      cursor: wait;
+      opacity: 0.65;
+    }
+  }
+
   .more-info {
     a {
       text-decoration: underline;
@@ -719,5 +779,80 @@
     .viruses .virus img {
       animation: none;
     }
+
+    section:not(.scrollynav) {
+      height: auto;
+      min-height: 0;
+    }
+
+    .page-header {
+      min-height: calc(100vh - 72px);
+      padding: 4rem 1rem;
+
+      .textbox-transition1 {
+        position: static;
+        transform: none;
+      }
+    }
+
+    .textbox-transition,
+    .textbox-transition1,
+    .blurb,
+    .cde-placeholder {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    .transition {
+      min-height: 20rem !important;
+      padding: 4rem 1rem;
+    }
+
+    .section2,
+    .tutorial-images,
+    .mouse-image {
+      display: none !important;
+    }
+
+    .scene5-1,
+    .mouse,
+    .cde {
+      position: static;
+      height: auto;
+    }
+
+    .mouse {
+      padding: 4rem 1rem;
+
+      .info-text {
+        width: min(100%, 448px);
+        height: auto;
+      }
+    }
+
+    .scroll-instruction {
+      display: none;
+    }
+
+    .section5,
+    .section6 {
+      padding: 4rem 0;
+    }
+
+    .cde-placeholder {
+      display: block !important;
+    }
+
+    .blurb {
+      position: static;
+      transform: none;
+      margin: 1rem auto;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(body#six) {
+    scroll-behavior: auto;
   }
 }
