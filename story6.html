@@ -6,6 +6,15 @@
     <title>6: SenNet: Pan-organ immunosenescence mouse atlas</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
+    <script>
+      const story6NavigationEntry = performance.getEntriesByType('navigation')[0];
+      const shouldResetStory6Reload = story6NavigationEntry?.type === 'reload' && window.location.hash.length === 0;
+
+      if (shouldResetStory6Reload) {
+        window.history.scrollRestoration = 'manual';
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
+    </script>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="story6.style.css" />
     <link rel="icon" type="image/x-icon" href="img/favicon.svg" />
@@ -941,11 +950,17 @@
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     });
 
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    };
-
-    window.history.scrollRestoration = 'manual';
+    if (shouldResetStory6Reload) {
+      window.addEventListener(
+        'load',
+        () => {
+          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+          ScrollTrigger.refresh();
+          window.history.scrollRestoration = 'auto';
+        },
+        { once: true },
+      );
+    }
 
     function enableScrolling() {
       window.onscroll = function () {};
