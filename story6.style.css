@@ -48,6 +48,7 @@
   --hra-type-title-medium-tracking: 0.009rem;
   --hra-type-label-large: 500 0.875rem / 1.25rem var(--hra-font-plain);
   --hra-type-label-large-tracking: 0.006rem;
+  --story-section-inline-padding: clamp(1rem, 4vw, 1.5rem);
 
   background: var(--hra-neutral-98);
   font: var(--hra-type-body-large);
@@ -212,7 +213,7 @@
     height: calc(100vh - 72px);
     max-width: 100vw;
     overflow: hidden;
-    padding: 0 1.5rem;
+    padding-inline: var(--story-section-inline-padding);
   }
 
   .transition {
@@ -282,8 +283,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
+    padding-inline: var(--story-section-inline-padding);
 
     .setup-text {
+      width: 100%;
       max-width: 448px;
 
       p {
@@ -385,12 +389,14 @@
     justify-content: center;
     align-items: center;
     gap: 4.5rem;
-    padding: 80px 0px;
+    box-sizing: border-box;
+    padding: 80px var(--story-section-inline-padding);
     width: 100%;
     height: fit-content;
 
     .text {
-      margin: 80px;
+      width: 100%;
+      margin: 80px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -569,6 +575,78 @@
     }
   }
 
+  @media (max-width: 1439px) {
+    .scene5-1 {
+      align-items: stretch;
+    }
+
+    .mouse {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      align-items: stretch;
+      box-sizing: border-box;
+      padding-block: clamp(0.75rem, 2vh, 1.5rem);
+      gap: clamp(0.5rem, 1.5vh, 1rem);
+
+      .info-text {
+        align-self: start;
+        justify-self: center;
+        width: min(100%, 44rem);
+        min-height: 0;
+      }
+
+      .mouse-image {
+        align-self: stretch;
+        justify-self: stretch;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        max-height: none;
+        overflow: hidden;
+
+        .all,
+        .thymus,
+        .liver,
+        .spleen,
+        .pancreas {
+          inset: 0;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          max-width: none;
+
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+          }
+        }
+      }
+
+      .label {
+        max-width: calc(100% - 1rem);
+        padding: 0.5rem 0.75rem;
+        border-radius: 1rem;
+        font: var(--hra-type-label-large);
+        letter-spacing: var(--hra-type-label-large-tracking);
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .mouse .thymus .label,
+    .mouse .spleen .label,
+    .mouse .pancreas .label {
+      left: 65%;
+    }
+
+    .mouse .liver .label {
+      left: 25%;
+    }
+  }
+
   .thymus .label {
     top: 23%;
     left: 80%;
@@ -628,9 +706,75 @@
     gap: 1.5rem;
   }
 
+  :is(.section5, .section6) > .cde {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    align-items: center;
+    justify-items: center;
+    box-sizing: border-box;
+    height: calc(100dvh - 4.5rem);
+    padding-block: clamp(0.75rem, 2vh, 1.5rem);
+    gap: clamp(0.75rem, 2vh, 1.5rem);
+
+    .cde-header {
+      grid-row: 1;
+      width: min(100%, 44rem);
+      max-width: none;
+      height: auto;
+      text-align: center;
+    }
+
+    .tutorial-images,
+    .cde-placeholder,
+    cde-visualization {
+      grid-column: 1;
+      grid-row: 2;
+      align-self: stretch;
+      justify-self: center;
+      min-width: 0;
+      min-height: 0;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .tutorial-images,
+    .cde-placeholder {
+      width: auto;
+      height: 100%;
+    }
+
+    .tutorial {
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
+      transform: none;
+    }
+
+    .cde-placeholder img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    cde-visualization {
+      width: min(100%, 82.5rem);
+      height: 100%;
+      margin: 0;
+    }
+
+    .cde-accessibility-note {
+      grid-column: 1;
+      grid-row: 3;
+    }
+  }
+
   .cde-accessibility-note,
   .cde-status {
-    width: min(100% - 2rem, 44rem);
+    width: min(100%, 44rem);
     margin: 0;
     color: var(--hra-neutral-variant-30);
     font: var(--hra-type-body-large);
@@ -824,15 +968,45 @@
 
     .logos {
       display: flex;
+      flex-wrap: wrap;
+      align-items: center;
       justify-content: center;
-      gap: 3rem;
+      gap: clamp(1.5rem, 6vw, 3rem);
+    }
+
+    .more-info__logo-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      min-height: 4rem;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+
+      &:hover {
+        background: rgb(28 27 30 / 8%);
+      }
+    }
+
+    .more-info__logo {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .more-info__logo--hra {
+      width: 9.25rem;
+    }
+
+    .more-info__logo--sennet {
+      width: 14rem;
     }
   }
 
   .more-info,
   .acknowledgments,
   .references {
-    padding: 0 1.5rem;
+    padding-inline: var(--story-section-inline-padding);
 
     .content {
       display: flex;
@@ -1032,6 +1206,17 @@
       padding: 4rem 0;
     }
 
+    :is(.section5, .section6) > .cde {
+      display: flex;
+      height: auto;
+      padding-block: 0;
+
+      .cde-placeholder {
+        width: 100%;
+        height: auto;
+      }
+    }
+
     .cde-placeholder {
       display: block !important;
     }
@@ -1065,6 +1250,7 @@
 #six button:focus,
 #six .skip-link:focus,
 #six .scrollynav > a:focus,
+#six .more-info__logo-link:focus,
 #six .story-footer__logo-link:focus,
 #six .story-footer__back-to-top:focus {
   border-radius: 0.5rem;

@@ -442,8 +442,24 @@
           </div>
 
           <div class="logos">
-            <img src="img/story6-doc/hra.png" alt="Human Reference Atlas" />
-            <img src="img/story6-doc/SenNet-logo.svg" alt="Cellular Senescence Network" />
+            <a
+              class="more-info__logo-link"
+              href="https://humanatlas.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the Human Reference Atlas website (opens in a new tab)"
+            >
+              <img class="more-info__logo more-info__logo--hra" src="public/hra-light-large.svg" alt="Human Reference Atlas" />
+            </a>
+            <a
+              class="more-info__logo-link"
+              href="https://sennetconsortium.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the Cellular Senescence Network website (opens in a new tab)"
+            >
+              <img class="more-info__logo more-info__logo--sennet" src="img/story6-doc/sennet.svg" alt="Cellular Senescence Network" />
+            </a>
           </div>
         </div>
       </div>
@@ -540,6 +556,8 @@
 
   <script>
     gsap.registerPlugin(ScrollTrigger);
+
+    const pinnedScrollScrub = 0.35;
 
     const storyNavigation = document.querySelector('.dropdown');
     const storyNavigationButton = storyNavigation.querySelector('.dropbtn');
@@ -640,7 +658,8 @@
             start: 'top 72px',
             end: '+=240%',
             pin: true,
-            scrub: 0.35,
+            scrub: pinnedScrollScrub,
+            anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         })
@@ -708,7 +727,8 @@
           start: 'top 72px',
           end: '+=325%',
           pin: true,
-          scrub: true,
+          scrub: pinnedScrollScrub,
+          anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       })
@@ -733,7 +753,8 @@
           start: 'top 72px',
           end: '+=250%',
           pin: true,
-          scrub: true,
+          scrub: pinnedScrollScrub,
+          anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       })
@@ -766,7 +787,8 @@
           start: 'top 72px',
           end: '+=500%',
           pin: true,
-          scrub: true,
+          scrub: pinnedScrollScrub,
+          anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       })
@@ -796,6 +818,7 @@
         start: 'top 72px',
         end: '+=100%',
         pin: true,
+        anticipatePin: 1,
       },
     });
 
@@ -818,8 +841,11 @@
           return;
         }
 
-        const tutorialsVisible = window.getComputedStyle(tutorialImages).display !== 'none';
-        cdeVisualization.style.display = tutorialsVisible ? 'none' : '';
+        const visualizationDisplay = tutorialImages.style.display === 'none' ? '' : 'none';
+
+        if (cdeVisualization.style.display !== visualizationDisplay) {
+          cdeVisualization.style.display = visualizationDisplay;
+        }
       });
     }
 
@@ -877,14 +903,15 @@
       gsap.set('.section5 .cde-placeholder', { display: 'none' });
 
     const section5Timeline = gsap.timeline({
+      onUpdate: syncSection5CdeVisibility,
       scrollTrigger: {
         trigger: '.section5',
         start: 'top 72px',
         end: '+=600%',
         pin: true,
-        scrub: true,
+        scrub: pinnedScrollScrub,
+        anticipatePin: 1,
         invalidateOnRefresh: true,
-        onUpdate: syncSection5CdeVisibility,
       },
     });
 
@@ -917,6 +944,7 @@
         start: 'top 72px',
         end: '+=100%',
         pin: true,
+        anticipatePin: 1,
       },
     });
 
