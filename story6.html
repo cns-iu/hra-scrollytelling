@@ -272,15 +272,15 @@
     </div>
 
     <section class="section4">
-      <h3 class="visually-hidden">Young and old mouse cell samples</h3>
+      <h3 class="visually-hidden">Young and aged mouse cell samples</h3>
       <div class="section4-images">
         <div class="young">
           Young mouse cells
           <img src="story6/img/young.png" alt="Tissue sections from a young mouse, colored to distinguish cell types" />
         </div>
-        <div class="old">
-          Old mouse cells
-          <img src="story6/img/old.png" alt="Tissue sections from an old mouse, colored to distinguish cell types" />
+        <div class="aged">
+          Aged mouse cells
+          <img src="story6/img/aged.png" alt="Tissue sections from an aged mouse, colored to distinguish cell types" />
         </div>
       </div>
     </section>
@@ -380,27 +380,27 @@
         <img class="transition__background" src="story6/img/transition4-1920.webp" alt="" loading="lazy" decoding="async" />
       </picture>
       <div class="transition__overlay" aria-hidden="true"></div>
-      <h2 class="textbox-transition">How does old mouse cell data appear in the Cell Distance Explorer?</h2>
+      <h2 class="textbox-transition">How does aged mouse cell data appear in the Cell Distance Explorer?</h2>
     </section>
 
     <section class="section6">
       <div class="cde">
-        <h3 class="cde-header">Explore old mouse data in the Cell Distance Explorer.</h3>
-        <p class="cde-accessibility-note" id="old-cde-note">
+        <h3 class="cde-header">Explore aged mouse data in the Cell Distance Explorer.</h3>
+        <p class="cde-accessibility-note" id="aged-cde-note">
           The Cell Distance Explorer has a fixed desktop layout and may not fit smaller screens or high zoom levels. As an alternative, you can download the
-          <a href="story6/data/senm-old.nodes.csv">old mouse cell data</a> and <a href="story6/data/senm-old.edges.csv">old mouse cell links</a>.
+          <a href="story6/data/senm-aged.nodes.csv">aged mouse cell data</a> and <a href="story6/data/senm-aged.edges.csv">aged mouse cell links</a>.
         </p>
-        <button class="cde-placeholder" type="button" aria-describedby="old-cde-note old-cde-status">
+        <button class="cde-placeholder" type="button" aria-describedby="aged-cde-note aged-cde-status">
           <img src="story6/img/CDE-Placeholder.png" alt="" />
-          <span class="visually-hidden">Load old mouse Cell Distance Explorer</span>
+          <span class="visually-hidden">Load aged mouse Cell Distance Explorer</span>
         </button>
-        <p class="cde-status visually-hidden" id="old-cde-status" role="status" aria-live="polite"></p>
-        <template class="mouse-old">
+        <p class="cde-status visually-hidden" id="aged-cde-status" role="status" aria-live="polite"></p>
+        <template class="mouse-aged">
           <cde-visualization
-            nodes="https://cns-iu.github.io/hra-scrollytelling/story6/data/senm-old.nodes.csv"
-            edges="https://cns-iu.github.io/hra-scrollytelling/story6/data/senm-old.edges.csv"
+            nodes="https://cns-iu.github.io/hra-scrollytelling/story6/data/senm-aged.nodes.csv"
+            edges="https://cns-iu.github.io/hra-scrollytelling/story6/data/senm-aged.edges.csv"
             tabindex="-1"
-            aria-label="Old mouse Cell Distance Explorer"
+            aria-label="Aged mouse Cell Distance Explorer"
           ></cde-visualization>
         </template>
       </div>

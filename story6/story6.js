@@ -382,7 +382,7 @@ section5CdeContainers.forEach((container) => {
 });
 
 document.querySelectorAll('.section6 .cde').forEach((container) => {
-  setupCdeLauncher(container, '.mouse-old');
+  setupCdeLauncher(container, '.mouse-aged');
 });
 
 if (!prefersReducedMotion && animationsAvailable) {
