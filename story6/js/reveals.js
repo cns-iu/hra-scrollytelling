@@ -6,7 +6,6 @@
  */
 export function setupContentReveals(prefersReducedMotion) {
   setupIllustrationReveals(prefersReducedMotion);
-  setupTakeawayReveal(prefersReducedMotion);
 }
 
 /**
@@ -37,29 +36,4 @@ function setupIllustrationReveals(prefersReducedMotion) {
   );
 
   illustrations.forEach((illustration) => observer.observe(illustration));
-}
-
-/**
- * Animates the tissue-comparison takeaway while it is in view.
- *
- * @param {boolean} prefersReducedMotion Whether the user has requested reduced motion
- * @returns {void}
- */
-function setupTakeawayReveal(prefersReducedMotion) {
-  const takeaway = document.querySelector('.tissue-comparison__takeaway');
-
-  if (prefersReducedMotion || !('IntersectionObserver' in window) || !takeaway) {
-    return;
-  }
-
-  document.body.classList.add('takeaway-reveal-enabled');
-
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      entry.target.classList.toggle('is-visible', entry.isIntersecting);
-    },
-    { threshold: 0.2, rootMargin: '-5% 0px' },
-  );
-
-  observer.observe(takeaway);
 }

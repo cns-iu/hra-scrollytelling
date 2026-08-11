@@ -38,12 +38,11 @@ function setupInitialLayoutRefresh(ScrollTrigger) {
     ScrollTrigger.refresh();
   };
 
-  if (document.readyState === 'complete') {
-    void refreshInitialLayout();
-    return;
-  }
+  void refreshInitialLayout();
 
-  window.addEventListener('load', refreshInitialLayout, { once: true });
+  if (document.readyState !== 'complete') {
+    window.addEventListener('load', refreshInitialLayout, { once: true });
+  }
 }
 
 /**

@@ -131,6 +131,10 @@ function setupCdeTutorialTimeline(gsap, syncCdeVisibility) {
   tutorialSteps.forEach(({ blurb, image }, index) => {
     if (index === 0) {
       timeline.set(image, { autoAlpha: 1 });
+    } else if (index === 1) {
+      timeline
+        .to(tutorialSteps[index - 1].image, { autoAlpha: 0, duration: 0.18, ease: 'power1.inOut' })
+        .to(image, { autoAlpha: 1, duration: 0.18, ease: 'power1.inOut' }, '<');
     } else {
       timeline.set(tutorialSteps[index - 1].image, { autoAlpha: 0 }).set(image, { autoAlpha: 1 }, '<');
     }

@@ -10,7 +10,7 @@
 - Keep genuinely shared navigation, favicon, and cross-story images in the repository-level `../img/` directory
 - Resolve paths in `../story6.html` from the repository root, such as `story6/img/example.webp`
 - Resolve paths in `story6.style.css` from this directory, such as `../assets/fonts/example.woff2`
-- Keep the downloadable dataset links and page-relative CDE data paths synchronized whenever a data filename or location changes
+- Keep page-relative CDE data paths synchronized whenever a data filename or location changes
 - Preserve current narrative copy unless the user explicitly requests content editing because Story 6 content may be changing concurrently
 
 ## Implementation guidance
@@ -23,20 +23,21 @@
 - Prefer semantic headings, lists, buttons, and links over recreating their behavior with generic elements and ARIA
 - Preserve keyboard operation, visible focus states, menu `aria-expanded` state, and `aria-current="page"`
 - Keep external links opened in a new tab paired with `rel="noopener noreferrer"`
-- Keep the Cell Distance Explorer lazy-loaded and preserve its retry path, status messaging, downloadable-data fallback, and focus transfer after loading
+- Keep the Cell Distance Explorer lazy-loaded and preserve its retry path, status messaging, standalone-app fallback, and focus transfer after loading
+- If the embedded CDE fails, keep the retry control available and link to `https://apps.humanatlas.io/cde/` as the accessible secondary route
 - Treat the Cell Distance Explorer as a fixed desktop canvas inside the page's responsive, keyboard-scrollable shell; do not override its internal grid or child-component styles
-- Keep initial navigation and notice controls responsive by deferring CDE construction until the reader approaches the transition immediately before its section
+- Keep transitions and tutorial pinning responsive by deferring CDE construction until the tutorial section enters, then wait two paint frames so its pin can engage before parsing CDE data
 - Load the CDE stylesheet with its component bundle during deferred preparation rather than blocking the initial document render
 - Establish Story 6 border-box sizing before ScrollTrigger initializes so the deferred CDE stylesheet cannot change pinned-section geometry when it loads
 - When the size notice is visible, wait for its dismissal before beginning proximity-triggered CDE preparation; do not gate an explicit CDE launch
-- Start CDE proximity loading earlier on normal connections and closer to the section for data-saver or constrained connections; use an idle fallback only when `IntersectionObserver` is unavailable
+- Start CDE proximity loading from the tutorial boundary only after its pin settles; use an idle fallback only when `IntersectionObserver` is unavailable
 - Resolve CDE dataset paths against `document.baseURI` before connection and treat the explorer as ready only after its nonempty `nodes` and `edges` events fire
 - Hide the outer CDE scrollbars when the full native canvas fits; expose scrolling only when viewport width, height, or zoom would otherwise clip controls
 - Keep tutorial images, the CDE launch image, and the live CDE shell on the shared `1320 / 760` outer stage with an `82.5rem` maximum width
 - Scale the live CDE into that stage only at `92%` or larger; below that threshold, preserve usable control sizing and expose the shell's labeled scrolling region
 - Keep CDE tutorial guidance as semantic ordered-list items using the shared information-banner treatment and decorative `../assets/icons/info.svg` icon
 - Keep tutorial banners horizontally centered; place narrow-screen banners below the scaled tutorial image
-- Switch tutorial screenshots directly at step boundaries rather than fading the images between guidance banners
+- Use a brief crossfade only between tutorial screenshots 1 and 2; switch every later screenshot directly at its step boundary
 - Animate tutorial banners with restrained opacity and transform changes, and keep their complete text visible in the reduced-motion layout
 - Do not parse or duplicate the large CSV datasets in page state unless a demonstrated feature requires it
 - Keep the splash visually editorial rather than application-like: preserve its asymmetric placement, restrained paper surface, compact accent rule, and clear title-first hierarchy
@@ -68,13 +69,16 @@
 - Preserve the Young, Aged, Aged + D&Q reading order for every organ
 - Keep the comparison container centered while all copy and condition labels remain left-aligned
 - Stack samples vertically on narrow screens without a horizontal carousel or hidden comparison state
+- Keep the takeaway card immediately visible; do not gate it behind an observer or entrance animation
 - Keep image descriptions observational and avoid inferring biological causes from spatial maps alone
 - Do not leave placeholder or lorem ipsum sections in the published narrative
 
 ## Image handling
 
+- Give every image in flowing narrative content accurate intrinsic `width` and `height` attributes so late media loading cannot shift downstream ScrollTrigger geometry
 - Keep the 960, 1920, and 3840 WebP transition variants together and update the complete `srcset` and fallback `src` when renaming one
 - Use the 1920 WebP as each transition image's fallback `src`; do not retain a duplicate PNG fallback
+- Load Transition 3 eagerly at high priority so rapid scrolling cannot outrun its request; keep all other non-splash transition backgrounds lazy
 - Preserve transparent backgrounds when optimizing transition images
 - Use the 960 px transition settings below when regenerating that variant
 

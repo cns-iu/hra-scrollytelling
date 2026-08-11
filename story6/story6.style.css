@@ -606,7 +606,9 @@
       }
 
       img {
+        display: block;
         width: 100%;
+        height: auto;
       }
     }
 
@@ -1021,19 +1023,6 @@
     font-weight: var(--hra-type-body-large-emphasized-weight);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-  }
-
-  &.takeaway-reveal-enabled .tissue-comparison__takeaway {
-    opacity: 0;
-    transform: translate3d(0, 1.5rem, 0);
-    transition:
-      opacity 450ms cubic-bezier(0.2, 0, 0, 1),
-      transform 450ms cubic-bezier(0.2, 0, 0, 1);
-
-    &.is-visible {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
   }
 
   @media (min-width: 48rem) {

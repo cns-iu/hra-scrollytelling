@@ -4,14 +4,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>6: SenNet: Pan-organ immunosenescence mouse atlas</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta
+      name="description"
+      content="Explore how immune cells change with age through a pan-organ mouse atlas, tissue comparisons, and the interactive HRA Cell Distance Explorer."
+    />
     <script>
-      window.history.scrollRestoration = 'manual';
       const story6NavigationEntry = performance.getEntriesByType('navigation')[0];
 
       if (story6NavigationEntry?.type === 'reload') {
+        window.history.scrollRestoration = 'manual';
         window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+        window.addEventListener(
+          'pageshow',
+          () => {
+            window.requestAnimationFrame(() => {
+              window.requestAnimationFrame(() => {
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                window.history.scrollRestoration = 'auto';
+              });
+            });
+          },
+          { once: true },
+        );
       }
     </script>
     <link rel="stylesheet" href="style.css" />
@@ -104,6 +119,8 @@
           class="story-illustration story-illustration--from-left"
           src="story6/img/immune_cells.webp"
           alt="Illustrations of immune cells with a variety of shapes and internal structures"
+          width="1920"
+          height="1336"
         />
         <p>
           A key contributor to the immune system’s deterioration is cell senescence. This occurs when stress or damage to the cell causes it to exit the cell
@@ -115,6 +132,8 @@
           <img
             src="story6/img/cell-senescence-transition.webp"
             alt="Stress or damage changes a normal cell into a senescent cell that secretes molecules associated with inflammation"
+            width="1250"
+            height="703"
           />
         </figure>
         <p>
@@ -156,6 +175,8 @@
           class="story-illustration story-illustration--from-left"
           src="story6/img/cell-changes.webp"
           alt="Comparison of a normal cell and a senescent cell, whose changes include cell-cycle arrest, secretions, enlarged shape, organelle dysfunction, and molecular damage"
+          width="1880"
+          height="1194"
         />
         <div>
           <p>
@@ -175,6 +196,8 @@
           class="story-illustration story-illustration--from-right"
           src="story6/img/cells.webp"
           alt="Examples of immune-related cell types: basophil, natural killer cell, B cell, plasma cell, T cell, neutrophil, dendritic cell, mast cell, eosinophil, endothelial cell, macrophage, and fibroblast"
+          width="1232"
+          height="964"
         />
         <p>
           Instead, there are many cell types with different structures and roles. Different immune cell types exhibit different senescence patterns/features.
@@ -431,7 +454,14 @@
           srcset="story6/img/transition3-960.webp 960w, story6/img/transition3-1920.webp 1920w, story6/img/transition3-3840.webp 3840w"
           sizes="100vw"
         />
-        <img class="transition__background" src="story6/img/transition3-1920.webp" alt="" loading="lazy" decoding="async" />
+        <img
+          class="transition__background"
+          src="story6/img/transition3-1920.webp"
+          alt=""
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
       </picture>
       <div class="transition__overlay" aria-hidden="true"></div>
       <h2 class="textbox-transition">

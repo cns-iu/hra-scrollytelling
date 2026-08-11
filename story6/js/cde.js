@@ -1,10 +1,9 @@
 const CDE_MODULE_URL = 'https://cdn.humanatlas.io/ui/cde-visualization-wc/wc.js';
 const CDE_STYLESHEET_URL = 'https://cdn.humanatlas.io/ui/cde-visualization-wc/styles.css';
+const CDE_APP_URL = 'https://apps.humanatlas.io/cde/';
 const CDE_DATA_TIMEOUT = 90000;
 const CDE_NATIVE_WIDTH = 1391;
 const CDE_MINIMUM_FIT_SCALE = 0.92;
-const CDE_PRELOAD_ROOT_MARGIN = '250% 0px';
-const CDE_CONSTRAINED_PRELOAD_ROOT_MARGIN = '75% 0px';
 const CDE_PRELOAD_FALLBACK_DELAY = 4000;
 
 let cdeModulePromise;
@@ -25,7 +24,7 @@ export function setupCde() {
   }
 
   setupCdeLauncher(container, '.mouse-young');
-  scheduleCdePreload(container, '.mouse-young', document.querySelector('.transition3') ?? container);
+  scheduleCdePreload(container, '.mouse-young', document.querySelector('.section5') ?? container);
 
   return () => syncCdeVisibility(container);
 }
@@ -325,7 +324,7 @@ function setupCdeLauncher(container, templateSelector) {
       console.error('CDE loading failed:', error);
       placeholder.disabled = false;
       status.classList.remove('visually-hidden');
-      status.textContent = 'The Cell Distance Explorer could not be loaded. Please try again or use the downloadable data links.';
+      showCdeLoadFailure(status);
       placeholder.focus();
     } finally {
       container.removeAttribute('aria-busy');
@@ -334,33 +333,52 @@ function setupCdeLauncher(container, templateSelector) {
 }
 
 /**
+ * Presents an accessible retry alternative when the embedded explorer fails.
+ *
+ * @param {HTMLElement} status The polite live region that reports CDE loading state
+ * @returns {void}
+ */
+function showCdeLoadFailure(status) {
+  const link = document.createElement('a');
+
+  link.href = CDE_APP_URL;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.textContent = 'open the standalone Cell Distance Explorer';
+
+  status.replaceChildren(
+    document.createTextNode('The embedded Cell Distance Explorer could not be loaded. Please try again, or '),
+    link,
+    document.createTextNode(' (opens in a new tab).'),
+  );
+}
+
+/**
  * Starts CDE loading as the reader approaches the explorer narrative.
  *
  * @param {HTMLElement} container The CDE section container
  * @param {string} templateSelector The visualization template selector
- * @param {Element} preloadTarget The earlier narrative boundary used to trigger preparation
+ * @param {Element} preloadTarget The tutorial boundary used to trigger preparation
  * @returns {void}
  */
 function scheduleCdePreload(container, templateSelector, preloadTarget) {
-  const connection = navigator.connection;
-  const constrainedConnection = connection?.saveData || /(^|-)2g$/.test(connection?.effectiveType ?? '');
   const preload = () => {
     ensureCdeRendered(container, templateSelector).catch((error) => {
       console.warn('CDE preload deferred until launch:', error);
     });
   };
   const preloadAfterInitialUi = () => preloadWhenNoticeIsReady(preload);
+  const preloadAfterPinSettles = () => {
+    window.requestAnimationFrame(() => window.requestAnimationFrame(preloadAfterInitialUi));
+  };
 
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          observer.disconnect();
-          preloadAfterInitialUi();
-        }
-      },
-      { rootMargin: constrainedConnection ? CDE_CONSTRAINED_PRELOAD_ROOT_MARGIN : CDE_PRELOAD_ROOT_MARGIN },
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        observer.disconnect();
+        preloadAfterPinSettles();
+      }
+    });
 
     observer.observe(preloadTarget);
     return;
