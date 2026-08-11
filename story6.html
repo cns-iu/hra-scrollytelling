@@ -34,7 +34,6 @@
     </script>
 
     <link href="https://cdn.humanatlas.io/ui/cde-visualization-wc/styles.css" rel="stylesheet" />
-    <!-- <script src="https://cdn.humanatlas.io/ui/cde-visualization-wc/wc.js" type="module"></script> -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   </head>
 
@@ -724,16 +723,6 @@
       // Hold the replacement fully visible for one viewport of scrolling.
       .to('.textbox-transition1', { autoAlpha: 1, duration: 1 });
 
-    // gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: '.intro',
-    //     start: 'top 72px',
-    //     end: '+=100%',
-    //     pin: true,
-    //     invalidateOnRefresh: true,
-    //   },
-    // });
-
     gsap.set('.picture2', { autoAlpha: 0 });
 
     gsap
@@ -763,15 +752,6 @@
         autoAlpha: 1,
         duration: 1,
       });
-
-    // gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: '.section2-2',
-    //     start: 'top 72px',
-    //     end: '+=100%',
-    //     pin: true,
-    //   },
-    // });
 
     createTextboxTransition('.transition1');
 
