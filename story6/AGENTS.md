@@ -15,6 +15,8 @@
 
 - Do not add a build step or dependency for Story 6 without explicit approval
 - Keep styles scoped under `#six` unless behavior is genuinely shared by every story
+- Use the page-scoped HRA color and typography tokens for new Story 6 UI rather than introducing unscoped colors or type rules
+- Keep Story 6 text selectable and preserve the accessible HRA-token-based `::selection` treatment
 - Keep display formatting in the HTML or presenting component rather than caching formatted strings in JavaScript state
 - Prefer semantic headings, lists, buttons, and links over recreating their behavior with generic elements and ARIA
 - Preserve keyboard operation, visible focus states, menu `aria-expanded` state, and `aria-current="page"`
@@ -32,6 +34,17 @@
 - Recalculate ScrollTrigger geometry after assets load and retain the mobile-resize protection
 - Any new motion must have a `prefers-reduced-motion` state that exposes the same narrative and controls without pinning or animation
 - Never leave meaningful content hidden when GSAP, ScrollTrigger, IntersectionObserver, or the CDE module is unavailable
+- After changing section height or removing content near pinned scenes, verify ScrollTrigger refresh behavior and scroll through the full story at both slow and fast speeds
+
+## Tissue comparison
+
+- Keep research context inside the tissue-comparison introduction rather than in a detached setup panel
+- Present each organ as a semantic figure and its Young, Aged, and Aged + D&Q samples as an ordered list
+- Preserve the Young, Aged, Aged + D&Q reading order for every organ
+- Keep the comparison container centered while all copy and condition labels remain left-aligned
+- Stack samples vertically on narrow screens without a horizontal carousel or hidden comparison state
+- Keep image descriptions observational and avoid inferring biological causes from spatial maps alone
+- Do not leave placeholder or lorem ipsum sections in the published narrative
 
 ## Image handling
 
@@ -75,3 +88,6 @@ Then open `http://localhost:8000/story6.html` and complete this smoke test:
 - Enable reduced motion and confirm all narrative text, tutorial instructions, and both CDE launch buttons remain available
 - Load each CDE, simulate a loading failure, and confirm its launch button can retry
 - Confirm all local image, font, script, stylesheet, and dataset requests return successfully
+- Select text with a mouse and with mobile long-press, then confirm the selection colors remain readable on light and dark Story 6 surfaces
+- Confirm the tissue comparison is centered, its text remains left-aligned, and all nine samples are reachable without horizontal scrolling
+- Confirm the document outline includes a level-two heading for each Cell Distance Explorer section

@@ -153,7 +153,7 @@
         </div>
         <img
           class="story-illustration story-illustration--from-left"
-          src="story6/img/image-221.webp"
+          src="story6/img/cell-changes.webp"
           alt="Comparison of a normal cell and a senescent cell, whose changes include cell-cycle arrest, secretions, enlarged shape, organelle dysfunction, and molecular damage"
         />
         <div>
@@ -258,42 +258,166 @@
         <img class="transition__background" src="story6/img/transition2-1920.webp" alt="" loading="lazy" decoding="async" />
       </picture>
       <div class="transition__overlay" aria-hidden="true"></div>
-      <h2 class="textbox-transition">How does age—and treatment—change cells across tissues?</h2>
+      <h2 class="textbox-transition">What changes can we see between young, aged, and treated tissue?</h2>
     </section>
 
-    <div class="setup setup2">
-      <div class="setup-text">
-        <p>
-          Researchers collected tissue from young mice, aged mice, and aged mice treated with dasatinib and quercetin (D&Q), drugs that target senescent cells.
-          <br><br>
-          By mapping individual cells within each tissue sample, researchers can compare how cellular patterns change with age—and whether those patterns change after treatment.
-        </p>
-      </div>
-    </div>
+    <section class="section4" aria-labelledby="tissue-comparison-title">
+      <div class="tissue-comparison">
+        <header class="tissue-comparison__intro">
+          <p class="tissue-comparison__eyebrow">Cell sample comparison</p>
+          <h2 id="tissue-comparison-title">Compare tissue across three organs</h2>
+          <p>
+            Researchers collected tissue from young mice, aged mice, and aged mice treated with dasatinib and quercetin (D&amp;Q), drugs that target senescent
+            cells.
+          </p>
+          <p>
+            By mapping individual cells within liver, spleen, and thymus samples, researchers can compare how cellular patterns change with age—and whether
+            those patterns change after treatment.
+          </p>
+          <p>
+            Each color represents a cell population. Compare where those populations appear, how densely they cluster, and which populations share the same
+            neighborhoods across the three conditions.
+          </p>
+        </header>
 
-    <section class="section4">
-      <h3 class="visually-hidden">Young and aged mouse cell samples</h3>
-      <div class="section4-images">
-        <div class="young">
-          Young mouse cells
-          <img src="story6/img/young.png" alt="Tissue sections from a young mouse, colored to distinguish cell types" />
+        <div class="organ-comparisons">
+          <figure class="organ-comparison story-illustration story-illustration--from-left">
+            <figcaption>
+              <span class="organ-comparison__number" aria-hidden="true">01</span>
+              <h3>Liver</h3>
+            </figcaption>
+            <ol class="tissue-samples">
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Young</p>
+                <img
+                  src="story6/img/liver-young.png"
+                  alt="Cell population map of liver tissue from a young mouse, showing a rounded section divided by a large white channel"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Aged</p>
+                <img
+                  src="story6/img/liver-aged.png"
+                  alt="Cell population map of liver tissue from an aged mouse, showing a rounded section dominated by peach and brown regions"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Aged + D&amp;Q</p>
+                <img
+                  src="story6/img/liver-aged-dq.png"
+                  alt="Cell population map of D and Q-treated liver tissue from an aged mouse, showing peach and pale blue regions around an open center"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+            </ol>
+          </figure>
+
+          <figure class="organ-comparison story-illustration story-illustration--from-right">
+            <figcaption>
+              <span class="organ-comparison__number" aria-hidden="true">02</span>
+              <h3>Spleen</h3>
+            </figcaption>
+            <ol class="tissue-samples">
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Young</p>
+                <img
+                  src="story6/img/spleen-young.png"
+                  alt="Cell population map of spleen tissue from a young mouse, showing light blue clusters and a dark blue and pink region"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Aged</p>
+                <img
+                  src="story6/img/spleen-aged.png"
+                  alt="Cell population map of spleen tissue from an aged mouse, showing multiple blue clusters surrounded by pink regions"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Aged + D&amp;Q</p>
+                <img
+                  src="story6/img/spleen-aged-dq.png"
+                  alt="Cell population map of D and Q-treated spleen tissue from an aged mouse, showing blue clusters with green centers among pale pink regions"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+            </ol>
+          </figure>
+
+          <figure class="organ-comparison story-illustration story-illustration--from-left">
+            <figcaption>
+              <span class="organ-comparison__number" aria-hidden="true">03</span>
+              <h3>Thymus</h3>
+            </figcaption>
+            <ol class="tissue-samples">
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Young</p>
+                <img
+                  src="story6/img/thymus-young.png"
+                  alt="Cell population map of thymus tissue from a young mouse, showing broad pale blue, green, yellow, and orange regions"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Aged</p>
+                <img
+                  src="story6/img/thymus-aged.png"
+                  alt="Cell population map of thymus tissue from an aged mouse, showing a narrow curved section with turquoise, dark blue, brown, and pink regions"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Aged + D&amp;Q</p>
+                <img
+                  src="story6/img/thymus-aged-dq.png"
+                  alt="Cell population map of D and Q-treated thymus tissue from an aged mouse, showing a broad yellow and peach center bordered by turquoise and pink"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+            </ol>
+          </figure>
         </div>
-        <div class="aged">
-          Aged mouse cells
-          <img src="story6/img/aged.png" alt="Tissue sections from an aged mouse, colored to distinguish cell types" />
-        </div>
+
+        <aside class="tissue-comparison__takeaway" aria-labelledby="tissue-takeaway-title">
+          <p class="tissue-comparison__takeaway-label">Observed pattern</p>
+          <h3 id="tissue-takeaway-title">What can we see?</h3>
+          <p>
+            Across the liver, spleen, and thymus, the colored cell populations differ in their distribution, clustering, and neighboring populations. These
+            patterns also vary by organ, which is why each condition is compared within the same tissue.
+          </p>
+        </aside>
       </div>
     </section>
-
-    <div class="setup setup2">
-      <div class="setup-text">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </div>
-    </div>
 
     <section class="transition transition3" data-drift="1">
       <picture class="transition__picture">
@@ -321,9 +445,9 @@
       </div>
     </div>
 
-    <section class="section5">
+    <section class="section5" aria-labelledby="young-cde-title">
       <div class="cde">
-        <h3 class="cde-header">Use the Cell Distance Explorer to interact with visualizations of a young mouse dataset.</h3>
+        <h2 class="cde-header" id="young-cde-title">Use the Cell Distance Explorer to interact with visualizations of a young mouse dataset.</h2>
         <div class="tutorial-images" aria-hidden="true">
           <img class="tutorial tutorial1" src="story6/img/tutorial1.png" alt="" />
           <img class="tutorial tutorial2" src="story6/img/tutorial2.png" alt="" />
@@ -383,9 +507,9 @@
       <h2 class="textbox-transition">How does aged mouse cell data appear in the Cell Distance Explorer?</h2>
     </section>
 
-    <section class="section6">
+    <section class="section6" aria-labelledby="aged-cde-title">
       <div class="cde">
-        <h3 class="cde-header">Explore aged mouse data in the Cell Distance Explorer.</h3>
+        <h2 class="cde-header" id="aged-cde-title">Explore aged mouse data in the Cell Distance Explorer.</h2>
         <p class="cde-accessibility-note" id="aged-cde-note">
           The Cell Distance Explorer has a fixed desktop layout and may not fit smaller screens or high zoom levels. As an alternative, you can download the
           <a href="story6/data/senm-aged.nodes.csv">aged mouse cell data</a> and <a href="story6/data/senm-aged.edges.csv">aged mouse cell links</a>.
@@ -404,10 +528,10 @@
           ></cde-visualization>
         </template>
       </div>
-      <div class="blurb">There is strong external evidence that immune senescence is implicated in tissue reorganization.</div>
-      <div class="blurb">
+      <p class="blurb">There is strong external evidence that immune senescence is implicated in tissue reorganization.</p>
+      <p class="blurb">
         Thus, monitoring the effects of senescence on the surrounding tissue, evaluating them, and treating them could vastly improve our health.
-      </div>
+      </p>
     </section>
 
     <section class="transition transition5" data-drift="1">

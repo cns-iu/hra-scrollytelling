@@ -198,6 +198,32 @@ function setupIllustrationReveals() {
 
 setupIllustrationReveals();
 
+/**
+ * Animates the tissue-comparison takeaway as it enters and leaves the viewport.
+ *
+ * @returns {void}
+ */
+function setupTakeawayReveal() {
+  const takeaway = document.querySelector('.tissue-comparison__takeaway');
+
+  if (prefersReducedMotion || !('IntersectionObserver' in window) || !takeaway) {
+    return;
+  }
+
+  document.body.classList.add('takeaway-reveal-enabled');
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      entry.target.classList.toggle('is-visible', entry.isIntersecting);
+    },
+    { threshold: 0.2, rootMargin: '-5% 0px' },
+  );
+
+  observer.observe(takeaway);
+}
+
+setupTakeawayReveal();
+
 if (!prefersReducedMotion && animationsAvailable) {
   gsap.set('.textbox-transition1', { autoAlpha: 0 });
 
@@ -300,16 +326,6 @@ if (!prefersReducedMotion && animationsAvailable) {
     .to('.pancreas', { autoAlpha: 1, duration: 0.8 });
 
   createTextboxTransition('.transition2');
-
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: '.section4',
-      start: 'top 72px',
-      end: '+=100%',
-      pin: true,
-      anticipatePin: 1,
-    },
-  });
 
   createTextboxTransition('.transition3');
 }
@@ -450,12 +466,16 @@ backToTopLink?.addEventListener('click', (event) => {
 /**
  * Refreshes pinned-scene measurements after assets load and resets plain reloads.
  *
- * @returns {void}
+ * @returns {Promise<void>} A promise that resolves after fonts and pinned-scene measurements are ready
  */
-function finalizeStoryLayout() {
+async function finalizeStoryLayout() {
   if (shouldResetStory6Reload) {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     window.history.scrollRestoration = 'auto';
+  }
+
+  if (document.fonts?.ready) {
+    await document.fonts.ready;
   }
 
   if (animationsAvailable) {
