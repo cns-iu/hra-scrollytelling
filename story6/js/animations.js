@@ -7,10 +7,9 @@ const PINNED_SCROLL_SCRUB = 0.6;
  * @param {object} options.gsap GSAP runtime
  * @param {object} options.ScrollTrigger GSAP ScrollTrigger plugin
  * @param {boolean} options.prefersReducedMotion Whether the user requests reduced motion
- * @param {() => void} options.syncCdeVisibility Callback that syncs the CDE with its tutorial
  * @returns {void}
  */
-export function setupStoryAnimations({ gsap, ScrollTrigger, prefersReducedMotion, syncCdeVisibility }) {
+export function setupStoryAnimations({ gsap, ScrollTrigger, prefersReducedMotion }) {
   if (prefersReducedMotion || !gsap || !ScrollTrigger) {
     return;
   }
@@ -21,7 +20,7 @@ export function setupStoryAnimations({ gsap, ScrollTrigger, prefersReducedMotion
   setupMouseTimeline(gsap);
   createTextboxTransition(gsap, '.transition2');
   createTextboxTransition(gsap, '.transition3');
-  setupCdeTutorialTimeline(gsap, syncCdeVisibility);
+  setupCdeTutorialTimeline(gsap);
   createTextboxTransition(gsap, '.transition5');
 }
 
@@ -103,21 +102,19 @@ function setupMouseTimeline(gsap) {
 }
 
 /**
- * Builds the tutorial sequence that precedes CDE interaction.
+ * Builds the Cell Distance Explorer tutorial sequence.
  *
  * @param {object} gsap GSAP runtime
- * @param {() => void} syncCdeVisibility Callback that syncs the CDE display state
  * @returns {void}
  */
-function setupCdeTutorialTimeline(gsap, syncCdeVisibility) {
+function setupCdeTutorialTimeline(gsap) {
   gsap.set('.blurb', { autoAlpha: 0 });
-  gsap.set('.section5 .tutorial, .section5 .cde-placeholder', { autoAlpha: 0 });
+  gsap.set('.section5 .tutorial', { autoAlpha: 0 });
+  gsap.set('.section5 .tutorial1', { autoAlpha: 1 });
   gsap.set('.section5 .tutorial-images', { display: 'block' });
-  gsap.set('.section5 .cde-placeholder', { display: 'none' });
 
   const timeline = gsap.timeline({
-    onUpdate: syncCdeVisibility,
-    scrollTrigger: createPinnedTrigger('.section5', '+=600%'),
+    scrollTrigger: createScrubbedTrigger('.section5', 'bottom bottom', true),
   });
 
   const tutorialSteps = [
@@ -129,13 +126,11 @@ function setupCdeTutorialTimeline(gsap, syncCdeVisibility) {
   ];
 
   tutorialSteps.forEach(({ blurb, image }, index) => {
-    if (index === 0) {
-      timeline.set(image, { autoAlpha: 1 });
-    } else if (index === 1) {
+    if (index === 1) {
       timeline
         .to(tutorialSteps[index - 1].image, { autoAlpha: 0, duration: 0.18, ease: 'power1.inOut' })
         .to(image, { autoAlpha: 1, duration: 0.18, ease: 'power1.inOut' }, '<');
-    } else {
+    } else if (index > 1) {
       timeline.set(tutorialSteps[index - 1].image, { autoAlpha: 0 }).set(image, { autoAlpha: 1 }, '<');
     }
 
@@ -150,13 +145,6 @@ function setupCdeTutorialTimeline(gsap, syncCdeVisibility) {
       .to(blurb, { autoAlpha: 1, duration: 0.68, ease: 'none' })
       .to(blurb, { autoAlpha: 0, y: -6, scale: 0.995, duration: 0.16, ease: 'power1.in' });
   });
-
-  timeline
-    .set('.tutorial5', { autoAlpha: 0 })
-    .set('.section5 .tutorial-images', { display: 'none' })
-    .set('.section5 .cde-placeholder', { display: 'block' })
-    .to('.section5 .cde-placeholder', { autoAlpha: 1, duration: 0.1 }, '<')
-    .to('.section5 .cde-placeholder', { autoAlpha: 1, duration: 0.9 });
 }
 
 /**
@@ -236,12 +224,26 @@ function addTextboxChoreography(timeline, textbox, overlay, overlayPosition, tex
  */
 function createPinnedTrigger(trigger, end) {
   return {
+    ...createScrubbedTrigger(trigger, end),
+    pin: true,
+    anticipatePin: 1,
+  };
+}
+
+/**
+ * Returns shared ScrollTrigger settings for a scrubbed scene.
+ *
+ * @param {string|HTMLElement} trigger Scene selector or element
+ * @param {string} end Scroll distance or end position for the scene
+ * @param {number|boolean} [scrub=PINNED_SCROLL_SCRUB] Scroll-to-animation synchronization behavior
+ * @returns {object} ScrollTrigger configuration
+ */
+function createScrubbedTrigger(trigger, end, scrub = PINNED_SCROLL_SCRUB) {
+  return {
     trigger,
     start: 'top 72px',
     end,
-    pin: true,
-    scrub: PINNED_SCROLL_SCRUB,
-    anticipatePin: 1,
+    scrub,
     invalidateOnRefresh: true,
   };
 }

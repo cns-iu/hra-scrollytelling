@@ -676,8 +676,7 @@
 
   .fadeimage,
   .scene5-1,
-  .scene5-2,
-  .cde {
+  .scene5-2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1031,29 +1030,35 @@
     }
   }
 
-  .cde {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
+  section.section5 {
+    --cde-tutorial-scene-height: calc(var(--story-viewport-height) - 4.5rem);
 
-  .section5 {
     position: relative;
+    height: calc(
+      var(--cde-tutorial-scene-height) + var(--cde-tutorial-scene-height) + var(--cde-tutorial-scene-height) +
+        var(--cde-tutorial-scene-height) + var(--cde-tutorial-scene-height) + var(--cde-tutorial-scene-height)
+    );
+    overflow: visible;
   }
 
-  .section5 > .cde {
+  .cde-tutorial-stage {
+    position: sticky;
+    top: 4.5rem;
+    height: var(--cde-tutorial-scene-height);
+  }
+
+  .cde-tutorial-visual {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr);
     align-items: center;
     justify-items: center;
     box-sizing: border-box;
-    height: calc(var(--story-viewport-height) - 4.5rem);
+    height: 100%;
     padding-block: clamp(0.75rem, 2vh, 1.5rem);
     gap: 0;
 
-    .tutorial-images,
-    .cde-placeholder,
-    .cde-visualization-shell {
+    .tutorial-images {
       grid-column: 1;
       grid-row: 1;
       align-self: center;
@@ -1076,72 +1081,6 @@
       transform: none;
     }
 
-    .cde-placeholder img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .cde-visualization-shell {
-      --cde-native-width: 86.9375rem;
-      --cde-native-height: 37.75rem;
-      --cde-stage-layout-height: 50.0625rem;
-      --cde-scale: 1;
-
-      overflow: auto;
-      overscroll-behavior: contain;
-      border-radius: 0.75rem;
-      background: var(--hra-neutral-100);
-      box-shadow:
-        inset 0 0 0 1px var(--hra-neutral-variant-50),
-        0 16px 32px -8px color-mix(in srgb, var(--hra-neutral-0) 40%, transparent);
-      -webkit-overflow-scrolling: touch;
-
-      &.cde-fits-stage {
-        overflow: hidden;
-      }
-
-      &.is-preloading {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: var(--story-cde-stage-max-width);
-        height: auto;
-        max-width: none;
-        max-height: none;
-        visibility: hidden;
-        pointer-events: none;
-        transform: translateX(-200%);
-      }
-
-      &:focus-visible {
-        outline: 3px solid var(--hra-primary-35);
-        outline-offset: 3px;
-      }
-
-      cde-visualization {
-        width: var(--cde-native-width);
-        min-width: var(--cde-native-width);
-        height: var(--cde-stage-layout-height);
-        min-height: var(--cde-native-height);
-        margin: 0;
-        transform: scale(var(--cde-scale));
-        transform-origin: top left;
-      }
-    }
-  }
-
-  .cde-status {
-    width: min(100%, 44rem);
-    margin: 0;
-    color: var(--hra-neutral-variant-30);
-    font: var(--hra-type-body-large);
-    letter-spacing: var(--hra-type-body-large-tracking);
-  }
-
-  .cde-status:empty {
-    display: none;
   }
 
   .blurb {
@@ -1189,7 +1128,7 @@
   }
 
   @media (max-width: 63.999rem) {
-    .section5 > .cde .tutorial-images {
+    .cde-tutorial-visual .tutorial-images {
       align-self: start;
       margin-top: clamp(0.75rem, 2vh, 1rem);
     }
@@ -1203,18 +1142,25 @@
   }
 
   .cde-tutorial-steps {
+    position: absolute;
+    inset: 0;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
   &.story-animations-unavailable {
-    .section5 {
+    section.section5 {
       height: auto;
       padding: 4rem 0;
     }
 
-    .section5 > .cde {
+    .cde-tutorial-stage {
+      position: static;
+      height: auto;
+    }
+
+    .cde-tutorial-visual {
       height: auto;
       padding-block: 0;
     }
@@ -1232,6 +1178,7 @@
     }
 
     .cde-tutorial-steps {
+      position: static;
       width: min(100% - 2rem, 36rem);
       margin: 0 auto;
     }
@@ -1247,37 +1194,13 @@
 
   .tutorial {
     max-height: 100%;
+    max-width: 100%;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .cde-placeholder {
-    max-height: 80%;
-    aspect-ratio: 1320/760;
-    height: fit-content;
-    width: 100%;
-  }
-
-  .cde-placeholder,
-  .tutorial {
-    max-width: 100%;
+    width: auto;
     border: none;
     background: transparent;
-    width: auto;
-
-    img {
-      width: 100%;
-    }
-  }
-
-  .cde-placeholder {
-    cursor: pointer;
-
-    &:disabled {
-      cursor: wait;
-      opacity: 0.65;
-    }
+    transform: translateX(-50%);
   }
 
   .more-info {
@@ -1624,8 +1547,7 @@
 
     .textbox-transition,
     .textbox-transition1,
-    .blurb,
-    .cde-placeholder {
+    .blurb {
       opacity: 1 !important;
       visibility: visible !important;
     }
@@ -1647,8 +1569,7 @@
     }
 
     .scene5-1,
-    .mouse,
-    .cde {
+    .mouse {
       position: static;
       height: auto;
     }
@@ -1666,18 +1587,20 @@
       display: none;
     }
 
-    .section5 {
+    section.section5 {
+      height: auto;
       padding: 4rem 0;
     }
 
-    .section5 > .cde {
+    .cde-tutorial-stage {
+      position: static;
+      height: auto;
+    }
+
+    .cde-tutorial-visual {
       display: flex;
       height: auto;
       padding-block: 0;
-    }
-
-    .cde-placeholder {
-      display: block !important;
     }
 
     .blurb {
@@ -1686,6 +1609,7 @@
     }
 
     .cde-tutorial-steps {
+      position: static;
       width: min(100% - 2rem, 36rem);
       margin: 0 auto;
       padding: 0;

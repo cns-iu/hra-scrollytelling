@@ -482,74 +482,54 @@
       </div>
     </div>
 
-    <section class="section5" aria-label="Interactive Cell Distance Explorer">
-      <div class="cde">
-        <div class="tutorial-images" aria-hidden="true">
-          <img class="tutorial tutorial1" src="story6/img/tutorial1.png" alt="" />
-          <img class="tutorial tutorial2" src="story6/img/tutorial2.png" alt="" />
-          <img class="tutorial tutorial3" src="story6/img/tutorial3.png" alt="" />
-          <img class="tutorial tutorial4" src="story6/img/tutorial4.png" alt="" />
-          <img class="tutorial tutorial5" src="story6/img/tutorial5.png" alt="" />
+    <section class="section5" aria-label="Cell Distance Explorer tutorial">
+      <div class="cde-tutorial-stage">
+        <div class="cde-tutorial-visual">
+          <div class="tutorial-images" aria-hidden="true">
+            <img class="tutorial tutorial1" src="story6/img/tutorial1.png" alt="" width="2640" height="1522" />
+            <img class="tutorial tutorial2" src="story6/img/tutorial2.png" alt="" width="2640" height="1520" />
+            <img class="tutorial tutorial3" src="story6/img/tutorial3.png" alt="" width="2640" height="1520" />
+            <img class="tutorial tutorial4" src="story6/img/tutorial4.png" alt="" width="2640" height="1520" />
+            <img class="tutorial tutorial5" src="story6/img/tutorial5.png" alt="" width="2640" height="1520" />
+          </div>
         </div>
-
-        <button class="cde-placeholder" type="button" aria-describedby="young-cde-status">
-          <img src="story6/img/CDE-Placeholder.png" alt="" />
-          <span class="visually-hidden">Open interactive young mouse Cell Distance Explorer</span>
-        </button>
-        <p class="cde-status visually-hidden" id="young-cde-status" role="status" aria-live="polite"></p>
-        <div
-          class="cde-visualization-shell"
-          role="region"
-          aria-label="Young mouse Cell Distance Explorer frame"
-          tabindex="0"
-          hidden
-        >
-          <template class="mouse-young">
-            <cde-visualization
-              nodes="story6/data/senm-young.nodes.csv"
-              edges="story6/data/senm-young.edges.csv"
-              tabindex="-1"
-              aria-label="Young mouse Cell Distance Explorer"
-            ></cde-visualization>
-          </template>
-        </div>
+        <ol class="cde-tutorial-steps" aria-label="Cell Distance Explorer tutorial steps">
+          <li class="blurb blurb0">
+            <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <div class="blurb__content">Let’s get familiar with the Cell Distance Explorer app.</div>
+          </li>
+          <li class="blurb blurb1">
+            <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <div class="blurb__content">
+              Show/hide cell types in the visualization and plots. Hide cell links from this table view. Update colors for individual cell types. Download CSVs
+              for the current configurations of cell types, cell links, and cell type color map formatting.
+            </div>
+          </li>
+          <li class="blurb blurb2">
+            <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <div class="blurb__content">
+              Use the Visualization panel to navigate the cells spatially:
+              <ul>
+                <li>Zoom in and out with the mouse pinwheel or pinch using the trackpad</li>
+                <li>Pan using CTRL/CMD + mouse drag, right click + mouse drag, or use the keyboard arrows</li>
+                <li>Rotate the visualization using CTRL/CMD + keyboard arrows or with a mouse drag</li>
+              </ul>
+            </div>
+          </li>
+          <li class="blurb blurb3">
+            <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <div class="blurb__content">
+              This violin plot shows a cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
+            </div>
+          </li>
+          <li class="blurb blurb4">
+            <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <div class="blurb__content">
+              This histogram plot shows the cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
+            </div>
+          </li>
+        </ol>
       </div>
-      <ol class="cde-tutorial-steps" aria-label="Cell Distance Explorer tutorial steps">
-        <li class="blurb blurb0">
-          <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
-          <div class="blurb__content">Let’s get familiar with the Cell Distance Explorer app.</div>
-        </li>
-        <li class="blurb blurb1">
-          <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
-          <div class="blurb__content">
-            Show/hide cell types in the visualization and plots. Hide cell links from this table view. Update colors for individual cell types. Download CSVs
-            for the current configurations of cell types, cell links, and cell type color map formatting.
-          </div>
-        </li>
-        <li class="blurb blurb2">
-          <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
-          <div class="blurb__content">
-            Use the Visualization panel to navigate the cells spatially:
-            <ul>
-              <li>Zoom in and out with the mouse pinwheel or pinch using the trackpad</li>
-              <li>Pan using CTRL/CMD + mouse drag, right click + mouse drag, or use the keyboard arrows</li>
-              <li>Rotate the visualization using CTRL/CMD + keyboard arrows or with a mouse drag</li>
-            </ul>
-          </div>
-        </li>
-        <li class="blurb blurb3">
-          <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
-          <div class="blurb__content">
-            This violin plot shows a cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
-          </div>
-        </li>
-        <li class="blurb blurb4">
-          <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
-          <div class="blurb__content">
-            This histogram plot shows the cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
-          </div>
-        </li>
-      </ol>
     </section>
 
     <section class="transition transition5">

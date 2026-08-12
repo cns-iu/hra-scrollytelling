@@ -3,14 +3,15 @@
 ## Scope and structure
 
 - Treat `../story6.html`, `story6.style.css`, and `story6.js` as one feature even though the HTML entry point remains at the repository root
-- Keep `story6.js` as the small entry point; place focused UI, animation, CDE, reveal, and layout responsibilities in `js/` modules
-- Keep `js/notice.js` dependency-free and loaded immediately after the notice markup so dismissal never waits for GSAP, the Story 6 module graph, or CDE preparation
+- When creating or substantially restructuring files, keep each file at 500 lines or fewer where practical; split larger files by clear responsibility
+- Keep `story6.js` as the small entry point; place focused UI, animation, reveal, and layout responsibilities in `js/` modules
+- Keep `js/notice.js` dependency-free and loaded immediately after the notice markup so dismissal never waits for GSAP or the Story 6 module graph
 - Keep Story 6–specific images in `img/` and datasets in `data/`
 - Keep fonts and shared footer assets in the repository-level `../assets/` directory
 - Keep genuinely shared navigation, favicon, and cross-story images in the repository-level `../img/` directory
 - Resolve paths in `../story6.html` from the repository root, such as `story6/img/example.webp`
 - Resolve paths in `story6.style.css` from this directory, such as `../assets/fonts/example.woff2`
-- Keep page-relative CDE data paths synchronized whenever a data filename or location changes
+- Retain the CDE datasets in `data/` unless the user explicitly requests their removal, but do not request or parse them from the story page
 - Preserve current narrative copy unless the user explicitly requests content editing because Story 6 content may be changing concurrently
 
 ## Implementation guidance
@@ -23,18 +24,9 @@
 - Prefer semantic headings, lists, buttons, and links over recreating their behavior with generic elements and ARIA
 - Preserve keyboard operation, visible focus states, menu `aria-expanded` state, and `aria-current="page"`
 - Keep external links opened in a new tab paired with `rel="noopener noreferrer"`
-- Keep the Cell Distance Explorer lazy-loaded and preserve its retry path, status messaging, standalone-app fallback, and focus transfer after loading
-- If the embedded CDE fails, keep the retry control available and link to `https://apps.humanatlas.io/cde/` as the accessible secondary route
-- Treat the Cell Distance Explorer as a fixed desktop canvas inside the page's responsive, keyboard-scrollable shell; do not override its internal grid or child-component styles
-- Keep transitions and tutorial pinning responsive by deferring CDE construction until the tutorial section enters, then wait two paint frames so its pin can engage before parsing CDE data
-- Load the CDE stylesheet with its component bundle during deferred preparation rather than blocking the initial document render
-- Establish Story 6 border-box sizing before ScrollTrigger initializes so the deferred CDE stylesheet cannot change pinned-section geometry when it loads
-- When the size notice is visible, wait for its dismissal before beginning proximity-triggered CDE preparation; do not gate an explicit CDE launch
-- Start CDE proximity loading from the tutorial boundary only after its pin settles; use an idle fallback only when `IntersectionObserver` is unavailable
-- Resolve CDE dataset paths against `document.baseURI` before connection and treat the explorer as ready only after its nonempty `nodes` and `edges` events fire
-- Hide the outer CDE scrollbars when the full native canvas fits; expose scrolling only when viewport width, height, or zoom would otherwise clip controls
-- Keep tutorial images, the CDE launch image, and the live CDE shell on the shared `1320 / 760` outer stage with an `82.5rem` maximum width
-- Scale the live CDE into that stage only at `92%` or larger; below that threshold, preserve usable control sizing and expose the shell's labeled scrolling region
+- Do not embed, import, preload, or construct the Cell Distance Explorer web component in Story 6 because its runtime and dataset parsing block tutorial scrolling
+- End the native-sticky CDE tutorial after its fifth screenshot and proceed directly into Transition 5 without a launch control or interactive explorer state
+- Keep tutorial images on the shared `1320 / 760` stage with an `82.5rem` maximum width
 - Keep CDE tutorial guidance as semantic ordered-list items using the shared information-banner treatment and decorative `../assets/icons/info.svg` icon
 - Keep tutorial banners horizontally centered; place narrow-screen banners below the scaled tutorial image
 - Use a brief crossfade only between tutorial screenshots 1 and 2; switch every later screenshot directly at its step boundary
@@ -48,6 +40,7 @@
 
 - Preserve native browser scrolling and do not introduce scroll hijacking or a smoothing dependency
 - Use the shared `pinnedScrollScrub` value for animated pinned scenes so transitions respond consistently
+- Keep the native-sticky CDE tutorial mapped directly to scroll position with `scrub: true`; do not add smoothing that can let its timeline lag behind the sticky scene
 - Prefer compositor-friendly `transform` and `opacity` animation over layout-triggering properties
 - Use `createTextboxTransition` and `addTextboxChoreography` for transition headings rather than duplicating timelines
 - Present transition headings as an editorial left-aligned column over a section-level contrast scrim; do not reintroduce floating bubbles, borders, or card shadows
@@ -59,7 +52,7 @@
 - Recalculate ScrollTrigger geometry after assets load and retain the mobile-resize protection
 - Keep pinned-scene height based on `--story-viewport-height`; update it and refresh ScrollTrigger once after a real resize settles rather than on every resize event
 - Any new motion must have a `prefers-reduced-motion` state that exposes the same narrative and controls without pinning or animation
-- Never leave meaningful content hidden when GSAP, ScrollTrigger, IntersectionObserver, or the CDE module is unavailable
+- Never leave meaningful content hidden when GSAP, ScrollTrigger, or IntersectionObserver is unavailable
 - After changing section height or removing content near pinned scenes, verify ScrollTrigger refresh behavior and scroll through the full story at both slow and fast speeds
 
 ## Tissue comparison
@@ -115,10 +108,9 @@ Then open `http://localhost:8000/story6.html` and complete this smoke test:
 - Confirm the menu stays inside the viewport and identifies Story 6 as the current page
 - Dismiss the screen-size notice and confirm it stays dismissed until refresh
 - Reload at several story positions and confirm Story 6 restarts at the top before pinned scenes initialize
-- Enable reduced motion and confirm all narrative text, tutorial instructions, and the CDE launch button remain available
-- Load the young mouse CDE, simulate a loading failure, and confirm its launch button can retry
-- At narrow widths and high zoom, confirm the CDE remains usable by scrolling its labeled frame with touch, pointer, and keyboard input
-- Confirm all local image, font, script, stylesheet, and dataset requests return successfully
+- Enable reduced motion and confirm all narrative text and tutorial instructions remain available
+- Confirm Story 6 does not request the CDE web component bundle, stylesheet, or retained datasets
+- Confirm all requested local image, font, script, and stylesheet resources return successfully
 - Select text with a mouse and with mobile long-press, then confirm the selection colors remain readable on light and dark Story 6 surfaces
 - Confirm the tissue comparison is centered, its text remains left-aligned, and all nine samples are reachable without horizontal scrolling
-- Confirm the Cell Distance Explorer section retains an accessible region name when visible introductory copy is intentionally absent
+- Confirm the Cell Distance Explorer tutorial retains an accessible section name when visible introductory copy is intentionally absent

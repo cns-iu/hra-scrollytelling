@@ -1,5 +1,4 @@
 import { setupStoryAnimations } from './js/animations.js';
-import { setupCde } from './js/cde.js';
 import { setupLayoutStability } from './js/layout.js';
 import { setupTissueImagePreparation } from './js/media.js';
 import { setupContentReveals } from './js/reveals.js';
@@ -21,11 +20,8 @@ setupContentReveals(prefersReducedMotion);
 setupTissueImagePreparation();
 setupLayoutStability(animationsAvailable ? ScrollTrigger : null);
 
-const syncCdeVisibility = setupCde();
-
 setupStoryAnimations({
   gsap,
   ScrollTrigger,
   prefersReducedMotion,
-  syncCdeVisibility,
 });
