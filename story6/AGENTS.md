@@ -5,10 +5,9 @@
 - Treat `../story6.html`, the styles in `css/`, and `story6.js` as one feature even though the HTML entry point remains at the repository root
 - When creating or substantially restructuring files, keep each file at 500 lines or fewer where practical; split larger files by clear responsibility
 - Keep `story6.js` as the small entry point; place focused UI, animation, reveal, and layout responsibilities in `js/` modules
-- Keep `css/base.css` responsible for fonts, tokens, accessibility, navigation, notices, and shared page primitives
+- Keep `css/base.css` responsible for fonts, tokens, accessibility, navigation, and shared page primitives
 - Keep `css/splash-transitions.css`, `css/narrative.css`, `css/tissue-comparison.css`, `css/cde.css`, and `css/closing.css` scoped to their named Story 6 regions
 - Keep responsive, animation-failure, and reduced-motion rules beside the component styles they modify rather than collecting them in a separate responsive file
-- Keep `js/notice.js` dependency-free and loaded immediately after the notice markup so dismissal never waits for GSAP or the Story 6 module graph
 - Keep Story 6–specific images in `img/` and datasets in `data/`
 - Keep fonts and shared footer assets in the repository-level `../assets/` directory
 - Keep genuinely shared navigation, favicon, and cross-story images in the repository-level `../img/` directory
@@ -38,6 +37,7 @@
 - Keep the splash visually editorial rather than application-like: preserve its asymmetric placement, restrained paper surface, compact accent rule, and clear title-first hierarchy
 - Keep the splash background visible around the title card and avoid adding partner marks to the title card unless the user explicitly requests them
 - Preserve the splash title, subtitle, credits, background crop, and opening-question transition as separate responsibilities so visual refinements do not alter narrative content or scroll behavior
+- Keep closing resources as a semantic card list with descriptive external-link actions; keep contributor acknowledgments in a separate section rather than mixing credits into resource cards
 
 ## Scrolling and animation
 
@@ -109,7 +109,6 @@ Then open `http://localhost:8000/story6.html` and complete this smoke test:
 - Resize desktop width and height continuously, then confirm pinned scenes settle into the correct layout without overlapping or retaining stale measurements
 - Open the story menu by pointer and keyboard, then close it with its button, `Escape`, and an outside click
 - Confirm the menu stays inside the viewport and identifies Story 6 as the current page
-- Dismiss the screen-size notice and confirm it stays dismissed until refresh
 - Reload at several story positions and confirm Story 6 restarts at the top before pinned scenes initialize
 - Enable reduced motion and confirm all narrative text and tutorial instructions remain available
 - Confirm Story 6 does not request the CDE web component bundle, stylesheet, or retained datasets

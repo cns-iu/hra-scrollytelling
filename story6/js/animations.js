@@ -108,7 +108,9 @@ function setupMouseTimeline(gsap) {
  * @returns {void}
  */
 function setupCdeTutorialTimeline(gsap) {
-  gsap.set('.tutorial-callout', { autoAlpha: 0 });
+  // Keep every ordered-list item in the accessibility tree while its visual
+  // presentation is sequenced by scroll position.
+  gsap.set('.tutorial-callout', { opacity: 0 });
   gsap.set('.section5 .tutorial', { autoAlpha: 0 });
   gsap.set('.section5 .tutorial1', { autoAlpha: 1 });
   gsap.set('.section5 .tutorial-images', { display: 'block' });
@@ -135,15 +137,15 @@ function setupCdeTutorialTimeline(gsap) {
     }
 
     timeline
-      .fromTo(callout, { autoAlpha: 0, y: 8, scale: 0.985 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.18, ease: 'power2.out' })
+      .fromTo(callout, { opacity: 0, y: 8, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'power2.out' })
       .fromTo(
         `${callout} .tutorial-callout__icon`,
         { autoAlpha: 0, scale: 0.9 },
         { autoAlpha: 1, scale: 1, duration: 0.14, ease: 'power2.out' },
         '<0.04',
       )
-      .to(callout, { autoAlpha: 1, duration: 0.68, ease: 'none' })
-      .to(callout, { autoAlpha: 0, y: -6, scale: 0.995, duration: 0.16, ease: 'power1.in' });
+      .to(callout, { opacity: 1, duration: 0.68, ease: 'none' })
+      .to(callout, { opacity: 0, y: -6, scale: 0.995, duration: 0.16, ease: 'power1.in' });
   });
 }
 

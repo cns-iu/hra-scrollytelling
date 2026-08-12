@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>6: SenNet: Pan-organ immunosenescence mouse atlas</title>
+    <title>Pan-organ Immunosenescence Atlas | Human Atlas Stories</title>
     <meta
       name="description"
-      content="Explore how immune cells change with age through a pan-organ mouse atlas, tissue comparisons, and the interactive HRA Cell Distance Explorer."
+      content="Explore how immune cells change with age through a pan-organ atlas, tissue comparisons, and a guided tour of the Cell Distance Explorer app."
     />
     <script>
       const story6NavigationEntry = performance.getEntriesByType('navigation')[0];
@@ -74,23 +74,16 @@
           <a href="story6.html" aria-current="page"><img src="img/UI Assets/count6.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Immunosenescence</a>
           <hr />
           <a href="https://humanatlas.io/" target="_blank" rel="noopener noreferrer"
-            ><img src="img/UI Assets/nav_logo.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Human Reference Atlas</a
+            ><img src="img/UI Assets/nav_logo.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Human Reference Atlas
+            <span class="external-link-icon" aria-hidden="true">↗</span><span class="visually-hidden"> opens in a new tab</span></a
           >
           <a href="https://apps.humanatlas.io/" target="_blank" rel="noopener noreferrer"
-            ><img src="img/UI Assets/nav_apps.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;App Library</a
+            ><img src="img/UI Assets/nav_apps.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;App Library
+            <span class="external-link-icon" aria-hidden="true">↗</span><span class="visually-hidden"> opens in a new tab</span></a
           >
         </div>
       </div>
     </nav>
-
-    <aside class="screen-size-notice" aria-label="Screen size notice">
-      <div class="text">
-        <p><strong>Heads up:</strong> This webpage is best viewed at a resolution of 1440x900 or higher.</p>
-        <p>Features may not function as intended on smaller screen sizes.</p>
-      </div>
-      <button class="screen-size-notice__close" type="button" aria-label="Close screen size notice">Close</button>
-    </aside>
-    <script src="story6/js/notice.js"></script>
 
     <main id="main-content" tabindex="-1">
       <header class="page-header">
@@ -114,11 +107,8 @@
     <div class="intro" id="intro">
       <div class="text">
         <p>
-          The immune system is a complex network of cells, tissues, organs, and the substances they make. It helps the body fight infections and other diseases.
-          As we age, our immune system function becomes impaired. Our bodies have a harder time fighting off infections, controlling malignancies, and
-          maintaining immune tolerance. As we age, our immune system function becomes impaired. Our bodies have a harder time fighting off infections,
-          controlling malignancies, and maintaining immune tolerance. This age-related deficiency in immune system function is called
-          <strong>immunosenescence</strong>.
+          The immune system is a complex network of cells, tissues, organs, and the substances they make. It helps the body fight infections and other diseases. As we age, our immune system function becomes impaired. Our bodies have a harder time fighting off infections,
+          controlling malignancies, and maintaining immune tolerance. This age-related deficiency in immune system function is called <strong>immunosenescence</strong>.
         </p>
         <img
           class="story-illustration story-illustration--from-left"
@@ -130,8 +120,7 @@
         <p>
           A key contributor to the immune system’s deterioration is cell senescence. This occurs when stress or damage to the cell causes it to exit the cell
           cycle. In this state of cell cycle arrest, the cell stops dividing but remains metabolically active. The senescent cell secretes a combination of
-          bioactive molecules known as SASP—the senescence-associated secretory phenotype. This occurs when stress or damage to the cell causes it to exit the
-          cell cycle.
+          bioactive molecules known as SASP—the senescence-associated secretory phenotype.
         </p>
         <figure class="story-illustration story-illustration--from-right image-card">
           <img
@@ -149,7 +138,7 @@
       </div>
     </div>
 
-    <section class="section2">
+    <section class="section2 story-scene">
       <h2 class="visually-hidden">How senescent cells accumulate throughout the body</h2>
       <div class="fadeimage">
         <div class="body-image picture1">
@@ -188,7 +177,7 @@
             Researchers in the field of senescence biology work to identify the many varieties of senescent cells, locate where they reside in the body, and
             understand the effects they have on their surrounding environments. A cell’s senescence phenotype—the physical and biochemical traits the cell
             exhibits once it becomes senescent—can vary widely depending on the cell type and the tissue microenvironment. These diverse and context-specific
-            phenotypes makes research on immune cell senescence a particular challenge.
+            phenotypes make research on immune cell senescence a particular challenge.
           </p>
           <p>
             For starters, the immune system is distributed throughout the body. It consists of many organs and multiple tissue types with their own distinct
@@ -213,7 +202,7 @@
       </div>
     </div>
 
-    <section class="transition transition1">
+    <section class="transition transition1 story-scene">
       <picture class="transition__picture">
         <source
           type="image/webp"
@@ -229,7 +218,7 @@
       </h2>
     </section>
 
-    <section class="section3">
+    <section class="section3 story-scene">
       <h2 class="visually-hidden">Mouse anatomy used in senescence research</h2>
       <div class="scene5-1">
         <div class="mouse">
@@ -278,7 +267,7 @@
       </div>
     </div>
 
-    <section class="transition transition2">
+    <section class="transition transition2 story-scene">
       <picture class="transition__picture">
         <source
           type="image/webp"
@@ -293,7 +282,7 @@
       </h2>
     </section>
 
-    <section class="section4" aria-labelledby="tissue-comparison-title">
+    <section class="section4 story-scene" aria-labelledby="tissue-comparison-title">
       <div class="tissue-comparison">
         <header class="tissue-comparison__intro">
           <p class="tissue-comparison__eyebrow">Cell sample comparison</p>
@@ -452,7 +441,7 @@
       </div>
     </section>
 
-    <section class="transition transition3">
+    <section class="transition transition3 story-scene">
       <picture class="transition__picture">
         <source
           type="image/webp"
@@ -487,7 +476,8 @@
       </div>
     </div>
 
-    <section class="section5" aria-label="Cell Distance Explorer tutorial">
+    <section class="section5 story-scene" aria-labelledby="cde-tutorial-title">
+      <h2 class="visually-hidden" id="cde-tutorial-title">Cell Distance Explorer tutorial</h2>
       <div class="cde-tutorial-stage">
         <div class="cde-tutorial-visual">
           <div class="tutorial-images" aria-hidden="true">
@@ -501,11 +491,17 @@
         <ol class="cde-tutorial-steps" aria-label="Cell Distance Explorer tutorial steps">
           <li class="tutorial-callout tutorial-callout--1">
             <img class="tutorial-callout__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
-            <div class="tutorial-callout__content">Let’s get familiar with the Cell Distance Explorer app.</div>
+            <div class="tutorial-callout__content">
+              Let’s get familiar with the Cell Distance Explorer app.
+              <span class="visually-hidden">
+                The interface is organized into a Cell Types table, a central tissue visualization, a violin graph, and a histogram.
+              </span>
+            </div>
           </li>
           <li class="tutorial-callout tutorial-callout--2">
             <img class="tutorial-callout__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
             <div class="tutorial-callout__content">
+              <span class="visually-hidden">The Cell Types table is highlighted. </span>
               Show/hide cell types in the visualization and plots. Hide cell links from this table view. Update colors for individual cell types. Download CSVs
               for the current configurations of cell types, cell links, and cell type color map formatting.
             </div>
@@ -513,6 +509,7 @@
           <li class="tutorial-callout tutorial-callout--3">
             <img class="tutorial-callout__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
             <div class="tutorial-callout__content">
+              <span class="visually-hidden">The central Visualization panel is highlighted. </span>
               Use the Visualization panel to navigate the cells spatially:
               <ul>
                 <li>Zoom in and out with the mouse pinwheel or pinch using the trackpad</li>
@@ -524,12 +521,14 @@
           <li class="tutorial-callout tutorial-callout--4">
             <img class="tutorial-callout__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
             <div class="tutorial-callout__content">
-              This violin plot shows a cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
+              <span class="visually-hidden">The Violin Graph panel is highlighted. </span>
+              This violin plot shows cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
             </div>
           </li>
           <li class="tutorial-callout tutorial-callout--5">
             <img class="tutorial-callout__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
             <div class="tutorial-callout__content">
+              <span class="visually-hidden">The Histogram panel is highlighted. </span>
               This histogram plot shows the cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
             </div>
           </li>
@@ -537,7 +536,7 @@
       </div>
     </section>
 
-    <section class="transition transition5">
+    <section class="transition transition5 story-scene">
       <picture class="transition__picture">
         <source
           type="image/webp"
@@ -554,77 +553,115 @@
     </section>
 
     <div class="end">
-      <div class="more-info">
-        <div class="content">
-          <h2 class="visually-hidden">Learn more</h2>
-          <div class="info-text">
-            For more information, check out additional data in the
-            <a href="https://data.sennetconsortium.org/" target="_blank" rel="noopener noreferrer">SenNet Data Portal</a>, explore the evolving Human Reference
-            Atlas via the <a href="https://humanatlas.io/" target="_blank" rel="noopener noreferrer">HRA Portal</a>, or connect with senescence experts via the
-            <a href="https://sennetconsortium.org/" target="_blank" rel="noopener noreferrer">SenNet Community Portal</a>.
-          </div>
+      <section class="resources" aria-labelledby="resources-title">
+        <div class="resources__content">
+          <header class="resources__header">
+            <p class="resources__eyebrow">Continue exploring</p>
+            <h2 id="resources-title">Resources</h2>
+            <p>Explore the data, tools, and research communities behind this story.</p>
+          </header>
 
-          <div class="logos">
-            <a
-              class="more-info__logo-link"
-              href="https://humanatlas.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit the Human Reference Atlas website (opens in a new tab)"
-            >
-              <img class="more-info__logo more-info__logo--hra" src="assets/hra-light-large.svg" alt="Human Reference Atlas" />
-            </a>
-            <a
-              class="more-info__logo-link"
-              href="https://sennetconsortium.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit the Cellular Senescence Network website (opens in a new tab)"
-            >
-              <img
-                class="more-info__logo more-info__logo--sennet"
-                src="assets/sennet-logo-light.svg"
-                alt="Cellular Senescence Network"
-                width="176"
-                height="44"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="acknowledgments">
-        <div class="content">
-          <h2 class="header">Acknowledgments</h2>
-          <ul>
-            <li>Data: Anthony Fung and Rong Fan (Yale University), Andreas Bueckle (Indiana University)</li>
-            <li>Story authors: Anthony Fung (Yale University), Todd Theriault, Elizabeth Maier, and Katy Börner (Indiana University)</li>
-            <li>Cell Distance Explorer app design and implementation: Yashvardhan Jain, Elizabeth Maier, Bruce W. Herr II, Daniel Bolin, and Edward Lu (Indiana University)</li>
-            <li>Webpage design, development, and implementation: Edward Lu and Elizabeth Maier (Indiana University)</li>
+          <ul class="resource-cards">
+            <li>
+              <a class="resource-card" href="https://data.sennetconsortium.org/" target="_blank" rel="noopener noreferrer">
+                <span class="resource-card__logo">
+                  <img src="assets/sennet-logo-light.svg" alt="" width="176" height="44" />
+                </span>
+                <span class="resource-card__body">
+                  <span class="resource-card__title">SenNet Data Portal</span>
+                  <span class="resource-card__description">Explore and download cellular senescence datasets from across the SenNet consortium.</span>
+                </span>
+                <span class="resource-card__action">
+                  Explore data
+                  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                    <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <span class="visually-hidden"> opens in a new tab</span>
+              </a>
+            </li>
+            <li>
+              <a class="resource-card" href="https://humanatlas.io/" target="_blank" rel="noopener noreferrer">
+                <span class="resource-card__logo">
+                  <img src="assets/hra-light-large.svg" alt="" width="148" height="63" />
+                </span>
+                <span class="resource-card__body">
+                  <span class="resource-card__title">Human Reference Atlas</span>
+                  <span class="resource-card__description">Explore reference maps and tools for understanding the cells and structures of the human body.</span>
+                </span>
+                <span class="resource-card__action">
+                  Visit the atlas
+                  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                    <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <span class="visually-hidden"> opens in a new tab</span>
+              </a>
+            </li>
+            <li>
+              <a class="resource-card" href="https://sennetconsortium.org/" target="_blank" rel="noopener noreferrer">
+                <span class="resource-card__logo">
+                  <img src="assets/sennet-logo-light.svg" alt="" width="176" height="44" />
+                </span>
+                <span class="resource-card__body">
+                  <span class="resource-card__title">SenNet Community</span>
+                  <span class="resource-card__description">Learn about the consortium and connect with the researchers advancing senescence science.</span>
+                </span>
+                <span class="resource-card__action">
+                  Meet the community
+                  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                    <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <span class="visually-hidden"> opens in a new tab</span>
+              </a>
+            </li>
           </ul>
         </div>
-      </div>
+      </section>
 
-      <div class="references">
-        <div class="content">
-          <h2 class="header">References</h2>
-          <div>
-            <p>
-              Andreas Bueckle, Bruce W. Herr II, Lu Chen, Daniel Bolin, Danial Qaurooni, Michael Ginda, Yashvardhan Jain, Aleix Puig-Barbe, Kristin Ardlie,
-              Fusheng Wang, and Katy Börner. 2026.
-              <a href="https://doi.org/10.1038/s41597-026-06642-4">“Cell Type Populations for 3D Anatomical Structures of the Human Reference Atlas.”</a>
-              <em>Nature Scientific Data</em>, 2026, March 19.
-            </p>
-            <p>
-              Yashvardhan Jain, Jodie Jepson, Roy Chen, Elizabeth Maier, Bruce W. Herr II, Aleix Puig-Barbe, Ellen M Quardokus, Danial Qaurooni, Clarence Yapp,
-              Samuel L. Ewing, Archibald Enninful, Negin Farzad, Andreas Bueckle, Quinn T. Easter, Bruno Matuck, Chenchen Zhu, Emma Marie Monte, Jeffrey
-              Purkerson, Matthew Jehrio, Ravi Misra, Rong Fan, Fiona Ginty, Arivarasan Karunamurthy, Jean Fan, Martha Campbell-Thompson, Gloria S. Pryhuber,
-              Kevin M. Byrd, John W. Hickey, and Katy Börner. 2025.
-              <a href="https://doi.org/10.1101/2025.09.23.678129">“Exploring endothelial cell environments across organs in spatially resolved omics data.”</a>
-              In <em>bioRxiv</em>. September 25.
-            </p>
-          </div>
+      <section class="acknowledgments" aria-labelledby="acknowledgments-title">
+        <div class="acknowledgments__content">
+          <header class="acknowledgments__header">
+            <h2 id="acknowledgments-title">Acknowledgments</h2>
+          </header>
+          <ul class="acknowledgments__list">
+            <li><strong>Data</strong><span>Anthony Fung and Rong Fan (Yale University), Andreas Bueckle (Indiana University)</span></li>
+            <li><strong>Story authors</strong><span>Anthony Fung (Yale University), Todd Theriault, Elizabeth Maier, and Katy Börner (Indiana University)</span></li>
+            <li>
+              <strong>Cell Distance Explorer design and implementation</strong>
+              <span>Yashvardhan Jain, Elizabeth Maier, Bruce W. Herr II, Daniel Bolin, and Edward Lu (Indiana University)</span>
+            </li>
+            <li><strong>Web design and development</strong><span>Edward Lu and Elizabeth Maier (Indiana University)</span></li>
+          </ul>
         </div>
-      </div>
+      </section>
+
+      <section class="references" aria-labelledby="references-title">
+        <div class="content">
+          <h2 class="header" id="references-title">References</h2>
+          <ol class="reference-list">
+            <li>
+              <p>
+                Bueckle, Andreas, Bruce W. Herr II, Lu Chen, Daniel Bolin, Danial Qaurooni, Michael Ginda, Yashvardhan Jain, Aleix Puig-Barbe, Kristin Ardlie,
+                Fusheng Wang, and Katy Börner. “Cell Type Populations for 3D Anatomical Structures of the Human Reference Atlas.” <em>Scientific Data</em> 13, no.
+                1 (2026): 716.
+                <a href="https://doi.org/10.1038/s41597-026-06642-4">https://doi.org/10.1038/s41597-026-06642-4</a>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Jain, Yashvardhan, Jodie Jepson, Roy Chen, Elizabeth Maier, Bruce W. Herr II, Aleix Puig-Barbe, Ellen M. Quardokus, Danial Qaurooni, Clarence Yapp,
+                Samuel L. Ewing, Archibald Enninful, Negin Farzad, Andreas Bueckle, Quinn T. Easter, Bruno Matuck, Chenchen Zhu, Emma Marie Monte, Jeffrey M.
+                Purkerson, Matthew Jehrio, Ravi S. Misra, Rong Fan, Fiona Ginty, Arivarasan Karunamurthy, Jean Fan, Martha Campbell-Thompson, Gloria S. Pryhuber,
+                Kevin M. Byrd, John W. Hickey, and Katy Börner. “Exploring Endothelial Cell Environments across Organs in Spatially Resolved Omics Data.”
+                <em>bioRxiv</em> preprint, September 25, 2025.
+                <a href="https://doi.org/10.1101/2025.09.23.678129">https://doi.org/10.1101/2025.09.23.678129</a>.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
     </div>
     </main>
 
@@ -665,7 +702,7 @@
             </picture>
           </a>
         </nav>
-        <a class="story-footer__back-to-top" href="#six">
+        <a class="story-footer__back-to-top" href="#main-content">
           <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
             <path d="M12 19V5m0 0-6 6m6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
