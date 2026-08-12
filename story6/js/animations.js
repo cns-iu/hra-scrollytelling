@@ -108,7 +108,7 @@ function setupMouseTimeline(gsap) {
  * @returns {void}
  */
 function setupCdeTutorialTimeline(gsap) {
-  gsap.set('.blurb', { autoAlpha: 0 });
+  gsap.set('.tutorial-callout', { autoAlpha: 0 });
   gsap.set('.section5 .tutorial', { autoAlpha: 0 });
   gsap.set('.section5 .tutorial1', { autoAlpha: 1 });
   gsap.set('.section5 .tutorial-images', { display: 'block' });
@@ -118,14 +118,14 @@ function setupCdeTutorialTimeline(gsap) {
   });
 
   const tutorialSteps = [
-    { blurb: '.blurb0', image: '.tutorial1' },
-    { blurb: '.blurb1', image: '.tutorial2' },
-    { blurb: '.blurb2', image: '.tutorial3' },
-    { blurb: '.blurb3', image: '.tutorial4' },
-    { blurb: '.blurb4', image: '.tutorial5' },
+    { callout: '.tutorial-callout--1', image: '.tutorial1' },
+    { callout: '.tutorial-callout--2', image: '.tutorial2' },
+    { callout: '.tutorial-callout--3', image: '.tutorial3' },
+    { callout: '.tutorial-callout--4', image: '.tutorial4' },
+    { callout: '.tutorial-callout--5', image: '.tutorial5' },
   ];
 
-  tutorialSteps.forEach(({ blurb, image }, index) => {
+  tutorialSteps.forEach(({ callout, image }, index) => {
     if (index === 1) {
       timeline
         .to(tutorialSteps[index - 1].image, { autoAlpha: 0, duration: 0.18, ease: 'power1.inOut' })
@@ -135,15 +135,15 @@ function setupCdeTutorialTimeline(gsap) {
     }
 
     timeline
-      .fromTo(blurb, { autoAlpha: 0, y: 8, scale: 0.985 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.18, ease: 'power2.out' })
+      .fromTo(callout, { autoAlpha: 0, y: 8, scale: 0.985 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.18, ease: 'power2.out' })
       .fromTo(
-        `${blurb} .blurb__icon`,
+        `${callout} .tutorial-callout__icon`,
         { autoAlpha: 0, scale: 0.9 },
         { autoAlpha: 1, scale: 1, duration: 0.14, ease: 'power2.out' },
         '<0.04',
       )
-      .to(blurb, { autoAlpha: 1, duration: 0.68, ease: 'none' })
-      .to(blurb, { autoAlpha: 0, y: -6, scale: 0.995, duration: 0.16, ease: 'power1.in' });
+      .to(callout, { autoAlpha: 1, duration: 0.68, ease: 'none' })
+      .to(callout, { autoAlpha: 0, y: -6, scale: 0.995, duration: 0.16, ease: 'power1.in' });
   });
 }
 
