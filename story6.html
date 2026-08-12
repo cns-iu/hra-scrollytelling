@@ -1,12 +1,36 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>6: SenNet: Pan-organ immunosenescence mouse atlas</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta
+      name="description"
+      content="Explore how immune cells change with age through a pan-organ mouse atlas, tissue comparisons, and the interactive HRA Cell Distance Explorer."
+    />
+    <script>
+      const story6NavigationEntry = performance.getEntriesByType('navigation')[0];
+
+      if (story6NavigationEntry?.type === 'reload') {
+        window.history.scrollRestoration = 'manual';
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+        window.addEventListener(
+          'pageshow',
+          () => {
+            window.requestAnimationFrame(() => {
+              window.requestAnimationFrame(() => {
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                window.history.scrollRestoration = 'auto';
+              });
+            });
+          },
+          { once: true },
+        );
+      }
+    </script>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="story6.style.css" />
+    <link rel="stylesheet" href="story6/story6.style.css" />
     <link rel="icon" type="image/x-icon" href="img/favicon.svg" />
 
     <!-- Google tag (gtag.js) -->
@@ -23,52 +47,63 @@
       gtag('config', 'G-E1811WRJJD');
     </script>
 
-    <link href="https://cdn.humanatlas.io/ui/cde-visualization-wc/styles.css" rel="stylesheet" />
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   </head>
 
   <body id="six">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <!-- section top  -->
-    <section class="scrollynav">
-      <a href="index.html"><img draggable="false" src="img/UI Assets/navlogo.svg" class="navlogo" /></a>
+    <nav class="scrollynav" aria-label="Story navigation">
+      <a href="index.html"><img draggable="false" src="img/UI Assets/navlogo.svg" class="navlogo" alt="Human Reference Atlas stories home" /></a>
 
       <div class="dropdown">
-        <button class="dropbtn">
-          <img draggable="false" src="img/UI Assets/navhamburger.svg" class="navmenu" />
-          <i class="fa fa-caret-down"></i>
+        <button class="dropbtn" type="button" aria-label="Open story navigation" aria-expanded="false" aria-controls="story-navigation-menu">
+          <img draggable="false" src="img/UI Assets/navhamburger.svg" class="navmenu" alt="" />
         </button>
-        <div class="dropdown-content">
-          <a href="story1.html"><img src="img/UI Assets/count1.svg" style="vertical-align: middle" />&nbsp;&nbsp;What Is An HRA?</a>
-          <a href="story2.html"><img src="img/UI Assets/count2.svg" style="vertical-align: middle" />&nbsp;&nbsp;Squiggy's Identity Crisis!</a>
-          <a href="story3.html"><img src="img/UI Assets/count3.svg" style="vertical-align: middle" />&nbsp;&nbsp;Something's NOT Registering!</a>
-          <a href="story4.html"><img src="img/UI Assets/count4.svg" style="vertical-align: middle" />&nbsp;&nbsp;Data Detangle</a>
-          <a href="story5.html"><img src="img/UI Assets/count5.svg" style="vertical-align: middle" />&nbsp;&nbsp;Know Your Body Buddies</a>
-          <a href="story6.html"><img src="img/UI Assets/count6.svg" style="vertical-align: middle" />&nbsp;&nbsp;Immunosenescence</a>
+        <div class="dropdown-content" id="story-navigation-menu">
+          <a href="story1.html"><img src="img/UI Assets/count1.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;What Is An HRA?</a>
+          <a href="story2.html"><img src="img/UI Assets/count2.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Squiggy's Identity Crisis!</a>
+          <a href="story3.html"><img src="img/UI Assets/count3.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Something's NOT Registering!</a>
+          <a href="story4.html"><img src="img/UI Assets/count4.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Data Detangle</a>
+          <a href="story5.html"><img src="img/UI Assets/count5.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Know Your Body Buddies</a>
+          <a href="story6.html" aria-current="page"><img src="img/UI Assets/count6.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Immunosenescence</a>
           <hr />
-          <a href="https://humanatlas.io/" target="_blank"
-            ><img src="img/UI Assets/nav_logo.svg" style="vertical-align: middle" />&nbsp;&nbsp;Human Reference Atlas</a
+          <a href="https://humanatlas.io/" target="_blank" rel="noopener noreferrer"
+            ><img src="img/UI Assets/nav_logo.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Human Reference Atlas</a
           >
-          <a href="https://apps.humanatlas.io/" target="_blank"
-            ><img src="img/UI Assets/nav_apps.svg" style="vertical-align: middle" />&nbsp;&nbsp;App Library</a
+          <a href="https://apps.humanatlas.io/" target="_blank" rel="noopener noreferrer"
+            ><img src="img/UI Assets/nav_apps.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;App Library</a
           >
         </div>
       </div>
-    </section>
+    </nav>
 
-    <section class="page-header">
-      <img class="splash-image" src="img/story6-doc/splash-bg.png" />
-      <div class="title-card">
-        <div class="top">
-          <img class="sennet-logo" src="img/story6-doc/SenNet-logo.svg" />
-          <div class="title">
-            <div class="main">Pan-organ immunosenescence atlas</div>
-            <div class="subtitle">A story about how cells change over time</div>
-          </div>
-        </div>
-        <div class="bottom">Cyberinfrastructure for Network Science Center at Indiana University and Fan Lab at Yale University</div>
+    <aside class="screen-size-notice" aria-label="Screen size notice">
+      <div class="text">
+        <p><strong>Heads up:</strong> This webpage is best viewed at a resolution of 1440x900 or higher.</p>
+        <p>Features may not function as intended on smaller screen sizes.</p>
       </div>
-      <div class="textbox-transition1">What is immunosenescence?</div>
-    </section>
+      <button class="screen-size-notice__close" type="button" aria-label="Close screen size notice">Close</button>
+    </aside>
+    <script src="story6/js/notice.js"></script>
+
+    <main id="main-content" tabindex="-1">
+      <header class="page-header">
+        <img class="splash-image" src="story6/img/splash-bg.webp" alt="" fetchpriority="high" />
+        <div class="title-card">
+          <div class="title">
+            <h1 class="main">Pan-organ Immunosenescence Atlas</h1>
+            <p class="subtitle">A story about how cells change over time</p>
+          </div>
+          <p class="bottom">
+            Created by <a href="https://www.fan-lab.org">Fan Lab</a> at Yale University and the
+            <a href="https://cns.iu.edu">Cyberinfrastructure for Network Science Center</a> at Indiana University
+          </p>
+        </div>
+        <h2 class="textbox-transition1">
+          What is <span class="transition-emphasis">immunosenescence</span>?
+        </h2>
+      </header>
 
     <!-- section header/intro -->
     <div class="intro" id="intro">
@@ -80,14 +115,27 @@
           controlling malignancies, and maintaining immune tolerance. This age-related deficiency in immune system function is called
           <strong>immunosenescence</strong>.
         </p>
-        <img src="img/story6-doc/immune_cells.png" />
+        <img
+          class="story-illustration story-illustration--from-left"
+          src="story6/img/immune_cells.webp"
+          alt="Illustrations of immune cells with a variety of shapes and internal structures"
+          width="1920"
+          height="1336"
+        />
         <p>
           A key contributor to the immune system’s deterioration is cell senescence. This occurs when stress or damage to the cell causes it to exit the cell
           cycle. In this state of cell cycle arrest, the cell stops dividing but remains metabolically active. The senescent cell secretes a combination of
           bioactive molecules known as SASP—the senescence-associated secretory phenotype. This occurs when stress or damage to the cell causes it to exit the
           cell cycle.
         </p>
-        <img src="img/story6-doc/image 220.png" />
+        <figure class="story-illustration story-illustration--from-right image-card">
+          <img
+            src="story6/img/cell-senescence-transition.webp"
+            alt="Stress or damage changes a normal cell into a senescent cell that secretes molecules associated with inflammation"
+            width="1250"
+            height="703"
+          />
+        </figure>
         <p>
           In this state of cell cycle arrest, the cell stops dividing but remains metabolically active. The senescent cell secretes a combination of bioactive
           molecules known as SASP—the senescence-associated secretory phenotype. Cell senescence has some very important benefits for our health. It aids in
@@ -97,12 +145,13 @@
     </div>
 
     <section class="section2">
+      <h2 class="visually-hidden">How senescent cells accumulate throughout the body</h2>
       <div class="fadeimage">
         <div class="body-image picture1">
-          <img class="body-outline" src="img/2-bodyintro1.png" />
+          <img class="body-outline" src="story6/img/2-bodyintro1.webp" alt="" />
         </div>
         <div class="body-image picture2">
-          <img class="body-outline" src="img/2-bodyintro2.png" />
+          <img class="body-outline" src="story6/img/2-bodyintro2.webp" alt="" />
         </div>
       </div>
       <div id="showpicture2"></div>
@@ -122,7 +171,13 @@
             could improve our quality of life as we age.
           </p>
         </div>
-        <img src="img/story6-doc/image 221.png" />
+        <img
+          class="story-illustration story-illustration--from-left"
+          src="story6/img/cell-changes.webp"
+          alt="Comparison of a normal cell and a senescent cell, whose changes include cell-cycle arrest, secretions, enlarged shape, organelle dysfunction, and molecular damage"
+          width="1880"
+          height="1194"
+        />
         <div>
           <p>
             Researchers in the field of senescence biology work to identify the many varieties of senescent cells, locate where they reside in the body, and
@@ -137,7 +192,13 @@
             there is no single “immune cell” with one particular function.
           </p>
         </div>
-        <img src="img/story6-doc/cells.png" />
+        <img
+          class="story-illustration story-illustration--from-right"
+          src="story6/img/cells.webp"
+          alt="Examples of immune-related cell types: basophil, natural killer cell, B cell, plasma cell, T cell, neutrophil, dendritic cell, mast cell, eosinophil, endothelial cell, macrophage, and fibroblast"
+          width="1232"
+          height="964"
+        />
         <p>
           Instead, there are many cell types with different structures and roles. Different immune cell types exhibit different senescence patterns/features.
           Senescence can be difficult to detect in immune cells since some of the recognized markers of senescence are part of the normal functioning of many
@@ -147,15 +208,25 @@
       </div>
     </div>
 
-    <section class="transition transition1" style="background-image: url('img/story6-doc/transition1.png')">
-      <div class="textbox-transition">
-        To study how senescent cells behave in a living organism, scientists often conduct their research using samples from <span>laboratory mice</span>.
-      </div>
+    <section class="transition transition1">
+      <picture class="transition__picture">
+        <source
+          type="image/webp"
+          srcset="story6/img/transition1-960.webp 960w, story6/img/transition1-1920.webp 1920w, story6/img/transition1-3840.webp 3840w"
+          sizes="100vw"
+        />
+        <img class="transition__background" src="story6/img/transition1-1920.webp" alt="" loading="lazy" decoding="async" />
+      </picture>
+      <div class="transition__overlay" aria-hidden="true"></div>
+      <h2 class="textbox-transition textbox-transition--statement">
+        To study how senescent cells behave in a living organism, scientists often conduct their research using samples from
+        <span class="transition-emphasis">laboratory mice</span>.
+      </h2>
     </section>
 
     <section class="section3">
+      <h2 class="visually-hidden">Mouse anatomy used in senescence research</h2>
       <div class="scene5-1">
-        <!-- <model-viewer class="mouse all" src="img/story6-doc/mouse/mouse-organs-highlighted.glb" ar camera-controls touch-action="pan-y"></model-viewer> -->
         <div class="mouse">
           <div class="info-text">
             <p>Mice have long been prized by medical researchers due to the many biological and genetic features they share with humans.</p>
@@ -163,26 +234,27 @@
               They are valuable to senescence research because their short lifespans allow scientists to observe the mechanics of aging over the space of months
               rather than decades.
             </p>
+            <p>This 3D mouse model shows the thymus, liver, spleen, and pancreas.</p>
             <p class="scroll-instruction">Keep scrolling to explore mouse anatomy.</p>
           </div>
-          <div class="mouse-image">
+          <div class="mouse-image" aria-hidden="true">
             <div class="all">
-              <img src="img/story6-doc/mouse.png" />
+              <img src="story6/img/mouse.png" alt="" />
             </div>
             <div class="thymus">
-              <img src="img/story6-doc/mouse_thymus.png" />
+              <img src="story6/img/mouse_thymus.png" alt="" />
               <div class="label">Thymus</div>
             </div>
             <div class="liver">
-              <img src="img/story6-doc/mouse_liver.png" />
+              <img src="story6/img/mouse_liver.png" alt="" />
               <div class="label">Liver</div>
             </div>
             <div class="spleen">
-              <img src="img/story6-doc/mouse_spleen.png" />
+              <img src="story6/img/mouse_spleen.png" alt="" />
               <div class="label">Spleen</div>
             </div>
             <div class="pancreas">
-              <img src="img/story6-doc/mouse_pancreas.png" />
+              <img src="story6/img/mouse_pancreas.png" alt="" />
               <div class="label">Pancreas</div>
             </div>
           </div>
@@ -193,53 +265,208 @@
     <div class="setup">
       <div class="setup-text">
         <p>
-          The Cellular Senescence Network (SenNet) Program is one such effort that seeks to identify and characterize the differences in senescent cells across
+          The <strong>Cellular Senescence Network (SenNet) Program</strong> is one such effort that seeks to identify and characterize the differences in senescent cells across
           the body, across various states of human health, and across the lifespan. They are creating atlases of senescent cells, the differences among them,
           and the molecules they secrete, using data collected from multiple human and model organism tissues.
         </p>
-        <p>SenNet is teaming with the Human Reference Atlas (HRA) to study the possibility that senescent cells may alter their tissue microenvironments.</p>
+        <p>SenNet is teaming with the <strong>Human Reference Atlas (HRA)</strong> to study the possibility that senescent cells may alter their tissue microenvironments.</p>
       </div>
     </div>
 
-    <section class="transition transition2" style="background-image: url('img/story6-doc/transition2.png')">
-      <div class="textbox-transition">What does it look like to visualize the changes in mouse cells over time?</div>
+    <section class="transition transition2">
+      <picture class="transition__picture">
+        <source
+          type="image/webp"
+          srcset="story6/img/transition2-960.webp 960w, story6/img/transition2-1920.webp 1920w, story6/img/transition2-3840.webp 3840w"
+          sizes="100vw"
+        />
+        <img class="transition__background" src="story6/img/transition2-1920.webp" alt="" loading="lazy" decoding="async" />
+      </picture>
+      <div class="transition__overlay" aria-hidden="true"></div>
+      <h2 class="textbox-transition">
+        What <span class="transition-emphasis">changes</span> can we see between young, aged, and treated tissue?
+      </h2>
     </section>
 
-    <div class="setup setup2">
-      <div class="setup-text">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </div>
-    </div>
+    <section class="section4" aria-labelledby="tissue-comparison-title">
+      <div class="tissue-comparison">
+        <header class="tissue-comparison__intro">
+          <p class="tissue-comparison__eyebrow">Cell sample comparison</p>
+          <h2 id="tissue-comparison-title">Compare tissue across three organs</h2>
+          <p>
+            Researchers collected tissue from young mice, aged mice, and aged mice treated with dasatinib and quercetin (D&amp;Q), drugs that target senescent
+            cells.
+          </p>
+          <p>In this comparison, young mice were 2 months old. Aged mice were 24 months old, including those treated with D&amp;Q.</p>
+          <p>
+            By mapping individual cells within liver, spleen, and thymus samples, researchers can compare how cellular patterns change with age—and whether
+            those patterns change after treatment.
+          </p>
+          <p>
+            Each color represents a cell population. Compare where those populations appear, how densely they cluster, and which populations share the same
+            neighborhoods across the three conditions.
+          </p>
+        </header>
 
-    <section class="section4">
-      <div class="section4-images">
-        <div class="young">
-          Young mouse cells
-          <img src="img/story6-doc/young.png" />
+        <div class="organ-comparisons">
+          <figure class="organ-comparison">
+            <figcaption>
+              <span class="organ-comparison__number" aria-hidden="true">01</span>
+              <h3>Liver</h3>
+            </figcaption>
+            <ol class="tissue-samples">
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Young</p>
+                <img
+                  src="story6/img/liver-young.png"
+                  alt="Cell population map of liver tissue from a young mouse, showing a rounded section divided by a large white channel"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Aged</p>
+                <img
+                  src="story6/img/liver-aged.png"
+                  alt="Cell population map of liver tissue from an aged mouse, showing a rounded section dominated by peach and brown regions"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Aged + D&amp;Q</p>
+                <img
+                  src="story6/img/liver-aged-dq.png"
+                  alt="Cell population map of D and Q-treated liver tissue from an aged mouse, showing peach and pale blue regions around an open center"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+            </ol>
+          </figure>
+
+          <figure class="organ-comparison">
+            <figcaption>
+              <span class="organ-comparison__number" aria-hidden="true">02</span>
+              <h3>Spleen</h3>
+            </figcaption>
+            <ol class="tissue-samples">
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Young</p>
+                <img
+                  src="story6/img/spleen-young.png"
+                  alt="Cell population map of spleen tissue from a young mouse, showing light blue clusters and a dark blue and pink region"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Aged</p>
+                <img
+                  src="story6/img/spleen-aged.png"
+                  alt="Cell population map of spleen tissue from an aged mouse, showing multiple blue clusters surrounded by pink regions"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Aged + D&amp;Q</p>
+                <img
+                  src="story6/img/spleen-aged-dq.png"
+                  alt="Cell population map of D and Q-treated spleen tissue from an aged mouse, showing blue clusters with green centers among pale pink regions"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+            </ol>
+          </figure>
+
+          <figure class="organ-comparison">
+            <figcaption>
+              <span class="organ-comparison__number" aria-hidden="true">03</span>
+              <h3>Thymus</h3>
+            </figcaption>
+            <ol class="tissue-samples">
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Young</p>
+                <img
+                  src="story6/img/thymus-young.png"
+                  alt="Cell population map of thymus tissue from a young mouse, showing broad pale blue, green, yellow, and orange regions"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Aged</p>
+                <img
+                  src="story6/img/thymus-aged.png"
+                  alt="Cell population map of thymus tissue from an aged mouse, showing a narrow curved section with turquoise, dark blue, brown, and pink regions"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="tissue-sample">
+                <p class="tissue-sample__condition">Aged + D&amp;Q</p>
+                <img
+                  src="story6/img/thymus-aged-dq.png"
+                  alt="Cell population map of D and Q-treated thymus tissue from an aged mouse, showing a broad yellow and peach center bordered by turquoise and pink"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+            </ol>
+          </figure>
         </div>
-        <div class="old">
-          Old mouse cells
-          <img src="img/story6-doc/old.png" />
-        </div>
+
+        <aside class="tissue-comparison__takeaway" aria-labelledby="tissue-takeaway-title">
+          <p class="tissue-comparison__takeaway-label">Observed pattern</p>
+          <h3 id="tissue-takeaway-title">What can we see?</h3>
+          <p>
+            Across the liver, spleen, and thymus, the colored cell populations differ in their distribution, clustering, and neighboring populations. These
+            patterns also vary by organ, which is why each condition is compared within the same tissue.
+          </p>
+        </aside>
       </div>
     </section>
 
-    <div class="setup setup2">
-      <div class="setup-text">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </div>
-    </div>
-
-    <section class="transition transition3" style="background-image: url('img/story6-doc/transition3.png')">
-      <div class="textbox-transition">What software exists to visualize cell differences over time?</div>
+    <section class="transition transition3">
+      <picture class="transition__picture">
+        <source
+          type="image/webp"
+          srcset="story6/img/transition3-960.webp 960w, story6/img/transition3-1920.webp 1920w, story6/img/transition3-3840.webp 3840w"
+          sizes="100vw"
+        />
+        <img
+          class="transition__background"
+          src="story6/img/transition3-1920.webp"
+          alt=""
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
+      <div class="transition__overlay" aria-hidden="true"></div>
+      <h2 class="textbox-transition">
+        What software exists to visualize <span class="transition-emphasis">cell differences over time</span>?
+      </h2>
     </section>
 
     <div class="setup setup3">
@@ -255,131 +482,151 @@
       </div>
     </div>
 
-    <section class="section5">
-      <div class="cde">
-        <div class="cde-header">Use the Cell Distance Explorer to interact with visualizations of a young mouse dataset.</div>
-        <div class="tutorial-images">
-          <img class="tutorial tutorial1" src="img/story6-doc/tutorial1.png" />
-          <img class="tutorial tutorial2" src="img/story6-doc/tutorial2.png" />
-          <img class="tutorial tutorial3" src="img/story6-doc/tutorial3.png" />
-          <img class="tutorial tutorial4" src="img/story6-doc/tutorial4.png" />
-          <img class="tutorial tutorial5" src="img/story6-doc/tutorial5.png" />
+    <section class="section5" aria-label="Cell Distance Explorer tutorial">
+      <div class="cde-tutorial-stage">
+        <div class="cde-tutorial-visual">
+          <div class="tutorial-images" aria-hidden="true">
+            <img class="tutorial tutorial1" src="story6/img/tutorial1.png" alt="" width="2640" height="1522" />
+            <img class="tutorial tutorial2" src="story6/img/tutorial2.png" alt="" width="2640" height="1520" />
+            <img class="tutorial tutorial3" src="story6/img/tutorial3.png" alt="" width="2640" height="1520" />
+            <img class="tutorial tutorial4" src="story6/img/tutorial4.png" alt="" width="2640" height="1520" />
+            <img class="tutorial tutorial5" src="story6/img/tutorial5.png" alt="" width="2640" height="1520" />
+          </div>
         </div>
-
-        <button class="cde-placeholder">
-          <img src="img/story6-doc/CDE-Placeholder.png" />
-        </button>
-        <template class="mouse-young">
-          <cde-visualization
-            nodes="https://cns-iu.github.io/hra-scrollytelling/story6_data/senm-young.nodes.csv"
-            edges="https://cns-iu.github.io/hra-scrollytelling/story6_data/senm-young.edges.csv"
-          ></cde-visualization>
-        </template>
-      </div>
-      <div class="blurb blurb1">
-        Show/hide cell types in the visualization and plots. Hide cell links from this table view. Update colors for individual cell types. Download CSVs for
-        the current configurations of cell types, cell links, and cell type color map formatting.
-      </div>
-      <div class="blurb blurb2">
-        Use the Visualization panel to navigate the cells spatially:
-        <ul>
-          <li>Zoom in and out with the mouse pinwheel or pinch using the trackpad</li>
-          <li>Pan using CTRL/CMD + mouse drag, right click + mouse drag, or use the keyboard arrows</li>
-          <li>Rotate the visualization using CTRL/CMD + keyboard arrows or with a mouse drag</li>
-        </ul>
-      </div>
-      <div class="blurb blurb3">This violin plot shows a cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.</div>
-      <div class="blurb blurb4">
-        This histogram plot shows the cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
-      </div>
-    </section>
-
-    <section class="transition transition4" style="background-image: url('img/story6-doc/transition4.png')">
-      <div class="textbox-transition">How does old mouse cell data appear in the Cell Distance Explorer?</div>
-    </section>
-
-    <section class="section6">
-      <div class="cde">
-        <div class="cde-header">Explore old mouse data in the Cell Distance Explorer.</div>
-        <button class="cde-placeholder">
-          <img src="img/story6-doc/CDE-Placeholder.png" />
-        </button>
-        <template class="mouse-old">
-          <cde-visualization
-            nodes="https://cns-iu.github.io/hra-scrollytelling/story6_data/senm-old.nodes.csv"
-            edges="https://cns-iu.github.io/hra-scrollytelling/story6_data/senm-old.edges.csv"
-          ></cde-visualization>
-        </template>
-      </div>
-      <div class="blurb">There is strong external evidence that immune senescence is implicated in tissue reorganization.</div>
-      <div class="blurb">
-        Thus, monitoring the effects of senescence on the surrounding tissue, evaluating them, and treating them could vastly improve our health.
+        <ol class="cde-tutorial-steps" aria-label="Cell Distance Explorer tutorial steps">
+          <li class="blurb blurb0">
+            <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <div class="blurb__content">Let’s get familiar with the Cell Distance Explorer app.</div>
+          </li>
+          <li class="blurb blurb1">
+            <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <div class="blurb__content">
+              Show/hide cell types in the visualization and plots. Hide cell links from this table view. Update colors for individual cell types. Download CSVs
+              for the current configurations of cell types, cell links, and cell type color map formatting.
+            </div>
+          </li>
+          <li class="blurb blurb2">
+            <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <div class="blurb__content">
+              Use the Visualization panel to navigate the cells spatially:
+              <ul>
+                <li>Zoom in and out with the mouse pinwheel or pinch using the trackpad</li>
+                <li>Pan using CTRL/CMD + mouse drag, right click + mouse drag, or use the keyboard arrows</li>
+                <li>Rotate the visualization using CTRL/CMD + keyboard arrows or with a mouse drag</li>
+              </ul>
+            </div>
+          </li>
+          <li class="blurb blurb3">
+            <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <div class="blurb__content">
+              This violin plot shows a cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
+            </div>
+          </li>
+          <li class="blurb blurb4">
+            <img class="blurb__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <div class="blurb__content">
+              This histogram plot shows the cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <section class="transition transition5" style="background-image: url('img/story6-doc/transition5.png')">
-      <div class="textbox-transition">
+    <section class="transition transition5">
+      <picture class="transition__picture">
+        <source
+          type="image/webp"
+          srcset="story6/img/transition5-960.webp 960w, story6/img/transition5-1920.webp 1920w, story6/img/transition5-3840.webp 3840w"
+          sizes="100vw"
+        />
+        <img class="transition__background" src="story6/img/transition5-1920.webp" alt="" loading="lazy" decoding="async" />
+      </picture>
+      <div class="transition__overlay" aria-hidden="true"></div>
+      <h2 class="textbox-transition textbox-transition--statement">
         There is strong external evidence that immune senescence is implicated in tissue reorganization. Thus, monitoring the effects of senescence on the
-        surrounding tissue, evaluating them, and treating them could vastly improve our health.
-      </div>
+        surrounding tissue, evaluating them, and treating them <span class="transition-emphasis">could vastly improve our health</span>.
+      </h2>
     </section>
 
     <div class="end">
       <div class="more-info">
         <div class="content">
+          <h2 class="visually-hidden">Learn more</h2>
           <div class="info-text">
-            For more information, check out additional data in the <a href="https://data.sennetconsortium.org/" target="_blank">SenNet Data Portal</a>, explore
-            the evolving Human Reference Atlas via the <a href="https://humanatlas.io/" target="_blank">HRA Portal</a>, or connect with senescence experts via
-            the <a href="https://sennetconsortium.org/" target="_blank">SenNet Community Portal</a>.
+            For more information, check out additional data in the
+            <a href="https://data.sennetconsortium.org/" target="_blank" rel="noopener noreferrer">SenNet Data Portal</a>, explore the evolving Human Reference
+            Atlas via the <a href="https://humanatlas.io/" target="_blank" rel="noopener noreferrer">HRA Portal</a>, or connect with senescence experts via the
+            <a href="https://sennetconsortium.org/" target="_blank" rel="noopener noreferrer">SenNet Community Portal</a>.
           </div>
 
           <div class="logos">
-            <img src="img/story6-doc/hra.png" />
-            <img src="img/story6-doc/SenNet-logo.svg" />
+            <a
+              class="more-info__logo-link"
+              href="https://humanatlas.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the Human Reference Atlas website (opens in a new tab)"
+            >
+              <img class="more-info__logo more-info__logo--hra" src="assets/hra-light-large.svg" alt="Human Reference Atlas" />
+            </a>
+            <a
+              class="more-info__logo-link"
+              href="https://sennetconsortium.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the Cellular Senescence Network website (opens in a new tab)"
+            >
+              <img
+                class="more-info__logo more-info__logo--sennet"
+                src="assets/sennet-logo-light.svg"
+                alt="Cellular Senescence Network"
+                width="176"
+                height="44"
+              />
+            </a>
           </div>
         </div>
       </div>
-      <div class="acknowledgements">
+      <div class="acknowledgments">
         <div class="content">
-          <div class="header">Acknowledgements</div>
+          <h2 class="header">Acknowledgments</h2>
           <ul>
-            <li>Story authors: Todd Theriault (Indiana University), Anthony Fung (Yale University), and Katy Börner (Indiana University)</li>
-            <li>Data: Anthony Fung (Yale University), Rong Fan (Yale University), and Andreas Bueckle (Indiana University)</li>
-            <li>Cell Distance Explorer app design: Yashvardhan Jain, Elizabeth Maier, Bruce W. Herr II, Daniel Bolin, and Edward Lu (Indiana University)</li>
-            <li>
-              Cell Distance Explorer app implementation: Yashvardhan Jain, Elizabeth Maier, Bruce W. Herr II, Daniel Bolin, and Edward Lu (Indiana University)
-            </li>
-            <li>Webpage design and animations: Edward Lu and Elizabeth Maier (Indiana University)</li>
-            <li>Webpage development and implementation: Edward Lu (Indiana University)</li>
+            <li>Data: Anthony Fung and Rong Fan (Yale University), Andreas Bueckle (Indiana University)</li>
+            <li>Story authors: Anthony Fung (Yale University), Todd Theriault, Elizabeth Maier, and Katy Börner (Indiana University)</li>
+            <li>Cell Distance Explorer app design and implementation: Yashvardhan Jain, Elizabeth Maier, Bruce W. Herr II, Daniel Bolin, and Edward Lu (Indiana University)</li>
+            <li>Webpage design, development, and implementation: Edward Lu and Elizabeth Maier (Indiana University)</li>
           </ul>
         </div>
       </div>
 
       <div class="references">
         <div class="content">
-          <div class="header">References</div>
+          <h2 class="header">References</h2>
           <div>
             <p>
               Andreas Bueckle, Bruce W. Herr II, Lu Chen, Daniel Bolin, Danial Qaurooni, Michael Ginda, Yashvardhan Jain, Aleix Puig-Barbe, Kristin Ardlie,
-              Fusheng Wang, and Katy Börner. 2026. “Cell Type Populations for 3D Anatomical Structures of the Human Reference Atlas.” Nature Scientific Data,
-              2026, March 19. doi.org/10.1038/s41597-026-06642-4.
+              Fusheng Wang, and Katy Börner. 2026.
+              <a href="https://doi.org/10.1038/s41597-026-06642-4">“Cell Type Populations for 3D Anatomical Structures of the Human Reference Atlas.”</a>
+              <em>Nature Scientific Data</em>, 2026, March 19.
             </p>
             <p>
               Yashvardhan Jain, Jodie Jepson, Roy Chen, Elizabeth Maier, Bruce W. Herr II, Aleix Puig-Barbe, Ellen M Quardokus, Danial Qaurooni, Clarence Yapp,
               Samuel L. Ewing, Archibald Enninful, Negin Farzad, Andreas Bueckle, Quinn T. Easter, Bruno Matuck, Chenchen Zhu, Emma Marie Monte, Jeffrey
               Purkerson, Matthew Jehrio, Ravi Misra, Rong Fan, Fiona Ginty, Arivarasan Karunamurthy, Jean Fan, Martha Campbell-Thompson, Gloria S. Pryhuber,
-              Kevin M. Byrd, John W. Hickey, and Katy Börner. 2025. “Exploring endothelial cell environments across organs in spatially resolved omics data.” In
-              bioRxiv. September 25. doi.org/10.1101/2025.09.23.678129.
+              Kevin M. Byrd, John W. Hickey, and Katy Börner. 2025.
+              <a href="https://doi.org/10.1101/2025.09.23.678129">“Exploring endothelial cell environments across organs in spatially resolved omics data.”</a>
+              In <em>bioRxiv</em>. September 25.
             </p>
           </div>
         </div>
       </div>
     </div>
+    </main>
 
     <div class="sceneEnd" id="scrollto11">
       <!-- BotNav -->
       <div style="background-color: white !important">
-        <div class="botNav">
+        <nav class="botNav" aria-label="Story pagination">
           <a href="story5.html" class="previous"
             ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16">
               <path
@@ -396,336 +643,34 @@
                     <path fill-rule="evenodd"
                         d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                 </svg></a> -->
-        </div>
+        </nav>
       </div>
-      <div class="hrafooter">
-        <div class="leftsidefooter">
-          <img src="img/UI Assets/logo.svg" height="102px" width="246px" />
-          <div class="footercopyright">
-            <a href="https://humanatlas.io/" target="_blank"><img src="img/UI Assets/copyrightsymbol.svg" /></a>
-            2024 CNS at Indiana University
-          </div>
-        </div>
-        <div class="rightsidefooter">
-          <div class="centeritems">
-            <div class="footerlogocenter">
-              <div class="footerlogos">
-                <a href="https://twitter.com/cnscenter" target="_blank"><img src="img/UI Assets/social media.svg" /></a>
-                <a href="https://www.facebook.com/cnscenter/" target="_blank"><img src="img/UI Assets/social media-1.svg" /></a>
-                <a href="https://www.instagram.com/cns_at_iu/" target="_blank"><img src="img/UI Assets/social media-2.svg" /></a>
-                <a href="https://www.youtube.com/@CNSCenter/" target="_blank"><img src="img/UI Assets/social media-3.svg" /></a>
-                <a href="https://www.linkedin.com/company/cns-indiana-university-bloomington" target="_blank"><img src="img/UI Assets/social media-4.svg" /></a>
-                <a href="https://twitter.com/cnscenter" target="_blank"><img src="img/UI Assets/social media-5.svg" /></a>
-              </div>
-              <div class="footerfounders">
-                <p>Funded By:</p>
-                <div class="founderlogos">
-                  <a href="https://www.nih.gov/" target="_blank"><img src="img/UI Assets/icon_ funder.svg" /></a>
-                  <a href="https://cifar.ca/" target="_blank"><img src="img/UI Assets/icon_ funder-1.svg" /></a>
-                  <a href="https://www.iu.edu/index.html" target="_blank"><img src="img/UI Assets/icon_ funder-2.svg" /></a>
-                </div>
-              </div>
-            </div>
-            <div class="medicaldisclaimer">
-              Medical Disclaimer: This resource is intended for research purposes only. It should not be used for emergencies or medical or professional advice.
-            </div>
-          </div>
-        </div>
-      </div>
+      <footer class="story-footer">
+        <nav class="story-footer__logos" aria-label="Organizations">
+          <a class="story-footer__logo-link" href="https://humanatlas.io/" aria-label="Human Reference Atlas">
+            <picture>
+              <source srcset="assets/hra-dark-large.svg" media="(prefers-color-scheme: dark)" />
+              <img src="assets/hra-light-large.svg" alt="" width="148" height="63" />
+            </picture>
+          </a>
+          <a class="story-footer__logo-link" href="https://cns.iu.edu/" aria-label="Cyberinfrastructure for Network Science Center">
+            <picture>
+              <source srcset="assets/cns-dark-long.svg" media="(prefers-color-scheme: dark)" />
+              <img src="assets/cns-light-long.svg" alt="" width="239" height="40" />
+            </picture>
+          </a>
+        </nav>
+        <a class="story-footer__back-to-top" href="#six">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
+            <path d="M12 19V5m0 0-6 6m6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Back to top
+        </a>
+        <p class="story-footer__copyright">© 2026 Cyberinfrastructure for Network Science Center</p>
+      </footer>
     </div>
-
-    <div class="screen-size-notice" aria-label="Screen size notice">
-      <div class="text">
-        <p>This webpage is best viewed at a resolution of 1440x900 or higher.</p>
-        <p>Features may not function as intended on smaller screen sizes.</p>
-      </div>
-      <button class="screen-size-notice__close" type="button" aria-label="Close screen size notice">Close</button>
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+    <script type="module" src="story6/story6.js"></script>
   </body>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/MotionPathPlugin.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
-
-  <script src="scripts.js"></script>
-
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-
-    const screenSizeNotice = document.querySelector('.screen-size-notice');
-    const screenSizeNoticeClose = document.querySelector('.screen-size-notice__close');
-
-    screenSizeNoticeClose.addEventListener('click', () => {
-      screenSizeNotice.hidden = true;
-    });
-
-    let cdeModulePromise;
-
-    function loadCdeModule() {
-      cdeModulePromise ??= import('https://cdn.humanatlas.io/ui/cde-visualization-wc/wc.js').then(() => customElements.whenDefined('cde-visualization'));
-
-      return cdeModulePromise;
-    }
-
-    async function renderCdeTemplate(container, templateSelector, placeholder) {
-      const template = container.querySelector(templateSelector);
-
-      if (!template || container.querySelector('cde-visualization')) {
-        return;
-      }
-
-      await loadCdeModule();
-      container.append(template.content.cloneNode(true));
-
-      if (placeholder) {
-        placeholder.remove();
-      }
-    }
-
-    gsap.set('.textbox-transition1', { autoAlpha: 0 });
-
-    gsap
-      .timeline({
-        defaults: { ease: 'none' },
-        scrollTrigger: {
-          trigger: '.page-header',
-          start: 'top 72px',
-          end: '+=325%',
-          pin: true,
-          scrub: true,
-          invalidateOnRefresh: true,
-        },
-      })
-      // Keep the splash fully visible for one viewport of scrolling.
-      .to('.splash-image', { autoAlpha: 1, duration: 1 })
-      .addLabel('headerTransition')
-      // Replace the title card as the splash fades during the following viewport.
-      .to('.splash-image', { autoAlpha: 0.25, duration: 1 }, 'headerTransition')
-      .to('.title-card', { y: () => -window.innerHeight, duration: 1 }, 'headerTransition')
-      // Wait until the title is fully off-screen before revealing the replacement.
-      .to('.textbox-transition1', { autoAlpha: 1, duration: 0.25 })
-      // Hold the replacement fully visible for one viewport of scrolling.
-      .to('.textbox-transition1', { autoAlpha: 1, duration: 1 });
-
-    gsap.set('.picture2', { autoAlpha: 0 });
-
-    gsap
-      .timeline({
-        defaults: { ease: 'none' },
-        scrollTrigger: {
-          trigger: '.section2',
-          start: 'top 72px',
-          end: '+=250%',
-          pin: true,
-          scrub: true,
-          invalidateOnRefresh: true,
-        },
-      })
-      // Hold picture 1 before starting the crossfade.
-      .to('.picture2', {
-        autoAlpha: 0,
-        duration: 1,
-      })
-      // Crossfade to picture 2.
-      .to('.picture2', {
-        autoAlpha: 1,
-        duration: 0.5,
-      })
-      // Keep picture 2 visible for one more viewport before unpinning.
-      .to('.picture2', {
-        autoAlpha: 1,
-        duration: 1,
-      });
-
-    const createTextboxTransition = (trigger) => {
-      const textbox = document.querySelector(`${trigger} .textbox-transition`);
-
-      return (
-        gsap
-          .timeline({
-            defaults: { ease: 'none' },
-            scrollTrigger: {
-              trigger,
-              start: 'top 72px',
-              end: '+=210%',
-              pin: true,
-              scrub: true,
-              invalidateOnRefresh: true,
-            },
-          })
-          // Wait one page height before revealing the textbox.
-          .to(textbox, { autoAlpha: 0, duration: 1 })
-          .to(textbox, { autoAlpha: 1, duration: 0.1 })
-          // Keep the textbox fully visible for one page height.
-          .to(textbox, { autoAlpha: 1, duration: 1 })
-      );
-    };
-
-    createTextboxTransition('.transition1');
-
-    gsap.set('.thymus, .liver, .spleen, .pancreas', { autoAlpha: 0 });
-    gsap.set('.all', { autoAlpha: 1 });
-
-    gsap
-      .timeline({
-        defaults: { ease: 'none' },
-        scrollTrigger: {
-          trigger: '.section3',
-          start: 'top 72px',
-          end: '+=500%',
-          pin: true,
-          scrub: true,
-          invalidateOnRefresh: true,
-        },
-      })
-      // Hold the complete mouse for the first viewport.
-      .to('.all', { autoAlpha: 1, duration: 1 })
-      // Crossfade the complete mouse into the first organ.
-      .to('.all', { autoAlpha: 0, duration: 0.2 })
-      .to('.thymus', { autoAlpha: 1, duration: 0.2 }, '<')
-      // Crossfade each organ into the next organ.
-      .to('.thymus', { autoAlpha: 1, duration: 0.8 })
-      .to('.thymus', { autoAlpha: 0, duration: 0.2 })
-      .to('.liver', { autoAlpha: 1, duration: 0.2 }, '<')
-      .to('.liver', { autoAlpha: 1, duration: 0.8 })
-      .to('.liver', { autoAlpha: 0, duration: 0.2 })
-      .to('.spleen', { autoAlpha: 1, duration: 0.2 }, '<')
-      .to('.spleen', { autoAlpha: 1, duration: 0.8 })
-      .to('.spleen', { autoAlpha: 0, duration: 0.2 })
-      .to('.pancreas', { autoAlpha: 1, duration: 0.2 }, '<')
-      .set('.scroll-instruction', { autoAlpha: 0 })
-      .to('.pancreas', { autoAlpha: 1, duration: 0.8 });
-
-    createTextboxTransition('.transition2');
-
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: '.section4',
-        start: 'top 72px',
-        end: '+=100%',
-        pin: true,
-      },
-    });
-
-    createTextboxTransition('.transition3');
-
-    const section5CdeContainers = Array.from(document.querySelectorAll('.section5 .cde'));
-
-    function syncSection5CdeVisibility() {
-      section5CdeContainers.forEach((container) => {
-        const tutorialImages = container.querySelector('.tutorial-images');
-        const cdeVisualization = container.querySelector('cde-visualization');
-
-        if (!tutorialImages || !cdeVisualization) {
-          return;
-        }
-
-        const tutorialsVisible = window.getComputedStyle(tutorialImages).display !== 'none';
-        cdeVisualization.style.display = tutorialsVisible ? 'none' : '';
-      });
-    }
-
-    section5CdeContainers.forEach((container) => {
-      const placeholder = container.querySelector('.cde-placeholder');
-
-      if (!placeholder) {
-        return;
-      }
-
-      placeholder.addEventListener(
-        'click',
-        async () => {
-          try {
-            await renderCdeTemplate(container, '.mouse-young', placeholder);
-            syncSection5CdeVisibility();
-          } catch (error) {
-            console.error('CDE loading failed:', error);
-          }
-        },
-        { once: true },
-      );
-    });
-
-    document.querySelectorAll('.section6 .cde').forEach((container) => {
-      const placeholder = container.querySelector('.cde-placeholder');
-
-      if (!placeholder) {
-        return;
-      }
-
-      placeholder.addEventListener(
-        'click',
-        async () => {
-          try {
-            await renderCdeTemplate(container, '.mouse-old', placeholder);
-          } catch (error) {
-            console.error('CDE loading failed:', error);
-          }
-        },
-        { once: true },
-      );
-    });
-
-    gsap.set('.blurb', { autoAlpha: 0 });
-    gsap.set('.section5 .tutorial, .section5 .cde-placeholder', { autoAlpha: 0 });
-    gsap.set('.section5 .tutorial-images', { display: 'block' });
-    gsap.set('.section5 .cde-placeholder', { display: 'none' });
-
-    const section5Timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.section5',
-        start: 'top 72px',
-        end: '+=600%',
-        pin: true,
-        scrub: true,
-        invalidateOnRefresh: true,
-        onUpdate: syncSection5CdeVisibility,
-      },
-    });
-
-    section5Timeline
-      .to('.tutorial1', { autoAlpha: 1, duration: 0.1 })
-      .to('.tutorial1', { autoAlpha: 1, duration: 0.8 })
-      .to('.tutorial1', { autoAlpha: 0, duration: 0.1 })
-      .to('.blurb1, .tutorial2', { autoAlpha: 1, duration: 0.1 }, '<')
-      .to('.blurb1, .tutorial2', { autoAlpha: 1, duration: 0.8 })
-      .to('.blurb1, .tutorial2', { autoAlpha: 0, duration: 0.1 })
-      .to('.blurb2, .tutorial3', { autoAlpha: 1, duration: 0.1 }, '<')
-      .to('.blurb2, .tutorial3', { autoAlpha: 1, duration: 0.8 })
-      .to('.blurb2, .tutorial3', { autoAlpha: 0, duration: 0.1 })
-      .to('.blurb3, .tutorial4', { autoAlpha: 1, duration: 0.1 }, '<')
-      .to('.blurb3, .tutorial4', { autoAlpha: 1, duration: 0.8 })
-      .to('.blurb3, .tutorial4', { autoAlpha: 0, duration: 0.1 })
-      .to('.blurb4, .tutorial5', { autoAlpha: 1, duration: 0.1 }, '<')
-      .to('.blurb4, .tutorial5', { autoAlpha: 1, duration: 0.8 })
-      .to('.blurb4, .tutorial5', { autoAlpha: 0, duration: 0.1 })
-      .set('.section5 .tutorial-images', { display: 'none' })
-      .set('.section5 .cde-placeholder', { display: 'block' })
-      .to('.section5 .cde-placeholder', { autoAlpha: 1, duration: 0.1 }, '<')
-      .to('.section5 .cde-placeholder', { autoAlpha: 1, duration: 0.9 });
-
-    createTextboxTransition('.transition4');
-
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: '.section6',
-        start: 'top 72px',
-        end: '+=100%',
-        pin: true,
-      },
-    });
-
-    createTextboxTransition('.transition5');
-
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    };
-
-    window.history.scrollRestoration = 'manual';
-
-    function enableScrolling() {
-      window.onscroll = function () {};
-    }
-  </script>
 </html>
