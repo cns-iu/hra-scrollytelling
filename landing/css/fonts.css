@@ -1,0 +1,6 @@
+/*
+ * Compatibility bridge for cached pages that still request the former
+ * landing-page font stylesheet. Current pages load the shared file directly.
+ */
+
+@import url("../../shared/css/fonts.css");

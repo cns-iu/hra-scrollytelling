@@ -44,6 +44,7 @@ function setupHeaderTimeline(gsap) {
     .to('.splash-image', { autoAlpha: 1, duration: 1 })
     .addLabel('headerTransition')
     .to('.splash-image', { autoAlpha: 0.25, duration: 1 }, 'headerTransition')
+    .to('.page-header', { '--story-splash-overlay-opacity': 1, duration: 1 }, 'headerTransition')
     .to('.title-card', { y: () => -window.innerHeight, duration: 1 }, 'headerTransition')
     .addLabel('headerQuestion')
     .to('.splash-image', { autoAlpha: 0.25, duration: 3.2 }, 'headerQuestion');
@@ -243,7 +244,7 @@ function createPinnedTrigger(trigger, end) {
 function createScrubbedTrigger(trigger, end, scrub = PINNED_SCROLL_SCRUB) {
   return {
     trigger,
-    start: 'top 72px',
+    start: 'top top',
     end,
     scrub,
     invalidateOnRefresh: true,

@@ -1,0 +1,10 @@
+/* Accessible text-selection colors scoped to shared page chrome. */
+
+@media (forced-colors: none) {
+    .site-chrome::selection,
+    .site-chrome *::selection {
+        color: var(--site-chrome-color-on-selection);
+        background: var(--site-chrome-color-selection);
+        text-shadow: none;
+    }
+}
