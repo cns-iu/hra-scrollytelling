@@ -3,6 +3,7 @@
   .acknowledgments,
   .references {
     padding-inline: var(--story-section-inline-padding);
+    font-family: var(--hra-font-plain);
   }
 
   .resources {
@@ -46,7 +47,7 @@
 
   .resources__eyebrow {
     margin: 0 0 0.75rem;
-    color: var(--hra-primary-35);
+    color: var(--hra-primary-30);
     font: var(--hra-type-title-medium);
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -120,8 +121,8 @@
   }
 
   .resource-card__title {
-    font: var(--hra-type-headline-small);
-    letter-spacing: var(--hra-type-headline-small-tracking);
+    font: var(--hra-type-title-large);
+    letter-spacing: var(--hra-type-title-large-tracking);
   }
 
   .resource-card__description {
@@ -136,7 +137,7 @@
     justify-content: space-between;
     gap: 0.75rem;
     padding: 1rem 1.5rem 1.5rem;
-    color: var(--hra-primary-35);
+    color: var(--hra-primary-30);
     font: var(--hra-type-label-large);
     letter-spacing: var(--hra-type-label-large-tracking);
 
@@ -235,6 +236,7 @@
 
     .header {
       margin: 0;
+      color: var(--hra-neutral-10);
       font: var(--hra-type-display-small);
       letter-spacing: var(--hra-type-display-small-tracking);
     }
@@ -263,7 +265,7 @@
       }
 
       &::marker {
-        color: var(--hra-primary-35);
+        color: var(--hra-primary-30);
         font: var(--hra-type-label-large);
       }
     }

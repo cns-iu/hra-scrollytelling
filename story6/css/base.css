@@ -97,10 +97,7 @@
     background: var(--hra-primary-30);
   }
 
-  #main-content p,
-  #main-content button,
-  .sceneEnd p,
-  .sceneEnd button {
+  :where(#main-content p, #main-content button, .sceneEnd p, .sceneEnd button) {
     font: inherit;
     letter-spacing: inherit;
   }
@@ -109,8 +106,7 @@
     font-weight: var(--hra-type-body-large-emphasized-weight);
   }
 
-  #main-content a,
-  .sceneEnd a {
+  :where(#main-content a, .sceneEnd a) {
     color: var(--hra-neutral-10);
     text-decoration: underline;
     text-decoration-thickness: 0.08em;
