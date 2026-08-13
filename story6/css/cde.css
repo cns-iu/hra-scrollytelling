@@ -4,7 +4,7 @@
   }
 
   section.section5 {
-    --cde-tutorial-scene-height: calc(var(--story-viewport-height) - 4.5rem);
+    --cde-tutorial-scene-height: var(--story-viewport-height);
 
     position: relative;
     height: calc(
@@ -16,7 +16,7 @@
 
   .cde-tutorial-stage {
     position: sticky;
-    top: 4.5rem;
+    top: 0;
     height: var(--cde-tutorial-scene-height);
   }
 

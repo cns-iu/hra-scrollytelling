@@ -21,8 +21,8 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | Area | Entry points | Implementation |
 | --- | --- | --- |
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
-| Shared page chrome | `index.html` and `story1.html` through `story5.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; Story 1 is the integration pilot |
-| Primary stories | `story1.html` through `story5.html` | Shared `style.css`, shared or story-specific scripts, `img/`, `music/`, and gradually organized files under `stories/` |
+| Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; Story 1 is the integration pilot and Story 6 offers shared appearance controls |
+| Primary stories | `story1.html` through `story6.html` | Shared `style.css`, shared or story-specific scripts, `img/`, `music/`, gradually organized files under `stories/`, and the dedicated `story6/` implementation |
 | Prototypes | `img/test.html` and the compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations under `prototypes/` plus shared legacy files |
 | Generated game | `Game/index.html` | Everything under `Game/` |
 
@@ -77,7 +77,7 @@ points load `shared/css/fonts.css` directly; do not expand the compatibility fil
 
 ## Shared page chrome
 
-The maintained public pages are `index.html` and `story1.html` through `story5.html`. They share three interface
+The maintained public pages are `index.html` and `story1.html` through `story6.html`. They share three interface
 patterns:
 
 - A fixed, visibly labeled Menu disclosure with links to the landing page and all maintained stories.
@@ -153,8 +153,9 @@ Migrate shared page chrome independently from broader story reorganization:
 1. Establish the namespaced shared fonts, styles, and modules without changing any component markup.
 2. Migrate `story1.html` as the first integration pilot while the landing-page redesign is in progress.
 3. Maintain `index.html` on the canonical shared Menu after its approved migration.
-4. Migrate one remaining story per commit, leaving each story's visual and animation implementation unchanged.
-5. Remove legacy navigation, footer, or story-navigation rules only after a repository-wide search confirms that no
+4. Migrate `story6.html` with the shared appearance-enabled Menu while retaining page ownership of its narrative and footer.
+5. Migrate one remaining story per commit, leaving each story's visual and animation implementation unchanged.
+6. Remove legacy navigation, footer, or story-navigation rules only after a repository-wide search confirms that no
    maintained or prototype page still consumes them.
 
 Prototype pages and `Game/` are excluded from this rollout. Their existing navigation and footer behavior must not

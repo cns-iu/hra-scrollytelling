@@ -243,7 +243,7 @@ function createPinnedTrigger(trigger, end) {
 function createScrubbedTrigger(trigger, end, scrub = PINNED_SCROLL_SCRUB) {
   return {
     trigger,
-    start: 'top 72px',
+    start: 'top top',
     end,
     scrub,
     invalidateOnRefresh: true,

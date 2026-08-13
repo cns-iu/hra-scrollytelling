@@ -1,6 +1,6 @@
 #six {
   .page-header {
-    height: calc(var(--story-viewport-height) - 72px);
+    height: var(--story-viewport-height);
     margin: 0;
     box-sizing: border-box;
     display: grid;
@@ -221,7 +221,7 @@
 
     .page-header {
       height: auto;
-      min-height: calc(100vh - 72px);
+      min-height: var(--story-viewport-height);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -378,7 +378,7 @@
   @media (prefers-reduced-motion: reduce) {
     .page-header {
       height: auto;
-      min-height: calc(100vh - 72px);
+      min-height: var(--story-viewport-height);
       display: flex;
       flex-direction: column;
       align-items: center;

@@ -197,16 +197,18 @@ presentation. Story-page Menu, footer, and end-of-story navigation components ar
 GitHub Pages serves the source files directly, each page retains semantic component markup in its HTML while sharing
 namespaced CSS and small JavaScript modules. Essential links and landmarks are never injected at runtime.
 
-Story 1 is the first shared page-chrome integration pilot. The landing page and migrated stories use the same
-semantic Menu contract, approved icon, FAB, panel, list, active-state, scrollbar presentation, and
-progressive-enhancement modules. Appearance controls are included only when visitors can change that page's
-presentation. Component loading order and markup hooks are documented in
-[`shared/README.md`](shared/README.md).
+Story 1 is the first shared page-chrome integration pilot, and Story 6 is the first story to offer the shared
+appearance controls. The landing page and migrated stories use the same semantic Menu contract, approved icon, FAB,
+panel, list, active-state, scrollbar presentation, and progressive-enhancement modules. Appearance controls are
+included only when visitors can change that page's presentation. Component loading order and markup hooks are
+documented in [`shared/README.md`](shared/README.md).
 
 During the staged migration:
 
 - `story1.html` is the first integration pilot for the shared Menu, story navigation, and footer; it intentionally
   omits appearance choices and keeps its Menu light because Story 1 does not offer page-level theme selection.
+- `story6.html` uses the shared Menu with System settings, Light, Dark, and High contrast controls while retaining its
+  page-owned narrative and footer components.
 - `index.html` uses the canonical shared Menu while retaining its vertically stacked logo-and-tonal-button footer.
 - Story pages that offer Light, Dark, and System settings apply them only to shared page chrome; story artwork is
   unchanged.

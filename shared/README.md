@@ -53,6 +53,10 @@ Essential landmarks and links must remain in the page HTML. Shared JavaScript en
 available appearance controls; it does not fetch or inject component markup. Appearance choices remain hidden if
 JavaScript is unavailable so the page does not present controls that cannot change the saved preference.
 
+Story 6 uses the complete shared Menu with System settings, Light, Dark, and High contrast controls. Its page-owned
+styles decide which narrative surfaces respond to those preferences; the shared component styles remain scoped to
+the Menu and skip link.
+
 `selection.css` applies theme-aware selection colors only inside `.site-chrome` components. Light chrome uses deep
 plum with white text, while Dark chrome uses pale pink with deep burgundy text. The stylesheet defers to operating-
 system selection colors when forced-colors mode is active.

@@ -8,6 +8,38 @@
       name="description"
       content="Explore how immune cells change with age through a pan-organ atlas, tissue comparisons, and a guided tour of the Cell Distance Explorer app."
     />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#dee5f1" data-light-color="#dee5f1" data-dark-color="#393f45" />
+    <!-- Apply saved appearance and contrast preferences before shared chrome paints. -->
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem('hra-landing-theme');
+          const savedContrast = localStorage.getItem('hra-high-contrast');
+          const systemTheme =
+            typeof window.matchMedia === 'function' && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          const activeTheme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme;
+          const themeColor = document.querySelector('meta[name="theme-color"]');
+
+          if (savedTheme === 'system' || savedTheme === 'light' || savedTheme === 'dark') {
+            document.documentElement.dataset.themeMode = savedTheme;
+            if (savedTheme === 'light' || savedTheme === 'dark') {
+              document.documentElement.dataset.theme = savedTheme;
+            }
+          }
+
+          if (savedContrast === 'more' || savedContrast === 'standard') {
+            document.documentElement.dataset.contrast = savedContrast;
+          }
+
+          if (themeColor) {
+            themeColor.content = activeTheme === 'dark' ? themeColor.dataset.darkColor : themeColor.dataset.lightColor;
+          }
+        } catch {
+          // System preferences remain the fallback when storage is unavailable.
+        }
+      })();
+    </script>
     <script>
       const story6NavigationEntry = performance.getEntriesByType('navigation')[0];
 
@@ -30,6 +62,10 @@
       }
     </script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="shared/css/fonts.css" />
+    <link rel="stylesheet" href="shared/css/tokens.css" />
+    <link rel="stylesheet" href="shared/css/selection.css" />
+    <link rel="stylesheet" href="shared/css/navigation.css" />
     <link rel="stylesheet" href="story6/css/base.css" />
     <link rel="stylesheet" href="story6/css/splash-transitions.css" />
     <link rel="stylesheet" href="story6/css/narrative.css" />
@@ -52,40 +88,76 @@
       gtag('config', 'G-E1811WRJJD');
     </script>
 
+    <script type="module" src="shared/js/main.js"></script>
   </head>
 
   <body id="six">
-    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <a class="site-skip-link site-chrome" href="#main-content">Skip to main content</a>
 
-    <!-- section top  -->
-    <nav class="scrollynav" aria-label="Story navigation">
-      <a href="index.html"><img draggable="false" src="img/UI Assets/navlogo.svg" class="navlogo" alt="Human Reference Atlas stories home" /></a>
+    <details class="site-menu site-chrome" data-site-menu>
+      <summary>
+        <span class="site-menu-icon site-menu-icon-menu" aria-hidden="true"></span>
+        <svg class="site-menu-icon site-menu-icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="m6 6 12 12M18 6 6 18"></path>
+        </svg>
+        <span>Menu</span>
+      </summary>
 
-      <div class="dropdown">
-        <button class="dropbtn" type="button" aria-label="Open story navigation" aria-expanded="false" aria-controls="story-navigation-menu">
-          <img draggable="false" src="img/UI Assets/navhamburger.svg" class="navmenu" alt="" />
-        </button>
-        <div class="dropdown-content" id="story-navigation-menu">
-          <a href="story1.html"><img src="img/UI Assets/count1.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;What Is An HRA?</a>
-          <a href="story2.html"><img src="img/UI Assets/count2.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Squiggy's Identity Crisis!</a>
-          <a href="story3.html"><img src="img/UI Assets/count3.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Something's NOT Registering!</a>
-          <a href="story4.html"><img src="img/UI Assets/count4.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Data Detangle</a>
-          <a href="story5.html"><img src="img/UI Assets/count5.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Know Your Body Buddies</a>
-          <a href="story6.html" aria-current="page"><img src="img/UI Assets/count6.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Immunosenescence</a>
-          <hr />
-          <a href="https://humanatlas.io/" target="_blank" rel="noopener noreferrer"
-            ><img src="img/UI Assets/nav_logo.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;Human Reference Atlas
-            <span class="external-link-icon" aria-hidden="true">↗</span><span class="visually-hidden"> opens in a new tab</span></a
-          >
-          <a href="https://apps.humanatlas.io/" target="_blank" rel="noopener noreferrer"
-            ><img src="img/UI Assets/nav_apps.svg" style="vertical-align: middle" alt="" />&nbsp;&nbsp;App Library
-            <span class="external-link-icon" aria-hidden="true">↗</span><span class="visually-hidden"> opens in a new tab</span></a
-          >
+      <div class="site-menu-panel" data-site-menu-panel role="region" aria-labelledby="site-menu-title" tabindex="-1">
+        <div class="site-menu-header">
+          <p class="site-menu-title" id="site-menu-title">Menu</p>
+          <button class="site-menu-close" type="button" aria-label="Close Menu" data-site-menu-close>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="m6 6 12 12M18 6 6 18"></path>
+            </svg>
+          </button>
         </div>
-      </div>
-    </nav>
 
-    <main id="main-content" tabindex="-1">
+        <nav class="site-menu-nav" aria-labelledby="site-navigation-label">
+          <p class="site-menu-label" id="site-navigation-label">Navigate</p>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="story1.html">What Is a Human Reference Atlas?</a></li>
+            <li><a href="story2.html">Squiggy's Identity Crisis!</a></li>
+            <li><a href="story3.html">Something's Not Registering!</a></li>
+            <li><a href="story4.html">Data Detangle</a></li>
+            <li><a href="story5.html">Know Your Body Buddies</a></li>
+            <li><a href="story6.html" aria-current="page">Pan-organ Immunosenescence Atlas</a></li>
+          </ul>
+        </nav>
+
+        <fieldset class="site-appearance">
+          <legend>Appearance</legend>
+          <label class="site-appearance-choice">
+            <input type="radio" name="color-theme" value="system" data-site-theme-choice checked />
+            <span>System settings</span>
+          </label>
+          <label class="site-appearance-choice">
+            <input type="radio" name="color-theme" value="light" data-site-theme-choice />
+            <span>Light</span>
+          </label>
+          <label class="site-appearance-choice">
+            <input type="radio" name="color-theme" value="dark" data-site-theme-choice />
+            <span>Dark</span>
+          </label>
+        </fieldset>
+
+        <fieldset class="site-accessibility" data-contrast-controls hidden>
+          <legend>Accessibility</legend>
+          <button class="site-contrast-switch" type="button" role="switch" aria-checked="false" data-contrast-toggle>
+            <span class="site-contrast-switch__label">High contrast</span>
+            <span class="site-contrast-switch__track" aria-hidden="true">
+              <span class="site-contrast-switch__thumb"></span>
+            </span>
+            <span class="site-contrast-switch__state" data-contrast-state aria-hidden="true">Off</span>
+          </button>
+        </fieldset>
+
+        <span class="site-chrome-visually-hidden" data-site-theme-status aria-live="polite" aria-atomic="true"></span>
+      </div>
+    </details>
+
+    <main class="site-main-target" id="main-content" tabindex="-1">
       <header class="page-header">
         <img class="splash-image" src="story6/img/splash-bg.webp" alt="" fetchpriority="high" />
         <div class="title-card">

@@ -32,7 +32,7 @@ stylesheets, then `landing/css/styles.css`, and load `landing/js/main.js` as an 
 
 ## Shared page-chrome architecture
 
-The maintained public pages are `index.html` and `story1.html` through `story5.html`. Their Menu, appearance controls,
+The maintained public pages are `index.html` and `story1.html` through `story6.html`. Their Menu, appearance controls,
 footer, and end-of-story navigation are migrating to namespaced foundations under:
 
 - `shared/css/tokens.css` for component-scoped Light and Dark appearance roles.
@@ -54,9 +54,10 @@ pages without appearance selection so the Menu does not follow the operating-sys
 contrast switch available in every enhanced Menu. On story pages, its visual changes must remain inside
 `.site-chrome` roots.
 
-Adopt the foundation one page at a time. Story 1 is the integration pilot, and the landing page uses the canonical
-shared Menu. Do not remove a legacy component rule until repository-wide search confirms that no maintained or
-prototype page consumes it. Prototype pages and `Game/` are excluded from the shared page-chrome rollout.
+Adopt the foundation one page at a time. Story 1 is the integration pilot, the landing page uses the canonical shared
+Menu, and Story 6 is the first story with the shared appearance-enabled Menu. Do not remove a legacy component rule
+until repository-wide search confirms that no maintained or prototype page consumes it. Prototype pages and `Game/`
+are excluded from the shared page-chrome rollout.
 
 Preserve existing uncommitted work and follow the repository's active branch and review workflow. Do not rewrite,
 discard, commit, push, or publish changes unless those operations are explicitly in scope.
