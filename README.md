@@ -42,8 +42,6 @@ python3 -m http.server 8000
 This serves the current directory at [http://localhost:8000/](http://localhost:8000/). Open that address in a browser,
 keep the terminal running while previewing, and press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop the server.
 
-To preview Story 6 directly, open [http://localhost:8000/story6.html](http://localhost:8000/story6.html).
-
 There is no installation or build command.
 
 ## Main experiences
