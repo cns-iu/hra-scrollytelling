@@ -1,0 +1,165 @@
+#six {
+  .tissue-comparison {
+    width: min(100%, 90rem);
+    margin-inline: auto;
+    text-align: left;
+  }
+
+  .tissue-comparison__intro {
+    width: min(100%, 45rem);
+    margin: 0 auto clamp(2rem, 4vw, 3rem);
+    text-align: left;
+
+    h2 {
+      margin: 0 0 1rem;
+      color: var(--hra-neutral-10);
+      font: var(--hra-type-display-small);
+      letter-spacing: var(--hra-type-display-small-tracking);
+      text-align: left;
+    }
+
+    p:not(.tissue-comparison__eyebrow) {
+      margin: 0 0 1rem;
+      color: var(--hra-neutral-variant-30);
+      font: var(--hra-type-body-large);
+      letter-spacing: var(--hra-type-body-large-tracking);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .tissue-comparison__eyebrow {
+    margin: 0 0 0.75rem;
+    color: var(--hra-primary-35);
+    font: var(--hra-type-title-medium);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .organ-comparisons {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  .organ-comparison {
+    box-sizing: border-box;
+    margin: 0;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    background: var(--hra-neutral-100);
+    border: 1px solid var(--hra-neutral-variant-90);
+    border-radius: 1.75rem;
+    box-shadow: 0 0.5rem 1.5rem rgb(32 30 61 / 10%);
+
+    figcaption {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      margin: 0;
+      color: var(--hra-neutral-10);
+      font: var(--hra-type-headline-small);
+      letter-spacing: var(--hra-type-headline-small-tracking);
+    }
+  }
+
+  .organ-comparison__number {
+    color: var(--hra-primary-35);
+    font: var(--hra-type-label-large);
+    letter-spacing: var(--hra-type-label-large-tracking);
+  }
+
+  .tissue-samples {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tissue-sample {
+    min-width: 0;
+    overflow: hidden;
+    background: var(--hra-neutral-98);
+    border: 1px solid var(--hra-neutral-variant-90);
+    border-radius: 1.25rem;
+
+    &:nth-child(1) .tissue-sample__condition {
+      background: var(--hra-neutral-variant-90);
+    }
+
+    &:nth-child(2) .tissue-sample__condition {
+      background: var(--hra-neutral-87);
+    }
+
+    &:nth-child(3) .tissue-sample__condition {
+      background: var(--hra-tertiary-90);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: contain;
+      background: var(--hra-neutral-100);
+      border-top: 1px solid var(--hra-neutral-variant-90);
+    }
+  }
+
+  .tissue-sample__condition {
+    margin: 0;
+    padding: 0.875rem 1rem;
+    color: var(--hra-neutral-10);
+    font: var(--hra-type-title-medium);
+    letter-spacing: var(--hra-type-title-medium-tracking);
+  }
+
+  .tissue-comparison__takeaway {
+    box-sizing: border-box;
+    width: min(100%, 58rem);
+    margin: clamp(4rem, 8vw, 7rem) auto 0;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--hra-neutral-10);
+    background: var(--hra-neutral-100);
+    border: 1px solid var(--hra-neutral-variant-90);
+    border-inline-start: 0.5rem solid var(--hra-primary-35);
+    border-radius: 1rem;
+    box-shadow: 0 0.25rem 0.75rem rgb(32 30 61 / 10%);
+
+    h3 {
+      margin: 0 0 0.75rem;
+      color: inherit;
+      font: var(--hra-type-headline-small);
+      letter-spacing: var(--hra-type-headline-small-tracking);
+    }
+
+    p {
+      margin: 0;
+      color: var(--hra-neutral-variant-30);
+      font: var(--hra-type-body-large);
+      letter-spacing: var(--hra-type-body-large-tracking);
+    }
+  }
+
+  .tissue-comparison__takeaway .tissue-comparison__takeaway-label {
+    margin-bottom: 0.5rem;
+    color: var(--hra-primary-35);
+    font: var(--hra-type-label-large);
+    font-weight: var(--hra-type-body-large-emphasized-weight);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 48rem) {
+    .tissue-samples {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+}

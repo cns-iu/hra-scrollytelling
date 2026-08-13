@@ -7,7 +7,7 @@
         <g id="step-indicator-(3)">
             <rect id="Rectangle" fill="#4B4B5E" fill-rule="nonzero" x="0" y="0" width="32" height="32" rx="16"></rect>
             <text id="3" font-family="Metropolis-Medium, Metropolis" font-size="16" font-weight="400" fill="#FFFFFF">
-                <tspan x="10.756" y="21">3</tspan>
+                <tspan x="12" y="21">3</tspan>
             </text>
         </g>
     </g>

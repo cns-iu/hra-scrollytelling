@@ -42,6 +42,8 @@ python3 -m http.server 8000
 This serves the current directory at [http://localhost:8000/](http://localhost:8000/). Open that address in a browser,
 keep the terminal running while previewing, and press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop the server.
 
+To preview Story 6 directly, open [http://localhost:8000/story6.html](http://localhost:8000/story6.html).
+
 There is no installation or build command.
 
 ## Main experiences
@@ -54,6 +56,7 @@ There is no installation or build command.
 | `story3.html` | Something's Not Registering! |
 | `story4.html` | Data Detangle |
 | `story5.html` | Know Your Body Buddies |
+| `story6.html` | Pan-organ Immunosenescence Atlas |
 
 The repository also contains older prototypes and demonstrations. The Scrollytelling Effects, Organ Example, and
 Visualizing Cells implementations are organized under `prototypes/`, with their original URLs retained as
@@ -64,6 +67,7 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 ```text
 .
 ├── index.html          # Accessible landing-page structure and content
+├── assets/              # Shared Story 6 brand, font, and icon assets
 ├── landing/            # Isolated landing-page implementation
 │   ├── assets/
 │   │   ├── backgrounds/
@@ -97,6 +101,8 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 ├── story3.html
 ├── story4.html
 ├── story5.html
+├── story6.html         # Pan-organ Immunosenescence Atlas entry point
+├── story6/             # Story 6 styles, scripts, images, and retained datasets
 ├── stories/            # Gradually organized story-owned implementation files
 │   └── story-4/
 │       └── config/
