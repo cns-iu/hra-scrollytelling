@@ -1,0 +1,92 @@
+/* Previous and next navigation displayed after each maintained story. */
+
+.site-story-navigation {
+    box-sizing: border-box;
+    color: var(--site-chrome-color-text);
+    background: var(--site-chrome-color-surface-muted);
+    font-family: var(--site-chrome-font-body);
+}
+
+.site-story-navigation *,
+.site-story-navigation *::before,
+.site-story-navigation *::after {
+    box-sizing: border-box;
+}
+
+.site-story-navigation__list {
+    display: grid;
+    width: min(100% - 2rem, var(--site-chrome-content-width));
+    padding: 1rem 0;
+    margin: 0 auto;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    list-style: none;
+}
+
+.site-story-navigation__item:last-child {
+    text-align: end;
+}
+
+.site-story-navigation__link {
+    display: inline-flex;
+    min-height: 3rem;
+    padding: 0.65rem 0.85rem;
+    align-items: center;
+    gap: 0.65rem;
+    border: 0.125rem solid transparent;
+    border-radius: var(--site-chrome-radius-small);
+    color: var(--site-chrome-color-accent);
+    font-size: var(--site-chrome-title-size);
+    font-weight: 700;
+    letter-spacing: var(--site-chrome-title-letter-spacing);
+    line-height: var(--site-chrome-title-line-height);
+    text-decoration: none;
+}
+
+.site-story-navigation__link:hover {
+    border-color: var(--site-chrome-color-border);
+    background: var(--site-chrome-color-surface-hover);
+    text-decoration: underline;
+    text-decoration-thickness: 0.125rem;
+}
+
+.site-story-navigation__link:focus-visible {
+    outline: 0.2rem solid var(--site-chrome-color-focus);
+    outline-offset: 0.15rem;
+    box-shadow: 0 0 0 0.4rem var(--site-chrome-color-focus-contrast);
+}
+
+.site-story-navigation__arrow {
+    flex: 0 0 auto;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+@media (max-width: 36rem) {
+    .site-story-navigation__list {
+        width: min(100% - 1.25rem, var(--site-chrome-content-width));
+        grid-template-columns: 1fr;
+    }
+
+    .site-story-navigation__item:last-child {
+        text-align: start;
+    }
+}
+
+:root[data-contrast="more"] .site-story-navigation__link {
+    border-color: currentColor;
+    border-width: 0.25rem;
+}
+
+@media (prefers-contrast: more) {
+    :root:not([data-contrast="standard"]) .site-story-navigation__link {
+        border-color: currentColor;
+        border-width: 0.25rem;
+    }
+}
+
+@media (forced-colors: active) {
+    .site-story-navigation__link {
+        border: 2px solid CanvasText;
+    }
+}

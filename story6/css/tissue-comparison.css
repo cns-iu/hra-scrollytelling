@@ -2,12 +2,14 @@
   .tissue-comparison {
     width: min(100%, 90rem);
     margin-inline: auto;
+    font-family: var(--hra-font-plain);
     text-align: left;
   }
 
   .tissue-comparison__intro {
     width: min(100%, 45rem);
     margin: 0 auto clamp(2rem, 4vw, 3rem);
+    font-family: inherit;
     text-align: left;
 
     h2 {
@@ -32,7 +34,7 @@
 
   .tissue-comparison__eyebrow {
     margin: 0 0 0.75rem;
-    color: var(--hra-primary-35);
+    color: var(--hra-primary-30);
     font: var(--hra-type-title-medium);
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -62,13 +64,13 @@
     h3 {
       margin: 0;
       color: var(--hra-neutral-10);
-      font: var(--hra-type-headline-small);
-      letter-spacing: var(--hra-type-headline-small-tracking);
+      font: var(--hra-type-title-large);
+      letter-spacing: var(--hra-type-title-large-tracking);
     }
   }
 
   .organ-comparison__number {
-    color: var(--hra-primary-35);
+    color: var(--hra-primary-30);
     font: var(--hra-type-label-large);
     letter-spacing: var(--hra-type-label-large-tracking);
   }
@@ -149,7 +151,7 @@
 
   .tissue-comparison__takeaway .tissue-comparison__takeaway-label {
     margin-bottom: 0.5rem;
-    color: var(--hra-primary-35);
+    color: var(--hra-primary-30);
     font: var(--hra-type-label-large);
     font-weight: var(--hra-type-body-large-emphasized-weight);
     letter-spacing: 0.08em;

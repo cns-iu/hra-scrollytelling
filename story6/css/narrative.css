@@ -68,7 +68,7 @@
   section.section4 {
     box-sizing: border-box;
     height: auto;
-    min-height: calc(var(--story-viewport-height) - 72px);
+    min-height: var(--story-viewport-height);
     overflow: visible;
     padding: clamp(4rem, 8vw, 8rem) var(--story-section-inline-padding);
     background: var(--hra-neutral-96);
@@ -128,7 +128,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    height: calc(var(--story-viewport-height) - 4.5rem);
+    height: var(--story-viewport-height);
     width: 100%;
   }
 

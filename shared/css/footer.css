@@ -1,0 +1,119 @@
+/* Canonical footer shared by every maintained public page. */
+
+.site-footer {
+    display: flex;
+    padding: 4rem clamp(1rem, 5vw, 5rem);
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    border-top: 1px solid var(--site-chrome-color-footer-border);
+    color: var(--site-chrome-color-on-footer);
+    background: var(--site-chrome-color-footer);
+    font-family: var(--site-chrome-font-body);
+    font-size: var(--site-chrome-title-size);
+    font-weight: 400;
+    letter-spacing: var(--site-chrome-body-letter-spacing);
+    line-height: var(--site-chrome-title-line-height);
+    text-align: center;
+}
+
+.site-footer,
+.site-footer *,
+.site-footer *::before,
+.site-footer *::after {
+    box-sizing: border-box;
+}
+
+.site-footer__organizations {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1.5rem, 5vw, 4rem);
+}
+
+.site-footer__organization-link,
+.site-footer__back-to-top {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.site-footer__organization-link:hover,
+.site-footer__back-to-top:hover {
+    background: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.site-footer__organization-link:focus-visible,
+.site-footer__back-to-top:focus-visible {
+    outline: 0.2rem solid currentColor;
+    outline-offset: 0.2rem;
+}
+
+.site-footer__organization-link {
+    min-height: 4rem;
+    padding: 0.75rem 1rem;
+}
+
+.site-footer__organization-link img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.site-footer__organization-name {
+    display: none;
+}
+
+.site-footer__back-to-top {
+    padding: 0.625rem 0.875rem;
+    gap: 0.5rem;
+    font-size: var(--site-chrome-body-size);
+    font-weight: 600;
+    letter-spacing: var(--site-chrome-body-letter-spacing);
+    line-height: var(--site-chrome-body-line-height);
+}
+
+.site-footer__back-to-top svg {
+    flex: 0 0 auto;
+}
+
+.site-footer__copyright {
+    margin: 0;
+    color: inherit;
+    font: inherit;
+}
+
+@media (forced-colors: active) {
+    .site-footer {
+        color: CanvasText;
+        background: Canvas;
+        border-color: CanvasText;
+    }
+
+    .site-footer__organization-link,
+    .site-footer__back-to-top {
+        border: 2px solid CanvasText;
+        color: LinkText;
+        background: Canvas;
+    }
+
+    .site-footer__organization-link img {
+        display: none;
+    }
+
+    .site-footer__organization-name {
+        display: inline;
+    }
+}
+
+@media print {
+    .site-footer__back-to-top {
+        display: none;
+    }
+}
