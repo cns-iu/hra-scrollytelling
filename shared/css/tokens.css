@@ -31,8 +31,6 @@
     --site-chrome-color-footer: #201e3d;
     --site-chrome-color-on-footer: #ffffff;
     --site-chrome-color-footer-border: #9392a3;
-    --site-chrome-color-logo-tile: #ffffff;
-    --site-chrome-color-logo-border: #6f7b8c;
     --site-chrome-color-focus: #201e3d;
     --site-chrome-color-focus-contrast: #ffffff;
     --site-chrome-shadow-color: rgb(32 30 61 / 18%);
@@ -71,7 +69,6 @@
         sans-serif
     );
     --site-chrome-content-width: 72rem;
-    --site-chrome-reading-width: 65ch;
     --site-chrome-radius-small: 0.5rem;
     --site-chrome-radius-large: 1rem;
     --site-chrome-label-size: 0.75rem;
@@ -83,12 +80,11 @@
     --site-chrome-title-size: 1rem;
     --site-chrome-title-line-height: 1.5rem;
     --site-chrome-title-letter-spacing: 0.009375rem;
-    --site-chrome-title-large-size: 1.375rem;
-    --site-chrome-title-large-line-height: 1.75rem;
     --site-chrome-headline-size: 1.5rem;
     --site-chrome-headline-line-height: 2rem;
 }
 
+.site-chrome.site-chrome--dark,
 :root[data-theme="dark"] .site-chrome:not(.site-chrome--light) {
     color-scheme: dark;
     --site-chrome-color-text: #d4dde6;
@@ -115,8 +111,6 @@
     --site-chrome-color-footer: #101113;
     --site-chrome-color-on-footer: #d4dde6;
     --site-chrome-color-footer-border: #aab4c5;
-    --site-chrome-color-logo-tile: #ffffff;
-    --site-chrome-color-logo-border: #aab4c5;
     --site-chrome-color-focus: #ffb3b3;
     --site-chrome-color-focus-contrast: #101113;
     --site-chrome-shadow-color: rgb(0 0 0 / 58%);
@@ -152,8 +146,6 @@
         --site-chrome-color-footer: #101113;
         --site-chrome-color-on-footer: #d4dde6;
         --site-chrome-color-footer-border: #aab4c5;
-        --site-chrome-color-logo-tile: #ffffff;
-        --site-chrome-color-logo-border: #aab4c5;
         --site-chrome-color-focus: #ffb3b3;
         --site-chrome-color-focus-contrast: #101113;
         --site-chrome-shadow-color: rgb(0 0 0 / 58%);

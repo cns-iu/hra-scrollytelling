@@ -17,4 +17,5 @@ reviewing its source, supported characters, license, file size, and effect on ma
 
 The exact HRA display, headline, title, label, body, and mono scale is represented as reusable custom properties in
 `shared/css/fonts.css`. Landing-page component mappings live in `landing/css/styles.css`; shared page-chrome mappings
-live in `shared/css/`.
+live in `shared/css/`. Story 6 also loads these shared declarations and must not add page-local copies of the same
+font files.

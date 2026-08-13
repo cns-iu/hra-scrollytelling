@@ -66,6 +66,7 @@
     <link rel="stylesheet" href="shared/css/tokens.css" />
     <link rel="stylesheet" href="shared/css/selection.css" />
     <link rel="stylesheet" href="shared/css/navigation.css" />
+    <link rel="stylesheet" href="shared/css/footer.css" />
     <link rel="stylesheet" href="story6/css/base.css" />
     <link rel="stylesheet" href="story6/css/splash-transitions.css" />
     <link rel="stylesheet" href="story6/css/narrative.css" />
@@ -95,7 +96,7 @@
   <body id="six">
     <a class="site-skip-link site-chrome" href="#main-content">Skip to main content</a>
 
-    <details class="site-menu site-chrome" data-site-menu>
+    <details class="site-menu site-menu--compact site-chrome" data-site-menu>
       <summary>
         <span class="site-menu-icon site-menu-icon-menu" aria-hidden="true"></span>
         <svg class="site-menu-icon site-menu-icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -638,7 +639,7 @@
             <li>
               <a class="resource-card" href="https://data.sennetconsortium.org/" target="_blank" rel="noopener noreferrer">
                 <span class="resource-card__logo">
-                  <img src="assets/sennet-logo-light.svg" alt="" width="176" height="44" />
+                  <span class="resource-card__brand resource-card__brand--sennet" aria-hidden="true"></span>
                 </span>
                 <span class="resource-card__body">
                   <span class="resource-card__title">SenNet Data Portal</span>
@@ -656,7 +657,7 @@
             <li>
               <a class="resource-card" href="https://humanatlas.io/" target="_blank" rel="noopener noreferrer">
                 <span class="resource-card__logo">
-                  <img src="assets/hra-light-large.svg" alt="" width="148" height="63" />
+                  <span class="resource-card__brand resource-card__brand--hra" aria-hidden="true"></span>
                 </span>
                 <span class="resource-card__body">
                   <span class="resource-card__title">Human Reference Atlas</span>
@@ -674,7 +675,7 @@
             <li>
               <a class="resource-card" href="https://sennetconsortium.org/" target="_blank" rel="noopener noreferrer">
                 <span class="resource-card__logo">
-                  <img src="assets/sennet-logo-light.svg" alt="" width="176" height="44" />
+                  <span class="resource-card__brand resource-card__brand--sennet" aria-hidden="true"></span>
                 </span>
                 <span class="resource-card__body">
                   <span class="resource-card__title">SenNet Community</span>
@@ -760,24 +761,24 @@
                 </svg></a> -->
         </nav>
       </div>
-      <footer class="story-footer">
-        <nav class="story-footer__logos" aria-label="Organizations">
-          <a class="story-footer__logo-link" href="https://humanatlas.io/" aria-label="Human Reference Atlas">
-            <img src="assets/hra-dark-large.svg" alt="" width="148" height="63" />
-            <span class="story-footer__organization-name">Human Reference Atlas</span>
+      <footer class="site-footer site-chrome">
+        <nav class="site-footer__organizations" aria-label="Organizations">
+          <a class="site-footer__organization-link" href="https://humanatlas.io/" aria-label="Human Reference Atlas">
+            <img src="shared/assets/logos/hra-dark-large.svg" alt="" width="148" height="63" />
+            <span class="site-footer__organization-name">Human Reference Atlas</span>
           </a>
-          <a class="story-footer__logo-link" href="https://cns.iu.edu/" aria-label="Cyberinfrastructure for Network Science Center">
-            <img src="assets/cns-dark-long.svg" alt="" width="239" height="40" />
-            <span class="story-footer__organization-name">Cyberinfrastructure for Network Science Center</span>
+          <a class="site-footer__organization-link" href="https://cns.iu.edu/" aria-label="Cyberinfrastructure for Network Science Center">
+            <img src="shared/assets/logos/cns-dark-long.svg" alt="" width="239" height="40" />
+            <span class="site-footer__organization-name">Cyberinfrastructure for Network Science Center</span>
           </a>
         </nav>
-        <a class="story-footer__back-to-top" href="#main-content">
+        <a class="site-footer__back-to-top" href="#main-content" data-back-to-top>
           <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
             <path d="M12 19V5m0 0-6 6m6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
           Back to top
         </a>
-        <p class="story-footer__copyright">© 2026 Cyberinfrastructure for Network Science Center</p>
+        <p class="site-footer__copyright">© 2026 Cyberinfrastructure for Network Science Center</p>
       </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>

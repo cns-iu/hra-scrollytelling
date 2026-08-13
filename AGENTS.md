@@ -20,9 +20,11 @@ Landing-page work is intentionally isolated to:
 - `shared/css/fonts.css` for typography stacks and font declarations used by the landing page and shared page chrome.
 - `landing/css/fonts.css` as a compatibility bridge for cached documents that still request the former font URL.
 - `landing/css/tokens.css` for landing-page themes and shared design tokens.
-- `shared/css/tokens.css`, `shared/css/selection.css`, and `shared/css/navigation.css` for the canonical Menu and skip link.
+- `shared/css/tokens.css`, `shared/css/selection.css`, `shared/css/navigation.css`, and `shared/css/footer.css` for the
+  canonical Menu, skip link, and footer.
 - `landing/css/styles.css` for landing-page content, layout, and accessibility adaptations outside shared page chrome.
-- `landing/js/main.js` for initializing the shared Menu, appearance, and contrast modules on the landing page.
+- `landing/js/main.js` for initializing the shared Menu, appearance, contrast, and back-to-top modules on the landing
+  page.
 - `shared/js/contrast.js` for the persistent High contrast switch used by landing and shared page chrome.
 
 Do not reconnect the landing page to the legacy `style.css` or to prototype or story scripts. Do not allow
@@ -33,17 +35,18 @@ stylesheets, then `landing/css/styles.css`, and load `landing/js/main.js` as an 
 ## Shared page-chrome architecture
 
 The maintained public pages are `index.html` and `story1.html` through `story6.html`. Their Menu, appearance controls,
-footer, and end-of-story navigation are migrating to namespaced foundations under:
+footer, and end-of-story navigation use namespaced foundations under:
 
 - `shared/css/tokens.css` for component-scoped Light and Dark appearance roles.
 - `shared/css/fonts.css` and `shared/assets/fonts/` for approved HRA typography and licenses.
 - `shared/assets/icons/menu.svg` for the canonical Menu glyph.
+- `shared/assets/logos/` for the canonical footer and theme-aware organization marks.
 - `shared/css/selection.css` for theme-aware text selection scoped to shared page chrome.
 - `shared/css/navigation.css` for the skip link and native Menu disclosure.
 - `shared/css/footer.css` for the canonical site footer.
 - `shared/css/story-navigation.css` for previous and next story links.
-- `shared/js/main.js`, `shared/js/menu.js`, `shared/js/theme.js`, and `shared/js/contrast.js` for progressive
-  enhancement.
+- `shared/js/main.js`, `shared/js/navigation-only.js`, `shared/js/menu.js`, `shared/js/theme.js`,
+  `shared/js/contrast.js`, and `shared/js/back-to-top.js` for progressive enhancement.
 
 Keep essential shared component markup in every consuming HTML page; do not inject it with JavaScript. Add the
 `site-chrome` class to each component root so story appearance changes do not affect story artwork. On story pages
@@ -51,13 +54,18 @@ that offer appearance selection, System settings, Light, and Dark apply only to 
 `hra-landing-theme` as the storage key during migration. Include the appearance fieldset only when a page initializes
 theme selection; omit it when appearance is not an available option. Add `site-chrome--light` to the Menu root on
 pages without appearance selection so the Menu does not follow the operating-system dark preference. Keep the High
-contrast switch available in every enhanced Menu. On story pages, its visual changes must remain inside
-`.site-chrome` roots.
+contrast switch available only on `index.html` and `story6.html`, which are the pages that offer appearance controls.
+Story 1 through Story 5 use navigation-only Menus. On Story 6, preference changes must remain inside `.site-chrome`
+roots and explicitly approved story surfaces.
 
-Adopt the foundation one page at a time. Story 1 is the integration pilot, the landing page uses the canonical shared
-Menu, and Story 6 is the first story with the shared appearance-enabled Menu. Do not remove a legacy component rule
-until repository-wide search confirms that no maintained or prototype page consumes it. Prototype pages and `Game/`
-are excluded from the shared page-chrome rollout.
+All maintained pages use the canonical shared Menu and footer. Story 1 through Story 5 keep their Menu light and their
+footer on the fixed Dark treatment with `site-chrome--dark`. The landing page and Story 6 allow the shared footer to
+follow their appearance selection. Do not remove a legacy component rule until repository-wide search confirms that
+no maintained or prototype page consumes it. Prototype pages and `Game/` are excluded from the shared page-chrome
+rollout.
+
+Story 6 uses the shared Menu's `site-menu--compact` source-size modifier so its rendered FAB matches the canonical
+size on the landing page and Stories 1 through 5.
 
 Preserve existing uncommitted work and follow the repository's active branch and review workflow. Do not rewrite,
 discard, commit, push, or publish changes unless those operations are explicitly in scope.

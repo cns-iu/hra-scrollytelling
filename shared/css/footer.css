@@ -1,164 +1,119 @@
-/* Canonical footer shared by the maintained landing and story pages. */
+/* Canonical footer shared by every maintained public page. */
 
-.site-chrome-footer {
-    box-sizing: border-box;
-    padding: 0;
+.site-footer {
+    display: flex;
+    padding: 4rem clamp(1rem, 5vw, 5rem);
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    border-top: 1px solid var(--site-chrome-color-footer-border);
     color: var(--site-chrome-color-on-footer);
     background: var(--site-chrome-color-footer);
     font-family: var(--site-chrome-font-body);
-    text-align: start;
+    font-size: var(--site-chrome-title-size);
+    font-weight: 400;
+    letter-spacing: var(--site-chrome-body-letter-spacing);
+    line-height: var(--site-chrome-title-line-height);
+    text-align: center;
 }
 
-.site-chrome-footer *,
-.site-chrome-footer *::before,
-.site-chrome-footer *::after {
+.site-footer,
+.site-footer *,
+.site-footer *::before,
+.site-footer *::after {
     box-sizing: border-box;
 }
 
-.site-chrome-footer__inner {
-    display: grid;
-    width: min(100% - 2rem, var(--site-chrome-content-width));
-    padding-block: clamp(3rem, 7vw, 5rem);
-    margin-inline: auto;
-    gap: clamp(2.5rem, 6vw, 5rem);
-    grid-template-columns: minmax(14rem, 0.8fr) minmax(0, 2fr);
-}
-
-.site-chrome-footer__brand {
+.site-footer__organizations {
     display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-.site-chrome-footer__brand p {
     margin: 0;
-    color: var(--site-chrome-color-on-footer);
-    font-size: var(--site-chrome-body-size);
-    letter-spacing: var(--site-chrome-body-letter-spacing);
-    line-height: var(--site-chrome-body-line-height);
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1.5rem, 5vw, 4rem);
 }
 
-.site-chrome-footer__brand-link {
+.site-footer__organization-link,
+.site-footer__back-to-top {
     display: inline-flex;
     min-height: 2.75rem;
-    padding: 0.25rem;
     align-items: center;
-    border-radius: var(--site-chrome-radius-small);
+    justify-content: center;
+    border-radius: 0.75rem;
+    color: inherit;
+    text-decoration: none;
 }
 
-.site-chrome-footer__brand-link img {
-    width: min(15.375rem, 100%);
+.site-footer__organization-link:hover,
+.site-footer__back-to-top:hover {
+    background: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.site-footer__organization-link:focus-visible,
+.site-footer__back-to-top:focus-visible {
+    outline: 0.2rem solid currentColor;
+    outline-offset: 0.2rem;
+}
+
+.site-footer__organization-link {
+    min-height: 4rem;
+    padding: 0.75rem 1rem;
+}
+
+.site-footer__organization-link img {
+    display: block;
+    max-width: 100%;
     height: auto;
 }
 
-.site-chrome-footer__content {
-    display: grid;
-    min-width: 0;
-    gap: 2rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.site-footer__organization-name {
+    display: none;
 }
 
-.site-chrome-footer h2 {
-    margin: 0 0 1rem;
-    color: var(--site-chrome-color-on-footer);
-    font-family: var(--site-chrome-font-body);
-    font-size: var(--site-chrome-title-large-size);
-    font-weight: 600;
-    line-height: var(--site-chrome-title-large-line-height);
-}
-
-.site-chrome-footer__link-list {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    list-style: none;
-}
-
-.site-chrome-footer__link-list a {
-    display: inline-flex;
-    min-width: 3rem;
-    min-height: 3rem;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-}
-
-.site-chrome-footer__funder-list a {
-    padding: 0.25rem;
-    border: 1px solid var(--site-chrome-color-logo-border);
-    border-radius: var(--site-chrome-radius-small);
-    background: var(--site-chrome-color-logo-tile);
-}
-
-.site-chrome-footer a:focus-visible {
-    outline: 0.2rem solid var(--site-chrome-color-on-footer);
-    outline-offset: 0.15rem;
-    box-shadow: 0 0 0 0.4rem var(--site-chrome-color-footer);
-}
-
-.site-chrome-footer__link-list a:hover {
-    box-shadow: 0 0 0 0.2rem var(--site-chrome-color-on-footer);
-}
-
-.site-chrome-footer__disclaimer {
-    max-width: var(--site-chrome-reading-width);
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--site-chrome-color-footer-border);
-    grid-column: 1 / -1;
-}
-
-.site-chrome-footer__disclaimer p {
-    margin: 0;
-    color: var(--site-chrome-color-on-footer);
+.site-footer__back-to-top {
+    padding: 0.625rem 0.875rem;
+    gap: 0.5rem;
     font-size: var(--site-chrome-body-size);
+    font-weight: 600;
     letter-spacing: var(--site-chrome-body-letter-spacing);
     line-height: var(--site-chrome-body-line-height);
 }
 
-@media (max-width: 52rem) {
-    .site-chrome-footer__inner,
-    .site-chrome-footer__content {
-        grid-template-columns: 1fr;
-    }
-
-    .site-chrome-footer__disclaimer {
-        grid-column: auto;
-    }
+.site-footer__back-to-top svg {
+    flex: 0 0 auto;
 }
 
-@media (max-width: 36rem) {
-    .site-chrome-footer__inner {
-        width: min(100% - 1.25rem, var(--site-chrome-content-width));
-    }
-}
-
-:root[data-contrast="more"] .site-chrome-footer__brand-link,
-:root[data-contrast="more"] .site-chrome-footer__link-list a {
-    border: 0.25rem solid currentColor;
-}
-
-:root[data-contrast="more"] .site-chrome-footer__disclaimer {
-    border-top-width: 0.25rem;
-}
-
-@media (prefers-contrast: more) {
-    :root:not([data-contrast="standard"]) .site-chrome-footer__brand-link,
-    :root:not([data-contrast="standard"]) .site-chrome-footer__link-list a {
-        border: 0.25rem solid currentColor;
-    }
-
-    :root:not([data-contrast="standard"]) .site-chrome-footer__disclaimer {
-        border-top-width: 0.25rem;
-    }
+.site-footer__copyright {
+    margin: 0;
+    color: inherit;
+    font: inherit;
 }
 
 @media (forced-colors: active) {
-    .site-chrome-footer__brand-link,
-    .site-chrome-footer__link-list a {
+    .site-footer {
+        color: CanvasText;
+        background: Canvas;
+        border-color: CanvasText;
+    }
+
+    .site-footer__organization-link,
+    .site-footer__back-to-top {
         border: 2px solid CanvasText;
-        box-shadow: none;
+        color: LinkText;
+        background: Canvas;
+    }
+
+    .site-footer__organization-link img {
+        display: none;
+    }
+
+    .site-footer__organization-name {
+        display: inline;
+    }
+}
+
+@media print {
+    .site-footer__back-to-top {
+        display: none;
     }
 }

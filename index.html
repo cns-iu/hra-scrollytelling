@@ -80,6 +80,7 @@
     <link rel="stylesheet" href="shared/css/tokens.css">
     <link rel="stylesheet" href="shared/css/selection.css">
     <link rel="stylesheet" href="shared/css/navigation.css">
+    <link rel="stylesheet" href="shared/css/footer.css">
     <link rel="stylesheet" href="landing/css/styles.css">
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 
@@ -261,17 +262,27 @@
         </section>
     </main>
 
-    <!-- Site footer -->
-    <footer class="site-footer">
-        <div class="footer-inner">
-            <a class="footer-brand-link" href="https://humanatlas.io/"
-                aria-label="Visit the Human Reference Atlas">
-                <img src="img/UI Assets/logo.svg" alt="" width="246" height="102">
+    <footer class="site-footer site-chrome">
+        <nav class="site-footer__organizations" aria-label="Organizations">
+            <a class="site-footer__organization-link" href="https://humanatlas.io/"
+                aria-label="Human Reference Atlas">
+                <img src="shared/assets/logos/hra-dark-large.svg" alt="" width="148" height="63">
+                <span class="site-footer__organization-name">Human Reference Atlas</span>
             </a>
-            <a class="back-to-top" href="#main-content">
-                <span>Back to top</span>
+            <a class="site-footer__organization-link" href="https://cns.iu.edu/"
+                aria-label="Cyberinfrastructure for Network Science Center">
+                <img src="shared/assets/logos/cns-dark-long.svg" alt="" width="239" height="40">
+                <span class="site-footer__organization-name">Cyberinfrastructure for Network Science Center</span>
             </a>
-        </div>
+        </nav>
+        <a class="site-footer__back-to-top" href="#main-content" data-back-to-top>
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                <path d="M12 19V5m0 0-6 6m6-6 6 6" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Back to top
+        </a>
+        <p class="site-footer__copyright">© 2026 Cyberinfrastructure for Network Science Center</p>
     </footer>
 </body>
 

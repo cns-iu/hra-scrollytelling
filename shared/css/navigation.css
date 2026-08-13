@@ -28,12 +28,30 @@
 }
 
 .site-menu {
+    --site-menu-fab-min-width: 7rem;
+    --site-menu-fab-min-height: 3.5rem;
+    --site-menu-fab-padding: 0.75rem 1rem;
+    --site-menu-fab-gap: 0.75rem;
+    --site-menu-fab-radius: 1rem;
+
     position: fixed;
     z-index: 100000;
+    margin: 0;
     inset-block-start: calc(2.75rem + env(safe-area-inset-top));
     inset-inline-start: calc(3.125rem + env(safe-area-inset-left));
     font-family: var(--site-chrome-font-body);
+    font-size: var(--site-chrome-title-size);
+    font-weight: 400;
+    line-height: var(--site-chrome-title-line-height);
     isolation: isolate;
+}
+
+.site-menu--compact {
+    --site-menu-fab-min-width: 6.25rem;
+    --site-menu-fab-min-height: 3rem;
+    --site-menu-fab-padding: 0.5rem 0.75rem;
+    --site-menu-fab-gap: 0.5rem;
+    --site-menu-fab-radius: 0.75rem;
 }
 
 .site-menu,
@@ -44,19 +62,27 @@
     box-sizing: border-box;
 }
 
+.site-menu :where(p, ul, fieldset) {
+    margin-block: 0;
+}
+
+.site-menu :where(button, input) {
+    font: inherit;
+}
+
 .site-menu summary {
     position: relative;
     isolation: isolate;
     display: inline-flex;
-    min-width: 6.25rem;
-    min-height: 3rem;
-    padding: 0.5rem 0.75rem;
+    min-width: var(--site-menu-fab-min-width);
+    min-height: var(--site-menu-fab-min-height);
+    padding: var(--site-menu-fab-padding);
     overflow: hidden;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: var(--site-menu-fab-gap);
     border: 0;
-    border-radius: 0.75rem;
+    border-radius: var(--site-menu-fab-radius);
     color: var(--site-chrome-fab-content);
     background: var(--site-chrome-fab-container);
     box-shadow: var(--site-chrome-shadow-fab);

@@ -9,21 +9,6 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <!-- Apply a saved contrast preference before shared chrome paints. -->
-    <script>
-        (() => {
-            try {
-                const savedContrast = localStorage.getItem('hra-high-contrast');
-
-                if (savedContrast === 'more' || savedContrast === 'standard') {
-                    document.documentElement.dataset.contrast = savedContrast;
-                }
-            } catch {
-                // The operating-system preference remains the fallback.
-            }
-        })();
-    </script>
-
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="shared/css/fonts.css">
     <link rel="stylesheet" href="shared/css/tokens.css">
@@ -43,7 +28,7 @@
         gtag('config', 'G-E1811WRJJD');
     </script>
 
-    <script type="module" src="shared/js/main.js"></script>
+    <script type="module" src="shared/js/navigation-only.js"></script>
 </head>
 
 
@@ -81,18 +66,6 @@
                     <li><a href="story6.html">Pan-organ Immunosenescence Atlas</a></li>
                 </ul>
             </nav>
-
-            <fieldset class="site-accessibility" data-contrast-controls hidden>
-                <legend>Accessibility</legend>
-                <button class="site-contrast-switch" type="button" role="switch" aria-checked="false"
-                    data-contrast-toggle>
-                    <span class="site-contrast-switch__label">High contrast</span>
-                    <span class="site-contrast-switch__track" aria-hidden="true">
-                        <span class="site-contrast-switch__thumb"></span>
-                    </span>
-                    <span class="site-contrast-switch__state" data-contrast-state aria-hidden="true">Off</span>
-                </button>
-            </fieldset>
 
         </div>
     </details>
@@ -280,81 +253,27 @@
         </ul>
     </nav>
 
-    <footer class="site-chrome-footer site-chrome">
-        <div class="site-chrome-footer__inner">
-            <div class="site-chrome-footer__brand">
-                <a class="site-chrome-footer__brand-link" href="https://humanatlas.io/"
-                    aria-label="Visit the Human Reference Atlas">
-                    <img src="img/UI Assets/logo.svg" alt="" width="246" height="102">
-                </a>
-                <p>© 2026 CNS at Indiana University</p>
-            </div>
-
-            <div class="site-chrome-footer__content">
-                <nav aria-labelledby="social-title">
-                    <h2 id="social-title">Follow the Cyberinfrastructure for Network Science Center</h2>
-                    <ul class="site-chrome-footer__link-list" role="list">
-                        <li>
-                            <a href="https://twitter.com/cnscenter"
-                                aria-label="Cyberinfrastructure for Network Science Center on X, formerly Twitter">
-                                <img src="img/UI Assets/social media.svg" alt="" width="48" height="48">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/cnscenter/"
-                                aria-label="Cyberinfrastructure for Network Science Center on Facebook">
-                                <img src="img/UI Assets/social media-1.svg" alt="" width="49" height="48">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/cns_at_iu/"
-                                aria-label="Cyberinfrastructure for Network Science Center on Instagram">
-                                <img src="img/UI Assets/social media-2.svg" alt="" width="49" height="48">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.youtube.com/@CNSCenter/"
-                                aria-label="Cyberinfrastructure for Network Science Center on YouTube">
-                                <img src="img/UI Assets/social media-3.svg" alt="" width="49" height="48">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/company/cns-indiana-university-bloomington"
-                                aria-label="Cyberinfrastructure for Network Science Center on LinkedIn">
-                                <img src="img/UI Assets/social media-4.svg" alt="" width="49" height="48">
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
-                <section aria-labelledby="funders-title">
-                    <h2 id="funders-title">Funded by</h2>
-                    <ul class="site-chrome-footer__link-list site-chrome-footer__funder-list" role="list">
-                        <li>
-                            <a href="https://www.nih.gov/" aria-label="National Institutes of Health">
-                                <img src="img/UI Assets/icon_ funder.svg" alt="" width="48" height="48">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://cifar.ca/" aria-label="CIFAR">
-                                <img src="img/UI Assets/icon_ funder-1.svg" alt="" width="49" height="48">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.iu.edu/index.html" aria-label="Indiana University">
-                                <img src="img/UI Assets/icon_ funder-2.svg" alt="" width="49" height="48">
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-
-                <section class="site-chrome-footer__disclaimer" aria-labelledby="disclaimer-title">
-                    <h2 id="disclaimer-title">Medical disclaimer</h2>
-                    <p>This resource is intended for research purposes only. It should not be used for emergencies or
-                        for medical or professional advice.</p>
-                </section>
-            </div>
-        </div>
+    <footer class="site-footer site-chrome site-chrome--dark">
+        <nav class="site-footer__organizations" aria-label="Organizations">
+            <a class="site-footer__organization-link" href="https://humanatlas.io/"
+                aria-label="Human Reference Atlas">
+                <img src="shared/assets/logos/hra-dark-large.svg" alt="" width="148" height="63">
+                <span class="site-footer__organization-name">Human Reference Atlas</span>
+            </a>
+            <a class="site-footer__organization-link" href="https://cns.iu.edu/"
+                aria-label="Cyberinfrastructure for Network Science Center">
+                <img src="shared/assets/logos/cns-dark-long.svg" alt="" width="239" height="40">
+                <span class="site-footer__organization-name">Cyberinfrastructure for Network Science Center</span>
+            </a>
+        </nav>
+        <a class="site-footer__back-to-top" href="#main-content" data-back-to-top>
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                <path d="M12 19V5m0 0-6 6m6-6 6 6" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Back to top
+        </a>
+        <p class="site-footer__copyright">© 2026 Cyberinfrastructure for Network Science Center</p>
     </footer>
 </body>
 

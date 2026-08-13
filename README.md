@@ -67,7 +67,6 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 ```text
 .
 ├── index.html          # Accessible landing-page structure and content
-├── assets/              # Shared Story 6 brand, font, and icon assets
 ├── landing/            # Isolated landing-page implementation
 │   ├── assets/
 │   │   ├── backgrounds/
@@ -86,8 +85,8 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 ├── shared/             # Landing-and-story page-chrome foundation
 │   ├── assets/
 │   │   ├── fonts/      # Self-hosted HRA webfonts and licenses
-│   │   └── icons/
-│   │       └── menu.svg # Material Menu glyph shared by maintained page chrome
+│   │   ├── icons/      # Shared interface and retained organ icons
+│   │   └── logos/      # Theme-aware organization logos
 │   ├── css/            # Fonts, tokens, navigation, footer, and story-navigation styles
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── prototypes/         # Organized legacy experiences and their maintenance notes
@@ -126,12 +125,14 @@ The landing page is deliberately separated from the legacy story implementation:
 - `index.html` owns its semantic structure and editorial content.
 - `landing/assets/backgrounds/` contains the Light and Dark decorative splash artwork.
 - `shared/assets/icons/menu.svg` is the Material Menu glyph used by the landing and shared-story extended FABs.
+- `shared/assets/logos/` contains the theme-aware organization marks used by the footer and Story 6 resource cards.
 - `shared/css/fonts.css` owns the self-hosted HRA font declarations and resilient typography stacks.
 - `landing/css/fonts.css` preserves the former font URL for cached landing-page documents.
 - `landing/css/tokens.css` owns light/dark HRA colors, semantic roles, and shared layout tokens.
-- `shared/css/tokens.css`, `shared/css/selection.css`, and `shared/css/navigation.css` own the canonical Menu and skip link.
+- `shared/css/tokens.css`, `shared/css/selection.css`, `shared/css/navigation.css`, and `shared/css/footer.css` own the
+  canonical Menu, skip link, and footer.
 - `landing/css/styles.css` owns landing content, layout, responsive rules, and page-specific accessibility adaptations.
-- `landing/js/main.js` initializes the shared Menu, appearance, and contrast modules for the landing page.
+- `landing/js/main.js` initializes the shared Menu, appearance, contrast, and back-to-top modules for the landing page.
 
 Load the landing stylesheets in the documented order so font and design tokens exist before component rules use them.
 The inline script in `index.html` applies a saved theme before paint; keep its storage key aligned with
@@ -186,38 +187,32 @@ scroll within short or highly zoomed viewports. Appearance controls belong only 
 selection; omit the fieldset when appearance is not an available page option. A page without appearance selection
 uses the shared Menu's light treatment rather than changing it with the operating-system preference.
 
-Every enhanced Menu includes an Accessibility group with a persistent High contrast switch. The switch follows the
-operating-system contrast preference until a visitor explicitly turns it on or off. On the landing page it changes the
-complete experience; on story pages it changes only namespaced shared chrome and never story artwork or animation.
+The landing page and Story 6 include an Accessibility group with a persistent High contrast switch. The switch follows
+the operating-system contrast preference until a visitor explicitly turns it on or off. Story 1 through Story 5 use
+navigation-only Menus without appearance or High contrast controls.
 
 ## Shared page chrome
 
-The maintained landing page and story pages use related Menu and footer foundations while retaining page-specific
-presentation. Story-page Menu, footer, and end-of-story navigation components are migrating under `shared/`. Because
-GitHub Pages serves the source files directly, each page retains semantic component markup in its HTML while sharing
-namespaced CSS and small JavaScript modules. Essential links and landmarks are never injected at runtime.
+The maintained landing page and story pages use the same Menu and footer foundations while retaining page-specific
+content presentation. Because GitHub Pages serves the source files directly, each page retains semantic component
+markup in its HTML while sharing namespaced CSS and small JavaScript modules. Essential links and landmarks are never
+injected at runtime.
 
-Story 1 is the first shared page-chrome integration pilot, and Story 6 is the first story to offer the shared
-appearance controls. The landing page and migrated stories use the same semantic Menu contract, approved icon, FAB,
-panel, list, active-state, scrollbar presentation, and progressive-enhancement modules. Appearance controls are
+The landing page and all six stories use the same semantic Menu contract, approved icon, FAB, panel, list, active
+state, scrollbar presentation, canonical footer, and progressive-enhancement modules. Appearance controls are
 included only when visitors can change that page's presentation. Component loading order and markup hooks are
 documented in [`shared/README.md`](shared/README.md).
 
-During the staged migration:
+Current behavior:
 
-- `story1.html` is the first integration pilot for the shared Menu, story navigation, and footer; it intentionally
-  omits appearance choices and keeps its Menu light because Story 1 does not offer page-level theme selection.
-- `story6.html` uses the shared Menu with System settings, Light, Dark, and High contrast controls while retaining its
-  page-owned narrative and footer components.
-- `index.html` uses the canonical shared Menu while retaining its vertically stacked logo-and-tonal-button footer.
+- `story1.html` through `story5.html` use a light navigation-only Menu and the fixed Dark footer treatment.
+- `index.html` and `story6.html` use the shared Menu with System settings, Light, Dark, and High contrast controls.
 - Story pages that offer Light, Dark, and System settings apply them only to shared page chrome; story artwork is
   unchanged.
-- The namespaced shared footer is the canonical footer for story-page migration.
-- Each story is adopted and validated in a separate commit.
+- Every maintained page uses the compact shared footer with organization links and an accessible back-to-top action.
 - Prototype pages and `Game/` remain outside the shared page-chrome rollout.
 
-See [`docs/architecture.md`](docs/architecture.md#shared-page-chrome) for component boundaries and the migration
-sequence.
+See [`docs/architecture.md`](docs/architecture.md#shared-page-chrome) for component boundaries and maintenance rules.
 
 ## Accessibility
 

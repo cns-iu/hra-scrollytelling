@@ -5,15 +5,14 @@
 - Treat `../story6.html`, the styles in `css/`, and `story6.js` as one feature even though the HTML entry point remains at the repository root
 - When creating or substantially restructuring files, keep each file at 500 lines or fewer where practical; split larger files by clear responsibility
 - Keep `story6.js` as the small entry point; place focused UI, animation, reveal, and layout responsibilities in `js/` modules
-- Keep `css/base.css` responsible for Story 6 fonts, tokens, accessibility, and page primitives; use the repository-level `shared/` styles and modules for the Menu and appearance controls
+- Keep `css/base.css` responsible for Story 6 typography tokens, accessibility, and page primitives; use `../shared/css/fonts.css` for font declarations and the repository-level `shared/` styles and modules for the Menu and appearance controls
 - Keep `css/theme.css` responsible for Story 6 semantic color roles and scoped System, Light, Dark, High contrast, and forced-colors adaptations
 - Keep `css/splash-transitions.css`, `css/narrative.css`, `css/tissue-comparison.css`, `css/cde.css`, and `css/closing.css` scoped to their named Story 6 regions
 - Keep responsive, animation-failure, and reduced-motion rules beside the component styles they modify rather than collecting them in a separate responsive file
-- Keep Story 6–specific images in `img/` and datasets in `data/`
-- Keep fonts and shared footer assets in the repository-level `../assets/` directory
-- Keep genuinely shared navigation and appearance assets under the repository-level `../shared/` directory; keep the favicon and legacy cross-story images under `../img/`
+- Keep Story 6–specific narrative images in `img/` and datasets in `data/`
+- Keep fonts, organization logos, and shared interface icons under the repository-level `../shared/assets/` directory; keep the favicon and legacy cross-story images under `../img/`
 - Resolve paths in `../story6.html` from the repository root, such as `story6/img/example.webp`
-- Resolve paths in `css/*.css` from the `css/` directory, such as `../../assets/fonts/example.woff2`
+- Resolve paths in `css/*.css` from the `css/` directory, such as `../../shared/assets/icons/info.svg`
 - Retain the CDE datasets in `data/` unless the user explicitly requests their removal, but do not request or parse them from the story page
 - Preserve current narrative copy unless the user explicitly requests content editing because Story 6 content may be changing concurrently
 
@@ -32,7 +31,7 @@
 - Do not embed, import, preload, or construct the Cell Distance Explorer web component in Story 6 because its runtime and dataset parsing block tutorial scrolling
 - End the native-sticky CDE tutorial after its fifth screenshot and proceed directly into Transition 5 without a launch control or interactive explorer state
 - Keep tutorial images on the shared `1320 / 760` stage with an `82.5rem` maximum width
-- Keep CDE tutorial callouts as semantic ordered-list items using the `.tutorial-callout` component and decorative `../assets/icons/info.svg` icon
+- Keep CDE tutorial callouts as semantic ordered-list items using the `.tutorial-callout` component and decorative `../shared/assets/icons/info.svg` icon
 - Keep tutorial callouts horizontally centered; place narrow-screen callouts below the scaled tutorial image
 - Use a brief crossfade only between tutorial screenshots 1 and 2; switch every later screenshot directly at its step boundary
 - Animate tutorial callouts with restrained opacity and transform changes, and keep their complete text visible in the reduced-motion layout

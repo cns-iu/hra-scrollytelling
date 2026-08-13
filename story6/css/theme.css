@@ -18,9 +18,8 @@
     --story-color-info-surface: #f0f5ff;
     --story-color-info-accent: #174a7e;
     --story-color-artwork-surface: #ffffff;
-    --story-color-footer: #201e3d;
-    --story-color-on-footer: #ffffff;
-    --story-color-footer-border: #9392a3;
+    --story-resource-logo-sennet: url("../../shared/assets/logos/sennet-logo-light.svg");
+    --story-resource-logo-hra: url("../../shared/assets/logos/hra-light-large.svg");
     --story-color-selection: #201e3d;
     --story-color-on-selection: #ffffff;
     --story-condition-one: #dee5f1;
@@ -57,9 +56,8 @@
     --story-color-on-accent-surface: #e3dfff;
     --story-color-info-surface: #1c2633;
     --story-color-info-accent: #9fc9ff;
-    --story-color-footer: #101113;
-    --story-color-on-footer: #d4dde6;
-    --story-color-footer-border: #aab4c5;
+    --story-resource-logo-sennet: url("../../shared/assets/logos/sennet-logo-dark.svg");
+    --story-resource-logo-hra: url("../../shared/assets/logos/hra-dark-large.svg");
     --story-color-selection: #ffdad9;
     --story-color-on-selection: #400009;
     --story-condition-one: #1f2023;
@@ -92,9 +90,8 @@
         --story-color-on-accent-surface: #e3dfff;
         --story-color-info-surface: #1c2633;
         --story-color-info-accent: #9fc9ff;
-        --story-color-footer: #101113;
-        --story-color-on-footer: #d4dde6;
-        --story-color-footer-border: #aab4c5;
+        --story-resource-logo-sennet: url("../../shared/assets/logos/sennet-logo-dark.svg");
+        --story-resource-logo-hra: url("../../shared/assets/logos/hra-dark-large.svg");
         --story-color-selection: #ffdad9;
         --story-color-on-selection: #400009;
         --story-condition-one: #1f2023;
@@ -272,8 +269,7 @@
     color: var(--story-color-heading);
 }
 
-#six .tissue-sample img,
-#six .resource-card__logo {
+#six .tissue-sample img {
     background: var(--story-color-artwork-surface);
     border-color: var(--story-color-border-subtle);
 }
@@ -294,22 +290,7 @@
     outline-color: var(--story-color-focus);
 }
 
-#six .resource-card {
-    color: var(--story-color-heading);
-    border-color: var(--story-color-border);
-}
-
-#six .resource-card:hover {
-    border-color: var(--story-color-border);
-    box-shadow: var(--story-shadow-raised);
-}
-
-#six .resource-card:focus-visible {
-    outline-color: var(--story-color-focus);
-}
-
 #six .resource-card__action {
-    color: inherit;
     text-decoration: underline;
     text-decoration-thickness: 0.08em;
     text-underline-offset: 0.16em;
@@ -349,24 +330,6 @@
 
 #six .botNav .previous:hover {
     background: color-mix(in srgb, currentColor 10%, transparent);
-}
-
-#six .story-footer {
-    --story-footer-foreground: var(--story-color-on-footer);
-    --story-footer-interaction: color-mix(in srgb, var(--story-color-on-footer) 12%, transparent);
-
-    color: var(--story-color-on-footer);
-    background: var(--story-color-footer);
-    border-top: 1px solid var(--story-color-footer-border);
-}
-
-#six .story-footer a:focus,
-#six .story-footer :is(a, button):focus-visible {
-    outline-color: var(--story-color-on-footer);
-}
-
-#six .story-footer__organization-name {
-    display: none;
 }
 
 #six.story-animations-unavailable .page-header {
@@ -467,7 +430,7 @@
     #six,
     #six #main-content,
     #six .sceneEnd,
-    #six :is(.page-header, .intro, .section2-2, .setup, .section3, .section4, .section5, .resources, .acknowledgments, .references, .story-pagination, .botNav, .story-footer) {
+    #six :is(.page-header, .intro, .section2-2, .setup, .section3, .section4, .section5, .resources, .acknowledgments, .references, .story-pagination, .botNav) {
         color: CanvasText;
         background: Canvas;
     }
@@ -490,11 +453,4 @@
         text-shadow: none;
     }
 
-    #six .story-footer__logo-link img {
-        display: none;
-    }
-
-    #six .story-footer__organization-name {
-        display: inline;
-    }
 }
