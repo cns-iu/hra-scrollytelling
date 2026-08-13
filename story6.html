@@ -9,7 +9,7 @@
       content="Explore how immune cells change with age through a pan-organ atlas, tissue comparisons, and a guided tour of the Cell Distance Explorer app."
     />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#dee5f1" data-light-color="#dee5f1" data-dark-color="#393f45" />
+    <meta name="theme-color" content="#fafbfc" data-light-color="#fafbfc" data-dark-color="#161719" />
     <!-- Apply saved appearance and contrast preferences before shared chrome paints. -->
     <script>
       (() => {
@@ -72,6 +72,7 @@
     <link rel="stylesheet" href="story6/css/tissue-comparison.css" />
     <link rel="stylesheet" href="story6/css/cde.css" />
     <link rel="stylesheet" href="story6/css/closing.css" />
+    <link rel="stylesheet" href="story6/css/theme.css" />
     <link rel="icon" type="image/x-icon" href="img/favicon.svg" />
 
     <!-- Google tag (gtag.js) -->
@@ -562,7 +563,7 @@
         </div>
         <ol class="cde-tutorial-steps" aria-label="Cell Distance Explorer tutorial steps">
           <li class="tutorial-callout tutorial-callout--1">
-            <img class="tutorial-callout__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <span class="tutorial-callout__icon" aria-hidden="true"></span>
             <div class="tutorial-callout__content">
               Let’s get familiar with the Cell Distance Explorer app.
               <span class="visually-hidden">
@@ -571,7 +572,7 @@
             </div>
           </li>
           <li class="tutorial-callout tutorial-callout--2">
-            <img class="tutorial-callout__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <span class="tutorial-callout__icon" aria-hidden="true"></span>
             <div class="tutorial-callout__content">
               <span class="visually-hidden">The Cell Types table is highlighted. </span>
               Show/hide cell types in the visualization and plots. Hide cell links from this table view. Update colors for individual cell types. Download CSVs
@@ -579,7 +580,7 @@
             </div>
           </li>
           <li class="tutorial-callout tutorial-callout--3">
-            <img class="tutorial-callout__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <span class="tutorial-callout__icon" aria-hidden="true"></span>
             <div class="tutorial-callout__content">
               <span class="visually-hidden">The central Visualization panel is highlighted. </span>
               Use the Visualization panel to navigate the cells spatially:
@@ -591,14 +592,14 @@
             </div>
           </li>
           <li class="tutorial-callout tutorial-callout--4">
-            <img class="tutorial-callout__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <span class="tutorial-callout__icon" aria-hidden="true"></span>
             <div class="tutorial-callout__content">
               <span class="visually-hidden">The Violin Graph panel is highlighted. </span>
               This violin plot shows cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
             </div>
           </li>
           <li class="tutorial-callout tutorial-callout--5">
-            <img class="tutorial-callout__icon" src="assets/icons/info.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <span class="tutorial-callout__icon" aria-hidden="true"></span>
             <div class="tutorial-callout__content">
               <span class="visually-hidden">The Histogram panel is highlighted. </span>
               This histogram plot shows the cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
@@ -739,7 +740,7 @@
 
     <div class="sceneEnd" id="scrollto11">
       <!-- BotNav -->
-      <div style="background-color: white !important">
+      <div class="story-pagination">
         <nav class="botNav" aria-label="Story pagination">
           <a href="story5.html" class="previous"
             ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16">
@@ -762,16 +763,12 @@
       <footer class="story-footer">
         <nav class="story-footer__logos" aria-label="Organizations">
           <a class="story-footer__logo-link" href="https://humanatlas.io/" aria-label="Human Reference Atlas">
-            <picture>
-              <source srcset="assets/hra-dark-large.svg" media="(prefers-color-scheme: dark)" />
-              <img src="assets/hra-light-large.svg" alt="" width="148" height="63" />
-            </picture>
+            <img src="assets/hra-dark-large.svg" alt="" width="148" height="63" />
+            <span class="story-footer__organization-name">Human Reference Atlas</span>
           </a>
           <a class="story-footer__logo-link" href="https://cns.iu.edu/" aria-label="Cyberinfrastructure for Network Science Center">
-            <picture>
-              <source srcset="assets/cns-dark-long.svg" media="(prefers-color-scheme: dark)" />
-              <img src="assets/cns-light-long.svg" alt="" width="239" height="40" />
-            </picture>
+            <img src="assets/cns-dark-long.svg" alt="" width="239" height="40" />
+            <span class="story-footer__organization-name">Cyberinfrastructure for Network Science Center</span>
           </a>
         </nav>
         <a class="story-footer__back-to-top" href="#main-content">

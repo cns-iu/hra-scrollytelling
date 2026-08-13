@@ -324,7 +324,6 @@
       min-height: 4rem;
       padding: 0.75rem 1rem;
 
-      picture,
       img {
         display: block;
         max-width: 100%;
@@ -359,13 +358,4 @@
 
 #six .story-footer a:focus {
   outline-color: var(--story-footer-foreground);
-}
-
-@media (prefers-color-scheme: dark) {
-  #six .story-footer {
-    --story-footer-foreground: var(--hra-neutral-95);
-    --story-footer-interaction: rgb(233 238 243 / 10%);
-
-    background: var(--hra-neutral-variant-30);
-  }
 }

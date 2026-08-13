@@ -88,6 +88,9 @@
       display: block;
       width: 1.5rem;
       height: 1.5rem;
+      background: var(--tutorial-info-accent);
+      -webkit-mask: url("../../assets/icons/info.svg") center / contain no-repeat;
+      mask: url("../../assets/icons/info.svg") center / contain no-repeat;
     }
 
     .tutorial-callout__content {
