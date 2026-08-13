@@ -20,7 +20,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 
 | Area | Entry points | Implementation |
 | --- | --- | --- |
-| Landing page | `index.html` | `landing/assets/`, `landing/css/`, shared HRA fonts, and `landing/js/` |
+| Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story5.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; Story 1 is the integration pilot |
 | Primary stories | `story1.html` through `story5.html` | Shared `style.css`, shared or story-specific scripts, `img/`, `music/`, and gradually organized files under `stories/` |
 | Prototypes | `img/test.html` and the compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations under `prototypes/` plus shared legacy files |
@@ -110,10 +110,9 @@ On story pages, the selected appearance applies only to the shared page chrome; 
 colors remain unchanged. On the landing page, the existing full-page appearance behavior remains in scope. The
 established `hra-landing-theme` storage key is retained during migration so existing preferences continue to work.
 
-The landing page and each migrated story share the canonical Menu icon and matching FAB, panel, list-row,
-current-page indicator, and scrollbar presentation. Pages that offer appearance selection also share the
-appearance-control presentation. Their disclosure markup may remain page-appropriate as long as keyboard behavior,
-accessible state, dismissal, and focus restoration stay equivalent.
+The landing page and each migrated story use the canonical semantic Menu contract, icon, FAB, panel, list-row,
+current-page indicator, scrollbar presentation, appearance controls, and progressive-enhancement modules. Shared
+component behavior includes keyboard state, dismissal, and focus restoration.
 
 The shared Menu must remain a direct child of `body`. Story animation wrappers use transforms, pinned positioning, and
 high stacking values that can otherwise change fixed positioning or obscure the control. Its implementation must
@@ -153,7 +152,7 @@ Migrate shared page chrome independently from broader story reorganization:
 
 1. Establish the namespaced shared fonts, styles, and modules without changing any component markup.
 2. Migrate `story1.html` as the first integration pilot while the landing-page redesign is in progress.
-3. Migrate `index.html` after its design direction is approved.
+3. Maintain `index.html` on the canonical shared Menu after its approved migration.
 4. Migrate one remaining story per commit, leaving each story's visual and animation implementation unchanged.
 5. Remove legacy navigation, footer, or story-navigation rules only after a repository-wide search confirms that no
    maintained or prototype page still consumes them.

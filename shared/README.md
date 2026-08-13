@@ -25,6 +25,9 @@ Pages with the enhanced shared Menu load the module entry point:
 The current page may omit a component stylesheet it does not use. Font declarations and typography roles must load
 before component tokens and styles.
 
+The landing page keeps `landing/js/main.js` as its page entry point; that module initializes the canonical shared
+Menu, appearance, and contrast modules.
+
 ## Markup contract
 
 - Add `site-chrome` to each shared component root, including the skip link, so theme tokens remain scoped away from
@@ -62,5 +65,8 @@ inside `.site-chrome` roots so legacy story content is never recolored by this c
 
 Selectors are prefixed with `site-` or `site-chrome-` to avoid collisions with legacy story rules. Story-specific
 layout, artwork, animation, and color rules do not belong here. Prototype pages and `Game/` are not consumers.
+
+The shared Menu is the single maintained implementation for the landing page and migrated stories. Do not add
+page-specific copies of its layout, interaction, appearance, or accessibility rules.
 
 See [`../docs/architecture.md`](../docs/architecture.md#shared-page-chrome) for the staged migration workflow.

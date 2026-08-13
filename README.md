@@ -129,13 +129,13 @@ The landing page is deliberately separated from the legacy story implementation:
 - `shared/css/fonts.css` owns the self-hosted HRA font declarations and resilient typography stacks.
 - `landing/css/fonts.css` preserves the former font URL for cached landing-page documents.
 - `landing/css/tokens.css` owns light/dark HRA colors, semantic roles, and shared layout tokens.
-- `landing/css/styles.css` owns components, layout, responsive rules, and accessibility adaptations.
-- `landing/js/main.js` is the module entry point and initializes independent landing-page features.
-- `landing/js/menu.js` owns the floating navigation disclosure and its focus behavior.
-- `landing/js/theme.js` owns appearance selection, persistence, and system-preference changes.
+- `shared/css/tokens.css`, `shared/css/selection.css`, and `shared/css/navigation.css` own the canonical Menu and skip link.
+- `landing/css/styles.css` owns landing content, layout, responsive rules, and page-specific accessibility adaptations.
+- `landing/js/main.js` initializes the shared Menu, appearance, and contrast modules for the landing page.
 
-Load the three stylesheets in the order shown above so font and design tokens exist before component rules use them.
-The inline script in `index.html` applies a saved theme before paint; keep its storage key aligned with `theme.js`.
+Load the landing stylesheets in the documented order so font and design tokens exist before component rules use them.
+The inline script in `index.html` applies a saved theme before paint; keep its storage key aligned with
+`shared/js/theme.js`.
 The landing page does not load `style.css`, prototype or story scripts, remote fonts, or a JavaScript framework.
 
 ### Page metadata
@@ -197,17 +197,17 @@ presentation. Story-page Menu, footer, and end-of-story navigation components ar
 GitHub Pages serves the source files directly, each page retains semantic component markup in its HTML while sharing
 namespaced CSS and small JavaScript modules. Essential links and landmarks are never injected at runtime.
 
-Story 1 is the first shared page-chrome integration pilot. The landing page retains its existing component markup
-while its redesign is in progress, but both experiences share the approved Menu icon and matching FAB, panel, list,
-active-state, and scrollbar presentation. Appearance controls remain page-specific and are shown only when visitors
-can change that page's presentation. Component loading order and markup hooks are documented in
+Story 1 is the first shared page-chrome integration pilot. The landing page and migrated stories use the same
+semantic Menu contract, approved icon, FAB, panel, list, active-state, scrollbar presentation, and
+progressive-enhancement modules. Appearance controls are included only when visitors can change that page's
+presentation. Component loading order and markup hooks are documented in
 [`shared/README.md`](shared/README.md).
 
 During the staged migration:
 
 - `story1.html` is the first integration pilot for the shared Menu, story navigation, and footer; it intentionally
   omits appearance choices and keeps its Menu light because Story 1 does not offer page-level theme selection.
-- `index.html` retains a landing-specific Menu and a vertically stacked logo-and-tonal-button footer.
+- `index.html` uses the canonical shared Menu while retaining its vertically stacked logo-and-tonal-button footer.
 - Story pages that offer Light, Dark, and System settings apply them only to shared page chrome; story artwork is
   unchanged.
 - The namespaced shared footer is the canonical footer for story-page migration.
@@ -264,8 +264,6 @@ Before handing off a change:
 ```bash
 git diff --check
 node --check landing/js/main.js
-node --check landing/js/menu.js
-node --check landing/js/theme.js
 node --check shared/js/main.js
 node --check shared/js/menu.js
 node --check shared/js/theme.js

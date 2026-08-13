@@ -20,16 +20,15 @@ Landing-page work is intentionally isolated to:
 - `shared/css/fonts.css` for typography stacks and font declarations used by the landing page and shared page chrome.
 - `landing/css/fonts.css` as a compatibility bridge for cached documents that still request the former font URL.
 - `landing/css/tokens.css` for landing-page themes and shared design tokens.
-- `landing/css/styles.css` for landing-page components, layout, and accessibility adaptations.
-- `landing/js/main.js` for initializing landing-page modules.
-- `landing/js/menu.js` for the navigation disclosure and focus behavior.
-- `landing/js/theme.js` for appearance selection, persistence, and system-preference behavior.
+- `shared/css/tokens.css`, `shared/css/selection.css`, and `shared/css/navigation.css` for the canonical Menu and skip link.
+- `landing/css/styles.css` for landing-page content, layout, and accessibility adaptations outside shared page chrome.
+- `landing/js/main.js` for initializing the shared Menu, appearance, and contrast modules on the landing page.
 - `shared/js/contrast.js` for the persistent High contrast switch used by landing and shared page chrome.
 
 Do not reconnect the landing page to the legacy `style.css` or to prototype or story scripts. Do not allow
 landing-page selectors or behavior to affect the story pages. Do not overwrite or repurpose legacy files directly
-under `js/`. Keep the landing stylesheet order `shared/css/fonts.css`, `landing/css/tokens.css`, then
-`landing/css/styles.css`, and load `landing/js/main.js` as an ES module.
+under `js/`. Keep the landing stylesheet order `shared/css/fonts.css`, `landing/css/tokens.css`, the shared page-chrome
+stylesheets, then `landing/css/styles.css`, and load `landing/js/main.js` as an ES module.
 
 ## Shared page-chrome architecture
 
@@ -55,10 +54,9 @@ pages without appearance selection so the Menu does not follow the operating-sys
 contrast switch available in every enhanced Menu. On story pages, its visual changes must remain inside
 `.site-chrome` roots.
 
-Adopt the foundation one page at a time. Story 1 is the integration pilot while the landing-page redesign is in
-progress; migrate `index.html` after its revised design is approved. Do not remove a legacy component rule until
-repository-wide search confirms that no maintained or prototype page consumes it. Prototype pages and `Game/` are
-excluded from the shared page-chrome rollout.
+Adopt the foundation one page at a time. Story 1 is the integration pilot, and the landing page uses the canonical
+shared Menu. Do not remove a legacy component rule until repository-wide search confirms that no maintained or
+prototype page consumes it. Prototype pages and `Game/` are excluded from the shared page-chrome rollout.
 
 Preserve existing uncommitted work and follow the repository's active branch and review workflow. Do not rewrite,
 discard, commit, push, or publish changes unless those operations are explicitly in scope.

@@ -1,8 +1,8 @@
-import { initializeSiteMenu } from './menu.js';
-import { initializeThemeControls } from './theme.js';
+import { initializeSiteMenus } from '../../shared/js/menu.js';
+import { initializeSiteTheme } from '../../shared/js/theme.js';
 import { initializeContrastControls } from '../../shared/js/contrast.js';
 
 // Keep feature initialization explicit so modules remain independently maintainable.
-initializeThemeControls();
+initializeSiteTheme();
 initializeContrastControls();
-initializeSiteMenu();
+initializeSiteMenus();
