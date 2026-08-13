@@ -10,6 +10,7 @@
     --story-color-surface-low: #eef2f6;
     --story-color-surface: #e4eaf0;
     --story-color-border: #6f7b8c;
+    --story-color-border-subtle: #c7d2dd;
     --story-color-label: #26282b;
     --story-color-on-label: #eff2f5;
     --story-color-accent-surface: #e3dfff;
@@ -49,6 +50,7 @@
     --story-color-surface-low: #1c1b1e;
     --story-color-surface: #1f2023;
     --story-color-border: #aab4c5;
+    --story-color-border-subtle: #393f45;
     --story-color-label: #d4dde6;
     --story-color-on-label: #26282b;
     --story-color-accent-surface: #171533;
@@ -83,6 +85,7 @@
         --story-color-surface-low: #1c1b1e;
         --story-color-surface: #1f2023;
         --story-color-border: #aab4c5;
+        --story-color-border-subtle: #393f45;
         --story-color-label: #d4dde6;
         --story-color-on-label: #26282b;
         --story-color-accent-surface: #171533;
@@ -113,7 +116,7 @@
 }
 
 #six :where(#main-content a, .sceneEnd a) {
-    color: var(--story-color-accent);
+    color: inherit;
 }
 
 #six #main-content ::selection,
@@ -129,25 +132,23 @@
 }
 
 #six .page-header {
+    --story-splash-overlay-opacity: 0;
     color: var(--story-color-heading);
     background: var(--story-color-page);
 }
-
 #six .page-header::after {
     background: var(--story-splash-overlay);
+    opacity: var(--story-splash-overlay-opacity);
 }
-
 #six .page-header .title-card {
     color: var(--story-color-text);
     background: var(--story-title-card);
-    border-color: var(--story-color-border);
+    border-color: var(--story-color-border-subtle);
     box-shadow: var(--story-shadow-raised);
 }
-
 #six .page-header .title-card::before {
-    background: var(--story-color-accent);
+    background: var(--hra-primary-40);
 }
-
 #six .page-header .title-card .title .main,
 #six .tissue-comparison__intro h2,
 #six .organ-comparison h3,
@@ -159,7 +160,6 @@
 #six .resource-card__title {
     color: var(--story-color-heading);
 }
-
 #six .page-header .title-card .title .subtitle,
 #six .page-header .title-card .bottom,
 #six .intro .text p,
@@ -171,13 +171,12 @@
 #six .references p {
     color: var(--story-color-text);
 }
-
 #six .page-header .title-card .bottom {
-    border-color: var(--story-color-border);
+    border-color: var(--story-color-border-subtle);
 }
 
 #six .textbox-transition1 {
-    --transition-underline-color: var(--story-color-accent);
+    --transition-underline-color: var(--hra-primary-40);
 
     color: var(--story-color-heading);
     text-shadow: var(--story-splash-text-shadow);
@@ -228,15 +227,14 @@
 #six .image-card,
 #six .organ-comparison,
 #six .tissue-comparison__takeaway,
-#six .resource-card,
 #six .acknowledgments__list li {
     background: var(--story-color-card);
-    border-color: var(--story-color-border);
+    border-color: var(--story-color-border-subtle);
     box-shadow: var(--story-shadow);
 }
 
 #six .image-card {
-    border: 1px solid var(--story-color-border);
+    border: 1px solid var(--story-color-border-subtle);
 }
 
 #six .mouse .label {
@@ -248,15 +246,14 @@
 #six .organ-comparison__number,
 #six .tissue-comparison__takeaway .tissue-comparison__takeaway-label,
 #six .resources__eyebrow,
-#six .reference-list li::marker,
-#six .resource-card__action {
+#six .reference-list li::marker {
     color: var(--story-color-accent);
 }
 
 #six .tissue-sample {
     color: var(--story-color-heading);
     background: var(--story-color-surface);
-    border-color: var(--story-color-border);
+    border-color: var(--story-color-border-subtle);
 }
 
 #six .tissue-sample:nth-child(1) .tissue-sample__condition {
@@ -278,7 +275,7 @@
 #six .tissue-sample img,
 #six .resource-card__logo {
     background: var(--story-color-artwork-surface);
-    border-color: var(--story-color-border);
+    border-color: var(--story-color-border-subtle);
 }
 
 #six .tissue-comparison__takeaway {
@@ -299,15 +296,23 @@
 
 #six .resource-card {
     color: var(--story-color-heading);
+    border-color: var(--story-color-border);
 }
 
 #six .resource-card:hover {
-    border-color: var(--story-color-accent);
+    border-color: var(--story-color-border);
     box-shadow: var(--story-shadow-raised);
 }
 
 #six .resource-card:focus-visible {
     outline-color: var(--story-color-focus);
+}
+
+#six .resource-card__action {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
 }
 
 #six .acknowledgments {
@@ -320,11 +325,11 @@
 }
 
 #six .reference-list li {
-    border-color: var(--story-color-border);
+    border-color: var(--story-color-border-subtle);
 }
 
 #six .story-pagination {
-    border-top: 1px solid var(--story-color-border);
+    border-top: 1px solid var(--story-color-border-subtle);
 }
 
 #six .botNav {
@@ -338,12 +343,12 @@
     align-items: center;
     gap: 0.5rem;
     min-height: 2.75rem;
-    color: var(--story-color-accent);
+    color: inherit;
     border-radius: 0.5rem;
 }
 
 #six .botNav .previous:hover {
-    background: color-mix(in srgb, var(--story-color-accent) 10%, transparent);
+    background: color-mix(in srgb, currentColor 10%, transparent);
 }
 
 #six .story-footer {
@@ -364,6 +369,10 @@
     display: none;
 }
 
+#six.story-animations-unavailable .page-header {
+    --story-splash-overlay-opacity: 1;
+}
+
 @media (max-width: 600px) {
     #six .page-header::after {
         background: var(--story-splash-overlay-mobile);
@@ -382,6 +391,12 @@
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    #six .page-header {
+        --story-splash-overlay-opacity: 1;
+    }
+}
+
 :root[data-contrast="more"] #six :is(
     .title-card,
     .image-card,
@@ -392,6 +407,7 @@
     .resource-card,
     .acknowledgments__list li
 ) {
+    border-color: var(--story-color-border);
     border-width: 0.1875rem;
 }
 
@@ -424,6 +440,7 @@
         .resource-card,
         .acknowledgments__list li
     ) {
+        border-color: var(--story-color-border);
         border-width: 0.1875rem;
     }
 
