@@ -10,7 +10,6 @@ This site does not require a dependency installation or build step. From a WSL t
 python3 -m http.server 8000
 ```
 
-Then open [http://localhost:8000](http://localhost:8000) in a browser. To preview Story 6 directly, open
-[http://localhost:8000/story6.html](http://localhost:8000/story6.html)
+Then open [http://localhost:8000](http://localhost:8000) in a browser.
 
 Keep the terminal open while previewing the site. Press `Ctrl+C` in that terminal to stop the server
