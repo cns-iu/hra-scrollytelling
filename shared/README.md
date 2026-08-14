@@ -40,8 +40,6 @@ Menu, appearance, contrast, and back-to-top modules.
   story artwork.
 - Add `site-chrome--light` to the Menu root when the page does not offer appearance selection. This keeps that Menu
   light regardless of the operating-system preference without changing other shared components.
-- Add `site-menu--compact` only when the canonical FAB needs compact source geometry. Story 6 uses this modifier so
-  its rendered FAB matches the other maintained pages; the Menu panel and behavior remain unchanged.
 - Implement the Menu with a `details[data-site-menu]` root and a visible `summary` labeled “Menu.”
 - Add `data-site-menu-panel`, `role="region"`, an accessible label, and `tabindex="-1"` to the disclosure panel.
 - Add `data-site-menu-close` to the explicit close button.
@@ -59,6 +57,11 @@ Menu, appearance, contrast, and back-to-top modules.
 - Add `site-chrome--dark` to footers on Story 1 through Story 5 so they use the fixed Dark treatment.
 - Add `data-back-to-top` to the footer's same-page link so the shared enhancement moves focus to the main target.
 - Keep previous and next story links in a separate `nav` labeled “Story navigation.”
+
+Every maintained page uses the default `.site-menu` FAB geometry. Page-specific box-model resets must remain scoped
+to story-owned surfaces instead of compensating for shared chrome with page-level size modifiers. Keep previous and
+next navigation outside pinned story scenes, and keep the shared footer outside story-owned wrappers so animation,
+link, and theme rules cannot obscure or restyle those components.
 
 Essential landmarks and links must remain in the page HTML. Shared JavaScript enhances the native disclosure and any
 available appearance controls; it does not fetch or inject component markup. Appearance choices remain hidden if

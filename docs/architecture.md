@@ -125,12 +125,16 @@ established `hra-landing-theme` storage key is retained during migration so exis
 
 The landing page and every story use the canonical semantic Menu contract, icon, FAB, panel, list row, current-page
 indicator, scrollbar presentation, and progressive-enhancement modules. Shared component behavior includes keyboard
-state, dismissal, and focus restoration.
+state, dismissal, and focus restoration. Every maintained page uses the default shared FAB geometry; page-specific
+box-model resets must remain scoped to story-owned surfaces and must not override `.site-chrome` sizing.
 
 The shared Menu must remain a direct child of `body`. Story animation wrappers use transforms, pinned positioning, and
 high stacking values that can otherwise change fixed positioning or obscure the control. Its implementation must
 account for safe areas, short viewports, 320-pixel reflow, 400% zoom, focus visibility, Escape dismissal,
 outside-pointer dismissal, and focus restoration.
+
+Keep previous and next story navigation outside pinned or transformed story scenes. Keep the shared footer outside
+story-owned wrappers such as `.sceneEnd` so story animation, link, and theme rules cannot obscure or restyle it.
 
 The shared footer is semantic, has accessible names for functional images and links, and reflows without fixed
 heights. Its back-to-top enhancement returns keyboard focus to the main-content target. On Story 1 through Story 5,

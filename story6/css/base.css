@@ -60,7 +60,10 @@
   -webkit-user-select: text;
   user-select: text;
 
-  * {
+  :where(#main-content, .sceneEnd),
+  :where(#main-content, .sceneEnd) *,
+  :where(#main-content, .sceneEnd) *::before,
+  :where(#main-content, .sceneEnd) *::after {
     box-sizing: inherit;
   }
 
@@ -68,11 +71,6 @@
   .sceneEnd * {
     -webkit-user-select: inherit;
     user-select: inherit;
-  }
-
-  *::before,
-  *::after {
-    box-sizing: inherit;
   }
 
   #main-content ::selection,

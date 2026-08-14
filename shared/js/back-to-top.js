@@ -13,8 +13,17 @@ export const initializeBackToTopLinks = () => {
 
         link.addEventListener('click', (event) => {
             event.preventDefault();
-            target.focus({ preventScroll: true });
-            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            const root = document.documentElement;
+            const previousScrollBehavior = root.style.scrollBehavior;
+
+            root.style.scrollBehavior = 'auto';
+
+            try {
+                target.focus({ preventScroll: true });
+                window.scrollTo(0, 0);
+            } finally {
+                root.style.scrollBehavior = previousScrollBehavior;
+            }
         });
     });
 };

@@ -64,8 +64,8 @@ follow their appearance selection. Do not remove a legacy component rule until r
 no maintained or prototype page consumes it. Prototype pages and `Game/` are excluded from the shared page-chrome
 rollout.
 
-Story 6 uses the shared Menu's `site-menu--compact` source-size modifier so its rendered FAB matches the canonical
-size on the landing page and Stories 1 through 5.
+All maintained pages use the default shared Menu FAB geometry. Keep story-specific box-model resets scoped to
+story-owned surfaces so they do not override `.site-chrome` component sizing.
 
 Preserve existing uncommitted work and follow the repository's active branch and review workflow. Do not rewrite,
 discard, commit, push, or publish changes unless those operations are explicitly in scope.

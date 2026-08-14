@@ -46,14 +46,6 @@
     isolation: isolate;
 }
 
-.site-menu--compact {
-    --site-menu-fab-min-width: 6.25rem;
-    --site-menu-fab-min-height: 3rem;
-    --site-menu-fab-padding: 0.5rem 0.75rem;
-    --site-menu-fab-gap: 0.5rem;
-    --site-menu-fab-radius: 0.75rem;
-}
-
 .site-menu,
 .site-menu *,
 .site-menu *::before,
