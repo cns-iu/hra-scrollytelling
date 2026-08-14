@@ -84,7 +84,8 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   ├── assets/
 │   │   ├── fonts/      # Self-hosted HRA webfonts and licenses
 │   │   ├── icons/      # Shared interface and retained organ icons
-│   │   └── logos/      # Theme-aware organization logos
+│   │   ├── logos/      # Theme-aware organization logos
+│   │   └── music/      # Shared story and prototype audio
 │   ├── css/            # Fonts, tokens, navigation, footer, and story-navigation styles
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── prototypes/         # Organized legacy experiences and their maintenance notes
@@ -101,13 +102,16 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
 ├── story6/             # Story 6 styles, scripts, images, and retained datasets
 ├── stories/            # Gradually organized story-owned implementation files
-│   └── story-4/
-│       └── config/
-│           └── particles.json # Preserved particle configuration reference
+│   ├── story1/         # Reserved Story 1 implementation folder
+│   ├── story2/         # Reserved Story 2 implementation folder
+│   ├── story3/         # Reserved Story 3 implementation folder
+│   ├── story4/
+│   │   └── config/
+│   │       └── particles.json # Preserved particle configuration reference
+│   └── story5/         # Reserved Story 5 implementation folder
 ├── style.css           # Legacy shared story styles
 ├── img/                # Shared and story-specific visual assets
 ├── js/                 # Story runtimes, utilities, and legacy scripts
-├── music/              # Audio used by story experiences
 └── Game/               # Isolated generated game and offline runtime
 ```
 

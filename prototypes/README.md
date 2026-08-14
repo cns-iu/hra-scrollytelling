@@ -20,9 +20,10 @@ coupling is intentional for this organizational phase; separating their assets o
 happen in independent, explicitly reviewed changes.
 
 The Scrollytelling Effects prototype owns its behavior in `scrollytelling-effects/scripts.js` while continuing to use
-the root legacy `style.css`, `img/`, `music/`, and `js/wc.js` resources. `img/test.html` and the generated `Game/`
-application remain in their established locations. `Game/` is a published application embedded by the prototype, not
-a prototype folder to move without a dedicated migration plan.
+the root legacy `style.css`, `img/`, and `js/wc.js` resources. Its audio is organized with shared story audio under
+`shared/assets/music/`. `img/test.html` and the generated `Game/` application remain in their established locations.
+`Game/` is a published application embedded by the prototype, not a prototype folder to move without a dedicated
+migration plan.
 
 ## Maintenance rules
 
