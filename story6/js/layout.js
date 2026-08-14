@@ -23,6 +23,33 @@ export function setupLayoutStability(ScrollTrigger) {
 }
 
 /**
+ * Synchronizes scrubbed timelines with an instant shared back-to-top jump.
+ *
+ * @param {object|null} ScrollTrigger GSAP ScrollTrigger plugin, or null when unavailable
+ * @returns {void}
+ */
+export function setupBackToTopAnimationReset(ScrollTrigger) {
+    const backToTopLink = document.querySelector('[data-back-to-top]');
+
+    if (!ScrollTrigger || !backToTopLink) {
+        return;
+    }
+
+    backToTopLink.addEventListener('click', () => {
+        window.requestAnimationFrame(() => {
+            ScrollTrigger.update(true);
+            ScrollTrigger.getAll().forEach((trigger) => {
+                const scrubTween = trigger.getTween?.();
+
+                if (typeof scrubTween?.progress === 'function') {
+                    scrubTween.progress(1);
+                }
+            });
+        });
+    });
+}
+
+/**
  * Refreshes the measured layout after fonts and page assets settle.
  *
  * @param {object} ScrollTrigger GSAP ScrollTrigger plugin

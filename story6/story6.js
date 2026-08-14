@@ -1,5 +1,5 @@
 import { setupStoryAnimations } from './js/animations.js';
-import { setupLayoutStability } from './js/layout.js';
+import { setupBackToTopAnimationReset, setupLayoutStability } from './js/layout.js';
 import { setupTissueImagePreparation } from './js/media.js';
 import { setupContentReveals } from './js/reveals.js';
 
@@ -22,6 +22,7 @@ if (animationsEnabled) {
 setupContentReveals(prefersReducedMotion);
 setupTissueImagePreparation();
 setupLayoutStability(animationsAvailable ? ScrollTrigger : null);
+setupBackToTopAnimationReset(animationsAvailable ? ScrollTrigger : null);
 
 setupStoryAnimations({
   gsap,
