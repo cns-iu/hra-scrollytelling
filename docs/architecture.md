@@ -11,6 +11,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
 - Treat `style.css`, `img/`, and `js/` as shared legacy resources until each consumer has been mapped.
+- Keep shared story and prototype audio under `shared/assets/music/`.
 - Treat `Game/` as an isolated generated application. Preserve its directory name, internal paths, manifest, and service
   worker scope.
 - Do not mechanically format `story3.html` or `story4.html`; both contain large embedded data.
@@ -22,7 +23,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | --- | --- | --- |
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
-| Primary stories | `story1.html` through `story6.html` | Shared `style.css`, shared or story-specific scripts, `img/`, `music/`, gradually organized files under `stories/`, and the dedicated `story6/` implementation |
+| Primary stories | `story1.html` through `story6.html` | Shared `style.css`, shared or story-specific scripts, `img/`, audio under `shared/assets/music/`, gradually organized files under `stories/`, and the dedicated `story6/` implementation |
 | Prototypes | `img/test.html` and the compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations under `prototypes/` plus shared legacy files |
 | Generated game | `Game/index.html` | Everything under `Game/` |
 
@@ -46,7 +47,8 @@ Root HTML files remain stable public entry points while their implementation fil
 │   ├── assets/
 │   │   ├── fonts/
 │   │   ├── icons/
-│   │   └── logos/
+│   │   ├── logos/
+│   │   └── music/
 │   ├── css/
 │   └── js/
 ├── prototypes/

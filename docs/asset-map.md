@@ -14,12 +14,12 @@ orphan-file deletion list: some animation and generated-application paths may be
 | `shared/assets/fonts/` | HRA WOFF2 files and their original licenses | Consolidated; shared by the landing page, maintained page chrome, and Story 6 |
 | `shared/assets/icons/` | Shared interface icons and retained organ icon assets | Menu glyph shared by maintained pages; Story 6 info icon and organ inventory relocated from the former root `assets/` directory |
 | `shared/assets/logos/` | Light- and dark-surface HRA, CNS, and SenNet organization marks | Shared by the canonical footer and Story 6 resource cards |
+| `shared/assets/music/` | Shared story and prototype audio | Consolidated from the former root `music/` directory; `Piano.mp3` is used by Scrollytelling Effects, while maintained-story references to `dramatic.swf.mp3` remain commented out |
 | `shared/` | Namespaced page-chrome fonts, styles, and progressive-enhancement modules for maintained public pages | Menu and footer adopted by the landing page and all six stories |
 | `prototypes/` | Organized legacy prototype implementations and maintenance notes | Scrollytelling Effects, Organ Example, and Visualizing Cells organized; published entry URLs retained |
 | `img/` | Shared story media, story-specific sequences, legacy UI assets, fonts, and prototypes | Unsorted legacy area |
 | `img/TestSeq/` | Image sequence used by a legacy story or prototype | Ownership must be verified |
 | `img/UI Assets/` | Legacy shared interface images and font files | Shared paths contain spaces; do not rename broadly |
-| `music/` | Story audio | Ownership must be verified story by story |
 | `stories/story-4/config/` | Story 4 particle configuration reference | Organized; runtime currently uses the equivalent inline configuration |
 | `Game/` | Generated game images, icons, scripts, manifest, and offline files | Isolated; do not reorganize |
 
