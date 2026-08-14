@@ -20,7 +20,7 @@ orphan-file deletion list: some animation and generated-application paths may be
 | `img/` | Shared story media, story-specific sequences, legacy UI assets, fonts, and prototypes | Unsorted legacy area |
 | `img/TestSeq/` | Image sequence used by a legacy story or prototype | Ownership must be verified |
 | `img/UI Assets/` | Legacy shared interface images and font files | Shared paths contain spaces; do not rename broadly |
-| `stories/story-4/config/` | Story 4 particle configuration reference | Organized; runtime currently uses the equivalent inline configuration |
+| `stories/story4/config/` | Story 4 particle configuration reference | Organized; runtime currently uses the equivalent inline configuration |
 | `Game/` | Generated game images, icons, scripts, manifest, and offline files | Isolated; do not reorganize |
 
 At the time of this inventory, `img/` contains 211 tracked content files and is the largest working-tree asset area. The
@@ -52,11 +52,11 @@ Remove the corresponding baseline entry from `tools/check-local-links.mjs` whene
 | Area | Status | Notes |
 | --- | --- | --- |
 | Landing page | Organized | Owned by `index.html`, `landing/`, shared HRA fonts, and shared page chrome |
-| Story 1 | Page chrome adopted | Uses the navigation-only shared Menu, shared story navigation, and fixed-Dark shared footer; broader story migration has not started |
-| Story 2 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; broader story migration has not started |
-| Story 3 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; embedded data remains deferred |
+| Story 1 | Page chrome adopted | Uses the navigation-only shared Menu, shared story navigation, and fixed-Dark shared footer; `stories/story1/` is reserved for future story-owned files |
+| Story 2 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story2/` is reserved for future story-owned files |
+| Story 3 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story3/` is reserved and embedded data remains deferred |
 | Story 4 | Page chrome and config adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; particle JSON ownership is established and embedded data remains deferred |
-| Story 5 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; broader story migration has not started |
+| Story 5 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story5/` is reserved for future story-owned files |
 | Story 6 | Page chrome and shared assets adopted | Uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons; narrative implementation remains under `story6/` |
 | Prototypes | Partially organized | Scrollytelling Effects, Organ Example, and Visualizing Cells implementations moved under `prototypes/`; compatibility pages preserve published URLs; `img/test.html` remains in place |
 | Generated game | Excluded | Keep `Game/` intact |

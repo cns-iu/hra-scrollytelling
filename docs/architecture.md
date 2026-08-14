@@ -60,22 +60,26 @@ Root HTML files remain stable public entry points while their implementation fil
 │   └── visualizing-cells/
 │       └── index.html
 ├── stories/
-│   ├── story-1/
-│   │   └── assets/
-│   ├── story-2/
-│   │   └── assets/
-│   ├── story-4/
+│   ├── story1/
+│   │   └── .gitkeep
+│   ├── story2/
+│   │   └── .gitkeep
+│   ├── story3/
+│   │   └── .gitkeep
+│   ├── story4/
 │   │   └── config/
 │   │       └── particles.json
-│   └── …
+│   └── story5/
+│       └── .gitkeep
 ├── docs/
 ├── tools/
 ├── img/
 └── Game/
 ```
 
-The `img/` directory remains in place until each asset has a verified owner. Empty target directories should not be
-created in advance.
+The `img/` directory remains in place until each asset has a verified owner. The approved empty story directories use
+`.gitkeep` placeholders until their first story-owned files are migrated; do not create other empty target directories
+in advance.
 
 `landing/css/fonts.css` remains as a compatibility bridge for cached landing-page documents. Maintained HTML entry
 points load `shared/css/fonts.css` directly; do not expand the compatibility file into a second font source.
