@@ -52,7 +52,7 @@ Remove the corresponding baseline entry from `tools/check-local-links.mjs` whene
 | Area | Status | Notes |
 | --- | --- | --- |
 | Landing page | Organized | Owned by `index.html`, `landing/`, shared HRA fonts, and shared page chrome |
-| Story 1 | Page chrome adopted | Uses the navigation-only shared Menu, shared story navigation, and fixed-Dark shared footer; `stories/story1/` is reserved for future story-owned files |
+| Story 1 | Page chrome and accessibility behavior adopted | Uses the navigation-only shared Menu, shared story navigation, and fixed-Dark shared footer; `stories/story1/` owns Story 1 presentation and motion behavior |
 | Story 2 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story2/` is reserved for future story-owned files |
 | Story 3 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story3/` is reserved and embedded data remains deferred |
 | Story 4 | Page chrome and config adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; particle JSON ownership is established and embedded data remains deferred |

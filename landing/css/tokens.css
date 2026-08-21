@@ -22,6 +22,7 @@
     --hra-surface-variant: #dee5f1;
     --hra-on-surface-variant: #393f45;
     --hra-outline: #909bad;
+    --hra-outline-variant: #c6cedd;
     --hra-surface-container-lowest: #ffffff;
     --hra-surface-container-low: #eef2f6;
     --hra-surface-container: #e4eaf0;
@@ -96,6 +97,7 @@
     --hra-surface-variant: #393f45;
     --hra-on-surface-variant: #dee5f1;
     --hra-outline: #aab4c5;
+    --hra-outline-variant: #393f45;
     --hra-surface-container-lowest: #101113;
     --hra-surface-container-low: #1c1b1e;
     --hra-surface-container: #1f2023;
@@ -146,6 +148,7 @@
         --hra-surface-variant: #393f45;
         --hra-on-surface-variant: #dee5f1;
         --hra-outline: #aab4c5;
+        --hra-outline-variant: #393f45;
         --hra-surface-container-lowest: #101113;
         --hra-surface-container-low: #1c1b1e;
         --hra-surface-container: #1f2023;
