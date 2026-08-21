@@ -61,7 +61,10 @@ Root HTML files remain stable public entry points while their implementation fil
 │       └── index.html
 ├── stories/
 │   ├── story1/
-│   │   └── .gitkeep
+│   │   ├── accessibility.css
+│   │   ├── motion-control.js
+│   │   ├── reveals.js
+│   │   └── story1.css
 │   ├── story2/
 │   │   └── .gitkeep
 │   ├── story3/
@@ -83,6 +86,11 @@ in advance.
 
 `landing/css/fonts.css` remains as a compatibility bridge for cached landing-page documents. Maintained HTML entry
 points load `shared/css/fonts.css` directly; do not expand the compatibility file into a second font source.
+
+Story 1 keeps presentation and responsive layout in `stories/story1/story1.css`, motion and user-preference states in
+`stories/story1/accessibility.css`, animated-media controls in `stories/story1/motion-control.js`, and scroll-triggered
+progressive enhancement in `stories/story1/reveals.js`. Its reveals use browser APIs and do not require a third-party
+animation runtime.
 
 ## Shared page chrome
 
