@@ -81,9 +81,10 @@
   .image-card {
     box-sizing: border-box;
     display: flex;
-    width: min(100%, 37.5rem);
+    width: min(100%, 44rem);
     margin: 0;
-    padding: 2.5rem 1.25rem;
+    padding: 0;
+    overflow: hidden;
     background: var(--hra-neutral-100);
     border-radius: 1rem;
     box-shadow: 0 5px 16px 0 rgb(0 0 0 / 16%);
@@ -92,6 +93,67 @@
       display: block;
       width: 100%;
       height: auto;
+    }
+  }
+
+  .sourced-figure,
+  .immune-cell-gallery {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    margin: 0;
+  }
+
+  .sourced-figure {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    > img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .story-figure-source {
+    width: min(100%, 44rem);
+    margin: 0;
+    color: var(--story-color-text);
+    font: var(--hra-type-label-large);
+    letter-spacing: var(--hra-type-label-large-tracking);
+  }
+
+  .immune-cell-gallery {
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+
+    .image-card {
+      width: min(100%, 60rem);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .immune-cell-gallery__signpost {
+    max-width: 30ch;
+    margin: 0;
+    color: var(--story-color-heading);
+    font: var(--hra-type-title-large);
+    letter-spacing: var(--hra-type-title-large-tracking);
+    text-align: center;
+    text-wrap: balance;
+
+    > p {
+      margin: 0;
+      color: inherit;
+      font: inherit;
+      letter-spacing: inherit;
     }
   }
 
@@ -178,6 +240,10 @@
       width: 448px;
       min-height: 176px;
       max-width: 100%;
+    }
+
+    .mouse-reader-overview {
+      display: none;
     }
 
     .mouse-image {
@@ -342,8 +408,5 @@
       }
     }
 
-    .scroll-instruction {
-      display: none;
-    }
   }
 }

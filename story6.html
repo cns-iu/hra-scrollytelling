@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pan-organ Immunosenescence Atlas | Human Atlas Stories</title>
+    <title>Pan-organ Immunosenescence Atlas</title>
     <meta
       name="description"
       content="Explore how immune cells change with age through a pan-organ atlas, tissue comparisons, and a guided tour of the Cell Distance Explorer app."
@@ -159,9 +159,9 @@
       </div>
     </details>
 
-    <main class="site-main-target" id="main-content" tabindex="-1">
-      <header class="page-header">
-        <img class="splash-image" src="story6/img/splash-bg.webp" alt="" fetchpriority="high" />
+    <main class="site-main-target article-content" id="main-content" tabindex="-1">
+      <header class="page-header article-header">
+        <img class="splash-image" src="story6/img/splash-bg.webp" alt="" aria-hidden="true" fetchpriority="high" />
         <div class="title-card">
           <div class="title">
             <h1 class="main">Pan-organ Immunosenescence Atlas</h1>
@@ -188,33 +188,38 @@
           class="story-illustration story-illustration--from-left"
           src="story6/img/immune_cells.webp"
           alt="Illustrations of immune cells with a variety of shapes and internal structures"
-          width="1920"
-          height="1336"
+          width="320"
+          height="223"
         />
         <p>
           A key contributor to the immune system’s deterioration is cell senescence. This occurs when stress or damage to the cell causes it to exit the cell
           cycle. In this state of cell cycle arrest, the cell stops dividing but remains metabolically active. The senescent cell secretes a combination of
           bioactive molecules known as SASP—the senescence-associated secretory phenotype.
         </p>
-        <figure class="story-illustration story-illustration--from-right image-card">
-          <img
-            src="story6/img/cell-senescence-transition.webp"
-            alt="Stress or damage changes a normal cell into a senescent cell that secretes molecules associated with inflammation"
-            width="1250"
-            height="703"
-          />
+        <figure class="story-illustration story-illustration--from-right sourced-figure">
+          <div class="image-card">
+            <img
+              src="story6/img/cell-senescence-transition.webp"
+              alt="Stress or damage changes a normal cell into a senescent cell that secretes molecules associated with inflammation"
+              width="320"
+              height="180"
+            />
+          </div>
+          <figcaption class="story-figure-source">
+            <strong>Image source:</strong> National Institute on Aging, National Institutes of Health (2021),
+            <cite><a href="https://www.nia.nih.gov/news/does-cellular-senescence-hold-secrets-healthier-aging">“Does Cellular Senescence Hold Secrets for Healthier Aging?”</a></cite>
+          </figcaption>
         </figure>
         <p>
-          In this state of cell cycle arrest, the cell stops dividing but remains metabolically active. The senescent cell secretes a combination of bioactive
-          molecules known as SASP—the senescence-associated secretory phenotype. Cell senescence has some very important benefits for our health. It aids in
-          embryo development, helps our bodies respond to injury, and works to keep cancer cells from replicating.
+          Cell senescence has some very important benefits for our health. It aids in embryo development, helps our bodies respond to injury, and works to keep
+          cancer cells from replicating.
         </p>
       </div>
     </div>
 
     <section class="section2 story-scene">
       <h2 class="visually-hidden">How senescent cells accumulate throughout the body</h2>
-      <div class="fadeimage">
+      <div class="fadeimage" aria-hidden="true">
         <div class="body-image picture1">
           <img class="body-outline" src="story6/img/2-bodyintro1.webp" alt="" />
         </div>
@@ -239,13 +244,19 @@
             could improve our quality of life as we age.
           </p>
         </div>
-        <img
-          class="story-illustration story-illustration--from-left"
-          src="story6/img/cell-changes.webp"
-          alt="Comparison of a normal cell and a senescent cell, whose changes include cell-cycle arrest, secretions, enlarged shape, organelle dysfunction, and molecular damage"
-          width="1880"
-          height="1194"
-        />
+        <figure class="story-illustration story-illustration--from-left sourced-figure">
+          <img
+            src="story6/img/cell-changes.webp"
+            alt="Comparison of a normal cell and a senescent cell, whose changes include cell-cycle arrest, secretions, enlarged shape, organelle dysfunction, and molecular damage"
+            width="320"
+            height="203"
+          />
+          <figcaption class="story-figure-source">
+            <strong>Image source:</strong> Figure 1 from
+            <cite><a href="https://doi.org/10.1038/s41420-025-02720-5">“The Role of Cellular Senescence in Cardiovascular Disease”</a></cite> by Xu and
+            colleagues (2025), reformatted under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+          </figcaption>
+        </figure>
         <div>
           <p>
             Researchers in the field of senescence biology work to identify the many varieties of senescent cells, locate where they reside in the body, and
@@ -256,17 +267,23 @@
           <p>
             For starters, the immune system is distributed throughout the body. It consists of many organs and multiple tissue types with their own distinct
             structures and functions. Immune cell researchers often find that existing datasets (whether bulk or single-cell sequenced) underrepresent immune
-            cells or lack them entirely. When immune cells are present, they typically lack robust data on senescence. Just as there is no single “immune organ”
-            there is no single “immune cell” with one particular function.
+            cells or lack them entirely. When immune cells are present, they typically lack robust data on senescence. The immune system is not contained in a
+            single “immune organ.”
           </p>
         </div>
-        <img
-          class="story-illustration story-illustration--from-right"
-          src="story6/img/cells.webp"
-          alt="Examples of immune-related cell types: basophil, natural killer cell, B cell, plasma cell, T cell, neutrophil, dendritic cell, mast cell, eosinophil, endothelial cell, macrophage, and fibroblast"
-          width="1232"
-          height="964"
-        />
+        <figure class="story-illustration story-illustration--from-right immune-cell-gallery">
+          <figcaption class="immune-cell-gallery__signpost">
+            <p>Likewise, there is no single “immune cell” with one particular function.</p>
+          </figcaption>
+          <div class="image-card">
+            <img
+              src="story6/img/cells.png"
+              alt="Examples of immune-related cell types: basophil, natural killer cell, B cell, plasma cell, T cell, neutrophil, dendritic cell, mast cell, eosinophil, endothelial cell, macrophage, and fibroblast"
+              width="320"
+              height="240"
+            />
+          </div>
+        </figure>
         <p>
           Instead, there are many cell types with different structures and roles. Different immune cell types exhibit different senescence patterns/features.
           Senescence can be difficult to detect in immune cells since some of the recognized markers of senescence are part of the normal functioning of many
@@ -276,8 +293,8 @@
       </div>
     </div>
 
-    <section class="transition transition1 story-scene">
-      <picture class="transition__picture">
+    <section class="transition transition1 story-scene article-content">
+      <picture class="transition__picture" aria-hidden="true">
         <source
           type="image/webp"
           srcset="story6/img/transition1-960.webp 960w, story6/img/transition1-1920.webp 1920w, story6/img/transition1-3840.webp 3840w"
@@ -303,7 +320,16 @@
               rather than decades.
             </p>
             <p>This 3D mouse model shows the thymus, liver, spleen, and pancreas.</p>
-            <p class="scroll-instruction">Keep scrolling to explore mouse anatomy.</p>
+            <!-- Reader modes discard page styles, revealing this compact alternative to the animated model. -->
+            <img
+              class="mouse-reader-overview"
+              src="story6/img/mouse.png"
+              alt="Front view of a translucent 3D mouse anatomical model with internal organs visible"
+              width="320"
+              height="180"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div class="mouse-image" aria-hidden="true">
             <div class="all">
@@ -341,8 +367,8 @@
       </div>
     </div>
 
-    <section class="transition transition2 story-scene">
-      <picture class="transition__picture">
+    <section class="transition transition2 story-scene article-content">
+      <picture class="transition__picture" aria-hidden="true">
         <source
           type="image/webp"
           srcset="story6/img/transition2-960.webp 960w, story6/img/transition2-1920.webp 1920w, story6/img/transition2-3840.webp 3840w"
@@ -359,10 +385,10 @@
     <section class="section4 story-scene" aria-labelledby="tissue-comparison-title">
       <div class="tissue-comparison">
         <header class="tissue-comparison__intro">
-          <p class="tissue-comparison__eyebrow">Cell sample comparison</p>
+          <p class="tissue-comparison__eyebrow" aria-hidden="true">Cell sample comparison</p>
           <h2 id="tissue-comparison-title">Compare tissue across three organs</h2>
           <p>
-            Researchers collected tissue from young mice, aged mice, and aged mice treated with dasatinib and quercetin (D&amp;Q), drugs that target senescent
+            Researchers collected tissue from young mice, aged mice, and aged mice treated with dasatinib and quercetin (D&amp;Q) drugs that target senescent
             cells.
           </p>
           <p>In this comparison, young mice were 2 months old. Aged mice were 24 months old, including those treated with D&amp;Q.</p>
@@ -388,8 +414,8 @@
                 <img
                   src="story6/img/liver-young.png"
                   alt="Cell population map of liver tissue from a young mouse, showing a rounded section divided by a large white channel"
-                  width="1000"
-                  height="1000"
+                  width="320"
+                  height="320"
                   loading="lazy"
                   decoding="async"
                 />
@@ -399,8 +425,8 @@
                 <img
                   src="story6/img/liver-aged.png"
                   alt="Cell population map of liver tissue from an aged mouse, showing a rounded section dominated by peach and brown regions"
-                  width="1000"
-                  height="1000"
+                  width="320"
+                  height="320"
                   loading="lazy"
                   decoding="async"
                 />
@@ -410,8 +436,8 @@
                 <img
                   src="story6/img/liver-aged-dq.png"
                   alt="Cell population map of D and Q-treated liver tissue from an aged mouse, showing peach and pale blue regions around an open center"
-                  width="1000"
-                  height="1000"
+                  width="320"
+                  height="320"
                   loading="lazy"
                   decoding="async"
                 />
@@ -430,8 +456,8 @@
                 <img
                   src="story6/img/spleen-young.png"
                   alt="Cell population map of spleen tissue from a young mouse, showing light blue clusters and a dark blue and pink region"
-                  width="1000"
-                  height="1000"
+                  width="320"
+                  height="320"
                   loading="lazy"
                   decoding="async"
                 />
@@ -441,8 +467,8 @@
                 <img
                   src="story6/img/spleen-aged.png"
                   alt="Cell population map of spleen tissue from an aged mouse, showing multiple blue clusters surrounded by pink regions"
-                  width="1000"
-                  height="1000"
+                  width="320"
+                  height="320"
                   loading="lazy"
                   decoding="async"
                 />
@@ -452,8 +478,8 @@
                 <img
                   src="story6/img/spleen-aged-dq.png"
                   alt="Cell population map of D and Q-treated spleen tissue from an aged mouse, showing blue clusters with green centers among pale pink regions"
-                  width="1000"
-                  height="1000"
+                  width="320"
+                  height="320"
                   loading="lazy"
                   decoding="async"
                 />
@@ -472,8 +498,8 @@
                 <img
                   src="story6/img/thymus-young.png"
                   alt="Cell population map of thymus tissue from a young mouse, showing broad pale blue, green, yellow, and orange regions"
-                  width="1000"
-                  height="1000"
+                  width="320"
+                  height="320"
                   loading="lazy"
                   decoding="async"
                 />
@@ -483,8 +509,8 @@
                 <img
                   src="story6/img/thymus-aged.png"
                   alt="Cell population map of thymus tissue from an aged mouse, showing a narrow curved section with turquoise, dark blue, brown, and pink regions"
-                  width="1000"
-                  height="1000"
+                  width="320"
+                  height="320"
                   loading="lazy"
                   decoding="async"
                 />
@@ -494,8 +520,8 @@
                 <img
                   src="story6/img/thymus-aged-dq.png"
                   alt="Cell population map of D and Q-treated thymus tissue from an aged mouse, showing a broad yellow and peach center bordered by turquoise and pink"
-                  width="1000"
-                  height="1000"
+                  width="320"
+                  height="320"
                   loading="lazy"
                   decoding="async"
                 />
@@ -504,19 +530,19 @@
           </figure>
         </div>
 
-        <aside class="tissue-comparison__takeaway" aria-labelledby="tissue-takeaway-title">
-          <p class="tissue-comparison__takeaway-label">Observed pattern</p>
+        <section class="tissue-comparison__takeaway" aria-labelledby="tissue-takeaway-title">
+          <p class="tissue-comparison__takeaway-label" aria-hidden="true">Observed pattern</p>
           <h3 id="tissue-takeaway-title">What can we see?</h3>
           <p>
             Across the liver, spleen, and thymus, the colored cell populations differ in their distribution, clustering, and neighboring populations. These
             patterns also vary by organ, which is why each condition is compared within the same tissue.
           </p>
-        </aside>
+        </section>
       </div>
     </section>
 
-    <section class="transition transition3 story-scene">
-      <picture class="transition__picture">
+    <section class="transition transition3 story-scene article-content">
+      <picture class="transition__picture" aria-hidden="true">
         <source
           type="image/webp"
           srcset="story6/img/transition3-960.webp 960w, story6/img/transition3-1920.webp 1920w, story6/img/transition3-3840.webp 3840w"
@@ -610,8 +636,8 @@
       </div>
     </section>
 
-    <section class="transition transition5 story-scene">
-      <picture class="transition__picture">
+    <section class="transition transition5 story-scene article-content">
+      <picture class="transition__picture" aria-hidden="true">
         <source
           type="image/webp"
           srcset="story6/img/transition5-960.webp 960w, story6/img/transition5-1920.webp 1920w, story6/img/transition5-3840.webp 3840w"
@@ -626,94 +652,123 @@
       </h2>
     </section>
 
-    <div class="end">
-      <section class="resources" aria-labelledby="resources-title">
+    <section class="resources" aria-labelledby="resources-title">
         <div class="resources__content">
-          <header class="resources__header">
-            <p class="resources__eyebrow">Continue exploring</p>
+          <header class="resources__header article-header">
+            <p class="resources__eyebrow" aria-hidden="true">Continue exploring</p>
             <h2 id="resources-title">Resources</h2>
             <p>Explore the data, tools, and research communities behind this story.</p>
           </header>
 
           <ul class="resource-cards">
             <li>
-              <a class="resource-card" href="https://data.sennetconsortium.org/" target="_blank" rel="noopener noreferrer">
-                <span class="resource-card__logo">
+              <article class="resource-card">
+                <div class="resource-card__logo" aria-hidden="true">
+                  <span class="resource-card__brand resource-card__brand--hra" aria-hidden="true"></span>
+                </div>
+                <div class="resource-card__body">
+                  <h3 class="resource-card__title">
+                    <a class="resource-card__link" href="https://apps.humanatlas.io/cde/" target="_blank" rel="noopener noreferrer"
+                      >Cell Distance Explorer<span class="visually-hidden"> opens in a new tab</span></a
+                    >
+                  </h3>
+                  <p class="resource-card__description">Compute, visualize, and explore cell distance distributions in spatial omics datasets.</p>
+                </div>
+                <span class="resource-card__action" aria-hidden="true">
+                  Open the app
+                  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                    <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </article>
+            </li>
+            <li>
+              <article class="resource-card">
+                <div class="resource-card__logo" aria-hidden="true">
                   <span class="resource-card__brand resource-card__brand--sennet" aria-hidden="true"></span>
-                </span>
-                <span class="resource-card__body">
-                  <span class="resource-card__title">SenNet Data Portal</span>
-                  <span class="resource-card__description">Explore and download cellular senescence datasets from across the SenNet consortium.</span>
-                </span>
-                <span class="resource-card__action">
+                </div>
+                <div class="resource-card__body">
+                  <h3 class="resource-card__title">
+                    <a class="resource-card__link" href="https://data.sennetconsortium.org/" target="_blank" rel="noopener noreferrer"
+                      >SenNet Data Portal<span class="visually-hidden"> opens in a new tab</span></a
+                    >
+                  </h3>
+                  <p class="resource-card__description">Explore and download cellular senescence datasets from across the SenNet consortium.</p>
+                </div>
+                <span class="resource-card__action" aria-hidden="true">
                   Explore data
                   <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
                     <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </span>
-                <span class="visually-hidden"> opens in a new tab</span>
-              </a>
+              </article>
             </li>
             <li>
-              <a class="resource-card" href="https://humanatlas.io/" target="_blank" rel="noopener noreferrer">
-                <span class="resource-card__logo">
+              <article class="resource-card">
+                <div class="resource-card__logo" aria-hidden="true">
                   <span class="resource-card__brand resource-card__brand--hra" aria-hidden="true"></span>
-                </span>
-                <span class="resource-card__body">
-                  <span class="resource-card__title">Human Reference Atlas</span>
-                  <span class="resource-card__description">Explore reference maps and tools for understanding the cells and structures of the human body.</span>
-                </span>
-                <span class="resource-card__action">
+                </div>
+                <div class="resource-card__body">
+                  <h3 class="resource-card__title">
+                    <a class="resource-card__link" href="https://humanatlas.io/" target="_blank" rel="noopener noreferrer"
+                      >Human Reference Atlas<span class="visually-hidden"> opens in a new tab</span></a
+                    >
+                  </h3>
+                  <p class="resource-card__description">Explore reference maps and tools for understanding the cells and structures of the human body.</p>
+                </div>
+                <span class="resource-card__action" aria-hidden="true">
                   Visit the atlas
                   <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
                     <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </span>
-                <span class="visually-hidden"> opens in a new tab</span>
-              </a>
+              </article>
             </li>
             <li>
-              <a class="resource-card" href="https://sennetconsortium.org/" target="_blank" rel="noopener noreferrer">
-                <span class="resource-card__logo">
+              <article class="resource-card">
+                <div class="resource-card__logo" aria-hidden="true">
                   <span class="resource-card__brand resource-card__brand--sennet" aria-hidden="true"></span>
-                </span>
-                <span class="resource-card__body">
-                  <span class="resource-card__title">SenNet Community</span>
-                  <span class="resource-card__description">Learn about the consortium and connect with the researchers advancing senescence science.</span>
-                </span>
-                <span class="resource-card__action">
+                </div>
+                <div class="resource-card__body">
+                  <h3 class="resource-card__title">
+                    <a class="resource-card__link" href="https://sennetconsortium.org/" target="_blank" rel="noopener noreferrer"
+                      >SenNet Community<span class="visually-hidden"> opens in a new tab</span></a
+                    >
+                  </h3>
+                  <p class="resource-card__description">Learn about the consortium and connect with the researchers advancing senescence science.</p>
+                </div>
+                <span class="resource-card__action" aria-hidden="true">
                   Meet the community
                   <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
                     <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </span>
-                <span class="visually-hidden"> opens in a new tab</span>
-              </a>
+              </article>
             </li>
           </ul>
         </div>
-      </section>
+    </section>
 
-      <section class="acknowledgments" aria-labelledby="acknowledgments-title">
+    <section class="acknowledgments" aria-labelledby="acknowledgments-title">
         <div class="acknowledgments__content">
-          <header class="acknowledgments__header">
+          <header class="acknowledgments__header article-header">
             <h2 id="acknowledgments-title">Acknowledgments</h2>
           </header>
           <ul class="acknowledgments__list">
-            <li><strong>Data</strong><span>Anthony Fung and Rong Fan (Yale University), Andreas Bueckle (Indiana University)</span></li>
-            <li><strong>Story authors</strong><span>Anthony Fung (Yale University), Todd Theriault, Elizabeth Maier, and Katy Börner (Indiana University)</span></li>
+            <li><strong>Data:</strong> <span>Anthony Fung and Rong Fan (Yale University), Andreas Bueckle (Indiana University)</span></li>
+            <li><strong>Story authors:</strong> <span>Anthony Fung (Yale University), Todd Theriault, Elizabeth Maier, and Katy Börner (Indiana University)</span></li>
             <li>
-              <strong>Cell Distance Explorer design and implementation</strong>
-              <span>Yashvardhan Jain, Elizabeth Maier, Bruce W. Herr II, Daniel Bolin, and Edward Lu (Indiana University)</span>
+              <strong>Cell Distance Explorer design and implementation:</strong>
+              <span>Yashvardhan Jain, Elizabeth Maier, Katy Börner, Bruce W. Herr II, Daniel Bolin, and Edward Lu (Indiana University)</span>
             </li>
-            <li><strong>Web design and development</strong><span>Edward Lu and Elizabeth Maier (Indiana University)</span></li>
+            <li><strong>Web design and development:</strong> <span>Edward Lu and Elizabeth Maier (Indiana University)</span></li>
           </ul>
         </div>
       </section>
 
       <section class="references" aria-labelledby="references-title">
         <div class="content">
-          <h2 class="header" id="references-title">References</h2>
+          <h2 class="header article-heading" id="references-title">References</h2>
           <ol class="reference-list">
             <li>
               <p>
@@ -733,10 +788,33 @@
                 <a href="https://doi.org/10.1101/2025.09.23.678129">https://doi.org/10.1101/2025.09.23.678129</a>.
               </p>
             </li>
+            <li>
+              <p>
+                Börner, Katy, Philip D. Blood, Jonathan C. Silverstein, Matthew Ruffalo, Rahul Satija, Sarah A. Teichmann, Gloria J. Pryhuber, Ravi S. Misra,
+                Jeffrey M. Purkerson, Jean Fan, John W. Hickey, Gesmira Molla, Chuan Xu, Yun Zhang, Griffin M. Weber, Yashvardhan Jain, Danial Qaurooni, Yongxin
+                Kong, HRA Team, et al. “Human BioMolecular Atlas Program (HuBMAP): 3D
+                Human Reference Atlas Construction and Usage.” <em>Nature Methods</em> 22, no. 4 (2025): 845–860.
+                <a href="https://doi.org/10.1038/s41592-024-02563-5">https://doi.org/10.1038/s41592-024-02563-5</a>.
+              </p>
+            </li>
+            <li>
+              <p>
+                National Institute on Aging. “Does Cellular Senescence Hold Secrets for Healthier Aging?” National Institutes of Health, July 13, 2021.
+                <a href="https://www.nia.nih.gov/news/does-cellular-senescence-hold-secrets-healthier-aging"
+                  >https://www.nia.nih.gov/news/does-cellular-senescence-hold-secrets-healthier-aging</a
+                >.
+              </p>
+            </li>
+            <li>
+              <p>
+                Xu, Chengying, Zhimei Qiu, Qing Guo, Youyang Huang, Yongchao Zhao, and Ranzun Zhao. “The Role of Cellular Senescence in Cardiovascular Disease.”
+                <em>Cell Death Discovery</em> 11 (2025): Article 431. Published October 6, 2025.
+                <a href="https://doi.org/10.1038/s41420-025-02720-5">https://doi.org/10.1038/s41420-025-02720-5</a>.
+              </p>
+            </li>
           </ol>
         </div>
       </section>
-    </div>
     </main>
 
     <div class="sceneEnd" id="scrollto11">

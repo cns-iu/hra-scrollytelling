@@ -20,6 +20,7 @@ orphan-file deletion list: some animation and generated-application paths may be
 | `img/` | Shared story media, story-specific sequences, legacy UI assets, fonts, and prototypes | Unsorted legacy area |
 | `img/TestSeq/` | Image sequence used by a legacy story or prototype | Ownership must be verified |
 | `img/UI Assets/` | Legacy shared interface images and font files | Shared paths contain spaces; do not rename broadly |
+| `story6/img/` | Story 6 narrative artwork and responsive transition images | Story-owned; visible source credits are maintained in `story6.html` |
 | `stories/story4/config/` | Story 4 particle configuration reference | Organized; runtime currently uses the equivalent inline configuration |
 | `Game/` | Generated game images, icons, scripts, manifest, and offline files | Isolated; do not reorganize |
 
@@ -46,6 +47,14 @@ node tools/check-local-links.mjs --allow-known
 ```
 
 Remove the corresponding baseline entry from `tools/check-local-links.mjs` whenever a reference is resolved.
+
+## Story 6 image provenance
+
+| Asset | Source | Notes |
+| --- | --- | --- |
+| `story6/img/cell-senescence-transition.webp` | National Institute on Aging, “Does Cellular Senescence Hold Secrets for Healthier Aging?” | Source is credited beside the image and in the references |
+| `story6/img/cell-changes.webp` | Chengying Xu, Zhimei Qiu, Qing Guo, Youyang Huang, Yongchao Zhao, and Ranzun Zhao, “The Role of Cellular Senescence in Cardiovascular Disease,” Figure 1 | CC BY 4.0; reformatted as WebP; source and license are linked beside the image |
+| `story6/img/cells.png` | Cropped derivative of the previously used Adobe Stock immune-cell collection | The stock-origin footer was removed from the visible crop; retain the corresponding license record outside the repository |
 
 ## Story migration register
 
