@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="shared/css/selection.css">
     <link rel="stylesheet" href="shared/css/navigation.css">
     <link rel="stylesheet" href="shared/css/footer.css">
+    <link rel="stylesheet" href="stories/story2/quiz.css">
     <link rel="icon" type="image/x-icon" href="img/favicon.svg">
 
     <link href="https://fonts.googleapis.com/css2?family=Cutive&display=swap" rel="stylesheet">
@@ -34,6 +35,7 @@
         gtag('config', 'G-E1811WRJJD');
     </script>
     <script type="module" src="shared/js/navigation-only.js"></script>
+    <script type="module" src="stories/story2/quiz.js"></script>
 </head>
 
 <body id="two">
@@ -79,10 +81,10 @@
     <!-- section header/intro -->
     <section class="intro" id="intro">
         <h3 class="overtext" id="introTypeLine"></h3>
-        <div class="fadeimage">
-            <img src="img/2-bodyintro1.png">
-            <img src="img/2-bodyintro2.png" class="picture2  imagepart">
-            <img src="img/telescope.svg" class="picture3  imagepart" style="width:140px;">
+        <div class="fadeimage" role="img" aria-label="A view of the human body zooms toward its cells">
+            <img src="img/2-bodyintro1.png" alt="">
+            <img src="img/2-bodyintro2.png" alt="" class="picture2  imagepart">
+            <img src="img/telescope.svg" alt="" class="picture3  imagepart" style="width:140px;">
         </div>
     </section>
 
@@ -102,8 +104,8 @@
                 <b>always</b> important to read notes from your mother.
             </p>
             <div class="popupsection">
-                <img class="introlineimg introcharcece" src="img/charcece_popup.svg">
-                <img class="introlineimg introcharsquiggy" src="img/charsquigg_popup.svg">
+                <img class="introlineimg introcharcece" src="img/charcece_popup.svg" alt="">
+                <img class="introlineimg introcharsquiggy" src="img/charsquigg_popup.svg" alt="">
             </div>
         </div>
 
@@ -204,9 +206,9 @@
 
         <div class="videozoom">
 
-            <div class="fadeimage2">
-                <img src="img/vis.svg" class="zoompic1 imagepart">
-                <img src="img/vis2.svg" class="zoompic2 imagepart" style="height:20vh;top:50%;">
+            <div class="fadeimage2" role="img" aria-label="The ASCT+B Reporter visualization zooms into view">
+                <img src="img/vis.svg" alt="" class="zoompic1 imagepart">
+                <img src="img/vis2.svg" alt="" class="zoompic2 imagepart" style="height:20vh;top:50%;">
             </div>
 
         </div>
@@ -245,7 +247,8 @@
         <section class="linesection">
 
             <svg width="98%" style="max-width: 900px" id="svgtest" height="auto" viewBox="0 0 1434 5460" version="1.1"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                focusable="false">
                 <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
                 <title>other</title>
                 <desc>Created with Sketch.</desc>
@@ -1006,15 +1009,19 @@
         </div>
 
         <!-- Quiz -->
-        <div class="sectionquiz pt-4">
+        <section class="sectionquiz pt-4 story-quiz" aria-labelledby="story-quiz-title" data-story-quiz>
             <div class="quizp">
-                <p class="mb-4 mt-4 quizheader">What Is Squiggy's Cell Type?</p>
+                <h2 class="mb-4 mt-4 quizheader" id="story-quiz-title">What Is Squiggy's Cell Type?</h2>
 
-                <ul>
-                    <li>Head over to the ASCT+B reporter to find out.</li>
-                    <p><a href="https://apps.humanatlas.io/asctb-reporter/vis?selectedOrgans=knee-v1.2&playground=false&omapSelectedOrgans=" target="_blank"
-                        class="linkbutton">ASCT+B Reporter <img src="img/UI Assets/arrow.svg"
-                            style="vertical-align:middle"></a> </p>
+                <ul class="story-quiz__instructions">
+                    <li>
+                        Head over to the ASCT+B Reporter to find out:
+                        <a href="https://apps.humanatlas.io/asctb-reporter/vis?selectedOrgans=knee-v1.2&playground=false&omapSelectedOrgans="
+                            target="_blank" rel="noopener noreferrer" class="linkbutton"
+                            aria-label="ASCT+B Reporter (opens in a new tab)">ASCT+B Reporter
+                            <img src="img/UI Assets/arrow.svg" alt="" style="vertical-align:middle">
+                        </a>
+                    </li>
                     <li>Remember, Squiggy's biomarkers are Keratin 5/6, Keratin 7, p60.</li>
                     <li>Along with being characterized by those biomarkers, Squiggy is a type of cell that can be found
                         hanging out in the large intestine (among other places throughout the body).</li>
@@ -1022,100 +1029,92 @@
                         easier!</li>
                 </ul>
 
-                <div>
-                    <div class="hintwords" id="hintbutton" onclick="hintstuff()">&emsp; <img id="hinticon"
-                            src="img/UI Assets/eyeball_icon.svg" style="margin-right:8px;vertical-align:middle"><span
-                            id="hintwords">Show
-                            hint</span></div>
-                    <div id="showhint">&emsp; <ul>
-                            <li style="margin-top: -30px;">If you're stuck, watch this tutorial video:</li>
-                        </ul>
-                        <p>&emsp;<a href="https://www.youtube.com/embed/pzUFmDhQEO8" target="_blank"
-                                class="linkbutton">Watch video <img src="img/UI Assets/arrow.svg"
-                                    style="vertical-align:middle"></a> </p>
+                <details class="story-quiz__hint">
+                    <summary>
+                        <img src="img/UI Assets/eyeball_icon.svg" alt="">
+                        Hint
+                    </summary>
+                    <div class="story-quiz__hint-content">
+                        <p>If you're stuck, watch this tutorial video:</p>
+                        <p>
+                            <a href="https://www.youtube.com/embed/pzUFmDhQEO8" target="_blank"
+                                rel="noopener noreferrer" class="linkbutton"
+                                aria-label="Watch video (opens in a new tab)">Watch video
+                                <img src="img/UI Assets/arrow.svg" alt="" style="vertical-align:middle">
+                            </a>
+                        </p>
                     </div>
-                </div>
+                </details>
 
-                <p style="font-size:20px">
-                    Hey I know! Squiggy's cell type is ...
-                </p>
-                <p class="radiochoice"><input type="radio" name="radiochoice" value="Choice1">Sebocyte</p>
-                <p class="radiochoice"><input type="radio" name="radiochoice" value="Choice2">Epithelial Stem Cell </p>
-                <p class="radiochoice">
-                    <input type="radio" name="radiochoice" value="Choice3">Squamous
-                </p>
-                <p class="radiochoice">
-                    <input type="radio" name="radiochoice" value="Choice4">Subepithelial membrane
-                </p>
-                <button type="button" class="choiceresult" onclick="displayRadioValue()">
+                <fieldset class="story-quiz__choices">
+                    <legend>Hey I know! Squiggy's cell type is ...</legend>
+                    <label class="radiochoice">
+                        <input type="radio" name="radiochoice" value="Choice1">
+                        <span>Sebocyte</span>
+                    </label>
+                    <label class="radiochoice">
+                        <input type="radio" name="radiochoice" value="Choice2">
+                        <span>Epithelial Stem Cell</span>
+                    </label>
+                    <label class="radiochoice">
+                        <input type="radio" name="radiochoice" value="Choice3">
+                        <span>Squamous</span>
+                    </label>
+                    <label class="radiochoice">
+                        <input type="radio" name="radiochoice" value="Choice4">
+                        <span>Subepithelial membrane</span>
+                    </label>
+                </fieldset>
+                <button type="button" class="choiceresult" data-story-quiz-check>
                     Check Answer
                 </button>
-                <br>
-                <div id="result"></div>
+                <p id="result" class="story-quiz__result" role="status" aria-live="polite" aria-atomic="true"
+                    data-story-quiz-result></p>
             </div>
-
-            <script>
-                function displayRadioValue() {
-                    var ele = document.getElementsByName('radiochoice');
-
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked) {
-                            if (ele[i].value == "Choice3") {
-                                document.getElementById("result").innerHTML = `<img src="img/UI Assets/check_circle.svg"
-                                    style="vertical-align:middle"> Correct! Squiggy is a squamous cell (and pretty proud of it).`;
-                                document.getElementById("result").style.visibility = "visible";
-                                document.getElementById("result").style.backgroundColor = "transparent";
-                            } else if (ele[i].value == "Choice2" || ele[i].value == "Choice1" || ele[i].value == "Choice4") {
-                                document.getElementById("result").innerHTML = `<img src="img/UI Assets/error.svg"
-                                    style="vertical-align:middle"> Not quite, please try again.`;
-                                document.getElementById("result").style.visibility = "visible";
-                                document.getElementById("result").style.backgroundColor = "#FEE2CF";
-                            }
-                        }
-
-                    }
-                }
-            </script>
-        </div>
+        </section>
 
 
         <div class="Externallinkssection">
             <p class="indexTitle" style="margin-bottom: 80px;">External Links</p>
             <div class="ExternalLinkCards">
                 <div class="ExternalLinkCard">
-                    <img class="ExternalLinkImg" src="img/Link2-1.png">
+                    <img class="ExternalLinkImg" src="img/Link2-1.png" alt="">
                     <div class="ExternalLinkTitle">ASCT+B Tables</div>
                     <div class="ExternalLinkDesc">See the ASCT+B tables in all their Excel spreadsheet glory!</div>
                     
-                    <a href="https://humanatlas.io/asctb-tables" target="_blank"class="linkbutton">View Tables <img
-                            src="img/UI Assets/arrow.svg" style="vertical-align:middle">
+                    <a href="https://humanatlas.io/asctb-tables" target="_blank" rel="noopener noreferrer"
+                        class="linkbutton" aria-label="View Tables (opens in a new tab)">View Tables <img
+                            src="img/UI Assets/arrow.svg" alt="" style="vertical-align:middle">
                         </a>
                 </div>
 
                 <div class="ExternalLinkCard">
-                    <img class="ExternalLinkImg" src="img/Link2-2.png">
+                    <img class="ExternalLinkImg" src="img/Link2-2.png" alt="">
                     <div class="ExternalLinkTitle">3D Organs</div>
                     <div class="ExternalLinkDesc">Want to look at some cool 3D organs? Why, of course you do!</div>
-                    <a href="https://humanatlas.io/3d-reference-library" target="_blank"class="linkbutton">View 3D Organs <img
-                        src="img/UI Assets/arrow.svg" style="vertical-align:middle">
+                    <a href="https://humanatlas.io/3d-reference-library" target="_blank" rel="noopener noreferrer"
+                        class="linkbutton" aria-label="View 3D Organs (opens in a new tab)">View 3D Organs <img
+                        src="img/UI Assets/arrow.svg" alt="" style="vertical-align:middle">
                     </a>
                 </div>
 
                 <div class="ExternalLinkCard">
-                    <img class="ExternalLinkImg" src="img/Link2-3.png">
+                    <img class="ExternalLinkImg" src="img/Link2-3.png" alt="">
                     <div class="ExternalLinkTitle">Functional Tissue Units</div>
                     <div class="ExternalLinkDesc">Or are 2D functional tissue units more your style?</div>
-                    <a href="https://humanatlas.io/2d-ftu-illustrations" target="_blank"class="linkbutton">View Illustrations <img
-                        src="img/UI Assets/arrow.svg" style="vertical-align:middle">
+                    <a href="https://humanatlas.io/2d-ftu-illustrations" target="_blank" rel="noopener noreferrer"
+                        class="linkbutton" aria-label="View Illustrations (opens in a new tab)">View Illustrations <img
+                        src="img/UI Assets/arrow.svg" alt="" style="vertical-align:middle">
                     </a>
                 </div>
 
                 <div class="ExternalLinkCard">
-                    <img class="ExternalLinkImg" src="img/Link2-4.png">
+                    <img class="ExternalLinkImg" src="img/Link2-4.png" alt="">
                     <div class="ExternalLinkTitle">HRA in Nature Cell Biology</div>
                     <div class="ExternalLinkDesc">Ready to go deeper? Check out this paper on ASCT+B tables from Nature Cell Biology.</div>
-                    <a href="https://www.nature.com/articles/s41556-021-00788-6" target="_blank"class="linkbutton">Read Paper <img
-                        src="img/UI Assets/arrow.svg" style="vertical-align:middle">
+                    <a href="https://www.nature.com/articles/s41556-021-00788-6" target="_blank"
+                        rel="noopener noreferrer" class="linkbutton" aria-label="Read Paper (opens in a new tab)">Read Paper <img
+                        src="img/UI Assets/arrow.svg" alt="" style="vertical-align:middle">
                     </a>
                 </div>
             </div>
@@ -1124,13 +1123,14 @@
         <!-- BotNav -->
         <div class="botNav">
             <a href="story1.html" class="previous"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16">
+                    fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16" aria-hidden="true"
+                    focusable="false">
                     <path fill-rule="evenodd"
                         d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                 </svg> Story 1: <span class="prevTitle">What Is An HRA?</span></a>
             <a href="story3.html" class="next">Story 3: <span class="nextTitle">Something's NOT Registering!</span><svg
                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-arrow-right" viewBox="0 -3 16 16">
+                    class="bi bi-arrow-right" viewBox="0 -3 16 16" aria-hidden="true" focusable="false">
                     <path fill-rule="evenodd"
                         d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                 </svg></a>
@@ -1212,27 +1212,6 @@
         }
     }
     window.onload = typeWriter;
-
-    //Quiz hint code
-    function hintstuff() {
-        const image = document.getElementById('hinticon');
-
-        var x = document.getElementById("showhint");
-        if (x.style.display == "none") {
-            x.style.display = "block";
-            image.src = 'img/UI Assets/eyeballshut_icon.svg';
-            document.getElementById("hintwords").textContent = "Hide hint";
-        } else if (x.style.display == "block") {
-            x.style.display = "none";
-            image.src = 'img/UI Assets/eyeball_icon.svg';
-            document.getElementById("hintwords").textContent = "Show hint";
-        }
-        else {
-            x.style.display = "block";
-            image.src = 'img/UI Assets/eyeballshut_icon.svg';
-            document.getElementById("hintwords").textContent = "Hide hint";
-        }
-    }
 
     //fade in txt 
     const containers2 = gsap.utils.toArray(".container2");
