@@ -98,7 +98,6 @@ function setupMouseTimeline(gsap) {
     .to('.spleen', { autoAlpha: 1, duration: 0.8 })
     .to('.spleen', { autoAlpha: 0, duration: 0.2 })
     .to('.pancreas', { autoAlpha: 1, duration: 0.2 }, '<')
-    .set('.scroll-instruction', { autoAlpha: 0 })
     .to('.pancreas', { autoAlpha: 1, duration: 0.8 });
 }
 
