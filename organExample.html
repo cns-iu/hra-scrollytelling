@@ -1,74 +1,77 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex, follow">
-    <link rel="canonical"
-        href="https://cns-iu.github.io/hra-scrollytelling/prototypes/organ-example/">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, follow" />
+    <link
+      rel="canonical"
+      href="https://cns-iu.github.io/hra-scrollytelling/prototypes/organ-example/"
+    />
     <title>Organ Example Moved | Human Atlas Stories</title>
     <style>
-        body {
-            box-sizing: border-box;
-            min-height: 100vh;
-            margin: 0;
-            padding: 2rem;
-            color: #1c1b1e;
-            background: #fafbfc;
-            font-family: system-ui, sans-serif;
-            line-height: 1.6;
-        }
+      body {
+        box-sizing: border-box;
+        min-height: 100vh;
+        margin: 0;
+        padding: 2rem;
+        color: #1c1b1e;
+        background: #fafbfc;
+        font-family: system-ui, sans-serif;
+        line-height: 1.6;
+      }
 
-        main {
-            width: min(100%, 42rem);
-            margin-inline: auto;
+      main {
+        width: min(100%, 42rem);
+        margin-inline: auto;
+      }
+
+      a {
+        color: #400009;
+        text-decoration-thickness: 0.15em;
+        text-underline-offset: 0.2em;
+      }
+
+      a:focus-visible {
+        outline: 0.2rem solid #400009;
+        outline-offset: 0.25rem;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          color: #d4dde6;
+          background: #161719;
         }
 
         a {
-            color: #400009;
-            text-decoration-thickness: 0.15em;
-            text-underline-offset: 0.2em;
+          color: #ffdad9;
         }
 
         a:focus-visible {
-            outline: 0.2rem solid #400009;
-            outline-offset: 0.25rem;
+          outline-color: #ffdad9;
         }
-
-        @media (prefers-color-scheme: dark) {
-            body {
-                color: #d4dde6;
-                background: #161719;
-            }
-
-            a {
-                color: #ffdad9;
-            }
-
-            a:focus-visible {
-                outline-color: #ffdad9;
-            }
-        }
+      }
     </style>
     <script>
-        (() => {
-            const destination = new URL("prototypes/organ-example/", window.location.href);
-            destination.search = window.location.search;
-            destination.hash = window.location.hash;
-            window.location.replace(destination);
-        })();
+      (() => {
+        const destination = new URL(
+          "prototypes/organ-example/",
+          window.location.href,
+        );
+        destination.search = window.location.search;
+        destination.hash = window.location.hash;
+        window.location.replace(destination);
+      })();
     </script>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <h1>Organ Example has moved</h1>
-        <p>
-            Continue to the
-            <a href="prototypes/organ-example/">Organ Example prototype</a>.
-        </p>
+      <h1>Organ Example has moved</h1>
+      <p>
+        Continue to the
+        <a href="prototypes/organ-example/">Organ Example prototype</a>.
+      </p>
     </main>
-</body>
-
+  </body>
 </html>

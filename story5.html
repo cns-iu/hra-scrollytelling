@@ -16,11 +16,20 @@
     <link rel="stylesheet" href="stories/story5/accessibility.css" />
     <link rel="icon" type="image/x-icon" href="img/favicon.svg" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Cutive&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cutive&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1811WRJJD"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-E1811WRJJD"
+    ></script>
 
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -28,386 +37,621 @@
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag('js', new Date());
+      gtag("js", new Date());
 
-      gtag('config', 'G-E1811WRJJD');
+      gtag("config", "G-E1811WRJJD");
     </script>
     <script type="module" src="shared/js/navigation-only.js"></script>
   </head>
 
   <body id="two" class="story5section2">
-    <a class="site-skip-link site-chrome" href="#main-content">Skip to main content</a>
+    <a class="site-skip-link site-chrome" href="#main-content"
+      >Skip to main content</a
+    >
 
     <details class="site-menu site-chrome site-chrome--light" data-site-menu>
-        <summary>
-            <span class="site-menu-icon site-menu-icon-menu" aria-hidden="true"></span>
-            <svg class="site-menu-icon site-menu-icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="m6 6 12 12M18 6 6 18"></path>
+      <summary>
+        <span
+          class="site-menu-icon site-menu-icon-menu"
+          aria-hidden="true"
+        ></span>
+        <svg
+          class="site-menu-icon site-menu-icon-close"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="m6 6 12 12M18 6 6 18"></path>
+        </svg>
+        <span>Menu</span>
+      </summary>
+
+      <div
+        class="site-menu-panel"
+        data-site-menu-panel
+        role="region"
+        aria-labelledby="site-menu-title"
+        tabindex="-1"
+      >
+        <div class="site-menu-header">
+          <p class="site-menu-title" id="site-menu-title">Menu</p>
+          <button
+            class="site-menu-close"
+            type="button"
+            aria-label="Close Menu"
+            data-site-menu-close
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="m6 6 12 12M18 6 6 18"></path>
             </svg>
-            <span>Menu</span>
-        </summary>
-
-        <div class="site-menu-panel" data-site-menu-panel role="region" aria-labelledby="site-menu-title" tabindex="-1">
-            <div class="site-menu-header">
-                <p class="site-menu-title" id="site-menu-title">Menu</p>
-                <button class="site-menu-close" type="button" aria-label="Close Menu" data-site-menu-close>
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <path d="m6 6 12 12M18 6 6 18"></path>
-                    </svg>
-                </button>
-            </div>
-
-            <nav class="site-menu-nav" aria-labelledby="site-navigation-label">
-                <p class="site-menu-label" id="site-navigation-label">Navigate</p>
-                <ul role="list">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="story1.html">What Is a Human Reference Atlas?</a></li>
-                    <li><a href="story2.html">Squiggy's Identity Crisis!</a></li>
-                    <li><a href="story3.html">Something's Not Registering!</a></li>
-                    <li><a href="story4.html">Data Detangle</a></li>
-                    <li><a href="story5.html" aria-current="page">Know Your Body Buddies</a></li>
-                    <li><a href="story6.html">Pan-organ Immunosenescence Atlas</a></li>
-                </ul>
-            </nav>
+          </button>
         </div>
+
+        <nav class="site-menu-nav" aria-labelledby="site-navigation-label">
+          <p class="site-menu-label" id="site-navigation-label">Navigate</p>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="story1.html">What Is a Human Reference Atlas?</a></li>
+            <li><a href="story2.html">Squiggy's Identity Crisis!</a></li>
+            <li><a href="story3.html">Something's Not Registering!</a></li>
+            <li><a href="story4.html">Data Detangle</a></li>
+            <li>
+              <a href="story5.html" aria-current="page"
+                >Know Your Body Buddies</a
+              >
+            </li>
+            <li><a href="story6.html">Pan-organ Immunosenescence Atlas</a></li>
+          </ul>
+        </nav>
+      </div>
     </details>
 
-    <main class="site-main-target story-main--intrinsic-height" id="main-content" tabindex="-1">
-
-    <!-- section header/intro -->
-    <section class="intro" id="intro" style="background-color: white">
-      <h3 class="overtext" id="introTypeLine"></h3>
-      <div class="fadeimage" role="img" aria-label="A view of the human body zooms toward its cells">
-        <img src="img/2-bodyintro1.png" alt="" />
-        <img src="img/2-bodyintro2.png" alt="" class="picture2 imagepart" />
-        <img src="img/telescope.svg" alt="" class="picture3 imagepart" style="width: 140px" />
-      </div>
-    </section>
-
-    <section class="section1">
-      <div class="container" style="left: 20px">This is the story of two of them: Squiggy and CeCe.</div>
-    </section>
-
-    <section class="section1">
-      <div class="container2 introline" style="left: 20px">
-        <p>On this week's episode:&nbsp;</p>
-        <h1 style="font-size: 1.6em">Know Your Body Buddies</h1>
-        <p class="descriptionsection">
-          In which our heroes vanquish social anxiety, gain an extra dimension, and learn that it takes all types of cells to make a body!
-        </p>
-        <div class="popupsection">
-          <img class="introlineimg introcharcece" src="img/popup5left.svg" alt="" style="width: 12%" />
-          <img class="introlineimg introcharsquiggy" src="img/popup5right.svg" alt="" style="width: 10%" />
+    <main
+      class="site-main-target story-main--intrinsic-height"
+      id="main-content"
+      tabindex="-1"
+    >
+      <!-- section header/intro -->
+      <section class="intro" id="intro" style="background-color: white">
+        <h3 class="overtext" id="introTypeLine"></h3>
+        <div
+          class="fadeimage"
+          role="img"
+          aria-label="A view of the human body zooms toward its cells"
+        >
+          <img src="img/2-bodyintro1.png" alt="" />
+          <img src="img/2-bodyintro2.png" alt="" class="picture2 imagepart" />
+          <img
+            src="img/telescope.svg"
+            alt=""
+            class="picture3 imagepart"
+            style="width: 140px"
+          />
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section2">
-      <div class="scene5-1">
-        <img src="img/5sign.svg" alt="" id="sign" class="imageparts" />
-        <img src="img/5move1.svg" alt="" id="move1" class="imageparts" />
-      </div>
-      <div class="talkbubble">
-        <div class="squiggytalk5">
-          <b>Squiggy:</b> You know, CeCe, I don't usually like to travel, but I do like our visits to the kidneys to see our new friend Mac.
+      <section class="section1">
+        <div class="container" style="left: 20px">
+          This is the story of two of them: Squiggy and CeCe.
         </div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5">
-          <b>CeCe:</b> You said it, Squig old buddy! And I love it that Mac decided to finally get to know his local community by throwing a tissue block party.
+      </section>
+
+      <section class="section1">
+        <div class="container2 introline" style="left: 20px">
+          <p>On this week's episode:&nbsp;</p>
+          <h1 style="font-size: 1.6em">Know Your Body Buddies</h1>
+          <p class="descriptionsection">
+            In which our heroes vanquish social anxiety, gain an extra
+            dimension, and learn that it takes all types of cells to make a
+            body!
+          </p>
+          <div class="popupsection">
+            <img
+              class="introlineimg introcharcece"
+              src="img/popup5left.svg"
+              alt=""
+              style="width: 12%"
+            />
+            <img
+              class="introlineimg introcharsquiggy"
+              src="img/popup5right.svg"
+              alt=""
+              style="width: 10%"
+            />
+          </div>
         </div>
-      </div>
-      <div class="talkbubble">
-        <div class="squiggytalk5"><b>Squiggy:</b> I'm just so happy he's finally gotten over his shyness and is out meeting new cells!</div>
-      </div>
-      <div class="talkbubble"></div>
+      </section>
 
-      <div class="scene5-2"></div>
-
-      <div class="talkbubble">
-        <div class="cecetalk5"><b>CeCe:</b> Not so fast, Squig. Something tells me that Mac might not quite be over his social anxiety yet!</div>
-      </div>
-      <div class="talkbubble">
-        <div class="squiggytalk5"><b>Squiggy:</b> Uh, Mac, is that you?</div>
-      </div>
-      <div class="talkbubble">
-        <div class="mactalk"><b>Mac:</b> Oh, drat! I've been discovered!</div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5"><b>CeCe:</b> Mac, why are you in that ridiculous disguise? Aren't you supposed to be hosting a tissue block party?</div>
-      </div>
-      <div class="talkbubble">
-        <div class="mactalk"><b>Mac:</b> But that's the problem! I had just started getting ready when I was hit by a number of disturbing questions.</div>
-      </div>
-
-      <div class="talkbubble"></div>
-
-      <div class="scene5-3">
-        <img src="img/5bubble1.svg" alt="" id="bubble1" class="imageparts" style="width: 40%; left: 32%; top: 10%; max-width: 500px; min-width: 100px" />
-      </div>
-      <div class="talkbubble" id="showbubble1">
-        <div class="mactalk2">
-          <b>Mac:</b> Who were these cells that all lived on my tissue block? What did they do? What were they like? What could we talk about?
+      <section class="section2">
+        <div class="scene5-1">
+          <img src="img/5sign.svg" alt="" id="sign" class="imageparts" />
+          <img src="img/5move1.svg" alt="" id="move1" class="imageparts" />
         </div>
-      </div>
-      <div class="talkbubble">
-        <div class="mactalk2"><b>Mac:</b> In short, my friends, I suddenly realized I did not know who lives around me.</div>
-      </div>
-
-      <div class="talkbubble"></div>
-
-      <div class="scene5-35"></div>
-
-      <div class="talkbubble">
-        <div class="squiggytalk6" id="showbubble2">
-          <b>Squiggy:</b> That's not a problem, Mac. How about the three of us go door-to-door and meet everyone one at a time?
+        <div class="talkbubble">
+          <div class="squiggytalk5">
+            <b>Squiggy:</b> You know, CeCe, I don't usually like to travel, but
+            I do like our visits to the kidneys to see our new friend Mac.
+          </div>
         </div>
-      </div>
-
-      <div class="talkbubble">
-        <div class="cecetalk6">
-          <b>CeCe:</b> No can do, Squiggy. Depending upon the size of Mac's tissue block and its location in the kidney, there could be millions of cells!
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> You said it, Squig old buddy! And I love it that Mac
+            decided to finally get to know his local community by throwing a
+            tissue block party.
+          </div>
         </div>
-      </div>
-
-      <div class="talkbubble"></div>
-
-      <div class="scene5-4"></div>
-      <div class="talkbubble">
-        <div class="squiggytalk5"><b>Squiggy:</b> Aargh! That's way too much walking!</div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5"><b>CeCe:</b> Don't lose your ribosomes, Squiggy. I think I know something that will help us out.</div>
-      </div>
-      <div class="talkbubble">
-        <div class="squiggytalk5"><b>Squiggy:</b> Oooh, I bet it has something to do with the Human Reference Atlas.</div>
-      </div>
-      <div class="talkbubble">
-        <div class="mactalk"><b>Mac:</b> What makes you say that, Squiggy?</div>
-      </div>
-      <div class="talkbubble">
-        <div class="squiggytalk5"><b>Squiggy:</b> Exploring the HRA is kind of our thing, Mac.</div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5"><b>CeCe:</b> Right you are, Squig! We're going to use the HRA to help Mac get to know his community.</div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5"><b>CeCe:</b> Follow me!</div>
-      </div>
-
-      <div class="talkbubble"></div>
-
-      <div class="scene5-5"></div>
-
-      <div class="talkbubble">
-        <div class="cecetalk5"><b>CeCe:</b> We just have to jump down here!</div>
-      </div>
-
-      <div class="talkbubble">
-        <div class="cecetalk5"><b>CeCe:</b> Let's go!</div>
-      </div>
-
-      <div class="talkbubble"></div>
-
-      <div class="scene5-6">
-        <img src="img/5falling.svg" alt="" class="falling5" />
-      </div>
-
-      <div class="talkbubble" id="scrollupto1">
-        <div style="top: -30%; position: relative">And so down they went...</div>
-      </div>
-      <div class="talkbubble"></div>
-      <div class="talkbubble"></div>
-
-      <div class="scene5-7" id="scrollto0">
-        <div class="vid">
-          <button type="button" class="toparrowbutton story5-media-control" id="toparrow1" onclick="scrollup1()"
-            aria-label="Return to the previous story section">
-            <img src="img/uparrowbutton.svg" alt="" />
-          </button>
-
-          <video playsinline autoplay muted class="video5" id="sample" onended="onend1()">
-            <source src="img/video5-1.mov" />
-          </video>
-          <button type="button" class="nextsectionbutton story5-media-control" onclick="scroll1()"
-            aria-label="Continue to the next story section">
-            <img src="img/downarrowbutton.svg" alt="" />
-          </button>
-          <button type="button" class="repeatbutton story5-media-control" onclick="repeatmovie1()"
-            aria-label="Replay this animation" aria-controls="sample">
-            <img src="img/repeatbutton.svg" alt="" />
-          </button>
+        <div class="talkbubble">
+          <div class="squiggytalk5">
+            <b>Squiggy:</b> I'm just so happy he's finally gotten over his
+            shyness and is out meeting new cells!
+          </div>
         </div>
-      </div>
+        <div class="talkbubble"></div>
 
-      <div class="scene5-8"></div>
-      <div class="talkbubble">
-        <div class="squiggytalk5"><b>Squiggy:</b> Hey, I remember this place from the time we rescued that lost tissue block! Isn't this the RUI?</div>
-        <div id="scrollto1"></div>
-      </div>
+        <div class="scene5-2"></div>
 
-      <div style="height: 20vh; background-color: black"></div>
-
-      <div class="talkbubble">
-        <div class="cecetalk5"><b>CeCe:</b> That's right, and this RUI, or Registration User Interface, is where our story begins.</div>
-      </div>
-      <div class="talkbubble">
-        <div class="mactalk"><b>Mac:</b> That's the kidney! That's where I live!</div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5" id="scrollupto2"><b>CeCe:</b> And if I'm not mistaken, your tissue block is right here.</div>
-      </div>
-
-      <div class="talkbubble"></div>
-
-      <div class="scene5-9" id="scrollto2">
-        <div class="vid">
-          <button type="button" class="toparrowbutton story5-media-control" id="toparrow2" onclick="scrollup2()"
-            aria-label="Return to the previous story section">
-            <img src="img/uparrowbutton.svg" alt="" />
-          </button>
-          <video playsinline autoplay muted class="video5" id="sample2" onended="onend2()">
-            <source src="img/video5-2.mov" />
-          </video>
-          <button type="button" class="nextsectionbutton story5-media-control" onclick="scroll2()"
-            aria-label="Continue to the next story section">
-            <img src="img/downarrowbutton.svg" alt="" />
-          </button>
-          <button type="button" class="repeatbutton story5-media-control" onclick="repeatmovie2()"
-            aria-label="Replay this animation" aria-controls="sample2">
-            <img src="img/repeatbutton.svg" alt="" />
-          </button>
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> Not so fast, Squig. Something tells me that Mac might
+            not quite be over his social anxiety yet!
+          </div>
         </div>
-      </div>
-
-      <div class="scene5-10"></div>
-      <div class="talkbubble">
-        <div class="mactalk"><b>Mac:</b> Exactly!</div>
-      </div>
-      <div style="height: 20vh; background-color: black"></div>
-      <div id="scrollto3"></div>
-      <div class="talkbubble">
-        <div class="cecetalk5"><b>CeCe:</b> Alright, let's place Mac's tissue block in the correct location on the 3D reference organ.</div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5" id="scrollupto3">
-          <b>CeCe:</b> When we do that, we'll see a list of the anatomical structures within the kidney that the tissue block collides with.
+        <div class="talkbubble">
+          <div class="squiggytalk5"><b>Squiggy:</b> Uh, Mac, is that you?</div>
         </div>
-      </div>
-
-      <div class="talkbubble"></div>
-
-      <div class="scene5-11" id="scrollto4">
-        <div class="vid">
-          <button type="button" class="toparrowbutton story5-media-control" id="toparrow3" onclick="scrollup3()"
-            aria-label="Return to the previous story section">
-            <img src="img/uparrowbutton.svg" alt="" />
-          </button>
-
-          <video playsinline autoplay muted class="video5" id="sample3" onended="onend3()">
-            <source src="img/video5-3.mov" />
-          </video>
-          <button type="button" class="nextsectionbutton story5-media-control" onclick="scroll3()"
-            aria-label="Continue to the next story section">
-            <img src="img/downarrowbutton.svg" alt="" />
-          </button>
-          <button type="button" class="repeatbutton story5-media-control" onclick="repeatmovie3()"
-            aria-label="Replay this animation" aria-controls="sample3">
-            <img src="img/repeatbutton.svg" alt="" />
-          </button>
+        <div class="talkbubble">
+          <div class="mactalk"><b>Mac:</b> Oh, drat! I've been discovered!</div>
         </div>
-      </div>
-
-      <div class="scene5-12"></div>
-      <div class="talkbubble">
-        <div class="mactalk2" style="top: 18%">
-          <b>Mac:</b> Are you saying that the tissue block where I live intersects all of those anatomical structures?
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> Mac, why are you in that ridiculous disguise? Aren't
+            you supposed to be hosting a tissue block party?
+          </div>
         </div>
-      </div>
-      <div style="height: 20vh; background-color: black"></div>
-      <div id="scrollto5"></div>
-      <div class="talkbubble">
-        <div class="cecetalk5" style="top: 18%"><b>CeCe:</b> That's exactly what I'm saying. So it's a good idea to learn a bit more about them.</div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5" style="top: 18%">
-          <b>CeCe:</b> The HRA has already collected quite a bit of information about these anatomical structures from experimental datasets.
+        <div class="talkbubble">
+          <div class="mactalk">
+            <b>Mac:</b> But that's the problem! I had just started getting ready
+            when I was hit by a number of disturbing questions.
+          </div>
         </div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5" style="top: 18%">
-          <b>CeCe:</b> Experimental datasets are tissue data from healthy donors for which it is possible to derive cell counts.
+
+        <div class="talkbubble"></div>
+
+        <div class="scene5-3">
+          <img
+            src="img/5bubble1.svg"
+            alt=""
+            id="bubble1"
+            class="imageparts"
+            style="
+              width: 40%;
+              left: 32%;
+              top: 10%;
+              max-width: 500px;
+              min-width: 100px;
+            "
+          />
         </div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5" id="scrollupto4" style="top: 18%">
-          <b>CeCe:</b> These datasets are typically found in scholarly papers or in online collections of data, which are called portals.
+        <div class="talkbubble" id="showbubble1">
+          <div class="mactalk2">
+            <b>Mac:</b> Who were these cells that all lived on my tissue block?
+            What did they do? What were they like? What could we talk about?
+          </div>
         </div>
-      </div>
-
-      <div class="talkbubble"></div>
-
-      <div class="scene5-13" id="scrollto6">
-        <div class="vid">
-          <button type="button" class="toparrowbutton story5-media-control" id="toparrow4" onclick="scrollup4()"
-            aria-label="Return to the previous story section">
-            <img src="img/uparrowbutton.svg" alt="" />
-          </button>
-
-          <video playsinline autoplay muted class="video5" id="sample4" onended="onend4()">
-            <source src="img/video5-4.mov" />
-          </video>
-          <button type="button" class="nextsectionbutton story5-media-control" onclick="scroll4()"
-            aria-label="Continue to the next story section">
-            <img src="img/downarrowbutton.svg" alt="" />
-          </button>
-          <button type="button" class="repeatbutton story5-media-control" onclick="repeatmovie4()"
-            aria-label="Replay this animation" aria-controls="sample4">
-            <img src="img/repeatbutton.svg" alt="" />
-          </button>
+        <div class="talkbubble">
+          <div class="mactalk2">
+            <b>Mac:</b> In short, my friends, I suddenly realized I did not know
+            who lives around me.
+          </div>
         </div>
-      </div>
 
-      <div class="scene5-14"></div>
-      <div class="talkbubble">
-        <div class="cecetalk5">
-          <b>CeCe:</b> Now, if you add all that data to the spatial data collected when researchers register tissue samples using the RUI, then we get a pretty
-          good sense of which cell types appear in a given organ.
+        <div class="talkbubble"></div>
+
+        <div class="scene5-35"></div>
+
+        <div class="talkbubble">
+          <div class="squiggytalk6" id="showbubble2">
+            <b>Squiggy:</b> That's not a problem, Mac. How about the three of us
+            go door-to-door and meet everyone one at a time?
+          </div>
         </div>
-      </div>
-      <div style="height: 20vh; background-color: black"></div>
-      <div id="scrollto7"></div>
-      <div class="talkbubble">
-        <div class="cecetalk5" id="scrollupto5">
-          <b>CeCe:</b> We can even get an estimation of where in the organ they appear. And that estimation gets more accurate the more data is collected from
-          studies and tissue registration.
+
+        <div class="talkbubble">
+          <div class="cecetalk6">
+            <b>CeCe:</b> No can do, Squiggy. Depending upon the size of Mac's
+            tissue block and its location in the kidney, there could be millions
+            of cells!
+          </div>
         </div>
-      </div>
 
-      <div class="talkbubble"></div>
+        <div class="talkbubble"></div>
 
-      <div class="scene5-15" id="scrollto8">
-        <div class="vid">
-          <button type="button" class="toparrowbutton story5-media-control" id="toparrow5" onclick="scrollup5()"
-            aria-label="Return to the previous story section">
-            <img src="img/uparrowbutton.svg" alt="" />
-          </button>
-
-          <video playsinline autoplay muted class="video5" id="sample5" onended="onend5()">
-            <source src="img/video5-5.mov" />
-          </video>
-          <button type="button" class="nextsectionbutton story5-media-control" onclick="scroll5()"
-            aria-label="Continue to the next story section">
-            <img src="img/downarrowbutton.svg" alt="" />
-          </button>
-          <button type="button" class="repeatbutton story5-media-control" onclick="repeatmovie5()"
-            aria-label="Replay this animation" aria-controls="sample5">
-            <img src="img/repeatbutton.svg" alt="" />
-          </button>
+        <div class="scene5-4"></div>
+        <div class="talkbubble">
+          <div class="squiggytalk5">
+            <b>Squiggy:</b> Aargh! That's way too much walking!
+          </div>
         </div>
-      </div>
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> Don't lose your ribosomes, Squiggy. I think I know
+            something that will help us out.
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="squiggytalk5">
+            <b>Squiggy:</b> Oooh, I bet it has something to do with the Human
+            Reference Atlas.
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="mactalk">
+            <b>Mac:</b> What makes you say that, Squiggy?
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="squiggytalk5">
+            <b>Squiggy:</b> Exploring the HRA is kind of our thing, Mac.
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> Right you are, Squig! We're going to use the HRA to
+            help Mac get to know his community.
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="cecetalk5"><b>CeCe:</b> Follow me!</div>
+        </div>
 
-      <!-- <div class="scene5-155" id="scrollto9">
+        <div class="talkbubble"></div>
+
+        <div class="scene5-5"></div>
+
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> We just have to jump down here!
+          </div>
+        </div>
+
+        <div class="talkbubble">
+          <div class="cecetalk5"><b>CeCe:</b> Let's go!</div>
+        </div>
+
+        <div class="talkbubble"></div>
+
+        <div class="scene5-6">
+          <img src="img/5falling.svg" alt="" class="falling5" />
+        </div>
+
+        <div class="talkbubble" id="scrollupto1">
+          <div style="top: -30%; position: relative">
+            And so down they went...
+          </div>
+        </div>
+        <div class="talkbubble"></div>
+        <div class="talkbubble"></div>
+
+        <div class="scene5-7" id="scrollto0">
+          <div class="vid">
+            <button
+              type="button"
+              class="toparrowbutton story5-media-control"
+              id="toparrow1"
+              onclick="scrollup1()"
+              aria-label="Return to the previous story section"
+            >
+              <img src="img/uparrowbutton.svg" alt="" />
+            </button>
+
+            <video
+              playsinline
+              autoplay
+              muted
+              class="video5"
+              id="sample"
+              onended="onend1()"
+            >
+              <source src="img/video5-1.mov" />
+            </video>
+            <button
+              type="button"
+              class="nextsectionbutton story5-media-control"
+              onclick="scroll1()"
+              aria-label="Continue to the next story section"
+            >
+              <img src="img/downarrowbutton.svg" alt="" />
+            </button>
+            <button
+              type="button"
+              class="repeatbutton story5-media-control"
+              onclick="repeatmovie1()"
+              aria-label="Replay this animation"
+              aria-controls="sample"
+            >
+              <img src="img/repeatbutton.svg" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <div class="scene5-8"></div>
+        <div class="talkbubble">
+          <div class="squiggytalk5">
+            <b>Squiggy:</b> Hey, I remember this place from the time we rescued
+            that lost tissue block! Isn't this the RUI?
+          </div>
+          <div id="scrollto1"></div>
+        </div>
+
+        <div style="height: 20vh; background-color: black"></div>
+
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> That's right, and this RUI, or Registration User
+            Interface, is where our story begins.
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="mactalk">
+            <b>Mac:</b> That's the kidney! That's where I live!
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="cecetalk5" id="scrollupto2">
+            <b>CeCe:</b> And if I'm not mistaken, your tissue block is right
+            here.
+          </div>
+        </div>
+
+        <div class="talkbubble"></div>
+
+        <div class="scene5-9" id="scrollto2">
+          <div class="vid">
+            <button
+              type="button"
+              class="toparrowbutton story5-media-control"
+              id="toparrow2"
+              onclick="scrollup2()"
+              aria-label="Return to the previous story section"
+            >
+              <img src="img/uparrowbutton.svg" alt="" />
+            </button>
+            <video
+              playsinline
+              autoplay
+              muted
+              class="video5"
+              id="sample2"
+              onended="onend2()"
+            >
+              <source src="img/video5-2.mov" />
+            </video>
+            <button
+              type="button"
+              class="nextsectionbutton story5-media-control"
+              onclick="scroll2()"
+              aria-label="Continue to the next story section"
+            >
+              <img src="img/downarrowbutton.svg" alt="" />
+            </button>
+            <button
+              type="button"
+              class="repeatbutton story5-media-control"
+              onclick="repeatmovie2()"
+              aria-label="Replay this animation"
+              aria-controls="sample2"
+            >
+              <img src="img/repeatbutton.svg" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <div class="scene5-10"></div>
+        <div class="talkbubble">
+          <div class="mactalk"><b>Mac:</b> Exactly!</div>
+        </div>
+        <div style="height: 20vh; background-color: black"></div>
+        <div id="scrollto3"></div>
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> Alright, let's place Mac's tissue block in the correct
+            location on the 3D reference organ.
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="cecetalk5" id="scrollupto3">
+            <b>CeCe:</b> When we do that, we'll see a list of the anatomical
+            structures within the kidney that the tissue block collides with.
+          </div>
+        </div>
+
+        <div class="talkbubble"></div>
+
+        <div class="scene5-11" id="scrollto4">
+          <div class="vid">
+            <button
+              type="button"
+              class="toparrowbutton story5-media-control"
+              id="toparrow3"
+              onclick="scrollup3()"
+              aria-label="Return to the previous story section"
+            >
+              <img src="img/uparrowbutton.svg" alt="" />
+            </button>
+
+            <video
+              playsinline
+              autoplay
+              muted
+              class="video5"
+              id="sample3"
+              onended="onend3()"
+            >
+              <source src="img/video5-3.mov" />
+            </video>
+            <button
+              type="button"
+              class="nextsectionbutton story5-media-control"
+              onclick="scroll3()"
+              aria-label="Continue to the next story section"
+            >
+              <img src="img/downarrowbutton.svg" alt="" />
+            </button>
+            <button
+              type="button"
+              class="repeatbutton story5-media-control"
+              onclick="repeatmovie3()"
+              aria-label="Replay this animation"
+              aria-controls="sample3"
+            >
+              <img src="img/repeatbutton.svg" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <div class="scene5-12"></div>
+        <div class="talkbubble">
+          <div class="mactalk2" style="top: 18%">
+            <b>Mac:</b> Are you saying that the tissue block where I live
+            intersects all of those anatomical structures?
+          </div>
+        </div>
+        <div style="height: 20vh; background-color: black"></div>
+        <div id="scrollto5"></div>
+        <div class="talkbubble">
+          <div class="cecetalk5" style="top: 18%">
+            <b>CeCe:</b> That's exactly what I'm saying. So it's a good idea to
+            learn a bit more about them.
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="cecetalk5" style="top: 18%">
+            <b>CeCe:</b> The HRA has already collected quite a bit of
+            information about these anatomical structures from experimental
+            datasets.
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="cecetalk5" style="top: 18%">
+            <b>CeCe:</b> Experimental datasets are tissue data from healthy
+            donors for which it is possible to derive cell counts.
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="cecetalk5" id="scrollupto4" style="top: 18%">
+            <b>CeCe:</b> These datasets are typically found in scholarly papers
+            or in online collections of data, which are called portals.
+          </div>
+        </div>
+
+        <div class="talkbubble"></div>
+
+        <div class="scene5-13" id="scrollto6">
+          <div class="vid">
+            <button
+              type="button"
+              class="toparrowbutton story5-media-control"
+              id="toparrow4"
+              onclick="scrollup4()"
+              aria-label="Return to the previous story section"
+            >
+              <img src="img/uparrowbutton.svg" alt="" />
+            </button>
+
+            <video
+              playsinline
+              autoplay
+              muted
+              class="video5"
+              id="sample4"
+              onended="onend4()"
+            >
+              <source src="img/video5-4.mov" />
+            </video>
+            <button
+              type="button"
+              class="nextsectionbutton story5-media-control"
+              onclick="scroll4()"
+              aria-label="Continue to the next story section"
+            >
+              <img src="img/downarrowbutton.svg" alt="" />
+            </button>
+            <button
+              type="button"
+              class="repeatbutton story5-media-control"
+              onclick="repeatmovie4()"
+              aria-label="Replay this animation"
+              aria-controls="sample4"
+            >
+              <img src="img/repeatbutton.svg" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <div class="scene5-14"></div>
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> Now, if you add all that data to the spatial data
+            collected when researchers register tissue samples using the RUI,
+            then we get a pretty good sense of which cell types appear in a
+            given organ.
+          </div>
+        </div>
+        <div style="height: 20vh; background-color: black"></div>
+        <div id="scrollto7"></div>
+        <div class="talkbubble">
+          <div class="cecetalk5" id="scrollupto5">
+            <b>CeCe:</b> We can even get an estimation of where in the organ
+            they appear. And that estimation gets more accurate the more data is
+            collected from studies and tissue registration.
+          </div>
+        </div>
+
+        <div class="talkbubble"></div>
+
+        <div class="scene5-15" id="scrollto8">
+          <div class="vid">
+            <button
+              type="button"
+              class="toparrowbutton story5-media-control"
+              id="toparrow5"
+              onclick="scrollup5()"
+              aria-label="Return to the previous story section"
+            >
+              <img src="img/uparrowbutton.svg" alt="" />
+            </button>
+
+            <video
+              playsinline
+              autoplay
+              muted
+              class="video5"
+              id="sample5"
+              onended="onend5()"
+            >
+              <source src="img/video5-5.mov" />
+            </video>
+            <button
+              type="button"
+              class="nextsectionbutton story5-media-control"
+              onclick="scroll5()"
+              aria-label="Continue to the next story section"
+            >
+              <img src="img/downarrowbutton.svg" alt="" />
+            </button>
+            <button
+              type="button"
+              class="repeatbutton story5-media-control"
+              onclick="repeatmovie5()"
+              aria-label="Replay this animation"
+              aria-controls="sample5"
+            >
+              <img src="img/repeatbutton.svg" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <!-- <div class="scene5-155" id="scrollto9">
             <?xml version="1.0" encoding="UTF-8"?>
             <svg width="90%" height="90%" viewBox="0 0 1471 805" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;">
@@ -782,168 +1026,284 @@
             </svg>
         </div> -->
 
-      <div class="scene5-16" id="scrollto9"></div>
-      <div class="talkbubble">
-        <div class="cecetalk5">
-          <b>CeCe:</b> For instance, Mac, if we pull out the two anatomical structures where your tissue block is mainly located—the renal pyramid and renal
-          papilla—we can see the cell types you'll likely find nearby.
+        <div class="scene5-16" id="scrollto9"></div>
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> For instance, Mac, if we pull out the two anatomical
+            structures where your tissue block is mainly located—the renal
+            pyramid and renal papilla—we can see the cell types you'll likely
+            find nearby.
+          </div>
         </div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5">
-          <b>CeCe:</b> Each color in the 3D anatomical structures represents a different cell type. And the population size of each cell type is approximated in
-          the graph below.
-        </div>
-      </div>
-
-      <div class="talkbubble">
-        <div class="mactalk2"><b>Mac:</b> Wow, that's so many cell types to learn about! I'm overwhelmed!</div>
-      </div>
-      <div class="talkbubble">
-        <div class="squiggytalk5"><b>Squiggy:</b> I can't believe I'm the one saying this, Mac, but you really need to relax.</div>
-      </div>
-      <div class="talkbubble">
-        <div class="squiggytalk5">
-          <b>Squiggy:</b> Just pick a cell type with a high population and start from there. It looks like the cell type represented by the lime green color has
-          a pretty high population.
-        </div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5">
-          <b>CeCe:</b> Squiggy's right, Mac! Just start there and then move on to the other populations. It'll get easier as you go along!
-        </div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5"><b>CeCe:</b> You can learn about a cell type's structure, its function, its relation to other cells…all that cool stuff.</div>
-      </div>
-      <div class="talkbubble">
-        <div class="mactalk2">
-          <b>Mac:</b> Yes, that does sound interesting. But for the purposes of my block party, I just want to know which cell types play pickleball and which
-          prefer badminton!
-        </div>
-      </div>
-      <div class="talkbubble">
-        <div class="squiggytalk5">
-          <b>Squiggy:</b> Don't worry Mac, we'll help you learn all about cell types AND help you set up for your party. Let's get started!
-        </div>
-      </div>
-      <div class="talkbubble">
-        <div class="cecetalk5"><b>CeCe:</b> OK, but let's say "goodbye" to our readers.</div>
-      </div>
-      <div class="talkbubble">
-        <div class="squiggytalk5" id="scrollupto6"><b>Squiggy:</b> Bye, everyone! See you next time!</div>
-      </div>
-
-      <div class="talkbubble"></div>
-
-      <div class="scene5-17" id="scrollto10">
-        <div class="vid">
-          <button type="button" class="toparrowbutton story5-media-control" id="toparrow6" onclick="scrollup6()"
-            aria-label="Return to the previous story section">
-            <img src="img/uparrowbutton.svg" alt="" />
-          </button>
-
-          <video playsinline autoplay muted class="video5" id="sample6" onended="onend6()">
-            <source src="img/video5-6.mov" />
-          </video>
-          <button type="button" class="nextsectionbutton story5-media-control" onclick="scroll6()"
-            aria-label="Continue to the next story section">
-            <img src="img/downarrowbutton.svg" alt="" />
-          </button>
-          <button type="button" class="repeatbutton story5-media-control" onclick="repeatmovie6()"
-            aria-label="Replay this animation" aria-controls="sample6">
-            <img src="img/repeatbutton.svg" alt="" />
-          </button>
-        </div>
-      </div>
-
-      <div class="sceneEnd" id="scrollto11">
-        <!-- Link section-->
-
-        <div class="Externallinkssection">
-          <p class="indexTitle" style="margin-bottom: 80px">External Links</p>
-          <div class="ExternalLinkCards">
-            <div class="ExternalLinkCard">
-              <img class="ExternalLinkImg" src="img/Link5-1.png" alt="" />
-              <div class="ExternalLinkTitle">Cell-Type Annotation Video</div>
-              <div class="ExternalLinkDesc">
-                If you want to see how researchers use the tools introduced in this scrollytale, check out this video on improving cell-type annotation.
-              </div>
-              <a href="https://www.youtube.com/watch?v=KuZ_bwLHipM&t=1s" target="_blank" rel="noopener noreferrer"
-                class="linkbutton" aria-label="Watch Video (opens in a new tab)"
-                >Watch Video <img src="img/UI Assets/arrow.svg" alt="" style="vertical-align: middle" />
-              </a>
-            </div>
-
-            <div class="ExternalLinkCard">
-              <img class="ExternalLinkImg" src="img/Link5-2.png" alt="" />
-              <div class="ExternalLinkTitle">HRA Animation</div>
-              <div class="ExternalLinkDesc">Want to see more animation that explains features of the Human Reference Atlas?</div>
-              <a href="https://www.youtube.com/watch?v=zQeMgxo8n_U" target="_blank" rel="noopener noreferrer"
-                class="linkbutton" aria-label="Watch Video (opens in a new tab)"
-                >Watch Video <img src="img/UI Assets/arrow.svg" alt="" style="vertical-align: middle" />
-              </a>
-            </div>
-
-            <div class="ExternalLinkCard">
-              <img class="ExternalLinkImg" src="img/Link5-3.png" alt="" />
-              <div class="ExternalLinkTitle">Data Detangle</div>
-              <div class="ExternalLinkDesc">Did you miss the previous episode?</div>
-              <a href="https://cns-iu.github.io/hra-scrollytelling/story3.html" target="_blank" rel="noopener noreferrer"
-                class="linkbutton" aria-label="Read Story (opens in a new tab)"
-                >Read Story <img src="img/UI Assets/arrow.svg" alt="" style="vertical-align: middle" />
-              </a>
-            </div>
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> Each color in the 3D anatomical structures represents a
+            different cell type. And the population size of each cell type is
+            approximated in the graph below.
           </div>
         </div>
 
-        <!-- BotNav -->
-        <div style="background-color: white !important">
-          <div class="botNav">
-            <a href="story4.html" class="previous"
-              ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16"
-                aria-hidden="true" focusable="false">
-                <path
-                  fill-rule="evenodd"
-                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-                />
-              </svg>
-              Story 4: <span class="prevTitle">Data Detangle</span></a
+        <div class="talkbubble">
+          <div class="mactalk2">
+            <b>Mac:</b> Wow, that's so many cell types to learn about! I'm
+            overwhelmed!
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="squiggytalk5">
+            <b>Squiggy:</b> I can't believe I'm the one saying this, Mac, but
+            you really need to relax.
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="squiggytalk5">
+            <b>Squiggy:</b> Just pick a cell type with a high population and
+            start from there. It looks like the cell type represented by the
+            lime green color has a pretty high population.
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> Squiggy's right, Mac! Just start there and then move on
+            to the other populations. It'll get easier as you go along!
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> You can learn about a cell type's structure, its
+            function, its relation to other cells…all that cool stuff.
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="mactalk2">
+            <b>Mac:</b> Yes, that does sound interesting. But for the purposes
+            of my block party, I just want to know which cell types play
+            pickleball and which prefer badminton!
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="squiggytalk5">
+            <b>Squiggy:</b> Don't worry Mac, we'll help you learn all about cell
+            types AND help you set up for your party. Let's get started!
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="cecetalk5">
+            <b>CeCe:</b> OK, but let's say "goodbye" to our readers.
+          </div>
+        </div>
+        <div class="talkbubble">
+          <div class="squiggytalk5" id="scrollupto6">
+            <b>Squiggy:</b> Bye, everyone! See you next time!
+          </div>
+        </div>
+
+        <div class="talkbubble"></div>
+
+        <div class="scene5-17" id="scrollto10">
+          <div class="vid">
+            <button
+              type="button"
+              class="toparrowbutton story5-media-control"
+              id="toparrow6"
+              onclick="scrollup6()"
+              aria-label="Return to the previous story section"
             >
-            <!--  <a href="story3.html" class="next">Story 3: <span class="nextTitle">Learn about Visualizing Cells in the
+              <img src="img/uparrowbutton.svg" alt="" />
+            </button>
+
+            <video
+              playsinline
+              autoplay
+              muted
+              class="video5"
+              id="sample6"
+              onended="onend6()"
+            >
+              <source src="img/video5-6.mov" />
+            </video>
+            <button
+              type="button"
+              class="nextsectionbutton story5-media-control"
+              onclick="scroll6()"
+              aria-label="Continue to the next story section"
+            >
+              <img src="img/downarrowbutton.svg" alt="" />
+            </button>
+            <button
+              type="button"
+              class="repeatbutton story5-media-control"
+              onclick="repeatmovie6()"
+              aria-label="Replay this animation"
+              aria-controls="sample6"
+            >
+              <img src="img/repeatbutton.svg" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <div class="sceneEnd" id="scrollto11">
+          <!-- Link section-->
+
+          <div class="Externallinkssection">
+            <p class="indexTitle" style="margin-bottom: 80px">External Links</p>
+            <div class="ExternalLinkCards">
+              <div class="ExternalLinkCard">
+                <img class="ExternalLinkImg" src="img/Link5-1.png" alt="" />
+                <div class="ExternalLinkTitle">Cell-Type Annotation Video</div>
+                <div class="ExternalLinkDesc">
+                  If you want to see how researchers use the tools introduced in
+                  this scrollytale, check out this video on improving cell-type
+                  annotation.
+                </div>
+                <a
+                  href="https://www.youtube.com/watch?v=KuZ_bwLHipM&t=1s"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="linkbutton"
+                  aria-label="Watch Video (opens in a new tab)"
+                  >Watch Video
+                  <img
+                    src="img/UI Assets/arrow.svg"
+                    alt=""
+                    style="vertical-align: middle"
+                  />
+                </a>
+              </div>
+
+              <div class="ExternalLinkCard">
+                <img class="ExternalLinkImg" src="img/Link5-2.png" alt="" />
+                <div class="ExternalLinkTitle">HRA Animation</div>
+                <div class="ExternalLinkDesc">
+                  Want to see more animation that explains features of the Human
+                  Reference Atlas?
+                </div>
+                <a
+                  href="https://www.youtube.com/watch?v=zQeMgxo8n_U"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="linkbutton"
+                  aria-label="Watch Video (opens in a new tab)"
+                  >Watch Video
+                  <img
+                    src="img/UI Assets/arrow.svg"
+                    alt=""
+                    style="vertical-align: middle"
+                  />
+                </a>
+              </div>
+
+              <div class="ExternalLinkCard">
+                <img class="ExternalLinkImg" src="img/Link5-3.png" alt="" />
+                <div class="ExternalLinkTitle">Data Detangle</div>
+                <div class="ExternalLinkDesc">
+                  Did you miss the previous episode?
+                </div>
+                <a
+                  href="https://cns-iu.github.io/hra-scrollytelling/story3.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="linkbutton"
+                  aria-label="Read Story (opens in a new tab)"
+                  >Read Story
+                  <img
+                    src="img/UI Assets/arrow.svg"
+                    alt=""
+                    style="vertical-align: middle"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- BotNav -->
+          <div style="background-color: white !important">
+            <div class="botNav">
+              <a href="story4.html" class="previous"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-arrow-left"
+                  viewBox="0 -3 16 16"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                  />
+                </svg>
+                Story 4: <span class="prevTitle">Data Detangle</span></a
+              >
+              <!--  <a href="story3.html" class="next">Story 3: <span class="nextTitle">Learn about Visualizing Cells in the
                     Human
                     Body</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-arrow-right" viewBox="0 -3 16 16">
                     <path fill-rule="evenodd"
                         d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                 </svg></a> -->
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </main>
 
     <footer class="site-footer site-chrome site-chrome--dark">
-        <nav class="site-footer__organizations" aria-label="Organizations">
-            <a class="site-footer__organization-link" href="https://humanatlas.io/"
-                aria-label="Human Reference Atlas">
-                <img src="shared/assets/logos/hra-dark-large.svg" alt="" width="148" height="63">
-                <span class="site-footer__organization-name">Human Reference Atlas</span>
-            </a>
-            <a class="site-footer__organization-link" href="https://cns.iu.edu/"
-                aria-label="Cyberinfrastructure for Network Science Center">
-                <img src="shared/assets/logos/cns-dark-long.svg" alt="" width="239" height="40">
-                <span class="site-footer__organization-name">Cyberinfrastructure for Network Science Center</span>
-            </a>
-        </nav>
-        <a class="site-footer__back-to-top" href="#main-content" data-back-to-top>
-            <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
-                <path d="M12 19V5m0 0-6 6m6-6 6 6" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            Back to top
+      <nav class="site-footer__organizations" aria-label="Organizations">
+        <a
+          class="site-footer__organization-link"
+          href="https://humanatlas.io/"
+          aria-label="Human Reference Atlas"
+        >
+          <img
+            src="shared/assets/logos/hra-dark-large.svg"
+            alt=""
+            width="148"
+            height="63"
+          />
+          <span class="site-footer__organization-name"
+            >Human Reference Atlas</span
+          >
         </a>
-        <p class="site-footer__copyright">© 2026 Cyberinfrastructure for Network Science Center</p>
+        <a
+          class="site-footer__organization-link"
+          href="https://cns.iu.edu/"
+          aria-label="Cyberinfrastructure for Network Science Center"
+        >
+          <img
+            src="shared/assets/logos/cns-dark-long.svg"
+            alt=""
+            width="239"
+            height="40"
+          />
+          <span class="site-footer__organization-name"
+            >Cyberinfrastructure for Network Science Center</span
+          >
+        </a>
+      </nav>
+      <a class="site-footer__back-to-top" href="#main-content" data-back-to-top>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          fill="none"
+        >
+          <path
+            d="M12 19V5m0 0-6 6m6-6 6 6"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+        Back to top
+      </a>
+      <p class="site-footer__copyright">
+        © 2026 Cyberinfrastructure for Network Science Center
+      </p>
     </footer>
   </body>
 
@@ -958,40 +1318,40 @@
       .timeline({
         scrollTrigger: {
           autoAlpha: 1,
-          trigger: '.fadeimage',
-          start: 'top 00px',
-          end: 'bottom 0px',
+          trigger: ".fadeimage",
+          start: "top 00px",
+          end: "bottom 0px",
           scrub: 1,
           duration: 1,
           pin: true,
         },
       })
 
-      .from('.picture2', {
+      .from(".picture2", {
         opacity: 0,
       })
-      .from('.picture3', {
+      .from(".picture3", {
         opacity: 0,
       })
-      .to('.picture3', {
+      .to(".picture3", {
         scale: 1.8,
       })
       .to(
-        '.picture3',
+        ".picture3",
         {
           scale: 1.8,
         },
-        '+=2',
+        "+=2",
       );
 
     //typewriter
     var m = 0;
-    var txt = 'There are roughly 37 trillion cells in the human body.';
+    var txt = "There are roughly 37 trillion cells in the human body.";
     var speed = 40;
 
     function typeWriter() {
       if (m < txt.length) {
-        document.getElementById('introTypeLine').innerHTML += txt.charAt(m);
+        document.getElementById("introTypeLine").innerHTML += txt.charAt(m);
         m++;
         setTimeout(typeWriter, speed);
       }
@@ -999,13 +1359,13 @@
     window.onload = typeWriter;
 
     //fade in txt
-    const containers2 = gsap.utils.toArray('.container2');
+    const containers2 = gsap.utils.toArray(".container2");
     containers2.forEach((container2) => {
       let tl = gsap.timeline({
         scrollTrigger: {
           onRefresh: (self) => self.progress && self.animation.progress(1),
-          start: 'top top',
-          end: '+=100%',
+          start: "top top",
+          end: "+=100%",
           trigger: container2,
           pin: true,
           scrub: true,
@@ -1032,126 +1392,126 @@
 
     //bg1
     ScrollTrigger.create({
-      trigger: '.scene5-1',
+      trigger: ".scene5-1",
       anticipatePin: 1,
-      start: 'top top',
-      end: '+=400%',
+      start: "top top",
+      end: "+=400%",
       pin: true,
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-2',
+      trigger: ".scene5-2",
       anticipatePin: 1,
-      start: 'top top',
-      end: '+=600%',
+      start: "top top",
+      end: "+=600%",
       pin: true,
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-3',
+      trigger: ".scene5-3",
       anticipatePin: 1,
-      start: 'top top',
-      end: '+=300%',
+      start: "top top",
+      end: "+=300%",
       pin: true,
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-35',
+      trigger: ".scene5-35",
       anticipatePin: 1,
-      start: 'top top',
-      end: '+=300%',
+      start: "top top",
+      end: "+=300%",
       pin: true,
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-4',
+      trigger: ".scene5-4",
       anticipatePin: 1,
-      start: 'top top',
-      end: '+=800%',
+      start: "top top",
+      end: "+=800%",
       pin: true,
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-5',
+      trigger: ".scene5-5",
       anticipatePin: 1,
-      start: 'top top',
-      end: '+=300%',
+      start: "top top",
+      end: "+=300%",
       pin: true,
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-6',
+      trigger: ".scene5-6",
       anticipatePin: 1,
-      start: 'top top',
-      end: '+=300%',
+      start: "top top",
+      end: "+=300%",
       pin: true,
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-7',
+      trigger: ".scene5-7",
       onEnter: repeatmovie1,
       // onBackEnter: replayvideo1,
-      start: 'top top',
-      end: '+=100%',
+      start: "top top",
+      end: "+=100%",
     });
     ScrollTrigger.create({
-      trigger: '.scene5-8',
+      trigger: ".scene5-8",
       anticipatePin: 1,
-      start: 'top top',
-      end: '+=520%',
+      start: "top top",
+      end: "+=520%",
       pin: true,
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-9',
+      trigger: ".scene5-9",
       onEnter: repeatmovie2,
       // onBackEnter: replayvideo2,
-      start: 'top top',
-      end: '+=100%',
+      start: "top top",
+      end: "+=100%",
     });
     ScrollTrigger.create({
-      trigger: '.scene5-10',
+      trigger: ".scene5-10",
       anticipatePin: 1,
-      start: 'top top',
-      end: '+=420%',
+      start: "top top",
+      end: "+=420%",
       pin: true,
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-11',
+      trigger: ".scene5-11",
       onEnter: repeatmovie3,
-      start: 'top top',
-      end: '+=100%',
+      start: "top top",
+      end: "+=100%",
       //onBackEnter: replayvideo3,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-12',
+      trigger: ".scene5-12",
       anticipatePin: 1,
-      start: 'top top',
-      end: '+=620%',
+      start: "top top",
+      end: "+=620%",
       pin: true,
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-13',
+      trigger: ".scene5-13",
       onEnter: repeatmovie4,
-      start: 'top top',
-      end: '+=100%',
+      start: "top top",
+      end: "+=100%",
       //onBackEnter: replayvideo4,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-14',
+      trigger: ".scene5-14",
       anticipatePin: 1,
-      start: 'top top',
-      end: '+=320%',
+      start: "top top",
+      end: "+=320%",
       pin: true,
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-15',
+      trigger: ".scene5-15",
       onEnter: repeatmovie5,
-      start: 'top top',
-      end: '+=100%',
+      start: "top top",
+      end: "+=100%",
       //onBackEnter: replayvideo4,
     });
     /*  ScrollTrigger.create({
@@ -1160,28 +1520,28 @@
         end: "+=100%",
     }); */
     ScrollTrigger.create({
-      trigger: '.scene5-16',
+      trigger: ".scene5-16",
       anticipatePin: 1,
-      start: 'top top',
-      end: '+=1200%',
+      start: "top top",
+      end: "+=1200%",
       pin: true,
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: '.scene5-17',
+      trigger: ".scene5-17",
       onEnter: repeatmovie6,
-      start: 'top top',
-      end: '+=100%',
+      start: "top top",
+      end: "+=100%",
       //onBackEnter: replayvideo4,
     });
 
     //fade in txt
-    const containers = gsap.utils.toArray('.container');
+    const containers = gsap.utils.toArray(".container");
     containers.forEach((container) => {
       let tl = gsap.timeline({
         scrollTrigger: {
           onRefresh: (self) => self.progress && self.animation.progress(1),
-          start: 'top top',
+          start: "top top",
           trigger: container,
           pin: true,
           pinSpacing: false,
@@ -1202,7 +1562,7 @@
     });
 
     //fade in txt
-    const overlays = gsap.utils.toArray('.overlaybubbles');
+    const overlays = gsap.utils.toArray(".overlaybubbles");
     overlays.forEach((obubble) => {
       let tl = gsap.timeline({
         scrollTrigger: {
@@ -1226,12 +1586,12 @@
     });
 
     //fade in txt
-    const bubbles = gsap.utils.toArray('.talkbubble');
+    const bubbles = gsap.utils.toArray(".talkbubble");
     bubbles.forEach((bubble) => {
       let tl = gsap.timeline({
         scrollTrigger: {
           trigger: bubble,
-          start: 'top top',
+          start: "top top",
           scrub: 0.5,
           pin: true,
           pinSpacing: false,
@@ -1255,21 +1615,21 @@
       window.scrollTo(0, 0);
     };
 
-    window.history.scrollRestoration = 'manual';
+    window.history.scrollRestoration = "manual";
 
     gsap
       .timeline({
         scrollTrigger: {
           autoAlpha: 1,
-          trigger: '#showbubble1',
-          start: 'top',
-          end: '+=50%',
+          trigger: "#showbubble1",
+          start: "top",
+          end: "+=50%",
           scrub: true,
           duration: 1,
           pin: false,
         },
       })
-      .to('#bubble1', {
+      .to("#bubble1", {
         opacity: 1,
       });
 
@@ -1279,7 +1639,7 @@
     function repeatmovie1() {
       scrolls1();
 
-      let myVid = document.getElementById('sample');
+      let myVid = document.getElementById("sample");
       myVid.pause();
 
       if (myVid.seekable.length > 0) {
@@ -1290,14 +1650,22 @@
 
     //scroll
     function scrollup1() {
-      let scrollupitem1 = document.getElementById('scrollupto1');
-      scrollupitem1.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      let scrollupitem1 = document.getElementById("scrollupto1");
+      scrollupitem1.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
       enableScrolling();
     }
 
     function scroll1() {
-      let scrollitem1 = document.getElementById('scrollto1');
-      scrollitem1.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+      let scrollitem1 = document.getElementById("scrollto1");
+      scrollitem1.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
       enableScrolling();
     }
 
@@ -1321,7 +1689,7 @@
     function repeatmovie2() {
       scrolls2();
 
-      let myVid2 = document.getElementById('sample2');
+      let myVid2 = document.getElementById("sample2");
       myVid2.pause();
 
       if (myVid2.seekable.length > 0) {
@@ -1332,14 +1700,22 @@
 
     //scroll
     function scrollup2() {
-      const scrollupitem2 = document.getElementById('scrollupto2');
-      scrollupitem2.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      const scrollupitem2 = document.getElementById("scrollupto2");
+      scrollupitem2.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
       enableScrolling();
     }
 
     function scroll2() {
-      const scrollitem2 = document.getElementById('scrollto3');
-      scrollitem2.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      const scrollitem2 = document.getElementById("scrollto3");
+      scrollitem2.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
       enableScrolling();
     }
 
@@ -1363,7 +1739,7 @@
     function repeatmovie3() {
       scrolls3();
 
-      let myVid3 = document.getElementById('sample3');
+      let myVid3 = document.getElementById("sample3");
       myVid3.pause();
 
       if (myVid3.seekable.length > 0) {
@@ -1374,14 +1750,22 @@
 
     //scroll
     function scrollup3() {
-      const scrollupitem3 = document.getElementById('scrollupto3');
-      scrollupitem3.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      const scrollupitem3 = document.getElementById("scrollupto3");
+      scrollupitem3.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
       enableScrolling();
     }
 
     function scroll3() {
-      const scrollitem3 = document.getElementById('scrollto5');
-      scrollitem3.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      const scrollitem3 = document.getElementById("scrollto5");
+      scrollitem3.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
       enableScrolling();
     }
 
@@ -1406,7 +1790,7 @@
     function repeatmovie4() {
       scrolls4();
 
-      let myVid4 = document.getElementById('sample4');
+      let myVid4 = document.getElementById("sample4");
       myVid4.pause();
 
       if (myVid4.seekable.length > 0) {
@@ -1417,14 +1801,22 @@
 
     //scroll
     function scrollup4() {
-      const scrollupitem4 = document.getElementById('scrollupto4');
-      scrollupitem4.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      const scrollupitem4 = document.getElementById("scrollupto4");
+      scrollupitem4.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
       enableScrolling();
     }
 
     function scroll4() {
-      const scrollitem4 = document.getElementById('scrollto7');
-      scrollitem4.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      const scrollitem4 = document.getElementById("scrollto7");
+      scrollitem4.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
       enableScrolling();
     }
 
@@ -1448,7 +1840,7 @@
     function repeatmovie5() {
       scrolls5();
 
-      let myVid5 = document.getElementById('sample5');
+      let myVid5 = document.getElementById("sample5");
       myVid5.pause();
 
       if (myVid5.seekable.length > 0) {
@@ -1459,14 +1851,22 @@
 
     //scroll
     function scrollup5() {
-      const scrollupitem5 = document.getElementById('scrollupto5');
-      scrollupitem5.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      const scrollupitem5 = document.getElementById("scrollupto5");
+      scrollupitem5.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
       enableScrolling();
     }
 
     function scroll5() {
-      const scrollitem5 = document.getElementById('scrollto9');
-      scrollitem5.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      const scrollitem5 = document.getElementById("scrollto9");
+      scrollitem5.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
       enableScrolling();
     }
 
@@ -1489,7 +1889,7 @@
     function repeatmovie6() {
       scrolls6();
 
-      let myVid6 = document.getElementById('sample6');
+      let myVid6 = document.getElementById("sample6");
       myVid6.pause();
 
       if (myVid6.seekable.length > 0) {
@@ -1500,13 +1900,21 @@
 
     //scroll
     function scrollup6() {
-      const scrollupitem6 = document.getElementById('scrollupto6');
-      scrollupitem6.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      const scrollupitem6 = document.getElementById("scrollupto6");
+      scrollupitem6.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
       enableScrolling();
     }
     function scroll6() {
-      const scrollitem6 = document.getElementById('scrollto11');
-      scrollitem6.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      const scrollitem6 = document.getElementById("scrollto11");
+      scrollitem6.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
       enableScrolling();
     }
 
