@@ -110,6 +110,27 @@ At minimum:
 Rendered keyboard, screen-reader, zoom, high-contrast, and mobile-browser checks are required before final AAA sign-off.
 When reviewing screenshots, distinguish real mobile-browser behavior from desktop device-emulation artifacts.
 
+## Reader View and linear reading
+
+Treat browser Reader View as a supported presentation for every maintained public page. Reader View is progressive
+enhancement rather than a substitute for an accessible default page.
+
+- Keep the complete narrative in meaningful source order using `main`, `article`, headings, paragraphs, figures,
+  captions, and native lists
+- Do not construct essential narrative text with JavaScript or depend on pinned positioning, background images,
+  generated content, or visual overlays to communicate it
+- Mark decorative animation layers with empty alternatives and `aria-hidden="true"`; provide a concise in-flow image or
+  text alternative when an animated visual carries information that the surrounding copy does not
+- Use `article-content` and `article-header` only as extraction hints where testing shows they help; keep the underlying
+  HTML semantic because browser extraction heuristics and class handling can change
+- Preserve final summaries, conclusions, resources, acknowledgments, and references inside the primary article source
+  order so extraction does not stop before them
+- Use source-pixel image dimensions by default; when compact `width` and `height` values intentionally control Reader
+  View sizing, preserve the asset's aspect ratio, document the exception, and verify the normal page still reserves
+  stable image space
+- Test Reader View in Firefox after structural story changes and confirm the title, every transition sentence,
+  informative image alternative, conclusion, and end matter appear once in the intended order
+
 ## Styling and themes
 
 - Use semantic design tokens rather than scattering raw colors through component rules.
@@ -171,9 +192,12 @@ After changes:
 1. Run `git diff --check`.
 2. Run `node --check` for each changed JavaScript file, including repository tools.
 3. Run `node tools/check-local-links.mjs --allow-known` and investigate any new failure.
-4. Confirm IDs are unique and all fragment and ARIA ID references resolve.
-5. Recalculate affected contrast pairs.
-6. Test keyboard and disclosure behavior.
-7. Inspect at 320 CSS pixels, 200% and 400% zoom, reduced motion, reduced transparency, increased contrast, and forced
+4. Run `node tools/check-story6.mjs` when Story 6 markup, styles, scripts, or image candidates change.
+5. Confirm IDs are unique and all fragment and ARIA ID references resolve.
+6. Recalculate affected contrast pairs.
+7. Test keyboard and disclosure behavior.
+8. Inspect at 320 CSS pixels, 200% and 400% zoom, reduced motion, reduced transparency, increased contrast, and forced
    colors when a browser is available.
-8. Report what changed, what was intentionally unchanged, which validations passed, and which manual checks remain.
+9. Inspect the complete linear article in Firefox Reader View after changing story structure or content extraction
+   hints.
+10. Report what changed, what was intentionally unchanged, which validations passed, and which manual checks remain.

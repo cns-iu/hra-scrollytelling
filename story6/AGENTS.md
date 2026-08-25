@@ -23,6 +23,7 @@
 - Use the page-scoped HRA color and typography tokens for new Story 6 UI rather than introducing unscoped colors or type rules
 - Preserve the image-backed `.transition1`, `.transition2`, `.transition3`, and `.transition5` art direction across System, Light, and Dark; High contrast and forced-colors adaptations may strengthen text and scrims
 - Keep Story 6 text selectable and preserve the accessible HRA-token-based `::selection` treatment
+- Disable Story 6 custom selection colors in forced-colors mode so the operating system controls the selected-text palette
 - Keep display formatting in the HTML or presenting component rather than caching formatted strings in JavaScript state
 - Prefer semantic headings, lists, buttons, and links over recreating their behavior with generic elements and ARIA
 - Preserve keyboard operation, visible focus states, native Menu disclosure state, and `aria-current="page"`
@@ -44,21 +45,35 @@
 ## Scrolling and animation
 
 - Preserve native browser scrolling and do not introduce scroll hijacking or a smoothing dependency
-- Use the shared `pinnedScrollScrub` value for animated pinned scenes so transitions respond consistently
+- Use the shared `pinnedScrollScrub` value for animated pinned scenes on fine-pointer devices so transitions respond consistently; use direct scrubbing on coarse-pointer devices so touch scrolling does not retain a catch-up tween
 - Keep the native-sticky CDE tutorial mapped directly to scroll position with `scrub: true`; do not add smoothing that can let its timeline lag behind the sticky scene
 - Prefer compositor-friendly `transform` and `opacity` animation over layout-triggering properties
 - Use `createTextboxTransition` and `addTextboxChoreography` for transition headings rather than duplicating timelines
 - Present transition headings as an editorial left-aligned column over a section-level contrast scrim; do not reintroduce floating bubbles, borders, or card shadows
 - Keep all four non-splash transition background images static; reserve transition motion for the scrim, heading, and emphasis underline
-- Keep the complete transition sentence in its semantic heading and wrap only the emphasized phrase in `.transition-emphasis`; never construct or rewrite the accessible text character by character
+- Keep each transition question or section-introducing statement in its semantic heading; keep the final conclusion as a paragraph under the explicit Conclusion heading and wrap only the emphasized phrase in `.transition-emphasis`; never construct or rewrite accessible text character by character
 - Limit each transition to one emphasized phrase and animate its underline once after the heading entrance; do not use color alone to communicate emphasis
 - Keep transition questions left-aligned and maintain the narrower opening-question treatment
 - In reduced-motion and animation-failure states, expose the complete heading with its underline already drawn
 - Recalculate ScrollTrigger geometry after assets load and retain the mobile-resize protection
-- Keep pinned-scene height based on `--story-viewport-height`; update it and refresh ScrollTrigger once after a real resize settles rather than on every resize event
+- Keep pinned-scene height based on `--story-viewport-height`; use the stable large viewport on supporting coarse-pointer browsers so artwork fills the area behind retractable browser controls, and update the measured fallback with one ScrollTrigger refresh after a real resize settles rather than on every resize event
+- Limit the enhanced one-viewport height and clipping rule to `.section2`, `.section3`, and `.transition`; never apply it to every `.story-scene`, because the flowing tissue comparison and six-viewport CDE tutorial own different geometry
+- Enable pinned animation only while `prefers-reduced-motion` is `no-preference` and the viewport is at least `36rem` high; follow live preference and viewport changes by reverting timelines and restoring the linear layout
 - Any new motion must have a `prefers-reduced-motion` state that exposes the same narrative and controls without pinning or animation
 - Never leave meaningful content hidden when GSAP, ScrollTrigger, or IntersectionObserver is unavailable
+- Animate semantic transition text with `opacity` and transforms, never `autoAlpha` or `visibility`, so it remains in the accessibility tree
 - After changing section height or removing content near pinned scenes, verify ScrollTrigger refresh behavior and scroll through the full story at both slow and fast speeds
+
+## Reader View
+
+- Treat Firefox Reader View as a supported Story 6 presentation and preserve `article-content` and `article-header` extraction hints alongside semantic HTML
+- Keep all narrative copy, transition sentences, the explicit Conclusion heading and paragraph, resources, acknowledgments, and references inside the primary article source order
+- Keep transition backgrounds, layered mouse anatomy, tutorial screenshots, overlays, and interface accents decorative with empty alternatives and `aria-hidden="true"`
+- Keep `.mouse-reader-overview` in the HTML without `aria-hidden`; Story 6 CSS hides it during the enhanced mouse animation while Reader View and the linear fallback expose it
+- Keep the CDE tutorial instructions as an ordered list containing the complete text equivalent of its screenshots
+- Do not hide Reader View fallback content with the HTML `hidden` attribute, inline styles, or `aria-hidden`; browser Reader View removes page styling but may preserve those states
+- Preserve the current compact image `width` and `height` attributes as a deliberate Reader View sizing exception; keep every pair proportional to its source asset and verify normal-page layout stability
+- After structural or narrative changes, verify the Firefox Reader View output from the title through the conclusion and references, checking for missing, duplicated, or out-of-order content
 
 ## Tissue comparison
 
@@ -73,7 +88,10 @@
 
 ## Image handling
 
-- Give every image in flowing narrative content accurate intrinsic `width` and `height` attributes so late media loading cannot shift downstream ScrollTrigger geometry
+- Give new flowing narrative images source-pixel `width` and `height` attributes by default; preserve Story 6's documented compact Reader View dimensions while keeping their aspect ratios accurate so late loading cannot shift downstream ScrollTrigger geometry
+- Keep the full-resolution tissue, mouse, cell-card, tutorial, and splash masters alongside their generated responsive candidates; update every related `src`, `srcset`, `data-src`, and `data-srcset` together
+- Keep meaningful tissue maps as native lazy-loaded `src` images so no-JavaScript and Reader View users receive them; stage only decorative mouse layers and tutorial screenshots with `data-src`, activate each nearby narrative group together, and decode its images sequentially from `js/media.js`
+- Prepare image groups by narrative proximity rather than changing every below-fold image to eager loading at startup
 - Keep the 960, 1920, and 3840 WebP transition variants together and update the complete `srcset` and fallback `src` when renaming one
 - Use the 1920 WebP as each transition image's fallback `src`; do not retain a duplicate PNG fallback
 - Load Transition 3 eagerly at high priority so rapid scrolling cannot outrun its request; keep all other non-splash transition backgrounds lazy
@@ -85,6 +103,8 @@ cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 story6/img/transition-N-1920.we
 ```
 
 - Run the command from the repository root and do not install `cwebp` or any other tool without explicit approval
+- Regenerate responsive PNG candidates with `node tools/generate-story6-images.mjs`; the tool uses only Node built-ins and preserves RGB/RGBA transparency and source color metadata
+- Regenerate the responsive splash with `node tools/generate-story6-splash.mjs --browser=/path/to/chromium`; use an existing Chromium-compatible browser and do not install one for this task without approval
 
 ## Validation
 
@@ -93,6 +113,7 @@ Run the dependency-free checks from the repository root after JavaScript or path
 ```bash
 for js_file in story6/story6.js story6/js/*.js; do node --check "$js_file" || exit 1; done
 npx --no-install eslint story6/story6.js story6/js/*.js --no-config-lookup --rule 'no-unused-vars:error' --rule 'no-unreachable:error' --rule 'no-dupe-keys:error'
+node tools/check-story6.mjs
 git diff --check
 ```
 
@@ -113,8 +134,10 @@ Then open `http://localhost:8000/story6.html` and complete this smoke test:
 - Confirm the menu stays inside the viewport and identifies Story 6 as the current page
 - Reload at several story positions and confirm Story 6 restarts at the top before pinned scenes initialize
 - Enable reduced motion and confirm all narrative text and tutorial instructions remain available
+- Change reduced motion while the page is open and resize below and above `36rem` in height; confirm pins are removed and restored without stale spacing or hidden content
 - Confirm Story 6 does not request the CDE web component bundle, stylesheet, or retained datasets
 - Confirm all requested local image, font, script, and stylesheet resources return successfully
 - Select text with a mouse and with mobile long-press, then confirm the selection colors remain readable on light and dark Story 6 surfaces
 - Confirm the tissue comparison is centered, its text remains left-aligned, and all nine samples are reachable without horizontal scrolling
 - Confirm the Cell Distance Explorer tutorial retains an accessible section name when visible introductory copy is intentionally absent
+- Open Firefox Reader View and confirm the title, all four transition sentences, compact mouse overview, tissue comparison, ordered CDE instructions, Conclusion heading and paragraph, resources, acknowledgments, and references appear once in source order

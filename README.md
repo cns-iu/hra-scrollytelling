@@ -233,8 +233,15 @@ The landing page targets WCAG 2.2 Level AAA and includes:
 - A persistent three-state appearance preference grouped with a native fieldset and radio controls.
 - A persistent High contrast switch with visible state text and an announced switch state.
 
-The story pages predate this work and have not yet received the same accessibility remediation. The repository as a
-whole should not be described as WCAG AAA conformant until each story has been audited and tested.
+The story pages predate this work and are receiving accessibility remediation incrementally. Story 6 now uses a
+readable unpinned default, live reduced-motion handling, and semantic Reader View fallbacks for its animated anatomy,
+tutorial, and conclusion. The repository as a whole should not be described as WCAG AAA conformant until each story
+has been audited and tested.
+
+All maintained pages should support browser Reader View over time. Keep the complete narrative and end matter in
+semantic source order, exclude decorative animation layers, and provide concise in-flow equivalents for informative
+visual sequences. Story 6 is the current reference implementation; see
+[`docs/architecture.md`](docs/architecture.md#reader-view-and-linear-fallbacks).
 
 Automated checks are not sufficient for conformance. Final validation must include real-browser keyboard, screen
 reader, 200–400% zoom, text-spacing, reduced motion, reduced transparency, increased contrast, forced colors, and
@@ -267,6 +274,7 @@ node --check shared/js/main.js
 node --check shared/js/menu.js
 node --check shared/js/theme.js
 node tools/check-local-links.mjs --allow-known
+node tools/check-story6.mjs
 ```
 
 Also verify:
@@ -277,6 +285,7 @@ Also verify:
 - The page is keyboard operable at 320 CSS pixels and up to 400% zoom.
 - Focus is visible and is not obscured.
 - No content is clipped after text-spacing changes.
+- Story structure and extraction-hint changes preserve the complete article in Firefox Reader View.
 
 ## Known technical debt
 

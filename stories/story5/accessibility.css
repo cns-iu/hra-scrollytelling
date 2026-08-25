@@ -1,0 +1,39 @@
+/* Story 5 native controls and accessibility adaptations */
+
+#two.story5section2 .story5-media-control {
+    box-sizing: border-box;
+    width: 2.75rem;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0.15625rem;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+}
+
+#two.story5section2 .story5-media-control img {
+    display: block;
+    width: 2.4375rem;
+    height: 2.4375rem;
+}
+
+#two.story5section2 .story5-media-control:focus-visible {
+    outline: 0.2rem solid #ffffff;
+    outline-offset: 0.15rem;
+    box-shadow: 0 0 0 0.4rem #201e3d;
+}
+
+@media (forced-colors: active) {
+    #two.story5section2 .story5-media-control {
+        border: 2px solid ButtonText;
+        background: ButtonFace;
+        forced-color-adjust: auto;
+    }
+
+    #two.story5section2 .story5-media-control:focus-visible {
+        outline-color: Highlight;
+        box-shadow: none;
+    }
+}

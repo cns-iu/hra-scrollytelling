@@ -1,866 +1,991 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pan-organ Immunosenescence Atlas</title>
-    <meta
-      name="description"
-      content="Explore how immune cells change with age through a pan-organ atlas, tissue comparisons, and a guided tour of the Cell Distance Explorer app."
-    />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#fafbfc" data-light-color="#fafbfc" data-dark-color="#161719" />
-    <!-- Apply saved appearance and contrast preferences before shared chrome paints. -->
-    <script>
-      (() => {
-        try {
-          const savedTheme = localStorage.getItem('hra-landing-theme');
-          const savedContrast = localStorage.getItem('hra-high-contrast');
-          const systemTheme =
-            typeof window.matchMedia === 'function' && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-          const activeTheme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme;
-          const themeColor = document.querySelector('meta[name="theme-color"]');
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Pan-organ Immunosenescence Atlas</title>
+        <meta
+            name="description"
+            content="Explore how immune cells change with age through a pan-organ atlas, tissue comparisons, and a guided tour of the Cell Distance Explorer app."
+        />
+        <meta name="color-scheme" content="light dark" />
+        <meta name="theme-color" content="#fafbfc" data-light-color="#fafbfc" data-dark-color="#161719" />
+        <!-- Apply saved appearance and contrast preferences before shared chrome paints. -->
+        <script>
+            (() => {
+                try {
+                    const savedTheme = localStorage.getItem('hra-landing-theme');
+                    const savedContrast = localStorage.getItem('hra-high-contrast');
+                    const systemTheme =
+                        typeof window.matchMedia === 'function' && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                    const activeTheme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme;
+                    const themeColor = document.querySelector('meta[name="theme-color"]');
 
-          if (savedTheme === 'system' || savedTheme === 'light' || savedTheme === 'dark') {
-            document.documentElement.dataset.themeMode = savedTheme;
-            if (savedTheme === 'light' || savedTheme === 'dark') {
-              document.documentElement.dataset.theme = savedTheme;
-            }
-          }
+                    if (savedTheme === 'system' || savedTheme === 'light' || savedTheme === 'dark') {
+                        document.documentElement.dataset.themeMode = savedTheme;
+                        if (savedTheme === 'light' || savedTheme === 'dark') {
+                            document.documentElement.dataset.theme = savedTheme;
+                        }
+                    }
 
-          if (savedContrast === 'more' || savedContrast === 'standard') {
-            document.documentElement.dataset.contrast = savedContrast;
-          }
+                    if (savedContrast === 'more' || savedContrast === 'standard') {
+                        document.documentElement.dataset.contrast = savedContrast;
+                    }
 
-          if (themeColor) {
-            themeColor.content = activeTheme === 'dark' ? themeColor.dataset.darkColor : themeColor.dataset.lightColor;
-          }
-        } catch {
-          // System preferences remain the fallback when storage is unavailable.
-        }
-      })();
-    </script>
-    <script>
-      const story6NavigationEntry = performance.getEntriesByType('navigation')[0];
+                    if (themeColor) {
+                        themeColor.content = activeTheme === 'dark' ? themeColor.dataset.darkColor : themeColor.dataset.lightColor;
+                    }
+                } catch {
+                    // System preferences remain the fallback when storage is unavailable.
+                }
+            })();
+        </script>
+        <script>
+            const story6NavigationEntry = performance.getEntriesByType('navigation')[0];
 
-      if (story6NavigationEntry?.type === 'reload') {
-        window.history.scrollRestoration = 'manual';
-        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-
-        window.addEventListener(
-          'pageshow',
-          () => {
-            window.requestAnimationFrame(() => {
-              window.requestAnimationFrame(() => {
+            if (story6NavigationEntry?.type === 'reload') {
+                window.history.scrollRestoration = 'manual';
                 window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                window.history.scrollRestoration = 'auto';
-              });
-            });
-          },
-          { once: true },
-        );
-      }
-    </script>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="shared/css/fonts.css" />
-    <link rel="stylesheet" href="shared/css/tokens.css" />
-    <link rel="stylesheet" href="shared/css/selection.css" />
-    <link rel="stylesheet" href="shared/css/navigation.css" />
-    <link rel="stylesheet" href="shared/css/footer.css" />
-    <link rel="stylesheet" href="story6/css/base.css" />
-    <link rel="stylesheet" href="story6/css/splash-transitions.css" />
-    <link rel="stylesheet" href="story6/css/narrative.css" />
-    <link rel="stylesheet" href="story6/css/tissue-comparison.css" />
-    <link rel="stylesheet" href="story6/css/cde.css" />
-    <link rel="stylesheet" href="story6/css/closing.css" />
-    <link rel="stylesheet" href="story6/css/theme.css" />
-    <link rel="icon" type="image/x-icon" href="img/favicon.svg" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1811WRJJD"></script>
+                window.addEventListener(
+                    'pageshow',
+                    () => {
+                        window.requestAnimationFrame(() => {
+                            window.requestAnimationFrame(() => {
+                                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                                window.history.scrollRestoration = 'auto';
+                            });
+                        });
+                    },
+                    { once: true },
+                );
+            }
+        </script>
+        <link rel="stylesheet" href="shared/css/fonts.css" />
+        <link rel="stylesheet" href="shared/css/tokens.css" />
+        <link rel="stylesheet" href="shared/css/selection.css" />
+        <link rel="stylesheet" href="shared/css/navigation.css" />
+        <link rel="stylesheet" href="shared/css/footer.css" />
+        <link rel="stylesheet" href="shared/css/story-navigation.css" />
+        <link rel="stylesheet" href="story6/css/base.css" />
+        <link rel="stylesheet" href="story6/css/splash-transitions.css" />
+        <link rel="stylesheet" href="story6/css/narrative.css" />
+        <link rel="stylesheet" href="story6/css/tissue-comparison.css" />
+        <link rel="stylesheet" href="story6/css/cde.css" />
+        <link rel="stylesheet" href="story6/css/closing.css" />
+        <link rel="stylesheet" href="story6/css/theme.css" />
+        <link rel="icon" type="image/x-icon" href="img/favicon.svg" />
 
-    <script>
-      window.dataLayer = window.dataLayer || [];
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1811WRJJD"></script>
 
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
+        <script>
+            window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-E1811WRJJD');
-    </script>
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
 
-    <script type="module" src="shared/js/main.js"></script>
-  </head>
+            gtag('config', 'G-E1811WRJJD');
+        </script>
 
-  <body id="six">
-    <a class="site-skip-link site-chrome" href="#main-content">Skip to main content</a>
+        <script type="module" src="shared/js/main.js"></script>
+    </head>
 
-    <details class="site-menu site-chrome" data-site-menu>
-      <summary>
-        <span class="site-menu-icon site-menu-icon-menu" aria-hidden="true"></span>
-        <svg class="site-menu-icon site-menu-icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="m6 6 12 12M18 6 6 18"></path>
-        </svg>
-        <span>Menu</span>
-      </summary>
+    <body id="six">
+        <a class="site-skip-link site-chrome" href="#main-content">Skip to main content</a>
 
-      <div class="site-menu-panel" data-site-menu-panel role="region" aria-labelledby="site-menu-title" tabindex="-1">
-        <div class="site-menu-header">
-          <p class="site-menu-title" id="site-menu-title">Menu</p>
-          <button class="site-menu-close" type="button" aria-label="Close Menu" data-site-menu-close>
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="m6 6 12 12M18 6 6 18"></path>
-            </svg>
-          </button>
-        </div>
+        <details class="site-menu site-chrome" data-site-menu>
+            <summary>
+                <span class="site-menu-icon site-menu-icon-menu" aria-hidden="true"></span>
+                <svg class="site-menu-icon site-menu-icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="m6 6 12 12M18 6 6 18"></path>
+                </svg>
+                <span>Menu</span>
+            </summary>
 
-        <nav class="site-menu-nav" aria-labelledby="site-navigation-label">
-          <p class="site-menu-label" id="site-navigation-label">Navigate</p>
-          <ul role="list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="story1.html">What Is a Human Reference Atlas?</a></li>
-            <li><a href="story2.html">Squiggy's Identity Crisis!</a></li>
-            <li><a href="story3.html">Something's Not Registering!</a></li>
-            <li><a href="story4.html">Data Detangle</a></li>
-            <li><a href="story5.html">Know Your Body Buddies</a></li>
-            <li><a href="story6.html" aria-current="page">Pan-organ Immunosenescence Atlas</a></li>
-          </ul>
-        </nav>
+            <div class="site-menu-panel" data-site-menu-panel role="region" aria-labelledby="site-menu-title" tabindex="-1">
+                <div class="site-menu-header">
+                    <p class="site-menu-title" id="site-menu-title">Menu</p>
+                    <button class="site-menu-close" type="button" aria-label="Close Menu" data-site-menu-close>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="m6 6 12 12M18 6 6 18"></path>
+                        </svg>
+                    </button>
+                </div>
 
-        <fieldset class="site-appearance">
-          <legend>Appearance</legend>
-          <label class="site-appearance-choice">
-            <input type="radio" name="color-theme" value="system" data-site-theme-choice checked />
-            <span>System settings</span>
-          </label>
-          <label class="site-appearance-choice">
-            <input type="radio" name="color-theme" value="light" data-site-theme-choice />
-            <span>Light</span>
-          </label>
-          <label class="site-appearance-choice">
-            <input type="radio" name="color-theme" value="dark" data-site-theme-choice />
-            <span>Dark</span>
-          </label>
-        </fieldset>
+                <nav class="site-menu-nav" aria-labelledby="site-navigation-label">
+                    <p class="site-menu-label" id="site-navigation-label">Navigate</p>
+                    <ul role="list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="story1.html">What Is a Human Reference Atlas?</a></li>
+                        <li><a href="story2.html">Squiggy's Identity Crisis!</a></li>
+                        <li><a href="story3.html">Something's Not Registering!</a></li>
+                        <li><a href="story4.html">Data Detangle</a></li>
+                        <li><a href="story5.html">Know Your Body Buddies</a></li>
+                        <li><a href="story6.html" aria-current="page">Pan-organ Immunosenescence Atlas</a></li>
+                    </ul>
+                </nav>
 
-        <fieldset class="site-accessibility" data-contrast-controls hidden>
-          <legend>Accessibility</legend>
-          <button class="site-contrast-switch" type="button" role="switch" aria-checked="false" data-contrast-toggle>
-            <span class="site-contrast-switch__label">High contrast</span>
-            <span class="site-contrast-switch__track" aria-hidden="true">
-              <span class="site-contrast-switch__thumb"></span>
-            </span>
-            <span class="site-contrast-switch__state" data-contrast-state aria-hidden="true">Off</span>
-          </button>
-        </fieldset>
+                <fieldset class="site-appearance">
+                    <legend>Appearance</legend>
+                    <label class="site-appearance-choice">
+                        <input type="radio" name="color-theme" value="system" data-site-theme-choice checked />
+                        <span>System settings</span>
+                    </label>
+                    <label class="site-appearance-choice">
+                        <input type="radio" name="color-theme" value="light" data-site-theme-choice />
+                        <span>Light</span>
+                    </label>
+                    <label class="site-appearance-choice">
+                        <input type="radio" name="color-theme" value="dark" data-site-theme-choice />
+                        <span>Dark</span>
+                    </label>
+                </fieldset>
 
-        <span class="site-chrome-visually-hidden" data-site-theme-status aria-live="polite" aria-atomic="true"></span>
-      </div>
-    </details>
+                <fieldset class="site-accessibility" data-contrast-controls hidden>
+                    <legend>Accessibility</legend>
+                    <button class="site-contrast-switch" type="button" role="switch" aria-checked="false" data-contrast-toggle>
+                        <span class="site-contrast-switch__label">High contrast</span>
+                        <span class="site-contrast-switch__track" aria-hidden="true">
+                            <span class="site-contrast-switch__thumb"></span>
+                        </span>
+                        <span class="site-contrast-switch__state" data-contrast-state aria-hidden="true">Off</span>
+                    </button>
+                </fieldset>
 
-    <main class="site-main-target article-content" id="main-content" tabindex="-1">
-      <header class="page-header article-header">
-        <img class="splash-image" src="story6/img/splash-bg.webp" alt="" aria-hidden="true" fetchpriority="high" />
-        <div class="title-card">
-          <div class="title">
-            <h1 class="main">Pan-organ Immunosenescence Atlas</h1>
-            <p class="subtitle">A story about how cells change over time</p>
-          </div>
-          <p class="bottom">
-            Created by <a href="https://www.fan-lab.org">Fan Lab</a> at Yale University and the
-            <a href="https://cns.iu.edu">Cyberinfrastructure for Network Science Center</a> at Indiana University
-          </p>
-        </div>
-        <h2 class="textbox-transition1">
-          What is <span class="transition-emphasis">immunosenescence</span>?
-        </h2>
-      </header>
-
-    <!-- section header/intro -->
-    <div class="intro" id="intro">
-      <div class="text">
-        <p>
-          The immune system is a complex network of cells, tissues, organs, and the substances they make. It helps the body fight infections and other diseases. As we age, our immune system function becomes impaired. Our bodies have a harder time fighting off infections,
-          controlling malignancies, and maintaining immune tolerance. This age-related deficiency in immune system function is called <strong>immunosenescence</strong>.
-        </p>
-        <img
-          class="story-illustration story-illustration--from-left"
-          src="story6/img/immune_cells.webp"
-          alt="Illustrations of immune cells with a variety of shapes and internal structures"
-          width="320"
-          height="223"
-        />
-        <p>
-          A key contributor to the immune system’s deterioration is cell senescence. This occurs when stress or damage to the cell causes it to exit the cell
-          cycle. In this state of cell cycle arrest, the cell stops dividing but remains metabolically active. The senescent cell secretes a combination of
-          bioactive molecules known as SASP—the senescence-associated secretory phenotype.
-        </p>
-        <figure class="story-illustration story-illustration--from-right sourced-figure">
-          <div class="image-card">
-            <img
-              src="story6/img/cell-senescence-transition.webp"
-              alt="Stress or damage changes a normal cell into a senescent cell that secretes molecules associated with inflammation"
-              width="320"
-              height="180"
-            />
-          </div>
-          <figcaption class="story-figure-source">
-            <strong>Image source:</strong> National Institute on Aging, National Institutes of Health (2021),
-            <cite><a href="https://www.nia.nih.gov/news/does-cellular-senescence-hold-secrets-healthier-aging">“Does Cellular Senescence Hold Secrets for Healthier Aging?”</a></cite>
-          </figcaption>
-        </figure>
-        <p>
-          Cell senescence has some very important benefits for our health. It aids in embryo development, helps our bodies respond to injury, and works to keep
-          cancer cells from replicating.
-        </p>
-      </div>
-    </div>
-
-    <section class="section2 story-scene">
-      <h2 class="visually-hidden">How senescent cells accumulate throughout the body</h2>
-      <div class="fadeimage" aria-hidden="true">
-        <div class="body-image picture1">
-          <img class="body-outline" src="story6/img/2-bodyintro1.webp" alt="" />
-        </div>
-        <div class="body-image picture2">
-          <img class="body-outline" src="story6/img/2-bodyintro2.webp" alt="" />
-        </div>
-      </div>
-      <div id="showpicture2"></div>
-    </section>
-
-    <div class="section2-2">
-      <div class="text">
-        <div>
-          <p>
-            However, as we age, senescent cells accumulate. This may contribute to “inflammaging,” a chronic, low-grade inflammation that can damage healthy
-            tissue, promote disease progression, and accelerate the aging process. In many cases, the body relies on immune cells to clear senescent cells and
-            prevent them from accumulating.
-          </p>
-          <p>
-            This function is impaired when immune cells themselves become senescent. Immune-cell senescence can also weaken the immune system’s ability to
-            detect disease and migrate to sites of infection or injury. A better understanding of cellular senescence is crucial to developing treatments that
-            could improve our quality of life as we age.
-          </p>
-        </div>
-        <figure class="story-illustration story-illustration--from-left sourced-figure">
-          <img
-            src="story6/img/cell-changes.webp"
-            alt="Comparison of a normal cell and a senescent cell, whose changes include cell-cycle arrest, secretions, enlarged shape, organelle dysfunction, and molecular damage"
-            width="320"
-            height="203"
-          />
-          <figcaption class="story-figure-source">
-            <strong>Image source:</strong> Figure 1 from
-            <cite><a href="https://doi.org/10.1038/s41420-025-02720-5">“The Role of Cellular Senescence in Cardiovascular Disease”</a></cite> by Xu and
-            colleagues (2025), reformatted under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
-          </figcaption>
-        </figure>
-        <div>
-          <p>
-            Researchers in the field of senescence biology work to identify the many varieties of senescent cells, locate where they reside in the body, and
-            understand the effects they have on their surrounding environments. A cell’s senescence phenotype—the physical and biochemical traits the cell
-            exhibits once it becomes senescent—can vary widely depending on the cell type and the tissue microenvironment. These diverse and context-specific
-            phenotypes make research on immune cell senescence a particular challenge.
-          </p>
-          <p>
-            For starters, the immune system is distributed throughout the body. It consists of many organs and multiple tissue types with their own distinct
-            structures and functions. Immune cell researchers often find that existing datasets (whether bulk or single-cell sequenced) underrepresent immune
-            cells or lack them entirely. When immune cells are present, they typically lack robust data on senescence. The immune system is not contained in a
-            single “immune organ.”
-          </p>
-        </div>
-        <figure class="story-illustration story-illustration--from-right immune-cell-gallery">
-          <figcaption class="immune-cell-gallery__signpost">
-            <p>Likewise, there is no single “immune cell” with one particular function.</p>
-          </figcaption>
-          <div class="image-card">
-            <img
-              src="story6/img/cells.png"
-              alt="Examples of immune-related cell types: basophil, natural killer cell, B cell, plasma cell, T cell, neutrophil, dendritic cell, mast cell, eosinophil, endothelial cell, macrophage, and fibroblast"
-              width="320"
-              height="240"
-            />
-          </div>
-        </figure>
-        <p>
-          Instead, there are many cell types with different structures and roles. Different immune cell types exhibit different senescence patterns/features.
-          Senescence can be difficult to detect in immune cells since some of the recognized markers of senescence are part of the normal functioning of many
-          immune cells. Since context matters in the study of immune-cell senescence, research needs to analyze many tissue types across various anatomical
-          structures.
-        </p>
-      </div>
-    </div>
-
-    <section class="transition transition1 story-scene article-content">
-      <picture class="transition__picture" aria-hidden="true">
-        <source
-          type="image/webp"
-          srcset="story6/img/transition1-960.webp 960w, story6/img/transition1-1920.webp 1920w, story6/img/transition1-3840.webp 3840w"
-          sizes="100vw"
-        />
-        <img class="transition__background" src="story6/img/transition1-1920.webp" alt="" loading="lazy" decoding="async" />
-      </picture>
-      <div class="transition__overlay" aria-hidden="true"></div>
-      <h2 class="textbox-transition textbox-transition--statement">
-        To study how senescent cells behave in a living organism, scientists often conduct their research using samples from
-        <span class="transition-emphasis">laboratory mice</span>.
-      </h2>
-    </section>
-
-    <section class="section3 story-scene">
-      <h2 class="visually-hidden">Mouse anatomy used in senescence research</h2>
-      <div class="scene5-1">
-        <div class="mouse">
-          <div class="info-text">
-            <p>Mice have long been prized by medical researchers due to the many biological and genetic features they share with humans.</p>
-            <p>
-              They are valuable to senescence research because their short lifespans allow scientists to observe the mechanics of aging over the space of months
-              rather than decades.
-            </p>
-            <p>This 3D mouse model shows the thymus, liver, spleen, and pancreas.</p>
-            <!-- Reader modes discard page styles, revealing this compact alternative to the animated model. -->
-            <img
-              class="mouse-reader-overview"
-              src="story6/img/mouse.png"
-              alt="Front view of a translucent 3D mouse anatomical model with internal organs visible"
-              width="320"
-              height="180"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div class="mouse-image" aria-hidden="true">
-            <div class="all">
-              <img src="story6/img/mouse.png" alt="" />
+                <span class="site-chrome-visually-hidden" data-site-theme-status aria-live="polite" aria-atomic="true"></span>
             </div>
-            <div class="thymus">
-              <img src="story6/img/mouse_thymus.png" alt="" />
-              <div class="label">Thymus</div>
+        </details>
+
+        <main class="site-main-target article-content" id="main-content" tabindex="-1">
+            <header class="page-header article-header">
+                <img
+                    class="splash-image"
+                    src="story6/img/splash-bg-1920.webp"
+                    srcset="story6/img/splash-bg-960.webp 960w, story6/img/splash-bg-1920.webp 1920w, story6/img/splash-bg.webp 3840w"
+                    sizes="100vw"
+                    alt=""
+                    aria-hidden="true"
+                    width="3840"
+                    height="2160"
+                    fetchpriority="high"
+                    decoding="async"
+                />
+                <div class="title-card">
+                    <div class="title">
+                        <h1 class="main">Pan-organ Immunosenescence Atlas</h1>
+                        <p class="subtitle">A story about how cells change over time</p>
+                    </div>
+                    <p class="bottom">
+                        Created by <a href="https://www.fan-lab.org">Fan Lab</a> at Yale University and the
+                        <a href="https://cns.iu.edu">Cyberinfrastructure for Network Science Center</a> at Indiana University
+                    </p>
+                </div>
+                <h2 class="textbox-transition1">
+                    What is <span class="transition-emphasis">immunosenescence</span>?
+                </h2>
+            </header>
+
+        <!-- section header/intro -->
+        <div class="intro" id="intro">
+            <div class="text">
+                <p>
+                    The immune system is a complex network of cells, tissues, organs, and the substances they make. It helps the body fight infections and other diseases. As we age, our immune system function becomes impaired. Our bodies have a harder time fighting off infections,
+                    controlling malignancies, and maintaining immune tolerance. This age-related deficiency in immune system function is called <strong>immunosenescence</strong>.
+                </p>
+                <img
+                    class="story-illustration story-illustration--from-left"
+                    src="story6/img/immune_cells.webp"
+                    alt="Illustrations of immune cells with a variety of shapes and internal structures"
+                    width="320"
+                    height="223"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <p>
+                    A key contributor to the immune system’s deterioration is cell senescence. This occurs when stress or damage to the cell causes it to exit the cell
+                    cycle. In this state of cell cycle arrest, the cell stops dividing but remains metabolically active. The senescent cell secretes a combination of
+                    bioactive molecules known as SASP—the senescence-associated secretory phenotype.
+                </p>
+                <figure class="story-illustration story-illustration--from-right sourced-figure">
+                    <div class="image-card">
+                        <img
+                            src="story6/img/cell-senescence-transition.webp"
+                            alt="Stress or damage changes a normal cell into a senescent cell that secretes molecules associated with inflammation"
+                            width="320"
+                            height="180"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <figcaption class="story-figure-source">
+                        <strong>Image source:</strong> National Institute on Aging, National Institutes of Health (2021),
+                        <cite><a href="https://www.nia.nih.gov/news/does-cellular-senescence-hold-secrets-healthier-aging">“Does Cellular Senescence Hold Secrets for Healthier Aging?”</a></cite>
+                    </figcaption>
+                </figure>
+                <p>
+                    Cell senescence has some very important benefits for our health. It aids in embryo development, helps our bodies respond to injury, and works to keep
+                    cancer cells from replicating.
+                </p>
             </div>
-            <div class="liver">
-              <img src="story6/img/mouse_liver.png" alt="" />
-              <div class="label">Liver</div>
-            </div>
-            <div class="spleen">
-              <img src="story6/img/mouse_spleen.png" alt="" />
-              <div class="label">Spleen</div>
-            </div>
-            <div class="pancreas">
-              <img src="story6/img/mouse_pancreas.png" alt="" />
-              <div class="label">Pancreas</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="setup">
-      <div class="setup-text">
-        <p>
-          The <strong>Cellular Senescence Network (SenNet) Program</strong> is one such effort that seeks to identify and characterize the differences in senescent cells across
-          the body, across various states of human health, and across the lifespan. They are creating atlases of senescent cells, the differences among them,
-          and the molecules they secrete, using data collected from multiple human and model organism tissues.
-        </p>
-        <p>SenNet is teaming with the <strong>Human Reference Atlas (HRA)</strong> to study the possibility that senescent cells may alter their tissue microenvironments.</p>
-      </div>
-    </div>
-
-    <section class="transition transition2 story-scene article-content">
-      <picture class="transition__picture" aria-hidden="true">
-        <source
-          type="image/webp"
-          srcset="story6/img/transition2-960.webp 960w, story6/img/transition2-1920.webp 1920w, story6/img/transition2-3840.webp 3840w"
-          sizes="100vw"
-        />
-        <img class="transition__background" src="story6/img/transition2-1920.webp" alt="" loading="lazy" decoding="async" />
-      </picture>
-      <div class="transition__overlay" aria-hidden="true"></div>
-      <h2 class="textbox-transition">
-        What <span class="transition-emphasis">changes</span> can we see between young, aged, and treated tissue?
-      </h2>
-    </section>
-
-    <section class="section4 story-scene" aria-labelledby="tissue-comparison-title">
-      <div class="tissue-comparison">
-        <header class="tissue-comparison__intro">
-          <p class="tissue-comparison__eyebrow" aria-hidden="true">Cell sample comparison</p>
-          <h2 id="tissue-comparison-title">Compare tissue across three organs</h2>
-          <p>
-            Researchers collected tissue from young mice, aged mice, and aged mice treated with dasatinib and quercetin (D&amp;Q) drugs that target senescent
-            cells.
-          </p>
-          <p>In this comparison, young mice were 2 months old. Aged mice were 24 months old, including those treated with D&amp;Q.</p>
-          <p>
-            By mapping individual cells within liver, spleen, and thymus samples, researchers can compare how cellular patterns change with age—and whether
-            those patterns change after treatment.
-          </p>
-          <p>
-            Each color represents a cell population. Compare where those populations appear, how densely they cluster, and which populations share the same
-            neighborhoods across the three conditions.
-          </p>
-        </header>
-
-        <div class="organ-comparisons">
-          <figure class="organ-comparison">
-            <figcaption>
-              <span class="organ-comparison__number" aria-hidden="true">01</span>
-              <h3>Liver</h3>
-            </figcaption>
-            <ol class="tissue-samples">
-              <li class="tissue-sample">
-                <p class="tissue-sample__condition">Young</p>
-                <img
-                  src="story6/img/liver-young.png"
-                  alt="Cell population map of liver tissue from a young mouse, showing a rounded section divided by a large white channel"
-                  width="320"
-                  height="320"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </li>
-              <li class="tissue-sample">
-                <p class="tissue-sample__condition">Aged</p>
-                <img
-                  src="story6/img/liver-aged.png"
-                  alt="Cell population map of liver tissue from an aged mouse, showing a rounded section dominated by peach and brown regions"
-                  width="320"
-                  height="320"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </li>
-              <li class="tissue-sample">
-                <p class="tissue-sample__condition">Aged + D&amp;Q</p>
-                <img
-                  src="story6/img/liver-aged-dq.png"
-                  alt="Cell population map of D and Q-treated liver tissue from an aged mouse, showing peach and pale blue regions around an open center"
-                  width="320"
-                  height="320"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </li>
-            </ol>
-          </figure>
-
-          <figure class="organ-comparison">
-            <figcaption>
-              <span class="organ-comparison__number" aria-hidden="true">02</span>
-              <h3>Spleen</h3>
-            </figcaption>
-            <ol class="tissue-samples">
-              <li class="tissue-sample">
-                <p class="tissue-sample__condition">Young</p>
-                <img
-                  src="story6/img/spleen-young.png"
-                  alt="Cell population map of spleen tissue from a young mouse, showing light blue clusters and a dark blue and pink region"
-                  width="320"
-                  height="320"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </li>
-              <li class="tissue-sample">
-                <p class="tissue-sample__condition">Aged</p>
-                <img
-                  src="story6/img/spleen-aged.png"
-                  alt="Cell population map of spleen tissue from an aged mouse, showing multiple blue clusters surrounded by pink regions"
-                  width="320"
-                  height="320"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </li>
-              <li class="tissue-sample">
-                <p class="tissue-sample__condition">Aged + D&amp;Q</p>
-                <img
-                  src="story6/img/spleen-aged-dq.png"
-                  alt="Cell population map of D and Q-treated spleen tissue from an aged mouse, showing blue clusters with green centers among pale pink regions"
-                  width="320"
-                  height="320"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </li>
-            </ol>
-          </figure>
-
-          <figure class="organ-comparison">
-            <figcaption>
-              <span class="organ-comparison__number" aria-hidden="true">03</span>
-              <h3>Thymus</h3>
-            </figcaption>
-            <ol class="tissue-samples">
-              <li class="tissue-sample">
-                <p class="tissue-sample__condition">Young</p>
-                <img
-                  src="story6/img/thymus-young.png"
-                  alt="Cell population map of thymus tissue from a young mouse, showing broad pale blue, green, yellow, and orange regions"
-                  width="320"
-                  height="320"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </li>
-              <li class="tissue-sample">
-                <p class="tissue-sample__condition">Aged</p>
-                <img
-                  src="story6/img/thymus-aged.png"
-                  alt="Cell population map of thymus tissue from an aged mouse, showing a narrow curved section with turquoise, dark blue, brown, and pink regions"
-                  width="320"
-                  height="320"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </li>
-              <li class="tissue-sample">
-                <p class="tissue-sample__condition">Aged + D&amp;Q</p>
-                <img
-                  src="story6/img/thymus-aged-dq.png"
-                  alt="Cell population map of D and Q-treated thymus tissue from an aged mouse, showing a broad yellow and peach center bordered by turquoise and pink"
-                  width="320"
-                  height="320"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </li>
-            </ol>
-          </figure>
         </div>
 
-        <section class="tissue-comparison__takeaway" aria-labelledby="tissue-takeaway-title">
-          <p class="tissue-comparison__takeaway-label" aria-hidden="true">Observed pattern</p>
-          <h3 id="tissue-takeaway-title">What can we see?</h3>
-          <p>
-            Across the liver, spleen, and thymus, the colored cell populations differ in their distribution, clustering, and neighboring populations. These
-            patterns also vary by organ, which is why each condition is compared within the same tissue.
-          </p>
+        <section class="section2 story-scene">
+            <h2 class="visually-hidden">How senescent cells accumulate throughout the body</h2>
+            <div class="fadeimage" aria-hidden="true">
+                <div class="body-image picture1">
+                    <img class="body-outline" src="story6/img/2-bodyintro1.webp" alt="" width="2264" height="3359" loading="lazy" decoding="async" />
+                </div>
+                <div class="body-image picture2">
+                    <img class="body-outline" src="story6/img/2-bodyintro2.webp" alt="" width="1509" height="2239" loading="lazy" decoding="async" />
+                </div>
+            </div>
         </section>
-      </div>
-    </section>
 
-    <section class="transition transition3 story-scene article-content">
-      <picture class="transition__picture" aria-hidden="true">
-        <source
-          type="image/webp"
-          srcset="story6/img/transition3-960.webp 960w, story6/img/transition3-1920.webp 1920w, story6/img/transition3-3840.webp 3840w"
-          sizes="100vw"
-        />
-        <img
-          class="transition__background"
-          src="story6/img/transition3-1920.webp"
-          alt=""
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-        />
-      </picture>
-      <div class="transition__overlay" aria-hidden="true"></div>
-      <h2 class="textbox-transition">
-        What software exists to visualize <span class="transition-emphasis">cell differences over time</span>?
-      </h2>
-    </section>
-
-    <div class="setup setup3">
-      <div class="setup-text">
-        <p>
-          The HRA Cell Distance Explorer tool can be used to measure how close cells are to one another, compare cell distances over time, and analyze cell
-          neighborhoods in spatially resolved omics data.
-        </p>
-        <p>
-          The neighborhood-level analysis produced by the Cell Distance Explorer can be combined with more macro-level efforts to quantify spatial distribution
-          to establish a metric and baseline that enable comparison across organs with different morphology.
-        </p>
-      </div>
-    </div>
-
-    <section class="section5 story-scene" aria-labelledby="cde-tutorial-title">
-      <h2 class="visually-hidden" id="cde-tutorial-title">Cell Distance Explorer tutorial</h2>
-      <div class="cde-tutorial-stage">
-        <div class="cde-tutorial-visual">
-          <div class="tutorial-images" aria-hidden="true">
-            <img class="tutorial tutorial1" src="story6/img/tutorial1.png" alt="" width="2640" height="1522" />
-            <img class="tutorial tutorial2" src="story6/img/tutorial2.png" alt="" width="2640" height="1520" />
-            <img class="tutorial tutorial3" src="story6/img/tutorial3.png" alt="" width="2640" height="1520" />
-            <img class="tutorial tutorial4" src="story6/img/tutorial4.png" alt="" width="2640" height="1520" />
-            <img class="tutorial tutorial5" src="story6/img/tutorial5.png" alt="" width="2640" height="1520" />
-          </div>
+        <div class="section2-2">
+            <div class="text">
+                <div>
+                    <p>
+                        However, as we age, senescent cells accumulate. This may contribute to “inflammaging,” a chronic, low-grade inflammation that can damage healthy
+                        tissue, promote disease progression, and accelerate the aging process. In many cases, the body relies on immune cells to clear senescent cells and
+                        prevent them from accumulating.
+                    </p>
+                    <p>
+                        This function is impaired when immune cells themselves become senescent. Immune-cell senescence can also weaken the immune system’s ability to
+                        detect disease and migrate to sites of infection or injury. A better understanding of cellular senescence is crucial to developing treatments that
+                        could improve our quality of life as we age.
+                    </p>
+                </div>
+                <figure class="story-illustration story-illustration--from-left sourced-figure">
+                    <img
+                        src="story6/img/cell-changes.webp"
+                        alt="Comparison of a normal cell and a senescent cell, whose changes include cell-cycle arrest, secretions, enlarged shape, organelle dysfunction, and molecular damage"
+                        width="320"
+                        height="203"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                    <figcaption class="story-figure-source">
+                        <strong>Image source:</strong> Figure 1 from
+                        <cite><a href="https://doi.org/10.1038/s41420-025-02720-5">“The Role of Cellular Senescence in Cardiovascular Disease”</a></cite> by Xu and
+                        colleagues (2025), reformatted under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+                    </figcaption>
+                </figure>
+                <div>
+                    <p>
+                        Researchers in the field of senescence biology work to identify the many varieties of senescent cells, locate where they reside in the body, and
+                        understand the effects they have on their surrounding environments. A cell’s senescence phenotype—the physical and biochemical traits the cell
+                        exhibits once it becomes senescent—can vary widely depending on the cell type and the tissue microenvironment. These diverse and context-specific
+                        phenotypes make research on immune cell senescence a particular challenge.
+                    </p>
+                    <p>
+                        For starters, the immune system is distributed throughout the body. It consists of many organs and multiple tissue types with their own distinct
+                        structures and functions. Immune cell researchers often find that existing datasets (whether bulk or single-cell sequenced) underrepresent immune
+                        cells or lack them entirely. When immune cells are present, they typically lack robust data on senescence. The immune system is not contained in a
+                        single “immune organ.”
+                    </p>
+                </div>
+                <figure class="story-illustration story-illustration--from-right immune-cell-gallery">
+                    <figcaption class="immune-cell-gallery__signpost">
+                        <p>Likewise, there is no single “immune cell” with one particular function.</p>
+                    </figcaption>
+                    <div class="image-card">
+                        <img
+                            src="story6/img/cells-640.png"
+                            srcset="story6/img/cells-640.png 640w, story6/img/cells-1280.png 1280w, story6/img/cells.png 1448w"
+                            sizes="min(100vw - 2rem, 44rem)"
+                            alt="Examples of immune-related cell types: basophil, natural killer cell, B cell, plasma cell, T cell, neutrophil, dendritic cell, mast cell, eosinophil, endothelial cell, macrophage, and fibroblast"
+                            width="320"
+                            height="240"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                </figure>
+                <p>
+                    Instead, there are many cell types with different structures and roles. Different immune cell types exhibit different senescence patterns/features.
+                    Senescence can be difficult to detect in immune cells since some of the recognized markers of senescence are part of the normal functioning of many
+                    immune cells. Since context matters in the study of immune-cell senescence, research needs to analyze many tissue types across various anatomical
+                    structures.
+                </p>
+            </div>
         </div>
-        <ol class="cde-tutorial-steps" aria-label="Cell Distance Explorer tutorial steps">
-          <li class="tutorial-callout tutorial-callout--1">
-            <span class="tutorial-callout__icon" aria-hidden="true"></span>
-            <div class="tutorial-callout__content">
-              Let’s get familiar with the Cell Distance Explorer app.
-              <span class="visually-hidden">
-                The interface is organized into a Cell Types table, a central tissue visualization, a violin graph, and a histogram.
-              </span>
-            </div>
-          </li>
-          <li class="tutorial-callout tutorial-callout--2">
-            <span class="tutorial-callout__icon" aria-hidden="true"></span>
-            <div class="tutorial-callout__content">
-              <span class="visually-hidden">The Cell Types table is highlighted. </span>
-              Show/hide cell types in the visualization and plots. Hide cell links from this table view. Update colors for individual cell types. Download CSVs
-              for the current configurations of cell types, cell links, and cell type color map formatting.
-            </div>
-          </li>
-          <li class="tutorial-callout tutorial-callout--3">
-            <span class="tutorial-callout__icon" aria-hidden="true"></span>
-            <div class="tutorial-callout__content">
-              <span class="visually-hidden">The central Visualization panel is highlighted. </span>
-              Use the Visualization panel to navigate the cells spatially:
-              <ul>
-                <li>Zoom in and out with the mouse pinwheel or pinch using the trackpad</li>
-                <li>Pan using CTRL/CMD + mouse drag, right click + mouse drag, or use the keyboard arrows</li>
-                <li>Rotate the visualization using CTRL/CMD + keyboard arrows or with a mouse drag</li>
-              </ul>
-            </div>
-          </li>
-          <li class="tutorial-callout tutorial-callout--4">
-            <span class="tutorial-callout__icon" aria-hidden="true"></span>
-            <div class="tutorial-callout__content">
-              <span class="visually-hidden">The Violin Graph panel is highlighted. </span>
-              This violin plot shows cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
-            </div>
-          </li>
-          <li class="tutorial-callout tutorial-callout--5">
-            <span class="tutorial-callout__icon" aria-hidden="true"></span>
-            <div class="tutorial-callout__content">
-              <span class="visually-hidden">The Histogram panel is highlighted. </span>
-              This histogram plot shows the cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
 
-    <section class="transition transition5 story-scene article-content">
-      <picture class="transition__picture" aria-hidden="true">
-        <source
-          type="image/webp"
-          srcset="story6/img/transition5-960.webp 960w, story6/img/transition5-1920.webp 1920w, story6/img/transition5-3840.webp 3840w"
-          sizes="100vw"
-        />
-        <img class="transition__background" src="story6/img/transition5-1920.webp" alt="" loading="lazy" decoding="async" />
-      </picture>
-      <div class="transition__overlay" aria-hidden="true"></div>
-      <h2 class="textbox-transition textbox-transition--statement">
-        There is strong external evidence that immune senescence is implicated in tissue reorganization. Thus, monitoring the effects of senescence on the
-        surrounding tissue, evaluating them, and treating them <span class="transition-emphasis">could vastly improve our health</span>.
-      </h2>
-    </section>
+        <section class="transition transition1 story-scene article-content">
+            <picture class="transition__picture" aria-hidden="true">
+                <source
+                    type="image/webp"
+                    srcset="story6/img/transition1-960.webp 960w, story6/img/transition1-1920.webp 1920w, story6/img/transition1-3840.webp 3840w"
+                    sizes="100vw"
+                />
+                <img class="transition__background" src="story6/img/transition1-1920.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async" />
+            </picture>
+            <div class="transition__overlay" aria-hidden="true"></div>
+            <h2 class="textbox-transition textbox-transition--statement">
+                To study how senescent cells behave in a living organism, scientists often conduct their research using samples from
+                <span class="transition-emphasis">laboratory mice</span>.
+            </h2>
+        </section>
 
-    <section class="resources" aria-labelledby="resources-title">
-        <div class="resources__content">
-          <header class="resources__header article-header">
-            <p class="resources__eyebrow" aria-hidden="true">Continue exploring</p>
-            <h2 id="resources-title">Resources</h2>
-            <p>Explore the data, tools, and research communities behind this story.</p>
-          </header>
+        <section class="section3 story-scene">
+            <h2 class="visually-hidden">Mouse anatomy used in senescence research</h2>
+            <div class="scene5-1">
+                <div class="mouse">
+                    <div class="info-text">
+                        <p>Mice have long been prized by medical researchers due to the many biological and genetic features they share with humans.</p>
+                        <p>
+                            They are valuable to senescence research because their short lifespans allow scientists to observe the mechanics of aging over the space of months
+                            rather than decades.
+                        </p>
+                        <p>This 3D mouse model shows the thymus, liver, spleen, and pancreas.</p>
+                        <!-- Reader modes discard page styles, revealing this compact alternative to the animated model. -->
+                        <img
+                            class="mouse-reader-overview"
+                            src="story6/img/mouse-640.png"
+                            srcset="story6/img/mouse-640.png 640w, story6/img/mouse-1280.png 1280w, story6/img/mouse.png 1920w"
+                            sizes="320px"
+                            alt="Front view of a translucent 3D mouse anatomical model with internal organs visible"
+                            width="320"
+                            height="180"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <div class="mouse-image" aria-hidden="true">
+                        <div class="all">
+                            <img
+                                src="story6/img/mouse-640.png"
+                                srcset="story6/img/mouse-640.png 640w, story6/img/mouse-1280.png 1280w, story6/img/mouse.png 1920w"
+                                sizes="min(100vw, 57.5rem)"
+                                alt=""
+                                width="1920"
+                                height="1080"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        </div>
+                        <div class="thymus">
+                            <img
+                                data-src="story6/img/mouse_thymus-640.png"
+                                data-srcset="story6/img/mouse_thymus-640.png 640w, story6/img/mouse_thymus-1280.png 1280w, story6/img/mouse_thymus.png 1920w"
+                                sizes="min(100vw, 57.5rem)"
+                                alt=""
+                                width="1920"
+                                height="1080"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                            <div class="label">Thymus</div>
+                        </div>
+                        <div class="liver">
+                            <img
+                                data-src="story6/img/mouse_liver-640.png"
+                                data-srcset="story6/img/mouse_liver-640.png 640w, story6/img/mouse_liver-1280.png 1280w, story6/img/mouse_liver.png 1920w"
+                                sizes="min(100vw, 57.5rem)"
+                                alt=""
+                                width="1920"
+                                height="1080"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                            <div class="label">Liver</div>
+                        </div>
+                        <div class="spleen">
+                            <img
+                                data-src="story6/img/mouse_spleen-640.png"
+                                data-srcset="story6/img/mouse_spleen-640.png 640w, story6/img/mouse_spleen-1280.png 1280w, story6/img/mouse_spleen.png 1920w"
+                                sizes="min(100vw, 57.5rem)"
+                                alt=""
+                                width="1920"
+                                height="1080"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                            <div class="label">Spleen</div>
+                        </div>
+                        <div class="pancreas">
+                            <img
+                                data-src="story6/img/mouse_pancreas-640.png"
+                                data-srcset="story6/img/mouse_pancreas-640.png 640w, story6/img/mouse_pancreas-1280.png 1280w, story6/img/mouse_pancreas.png 1920w"
+                                sizes="min(100vw, 57.5rem)"
+                                alt=""
+                                width="1920"
+                                height="1080"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                            <div class="label">Pancreas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-          <ul class="resource-cards">
-            <li>
-              <article class="resource-card">
-                <div class="resource-card__logo" aria-hidden="true">
-                  <span class="resource-card__brand resource-card__brand--hra" aria-hidden="true"></span>
-                </div>
-                <div class="resource-card__body">
-                  <h3 class="resource-card__title">
-                    <a class="resource-card__link" href="https://apps.humanatlas.io/cde/" target="_blank" rel="noopener noreferrer"
-                      >Cell Distance Explorer<span class="visually-hidden"> opens in a new tab</span></a
-                    >
-                  </h3>
-                  <p class="resource-card__description">Compute, visualize, and explore cell distance distributions in spatial omics datasets.</p>
-                </div>
-                <span class="resource-card__action" aria-hidden="true">
-                  Open the app
-                  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
-                    <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </span>
-              </article>
-            </li>
-            <li>
-              <article class="resource-card">
-                <div class="resource-card__logo" aria-hidden="true">
-                  <span class="resource-card__brand resource-card__brand--sennet" aria-hidden="true"></span>
-                </div>
-                <div class="resource-card__body">
-                  <h3 class="resource-card__title">
-                    <a class="resource-card__link" href="https://data.sennetconsortium.org/" target="_blank" rel="noopener noreferrer"
-                      >SenNet Data Portal<span class="visually-hidden"> opens in a new tab</span></a
-                    >
-                  </h3>
-                  <p class="resource-card__description">Explore and download cellular senescence datasets from across the SenNet consortium.</p>
-                </div>
-                <span class="resource-card__action" aria-hidden="true">
-                  Explore data
-                  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
-                    <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </span>
-              </article>
-            </li>
-            <li>
-              <article class="resource-card">
-                <div class="resource-card__logo" aria-hidden="true">
-                  <span class="resource-card__brand resource-card__brand--hra" aria-hidden="true"></span>
-                </div>
-                <div class="resource-card__body">
-                  <h3 class="resource-card__title">
-                    <a class="resource-card__link" href="https://humanatlas.io/" target="_blank" rel="noopener noreferrer"
-                      >Human Reference Atlas<span class="visually-hidden"> opens in a new tab</span></a
-                    >
-                  </h3>
-                  <p class="resource-card__description">Explore reference maps and tools for understanding the cells and structures of the human body.</p>
-                </div>
-                <span class="resource-card__action" aria-hidden="true">
-                  Visit the atlas
-                  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
-                    <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </span>
-              </article>
-            </li>
-            <li>
-              <article class="resource-card">
-                <div class="resource-card__logo" aria-hidden="true">
-                  <span class="resource-card__brand resource-card__brand--sennet" aria-hidden="true"></span>
-                </div>
-                <div class="resource-card__body">
-                  <h3 class="resource-card__title">
-                    <a class="resource-card__link" href="https://sennetconsortium.org/" target="_blank" rel="noopener noreferrer"
-                      >SenNet Community<span class="visually-hidden"> opens in a new tab</span></a
-                    >
-                  </h3>
-                  <p class="resource-card__description">Learn about the consortium and connect with the researchers advancing senescence science.</p>
-                </div>
-                <span class="resource-card__action" aria-hidden="true">
-                  Meet the community
-                  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
-                    <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </span>
-              </article>
-            </li>
-          </ul>
+        <div class="setup">
+            <div class="setup-text">
+                <p>
+                    The <strong>Cellular Senescence Network (SenNet) Program</strong> is one such effort that seeks to identify and characterize the differences in senescent cells across
+                    the body, across various states of human health, and across the lifespan. They are creating atlases of senescent cells, the differences among them,
+                    and the molecules they secrete, using data collected from multiple human and model organism tissues.
+                </p>
+                <p>SenNet is teaming with the <strong>Human Reference Atlas (HRA)</strong> to study the possibility that senescent cells may alter their tissue microenvironments.</p>
+            </div>
         </div>
-    </section>
 
-    <section class="acknowledgments" aria-labelledby="acknowledgments-title">
-        <div class="acknowledgments__content">
-          <header class="acknowledgments__header article-header">
-            <h2 id="acknowledgments-title">Acknowledgments</h2>
-          </header>
-          <ul class="acknowledgments__list">
-            <li><strong>Data:</strong> <span>Anthony Fung and Rong Fan (Yale University), Andreas Bueckle (Indiana University)</span></li>
-            <li><strong>Story authors:</strong> <span>Anthony Fung (Yale University), Todd Theriault, Elizabeth Maier, and Katy Börner (Indiana University)</span></li>
-            <li>
-              <strong>Cell Distance Explorer design and implementation:</strong>
-              <span>Yashvardhan Jain, Elizabeth Maier, Katy Börner, Bruce W. Herr II, Daniel Bolin, and Edward Lu (Indiana University)</span>
-            </li>
-            <li><strong>Web design and development:</strong> <span>Edward Lu and Elizabeth Maier (Indiana University)</span></li>
-          </ul>
+        <section class="transition transition2 story-scene article-content">
+            <picture class="transition__picture" aria-hidden="true">
+                <source
+                    type="image/webp"
+                    srcset="story6/img/transition2-960.webp 960w, story6/img/transition2-1920.webp 1920w, story6/img/transition2-3840.webp 3840w"
+                    sizes="100vw"
+                />
+                <img class="transition__background" src="story6/img/transition2-1920.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async" />
+            </picture>
+            <div class="transition__overlay" aria-hidden="true"></div>
+            <h2 class="textbox-transition">
+                What <span class="transition-emphasis">changes</span> can we see between young, aged, and treated tissue?
+            </h2>
+        </section>
+
+        <section class="section4 story-scene" aria-labelledby="tissue-comparison-title">
+            <div class="tissue-comparison">
+                <header class="tissue-comparison__intro">
+                    <p class="tissue-comparison__eyebrow" aria-hidden="true">Cell sample comparison</p>
+                    <h2 id="tissue-comparison-title">Compare tissue across three organs</h2>
+                    <p>
+                        Researchers collected tissue from young mice, aged mice, and aged mice treated with dasatinib and quercetin (D&amp;Q) drugs that target senescent
+                        cells.
+                    </p>
+                    <p>In this comparison, young mice were 2 months old. Aged mice were 24 months old, including those treated with D&amp;Q.</p>
+                    <p>
+                        By mapping individual cells within liver, spleen, and thymus samples, researchers can compare how cellular patterns change with age—and whether
+                        those patterns change after treatment.
+                    </p>
+                    <p>
+                        Each color represents a cell population. Compare where those populations appear, how densely they cluster, and which populations share the same
+                        neighborhoods across the three conditions.
+                    </p>
+                </header>
+
+                <div class="organ-comparisons">
+                    <figure class="organ-comparison">
+                        <figcaption>
+                            <span class="organ-comparison__number" aria-hidden="true">01</span>
+                            <h3>Liver</h3>
+                        </figcaption>
+                        <ol class="tissue-samples">
+                            <li class="tissue-sample">
+                                <p class="tissue-sample__condition">Young</p>
+                                <img
+                                    src="story6/img/liver-young-320.png"
+                                    srcset="story6/img/liver-young-320.png 320w, story6/img/liver-young-640.png 640w, story6/img/liver-young.png 1000w"
+                                    sizes="(min-width: 48rem) min(30vw, 28rem), calc(100vw - 4.5rem)"
+                                    alt="Cell population map of liver tissue from a young mouse, showing a rounded section divided by a large white channel"
+                                    width="320"
+                                    height="320"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </li>
+                            <li class="tissue-sample">
+                                <p class="tissue-sample__condition">Aged</p>
+                                <img
+                                    src="story6/img/liver-aged-320.png"
+                                    srcset="story6/img/liver-aged-320.png 320w, story6/img/liver-aged-640.png 640w, story6/img/liver-aged.png 1000w"
+                                    sizes="(min-width: 48rem) min(30vw, 28rem), calc(100vw - 4.5rem)"
+                                    alt="Cell population map of liver tissue from an aged mouse, showing a rounded section dominated by peach and brown regions"
+                                    width="320"
+                                    height="320"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </li>
+                            <li class="tissue-sample">
+                                <p class="tissue-sample__condition">Aged + D&amp;Q</p>
+                                <img
+                                    src="story6/img/liver-aged-dq-320.png"
+                                    srcset="story6/img/liver-aged-dq-320.png 320w, story6/img/liver-aged-dq-640.png 640w, story6/img/liver-aged-dq.png 1000w"
+                                    sizes="(min-width: 48rem) min(30vw, 28rem), calc(100vw - 4.5rem)"
+                                    alt="Cell population map of D and Q-treated liver tissue from an aged mouse, showing peach and pale blue regions around an open center"
+                                    width="320"
+                                    height="320"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </li>
+                        </ol>
+                    </figure>
+
+                    <figure class="organ-comparison">
+                        <figcaption>
+                            <span class="organ-comparison__number" aria-hidden="true">02</span>
+                            <h3>Spleen</h3>
+                        </figcaption>
+                        <ol class="tissue-samples">
+                            <li class="tissue-sample">
+                                <p class="tissue-sample__condition">Young</p>
+                                <img
+                                    src="story6/img/spleen-young-320.png"
+                                    srcset="story6/img/spleen-young-320.png 320w, story6/img/spleen-young-640.png 640w, story6/img/spleen-young.png 1000w"
+                                    sizes="(min-width: 48rem) min(30vw, 28rem), calc(100vw - 4.5rem)"
+                                    alt="Cell population map of spleen tissue from a young mouse, showing light blue clusters and a dark blue and pink region"
+                                    width="320"
+                                    height="320"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </li>
+                            <li class="tissue-sample">
+                                <p class="tissue-sample__condition">Aged</p>
+                                <img
+                                    src="story6/img/spleen-aged-320.png"
+                                    srcset="story6/img/spleen-aged-320.png 320w, story6/img/spleen-aged-640.png 640w, story6/img/spleen-aged.png 1000w"
+                                    sizes="(min-width: 48rem) min(30vw, 28rem), calc(100vw - 4.5rem)"
+                                    alt="Cell population map of spleen tissue from an aged mouse, showing multiple blue clusters surrounded by pink regions"
+                                    width="320"
+                                    height="320"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </li>
+                            <li class="tissue-sample">
+                                <p class="tissue-sample__condition">Aged + D&amp;Q</p>
+                                <img
+                                    src="story6/img/spleen-aged-dq-320.png"
+                                    srcset="story6/img/spleen-aged-dq-320.png 320w, story6/img/spleen-aged-dq-640.png 640w, story6/img/spleen-aged-dq.png 1000w"
+                                    sizes="(min-width: 48rem) min(30vw, 28rem), calc(100vw - 4.5rem)"
+                                    alt="Cell population map of D and Q-treated spleen tissue from an aged mouse, showing blue clusters with green centers among pale pink regions"
+                                    width="320"
+                                    height="320"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </li>
+                        </ol>
+                    </figure>
+
+                    <figure class="organ-comparison">
+                        <figcaption>
+                            <span class="organ-comparison__number" aria-hidden="true">03</span>
+                            <h3>Thymus</h3>
+                        </figcaption>
+                        <ol class="tissue-samples">
+                            <li class="tissue-sample">
+                                <p class="tissue-sample__condition">Young</p>
+                                <img
+                                    src="story6/img/thymus-young-320.png"
+                                    srcset="story6/img/thymus-young-320.png 320w, story6/img/thymus-young-640.png 640w, story6/img/thymus-young.png 1000w"
+                                    sizes="(min-width: 48rem) min(30vw, 28rem), calc(100vw - 4.5rem)"
+                                    alt="Cell population map of thymus tissue from a young mouse, showing broad pale blue, green, yellow, and orange regions"
+                                    width="320"
+                                    height="320"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </li>
+                            <li class="tissue-sample">
+                                <p class="tissue-sample__condition">Aged</p>
+                                <img
+                                    src="story6/img/thymus-aged-320.png"
+                                    srcset="story6/img/thymus-aged-320.png 320w, story6/img/thymus-aged-640.png 640w, story6/img/thymus-aged.png 1000w"
+                                    sizes="(min-width: 48rem) min(30vw, 28rem), calc(100vw - 4.5rem)"
+                                    alt="Cell population map of thymus tissue from an aged mouse, showing a narrow curved section with turquoise, dark blue, brown, and pink regions"
+                                    width="320"
+                                    height="320"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </li>
+                            <li class="tissue-sample">
+                                <p class="tissue-sample__condition">Aged + D&amp;Q</p>
+                                <img
+                                    src="story6/img/thymus-aged-dq-320.png"
+                                    srcset="story6/img/thymus-aged-dq-320.png 320w, story6/img/thymus-aged-dq-640.png 640w, story6/img/thymus-aged-dq.png 1000w"
+                                    sizes="(min-width: 48rem) min(30vw, 28rem), calc(100vw - 4.5rem)"
+                                    alt="Cell population map of D and Q-treated thymus tissue from an aged mouse, showing a broad yellow and peach center bordered by turquoise and pink"
+                                    width="320"
+                                    height="320"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </li>
+                        </ol>
+                    </figure>
+                </div>
+
+                <section class="tissue-comparison__takeaway" aria-labelledby="tissue-takeaway-title">
+                    <p class="tissue-comparison__takeaway-label" aria-hidden="true">Observed pattern</p>
+                    <h3 id="tissue-takeaway-title">What can we see?</h3>
+                    <p>
+                        Across the liver, spleen, and thymus, the colored cell populations differ in their distribution, clustering, and neighboring populations. These
+                        patterns also vary by organ, which is why each condition is compared within the same tissue.
+                    </p>
+                </section>
+            </div>
+        </section>
+
+        <section class="transition transition3 story-scene article-content">
+            <picture class="transition__picture" aria-hidden="true">
+                <source
+                    type="image/webp"
+                    srcset="story6/img/transition3-960.webp 960w, story6/img/transition3-1920.webp 1920w, story6/img/transition3-3840.webp 3840w"
+                    sizes="100vw"
+                />
+                <img
+                    class="transition__background"
+                    src="story6/img/transition3-1920.webp"
+                    alt=""
+                    width="1920"
+                    height="1080"
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
+                />
+            </picture>
+            <div class="transition__overlay" aria-hidden="true"></div>
+            <h2 class="textbox-transition">
+                What software exists to visualize <span class="transition-emphasis">cell differences over time</span>?
+            </h2>
+        </section>
+
+        <div class="setup setup3">
+            <div class="setup-text">
+                <p>
+                    The HRA Cell Distance Explorer tool can be used to measure how close cells are to one another, compare cell distances over time, and analyze cell
+                    neighborhoods in spatially resolved omics data.
+                </p>
+                <p>
+                    The neighborhood-level analysis produced by the Cell Distance Explorer can be combined with more macro-level efforts to quantify spatial distribution
+                    to establish a metric and baseline that enable comparison across organs with different morphology.
+                </p>
+            </div>
         </div>
-      </section>
 
-      <section class="references" aria-labelledby="references-title">
-        <div class="content">
-          <h2 class="header article-heading" id="references-title">References</h2>
-          <ol class="reference-list">
-            <li>
-              <p>
-                Bueckle, Andreas, Bruce W. Herr II, Lu Chen, Daniel Bolin, Danial Qaurooni, Michael Ginda, Yashvardhan Jain, Aleix Puig-Barbe, Kristin Ardlie,
-                Fusheng Wang, and Katy Börner. “Cell Type Populations for 3D Anatomical Structures of the Human Reference Atlas.” <em>Scientific Data</em> 13, no.
-                1 (2026): 716.
-                <a href="https://doi.org/10.1038/s41597-026-06642-4">https://doi.org/10.1038/s41597-026-06642-4</a>.
-              </p>
-            </li>
-            <li>
-              <p>
-                Jain, Yashvardhan, Jodie Jepson, Roy Chen, Elizabeth Maier, Bruce W. Herr II, Aleix Puig-Barbe, Ellen M. Quardokus, Danial Qaurooni, Clarence Yapp,
-                Samuel L. Ewing, Archibald Enninful, Negin Farzad, Andreas Bueckle, Quinn T. Easter, Bruno Matuck, Chenchen Zhu, Emma Marie Monte, Jeffrey M.
-                Purkerson, Matthew Jehrio, Ravi S. Misra, Rong Fan, Fiona Ginty, Arivarasan Karunamurthy, Jean Fan, Martha Campbell-Thompson, Gloria S. Pryhuber,
-                Kevin M. Byrd, John W. Hickey, and Katy Börner. “Exploring Endothelial Cell Environments across Organs in Spatially Resolved Omics Data.”
-                <em>bioRxiv</em> preprint, September 25, 2025.
-                <a href="https://doi.org/10.1101/2025.09.23.678129">https://doi.org/10.1101/2025.09.23.678129</a>.
-              </p>
-            </li>
-            <li>
-              <p>
-                Börner, Katy, Philip D. Blood, Jonathan C. Silverstein, Matthew Ruffalo, Rahul Satija, Sarah A. Teichmann, Gloria J. Pryhuber, Ravi S. Misra,
-                Jeffrey M. Purkerson, Jean Fan, John W. Hickey, Gesmira Molla, Chuan Xu, Yun Zhang, Griffin M. Weber, Yashvardhan Jain, Danial Qaurooni, Yongxin
-                Kong, HRA Team, et al. “Human BioMolecular Atlas Program (HuBMAP): 3D
-                Human Reference Atlas Construction and Usage.” <em>Nature Methods</em> 22, no. 4 (2025): 845–860.
-                <a href="https://doi.org/10.1038/s41592-024-02563-5">https://doi.org/10.1038/s41592-024-02563-5</a>.
-              </p>
-            </li>
-            <li>
-              <p>
-                National Institute on Aging. “Does Cellular Senescence Hold Secrets for Healthier Aging?” National Institutes of Health, July 13, 2021.
-                <a href="https://www.nia.nih.gov/news/does-cellular-senescence-hold-secrets-healthier-aging"
-                  >https://www.nia.nih.gov/news/does-cellular-senescence-hold-secrets-healthier-aging</a
-                >.
-              </p>
-            </li>
-            <li>
-              <p>
-                Xu, Chengying, Zhimei Qiu, Qing Guo, Youyang Huang, Yongchao Zhao, and Ranzun Zhao. “The Role of Cellular Senescence in Cardiovascular Disease.”
-                <em>Cell Death Discovery</em> 11 (2025): Article 431. Published October 6, 2025.
-                <a href="https://doi.org/10.1038/s41420-025-02720-5">https://doi.org/10.1038/s41420-025-02720-5</a>.
-              </p>
-            </li>
-          </ol>
-        </div>
-      </section>
-    </main>
+        <section class="section5 story-scene" aria-labelledby="cde-tutorial-title">
+            <h2 class="visually-hidden" id="cde-tutorial-title">Cell Distance Explorer tutorial</h2>
+            <div class="cde-tutorial-stage">
+                <div class="cde-tutorial-visual">
+                    <div class="tutorial-images" aria-hidden="true">
+                        <img
+                            class="tutorial tutorial1"
+                            src="story6/img/tutorial1-660.png"
+                            srcset="story6/img/tutorial1-660.png 660w, story6/img/tutorial1-1320.png 1320w, story6/img/tutorial1.png 2640w"
+                            sizes="min(100vw - 3rem, 82.5rem)"
+                            alt=""
+                            width="2640"
+                            height="1522"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <img
+                            class="tutorial tutorial2"
+                            data-src="story6/img/tutorial2-660.png"
+                            data-srcset="story6/img/tutorial2-660.png 660w, story6/img/tutorial2-1320.png 1320w, story6/img/tutorial2.png 2640w"
+                            sizes="min(100vw - 3rem, 82.5rem)"
+                            alt=""
+                            width="2640"
+                            height="1520"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <img
+                            class="tutorial tutorial3"
+                            data-src="story6/img/tutorial3-660.png"
+                            data-srcset="story6/img/tutorial3-660.png 660w, story6/img/tutorial3-1320.png 1320w, story6/img/tutorial3.png 2640w"
+                            sizes="min(100vw - 3rem, 82.5rem)"
+                            alt=""
+                            width="2640"
+                            height="1520"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <img
+                            class="tutorial tutorial4"
+                            data-src="story6/img/tutorial4-660.png"
+                            data-srcset="story6/img/tutorial4-660.png 660w, story6/img/tutorial4-1320.png 1320w, story6/img/tutorial4.png 2640w"
+                            sizes="min(100vw - 3rem, 82.5rem)"
+                            alt=""
+                            width="2640"
+                            height="1520"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <img
+                            class="tutorial tutorial5"
+                            data-src="story6/img/tutorial5-660.png"
+                            data-srcset="story6/img/tutorial5-660.png 660w, story6/img/tutorial5-1320.png 1320w, story6/img/tutorial5.png 2640w"
+                            sizes="min(100vw - 3rem, 82.5rem)"
+                            alt=""
+                            width="2640"
+                            height="1520"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                </div>
+                <ol class="cde-tutorial-steps" aria-label="Cell Distance Explorer tutorial steps">
+                    <li class="tutorial-callout tutorial-callout--1">
+                        <span class="tutorial-callout__icon" aria-hidden="true"></span>
+                        <div class="tutorial-callout__content">
+                            Let’s get familiar with the Cell Distance Explorer app.
+                            <span class="visually-hidden">
+                                The interface is organized into a Cell Types table, a central tissue visualization, a violin graph, and a histogram.
+                            </span>
+                        </div>
+                    </li>
+                    <li class="tutorial-callout tutorial-callout--2">
+                        <span class="tutorial-callout__icon" aria-hidden="true"></span>
+                        <div class="tutorial-callout__content">
+                            <span class="visually-hidden">The Cell Types table is highlighted. </span>
+                            Show/hide cell types in the visualization and plots. Hide cell links from this table view. Update colors for individual cell types. Download CSVs
+                            for the current configurations of cell types, cell links, and cell type color map formatting.
+                        </div>
+                    </li>
+                    <li class="tutorial-callout tutorial-callout--3">
+                        <span class="tutorial-callout__icon" aria-hidden="true"></span>
+                        <div class="tutorial-callout__content">
+                            <span class="visually-hidden">The central Visualization panel is highlighted. </span>
+                            Use the Visualization panel to navigate the cells spatially:
+                            <ul>
+                                <li>Zoom in and out with the mouse pinwheel or pinch using the trackpad</li>
+                                <li>Pan using CTRL/CMD + mouse drag, right click + mouse drag, or use the keyboard arrows</li>
+                                <li>Rotate the visualization using CTRL/CMD + keyboard arrows or with a mouse drag</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="tutorial-callout tutorial-callout--4">
+                        <span class="tutorial-callout__icon" aria-hidden="true"></span>
+                        <div class="tutorial-callout__content">
+                            <span class="visually-hidden">The Violin Graph panel is highlighted. </span>
+                            This violin plot shows cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
+                        </div>
+                    </li>
+                    <li class="tutorial-callout tutorial-callout--5">
+                        <span class="tutorial-callout__icon" aria-hidden="true"></span>
+                        <div class="tutorial-callout__content">
+                            <span class="visually-hidden">The Histogram panel is highlighted. </span>
+                            This histogram plot shows the cell-to-nearest-anchor cell distance distributions categorized by each cell type in the dataset.
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
 
-    <div class="sceneEnd" id="scrollto11">
-      <!-- BotNav -->
-      <div class="story-pagination">
-        <nav class="botNav" aria-label="Story pagination">
-          <a href="story5.html" class="previous"
-            ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16">
-              <path
-                fill-rule="evenodd"
-                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-              />
-            </svg>
-            Story 5: <span class="prevTitle">Know Your Body Buddies</span></a
-          >
-          <!--  <a href="story3.html" class="next">Story 3: <span class="nextTitle">Learn about Visualizing Cells in the
-                    Human
-                    Body</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-arrow-right" viewBox="0 -3 16 16">
-                    <path fill-rule="evenodd"
-                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                </svg></a> -->
+        <section class="transition transition5 story-scene article-content" aria-labelledby="conclusion-title">
+            <h2 class="visually-hidden" id="conclusion-title">Conclusion</h2>
+            <picture class="transition__picture" aria-hidden="true">
+                <source
+                    type="image/webp"
+                    srcset="story6/img/transition5-960.webp 960w, story6/img/transition5-1920.webp 1920w, story6/img/transition5-3840.webp 3840w"
+                    sizes="100vw"
+                />
+                <img class="transition__background" src="story6/img/transition5-1920.webp" alt="" width="1920" height="1080" loading="lazy" decoding="async" />
+            </picture>
+            <div class="transition__overlay" aria-hidden="true"></div>
+            <p class="textbox-transition textbox-transition--statement">
+                There is strong external evidence that immune senescence is implicated in tissue reorganization. Thus, monitoring the effects of senescence on the
+                surrounding tissue, evaluating them, and treating them <span class="transition-emphasis">could vastly improve our health</span>.
+            </p>
+        </section>
+
+        <section class="resources" aria-labelledby="resources-title">
+                <div class="resources__content">
+                    <header class="resources__header article-header">
+                        <p class="resources__eyebrow" aria-hidden="true">Continue exploring</p>
+                        <h2 id="resources-title">Resources</h2>
+                        <p>Explore the data, tools, and research communities behind this story.</p>
+                    </header>
+
+                    <ul class="resource-cards">
+                        <li>
+                            <article class="resource-card">
+                                <div class="resource-card__logo" aria-hidden="true">
+                                    <span class="resource-card__brand resource-card__brand--hra" aria-hidden="true"></span>
+                                </div>
+                                <div class="resource-card__body">
+                                    <h3 class="resource-card__title">
+                                        <a class="resource-card__link" href="https://apps.humanatlas.io/cde/" target="_blank" rel="noopener noreferrer"
+                                            >Cell Distance Explorer<span class="visually-hidden"> opens in a new tab</span></a
+                                        >
+                                    </h3>
+                                    <p class="resource-card__description">Compute, visualize, and explore cell distance distributions in spatial omics datasets.</p>
+                                </div>
+                                <span class="resource-card__action" aria-hidden="true">
+                                    Open the app
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                                        <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </article>
+                        </li>
+                        <li>
+                            <article class="resource-card">
+                                <div class="resource-card__logo" aria-hidden="true">
+                                    <span class="resource-card__brand resource-card__brand--sennet" aria-hidden="true"></span>
+                                </div>
+                                <div class="resource-card__body">
+                                    <h3 class="resource-card__title">
+                                        <a class="resource-card__link" href="https://data.sennetconsortium.org/" target="_blank" rel="noopener noreferrer"
+                                            >SenNet Data Portal<span class="visually-hidden"> opens in a new tab</span></a
+                                        >
+                                    </h3>
+                                    <p class="resource-card__description">Explore and download cellular senescence datasets from across the SenNet consortium.</p>
+                                </div>
+                                <span class="resource-card__action" aria-hidden="true">
+                                    Explore data
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                                        <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </article>
+                        </li>
+                        <li>
+                            <article class="resource-card">
+                                <div class="resource-card__logo" aria-hidden="true">
+                                    <span class="resource-card__brand resource-card__brand--hra" aria-hidden="true"></span>
+                                </div>
+                                <div class="resource-card__body">
+                                    <h3 class="resource-card__title">
+                                        <a class="resource-card__link" href="https://humanatlas.io/" target="_blank" rel="noopener noreferrer"
+                                            >Human Reference Atlas<span class="visually-hidden"> opens in a new tab</span></a
+                                        >
+                                    </h3>
+                                    <p class="resource-card__description">Explore reference maps and tools for understanding the cells and structures of the human body.</p>
+                                </div>
+                                <span class="resource-card__action" aria-hidden="true">
+                                    Visit the atlas
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                                        <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </article>
+                        </li>
+                        <li>
+                            <article class="resource-card">
+                                <div class="resource-card__logo" aria-hidden="true">
+                                    <span class="resource-card__brand resource-card__brand--sennet" aria-hidden="true"></span>
+                                </div>
+                                <div class="resource-card__body">
+                                    <h3 class="resource-card__title">
+                                        <a class="resource-card__link" href="https://sennetconsortium.org/" target="_blank" rel="noopener noreferrer"
+                                            >SenNet Community<span class="visually-hidden"> opens in a new tab</span></a
+                                        >
+                                    </h3>
+                                    <p class="resource-card__description">Learn about the consortium and connect with the researchers advancing senescence science.</p>
+                                </div>
+                                <span class="resource-card__action" aria-hidden="true">
+                                    Meet the community
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                                        <path d="M14 5h5v5m0-5-9 9m7-1v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </article>
+                        </li>
+                    </ul>
+                </div>
+        </section>
+
+        <section class="acknowledgments" aria-labelledby="acknowledgments-title">
+                <div class="acknowledgments__content">
+                    <header class="acknowledgments__header article-header">
+                        <h2 id="acknowledgments-title">Acknowledgments</h2>
+                    </header>
+                    <ul class="acknowledgments__list">
+                        <li><strong>Data:</strong> <span>Anthony Fung and Rong Fan (Yale University), Andreas Bueckle (Indiana University)</span></li>
+                        <li><strong>Story authors:</strong> <span>Anthony Fung (Yale University), Todd Theriault, Elizabeth Maier, and Katy Börner (Indiana University)</span></li>
+                        <li>
+                            <strong>Cell Distance Explorer design and implementation:</strong>
+                            <span>Yashvardhan Jain, Elizabeth Maier, Katy Börner, Bruce W. Herr II, Daniel Bolin, and Edward Lu (Indiana University)</span>
+                        </li>
+                        <li><strong>Web design and development:</strong> <span>Edward Lu and Elizabeth Maier (Indiana University)</span></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="references" aria-labelledby="references-title">
+                <div class="content">
+                    <h2 class="header article-heading" id="references-title">References</h2>
+                    <ol class="reference-list">
+                        <li>
+                            <p>
+                                Bueckle, Andreas, Bruce W. Herr II, Lu Chen, Daniel Bolin, Danial Qaurooni, Michael Ginda, Yashvardhan Jain, Aleix Puig-Barbe, Kristin Ardlie,
+                                Fusheng Wang, and Katy Börner. “Cell Type Populations for 3D Anatomical Structures of the Human Reference Atlas.” <em>Scientific Data</em> 13, no.
+                                1 (2026): 716.
+                                <a href="https://doi.org/10.1038/s41597-026-06642-4">https://doi.org/10.1038/s41597-026-06642-4</a>.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Jain, Yashvardhan, Jodie Jepson, Roy Chen, Elizabeth Maier, Bruce W. Herr II, Aleix Puig-Barbe, Ellen M. Quardokus, Danial Qaurooni, Clarence Yapp,
+                                Samuel L. Ewing, Archibald Enninful, Negin Farzad, Andreas Bueckle, Quinn T. Easter, Bruno Matuck, Chenchen Zhu, Emma Marie Monte, Jeffrey M.
+                                Purkerson, Matthew Jehrio, Ravi S. Misra, Rong Fan, Fiona Ginty, Arivarasan Karunamurthy, Jean Fan, Martha Campbell-Thompson, Gloria S. Pryhuber,
+                                Kevin M. Byrd, John W. Hickey, and Katy Börner. “Exploring Endothelial Cell Environments across Organs in Spatially Resolved Omics Data.”
+                                <em>bioRxiv</em> preprint, September 25, 2025.
+                                <a href="https://doi.org/10.1101/2025.09.23.678129">https://doi.org/10.1101/2025.09.23.678129</a>.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Börner, Katy, Philip D. Blood, Jonathan C. Silverstein, Matthew Ruffalo, Rahul Satija, Sarah A. Teichmann, Gloria J. Pryhuber, Ravi S. Misra,
+                                Jeffrey M. Purkerson, Jean Fan, John W. Hickey, Gesmira Molla, Chuan Xu, Yun Zhang, Griffin M. Weber, Yashvardhan Jain, Danial Qaurooni, Yongxin
+                                Kong, HRA Team, Andreas Bueckle, and Bruce W. Herr II. “Human BioMolecular Atlas Program (HuBMAP): 3D
+                                Human Reference Atlas Construction and Usage.” <em>Nature Methods</em> 22, no. 4 (2025): 845–860.
+                                <a href="https://doi.org/10.1038/s41592-024-02563-5">https://doi.org/10.1038/s41592-024-02563-5</a>.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                National Institute on Aging. “Does Cellular Senescence Hold Secrets for Healthier Aging?” National Institutes of Health, July 13, 2021.
+                                <a href="https://www.nia.nih.gov/news/does-cellular-senescence-hold-secrets-healthier-aging"
+                                    >https://www.nia.nih.gov/news/does-cellular-senescence-hold-secrets-healthier-aging</a
+                                >.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Xu, Chengying, Zhimei Qiu, Qing Guo, Youyang Huang, Yongchao Zhao, and Ranzun Zhao. “The Role of Cellular Senescence in Cardiovascular Disease.”
+                                <em>Cell Death Discovery</em> 11 (2025): Article 431. Published October 6, 2025.
+                                <a href="https://doi.org/10.1038/s41420-025-02720-5">https://doi.org/10.1038/s41420-025-02720-5</a>.
+                            </p>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+        </main>
+
+        <nav class="site-story-navigation site-chrome" aria-label="Story navigation">
+            <ul class="site-story-navigation__list">
+                <li class="site-story-navigation__item">
+                    <a class="site-story-navigation__link" href="story5.html">
+                        <span class="site-story-navigation__arrow" aria-hidden="true">←</span>
+                        <span>Story 5: <span class="site-story-navigation__title">Know Your Body Buddies</span></span>
+                    </a>
+                </li>
+            </ul>
         </nav>
-      </div>
-    </div>
-    <footer class="site-footer site-chrome">
-      <nav class="site-footer__organizations" aria-label="Organizations">
-        <a class="site-footer__organization-link" href="https://humanatlas.io/" aria-label="Human Reference Atlas">
-          <img src="shared/assets/logos/hra-dark-large.svg" alt="" width="148" height="63" />
-          <span class="site-footer__organization-name">Human Reference Atlas</span>
-        </a>
-        <a class="site-footer__organization-link" href="https://cns.iu.edu/" aria-label="Cyberinfrastructure for Network Science Center">
-          <img src="shared/assets/logos/cns-dark-long.svg" alt="" width="239" height="40" />
-          <span class="site-footer__organization-name">Cyberinfrastructure for Network Science Center</span>
-        </a>
-      </nav>
-      <a class="site-footer__back-to-top" href="#main-content" data-back-to-top>
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
-          <path d="M12 19V5m0 0-6 6m6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        Back to top
-      </a>
-      <p class="site-footer__copyright">© 2026 Cyberinfrastructure for Network Science Center</p>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
-    <script type="module" src="story6/story6.js"></script>
-  </body>
+        <footer class="site-footer site-chrome">
+            <nav class="site-footer__organizations" aria-label="Organizations">
+                <a class="site-footer__organization-link" href="https://humanatlas.io/" aria-label="Human Reference Atlas">
+                    <img src="shared/assets/logos/hra-dark-large.svg" alt="" width="148" height="63" />
+                    <span class="site-footer__organization-name">Human Reference Atlas</span>
+                </a>
+                <a class="site-footer__organization-link" href="https://cns.iu.edu/" aria-label="Cyberinfrastructure for Network Science Center">
+                    <img src="shared/assets/logos/cns-dark-long.svg" alt="" width="239" height="40" />
+                    <span class="site-footer__organization-name">Cyberinfrastructure for Network Science Center</span>
+                </a>
+            </nav>
+            <a class="site-footer__back-to-top" href="#main-content" data-back-to-top>
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                    <path d="M12 19V5m0 0-6 6m6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Back to top
+            </a>
+            <p class="site-footer__copyright">© 2026 Cyberinfrastructure for Network Science Center</p>
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+        <script type="module" src="story6/story6.js"></script>
+    </body>
 </html>

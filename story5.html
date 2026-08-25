@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="shared/css/selection.css" />
     <link rel="stylesheet" href="shared/css/navigation.css" />
     <link rel="stylesheet" href="shared/css/footer.css" />
+    <link rel="stylesheet" href="stories/story5/accessibility.css" />
     <link rel="icon" type="image/x-icon" href="img/favicon.svg" />
 
     <link href="https://fonts.googleapis.com/css2?family=Cutive&display=swap" rel="stylesheet" />
@@ -76,10 +77,10 @@
     <!-- section header/intro -->
     <section class="intro" id="intro" style="background-color: white">
       <h3 class="overtext" id="introTypeLine"></h3>
-      <div class="fadeimage">
-        <img src="img/2-bodyintro1.png" />
-        <img src="img/2-bodyintro2.png" class="picture2 imagepart" />
-        <img src="img/telescope.svg" class="picture3 imagepart" style="width: 140px" />
+      <div class="fadeimage" role="img" aria-label="A view of the human body zooms toward its cells">
+        <img src="img/2-bodyintro1.png" alt="" />
+        <img src="img/2-bodyintro2.png" alt="" class="picture2 imagepart" />
+        <img src="img/telescope.svg" alt="" class="picture3 imagepart" style="width: 140px" />
       </div>
     </section>
 
@@ -95,16 +96,16 @@
           In which our heroes vanquish social anxiety, gain an extra dimension, and learn that it takes all types of cells to make a body!
         </p>
         <div class="popupsection">
-          <img class="introlineimg introcharcece" src="img/popup5left.svg" style="width: 12%" />
-          <img class="introlineimg introcharsquiggy" src="img/popup5right.svg" style="width: 10%" />
+          <img class="introlineimg introcharcece" src="img/popup5left.svg" alt="" style="width: 12%" />
+          <img class="introlineimg introcharsquiggy" src="img/popup5right.svg" alt="" style="width: 10%" />
         </div>
       </div>
     </section>
 
     <section class="section2">
       <div class="scene5-1">
-        <img src="img/5sign.svg" id="sign" class="imageparts" />
-        <img src="img/5move1.svg" id="move1" class="imageparts" />
+        <img src="img/5sign.svg" alt="" id="sign" class="imageparts" />
+        <img src="img/5move1.svg" alt="" id="move1" class="imageparts" />
       </div>
       <div class="talkbubble">
         <div class="squiggytalk5">
@@ -142,7 +143,7 @@
       <div class="talkbubble"></div>
 
       <div class="scene5-3">
-        <img src="img/5bubble1.svg" id="bubble1" class="imageparts" style="width: 40%; left: 32%; top: 10%; max-width: 500px; min-width: 100px" />
+        <img src="img/5bubble1.svg" alt="" id="bubble1" class="imageparts" style="width: 40%; left: 32%; top: 10%; max-width: 500px; min-width: 100px" />
       </div>
       <div class="talkbubble" id="showbubble1">
         <div class="mactalk2">
@@ -209,7 +210,7 @@
       <div class="talkbubble"></div>
 
       <div class="scene5-6">
-        <img src="img/5falling.svg" class="falling5" />
+        <img src="img/5falling.svg" alt="" class="falling5" />
       </div>
 
       <div class="talkbubble" id="scrollupto1">
@@ -220,13 +221,22 @@
 
       <div class="scene5-7" id="scrollto0">
         <div class="vid">
-          <img src="img/uparrowbutton.svg" class="toparrowbutton" id="toparrow1" onclick="scrollup1()" />
+          <button type="button" class="toparrowbutton story5-media-control" id="toparrow1" onclick="scrollup1()"
+            aria-label="Return to the previous story section">
+            <img src="img/uparrowbutton.svg" alt="" />
+          </button>
 
           <video playsinline autoplay muted class="video5" id="sample" onended="onend1()">
             <source src="img/video5-1.mov" />
           </video>
-          <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll1()" />
-          <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie1()" />
+          <button type="button" class="nextsectionbutton story5-media-control" onclick="scroll1()"
+            aria-label="Continue to the next story section">
+            <img src="img/downarrowbutton.svg" alt="" />
+          </button>
+          <button type="button" class="repeatbutton story5-media-control" onclick="repeatmovie1()"
+            aria-label="Replay this animation" aria-controls="sample">
+            <img src="img/repeatbutton.svg" alt="" />
+          </button>
         </div>
       </div>
 
@@ -252,12 +262,21 @@
 
       <div class="scene5-9" id="scrollto2">
         <div class="vid">
-          <img src="img/uparrowbutton.svg" class="toparrowbutton" id="toparrow2" onclick="scrollup2()" />
+          <button type="button" class="toparrowbutton story5-media-control" id="toparrow2" onclick="scrollup2()"
+            aria-label="Return to the previous story section">
+            <img src="img/uparrowbutton.svg" alt="" />
+          </button>
           <video playsinline autoplay muted class="video5" id="sample2" onended="onend2()">
             <source src="img/video5-2.mov" />
           </video>
-          <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll2()" />
-          <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie2()" />
+          <button type="button" class="nextsectionbutton story5-media-control" onclick="scroll2()"
+            aria-label="Continue to the next story section">
+            <img src="img/downarrowbutton.svg" alt="" />
+          </button>
+          <button type="button" class="repeatbutton story5-media-control" onclick="repeatmovie2()"
+            aria-label="Replay this animation" aria-controls="sample2">
+            <img src="img/repeatbutton.svg" alt="" />
+          </button>
         </div>
       </div>
 
@@ -280,13 +299,22 @@
 
       <div class="scene5-11" id="scrollto4">
         <div class="vid">
-          <img src="img/uparrowbutton.svg" class="toparrowbutton" id="toparrow3" onclick="scrollup3()" />
+          <button type="button" class="toparrowbutton story5-media-control" id="toparrow3" onclick="scrollup3()"
+            aria-label="Return to the previous story section">
+            <img src="img/uparrowbutton.svg" alt="" />
+          </button>
 
           <video playsinline autoplay muted class="video5" id="sample3" onended="onend3()">
             <source src="img/video5-3.mov" />
           </video>
-          <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll3()" />
-          <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie3()" />
+          <button type="button" class="nextsectionbutton story5-media-control" onclick="scroll3()"
+            aria-label="Continue to the next story section">
+            <img src="img/downarrowbutton.svg" alt="" />
+          </button>
+          <button type="button" class="repeatbutton story5-media-control" onclick="repeatmovie3()"
+            aria-label="Replay this animation" aria-controls="sample3">
+            <img src="img/repeatbutton.svg" alt="" />
+          </button>
         </div>
       </div>
 
@@ -321,13 +349,22 @@
 
       <div class="scene5-13" id="scrollto6">
         <div class="vid">
-          <img src="img/uparrowbutton.svg" class="toparrowbutton" id="toparrow4" onclick="scrollup4()" />
+          <button type="button" class="toparrowbutton story5-media-control" id="toparrow4" onclick="scrollup4()"
+            aria-label="Return to the previous story section">
+            <img src="img/uparrowbutton.svg" alt="" />
+          </button>
 
           <video playsinline autoplay muted class="video5" id="sample4" onended="onend4()">
             <source src="img/video5-4.mov" />
           </video>
-          <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll4()" />
-          <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie4()" />
+          <button type="button" class="nextsectionbutton story5-media-control" onclick="scroll4()"
+            aria-label="Continue to the next story section">
+            <img src="img/downarrowbutton.svg" alt="" />
+          </button>
+          <button type="button" class="repeatbutton story5-media-control" onclick="repeatmovie4()"
+            aria-label="Replay this animation" aria-controls="sample4">
+            <img src="img/repeatbutton.svg" alt="" />
+          </button>
         </div>
       </div>
 
@@ -351,13 +388,22 @@
 
       <div class="scene5-15" id="scrollto8">
         <div class="vid">
-          <img src="img/uparrowbutton.svg" class="toparrowbutton" id="toparrow5" onclick="scrollup5()" />
+          <button type="button" class="toparrowbutton story5-media-control" id="toparrow5" onclick="scrollup5()"
+            aria-label="Return to the previous story section">
+            <img src="img/uparrowbutton.svg" alt="" />
+          </button>
 
           <video playsinline autoplay muted class="video5" id="sample5" onended="onend5()">
             <source src="img/video5-5.mov" />
           </video>
-          <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll5()" />
-          <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie5()" />
+          <button type="button" class="nextsectionbutton story5-media-control" onclick="scroll5()"
+            aria-label="Continue to the next story section">
+            <img src="img/downarrowbutton.svg" alt="" />
+          </button>
+          <button type="button" class="repeatbutton story5-media-control" onclick="repeatmovie5()"
+            aria-label="Replay this animation" aria-controls="sample5">
+            <img src="img/repeatbutton.svg" alt="" />
+          </button>
         </div>
       </div>
 
@@ -792,13 +838,22 @@
 
       <div class="scene5-17" id="scrollto10">
         <div class="vid">
-          <img src="img/uparrowbutton.svg" class="toparrowbutton" id="toparrow6" onclick="scrollup6()" />
+          <button type="button" class="toparrowbutton story5-media-control" id="toparrow6" onclick="scrollup6()"
+            aria-label="Return to the previous story section">
+            <img src="img/uparrowbutton.svg" alt="" />
+          </button>
 
           <video playsinline autoplay muted class="video5" id="sample6" onended="onend6()">
             <source src="img/video5-6.mov" />
           </video>
-          <img src="img/downarrowbutton.svg" class="nextsectionbutton" onclick="scroll6()" />
-          <img src="img/repeatbutton.svg" class="repeatbutton" onclick="repeatmovie6()" />
+          <button type="button" class="nextsectionbutton story5-media-control" onclick="scroll6()"
+            aria-label="Continue to the next story section">
+            <img src="img/downarrowbutton.svg" alt="" />
+          </button>
+          <button type="button" class="repeatbutton story5-media-control" onclick="repeatmovie6()"
+            aria-label="Replay this animation" aria-controls="sample6">
+            <img src="img/repeatbutton.svg" alt="" />
+          </button>
         </div>
       </div>
 
@@ -809,31 +864,34 @@
           <p class="indexTitle" style="margin-bottom: 80px">External Links</p>
           <div class="ExternalLinkCards">
             <div class="ExternalLinkCard">
-              <img class="ExternalLinkImg" src="img/Link5-1.png" />
+              <img class="ExternalLinkImg" src="img/Link5-1.png" alt="" />
               <div class="ExternalLinkTitle">Cell-Type Annotation Video</div>
               <div class="ExternalLinkDesc">
                 If you want to see how researchers use the tools introduced in this scrollytale, check out this video on improving cell-type annotation.
               </div>
-              <a href="https://www.youtube.com/watch?v=KuZ_bwLHipM&t=1s" target="_blank" class="linkbutton"
-                >Watch Video <img src="img/UI Assets/arrow.svg" style="vertical-align: middle" />
+              <a href="https://www.youtube.com/watch?v=KuZ_bwLHipM&t=1s" target="_blank" rel="noopener noreferrer"
+                class="linkbutton" aria-label="Watch Video (opens in a new tab)"
+                >Watch Video <img src="img/UI Assets/arrow.svg" alt="" style="vertical-align: middle" />
               </a>
             </div>
 
             <div class="ExternalLinkCard">
-              <img class="ExternalLinkImg" src="img/Link5-2.png" />
+              <img class="ExternalLinkImg" src="img/Link5-2.png" alt="" />
               <div class="ExternalLinkTitle">HRA Animation</div>
               <div class="ExternalLinkDesc">Want to see more animation that explains features of the Human Reference Atlas?</div>
-              <a href="https://www.youtube.com/watch?v=zQeMgxo8n_U" target="_blank" class="linkbutton"
-                >Watch Video <img src="img/UI Assets/arrow.svg" style="vertical-align: middle" />
+              <a href="https://www.youtube.com/watch?v=zQeMgxo8n_U" target="_blank" rel="noopener noreferrer"
+                class="linkbutton" aria-label="Watch Video (opens in a new tab)"
+                >Watch Video <img src="img/UI Assets/arrow.svg" alt="" style="vertical-align: middle" />
               </a>
             </div>
 
             <div class="ExternalLinkCard">
-              <img class="ExternalLinkImg" src="img/Link5-3.png" />
+              <img class="ExternalLinkImg" src="img/Link5-3.png" alt="" />
               <div class="ExternalLinkTitle">Data Detangle</div>
               <div class="ExternalLinkDesc">Did you miss the previous episode?</div>
-              <a href="https://cns-iu.github.io/hra-scrollytelling/story3.html" target="_blank" class="linkbutton"
-                >Read Story <img src="img/UI Assets/arrow.svg" style="vertical-align: middle" />
+              <a href="https://cns-iu.github.io/hra-scrollytelling/story3.html" target="_blank" rel="noopener noreferrer"
+                class="linkbutton" aria-label="Read Story (opens in a new tab)"
+                >Read Story <img src="img/UI Assets/arrow.svg" alt="" style="vertical-align: middle" />
               </a>
             </div>
           </div>
@@ -843,7 +901,8 @@
         <div style="background-color: white !important">
           <div class="botNav">
             <a href="story4.html" class="previous"
-              ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16">
+              ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 -3 16 16"
+                aria-hidden="true" focusable="false">
                 <path
                   fill-rule="evenodd"
                   d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"

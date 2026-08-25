@@ -1,4 +1,6 @@
 const RESIZE_SETTLE_DELAY = 250;
+const COARSE_POINTER_QUERY = '(hover: none) and (pointer: coarse)';
+const LARGE_VIEWPORT_HEIGHT = '100lvh';
 
 /**
  * Configures stable ScrollTrigger measurement and responsive refresh behavior.
@@ -7,19 +9,19 @@ const RESIZE_SETTLE_DELAY = 250;
  * @returns {void}
  */
 export function setupLayoutStability(ScrollTrigger) {
-  updateStableViewportHeight();
-  setupSettledResizeRefresh(ScrollTrigger);
+    updateStableViewportHeight();
+    setupSettledResizeRefresh(ScrollTrigger);
 
-  if (!ScrollTrigger) {
-    return;
-  }
+    if (!ScrollTrigger) {
+        return;
+    }
 
-  ScrollTrigger.config({
-    ignoreMobileResize: true,
-    autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load',
-  });
+    ScrollTrigger.config({
+        ignoreMobileResize: true,
+        autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load',
+    });
 
-  setupInitialLayoutRefresh(ScrollTrigger);
+    setupInitialLayoutRefresh(ScrollTrigger);
 }
 
 /**
@@ -56,20 +58,20 @@ export function setupBackToTopAnimationReset(ScrollTrigger) {
  * @returns {void}
  */
 function setupInitialLayoutRefresh(ScrollTrigger) {
-  const refreshInitialLayout = async () => {
-    if (document.fonts?.ready) {
-      await document.fonts.ready;
+    const refreshInitialLayout = async () => {
+        if (document.fonts?.ready) {
+            await document.fonts.ready;
+        }
+
+        await nextPaint();
+        ScrollTrigger.refresh();
+    };
+
+    void refreshInitialLayout();
+
+    if (document.readyState !== 'complete') {
+        window.addEventListener('load', refreshInitialLayout, { once: true });
     }
-
-    await nextPaint();
-    ScrollTrigger.refresh();
-  };
-
-  void refreshInitialLayout();
-
-  if (document.readyState !== 'complete') {
-    window.addEventListener('load', refreshInitialLayout, { once: true });
-  }
 }
 
 /**
@@ -79,35 +81,39 @@ function setupInitialLayoutRefresh(ScrollTrigger) {
  * @returns {void}
  */
 function setupSettledResizeRefresh(ScrollTrigger) {
-  const coarsePointer = window.matchMedia('(hover: none) and (pointer: coarse)');
-  let previousWidth = window.innerWidth;
-  let resizeTimer;
+    const coarsePointer = window.matchMedia(COARSE_POINTER_QUERY);
+    let previousWidth = window.innerWidth;
+    let resizeTimer;
 
-  window.addEventListener('resize', () => {
-    const currentWidth = window.innerWidth;
-    const widthChanged = Math.abs(currentWidth - previousWidth) > 1;
+    window.addEventListener('resize', () => {
+        const currentWidth = window.innerWidth;
+        const widthChanged = Math.abs(currentWidth - previousWidth) > 1;
 
-    if (coarsePointer.matches && !widthChanged) {
-      return;
-    }
+        if (coarsePointer.matches && !widthChanged) {
+            return;
+        }
 
-    previousWidth = currentWidth;
-    window.clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(async () => {
-      updateStableViewportHeight();
-      await nextPaint();
-      ScrollTrigger?.refresh();
-    }, RESIZE_SETTLE_DELAY);
-  });
+        previousWidth = currentWidth;
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(async () => {
+            updateStableViewportHeight();
+            await nextPaint();
+            ScrollTrigger?.refresh();
+        }, RESIZE_SETTLE_DELAY);
+    });
 }
 
 /**
- * Stores a viewport height that changes only when responsive layout has settled.
+ * Stores a stable viewport height without exposing space behind retractable mobile browser controls.
  *
  * @returns {void}
  */
 function updateStableViewportHeight() {
-  document.body.style.setProperty('--story-viewport-height', `${window.innerHeight}px`);
+    const useLargeMobileViewport =
+        window.matchMedia(COARSE_POINTER_QUERY).matches && typeof CSS !== 'undefined' && CSS.supports('height', LARGE_VIEWPORT_HEIGHT);
+    const viewportHeight = useLargeMobileViewport ? LARGE_VIEWPORT_HEIGHT : `${window.innerHeight}px`;
+
+    document.body.style.setProperty('--story-viewport-height', viewportHeight);
 }
 
 /**
@@ -116,7 +122,7 @@ function updateStableViewportHeight() {
  * @returns {Promise<void>} A promise resolved after two animation frames
  */
 function nextPaint() {
-  return new Promise((resolve) => {
-    window.requestAnimationFrame(() => window.requestAnimationFrame(resolve));
-  });
+    return new Promise((resolve) => {
+        window.requestAnimationFrame(() => window.requestAnimationFrame(resolve));
+    });
 }

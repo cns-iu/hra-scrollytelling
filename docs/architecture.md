@@ -23,7 +23,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | --- | --- | --- |
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
-| Primary stories | `story1.html` through `story6.html` | Shared `style.css`, shared or story-specific scripts, `img/`, audio under `shared/assets/music/`, gradually organized files under `stories/`, and the dedicated `story6/` implementation |
+| Primary stories | `story1.html` through `story6.html` | Stories 1–5 retain shared legacy `style.css`; Story 6 uses only its dedicated `story6/` implementation and namespaced shared page chrome; other stories use shared or story-specific scripts, `img/`, audio under `shared/assets/music/`, and gradually organized files under `stories/` |
 | Prototypes | `img/test.html` and the compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations under `prototypes/` plus shared legacy files |
 | Generated game | `Game/index.html` | Everything under `Game/` |
 
@@ -148,6 +148,36 @@ The shared footer is semantic, has accessible names for functional images and li
 heights. Its back-to-top enhancement returns keyboard focus to the main-content target. On Story 1 through Story 5,
 `site-chrome--dark` keeps the footer on the fixed Dark treatment. The landing page and Story 6 allow the footer to
 follow the selected appearance. Story navigation remains a separate labeled `nav` landmark.
+
+## Reader View and linear fallbacks
+
+Every maintained page must support a complete linear reading experience for browser Reader View, unavailable
+JavaScript, reduced motion, short viewports, and high browser zoom. The semantic document is the canonical narrative;
+pinning, crossfades, overlays, and staged screenshots enhance that document only after their setup succeeds.
+
+Reader-oriented implementation belongs with each story because its animated visuals and fallback content differ.
+Shared expectations are:
+
+- Keep narrative copy and end matter in the primary `main` or `article` source order
+- Use native headings, paragraphs, figures, captions, and lists before extraction-oriented class hints
+- Exclude decorative animation layers from alternative output and provide one compact in-flow equivalent for an
+  informative animated visual
+- Default to readable, unpinned component layout and opt into fixed scene geometry with a setup-success class
+- Keep meaningful text in the accessibility tree when visual sequencing uses opacity
+- Verify Firefox Reader View after structure changes because extraction behavior is browser-owned and cannot be proven
+  by repository checks alone
+
+Story 6 is the reference implementation during future story migrations. It uses `article-content` and
+`article-header` as Firefox extraction hints, a compact mouse overview for the layered anatomy animation, semantic
+ordered instructions instead of tutorial screenshots, and an explicit Conclusion heading followed by conclusion
+copy. Its compact image dimension attributes are a documented Reader View sizing exception and must retain accurate
+aspect ratios.
+
+Story 6 is independent of the legacy root `style.css`. Its default scene layout is flowing and readable; the
+`story-animations-enabled` state applies viewport height and clipping only to the pinned cell, mouse, and transition
+scenes. The tissue comparison and CDE tutorial own their longer heights in their component styles so a broad enhanced
+selector cannot clip the organ cards or collapse the tutorial scroll range. `node tools/check-story6.mjs` protects
+these geometry, source-order, ID, ARIA, responsive-image, and deferred-image contracts.
 
 ## Migration workflow
 

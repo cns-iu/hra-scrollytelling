@@ -20,7 +20,7 @@ orphan-file deletion list: some animation and generated-application paths may be
 | `img/` | Shared story media, story-specific sequences, legacy UI assets, fonts, and prototypes | Unsorted legacy area |
 | `img/TestSeq/` | Image sequence used by a legacy story or prototype | Ownership must be verified |
 | `img/UI Assets/` | Legacy shared interface images and font files | Shared paths contain spaces; do not rename broadly |
-| `story6/img/` | Story 6 narrative artwork and responsive transition images | Story-owned; visible source credits are maintained in `story6.html` |
+| `story6/img/` | Story 6 narrative artwork plus responsive splash, transition, tissue, mouse, cell-card, and tutorial variants | Story-owned; visible source credits are maintained in `story6.html`; dependency-free generation tools live under `tools/` |
 | `stories/story4/config/` | Story 4 particle configuration reference | Organized; runtime currently uses the equivalent inline configuration |
 | `Game/` | Generated game images, icons, scripts, manifest, and offline files | Isolated; do not reorganize |
 
@@ -54,7 +54,13 @@ Remove the corresponding baseline entry from `tools/check-local-links.mjs` whene
 | --- | --- | --- |
 | `story6/img/cell-senescence-transition.webp` | National Institute on Aging, “Does Cellular Senescence Hold Secrets for Healthier Aging?” | Source is credited beside the image and in the references |
 | `story6/img/cell-changes.webp` | Chengying Xu, Zhimei Qiu, Qing Guo, Youyang Huang, Yongchao Zhao, and Ranzun Zhao, “The Role of Cellular Senescence in Cardiovascular Disease,” Figure 1 | CC BY 4.0; reformatted as WebP; source and license are linked beside the image |
-| `story6/img/cells.png` | Cropped derivative of the previously used Adobe Stock immune-cell collection | The stock-origin footer was removed from the visible crop; retain the corresponding license record outside the repository |
+| `story6/img/cells.png` and `cells-{640,1280}.png` | Cropped derivative of the previously used Adobe Stock immune-cell collection | The stock-origin footer was removed from the visible crop; retain the corresponding license record outside the repository; responsive files are generated derivatives |
+| `story6/img/*-{320,640,660,1280,1320}.png` | Corresponding full-resolution tissue, mouse, or tutorial PNG in the same directory | Generated responsive derivatives; regenerate with `node tools/generate-story6-images.mjs` |
+| `story6/img/splash-bg-{960,1920}.webp` | `story6/img/splash-bg.webp` | Generated responsive derivatives; regenerate with `node tools/generate-story6-splash.mjs --browser=/path/to/chromium` using an existing Chromium-compatible browser |
+| `story6/img/transition4-{960,1920,3840}.webp` | Planned post-CDE transition artwork | Reserved responsive source set for the next Story 6 section; intentionally retained before markup integration |
+
+The unused `CDE-Placeholder.png` and duplicate `cells.webp` were removed after repository-wide reference checks. The
+retained CDE datasets are not image assets and remain under `story6/data/`.
 
 ## Story migration register
 
@@ -66,7 +72,7 @@ Remove the corresponding baseline entry from `tools/check-local-links.mjs` whene
 | Story 3 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story3/` is reserved and embedded data remains deferred |
 | Story 4 | Page chrome and config adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; particle JSON ownership is established and embedded data remains deferred |
 | Story 5 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story5/` is reserved for future story-owned files |
-| Story 6 | Page chrome and shared assets adopted | Uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons; narrative implementation remains under `story6/` |
+| Story 6 | Story implementation and page chrome adopted | Independent of root `style.css`; uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, interface icons, and generated responsive story artwork; narrative implementation remains under `story6/` |
 | Prototypes | Partially organized | Scrollytelling Effects, Organ Example, and Visualizing Cells implementations moved under `prototypes/`; compatibility pages preserve published URLs; `img/test.html` remains in place |
 | Generated game | Excluded | Keep `Game/` intact |
 
