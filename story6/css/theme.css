@@ -109,24 +109,23 @@
     }
 }
 
-#six #main-content,
-#six .sceneEnd {
+#six #main-content {
     color: var(--story-color-text);
     background: var(--story-color-page);
 }
 
-#six :where(#main-content a, .sceneEnd a) {
+#six #main-content a {
     color: inherit;
 }
 
-#six #main-content ::selection,
-#six .sceneEnd ::selection {
-    color: var(--story-color-on-selection);
-    background: var(--story-color-selection);
+@media (forced-colors: none) {
+    #six #main-content ::selection {
+        color: var(--story-color-on-selection);
+        background: var(--story-color-selection);
+    }
 }
 
 #six #main-content :is(a, button, [tabindex]):focus-visible,
-#six .sceneEnd :is(a, button, [tabindex]):focus-visible,
 #six .references a:focus {
     outline-color: var(--story-color-focus);
 }
@@ -201,11 +200,8 @@
     background: var(--story-color-card);
 }
 
-#six .setup2,
 #six section.section4,
 #six .references,
-#six .story-pagination,
-#six .botNav,
 #six section.section5,
 #six .cde-tutorial-stage {
     background: var(--story-color-surface-low);
@@ -312,30 +308,7 @@
     border-color: var(--story-color-border-subtle);
 }
 
-#six .story-pagination {
-    border-top: 1px solid var(--story-color-border-subtle);
-}
-
-#six .botNav {
-    width: min(100%, 72rem);
-    color: var(--story-color-text);
-    font-family: var(--hra-font-plain);
-}
-
-#six .botNav .previous {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-height: 2.75rem;
-    color: inherit;
-    border-radius: 0.5rem;
-}
-
-#six .botNav .previous:hover {
-    background: color-mix(in srgb, currentColor 10%, transparent);
-}
-
-#six.story-animations-unavailable .page-header {
+#six:not(.story-animations-enabled) .page-header {
     --story-splash-overlay-opacity: 1;
 }
 
@@ -432,8 +405,7 @@
 @media (forced-colors: active) {
     #six,
     #six #main-content,
-    #six .sceneEnd,
-    #six :is(.page-header, .intro, .section2-2, .setup, .section3, .section4, .section5, .resources, .acknowledgments, .references, .story-pagination, .botNav) {
+    #six :is(.page-header, .intro, .section2-2, .setup, .section3, .section4, .section5, .resources, .acknowledgments, .references) {
         color: CanvasText;
         background: Canvas;
     }

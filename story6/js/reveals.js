@@ -1,39 +1,69 @@
+const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+
 /**
  * Initializes lightweight, non-pinned Story 6 reveal effects.
  *
- * @param {boolean} prefersReducedMotion Whether the user has requested reduced motion
  * @returns {void}
  */
-export function setupContentReveals(prefersReducedMotion) {
-  setupIllustrationReveals(prefersReducedMotion);
+export function setupContentReveals() {
+    setupIllustrationReveals();
 }
 
 /**
- * Reveals narrative illustrations once as they enter the viewport.
+ * Reveals narrative illustrations once while following live motion preferences.
  *
- * @param {boolean} prefersReducedMotion Whether the user has requested reduced motion
  * @returns {void}
  */
-function setupIllustrationReveals(prefersReducedMotion) {
-  const illustrations = document.querySelectorAll('.story-illustration');
+function setupIllustrationReveals() {
+    const illustrations = document.querySelectorAll('.story-illustration');
 
-  if (prefersReducedMotion || !('IntersectionObserver' in window) || illustrations.length === 0) {
-    return;
-  }
+    if (!('IntersectionObserver' in window) || illustrations.length === 0) {
+        return;
+    }
 
-  document.body.classList.add('illustration-reveals-enabled');
+    const motionPreference = window.matchMedia(REDUCED_MOTION_QUERY);
+    let observer = null;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+    const disableReveals = () => {
+        document.body.classList.remove('illustration-reveals-enabled');
+        observer?.disconnect();
+        observer = null;
+    };
+
+    const enableReveals = () => {
+        if (observer) {
+            return;
         }
-      });
-    },
-    { threshold: 0.15, rootMargin: '0px 0px -10%' },
-  );
 
-  illustrations.forEach((illustration) => observer.observe(illustration));
+        document.body.classList.add('illustration-reveals-enabled');
+        observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer?.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.15, rootMargin: '0px 0px -10%' },
+        );
+
+        illustrations.forEach((illustration) => observer.observe(illustration));
+    };
+
+    const syncRevealState = () => {
+        if (motionPreference.matches) {
+            disableReveals();
+        } else {
+            enableReveals();
+        }
+    };
+
+    syncRevealState();
+
+    if (typeof motionPreference.addEventListener === 'function') {
+        motionPreference.addEventListener('change', syncRevealState);
+    } else {
+        motionPreference.addListener(syncRevealState);
+    }
 }
