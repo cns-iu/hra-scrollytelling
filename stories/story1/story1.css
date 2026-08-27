@@ -332,9 +332,14 @@
 }
 
 #one .story1-scale-figure {
-    width: 100%;
-    padding: clamp(0.5rem, 1.5vw, 1rem);
-    margin-block: 2rem;
+    --story1-scale-width: min(calc(100vw - 2rem), var(--story1-hero-width));
+
+    position: relative;
+    width: var(--story1-scale-width);
+    max-width: none;
+    padding: 0;
+    margin-block: clamp(2rem, 5vw, 3rem);
+    margin-inline: calc((100% - var(--story1-scale-width)) / 2);
     overflow: hidden;
     border: 0.125rem solid var(--color-outline-variant);
     border-radius: var(--radius-card);
@@ -342,6 +347,7 @@
 }
 
 #one .story1-scale-figure .story1-scale-image {
+    display: block;
     width: 100%;
     height: auto;
     object-fit: contain;

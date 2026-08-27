@@ -1,7 +1,7 @@
 # Asset Map
 
 This inventory records current ownership boundaries and known reference problems. It is a migration aid, not an
-orphan-file deletion list: some animation and generated-application paths may be constructed at runtime.
+orphan-file deletion list: some animation paths may be constructed at runtime.
 
 ## Current asset areas
 
@@ -17,16 +17,24 @@ orphan-file deletion list: some animation and generated-application paths may be
 | `shared/assets/music/` | Shared story and prototype audio | Consolidated from the former root `music/` directory; `Piano.mp3` is used by Scrollytelling Effects, while maintained-story references to `dramatic.swf.mp3` remain commented out |
 | `shared/` | Namespaced page-chrome fonts, styles, and progressive-enhancement modules for maintained public pages | Menu and footer adopted by the landing page and all six stories |
 | `prototypes/` | Organized legacy prototype implementations and maintenance notes | Scrollytelling Effects, Organ Example, and Visualizing Cells organized; published entry URLs retained |
-| `img/` | Shared story media, story-specific sequences, legacy UI assets, fonts, and prototypes | Unsorted legacy area |
-| `img/TestSeq/` | Image sequence used by a legacy story or prototype | Ownership must be verified |
-| `img/UI Assets/` | Legacy shared interface images and font files | Shared paths contain spaces; do not rename broadly |
-| `story6/img/` | Story 6 narrative artwork plus responsive splash, transition, tissue, mouse, cell-card, and tutorial variants | Story-owned; visible source credits are maintained in `story6.html`; dependency-free generation tools live under `tools/` |
-| `stories/story4/config/` | Story 4 particle configuration reference | Organized; runtime currently uses the equivalent inline configuration |
-| `Game/` | Generated game images, icons, scripts, manifest, and offline files | Isolated; do not reorganize |
+| `img/` | Shared story media, story-specific sequences, legacy UI assets, fonts, and prototypes | Audited for repository consumers; remaining files are referenced by maintained stories or retained prototypes |
+| `img/UI Assets/` | Legacy Story 1 font and background, shared story arrow, and landing-page logos | Audited; unreferenced navigation, counter, funder, and social assets removed; retained paths contain spaces and must not be renamed broadly |
+| `prototypes/scrollytelling-effects/wc.js` | Bundled CCF Organ Info web component | Organized; Scrollytelling Effects prototype only |
+| `stories/story1/images/` | Story 1-owned narrative images | Organized; contains the HRA macro-to-micro scale overview used only by Story 1 |
+| `stories/story2/images/` | Story 2-owned narrative and quiz images | Organized; contains character scenes, ASCT+B Reporter artwork, quiz icons, and resource thumbnails used only by Story 2 |
+| `stories/story3/images/` | Story 3-owned narrative and resource images | Organized; contains character scenes, collision-state artwork, kidney variations, and resource thumbnails used only by Story 3 |
+| `stories/story4/` | Story 4 particle runtime, initializer, Bootstrap starter hook, and configuration | Organized; Story 4 only |
+| `stories/story6/img/` | Story 6 narrative artwork plus responsive splash, transition, tissue, mouse, cell-card, and tutorial variants | Story-owned; visible source credits are maintained in `story6.html`; dependency-free generation tools live under `tools/` |
 
-At the time of this inventory, `img/` contains 211 tracked content files and is the largest working-tree asset area. The
-repository also contains large video, model, sprite-sheet, and embedded-data files. File size alone is not evidence
-that an asset is unused.
+The former root `js/` directory was removed after its consumed Story 4 and prototype files were organized. Its five
+remaining files were unconsumed: two standalone legacy scripts and three redundant fragments already embedded in the
+prototype's `wc.js` bundle.
+
+After the repository-wide unused-asset audit and Story 3 image migration, `img/` contains 82 tracked content files.
+The audit removed 85 files with no HTML, CSS, JavaScript, JSON, manifest, inline SVG, or dynamically constructed path
+consumer, including the orphaned `TestSeq/` image sequence. Story 3 then moved 23 confirmed story-specific assets to
+its owned image directory. The repository still contains large video, model, and embedded-data files; file size alone
+is not evidence that an asset is unused.
 
 ## Known unresolved references
 
@@ -52,29 +60,28 @@ Remove the corresponding baseline entry from `tools/check-local-links.mjs` whene
 
 | Asset | Source | Notes |
 | --- | --- | --- |
-| `story6/img/cell-senescence-transition.webp` | National Institute on Aging, “Does Cellular Senescence Hold Secrets for Healthier Aging?” | Source is credited beside the image and in the references |
-| `story6/img/cell-changes.webp` | Chengying Xu, Zhimei Qiu, Qing Guo, Youyang Huang, Yongchao Zhao, and Ranzun Zhao, “The Role of Cellular Senescence in Cardiovascular Disease,” Figure 1 | CC BY 4.0; reformatted as WebP; source and license are linked beside the image |
-| `story6/img/cells.png` and `cells-{640,1280}.png` | Cropped derivative of the previously used Adobe Stock immune-cell collection | The stock-origin footer was removed from the visible crop; retain the corresponding license record outside the repository; responsive files are generated derivatives |
-| `story6/img/*-{320,640,660,1280,1320}.png` | Corresponding full-resolution tissue, mouse, or tutorial PNG in the same directory | Generated responsive derivatives; regenerate with `node tools/generate-story6-images.mjs` |
-| `story6/img/splash-bg-{960,1920}.webp` | `story6/img/splash-bg.webp` | Generated responsive derivatives; regenerate with `node tools/generate-story6-splash.mjs --browser=/path/to/chromium` using an existing Chromium-compatible browser |
-| `story6/img/transition4-{960,1920,3840}.webp` | Planned post-CDE transition artwork | Reserved responsive source set for the next Story 6 section; intentionally retained before markup integration |
+| `stories/story6/img/cell-senescence-transition.webp` | National Institute on Aging, “Does Cellular Senescence Hold Secrets for Healthier Aging?” | Source is credited beside the image and in the references |
+| `stories/story6/img/cell-changes.webp` | Chengying Xu, Zhimei Qiu, Qing Guo, Youyang Huang, Yongchao Zhao, and Ranzun Zhao, “The Role of Cellular Senescence in Cardiovascular Disease,” Figure 1 | CC BY 4.0; reformatted as WebP; source and license are linked beside the image |
+| `stories/story6/img/cells.png` and `cells-{640,1280}.png` | Cropped derivative of the previously used Adobe Stock immune-cell collection | The stock-origin footer was removed from the visible crop; retain the corresponding license record outside the repository; responsive files are generated derivatives |
+| `stories/story6/img/*-{320,640,660,1280,1320}.png` | Corresponding full-resolution tissue, mouse, or tutorial PNG in the same directory | Generated responsive derivatives; regenerate with `node tools/generate-story6-images.mjs` |
+| `stories/story6/img/splash-bg-{960,1920}.webp` | `stories/story6/img/splash-bg.webp` | Generated responsive derivatives; regenerate with `node tools/generate-story6-splash.mjs --browser=/path/to/chromium` using an existing Chromium-compatible browser |
+| `stories/story6/img/transition4-{960,1920,3840}.webp` | Planned post-CDE transition artwork | Reserved responsive source set for the next Story 6 section; intentionally retained before markup integration |
 
 The unused `CDE-Placeholder.png` and duplicate `cells.webp` were removed after repository-wide reference checks. The
-retained CDE datasets are not image assets and remain under `story6/data/`.
+retained CDE datasets are not image assets and remain under `stories/story6/data/`.
 
 ## Story migration register
 
 | Area | Status | Notes |
 | --- | --- | --- |
 | Landing page | Organized | Owned by `index.html`, `landing/`, shared HRA fonts, and shared page chrome |
-| Story 1 | Page chrome and accessibility behavior adopted | Uses the navigation-only shared Menu, shared story navigation, and fixed-Dark shared footer; `stories/story1/` owns Story 1 presentation and motion behavior |
-| Story 2 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story2/` is reserved for future story-owned files |
-| Story 3 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story3/` is reserved and embedded data remains deferred |
-| Story 4 | Page chrome and config adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; particle JSON ownership is established and embedded data remains deferred |
+| Story 1 | Partially organized | Uses the navigation-only shared Menu, shared story navigation, and fixed-Dark shared footer; `stories/story1/` owns Story 1 presentation, motion behavior, and its confirmed story-specific image; shared prototype imagery and Story 1 video remain under `img/` |
+| Story 2 | Partially organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story2/` owns its quiz and confirmed story-specific images; body-intro artwork shared with Stories 3 and 5 and common interface images remain under `img/` |
+| Story 3 | Images organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story3/` owns its confirmed story-specific images, while shared body-intro and interface artwork remains under `img/`; embedded data remains deferred |
+| Story 4 | Page chrome and particle implementation adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; particle scripts and JSON ownership are established under `stories/story4/`, while embedded data remains deferred |
 | Story 5 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story5/` is reserved for future story-owned files |
-| Story 6 | Story implementation and page chrome adopted | Independent of root `style.css`; uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, interface icons, and generated responsive story artwork; narrative implementation remains under `story6/` |
+| Story 6 | Organized | Independent of root `style.css`; `stories/story6/` owns the narrative implementation, generated responsive artwork, retained datasets, and Story 6 contributor instructions; the page uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons |
 | Prototypes | Partially organized | Scrollytelling Effects, Organ Example, and Visualizing Cells implementations moved under `prototypes/`; compatibility pages preserve published URLs; `img/test.html` remains in place |
-| Generated game | Excluded | Keep `Game/` intact |
 
 ## Naming rules for future migrations
 

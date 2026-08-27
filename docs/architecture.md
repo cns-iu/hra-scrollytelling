@@ -10,10 +10,9 @@ The site is served directly by GitHub Pages, so file locations and letter casing
   prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
-- Treat `style.css`, `img/`, and `js/` as shared legacy resources until each consumer has been mapped.
+- Treat `style.css` and `img/` as shared legacy resources until each consumer has been mapped.
+- Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
-- Treat `Game/` as an isolated generated application. Preserve its directory name, internal paths, manifest, and service
-  worker scope.
 - Do not mechanically format `story3.html` or `story4.html`; both contain large embedded data.
 - Move files in small batches and run the local-reference checker before and after every batch.
 
@@ -23,9 +22,8 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | --- | --- | --- |
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
-| Primary stories | `story1.html` through `story6.html` | Stories 1–5 retain shared legacy `style.css`; Story 6 uses only its dedicated `story6/` implementation and namespaced shared page chrome; other stories use shared or story-specific scripts, `img/`, audio under `shared/assets/music/`, and gradually organized files under `stories/` |
+| Primary stories | `story1.html` through `story6.html` | Stories 1–5 retain shared legacy `style.css`; Story 6 uses only its dedicated `stories/story6/` implementation and namespaced shared page chrome; other stories use shared or story-specific scripts, `img/`, audio under `shared/assets/music/`, and gradually organized files under `stories/` |
 | Prototypes | `img/test.html` and the compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations under `prototypes/` plus shared legacy files |
-| Generated game | `Game/index.html` | Everything under `Game/` |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
 build step, but those existing runtime integrations must still be preserved during story migrations.
@@ -56,28 +54,35 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   └── index.html
 │   ├── scrollytelling-effects/
 │   │   ├── index.html
-│   │   └── scripts.js
+│   │   ├── scripts.js
+│   │   └── wc.js
 │   └── visualizing-cells/
 │       └── index.html
 ├── stories/
 │   ├── story1/
 │   │   ├── accessibility.css
+│   │   ├── images/
+│   │   │   └── hra-scale-overview.png
 │   │   ├── motion-control.js
 │   │   ├── reveals.js
 │   │   └── story1.css
 │   ├── story2/
-│   │   └── .gitkeep
+│   │   ├── images/
+│   │   ├── quiz.css
+│   │   └── quiz.js
 │   ├── story3/
-│   │   └── .gitkeep
+│   │   └── images/
 │   ├── story4/
+│   │   ├── app.js
+│   │   ├── particles.js
+│   │   ├── scripts.js
 │   │   └── config/
 │   │       └── particles.json
 │   └── story5/
 │       └── .gitkeep
 ├── docs/
 ├── tools/
-├── img/
-└── Game/
+└── img/
 ```
 
 The `img/` directory remains in place until each asset has a verified owner. The approved empty story directories use
@@ -91,6 +96,24 @@ Story 1 keeps presentation and responsive layout in `stories/story1/story1.css`,
 `stories/story1/accessibility.css`, animated-media controls in `stories/story1/motion-control.js`, and scroll-triggered
 progressive enhancement in `stories/story1/reveals.js`. Its reveals use browser APIs and do not require a third-party
 animation runtime.
+
+Story 2 contains 11 repeated ID values across its large inline SVG illustrations: `branchoff`, `Group-3`, `Group-4`,
+`Group`, `Group-5`, `Rectangle`, `Oval`, `Combined-Shape`, `Group-2`, `Path`, and `Triangle`. These generated drawing
+labels predate the organized Story 2 asset directory and are not currently targeted by repository CSS, JavaScript,
+fragment links, or SVG `href` references. They remain invalid duplicate document IDs and must not be treated as an
+accepted markup pattern. Clean them up as a separate SVG-maintenance change, using unique story-scoped IDs or removing
+unneeded IDs, and visually regression-test every affected illustration before and after the change.
+
+Story 3 owns its confirmed story-specific narrative scenes, collision-state artwork, kidney variations, and resource
+thumbnails under `stories/story3/images/`. The body-intro layers and telescope shared with Stories 2 and 5, the common
+favicon, and the shared external-link arrow remain under `img/`. Story 3's large inline SVG markup and its rules in the
+legacy root `style.css` remain deferred to separate migrations.
+
+Story 4 owns its particle runtime, inline configuration initializer, and intentionally blank Bootstrap starter hook
+in `stories/story4/`. The Scrollytelling Effects prototype owns its complete `wc.js` web-component bundle alongside
+its prototype script. The former root `js/` directory was removed after repository-wide auditing confirmed that
+`jquery-3.6.3.min.js` and `magnifier.js` had no remaining consumers and that `runtime.js`, `polyfills.js`, and `main.js`
+were redundant build fragments embedded byte-for-byte within the consumed prototype bundle.
 
 ## Shared page chrome
 
@@ -182,8 +205,8 @@ these geometry, source-order, ID, ARIA, responsive-image, and deferred-image con
 ## Migration workflow
 
 Migrate one small story at a time. Start broad story migration with `story1.html`; defer broad edits to the
-embedded-data-heavy third and fourth stories. Isolated, verified files such as Story 4's particle configuration may
-move independently when their ownership is unambiguous.
+embedded-data-heavy third and fourth stories. Story 4's isolated particle implementation and configuration are
+organized under `stories/story4/`; its remaining embedded data stays deferred.
 
 1. Run `node tools/check-local-links.mjs --allow-known`.
 2. Identify every HTML, CSS, JavaScript, JSON, manifest, and service-worker consumer of the files being considered.
@@ -209,8 +232,8 @@ and behavior under `shared/`, while retaining the semantic markup in each HTML e
 footer, or story-navigation rules only after a repository-wide search confirms that no maintained or prototype page
 still consumes them.
 
-Prototype pages and `Game/` are excluded from this rollout. Their existing navigation and footer behavior must not
-change incidentally.
+Prototype pages are excluded from this rollout. Their existing navigation and footer behavior must not change
+incidentally.
 
 ## Reviewable commit boundaries
 

@@ -82,7 +82,7 @@ inside `.site-chrome` roots so legacy story content is never recolored by this c
 ## Ownership
 
 Selectors are prefixed with `site-` or `site-chrome-` to avoid collisions with legacy story rules. Story-specific
-layout, artwork, animation, and color rules do not belong here. Prototype pages and `Game/` are not consumers.
+layout, artwork, animation, and color rules do not belong here. Prototype pages are not consumers.
 
 The shared Menu and footer are the single maintained implementations for every public page. Do not add page-specific
 copies of their layout, interaction, appearance, or accessibility rules.

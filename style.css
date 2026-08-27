@@ -529,11 +529,6 @@ h1 {
   background-color: #ffffff;
 }
 
-#zero #section5 {
-  text-align: center;
-  background-color: #ffffff;
-}
-
 /* styles for magnifier*/
 .magnifier {
   text-align: center;
@@ -1090,7 +1085,7 @@ h1 {
 }
 
 #two .scene1 {
-  background-image: url('img/2scene1.svg');
+  background-image: url('stories/story2/images/squiggy-and-cece-at-home.svg');
   background-color: black;
   height: 100vh;
   margin: 0;
@@ -1103,7 +1098,7 @@ h1 {
 }
 
 #two .scene1-1 {
-  background-image: url('img/2scene2.svg');
+  background-image: url('stories/story2/images/squiggy-and-cece-close-up.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1116,7 +1111,7 @@ h1 {
 }
 
 #two .scene1-2 {
-  background-image: url('img/2scene1.svg');
+  background-image: url('stories/story2/images/squiggy-and-cece-at-home.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1129,7 +1124,7 @@ h1 {
 }
 
 #two .scene2 {
-  background-image: url('img/2scene2-2.svg');
+  background-image: url('stories/story2/images/cece-reassures-squiggy.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1183,7 +1178,7 @@ h1 {
 }
 
 #two .scene7 {
-  background-image: url('img/2scene5.svg');
+  background-image: url('stories/story2/images/biomarker-discussion.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1195,7 +1190,7 @@ h1 {
 }
 
 #two .scene8 {
-  background-image: url('img/2scene6.svg');
+  background-image: url('stories/story2/images/squiggy-discovers-tag.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1207,7 +1202,7 @@ h1 {
 }
 
 #two .scene9 {
-  background-image: url('img/2scene7.svg');
+  background-image: url('stories/story2/images/squiggy-biomarker-tag.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1219,7 +1214,7 @@ h1 {
 }
 
 #two .scene10 {
-  background-image: url('img/2scene8.svg');
+  background-image: url('stories/story2/images/biomarker-tag-close-up.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1231,7 +1226,7 @@ h1 {
 }
 
 #two .scene11 {
-  background-image: url('img/2scene9.svg');
+  background-image: url('stories/story2/images/squiggy-asks-about-biomarkers.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1243,7 +1238,7 @@ h1 {
 }
 
 #two .scene12 {
-  background-image: url('img/2scene10.svg');
+  background-image: url('stories/story2/images/squiggy-refuses-reporter-ride.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1255,7 +1250,7 @@ h1 {
 }
 
 #two .scene13 {
-  background-image: url('img/2scene11.svg');
+  background-image: url('stories/story2/images/squiggy-and-cece-address-readers.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1493,7 +1488,7 @@ h1 {
   width: 100vw;
   height: 100vh;
   z-index: -1;
-  background-image: url('img/2scene1.svg');
+  background-image: url('stories/story2/images/squiggy-and-cece-at-home.svg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
@@ -1581,7 +1576,7 @@ h1 {
 }
 
 #two .scene3-1 {
-  background-image: url('img/3-4.svg');
+  background-image: url('stories/story3/images/squiggy-greets-cece.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1594,7 +1589,7 @@ h1 {
 }
 
 #two .scene3-2 {
-  background-image: url('img/3-5.svg');
+  background-image: url('stories/story3/images/cece-discovers-kidney-tissue.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1607,7 +1602,7 @@ h1 {
 }
 
 #two .scene3-3 {
-  background-image: url('img/3-6.svg');
+  background-image: url('stories/story3/images/squiggy-suggests-kidney-placement.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1620,7 +1615,7 @@ h1 {
 }
 
 #two .scene3-4 {
-  background-image: url('img/3-7.svg');
+  background-image: url('stories/story3/images/kidney-variation-background.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1633,7 +1628,7 @@ h1 {
 }
 
 #two .scene3-5 {
-  background-image: url('img/3-6-1.svg');
+  background-image: url('stories/story3/images/squiggy-reconsiders-guessing.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1702,7 +1697,7 @@ h1 {
 }
 
 #two .scene3-7 {
-  background-image: url('img/3-9.svg');
+  background-image: url('stories/story3/images/rui-registration-scene.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1715,7 +1710,7 @@ h1 {
 }
 
 #two .scene3-8 {
-  background-image: url('img/3-10.svg');
+  background-image: url('stories/story3/images/registered-tissue-data-scene.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -2241,7 +2236,7 @@ h1 {
   margin: 0;
   text-align: center;
   color: white;
-  background: linear-gradient(270deg, #ff0037, #d4143e, #e5718a);
+  background: linear-gradient(270deg, var(--HRA-blue), var(--HRA-blue2), var(--HRA-blue));
   background-size: 600% 600%;
 
   -webkit-animation: AnimationName 30s ease infinite;
@@ -3640,20 +3635,6 @@ footer a {
   left: 55%;
   top: 33%;
   opacity: 0;
-}
-
-/* drag drop   */
-.dropbox {
-  cursor: pointer;
-  margin-bottom: 100px;
-  width: 83px;
-  height: 46px;
-}
-
-#equation {
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
 }
 
 /*organ page*/

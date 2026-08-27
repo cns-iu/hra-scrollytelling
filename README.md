@@ -90,7 +90,7 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── prototypes/         # Organized legacy experiences and their maintenance notes
 │   ├── organ-example/
-│   ├── scrollytelling-effects/
+│   ├── scrollytelling-effects/ # Prototype behavior and bundled web component
 │   └── visualizing-cells/
 ├── docs/               # Architecture and asset-migration records
 ├── tools/              # Dependency-free repository validation
@@ -100,19 +100,20 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 ├── story4.html
 ├── story5.html
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
-├── story6/             # Story 6 styles, scripts, images, and retained datasets
 ├── stories/            # Gradually organized story-owned implementation files
-│   ├── story1/         # Story 1 styles, accessibility, and motion/reveal behavior
-│   ├── story2/         # Reserved Story 2 implementation folder
-│   ├── story3/         # Reserved Story 3 implementation folder
-│   ├── story4/
+│   ├── story1/         # Story 1 styles, scripts, and owned images
+│   ├── story2/         # Story 2 quiz and owned images
+│   ├── story3/         # Story 3-owned narrative and resource images
+│   ├── story4/         # Story 4 scripts and particle configuration
+│   │   ├── app.js
+│   │   ├── particles.js
+│   │   ├── scripts.js
 │   │   └── config/
 │   │       └── particles.json # Preserved particle configuration reference
-│   └── story5/         # Reserved Story 5 implementation folder
+│   ├── story5/         # Reserved Story 5 implementation folder
+│   └── story6/         # Story 6 styles, scripts, images, and retained datasets
 ├── style.css           # Legacy shared story styles
-├── img/                # Shared and story-specific visual assets
-├── js/                 # Story runtimes, utilities, and legacy scripts
-└── Game/               # Isolated generated game and offline runtime
+└── img/                # Shared and story-specific visual assets
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
@@ -212,7 +213,7 @@ Current behavior:
 - Story pages that offer Light, Dark, and System settings apply them only to shared page chrome; story artwork is
   unchanged.
 - Every maintained page uses the compact shared footer with organization links and an accessible back-to-top action.
-- Prototype pages and `Game/` remain outside the shared page-chrome rollout.
+- Prototype pages remain outside the shared page-chrome rollout.
 
 See [`docs/architecture.md`](docs/architecture.md#shared-page-chrome) for component boundaries and maintenance rules.
 
@@ -255,9 +256,11 @@ mobile-browser testing.
 - Preserve progressive enhancement and no-JavaScript access.
 - Keep landing-specific work isolated to `index.html` and `landing/`; place approved cross-page foundations under
   `shared/`.
-- Do not make broad edits to generated `Game/` files or large embedded story documents.
+- Do not make broad edits to large embedded story documents.
 - Avoid reorganizing files as part of unrelated feature work.
 - Explain and approve dependency or repository-structure changes before implementing them.
+- Use canonical `https://doi.org/<doi>` links for papers and scholarly publications whenever a DOI exists; retain an authoritative stable URL only when no DOI has been assigned
+- Include all paper, publication, and end-matter reference links in maintainability scans, and replace verified non-DOI publication links with their canonical DOI URLs
 - Keep this README and `AGENTS.md` synchronized with durable architecture and accessibility changes.
 - Follow the repository's branch, review, and release workflow for commits and publication.
 
@@ -286,6 +289,7 @@ Also verify:
 - Focus is visible and is not obscured.
 - No content is clipped after text-spacing changes.
 - Story structure and extraction-hint changes preserve the complete article in Firefox Reader View.
+- Paper, publication, and end-matter reference links use canonical DOI URLs when a verified DOI is available
 
 ## Known technical debt
 
@@ -293,7 +297,8 @@ Also verify:
 - Assets for multiple stories are mixed together under `img/`.
 - Several filenames contain spaces, making path changes more error-prone.
 - Some story documents contain large embedded image data.
-- The generated game has its own service worker and runtime assumptions.
+- Story 2's inline SVG artwork contains 11 pre-existing repeated ID values; they are not current interaction targets,
+  but a dedicated cleanup requires visual regression testing
 - Some legacy demonstrations and prototype assets still share root files with maintained stories.
 
 Repository cleanup should be performed incrementally, with local-reference checks before and after every move.
