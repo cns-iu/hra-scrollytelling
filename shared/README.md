@@ -29,6 +29,10 @@ only navigation and back-to-top behavior:
 <script type="module" src="shared/js/navigation-only.js"></script>
 ```
 
+All prototype entry points consume the approved font declarations here through
+`prototypes/shared/typography.css`, which defaults prototype-owned content to Nunito Sans. Prototype-owned rules may
+select Metropolis where specified.
+
 The current page may omit a component stylesheet it does not use. Font declarations and typography roles must load
 before component tokens and styles.
 

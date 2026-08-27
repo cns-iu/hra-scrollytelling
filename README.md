@@ -94,7 +94,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   ├── drag-and-drop/           # Drag-and-drop answer demo and owned assets
 │   ├── organ-example/           # Prototype implementation and owned images
 │   ├── scrollytelling-effects/  # Prototype code, images, and model
-│   ├── shared/                   # Shared prototype assets and chrome adjustments
+│   ├── shared/                   # Shared prototype chrome and typography
 │   └── visualizing-cells/       # Prototype implementation, images, and video
 ├── docs/               # Architecture and asset-migration records
 ├── tools/              # Dependency-free repository validation

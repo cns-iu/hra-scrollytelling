@@ -65,6 +65,9 @@ follow their appearance selection. Do not remove a legacy component rule until r
 no maintained or prototype page consumes it. The Scrollytelling Effects, Organ Example, and Visualizing Cells
 prototypes explicitly adopt the navigation-only shared Menu and fixed-Dark shared footer. They remain outside shared
 appearance behavior, and prototype-owned content and navigation must stay isolated from shared page chrome.
+All prototype entry points load `shared/css/fonts.css` and `prototypes/shared/typography.css`; prototype-owned body
+text defaults to Nunito Sans, while prototype-owned rules may select Metropolis where specified. Do not hand-edit
+generated web-component internals to override their encapsulated typography.
 
 All maintained pages use the default shared Menu FAB geometry. Keep story-specific box-model resets scoped to
 story-owned surfaces so they do not override `.site-chrome` component sizing.

@@ -67,7 +67,7 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   └── wc.js
 │   ├── shared/
 │   │   ├── chrome.css
-│   │   └── images/
+│   │   └── typography.css
 │   └── visualizing-cells/
 │       ├── images/
 │       ├── index.html
@@ -145,6 +145,10 @@ Each retained prototype owns its exclusive images, videos, models, and dedicated
 Prototype-only shared artwork lives under `prototypes/shared/`; assets shared with a maintained story live under
 `shared/assets/`. Organ Example and the drag-and-drop answer demo are independent of the root legacy `style.css`;
 Visualizing Cells and Scrollytelling Effects remain intentional consumers during their staged migrations.
+All prototype entry points load `shared/css/fonts.css` and use `prototypes/shared/typography.css` to default
+prototype-owned content to Nunito Sans. Prototype-owned styles may select Metropolis where specified. The generated
+Scrollytelling Effects web-component bundle retains its encapsulated internal typography and is not hand-edited for
+page-level font alignment.
 
 ## Shared page chrome
 
