@@ -71,7 +71,7 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   ├── quiz.css
 │   │   └── quiz.js
 │   ├── story3/
-│   │   └── .gitkeep
+│   │   └── images/
 │   ├── story4/
 │   │   ├── app.js
 │   │   ├── particles.js
@@ -103,6 +103,11 @@ labels predate the organized Story 2 asset directory and are not currently targe
 fragment links, or SVG `href` references. They remain invalid duplicate document IDs and must not be treated as an
 accepted markup pattern. Clean them up as a separate SVG-maintenance change, using unique story-scoped IDs or removing
 unneeded IDs, and visually regression-test every affected illustration before and after the change.
+
+Story 3 owns its confirmed story-specific narrative scenes, collision-state artwork, kidney variations, and resource
+thumbnails under `stories/story3/images/`. The body-intro layers and telescope shared with Stories 2 and 5, the common
+favicon, and the shared external-link arrow remain under `img/`. Story 3's large inline SVG markup and its rules in the
+legacy root `style.css` remain deferred to separate migrations.
 
 Story 4 owns its particle runtime, inline configuration initializer, and intentionally blank Bootstrap starter hook
 in `stories/story4/`. The Scrollytelling Effects prototype owns its complete `wc.js` web-component bundle alongside

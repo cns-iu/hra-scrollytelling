@@ -103,7 +103,7 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 ├── stories/            # Gradually organized story-owned implementation files
 │   ├── story1/         # Story 1 styles, scripts, and owned images
 │   ├── story2/         # Story 2 quiz and owned images
-│   ├── story3/         # Reserved Story 3 implementation folder
+│   ├── story3/         # Story 3-owned narrative and resource images
 │   ├── story4/         # Story 4 scripts and particle configuration
 │   │   ├── app.js
 │   │   ├── particles.js

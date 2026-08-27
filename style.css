@@ -1576,7 +1576,7 @@ h1 {
 }
 
 #two .scene3-1 {
-  background-image: url('img/3-4.svg');
+  background-image: url('stories/story3/images/squiggy-greets-cece.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1589,7 +1589,7 @@ h1 {
 }
 
 #two .scene3-2 {
-  background-image: url('img/3-5.svg');
+  background-image: url('stories/story3/images/cece-discovers-kidney-tissue.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1602,7 +1602,7 @@ h1 {
 }
 
 #two .scene3-3 {
-  background-image: url('img/3-6.svg');
+  background-image: url('stories/story3/images/squiggy-suggests-kidney-placement.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1615,7 +1615,7 @@ h1 {
 }
 
 #two .scene3-4 {
-  background-image: url('img/3-7.svg');
+  background-image: url('stories/story3/images/kidney-variation-background.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1628,7 +1628,7 @@ h1 {
 }
 
 #two .scene3-5 {
-  background-image: url('img/3-6-1.svg');
+  background-image: url('stories/story3/images/squiggy-reconsiders-guessing.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1697,7 +1697,7 @@ h1 {
 }
 
 #two .scene3-7 {
-  background-image: url('img/3-9.svg');
+  background-image: url('stories/story3/images/rui-registration-scene.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1710,7 +1710,7 @@ h1 {
 }
 
 #two .scene3-8 {
-  background-image: url('img/3-10.svg');
+  background-image: url('stories/story3/images/registered-tissue-data-scene.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
