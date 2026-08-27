@@ -8,14 +8,13 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | Location | Current role | Migration status |
 | --- | --- | --- |
 | `landing/assets/backgrounds/` | Light and Dark decorative splash artwork | Organized; landing page only |
-| `landing/assets/logos/` | Landing hero logos | Organized; landing page only |
 | `landing/assets/hero.png` | Previous single-theme hero artwork | Retained during redesign review; currently unreferenced |
 | `landing/assets/social-preview.png` | Canonical link-preview artwork | Organized; landing page only |
 | `landing/css/fonts.css` | Compatibility bridge for the former landing font URL | Retain while cached documents may request the old path |
 | `shared/assets/fonts/` | HRA WOFF2 files and their original licenses | Consolidated; shared by the landing page, maintained page chrome, and Story 6 |
 | `shared/assets/icons/` | Shared interface icons, favicon, and retained organ icon assets | Menu glyph and favicon shared by maintained pages; Story 6 info icon and organ inventory relocated from the former root `assets/` directory |
 | `shared/assets/images/` | Animated images shared by Story 1 and Scrollytelling Effects | Organized; contains the three shared GIFs |
-| `shared/assets/logos/` | Light- and dark-surface HRA, CNS, and SenNet organization marks | Shared by the canonical footer and Story 6 resource cards |
+| `shared/assets/logos/` | Light- and dark-surface HRA, CNS, and SenNet organization marks | Shared by the landing hero, canonical footer, and Story 6 resource cards |
 | `shared/assets/music/` | Shared story and prototype audio | Consolidated from the former root `music/` directory; `Piano.mp3` is used by Scrollytelling Effects, while maintained-story references to `dramatic.swf.mp3` remain commented out |
 | `shared/assets/videos/` | Video shared by Story 1 and Scrollytelling Effects | Organized; contains the shared `image4.mp4` asset |
 | `shared/` | Namespaced page chrome plus assets confirmed across maintained and prototype experiences | Menu and footer adopted by the landing page and all six stories; cross-experience media separated by type |

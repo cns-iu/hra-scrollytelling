@@ -53,7 +53,7 @@ Menu, appearance, contrast, and back-to-top modules.
   `data-contrast-state`. The shared module reveals the fieldset only after the control is functional.
 - Use `aria-current="page"` on the current internal page link.
 - Keep the footer in a native `footer` and each link collection in an appropriately named `nav`.
-- Use the organization marks under `shared/assets/logos/` for the canonical footer.
+- Use the organization marks under `shared/assets/logos/` for the landing hero and canonical footer.
 - Add `site-chrome--dark` to footers on Story 1 through Story 5 so they use the fixed Dark treatment.
 - Add `data-back-to-top` to the footer's same-page link so the shared enhancement moves focus to the main target.
 - Keep previous and next story links in a separate `nav` labeled “Story navigation.”

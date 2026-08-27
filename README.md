@@ -71,7 +71,6 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   │   │   ├── splash-human-dark.png  # Dark-theme decorative splash artwork
 │   │   │   └── splash-human-light.png # Light-theme decorative splash artwork
 │   │   ├── hero.png            # Previous single-theme hero artwork
-│   │   ├── logos/              # Landing-page hero logos
 │   │   └── social-preview.png  # 1200×630 link-preview artwork
 │   ├── css/
 │   │   ├── fonts.css   # Compatibility bridge for cached landing pages
@@ -138,7 +137,8 @@ The landing page is deliberately separated from the legacy story implementation:
 - `index.html` owns its semantic structure and editorial content.
 - `landing/assets/backgrounds/` contains the Light and Dark decorative splash artwork.
 - `shared/assets/icons/menu.svg` is the Material Menu glyph used by the landing and shared-story extended FABs.
-- `shared/assets/logos/` contains the theme-aware organization marks used by the footer and Story 6 resource cards.
+- `shared/assets/logos/` contains the theme-aware organization marks used by the landing hero, footer, and Story 6
+  resource cards.
 - `shared/css/fonts.css` owns the self-hosted HRA font declarations and resilient typography stacks.
 - `landing/css/fonts.css` preserves the former font URL for cached landing-page documents.
 - `landing/css/tokens.css` owns light/dark HRA colors, semantic roles, and shared layout tokens.
