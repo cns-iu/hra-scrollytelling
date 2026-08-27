@@ -358,15 +358,6 @@ a {
   z-index: 9;
 }
 
-#one .introSection {
-  position: relative;
-  z-index: 9;
-}
-
-#one .section2 {
-  background-color: #fafafa;
-}
-
 h1 {
   text-align: center;
 }
@@ -582,11 +573,6 @@ h1 {
     flex-direction: column;
   }
 
-  #one .togetherimg {
-    margin: 0 !important;
-    width: 100% !important;
-  }
-
   .notop {
     margin-top: 0 !important;
   }
@@ -597,38 +583,6 @@ h1 {
   flex-grow: 1;
   margin: 15px;
   bottom: 0;
-}
-
-/* Story one */
-
-#one .section1 {
-  padding-bottom: 30px;
-  padding-top: 30px;
-}
-
-#one .togetherimg {
-  border-radius: 10px;
-  width: 50%;
-  height: 100%;
-  margin-top: 18px;
-  margin-left: 15px;
-}
-
-#one .section2 {
-  padding-bottom: 30px;
-  padding-top: 30px;
-}
-
-#one .cell1 {
-  opacity: 1;
-}
-
-#one .cell2 {
-  opacity: 1;
-}
-
-#one .cell3 {
-  opacity: 1;
 }
 
 /* Story two */

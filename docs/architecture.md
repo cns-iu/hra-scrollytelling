@@ -10,7 +10,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
   prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
-- Treat `style.css` as a shared legacy stylesheet consumed by Stories 1–5 and retained prototypes.
+- Treat `style.css` as a shared legacy stylesheet consumed by Stories 2–5 and retained prototypes.
 - Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
 - Do not mechanically format `story3.html` or `story4.html`; both contain large embedded data.
@@ -22,7 +22,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | --- | --- | --- |
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
-| Primary stories | `story1.html` through `story6.html` | Stories 1–5 retain shared legacy `style.css`; Story 6 uses only its dedicated `stories/story6/` implementation and namespaced shared page chrome; story media lives under its owning story or the appropriate shared asset directory |
+| Primary stories | `story1.html` through `story6.html` | Story 1 and Story 6 use dedicated implementations; Stories 2–5 retain shared legacy `style.css`; story media lives under its owning story or the appropriate shared asset directory |
 | Prototypes | Compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets and the root legacy stylesheet |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
@@ -111,7 +111,7 @@ points load `shared/css/fonts.css` directly; do not expand the compatibility fil
 Story 1 keeps presentation and responsive layout in `stories/story1/story1.css`, motion and user-preference states in
 `stories/story1/accessibility.css`, animated-media controls in `stories/story1/motion-control.js`, and scroll-triggered
 progressive enhancement in `stories/story1/reveals.js`. Its reveals use browser APIs and do not require a third-party
-animation runtime.
+animation runtime. Story 1 is independent of the root legacy `style.css`.
 
 Story 1 owns its video backgrounds under `stories/story1/videos/`. The GIF sequence and MP4 it shares with the
 Scrollytelling Effects prototype live under `shared/assets/images/` and `shared/assets/videos/`.

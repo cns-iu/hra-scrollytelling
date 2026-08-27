@@ -120,7 +120,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── images/
 │   │   └── videos/
 │   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
-└── style.css           # Legacy shared story styles
+└── style.css           # Legacy styles retained by Stories 2–5 and prototypes
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
