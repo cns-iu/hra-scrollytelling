@@ -12,9 +12,9 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `landing/assets/social-preview.png` | Canonical link-preview artwork | Organized; landing page only |
 | `landing/css/fonts.css` | Compatibility bridge for the former landing font URL | Retain while cached documents may request the old path |
 | `shared/assets/fonts/` | HRA WOFF2 files and their original licenses | Consolidated; shared by the landing page, maintained page chrome, and Story 6 |
-| `shared/assets/icons/` | Shared interface icons, favicon, and retained organ icon assets | Menu glyph and favicon shared by maintained pages; Story 6 info icon and organ inventory relocated from the former root `assets/` directory |
+| `shared/assets/icons/` | Shared interface icons, cross-device favicon set, and retained organ icon assets | Every HTML entry point declares the HRA brandmark SVG, multi-size ICO fallback, and 180-pixel Apple touch icon; Menu glyph, Story 6 info icon, and organ inventory also live here |
 | `shared/assets/images/` | Images shared across maintained stories and prototypes | Organized; contains three GIFs shared by Story 1 and Scrollytelling Effects, body-intro layers and telescope shared by Stories 2, 3, and 5, and the external-link arrow shared by Stories 1–5 |
-| `shared/assets/logos/` | Light- and dark-surface HRA, CNS, and SenNet organization marks | Shared by the landing hero, canonical footer, and Story 6 resource cards |
+| `shared/assets/logos/` | Consumed HRA, CNS, and SenNet organization marks | Shared by the landing hero, canonical footer, and Story 6 resource cards |
 | `shared/assets/music/` | Shared story and prototype audio | Consolidated from the former root `music/` directory; `Piano.mp3` is used by Scrollytelling Effects, while maintained-story references to `dramatic.swf.mp3` remain commented out |
 | `shared/assets/videos/` | Video shared by Story 1 and Scrollytelling Effects | Organized; contains the shared `image4.mp4` asset |
 | `shared/` | Namespaced page chrome plus assets confirmed across maintained and prototype experiences | Menu and footer adopted by the landing page and all six stories; cross-experience media separated by type |
@@ -25,7 +25,7 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `prototypes/scrollytelling-effects/images/` | Scrollytelling Effects artwork and backgrounds | Organized; prototype only |
 | `prototypes/scrollytelling-effects/models/` | Scrollytelling Effects 3D brain model | Organized; prototype only |
 | `prototypes/shared/chrome.css` | Minimal layout adjustments shared by organized prototypes | Used by Organ Example and Visualizing Cells alongside shared page chrome |
-| `prototypes/shared/images/` | Legacy logo shared by retained prototypes | Organized; consumed by Scrollytelling Effects, Organ Example, and Visualizing Cells |
+| `prototypes/shared/typography.css` | Shared prototype typography contract | Nunito Sans default across all prototype entry points; prototype-owned rules may specify Metropolis |
 | `prototypes/visualizing-cells/images/` | Visualizing Cells artwork | Organized; prototype only |
 | `prototypes/visualizing-cells/videos/` | Visualizing Cells background video | Organized; prototype only |
 | `prototypes/scrollytelling-effects/wc.js` | Bundled CCF Organ Info web component | Organized; Scrollytelling Effects prototype only |
@@ -53,9 +53,11 @@ shared directory selected according to actual consumers. File size alone is not 
 
 ## Font consolidation
 
-Metropolis is consolidated under `shared/assets/fonts/metropolis/`. Stories 1–5 and the Scrollytelling Effects,
-Visualizing Cells, and Organ Example prototypes load the 500 and 700 WOFF2 declarations from
-`shared/css/fonts.css`; the former root OTF and its legacy `style.css` declaration were removed.
+Metropolis is consolidated under `shared/assets/fonts/metropolis/`. Stories 1–5 and all four prototype entry points
+load the approved self-hosted declarations from `shared/css/fonts.css`; prototypes use Nunito Sans for body text and
+may use Metropolis where specified through prototype-owned rules. The default is applied through
+`prototypes/shared/typography.css`. The former root OTF and its legacy `style.css` declaration were removed. The
+generated Scrollytelling Effects web-component bundle retains its encapsulated internal typography.
 
 ## Known unresolved references
 

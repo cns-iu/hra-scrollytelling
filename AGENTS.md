@@ -41,6 +41,8 @@ footer, and end-of-story navigation use namespaced foundations under:
 - `shared/css/tokens.css` for component-scoped Light and Dark appearance roles.
 - `shared/css/fonts.css` and `shared/assets/fonts/` for approved HRA typography and licenses.
 - `shared/assets/icons/menu.svg` for the canonical Menu glyph.
+- `shared/assets/icons/favicon.svg`, `favicon.ico`, and `apple-touch-icon.png` for the cross-device favicon set used by
+  every HTML entry point.
 - `shared/assets/logos/` for the landing hero, canonical footer, and theme-aware organization marks.
 - `shared/css/selection.css` for theme-aware text selection scoped to shared page chrome.
 - `shared/css/navigation.css` for the skip link and native Menu disclosure.

@@ -49,6 +49,8 @@ Menu, appearance, contrast, and back-to-top modules.
 - Add `data-site-menu-panel`, `role="region"`, an accessible label, and `tabindex="-1"` to the disclosure panel.
 - Add `data-site-menu-close` to the explicit close button.
 - Use `shared/assets/icons/menu.svg` as the canonical visible Menu glyph.
+- Keep `favicon.svg`, `favicon.ico`, and `apple-touch-icon.png` together under `shared/assets/icons/`, and declare all
+  three on every HTML entry point.
 - On pages that support theme selection, add `data-site-theme-choice` to each System settings, Light, and Dark radio
   input and `data-site-theme-status` to the visually hidden polite status region.
 - Omit the complete appearance fieldset and theme-status region when appearance is not an available page option, and

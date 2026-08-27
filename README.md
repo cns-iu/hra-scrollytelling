@@ -83,7 +83,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 ├── shared/             # Landing-and-story page-chrome foundation
 │   ├── assets/
 │   │   ├── fonts/      # Self-hosted HRA webfonts and licenses
-│   │   ├── icons/      # Shared interface and retained organ icons
+│   │   ├── icons/      # Shared interface icons, favicon set, and retained organ icons
 │   │   ├── images/     # Images shared across maintained and prototype experiences
 │   │   ├── logos/      # Theme-aware organization logos
 │   │   ├── music/      # Shared story and prototype audio
