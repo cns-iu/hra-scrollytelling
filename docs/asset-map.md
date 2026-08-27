@@ -24,6 +24,9 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `prototypes/organ-example/styles.css` | Organ Example page, table, and illustration presentation | Organized; scoped to the prototype and independent of root `style.css` |
 | `prototypes/scrollytelling-effects/images/` | Scrollytelling Effects artwork and backgrounds | Organized; prototype only |
 | `prototypes/scrollytelling-effects/models/` | Scrollytelling Effects 3D brain model | Organized; prototype only |
+| `prototypes/scrollytelling-effects/styles.css` | Scrollytelling Effects page and demonstration presentation | Organized; scoped to the prototype and independent of root `style.css` |
+| `prototypes/scrollytelling-effects/effects.css` | Scrollytelling Effects interactive layouts and reveal animations | Organized; scoped to the prototype and independent of root `style.css` |
+| `prototypes/scrollytelling-effects/navigation.css` | Scrollytelling Effects right-side table of contents and content framing | Organized; prototype only |
 | `prototypes/shared/chrome.css` | Minimal layout adjustments shared by organized prototypes | Used by Organ Example and Visualizing Cells alongside shared page chrome |
 | `prototypes/shared/typography.css` | Shared prototype typography contract | Nunito Sans default across all prototype entry points; prototype-owned rules may specify Metropolis |
 | `prototypes/visualizing-cells/images/` | Visualizing Cells artwork | Organized; prototype only |
@@ -103,7 +106,7 @@ repository-wide reference checks.
 | Story 4 | Images and particle implementation organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story4/` owns its particle scripts, JSON configuration, and confirmed story-specific resource thumbnails, while embedded data remains deferred |
 | Story 5 | Media organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story5/` owns its accessibility stylesheet, confirmed story-specific images, and videos |
 | Story 6 | Organized | Independent of root `style.css`; `stories/story6/` owns the narrative implementation, generated responsive artwork, and Story 6 contributor instructions; the page uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons |
-| Prototypes | Implementations, media, and page chrome organized | All four prototype implementations own their files under `prototypes/`; Organ Example, Visualizing Cells, and Drag-and-Drop Answer Demo are independent of root `style.css`; Scrollytelling Effects, Organ Example, and Visualizing Cells use the navigation-only shared Menu with a fixed-Dark shared footer; compatibility pages preserve published URLs |
+| Prototypes | Implementations, media, and page chrome organized | All four prototype implementations own their files under `prototypes/` and are independent of root `style.css`; Scrollytelling Effects, Organ Example, and Visualizing Cells use the navigation-only shared Menu with a fixed-Dark shared footer; compatibility pages preserve published URLs |
 
 ## Naming rules for future migrations
 

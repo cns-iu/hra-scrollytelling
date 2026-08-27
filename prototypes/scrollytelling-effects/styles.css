@@ -1,0 +1,179 @@
+/* Scrollytelling Effects prototype page and demonstration presentation. */
+
+html {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+#zero {
+    --prototype-demo-background: #ffffff;
+    --prototype-demo-text: #0e1825;
+    --prototype-demo-inverse-background: #000000;
+    --prototype-demo-inverse-text: #ffffff;
+    --prototype-demo-link: #b20a2f;
+    --prototype-demo-link-hover: rgba(178, 10, 47, 0.08);
+    --prototype-demo-link-active: rgba(178, 10, 47, 0.16);
+    --prototype-demo-navigation: #eff2f5;
+    --prototype-demo-divider-start: #f8f8f8;
+    --prototype-demo-divider-end: #c1cae5;
+    --prototype-demo-effect-placeholder: #e6eaf0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#zero .prototype-page-header {
+    display: flex;
+    height: 100vh;
+    margin-block: auto;
+    flex-direction: column;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+#zero .prototype-page-header h1 {
+    opacity: 0.7;
+}
+
+#zero .prototype-main p {
+    color: var(--prototype-demo-text);
+    font-size: 1.125rem;
+}
+
+#zero .prototype-main a {
+    color: var(--prototype-demo-text);
+    text-decoration: none;
+}
+
+#zero .TitleDivide {
+    padding: 0.625rem;
+    margin-block: -0.3125rem 0;
+    background: linear-gradient(
+        270deg,
+        var(--prototype-demo-divider-start) 0%,
+        var(--prototype-demo-divider-end) 100%
+    );
+    font-family: var(--font-heading);
+    text-align: center;
+}
+
+#zero #glbtest {
+    height: 70vh;
+    padding: 0.625rem;
+    margin: auto;
+    background-color: var(--prototype-demo-background);
+}
+
+#zero #TiffExample,
+#zero #section2,
+#zero #section3,
+#zero #section4,
+#zero #fadetests {
+    text-align: center;
+}
+
+#zero #section2,
+#zero #section3,
+#zero #section4 {
+    background-color: var(--prototype-demo-background);
+}
+
+#zero #fadetests img {
+    max-width: 31.25rem;
+}
+
+#zero .togetheridv {
+    margin: 1.25rem;
+}
+
+#zero .audiobutton {
+    padding: 0.5rem;
+    border: 0;
+    border-radius: 0.25rem;
+    color: var(--prototype-demo-inverse-text);
+    background-color: var(--prototype-demo-inverse-background);
+    cursor: pointer;
+}
+
+#zero #section-movie {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 57vh;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#zero #section-movie > #video-background {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+}
+
+#zero #section-movie > span {
+    z-index: 1;
+    color: var(--prototype-demo-inverse-text);
+    font-size: 2.5rem;
+    text-shadow: 0.3125rem 0.3125rem 0.125rem var(--prototype-demo-inverse-background);
+}
+
+#zero .botNav {
+    display: flex;
+    padding: 1rem;
+    margin: auto;
+    justify-content: space-between;
+    background-color: var(--prototype-demo-navigation);
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+#zero .botNav .next,
+#zero .botNav .previous {
+    padding: 0.5625rem 1rem;
+    color: var(--prototype-demo-link);
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+#zero .botNav .next:hover,
+#zero .botNav .previous:hover {
+    background-color: var(--prototype-demo-link-hover);
+}
+
+#zero .botNav .next:active,
+#zero .botNav .previous:active {
+    background-color: var(--prototype-demo-link-active);
+}
+
+#zero .botNav .next:focus-visible,
+#zero .botNav .previous:focus-visible {
+    outline: 0.2rem solid var(--prototype-demo-link);
+    outline-offset: 0.125rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+@media (forced-colors: active) {
+    #zero .audiobutton,
+    #zero .botNav .next:focus-visible,
+    #zero .botNav .previous:focus-visible {
+        border: 0.0625rem solid ButtonText;
+    }
+}

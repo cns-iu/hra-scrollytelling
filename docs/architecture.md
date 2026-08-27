@@ -10,7 +10,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
   prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
-- Treat `style.css` as a shared legacy stylesheet consumed by Stories 2–5 and the Scrollytelling Effects prototype.
+- Treat `style.css` as a shared legacy stylesheet consumed only by Stories 2–5.
 - Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
 - Do not mechanically format `story3.html` or `story4.html`; both contain large embedded data.
@@ -23,7 +23,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
 | Primary stories | `story1.html` through `story6.html` | Story 1 and Story 6 use dedicated implementations; Stories 2–5 retain shared legacy `style.css`; story media lives under its owning story or the appropriate shared asset directory |
-| Prototypes | Compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets and the root legacy stylesheet |
+| Prototypes | Compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets; all prototype implementations are independent of the root legacy stylesheet |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
 build step, but those existing runtime integrations must still be preserved during story migrations.
@@ -60,10 +60,13 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   ├── index.html
 │   │   └── styles.css
 │   ├── scrollytelling-effects/
+│   │   ├── effects.css
 │   │   ├── images/
 │   │   ├── index.html
 │   │   ├── models/
+│   │   ├── navigation.css
 │   │   ├── scripts.js
+│   │   ├── styles.css
 │   │   └── wc.js
 │   ├── shared/
 │   │   ├── chrome.css
@@ -144,8 +147,9 @@ lives under `shared/assets/icons/`.
 
 Each retained prototype owns its exclusive images, videos, models, and dedicated presentation beneath its directory.
 Prototype-only shared artwork lives under `prototypes/shared/`; assets shared with a maintained story live under
-`shared/assets/`. Organ Example, Visualizing Cells, and the drag-and-drop answer demo are independent of the root
-legacy `style.css`; Scrollytelling Effects remains its only prototype consumer during the staged migration.
+`shared/assets/`. All four prototype implementations are independent of the root legacy `style.css`. Scrollytelling
+Effects separates page and demonstration presentation in `styles.css`, interactive effects in `effects.css`, and its
+right-side table of contents and content framing in `navigation.css`.
 All prototype entry points load `shared/css/fonts.css` and use `prototypes/shared/typography.css` to default
 prototype-owned content to Nunito Sans. Prototype-owned styles may select Metropolis where specified. The generated
 Scrollytelling Effects web-component bundle retains its encapsulated internal typography and is not hand-edited for

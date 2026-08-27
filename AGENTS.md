@@ -196,6 +196,8 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
   `style.css`.
 - Keep Visualizing Cells presentation under `prototypes/visualizing-cells/styles.css`; do not reconnect it to root
   `style.css`.
+- Keep Scrollytelling Effects presentation under `prototypes/scrollytelling-effects/`; do not reconnect it to root
+  `style.css`.
 - Keep Story 1 presentation under `stories/story1/`; do not reconnect `story1.html` to root `style.css`.
 - Do not rewrite Git history to reduce repository size without explicit approval.
 - Do not expand a task into adjacent story pages or shared components without explaining the relationship and getting
