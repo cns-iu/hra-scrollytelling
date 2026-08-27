@@ -10,7 +10,7 @@ not maintained as part of the primary story collection.
 | Scrollytelling Effects | `scrollytelling-effects/index.html` | `story0.html` at the repository root |
 | Organ Example | `organ-example/index.html` | `organExample.html` at the repository root |
 | Visualizing Cells | `visualizing-cells/index.html` | `VisualizingCells.html` at the repository root |
-| Drag-and-drop demo | `../img/test.html` | `img/test.html` |
+| Drag-and-drop answer demo | `drag-and-drop/index.html` | — |
 
 The compatibility pages at the repository root preserve previously published GitHub Pages URLs. They forward browsers
 with JavaScript to the organized implementation and provide an ordinary link when JavaScript is unavailable. Do not
@@ -23,8 +23,8 @@ both need beside the shared Menu lives in `shared/chrome.css`.
 The Scrollytelling Effects prototype owns its behavior and bundled web component in
 `scrollytelling-effects/scripts.js` and `scrollytelling-effects/wc.js` while continuing to use the root legacy
 `style.css`. Its images and model are organized with the prototype, its audio is under `shared/assets/music/`, and the
-animated media it shares with Story 1 is under `shared/assets/images/` and `shared/assets/videos/`. `img/test.html`
-remains at its established URL while its three SVG assets live under `drag-and-drop/images/`.
+animated media it shares with Story 1 is under `shared/assets/images/` and `shared/assets/videos/`. The drag-and-drop
+answer demo and its three SVG assets live together under `drag-and-drop/`.
 
 Scrollytelling Effects, Organ Example, and Visualizing Cells adopt the navigation-only shared Menu and fixed-Dark
 shared footer. Scrollytelling Effects' lightweight right-side table of contents and responsive content framing remain

@@ -1001,30 +1001,6 @@ h1 {
   background-color: black;
 }
 
-#two .scene4 {
-  background-image: url('img/ASCT-2.svg');
-  background-color: white;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-  top: 0;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-}
-
-#two .scene5 {
-  background-image: url('img/ASCT-3.svg');
-  background-color: white;
-  height: 100vh;
-  margin: 0;
-  overflow: hidden;
-  top: 0;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-}
-
 #two .scene6 {
   background-color: black;
   height: 1px;

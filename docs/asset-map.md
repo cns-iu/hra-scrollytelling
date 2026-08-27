@@ -18,8 +18,8 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `shared/assets/music/` | Shared story and prototype audio | Consolidated from the former root `music/` directory; `Piano.mp3` is used by Scrollytelling Effects, while maintained-story references to `dramatic.swf.mp3` remain commented out |
 | `shared/assets/videos/` | Video shared by Story 1 and Scrollytelling Effects | Organized; contains the shared `image4.mp4` asset |
 | `shared/` | Namespaced page chrome plus assets confirmed across maintained and prototype experiences | Menu and footer adopted by the landing page and all six stories; cross-experience media separated by type |
-| `prototypes/` | Organized legacy prototype implementations, owned assets, and maintenance notes | Scrollytelling Effects, Organ Example, and Visualizing Cells organized; drag-and-drop assets organized while its published HTML path remains stable |
-| `prototypes/drag-and-drop/images/` | SVG artwork used only by `img/test.html` | Organized; compatibility HTML remains at its published URL |
+| `prototypes/` | Organized legacy prototype implementations, owned assets, and maintenance notes | Scrollytelling Effects, Organ Example, Visualizing Cells, and Drag-and-Drop Answer Demo organized; compatibility pages preserve published URLs |
+| `prototypes/drag-and-drop/` | Drag-and-drop answer demo and its SVG artwork | Organized; `index.html` is the canonical implementation |
 | `prototypes/organ-example/images/` | Organ Example artwork | Organized; prototype only |
 | `prototypes/scrollytelling-effects/images/` | Scrollytelling Effects artwork and backgrounds | Organized; prototype only |
 | `prototypes/scrollytelling-effects/models/` | Scrollytelling Effects 3D brain model | Organized; prototype only |
@@ -27,7 +27,6 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `prototypes/shared/images/` | Legacy logo shared by retained prototypes | Organized; consumed by Scrollytelling Effects, Organ Example, and Visualizing Cells |
 | `prototypes/visualizing-cells/images/` | Visualizing Cells artwork | Organized; prototype only |
 | `prototypes/visualizing-cells/videos/` | Visualizing Cells background video | Organized; prototype only |
-| `img/` | Protected drag-and-drop compatibility page | Audit complete; do not place new assets here |
 | `prototypes/scrollytelling-effects/wc.js` | Bundled CCF Organ Info web component | Organized; Scrollytelling Effects prototype only |
 | `stories/story1/images/` | Story 1-owned narrative images | Organized; contains the HRA macro-to-micro scale overview used only by Story 1 |
 | `stories/story1/videos/` | Story 1-owned video backgrounds | Organized; contains two WebM files and one MP4 |
@@ -44,8 +43,8 @@ The former root `js/` directory was removed after its consumed Story 4 and proto
 remaining files were unconsumed: two standalone legacy scripts and three redundant fragments already embedded in the
 prototype's `wc.js` bundle.
 
-After the repository-wide unused-asset audit and ownership migrations, `img/` contains one tracked file:
-`img/test.html`.
+After the repository-wide unused-asset audit and ownership migrations, the former root `img/` directory was removed.
+The drag-and-drop answer demo and its owned assets now live together under `prototypes/drag-and-drop/`.
 The audit removed 85 files with no HTML, CSS, JavaScript, JSON, manifest, inline SVG, or dynamically constructed path
 consumer, including the orphaned `TestSeq/` image sequence. Story 3 then moved 23 confirmed story-specific assets to
 its owned image directory, Story 4 moved three exclusive resource thumbnails, and Story 5 moved 23 exclusive image
@@ -65,8 +64,6 @@ These references existed before repository organization began:
 | Source | Reference | Status |
 | --- | --- | --- |
 | `prototypes/scrollytelling-effects/index.html` | `images/char1.png` | Missing; referenced twice by prototype markup |
-| `style.css` | `img/ASCT-2.svg` | Missing; associated story rule appears stale and requires visual verification |
-| `style.css` | `img/ASCT-3.svg` | Missing; associated story rule appears stale and requires visual verification |
 
 The reference checker treats these as a documented baseline when run with `--allow-known`. Strict mode continues to
 fail until they are repaired or intentionally removed:
@@ -103,7 +100,7 @@ repository-wide reference checks.
 | Story 4 | Images and particle implementation organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story4/` owns its particle scripts, JSON configuration, and confirmed story-specific resource thumbnails, while embedded data remains deferred |
 | Story 5 | Media organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story5/` owns its accessibility stylesheet, confirmed story-specific images, and videos |
 | Story 6 | Organized | Independent of root `style.css`; `stories/story6/` owns the narrative implementation, generated responsive artwork, and Story 6 contributor instructions; the page uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons |
-| Prototypes | Media and page chrome organized | Scrollytelling Effects, Organ Example, and Visualizing Cells own their exclusive assets under `prototypes/` and use the navigation-only shared Menu with a fixed-Dark shared footer; compatibility pages preserve published URLs; `img/test.html` remains in place while its images are prototype-owned |
+| Prototypes | Implementations, media, and page chrome organized | All four prototype implementations own their files under `prototypes/`; Scrollytelling Effects, Organ Example, and Visualizing Cells use the navigation-only shared Menu with a fixed-Dark shared footer; compatibility pages preserve published URLs |
 
 ## Naming rules for future migrations
 

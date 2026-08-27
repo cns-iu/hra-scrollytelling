@@ -56,9 +56,9 @@ There is no installation or build command.
 | `story5.html` | Know Your Body Buddies |
 | `story6.html` | Pan-organ Immunosenescence Atlas |
 
-The repository also contains older prototypes and demonstrations. The Scrollytelling Effects, Organ Example, and
-Visualizing Cells implementations are organized under `prototypes/`, with their original URLs retained as
-compatibility pages. `img/test.html` remains a legacy demonstration. These are not primary entry points.
+The repository also contains older prototypes and demonstrations. The Scrollytelling Effects, Organ Example,
+Visualizing Cells, and Drag-and-Drop Answer Demo implementations are organized under `prototypes/`, with their
+original URLs retained as compatibility pages. These are not primary entry points.
 
 ## Repository structure
 
@@ -91,7 +91,7 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   ├── css/            # Fonts, tokens, navigation, footer, and story-navigation styles
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── prototypes/         # Organized legacy experiences and their maintenance notes
-│   ├── drag-and-drop/           # Assets for the legacy img/test.html demo
+│   ├── drag-and-drop/           # Drag-and-drop answer demo and owned assets
 │   ├── organ-example/           # Prototype implementation and owned images
 │   ├── scrollytelling-effects/  # Prototype code, images, and model
 │   ├── shared/                   # Shared prototype assets and chrome adjustments
@@ -121,8 +121,7 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   │   ├── images/
 │   │   └── videos/
 │   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
-├── style.css           # Legacy shared story styles
-└── img/                # Protected drag-and-drop compatibility page
+└── style.css           # Legacy shared story styles
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
@@ -309,7 +308,7 @@ Also verify:
 - Some story documents contain large embedded image data.
 - Story 2's inline SVG artwork contains 11 pre-existing repeated ID values; they are not current interaction targets,
   but a dedicated cleanup requires visual regression testing
-- The protected `img/test.html` demonstration remains outside `prototypes/`, though its assets are organized there.
+- The drag-and-drop answer demo and its assets are organized together under `prototypes/drag-and-drop/`
 
 Repository cleanup should be performed incrementally, with local-reference checks before and after every move.
 The documented missing-reference baseline is maintained in [`docs/asset-map.md`](docs/asset-map.md). Run

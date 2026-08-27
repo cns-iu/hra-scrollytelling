@@ -10,8 +10,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
   prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
-- Treat `style.css` as a shared legacy stylesheet. Keep only the protected drag-and-drop compatibility page under
-  `img/`.
+- Treat `style.css` as a shared legacy stylesheet consumed by Stories 1–5 and retained prototypes.
 - Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
 - Do not mechanically format `story3.html` or `story4.html`; both contain large embedded data.
@@ -24,7 +23,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
 | Primary stories | `story1.html` through `story6.html` | Stories 1–5 retain shared legacy `style.css`; Story 6 uses only its dedicated `stories/story6/` implementation and namespaced shared page chrome; story media lives under its owning story, `stories/shared/`, or the appropriate shared asset directory |
-| Prototypes | `img/test.html` and the compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets and the root legacy stylesheet |
+| Prototypes | Compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets and the root legacy stylesheet |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
 build step, but those existing runtime integrations must still be preserved during story migrations.
@@ -54,7 +53,8 @@ Root HTML files remain stable public entry points while their implementation fil
 │   └── js/
 ├── prototypes/
 │   ├── drag-and-drop/
-│   │   └── images/
+│   │   ├── images/
+│   │   └── index.html
 │   ├── organ-example/
 │   │   ├── images/
 │   │   └── index.html
@@ -100,12 +100,11 @@ Root HTML files remain stable public entry points while their implementation fil
 │       ├── images/
 │       └── videos/
 ├── docs/
-├── tools/
-└── img/
+└── tools/
 ```
 
-The root `img/` audit is complete. `img/test.html` remains at its published location while its SVG assets live under
-`prototypes/drag-and-drop/images/`. Do not place new assets under `img/`.
+The former root `img/` directory was removed after its drag-and-drop answer demo and SVG assets were consolidated under
+`prototypes/drag-and-drop/`. Do not recreate the root directory.
 
 `landing/css/fonts.css` remains as a compatibility bridge for cached landing-page documents. Maintained HTML entry
 points load `shared/css/fonts.css` directly; do not expand the compatibility file into a second font source.
@@ -145,8 +144,8 @@ lives under `shared/assets/icons/`.
 
 Each retained prototype owns its exclusive images, videos, and models beneath its directory. Prototype-only shared
 artwork lives under `prototypes/shared/`; assets shared with a maintained story live under `shared/assets/`. The root
-legacy `style.css` and shared music remain intentional dependencies. The drag-and-drop demo keeps its published
-`img/test.html` path but owns its images under `prototypes/drag-and-drop/`.
+legacy `style.css` and shared music remain intentional dependencies. The drag-and-drop answer demo is fully owned by
+`prototypes/drag-and-drop/`.
 
 ## Shared page chrome
 
