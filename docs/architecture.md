@@ -265,7 +265,9 @@ and behavior under `shared/`, while retaining the semantic markup in each HTML e
 footer, or story-navigation rules only after a repository-wide search confirms that no maintained or prototype page
 still consumes them.
 
-Prototype pages are excluded from this rollout. Their existing navigation and footer behavior must not change
+Prototype pages are excluded from this rollout except for the navigation-only shared Menu explicitly adopted by the
+Scrollytelling Effects prototype. Its right-side table of contents and content layout remain prototype-owned, and its
+legacy footer is not part of shared page chrome. Other prototype navigation and footer behavior must not change
 incidentally.
 
 ## Reviewable commit boundaries

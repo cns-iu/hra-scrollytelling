@@ -25,12 +25,17 @@ The Scrollytelling Effects prototype owns its behavior and bundled web component
 animated media it shares with Story 1 is under `shared/assets/images/` and `shared/assets/videos/`. `img/test.html`
 remains at its established URL while its three SVG assets live under `drag-and-drop/images/`.
 
+Scrollytelling Effects is the only prototype that adopts the navigation-only shared Menu. Its lightweight right-side
+table of contents and responsive content framing are owned by `scrollytelling-effects/navigation.css`; its footer and
+demonstration styles remain legacy prototype surfaces.
+
 ## Maintenance rules
 
 - Treat every directory and filename as case-sensitive.
 - Search the entire repository before moving or renaming prototype files or their assets.
 - Preserve the root compatibility URLs when changing a prototype's implementation path.
-- Keep prototype changes separate from maintained story and shared page-chrome changes.
+- Keep prototype changes separate from maintained story and shared page-chrome changes except for the documented
+  Scrollytelling Effects Menu integration.
 - Run `node tools/check-local-links.mjs --allow-known` after changing paths.
 - Preview affected prototypes through a local HTTP server; opening HTML files directly does not reproduce GitHub Pages
   path behavior.
