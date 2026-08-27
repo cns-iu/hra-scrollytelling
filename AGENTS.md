@@ -62,9 +62,9 @@ roots and explicitly approved story surfaces.
 All maintained pages use the canonical shared Menu and footer. Story 1 through Story 5 keep their Menu light and their
 footer on the fixed Dark treatment with `site-chrome--dark`. The landing page and Story 6 allow the shared footer to
 follow their appearance selection. Do not remove a legacy component rule until repository-wide search confirms that
-no maintained or prototype page consumes it. Prototype pages are excluded from the shared page-chrome rollout except
-for the navigation-only shared Menu explicitly adopted by `prototypes/scrollytelling-effects/`; do not extend shared
-appearance or footer behavior to that prototype without separate approval.
+no maintained or prototype page consumes it. The Scrollytelling Effects, Organ Example, and Visualizing Cells
+prototypes explicitly adopt the navigation-only shared Menu and fixed-Dark shared footer. They remain outside shared
+appearance behavior, and prototype-owned content and navigation must stay isolated from shared page chrome.
 
 All maintained pages use the default shared Menu FAB geometry. Keep story-specific box-model resets scoped to
 story-owned surfaces so they do not override `.site-chrome` component sizing.

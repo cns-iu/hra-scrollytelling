@@ -94,7 +94,7 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   ├── drag-and-drop/           # Assets for the legacy img/test.html demo
 │   ├── organ-example/           # Prototype implementation and owned images
 │   ├── scrollytelling-effects/  # Prototype code, images, and model
-│   ├── shared/                   # Assets shared only by prototypes
+│   ├── shared/                   # Shared prototype assets and chrome adjustments
 │   └── visualizing-cells/       # Prototype implementation, images, and video
 ├── docs/               # Architecture and asset-migration records
 ├── tools/              # Dependency-free repository validation
@@ -223,7 +223,8 @@ Current behavior:
 - Story pages that offer Light, Dark, and System settings apply them only to shared page chrome; story artwork is
   unchanged.
 - Every maintained page uses the compact shared footer with organization links and an accessible back-to-top action.
-- Prototype pages remain outside the shared page-chrome rollout.
+- Scrollytelling Effects, Organ Example, and Visualizing Cells use the navigation-only shared Menu and fixed-Dark
+  shared footer; their content and any prototype-specific navigation remain independently owned.
 
 See [`docs/architecture.md`](docs/architecture.md#shared-page-chrome) for component boundaries and maintenance rules.
 

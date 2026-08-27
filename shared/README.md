@@ -22,7 +22,8 @@ Pages with the enhanced shared Menu load the module entry point:
 <script type="module" src="shared/js/main.js"></script>
 ```
 
-Story 1 through Story 5 load only navigation and back-to-top behavior:
+Story 1 through Story 5 and the organized Scrollytelling Effects, Organ Example, and Visualizing Cells prototypes load
+only navigation and back-to-top behavior:
 
 ```html
 <script type="module" src="shared/js/navigation-only.js"></script>
@@ -82,8 +83,8 @@ inside `.site-chrome` roots so legacy story content is never recolored by this c
 ## Ownership
 
 Selectors are prefixed with `site-` or `site-chrome-` to avoid collisions with legacy story rules. Story-specific
-layout, artwork, animation, and color rules do not belong here. Prototype pages are not consumers except for the
-navigation-only Menu explicitly adopted by Scrollytelling Effects.
+layout, artwork, animation, and color rules do not belong here. Scrollytelling Effects, Organ Example, and Visualizing
+Cells consume only the navigation-only Menu and fixed-Dark shared footer; their page layout remains prototype-owned.
 
 The shared Menu and footer are the single maintained implementations for every public page. Do not add page-specific
 copies of their layout, interaction, appearance, or accessibility rules.

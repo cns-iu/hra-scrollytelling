@@ -17,7 +17,8 @@ with JavaScript to the organized implementation and provide an ordinary link whe
 remove these pages without confirming that no external links or bookmarks still depend on them.
 
 The Organ Example and Visualizing Cells prototypes continue to use the root legacy `style.css`, but each prototype now
-owns its images and videos. Their shared legacy logo lives under `shared/images/`.
+owns its images and videos. Their shared legacy logo lives under `shared/images/`, while the small content offset they
+both need beside the shared Menu lives in `shared/chrome.css`.
 
 The Scrollytelling Effects prototype owns its behavior and bundled web component in
 `scrollytelling-effects/scripts.js` and `scrollytelling-effects/wc.js` while continuing to use the root legacy
@@ -25,9 +26,9 @@ The Scrollytelling Effects prototype owns its behavior and bundled web component
 animated media it shares with Story 1 is under `shared/assets/images/` and `shared/assets/videos/`. `img/test.html`
 remains at its established URL while its three SVG assets live under `drag-and-drop/images/`.
 
-Scrollytelling Effects is the only prototype that adopts the navigation-only shared Menu. Its lightweight right-side
-table of contents and responsive content framing are owned by `scrollytelling-effects/navigation.css`; its footer and
-demonstration styles remain legacy prototype surfaces.
+Scrollytelling Effects, Organ Example, and Visualizing Cells adopt the navigation-only shared Menu and fixed-Dark
+shared footer. Scrollytelling Effects' lightweight right-side table of contents and responsive content framing remain
+owned by `scrollytelling-effects/navigation.css`; all other demonstration styles remain prototype-owned.
 
 ## Maintenance rules
 
@@ -35,7 +36,7 @@ demonstration styles remain legacy prototype surfaces.
 - Search the entire repository before moving or renaming prototype files or their assets.
 - Preserve the root compatibility URLs when changing a prototype's implementation path.
 - Keep prototype changes separate from maintained story and shared page-chrome changes except for the documented
-  Scrollytelling Effects Menu integration.
+  shared Menu and footer integration.
 - Run `node tools/check-local-links.mjs --allow-known` after changing paths.
 - Preview affected prototypes through a local HTTP server; opening HTML files directly does not reproduce GitHub Pages
   path behavior.

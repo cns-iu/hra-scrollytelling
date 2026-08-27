@@ -179,111 +179,6 @@ header h2 {
   color: rgb(87, 87, 87);
 }
 
-/* .top {
-  background-color: #444c65;
-  padding: 15px;
-  color: white;
-  font-family: 'Impact', sans-serif;
-  display: flex;
-  font-size: 20px;
-  justify-content: space-between;
-  position: relative;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  z-index: 60;
-} */
-
-.topLogo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-/* Navbar container */
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-  font-family: 'Metropolis', Helvetica, Arial, sans-serif;
-}
-
-/* Links inside the navbar */
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* The dropdown container */
-.dropdown {
-  float: left;
-  overflow: hidden;
-  font-family: 'Metropolis', Helvetica, Arial, sans-serif;
-}
-
-/* Dropdown button */
-.dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  background-color: inherit;
-  font-family: inherit;
-  /* Important for vertical align on mobile phones */
-  margin: 0;
-  /* Important for vertical align on mobile phones */
-}
-
-/* Add a red background color to navbar links on hover */
-.navbar a:hover,
-.dropdown:hover .dropbtn {
-  color: #990000;
-  background-color: #e2e7e9;
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  color: var(--HRA-blue);
-  display: none;
-  position: absolute;
-  background-color: var(--HRA-blue3);
-  width: 326px;
-  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
-  z-index: 15;
-  right: 15px;
-  margin-top: -3px;
-  border-radius: 0 0 0 12px;
-}
-
-.dropdown-content hr {
-  color: rgba(172, 181, 195, 1);
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: rgba(32, 30, 61, 0.08);
-}
-
-.dropdown-content a:last-child:hover {
-  border-radius: 0 0 0 12px;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
 /* General styles */
 .first-letter {
   font-size: 1.5rem;
@@ -3050,26 +2945,6 @@ table td {
   transition: opacity 0.1s;
 }
 
-/*Section counters*/
-#sectionCounterdiv {
-  position: fixed;
-  color: white;
-  right: 4px;
-  top: 4px;
-  background-color: rgba(255, 255, 255, 0.501);
-  width: 40px;
-  height: 40px;
-  border-radius: 80px;
-  text-align: center;
-  z-index: 200;
-  background-color: transparent;
-}
-
-#sectionCounter {
-  margin-top: 11px;
-  display: none;
-}
-
 /* Containers*/
 .scroll-container {
   min-height: 100vh;
@@ -3080,12 +2955,6 @@ table td {
   box-sizing: border-box;
   justify-content: center;
   margin: auto;
-}
-
-.logo {
-  width: 26px;
-  margin-right: 6px;
-  color: white !important;
 }
 
 #embed::-webkit-scrollbar {
@@ -3420,25 +3289,6 @@ canvas {
   padding: 0px;
   gap: 64px;
   justify-content: center;
-}
-
-/* ---- footer---- */
-footer {
-  text-align: center;
-  padding: 0.5rem 0;
-  background-color: #c2cae5;
-  color: #444a65;
-  padding: 40px;
-}
-
-footer p {
-  font-size: 0.45rem;
-  margin: 0.25rem 0;
-}
-
-footer a {
-  text-decoration: none;
-  color: inherit;
 }
 
 /* 3D brain model */

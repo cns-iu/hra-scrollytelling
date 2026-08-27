@@ -23,6 +23,7 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `prototypes/organ-example/images/` | Organ Example artwork | Organized; prototype only |
 | `prototypes/scrollytelling-effects/images/` | Scrollytelling Effects artwork and backgrounds | Organized; prototype only |
 | `prototypes/scrollytelling-effects/models/` | Scrollytelling Effects 3D brain model | Organized; prototype only |
+| `prototypes/shared/chrome.css` | Minimal layout adjustments shared by organized prototypes | Used by Organ Example and Visualizing Cells alongside shared page chrome |
 | `prototypes/shared/images/` | Legacy logo shared by retained prototypes | Organized; consumed by Scrollytelling Effects, Organ Example, and Visualizing Cells |
 | `prototypes/visualizing-cells/images/` | Visualizing Cells artwork | Organized; prototype only |
 | `prototypes/visualizing-cells/videos/` | Visualizing Cells background video | Organized; prototype only |
@@ -102,7 +103,7 @@ repository-wide reference checks.
 | Story 4 | Images and particle implementation organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story4/` owns its particle scripts, JSON configuration, and confirmed story-specific resource thumbnails, while embedded data remains deferred |
 | Story 5 | Media organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story5/` owns its accessibility stylesheet, confirmed story-specific images, and videos |
 | Story 6 | Organized | Independent of root `style.css`; `stories/story6/` owns the narrative implementation, generated responsive artwork, and Story 6 contributor instructions; the page uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons |
-| Prototypes | Media organized | Scrollytelling Effects, Organ Example, and Visualizing Cells own their exclusive assets under `prototypes/`; compatibility pages preserve published URLs; `img/test.html` remains in place while its images are prototype-owned |
+| Prototypes | Media and page chrome organized | Scrollytelling Effects, Organ Example, and Visualizing Cells own their exclusive assets under `prototypes/` and use the navigation-only shared Menu with a fixed-Dark shared footer; compatibility pages preserve published URLs; `img/test.html` remains in place while its images are prototype-owned |
 
 ## Naming rules for future migrations
 

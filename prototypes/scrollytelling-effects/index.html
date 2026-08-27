@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="../../shared/css/fonts.css" />
     <link rel="stylesheet" href="../../shared/css/tokens.css" />
+    <link rel="stylesheet" href="../../shared/css/selection.css" />
     <link rel="stylesheet" href="../../shared/css/navigation.css" />
+    <link rel="stylesheet" href="../../shared/css/footer.css" />
     <link rel="stylesheet" href="navigation.css" />
     <link rel="icon" type="image/x-icon" href="../shared/images/logo.svg" />
 
@@ -413,13 +415,64 @@
     </section>
     </main>
 
-    <footer>
-      &commat; 2024 Human Atlas Design System at Indiana University
+    <footer class="site-footer site-chrome site-chrome--dark">
+      <nav class="site-footer__organizations" aria-label="Organizations">
+        <a
+          class="site-footer__organization-link"
+          href="https://humanatlas.io/"
+          aria-label="Human Reference Atlas"
+        >
+          <img
+            src="../../shared/assets/logos/hra-dark-large.svg"
+            alt=""
+            width="148"
+            height="63"
+          />
+          <span class="site-footer__organization-name"
+            >Human Reference Atlas</span
+          >
+        </a>
+        <a
+          class="site-footer__organization-link"
+          href="https://cns.iu.edu/"
+          aria-label="Cyberinfrastructure for Network Science Center"
+        >
+          <img
+            src="../../shared/assets/logos/cns-dark-long.svg"
+            alt=""
+            width="239"
+            height="40"
+          />
+          <span class="site-footer__organization-name"
+            >Cyberinfrastructure for Network Science Center</span
+          >
+        </a>
+      </nav>
+      <a class="site-footer__back-to-top" href="#main-content" data-back-to-top>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          fill="none"
+        >
+          <path
+            d="M12 19V5m0 0-6 6m6-6 6 6"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+        Back to top
+      </a>
+      <p class="site-footer__copyright">
+        © 2026 Cyberinfrastructure for Network Science Center
+      </p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/ScrollTrigger.min.js"></script>
-  </body>
   <script src="scripts.js"></script>
 
   <!--It helps to handle how the 3D Object would be displayed -->
@@ -596,4 +649,5 @@
       });
 
   </script>
+  </body>
 </html>
