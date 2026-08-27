@@ -1,0 +1,5 @@
+/* Shared typography for prototype-owned page content. */
+
+.prototype-page {
+    font-family: var(--font-body);
+}

@@ -22,11 +22,16 @@ Pages with the enhanced shared Menu load the module entry point:
 <script type="module" src="shared/js/main.js"></script>
 ```
 
-Story 1 through Story 5 load only navigation and back-to-top behavior:
+Story 1 through Story 5 and the organized Scrollytelling Effects, Organ Example, and Visualizing Cells prototypes load
+only navigation and back-to-top behavior:
 
 ```html
 <script type="module" src="shared/js/navigation-only.js"></script>
 ```
+
+All prototype entry points consume the approved font declarations here through
+`prototypes/shared/typography.css`, which defaults prototype-owned content to Nunito Sans. Prototype-owned rules may
+select Metropolis where specified.
 
 The current page may omit a component stylesheet it does not use. Font declarations and typography roles must load
 before component tokens and styles.
@@ -44,6 +49,8 @@ Menu, appearance, contrast, and back-to-top modules.
 - Add `data-site-menu-panel`, `role="region"`, an accessible label, and `tabindex="-1"` to the disclosure panel.
 - Add `data-site-menu-close` to the explicit close button.
 - Use `shared/assets/icons/menu.svg` as the canonical visible Menu glyph.
+- Keep `favicon.svg`, `favicon.ico`, and `apple-touch-icon.png` together under `shared/assets/icons/`, and declare all
+  three on every HTML entry point.
 - On pages that support theme selection, add `data-site-theme-choice` to each System settings, Light, and Dark radio
   input and `data-site-theme-status` to the visually hidden polite status region.
 - Omit the complete appearance fieldset and theme-status region when appearance is not an available page option, and
@@ -53,7 +60,7 @@ Menu, appearance, contrast, and back-to-top modules.
   `data-contrast-state`. The shared module reveals the fieldset only after the control is functional.
 - Use `aria-current="page"` on the current internal page link.
 - Keep the footer in a native `footer` and each link collection in an appropriately named `nav`.
-- Use the organization marks under `shared/assets/logos/` for the canonical footer.
+- Use the organization marks under `shared/assets/logos/` for the landing hero and canonical footer.
 - Add `site-chrome--dark` to footers on Story 1 through Story 5 so they use the fixed Dark treatment.
 - Add `data-back-to-top` to the footer's same-page link so the shared enhancement moves focus to the main target.
 - Keep previous and next story links in a separate `nav` labeled “Story navigation.”
@@ -82,12 +89,15 @@ inside `.site-chrome` roots so legacy story content is never recolored by this c
 ## Ownership
 
 Selectors are prefixed with `site-` or `site-chrome-` to avoid collisions with legacy story rules. Story-specific
-layout, artwork, animation, and color rules do not belong here. Prototype pages are not consumers.
+layout, artwork, animation, and color rules do not belong here. Scrollytelling Effects, Organ Example, and Visualizing
+Cells consume only the navigation-only Menu and fixed-Dark shared footer; their page layout remains prototype-owned.
 
 The shared Menu and footer are the single maintained implementations for every public page. Do not add page-specific
 copies of their layout, interaction, appearance, or accessibility rules.
 
 Shared font binaries and licenses belong under `shared/assets/fonts/`, interface icons under `shared/assets/icons/`,
-and theme-aware organization marks under `shared/assets/logos/`. Do not duplicate these files at the repository root.
+and theme-aware organization marks under `shared/assets/logos/`. Images shared by multiple maintained stories or by a
+maintained page and a prototype belong under `shared/assets/images/`; shared video belongs under
+`shared/assets/videos/`. Do not duplicate these files at the repository root.
 
 See [`../docs/architecture.md`](../docs/architecture.md#shared-page-chrome) for component ownership boundaries.

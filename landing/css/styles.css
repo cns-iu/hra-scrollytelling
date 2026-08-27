@@ -96,7 +96,7 @@ samp {
 
 .hero-brand-logo {
     width: 7.25rem;
-    height: 3rem;
+    height: auto;
 }
 
 .hero-brand-logo-dark {

@@ -41,7 +41,9 @@ footer, and end-of-story navigation use namespaced foundations under:
 - `shared/css/tokens.css` for component-scoped Light and Dark appearance roles.
 - `shared/css/fonts.css` and `shared/assets/fonts/` for approved HRA typography and licenses.
 - `shared/assets/icons/menu.svg` for the canonical Menu glyph.
-- `shared/assets/logos/` for the canonical footer and theme-aware organization marks.
+- `shared/assets/icons/favicon.svg`, `favicon.ico`, and `apple-touch-icon.png` for the cross-device favicon set used by
+  every HTML entry point.
+- `shared/assets/logos/` for the landing hero, canonical footer, and theme-aware organization marks.
 - `shared/css/selection.css` for theme-aware text selection scoped to shared page chrome.
 - `shared/css/navigation.css` for the skip link and native Menu disclosure.
 - `shared/css/footer.css` for the canonical site footer.
@@ -62,7 +64,12 @@ roots and explicitly approved story surfaces.
 All maintained pages use the canonical shared Menu and footer. Story 1 through Story 5 keep their Menu light and their
 footer on the fixed Dark treatment with `site-chrome--dark`. The landing page and Story 6 allow the shared footer to
 follow their appearance selection. Do not remove a legacy component rule until repository-wide search confirms that
-no maintained or prototype page consumes it. Prototype pages are excluded from the shared page-chrome rollout.
+no maintained or prototype page consumes it. The Scrollytelling Effects, Organ Example, and Visualizing Cells
+prototypes explicitly adopt the navigation-only shared Menu and fixed-Dark shared footer. They remain outside shared
+appearance behavior, and prototype-owned content and navigation must stay isolated from shared page chrome.
+All prototype entry points load `shared/css/fonts.css` and `prototypes/shared/typography.css`; prototype-owned body
+text defaults to Nunito Sans, while prototype-owned rules may select Metropolis where specified. Do not hand-edit
+generated web-component internals to override their encapsulated typography.
 
 All maintained pages use the default shared Menu FAB geometry. Keep story-specific box-model resets scoped to
 story-owned surfaces so they do not override `.site-chrome` component sizing.
@@ -172,7 +179,11 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
 - Follow the ownership boundaries and copy-first migration workflow in `docs/architecture.md`.
 - Update `docs/asset-map.md` whenever asset ownership or the known missing-reference baseline changes.
 - Avoid broad formatting or mechanical rewrites of `story3.html` and `story4.html`; they contain large embedded data.
-- Preserve `img/test.html` as legacy/prototype material unless cleanup is explicitly in scope.
+- Keep the drag-and-drop answer demo fully owned by `prototypes/drag-and-drop/`; do not recreate a root `img/`
+  directory.
+- Keep story-exclusive assets under their owning `stories/storyN/` directory, assets shared by maintained stories or
+  by a maintained page and a prototype under `shared/assets/`, and prototype-only assets under their owning
+  `prototypes/` directory or `prototypes/shared/` when multiple prototypes consume them.
 - Preserve `story0.html` as the compatibility entry point for the Scrollytelling Effects implementation under
   `prototypes/scrollytelling-effects/`. Do not restore a root `scripts.js` or load the prototype script from maintained
   pages.
@@ -181,6 +192,8 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
   into `shared/js/`.
 - Preserve `VisualizingCells.html` and `organExample.html` as compatibility entry points for the implementations under
   `prototypes/`; do not delete or repurpose those published URLs without explicit approval.
+- Keep Organ Example presentation under `prototypes/organ-example/styles.css`; do not reconnect it to root
+  `style.css`.
 - Do not rewrite Git history to reduce repository size without explicit approval.
 - Do not expand a task into adjacent story pages or shared components without explaining the relationship and getting
   approval.

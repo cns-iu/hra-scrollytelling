@@ -56,9 +56,9 @@ There is no installation or build command.
 | `story5.html` | Know Your Body Buddies |
 | `story6.html` | Pan-organ Immunosenescence Atlas |
 
-The repository also contains older prototypes and demonstrations. The Scrollytelling Effects, Organ Example, and
-Visualizing Cells implementations are organized under `prototypes/`, with their original URLs retained as
-compatibility pages. `img/test.html` remains a legacy demonstration. These are not primary entry points.
+The repository also contains older prototypes and demonstrations. The Scrollytelling Effects, Organ Example,
+Visualizing Cells, and Drag-and-Drop Answer Demo implementations are organized under `prototypes/`, with their
+original URLs retained as compatibility pages. These are not primary entry points.
 
 ## Repository structure
 
@@ -83,15 +83,19 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 ├── shared/             # Landing-and-story page-chrome foundation
 │   ├── assets/
 │   │   ├── fonts/      # Self-hosted HRA webfonts and licenses
-│   │   ├── icons/      # Shared interface and retained organ icons
+│   │   ├── icons/      # Shared interface icons, favicon set, and retained organ icons
+│   │   ├── images/     # Images shared across maintained and prototype experiences
 │   │   ├── logos/      # Theme-aware organization logos
-│   │   └── music/      # Shared story and prototype audio
+│   │   ├── music/      # Shared story and prototype audio
+│   │   └── videos/     # Video shared by maintained and prototype experiences
 │   ├── css/            # Fonts, tokens, navigation, footer, and story-navigation styles
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── prototypes/         # Organized legacy experiences and their maintenance notes
-│   ├── organ-example/
-│   ├── scrollytelling-effects/ # Prototype behavior and bundled web component
-│   └── visualizing-cells/
+│   ├── drag-and-drop/           # Drag-and-drop answer demo and owned assets
+│   ├── organ-example/           # Prototype implementation and owned images
+│   ├── scrollytelling-effects/  # Prototype code, images, and model
+│   ├── shared/                   # Shared prototype chrome and typography
+│   └── visualizing-cells/       # Prototype implementation, images, and video
 ├── docs/               # Architecture and asset-migration records
 ├── tools/              # Dependency-free repository validation
 ├── story1.html         # Story experiences
@@ -101,19 +105,22 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 ├── story5.html
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
 ├── stories/            # Gradually organized story-owned implementation files
-│   ├── story1/         # Story 1 styles, scripts, and owned images
+│   ├── story1/         # Story 1 styles, scripts, owned images, and videos
 │   ├── story2/         # Story 2 quiz and owned images
 │   ├── story3/         # Story 3-owned narrative and resource images
-│   ├── story4/         # Story 4 scripts and particle configuration
+│   ├── story4/         # Story 4 scripts, particle configuration, and owned images
 │   │   ├── app.js
+│   │   ├── images/        # Story 4 resource thumbnails
 │   │   ├── particles.js
 │   │   ├── scripts.js
 │   │   └── config/
 │   │       └── particles.json # Preserved particle configuration reference
-│   ├── story5/         # Reserved Story 5 implementation folder
-│   └── story6/         # Story 6 styles, scripts, images, and retained datasets
-├── style.css           # Legacy shared story styles
-└── img/                # Shared and story-specific visual assets
+│   ├── story5/         # Story 5 accessibility styles, images, and videos
+│   │   ├── accessibility.css
+│   │   ├── images/
+│   │   └── videos/
+│   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
+└── style.css           # Legacy shared story styles
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
@@ -128,7 +135,8 @@ The landing page is deliberately separated from the legacy story implementation:
 - `index.html` owns its semantic structure and editorial content.
 - `landing/assets/backgrounds/` contains the Light and Dark decorative splash artwork.
 - `shared/assets/icons/menu.svg` is the Material Menu glyph used by the landing and shared-story extended FABs.
-- `shared/assets/logos/` contains the theme-aware organization marks used by the footer and Story 6 resource cards.
+- `shared/assets/logos/` contains the theme-aware organization marks used by the landing hero, footer, and Story 6
+  resource cards.
 - `shared/css/fonts.css` owns the self-hosted HRA font declarations and resilient typography stacks.
 - `landing/css/fonts.css` preserves the former font URL for cached landing-page documents.
 - `landing/css/tokens.css` owns light/dark HRA colors, semantic roles, and shared layout tokens.
@@ -213,7 +221,8 @@ Current behavior:
 - Story pages that offer Light, Dark, and System settings apply them only to shared page chrome; story artwork is
   unchanged.
 - Every maintained page uses the compact shared footer with organization links and an accessible back-to-top action.
-- Prototype pages remain outside the shared page-chrome rollout.
+- Scrollytelling Effects, Organ Example, and Visualizing Cells use the navigation-only shared Menu and fixed-Dark
+  shared footer; their content and any prototype-specific navigation remain independently owned.
 
 See [`docs/architecture.md`](docs/architecture.md#shared-page-chrome) for component boundaries and maintenance rules.
 
@@ -294,12 +303,11 @@ Also verify:
 ## Known technical debt
 
 - Most story pages share one large global stylesheet.
-- Assets for multiple stories are mixed together under `img/`.
 - Several filenames contain spaces, making path changes more error-prone.
 - Some story documents contain large embedded image data.
 - Story 2's inline SVG artwork contains 11 pre-existing repeated ID values; they are not current interaction targets,
   but a dedicated cleanup requires visual regression testing
-- Some legacy demonstrations and prototype assets still share root files with maintained stories.
+- The drag-and-drop answer demo and its assets are organized together under `prototypes/drag-and-drop/`
 
 Repository cleanup should be performed incrementally, with local-reference checks before and after every move.
 The documented missing-reference baseline is maintained in [`docs/asset-map.md`](docs/asset-map.md). Run

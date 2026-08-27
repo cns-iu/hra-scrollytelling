@@ -10,7 +10,7 @@ const scannableExtensions = new Set([".css", ".html"]);
 
 // Remove an entry when its underlying reference is repaired or intentionally deleted.
 const knownMissingReferences = new Set([
-    "prototypes/scrollytelling-effects/index.html::../../img/char1.png",
+    "prototypes/scrollytelling-effects/index.html::images/char1.png",
     "style.css::img/ASCT-2.svg",
     "style.css::img/ASCT-3.svg",
 ]);

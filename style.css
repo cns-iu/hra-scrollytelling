@@ -4,11 +4,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=PT+Sans:wght@400;700&family=Playfair+Display:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-@font-face {
-  font-family: 'Metropolis';
-  src: url('img/UI\ Assets/Metropolis-Medium.otf') format('opentype');
-}
-
 :root {
   /*UI styles*/
   --HRA-red: #ff0043;
@@ -80,15 +75,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-.middlesectionindex {
-  background-color: #e2e6ec;
-  background-image: url('img/UI\ Assets/indexbg.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: auto 100%;
-  flex-grow: 1;
 }
 
 .storyList {
@@ -193,111 +179,6 @@ header h2 {
   color: rgb(87, 87, 87);
 }
 
-/* .top {
-  background-color: #444c65;
-  padding: 15px;
-  color: white;
-  font-family: 'Impact', sans-serif;
-  display: flex;
-  font-size: 20px;
-  justify-content: space-between;
-  position: relative;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  z-index: 60;
-} */
-
-.topLogo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-/* Navbar container */
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-  font-family: 'Metropolis', Helvetica, Arial, sans-serif;
-}
-
-/* Links inside the navbar */
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* The dropdown container */
-.dropdown {
-  float: left;
-  overflow: hidden;
-  font-family: 'Metropolis', Helvetica, Arial, sans-serif;
-}
-
-/* Dropdown button */
-.dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  background-color: inherit;
-  font-family: inherit;
-  /* Important for vertical align on mobile phones */
-  margin: 0;
-  /* Important for vertical align on mobile phones */
-}
-
-/* Add a red background color to navbar links on hover */
-.navbar a:hover,
-.dropdown:hover .dropbtn {
-  color: #990000;
-  background-color: #e2e7e9;
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  color: var(--HRA-blue);
-  display: none;
-  position: absolute;
-  background-color: var(--HRA-blue3);
-  width: 326px;
-  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
-  z-index: 15;
-  right: 15px;
-  margin-top: -3px;
-  border-radius: 0 0 0 12px;
-}
-
-.dropdown-content hr {
-  color: rgba(172, 181, 195, 1);
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: rgba(32, 30, 61, 0.08);
-}
-
-.dropdown-content a:last-child:hover {
-  border-radius: 0 0 0 12px;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
 /* General styles */
 .first-letter {
   font-size: 1.5rem;
@@ -398,7 +279,7 @@ header h2 {
 /*extra effects*/
 .parallax {
   /* The image used */
-  background-image: url('img/bg.jpg');
+  background-image: url('prototypes/scrollytelling-effects/images/bg.jpg');
 
   /* Set a specific height */
   min-height: 500px;
@@ -573,34 +454,6 @@ h1 {
 
 #fadetests img {
   max-width: 500px;
-}
-
-#categories {
-  font-family: 'Metropolis', Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  opacity: 0;
-  position: fixed;
-  z-index: 50;
-  background-color: white;
-  padding: 12px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 0;
-  cursor: pointer;
-  width: 100%;
-}
-
-#categories span {
-  padding: 4px;
-  border-radius: 4px;
-  background-color: #c1cae5;
-  margin: 3px;
-  margin-right: 25px;
-}
-
-#categories span:hover {
-  background-color: #f5a4ad;
 }
 
 /* Reusable styles  */
@@ -1146,30 +999,6 @@ h1 {
   background-position: center center;
   background-size: cover;
   background-color: black;
-}
-
-#two .scene4 {
-  background-image: url('img/ASCT-2.svg');
-  background-color: white;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-  top: 0;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-}
-
-#two .scene5 {
-  background-image: url('img/ASCT-3.svg');
-  background-color: white;
-  height: 100vh;
-  margin: 0;
-  overflow: hidden;
-  top: 0;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
 }
 
 #two .scene6 {
@@ -1970,11 +1799,6 @@ h1 {
   opacity: 100;
 }
 
-#organs .organparts {
-  opacity: 1;
-  flex: 0 0 40%;
-}
-
 .scrollArrow {
   align-self: center;
   font-size: 1.7rem;
@@ -2355,7 +2179,7 @@ h1 {
 }
 
 #two .scene5-1 {
-  background-image: url('img/5-1.svg');
+  background-image: url('stories/story5/images/5-1.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -2368,7 +2192,7 @@ h1 {
 }
 
 #two .scene5-2 {
-  background-image: url('img/5-2.svg');
+  background-image: url('stories/story5/images/5-2.svg');
   background-color: black;
   height: 100vh;
   margin: 0;
@@ -2381,7 +2205,7 @@ h1 {
 }
 
 #two .scene5-3 {
-  background-image: url('img/5-3.svg');
+  background-image: url('stories/story5/images/5-3.svg');
   background-color: black;
   height: 100vh;
   margin: 0;
@@ -2394,7 +2218,7 @@ h1 {
 }
 
 #two .scene5-35 {
-  background-image: url('img/5-35.svg');
+  background-image: url('stories/story5/images/5-35.svg');
   background-color: black;
   height: 100vh;
   margin: 0;
@@ -2409,7 +2233,7 @@ h1 {
 }
 
 #two .scene5-4 {
-  background-image: url('img/5-4.svg');
+  background-image: url('stories/story5/images/5-4.svg');
   background-color: black;
   height: 100vh;
   margin: 0;
@@ -2422,7 +2246,7 @@ h1 {
 }
 
 #two .scene5-5 {
-  background-image: url('img/5-5.svg');
+  background-image: url('stories/story5/images/5-5.svg');
   background-color: black;
   height: 100vh;
   margin: 0;
@@ -2466,7 +2290,7 @@ h1 {
 
 #two .scene5-8 {
   background-color: black;
-  background-image: url('img/5-8.png');
+  background-image: url('stories/story5/images/5-8.png');
   height: 100vh;
   overflow: hidden;
   margin: auto;
@@ -2497,7 +2321,7 @@ h1 {
 
 #two .scene5-10 {
   background-color: black;
-  background-image: url('img/5-10.png');
+  background-image: url('stories/story5/images/5-10.png');
   height: 100vh;
   overflow: hidden;
   margin: auto;
@@ -2528,7 +2352,7 @@ h1 {
 
 #two .scene5-12 {
   background-color: black;
-  background-image: url('img/5-12.png');
+  background-image: url('stories/story5/images/5-12.png');
   height: 100vh;
   overflow: hidden;
   margin: auto;
@@ -2559,7 +2383,7 @@ h1 {
 
 #two .scene5-14 {
   background-color: black;
-  background-image: url('img/5-14.png');
+  background-image: url('stories/story5/images/5-14.png');
   height: 100vh;
   overflow: hidden;
   margin: auto;
@@ -2598,7 +2422,7 @@ h1 {
 
 #two .scene5-16 {
   background-color: black;
-  background-image: url('img/5-16.png');
+  background-image: url('stories/story5/images/5-16.png');
   height: 100vh;
   overflow: hidden;
   margin: auto;
@@ -3026,55 +2850,6 @@ body:has(#bar9:hover) #label9 {
   position: relative;
 }
 
-/*Table styles*/
-.tableExample {
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-right: 0px;
-  max-height: 600px;
-  overflow-y: scroll;
-  flex: 0 0 60%;
-}
-
-/* Center tables for demo */
-table {
-  margin: auto;
-  width: 90%;
-  max-width: 860px;
-}
-
-/* Default Table Style */
-table {
-  color: #333;
-  background: white;
-  border: 1px solid grey;
-  font-size: 12pt;
-  border-collapse: collapse;
-}
-
-tr:hover:not(:first-child) td {
-  /* background-color: rgba(255, 238, 184, 0.441); */
-  cursor: pointer;
-}
-
-table th,
-table tfoot th {
-  color: #777;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-table caption {
-  padding: 0.5em;
-}
-
-table th,
-table td {
-  padding: 0.5em;
-  border: 1px solid lightgrey;
-}
-
-/*End Table styles*/
-
 /* img crossfade */
 #zero .img-wrapper {
   display: grid;
@@ -3092,26 +2867,6 @@ table td {
   transition: opacity 0.1s;
 }
 
-/*Section counters*/
-#sectionCounterdiv {
-  position: fixed;
-  color: white;
-  right: 4px;
-  top: 4px;
-  background-color: rgba(255, 255, 255, 0.501);
-  width: 40px;
-  height: 40px;
-  border-radius: 80px;
-  text-align: center;
-  z-index: 200;
-  background-color: transparent;
-}
-
-#sectionCounter {
-  margin-top: 11px;
-  display: none;
-}
-
 /* Containers*/
 .scroll-container {
   min-height: 100vh;
@@ -3122,12 +2877,6 @@ table td {
   box-sizing: border-box;
   justify-content: center;
   margin: auto;
-}
-
-.logo {
-  width: 26px;
-  margin-right: 6px;
-  color: white !important;
 }
 
 #embed::-webkit-scrollbar {
@@ -3464,25 +3213,6 @@ canvas {
   justify-content: center;
 }
 
-/* ---- footer---- */
-footer {
-  text-align: center;
-  padding: 0.5rem 0;
-  background-color: #c2cae5;
-  color: #444a65;
-  padding: 40px;
-}
-
-footer p {
-  font-size: 0.45rem;
-  margin: 0.25rem 0;
-}
-
-footer a {
-  text-decoration: none;
-  color: inherit;
-}
-
 /* 3D brain model */
 .brainmodel {
   height: 100%;
@@ -3635,57 +3365,4 @@ footer a {
   left: 55%;
   top: 33%;
   opacity: 0;
-}
-
-/*organ page*/
-.organflex {
-  display: flex;
-  flex-direction: row;
-  max-width: 900px;
-  margin: auto;
-  margin-bottom: 20px;
-}
-
-@media all and (max-width: 650px) {
-  .organflex {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-.organParts {
-  position: relative;
-  max-width: 360px;
-  width: auto;
-  margin: auto;
-  display: flex;
-  height: 650px !important;
-  margin: auto;
-  justify-content: center;
-}
-
-#sortsvg:hover {
-  cursor: pointer;
-}
-
-.organ {
-  position: absolute;
-  bottom: 0vw;
-  height: 650px !important;
-  width: auto;
-  opacity: 0.5;
-}
-
-#log {
-  background-color: #000000a0;
-  width: 90%;
-  height: auto;
-  margin: auto;
-  padding: 9px;
-  border-radius: 9px;
-  color: white;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: block;
-  box-sizing: border-box;
 }

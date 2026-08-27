@@ -1,0 +1,16 @@
+/* Minimal layout adjustments for prototypes using shared page chrome. */
+
+.prototype-example-main {
+    min-height: 100vh;
+    padding-block-start: 7rem;
+}
+
+#three .prototype-example-main .intro {
+    margin-top: 0;
+}
+
+@media print {
+    .prototype-example-main {
+        padding-block-start: 0;
+    }
+}

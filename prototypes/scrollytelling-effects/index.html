@@ -1,12 +1,22 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>0: Scrollytelling Elements and Effects!</title>
+    <title>Scrollytelling Elements and Effects!</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="../../style.css" />
-    <link rel="icon" type="image/x-icon" href="../../img/logo.svg" />
+    <link rel="stylesheet" href="../../shared/css/fonts.css" />
+    <link rel="stylesheet" href="../../shared/css/tokens.css" />
+    <link rel="stylesheet" href="../../shared/css/selection.css" />
+    <link rel="stylesheet" href="../../shared/css/navigation.css" />
+    <link rel="stylesheet" href="../../shared/css/footer.css" />
+    <link rel="stylesheet" href="navigation.css" />
+    <link rel="stylesheet" href="../shared/typography.css" />
+    <link rel="icon" href="../../shared/assets/icons/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="icon" href="../../shared/assets/icons/favicon.svg" type="image/svg+xml" sizes="any" />
+    <link rel="apple-touch-icon" href="../../shared/assets/icons/apple-touch-icon.png" sizes="180x180" />
 
     <script src="wc.js" async></script>
 
@@ -24,66 +34,107 @@
 
       gtag("config", "G-E1811WRJJD");
     </script>
+    <script type="module" src="../../shared/js/navigation-only.js"></script>
   </head>
 
-  <body id="zero">
-    <!-- section counter -->
-    <div id="sectionCounterdiv">
-      <p id="sectionCounter"></p>
-    </div>
+  <body id="zero" class="prototype-page">
+    <a class="site-skip-link site-chrome" href="#main-content"
+      >Skip to main content</a
+    >
 
-    <!-- section categories  -->
-    <section id="categories">
-      <span><a href="#scrolls">Scroll Effects</a></span>
-      <span><a href="#images">Images</a></span>
-      <span><a href="#threeD">3D</a></span>
-      <span><a href="#dataviz">Data Visualizations</a></span>
-      <span><a href="#sounds">Sounds</a></span>
-      <span><a href="#movies">Movies</a></span>
-    </section>
+    <details class="site-menu site-chrome site-chrome--light" data-site-menu>
+      <summary>
+        <span
+          class="site-menu-icon site-menu-icon-menu"
+          aria-hidden="true"
+        ></span>
+        <svg
+          class="site-menu-icon site-menu-icon-close"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="m6 6 12 12M18 6 6 18"></path>
+        </svg>
+        <span>Menu</span>
+      </summary>
 
-    <!-- section top  -->
-    <section class="top">
-      <a href="https://humanatlas.io" class="topLogo">
-        <img class="logo" src="../../img/logo.svg" /> Human Atlas Stories
-      </a>
-      <div class="dropdown">
-        <button class="dropbtn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="35"
-            height="35"
-            fill="#c2cae5"
-            class="bi bi-list"
-            viewBox="-1 -4 20 20"
+      <div
+        class="site-menu-panel"
+        data-site-menu-panel
+        role="region"
+        aria-labelledby="prototype-menu-title"
+        tabindex="-1"
+      >
+        <div class="site-menu-header">
+          <p class="site-menu-title" id="prototype-menu-title">Menu</p>
+          <button
+            class="site-menu-close"
+            type="button"
+            aria-label="Close Menu"
+            data-site-menu-close
           >
-            <path
-              fill-rule="evenodd"
-              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-            />
-          </svg>
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a
-            href="https://hubmapconsortium.github.io/hra-previews/pilots/pilot4.html"
-            >Scrollytelling Series</a
-          >
-          <a href="../../story1.html">What is a Human Reference Atlas?</a>
-          <!-- <a href="../../story2.html">2. Get to Know Your Anatomical Structures!</a>
-                                        <a href="../../story3.html">3. Learn about Visualizing Cells in the Human Body</a> -->
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="m6 6 12 12M18 6 6 18"></path>
+            </svg>
+          </button>
         </div>
-      </div>
-    </section>
 
-    <h1 id="scrolls" class="TitleDivide">Scroll Effects</h1>
+        <nav class="site-menu-nav" aria-labelledby="prototype-navigation-label">
+          <p class="site-menu-label" id="prototype-navigation-label">
+            Navigate
+          </p>
+          <ul role="list">
+            <li><a href="../../index.html">Home</a></li>
+            <li>
+              <a href="../../story1.html">What Is a Human Reference Atlas?</a>
+            </li>
+            <li><a href="../../story2.html">Squiggy's Identity Crisis!</a></li>
+            <li><a href="../../story3.html">Something's Not Registering!</a></li>
+            <li><a href="../../story4.html">Data Detangle</a></li>
+            <li><a href="../../story5.html">Know Your Body Buddies</a></li>
+            <li>
+              <a href="../../story6.html">Pan-organ Immunosenescence Atlas</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </details>
+
+    <aside class="prototype-toc" aria-labelledby="prototype-toc-title">
+      <nav>
+        <p class="prototype-toc-title" id="prototype-toc-title">On this page</p>
+        <ul>
+          <li><a href="#scrolls">Scroll Effects</a></li>
+          <li><a href="#images">Images</a></li>
+          <li><a href="#threeD">3D</a></li>
+          <li><a href="#dataviz">Data Visualization</a></li>
+          <li><a href="#sounds">Sounds</a></li>
+          <li><a href="#movies">Movies</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main
+      class="prototype-main site-main-target"
+      id="main-content"
+      aria-labelledby="prototype-title"
+      tabindex="-1"
+    >
+      <header class="prototype-page-header">
+        <p>Prototype library</p>
+        <h1 id="prototype-title">Scrollytelling elements and effects</h1>
+        <p>Experimental patterns for evaluating media and scroll behavior</p>
+      </header>
+
+    <h2 id="scrolls" class="TitleDivide">Scroll Effects</h2>
 
     <section>
-      <h1>Crossfade images</h1>
+      <h3>Crossfade images</h3>
       <div class="img-wrapper">
         <div
           style="
-            background-image: url(../../img/bg.jpg);
+            background-image: url(images/bg.jpg);
             color: white;
             font-size: 30px;
             text-align: center;
@@ -97,16 +148,16 @@
         </div>
         <div
           class="front"
-          style="background-image: url(../../img/bg2.png)"
+          style="background-image: url(images/bg2.png)"
         ></div>
       </div>
 
       <!-- gsap -->
-      <h1>Horizontal change</h1>
+      <h3>Horizontal change</h3>
       <section class="comparisonSection">
         <div class="comparisonImage beforeImage" style="overflow-x: hidden">
           <img
-            src="../../img/cell1.png"
+            src="images/cell1.png"
             alt="before"
             width="300px"
             height="300px"
@@ -114,7 +165,7 @@
         </div>
         <div class="comparisonImage afterImage" style="overflow-x: hidden">
           <img
-            src="../../img/cell2.png"
+            src="images/cell2.png"
             alt="after"
             width="300px"
             height="300px"
@@ -122,50 +173,50 @@
         </div>
       </section>
 
-      <h1>Scroll in Images</h1>
+      <h3>Scroll in Images</h3>
       <section class="body">
         <img
-          src="../../img/VHF w kidneys.png"
+          src="images/VHF w kidneys.png"
           class="fullbody piece"
           alt="fullbody"
         />
         <p class="piece txt2">Kidneys</p>
         <img
-          src="../../img/kidney flat.png"
+          src="images/kidney flat.png"
           class="outsole piece"
           alt="Kidneys"
         />
         <p class="piece txt3">protein</p>
         <img
-          src="../../img/protein3.png"
+          src="images/protein3.png"
           class="midsole2 piece"
           alt="protein"
         />
         <p class="piece txt4">podo</p>
         <img
-          src="../../img/podo with data.png"
+          src="images/podo with data.png"
           class="midsole piece"
           alt="podo"
         />
       </section>
 
-      <h1>Scroll in Images 2</h1>
+      <h3>Scroll in Images 2</h3>
       <section class="personskull">
-        <img src="../../img/story1-1.png" class="fullface piece" />
-        <img src="../../img/story1-2.png" class="skull piece" />
-        <img src="../../img/story1-3.png" class="brain1 piece" />
-        <img src="../../img/story1-4.png" class="brain2 piece" />
+        <img src="images/story1-1.png" class="fullface piece" />
+        <img src="images/story1-2.png" class="skull piece" />
+        <img src="images/story1-3.png" class="brain1 piece" />
+        <img src="images/story1-4.png" class="brain2 piece" />
         <p class="piece skulltxt1">There are XX cells in the human body.</p>
       </section>
 
-      <h1>Move on image</h1>
+      <h3>Move on image</h3>
       <section class="moveimg">
-        <img src="../../img/graphbg.png" class="graphbg piece" />
-        <img src="../../img/char1.png" class="char1 piece" />
-        <img src="../../img/char1.png" class="char12 piece" />
+        <img src="images/graphbg.png" class="graphbg piece" />
+        <img src="images/char1.png" class="char1 piece" />
+        <img src="images/char1.png" class="char12 piece" />
       </section>
 
-      <h1>Parallax example</h1>
+      <h3>Parallax example</h3>
       <div
         class="parallax"
         style="
@@ -182,47 +233,47 @@
       </div>
 
       <div id="fadetests">
-        <h1>Fade In effects</h1>
-        <h2>Fade In</h2>
+        <h3>Fade In effects</h3>
+        <h4>Fade In</h4>
         <div class="js-scroll fade-in">
-          <img src="../../img/image1.gif" width="100%" />
+          <img src="../../shared/assets/images/image1.gif" width="100%" />
         </div>
-        <h2>Fade In From Bottom</h2>
+        <h4>Fade In From Bottom</h4>
         <div class="js-scroll fade-in-bottom">
-          <img src="../../img/image2.gif" width="100%" />
+          <img src="../../shared/assets/images/image2.gif" width="100%" />
         </div>
-        <h2>Fade in slide from left</h2>
+        <h4>Fade in slide from left</h4>
         <div class="js-scroll slide-left">
-          <img src="../../img/image3.gif" width="100%" />
+          <img src="../../shared/assets/images/image3.gif" width="100%" />
         </div>
       </div>
     </section>
 
-    <h1 id="images" class="TitleDivide">Images</h1>
+    <h2 id="images" class="TitleDivide">Images</h2>
 
     <!-- section one  -->
     <section id="section1">
       <div id="TiffExample">
-        <h1>Animation Using Animated WEBP File</h1>
+        <h3>Animation Using Animated WEBP File</h3>
         <img
-          src="../../img/bird-wings-flying-feature.webp"
+          src="images/bird-wings-flying-feature.webp"
           style="max-width: 600px"
           width="100%"
         />
       </div>
     </section>
 
-    <h1 id="threeD" class="TitleDivide">3D</h1>
+    <h2 id="threeD" class="TitleDivide">3D</h2>
     <section>
       <div id="glbtest">
-        <h1>3D GLB file test</h1>
+        <h3>3D GLB file test</h3>
         <model-viewer
           class="brainmodel"
-          src="../../img/Allen_F_Brain.glb"
+          src="models/Allen_F_Brain.glb"
           alt="3D brain model"
           loading="eager"
           auto-rotate
-          ios-src="../../img/Allen_F_Brain.glb"
+          ios-src="models/Allen_F_Brain.glb"
           camera-controls
           touch-action="pan-y"
           disable-zoom
@@ -233,7 +284,7 @@
         </model-viewer>
       </div>
 
-      <h1>On touch 3D animation</h1>
+      <h3>On touch 3D animation</h3>
       <p style="text-align: center">
         Using spline seems like the easiest option for making simple 3D
         animations from the models we have.
@@ -247,11 +298,11 @@
       ></iframe>
     </section>
 
-    <h1 id="dataviz" class="TitleDivide">Data Visualization</h1>
+    <h2 id="dataviz" class="TitleDivide">Data Visualization</h2>
 
     <!-- section two  -->
     <section id="section2">
-      <h1>Sankey Diagram</h1>
+      <h3>Sankey Diagram</h3>
       <p>
         Embedded directly from the software.docs.hubmapconsortium.org site. Not
         always reliable.
@@ -266,7 +317,7 @@
       >
       </iframe>
 
-      <h1>CCF Organ info example</h1>
+      <h3>CCF Organ info example</h3>
       <div class="mat-typography" style="height: 100%">
         <!-- <ccf-organ-info
               organ-iri="http://purl.obolibrary.org/obo/UBERON_0004538"
@@ -281,11 +332,11 @@
       </div>
     </section>
 
-    <h1 id="sounds" class="TitleDivide">Sounds</h1>
+    <h2 id="sounds" class="TitleDivide">Sounds</h2>
 
     <!-- section three  -->
     <section id="section3">
-      <h1>Music/audio test</h1>
+      <h3>Music/audio test</h3>
       <div class="togetheridv">
         <span class="audiobutton" onclick="play()">Press to play sound</span>
         <span class="audiobutton" onclick="turnOff()"
@@ -295,18 +346,18 @@
     </section>
 
     <!-- section four  -->
-    <h1 id="movies" class="TitleDivide">Movies</h1>
+    <h2 id="movies" class="TitleDivide">Movies</h2>
 
     <section id="section4">
-      <h1>Displaying text over a video video</h1>
+      <h3>Displaying text over a video video</h3>
       <div id="section-movie">
         <video autoplay="" muted="" loop="" id="video-background">
-          <source src="../../img/image4.mp4" type="video/mp4" />
+          <source src="../../shared/assets/videos/image4.mp4" type="video/mp4" />
         </video>
         <span>Text over video example</span>
       </div>
 
-      <h1>Displaying an MP4 video</h1>
+      <h3>Displaying an MP4 video</h3>
       <video
         loop="true"
         style="border-radius: 6px; max-width: 600px"
@@ -314,11 +365,11 @@
         autoplay="autoplay"
         muted
       >
-        <source src="../../img/image4.mp4" type="video/mp4" />
+        <source src="../../shared/assets/videos/image4.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      <h1>Embedded YouTube video</h1>
+      <h3>Embedded YouTube video</h3>
       <iframe
         width="100%"
         style="max-width: 600px"
@@ -365,14 +416,66 @@
           /></svg
       ></a>
     </section>
+    </main>
 
-    <footer>
-      &commat; 2024 Human Atlas Design System at Indiana University
+    <footer class="site-footer site-chrome site-chrome--dark">
+      <nav class="site-footer__organizations" aria-label="Organizations">
+        <a
+          class="site-footer__organization-link"
+          href="https://humanatlas.io/"
+          aria-label="Human Reference Atlas"
+        >
+          <img
+            src="../../shared/assets/logos/hra-dark-large.svg"
+            alt=""
+            width="148"
+            height="63"
+          />
+          <span class="site-footer__organization-name"
+            >Human Reference Atlas</span
+          >
+        </a>
+        <a
+          class="site-footer__organization-link"
+          href="https://cns.iu.edu/"
+          aria-label="Cyberinfrastructure for Network Science Center"
+        >
+          <img
+            src="../../shared/assets/logos/cns-dark-long.svg"
+            alt=""
+            width="239"
+            height="40"
+          />
+          <span class="site-footer__organization-name"
+            >Cyberinfrastructure for Network Science Center</span
+          >
+        </a>
+      </nav>
+      <a class="site-footer__back-to-top" href="#main-content" data-back-to-top>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          fill="none"
+        >
+          <path
+            d="M12 19V5m0 0-6 6m6-6 6 6"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+        Back to top
+      </a>
+      <p class="site-footer__copyright">
+        © 2026 Cyberinfrastructure for Network Science Center
+      </p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/ScrollTrigger.min.js"></script>
-  </body>
   <script src="scripts.js"></script>
 
   <!--It helps to handle how the 3D Object would be displayed -->
@@ -418,27 +521,6 @@
         rand;
     }
     window.onresize = reload;
-
-    //categories show
-    window.onscroll = function (e) {
-      if (window.scrollY > 70) {
-        document.getElementById("categories").style.opacity = "1";
-      }
-
-      if (window.scrollY < 70) {
-        document.getElementById("categories").style.opacity = "0";
-      }
-    };
-
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-          behavior: "smooth",
-        });
-      });
-    });
 
     //crossfade imgs
     const checkpoint = 1000;
@@ -570,4 +652,5 @@
       });
 
   </script>
+  </body>
 </html>
