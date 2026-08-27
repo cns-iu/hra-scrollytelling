@@ -176,9 +176,9 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
 - Avoid broad formatting or mechanical rewrites of `story3.html` and `story4.html`; they contain large embedded data.
 - Keep the drag-and-drop answer demo fully owned by `prototypes/drag-and-drop/`; do not recreate a root `img/`
   directory.
-- Keep story-exclusive assets under their owning `stories/storyN/` directory, assets shared by maintained stories under
-  `stories/shared/`, assets shared by a maintained page and a prototype under `shared/assets/`, and prototype-only
-  assets under their owning `prototypes/` directory or `prototypes/shared/` when multiple prototypes consume them.
+- Keep story-exclusive assets under their owning `stories/storyN/` directory, assets shared by maintained stories or
+  by a maintained page and a prototype under `shared/assets/`, and prototype-only assets under their owning
+  `prototypes/` directory or `prototypes/shared/` when multiple prototypes consume them.
 - Preserve `story0.html` as the compatibility entry point for the Scrollytelling Effects implementation under
   `prototypes/scrollytelling-effects/`. Do not restore a root `scripts.js` or load the prototype script from maintained
   pages.

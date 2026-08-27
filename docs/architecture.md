@@ -22,7 +22,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | --- | --- | --- |
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
-| Primary stories | `story1.html` through `story6.html` | Stories 1–5 retain shared legacy `style.css`; Story 6 uses only its dedicated `stories/story6/` implementation and namespaced shared page chrome; story media lives under its owning story, `stories/shared/`, or the appropriate shared asset directory |
+| Primary stories | `story1.html` through `story6.html` | Stories 1–5 retain shared legacy `style.css`; Story 6 uses only its dedicated `stories/story6/` implementation and namespaced shared page chrome; story media lives under its owning story or the appropriate shared asset directory |
 | Prototypes | Compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets and the root legacy stylesheet |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
@@ -73,8 +73,6 @@ Root HTML files remain stable public entry points while their implementation fil
 │       ├── index.html
 │       └── videos/
 ├── stories/
-│   ├── shared/
-│   │   └── images/
 │   ├── story1/
 │   │   ├── accessibility.css
 │   │   ├── images/
@@ -127,7 +125,7 @@ unneeded IDs, and visually regression-test every affected illustration before an
 
 Story 3 owns its confirmed story-specific narrative scenes, collision-state artwork, kidney variations, and resource
 thumbnails under `stories/story3/images/`. The body-intro layers, telescope, and external-link arrow shared with other
-stories live under `stories/shared/images/`; the common favicon lives under `shared/assets/icons/`. Story 3's large
+stories live under `shared/assets/images/`; the common favicon lives under `shared/assets/icons/`. Story 3's large
 inline SVG markup and its rules in the legacy root `style.css` remain deferred to separate migrations.
 
 Story 4 owns its particle runtime, inline configuration initializer, intentionally blank Bootstrap starter hook, and
@@ -140,7 +138,7 @@ were redundant build fragments embedded byte-for-byte within the consumed protot
 
 Story 5 owns its story-specific scene backgrounds, narrative illustrations, media-control icons, and resource
 thumbnails under `stories/story5/images/` and its six videos under `stories/story5/videos/`. The body-intro layers,
-telescope, and external-link arrow shared with other stories live under `stories/shared/images/`; the common favicon
+telescope, and external-link arrow shared with other stories live under `shared/assets/images/`; the common favicon
 lives under `shared/assets/icons/`.
 
 Each retained prototype owns its exclusive images, videos, models, and dedicated presentation beneath its directory.

@@ -84,7 +84,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   ├── assets/
 │   │   ├── fonts/      # Self-hosted HRA webfonts and licenses
 │   │   ├── icons/      # Shared interface and retained organ icons
-│   │   ├── images/     # Images shared by maintained and prototype experiences
+│   │   ├── images/     # Images shared across maintained and prototype experiences
 │   │   ├── logos/      # Theme-aware organization logos
 │   │   ├── music/      # Shared story and prototype audio
 │   │   └── videos/     # Video shared by maintained and prototype experiences
@@ -105,7 +105,6 @@ original URLs retained as compatibility pages. These are not primary entry point
 ├── story5.html
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
 ├── stories/            # Gradually organized story-owned implementation files
-│   ├── shared/         # Narrative and interface images shared by multiple stories
 │   ├── story1/         # Story 1 styles, scripts, owned images, and videos
 │   ├── story2/         # Story 2 quiz and owned images
 │   ├── story3/         # Story 3-owned narrative and resource images

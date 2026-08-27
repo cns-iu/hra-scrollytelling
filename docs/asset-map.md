@@ -13,7 +13,7 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `landing/css/fonts.css` | Compatibility bridge for the former landing font URL | Retain while cached documents may request the old path |
 | `shared/assets/fonts/` | HRA WOFF2 files and their original licenses | Consolidated; shared by the landing page, maintained page chrome, and Story 6 |
 | `shared/assets/icons/` | Shared interface icons, favicon, and retained organ icon assets | Menu glyph and favicon shared by maintained pages; Story 6 info icon and organ inventory relocated from the former root `assets/` directory |
-| `shared/assets/images/` | Animated images shared by Story 1 and Scrollytelling Effects | Organized; contains the three shared GIFs |
+| `shared/assets/images/` | Images shared across maintained stories and prototypes | Organized; contains three GIFs shared by Story 1 and Scrollytelling Effects, body-intro layers and telescope shared by Stories 2, 3, and 5, and the external-link arrow shared by Stories 1–5 |
 | `shared/assets/logos/` | Light- and dark-surface HRA, CNS, and SenNet organization marks | Shared by the landing hero, canonical footer, and Story 6 resource cards |
 | `shared/assets/music/` | Shared story and prototype audio | Consolidated from the former root `music/` directory; `Piano.mp3` is used by Scrollytelling Effects, while maintained-story references to `dramatic.swf.mp3` remain commented out |
 | `shared/assets/videos/` | Video shared by Story 1 and Scrollytelling Effects | Organized; contains the shared `image4.mp4` asset |
@@ -37,7 +37,6 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `stories/story4/images/` | Story 4 resource-card thumbnails | Organized; contains the three external-resource images used only by Story 4 |
 | `stories/story5/images/` | Story 5 scene backgrounds, narrative illustrations, controls, and resource thumbnails | Organized; contains 23 image assets used only by Story 5 |
 | `stories/story5/videos/` | Story 5 narrative videos | Organized; contains six MOV files used only by Story 5 |
-| `stories/shared/images/` | Narrative and interface images shared by maintained stories | Organized; body-intro layers and telescope are shared by Stories 2, 3, and 5; external-link arrow is shared by Stories 1–5 |
 | `stories/story6/img/` | Story 6 narrative artwork plus responsive splash, transition, tissue, mouse, cell-card, and tutorial variants | Story-owned; visible source credits are maintained in `story6.html`; dependency-free generation tools live under `tools/` |
 
 The former root `js/` directory was removed after its consumed Story 4 and prototype files were organized. Its five
@@ -96,8 +95,8 @@ repository-wide reference checks.
 | --- | --- | --- |
 | Landing page | Organized | Owned by `index.html`, `landing/`, shared HRA fonts, and shared page chrome |
 | Story 1 | Media organized | Uses the navigation-only shared Menu, shared story navigation, and fixed-Dark shared footer; `stories/story1/` owns Story 1 presentation, motion behavior, image, and videos; animated media shared with a prototype is under `shared/assets/` |
-| Story 2 | Images organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story2/` owns its quiz and confirmed story-specific images; cross-story artwork is under `stories/shared/images/` |
-| Story 3 | Images organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story3/` owns its confirmed story-specific images, while cross-story artwork is under `stories/shared/images/`; embedded data remains deferred |
+| Story 2 | Images organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story2/` owns its quiz and confirmed story-specific images; cross-story artwork is under `shared/assets/images/` |
+| Story 3 | Images organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story3/` owns its confirmed story-specific images, while cross-story artwork is under `shared/assets/images/`; embedded data remains deferred |
 | Story 4 | Images and particle implementation organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story4/` owns its particle scripts, JSON configuration, and confirmed story-specific resource thumbnails, while embedded data remains deferred |
 | Story 5 | Media organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story5/` owns its accessibility stylesheet, confirmed story-specific images, and videos |
 | Story 6 | Organized | Independent of root `style.css`; `stories/story6/` owns the narrative implementation, generated responsive artwork, and Story 6 contributor instructions; the page uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons |
@@ -109,6 +108,6 @@ repository-wide reference checks.
 - Do not rename an existing asset solely to enforce naming consistency.
 - Keep file extensions accurate and preserve case-sensitive paths.
 - Place story-exclusive assets under that story's directory.
-- Place an asset under `stories/shared/` only when at least two maintained stories consume it.
+- Place an image under `shared/assets/images/` when multiple maintained stories or a maintained story and prototype consume it.
 - Place page-chrome code under `shared/` only when it serves the landing page and at least one maintained story.
 - Record provenance or licensing information alongside assets when it is known.

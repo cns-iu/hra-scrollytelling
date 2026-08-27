@@ -90,8 +90,8 @@ The shared Menu and footer are the single maintained implementations for every p
 copies of their layout, interaction, appearance, or accessibility rules.
 
 Shared font binaries and licenses belong under `shared/assets/fonts/`, interface icons under `shared/assets/icons/`,
-and theme-aware organization marks under `shared/assets/logos/`. Cross-experience animated images and video belong
-under `shared/assets/images/` and `shared/assets/videos/` only when both a maintained page and a prototype consume
-them. Do not duplicate these files at the repository root.
+and theme-aware organization marks under `shared/assets/logos/`. Images shared by multiple maintained stories or by a
+maintained page and a prototype belong under `shared/assets/images/`; shared video belongs under
+`shared/assets/videos/`. Do not duplicate these files at the repository root.
 
 See [`../docs/architecture.md`](../docs/architecture.md#shared-page-chrome) for component ownership boundaries.
