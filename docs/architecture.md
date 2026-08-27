@@ -80,7 +80,8 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   └── config/
 │   │       └── particles.json
 │   └── story5/
-│       └── .gitkeep
+│       ├── accessibility.css
+│       └── images/
 ├── docs/
 ├── tools/
 └── img/
@@ -117,6 +118,11 @@ owns its complete `wc.js` web-component bundle alongside its prototype script. T
 removed after repository-wide auditing confirmed that
 `jquery-3.6.3.min.js` and `magnifier.js` had no remaining consumers and that `runtime.js`, `polyfills.js`, and `main.js`
 were redundant build fragments embedded byte-for-byte within the consumed prototype bundle.
+
+Story 5 owns its story-specific scene backgrounds, narrative illustrations, media-control icons, and resource
+thumbnails under `stories/story5/images/`. The body-intro layers and telescope shared with Stories 2 and 3, the common
+favicon, and the shared external-link arrow remain under `img/`. Story 5 videos remain under `img/` until media beyond
+images is explicitly migrated.
 
 ## Shared page chrome
 
