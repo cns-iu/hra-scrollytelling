@@ -10,7 +10,7 @@
 - Keep `css/splash-transitions.css`, `css/narrative.css`, `css/tissue-comparison.css`, `css/cde.css`, and `css/closing.css` scoped to their named Story 6 regions
 - Keep responsive, animation-failure, and reduced-motion rules beside the component styles they modify rather than collecting them in a separate responsive file
 - Keep Story 6–specific narrative images in `img/`
-- Keep fonts, organization logos, and shared interface icons under the repository-level `../../shared/assets/` directory; keep the favicon and legacy cross-story images under `../../img/`
+- Keep fonts, organization logos, and shared interface icons, including the favicon, under the repository-level `../../shared/assets/` directory; keep cross-story narrative images under `../shared/images/`
 - Resolve paths in `../../story6.html` from the repository root, such as `stories/story6/img/example.webp`
 - Resolve paths in `css/*.css` from the `css/` directory, such as `../../../shared/assets/icons/info.svg`
 - Preserve current narrative copy unless the user explicitly requests content editing because Story 6 content may be changing concurrently

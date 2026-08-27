@@ -82,15 +82,6 @@ body {
   align-items: flex-start;
 }
 
-.middlesectionindex {
-  background-color: #e2e6ec;
-  background-image: url('img/UI\ Assets/indexbg.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: auto 100%;
-  flex-grow: 1;
-}
-
 .storyList {
   display: flex;
   flex-direction: column;
@@ -398,7 +389,7 @@ header h2 {
 /*extra effects*/
 .parallax {
   /* The image used */
-  background-image: url('img/bg.jpg');
+  background-image: url('prototypes/scrollytelling-effects/images/bg.jpg');
 
   /* Set a specific height */
   min-height: 500px;

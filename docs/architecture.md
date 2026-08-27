@@ -10,7 +10,8 @@ The site is served directly by GitHub Pages, so file locations and letter casing
   prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
-- Treat `style.css` and `img/` as shared legacy resources until each consumer has been mapped.
+- Treat `style.css` as a shared legacy stylesheet. Keep only the protected drag-and-drop compatibility page and the
+  deferred Metropolis OTF under `img/`.
 - Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
 - Do not mechanically format `story3.html` or `story4.html`; both contain large embedded data.
@@ -22,8 +23,8 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | --- | --- | --- |
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
-| Primary stories | `story1.html` through `story6.html` | Stories 1–5 retain shared legacy `style.css`; Story 6 uses only its dedicated `stories/story6/` implementation and namespaced shared page chrome; other stories use shared or story-specific scripts, `img/`, audio under `shared/assets/music/`, and gradually organized files under `stories/` |
-| Prototypes | `img/test.html` and the compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations under `prototypes/` plus shared legacy files |
+| Primary stories | `story1.html` through `story6.html` | Stories 1–5 retain shared legacy `style.css`; Story 6 uses only its dedicated `stories/story6/` implementation and namespaced shared page chrome; story media lives under its owning story, `stories/shared/`, or the appropriate shared asset directory |
+| Prototypes | `img/test.html` and the compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets and the root legacy stylesheet |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
 build step, but those existing runtime integrations must still be preserved during story migrations.
@@ -45,27 +46,41 @@ Root HTML files remain stable public entry points while their implementation fil
 │   ├── assets/
 │   │   ├── fonts/
 │   │   ├── icons/
+│   │   ├── images/
 │   │   ├── logos/
-│   │   └── music/
+│   │   ├── music/
+│   │   └── videos/
 │   ├── css/
 │   └── js/
 ├── prototypes/
+│   ├── drag-and-drop/
+│   │   └── images/
 │   ├── organ-example/
+│   │   ├── images/
 │   │   └── index.html
 │   ├── scrollytelling-effects/
+│   │   ├── images/
 │   │   ├── index.html
+│   │   ├── models/
 │   │   ├── scripts.js
 │   │   └── wc.js
+│   ├── shared/
+│   │   └── images/
 │   └── visualizing-cells/
-│       └── index.html
+│       ├── images/
+│       ├── index.html
+│       └── videos/
 ├── stories/
+│   ├── shared/
+│   │   └── images/
 │   ├── story1/
 │   │   ├── accessibility.css
 │   │   ├── images/
 │   │   │   └── hra-scale-overview.png
 │   │   ├── motion-control.js
 │   │   ├── reveals.js
-│   │   └── story1.css
+│   │   ├── story1.css
+│   │   └── videos/
 │   ├── story2/
 │   │   ├── images/
 │   │   ├── quiz.css
@@ -81,15 +96,16 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │       └── particles.json
 │   └── story5/
 │       ├── accessibility.css
-│       └── images/
+│       ├── images/
+│       └── videos/
 ├── docs/
 ├── tools/
 └── img/
 ```
 
-The `img/` directory remains in place until each asset has a verified owner. The approved empty story directories use
-`.gitkeep` placeholders until their first story-owned files are migrated; do not create other empty target directories
-in advance.
+The root `img/` audit is complete. `img/test.html` remains at its published location while its SVG assets live under
+`prototypes/drag-and-drop/images/`; `img/UI Assets/Metropolis-Medium.otf` remains temporarily for the documented font
+consolidation follow-up. Do not place new assets under `img/`.
 
 `landing/css/fonts.css` remains as a compatibility bridge for cached landing-page documents. Maintained HTML entry
 points load `shared/css/fonts.css` directly; do not expand the compatibility file into a second font source.
@@ -99,6 +115,9 @@ Story 1 keeps presentation and responsive layout in `stories/story1/story1.css`,
 progressive enhancement in `stories/story1/reveals.js`. Its reveals use browser APIs and do not require a third-party
 animation runtime.
 
+Story 1 owns its video backgrounds under `stories/story1/videos/`. The GIF sequence and MP4 it shares with the
+Scrollytelling Effects prototype live under `shared/assets/images/` and `shared/assets/videos/`.
+
 Story 2 contains 11 repeated ID values across its large inline SVG illustrations: `branchoff`, `Group-3`, `Group-4`,
 `Group`, `Group-5`, `Rectangle`, `Oval`, `Combined-Shape`, `Group-2`, `Path`, and `Triangle`. These generated drawing
 labels predate the organized Story 2 asset directory and are not currently targeted by repository CSS, JavaScript,
@@ -107,22 +126,27 @@ accepted markup pattern. Clean them up as a separate SVG-maintenance change, usi
 unneeded IDs, and visually regression-test every affected illustration before and after the change.
 
 Story 3 owns its confirmed story-specific narrative scenes, collision-state artwork, kidney variations, and resource
-thumbnails under `stories/story3/images/`. The body-intro layers and telescope shared with Stories 2 and 5, the common
-favicon, and the shared external-link arrow remain under `img/`. Story 3's large inline SVG markup and its rules in the
-legacy root `style.css` remain deferred to separate migrations.
+thumbnails under `stories/story3/images/`. The body-intro layers, telescope, and external-link arrow shared with other
+stories live under `stories/shared/images/`; the common favicon lives under `shared/assets/icons/`. Story 3's large
+inline SVG markup and its rules in the legacy root `style.css` remain deferred to separate migrations.
 
 Story 4 owns its particle runtime, inline configuration initializer, intentionally blank Bootstrap starter hook, and
 exclusive resource-card thumbnails in `stories/story4/`. Its 24 inline SVG image elements remain embedded in
-`story4.html`; the common favicon and external-link arrow remain under `img/`. The Scrollytelling Effects prototype
-owns its complete `wc.js` web-component bundle alongside its prototype script. The former root `js/` directory was
-removed after repository-wide auditing confirmed that
+`story4.html`; its common favicon and external-link arrow use the organized shared asset directories. The
+Scrollytelling Effects prototype owns its complete `wc.js` web-component bundle alongside its prototype script. The
+former root `js/` directory was removed after repository-wide auditing confirmed that
 `jquery-3.6.3.min.js` and `magnifier.js` had no remaining consumers and that `runtime.js`, `polyfills.js`, and `main.js`
 were redundant build fragments embedded byte-for-byte within the consumed prototype bundle.
 
 Story 5 owns its story-specific scene backgrounds, narrative illustrations, media-control icons, and resource
-thumbnails under `stories/story5/images/`. The body-intro layers and telescope shared with Stories 2 and 3, the common
-favicon, and the shared external-link arrow remain under `img/`. Story 5 videos remain under `img/` until media beyond
-images is explicitly migrated.
+thumbnails under `stories/story5/images/` and its six videos under `stories/story5/videos/`. The body-intro layers,
+telescope, and external-link arrow shared with other stories live under `stories/shared/images/`; the common favicon
+lives under `shared/assets/icons/`.
+
+Each retained prototype owns its exclusive images, videos, and models beneath its directory. Prototype-only shared
+artwork lives under `prototypes/shared/`; assets shared with a maintained story live under `shared/assets/`. The root
+legacy `style.css` and shared music remain intentional dependencies. The drag-and-drop demo keeps its published
+`img/test.html` path but owns its images under `prototypes/drag-and-drop/`.
 
 ## Shared page chrome
 
@@ -138,8 +162,9 @@ separate from landing-page layout and story artwork. Shared component selectors 
 as `.dropdown`, `.next`, or `.footer`.
 
 Shared font binaries and licenses live under `shared/assets/fonts/`; shared interface icons live under
-`shared/assets/icons/`; and theme-aware organization marks live under `shared/assets/logos/`. Maintained pages must not
-create a second root-level copy of these assets.
+`shared/assets/icons/`; theme-aware organization marks live under `shared/assets/logos/`; and cross-experience animated
+media live under `shared/assets/images/` and `shared/assets/videos/`. Maintained pages must not create a second
+root-level copy of these assets.
 
 Theme-aware text selection is a shared foundation under `shared/css/selection.css`. It applies only within
 `.site-chrome` roots, uses roles from `shared/css/tokens.css`, and defers to operating-system colors in forced-colors

@@ -10,19 +10,20 @@ not maintained as part of the primary story collection.
 | Scrollytelling Effects | `scrollytelling-effects/index.html` | `story0.html` at the repository root |
 | Organ Example | `organ-example/index.html` | `organExample.html` at the repository root |
 | Visualizing Cells | `visualizing-cells/index.html` | `VisualizingCells.html` at the repository root |
+| Drag-and-drop demo | `../img/test.html` | `img/test.html` |
 
 The compatibility pages at the repository root preserve previously published GitHub Pages URLs. They forward browsers
 with JavaScript to the organized implementation and provide an ordinary link when JavaScript is unavailable. Do not
 remove these pages without confirming that no external links or bookmarks still depend on them.
 
-The Organ Example and Visualizing Cells prototypes continue to use the root legacy `style.css` and `img/` paths. That
-coupling is intentional for this organizational phase; separating their assets or remediating their interfaces should
-happen in independent, explicitly reviewed changes.
+The Organ Example and Visualizing Cells prototypes continue to use the root legacy `style.css`, but each prototype now
+owns its images and videos. Their shared legacy logo lives under `shared/images/`.
 
 The Scrollytelling Effects prototype owns its behavior and bundled web component in
 `scrollytelling-effects/scripts.js` and `scrollytelling-effects/wc.js` while continuing to use the root legacy
-`style.css` and `img/` resources. Its audio is organized with shared story audio under `shared/assets/music/`.
-`img/test.html` remains in its established location.
+`style.css`. Its images and model are organized with the prototype, its audio is under `shared/assets/music/`, and the
+animated media it shares with Story 1 is under `shared/assets/images/` and `shared/assets/videos/`. `img/test.html`
+remains at its established URL while its three SVG assets live under `drag-and-drop/images/`.
 
 ## Maintenance rules
 

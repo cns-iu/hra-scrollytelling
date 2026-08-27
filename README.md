@@ -71,6 +71,7 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   │   │   ├── splash-human-dark.png  # Dark-theme decorative splash artwork
 │   │   │   └── splash-human-light.png # Light-theme decorative splash artwork
 │   │   ├── hero.png            # Previous single-theme hero artwork
+│   │   ├── logos/              # Landing-page hero logos
 │   │   └── social-preview.png  # 1200×630 link-preview artwork
 │   ├── css/
 │   │   ├── fonts.css   # Compatibility bridge for cached landing pages
@@ -84,14 +85,18 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   ├── assets/
 │   │   ├── fonts/      # Self-hosted HRA webfonts and licenses
 │   │   ├── icons/      # Shared interface and retained organ icons
+│   │   ├── images/     # Images shared by maintained and prototype experiences
 │   │   ├── logos/      # Theme-aware organization logos
-│   │   └── music/      # Shared story and prototype audio
+│   │   ├── music/      # Shared story and prototype audio
+│   │   └── videos/     # Video shared by maintained and prototype experiences
 │   ├── css/            # Fonts, tokens, navigation, footer, and story-navigation styles
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── prototypes/         # Organized legacy experiences and their maintenance notes
-│   ├── organ-example/
-│   ├── scrollytelling-effects/ # Prototype behavior and bundled web component
-│   └── visualizing-cells/
+│   ├── drag-and-drop/           # Assets for the legacy img/test.html demo
+│   ├── organ-example/           # Prototype implementation and owned images
+│   ├── scrollytelling-effects/  # Prototype code, images, and model
+│   ├── shared/                   # Assets shared only by prototypes
+│   └── visualizing-cells/       # Prototype implementation, images, and video
 ├── docs/               # Architecture and asset-migration records
 ├── tools/              # Dependency-free repository validation
 ├── story1.html         # Story experiences
@@ -101,7 +106,8 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 ├── story5.html
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
 ├── stories/            # Gradually organized story-owned implementation files
-│   ├── story1/         # Story 1 styles, scripts, and owned images
+│   ├── shared/         # Narrative and interface images shared by multiple stories
+│   ├── story1/         # Story 1 styles, scripts, owned images, and videos
 │   ├── story2/         # Story 2 quiz and owned images
 │   ├── story3/         # Story 3-owned narrative and resource images
 │   ├── story4/         # Story 4 scripts, particle configuration, and owned images
@@ -111,12 +117,13 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   │   ├── scripts.js
 │   │   └── config/
 │   │       └── particles.json # Preserved particle configuration reference
-│   ├── story5/         # Story 5 accessibility styles and owned images
+│   ├── story5/         # Story 5 accessibility styles, images, and videos
 │   │   ├── accessibility.css
-│   │   └── images/
+│   │   ├── images/
+│   │   └── videos/
 │   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
 ├── style.css           # Legacy shared story styles
-└── img/                # Shared and story-specific visual assets
+└── img/                # Legacy font and protected drag-and-drop compatibility page
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
@@ -297,14 +304,13 @@ Also verify:
 ## Known technical debt
 
 - Most story pages share one large global stylesheet.
-- Assets for multiple stories are mixed together under `img/`.
 - Several filenames contain spaces, making path changes more error-prone.
 - Some story documents contain large embedded image data.
 - Story 2's inline SVG artwork contains 11 pre-existing repeated ID values; they are not current interaction targets,
   but a dedicated cleanup requires visual regression testing
 - The legacy `img/UI Assets/Metropolis-Medium.otf` remains until all three retained prototypes load
   `shared/css/fonts.css`; after visual verification, remove its `style.css` declaration and delete the OTF
-- Some legacy demonstrations and prototype assets still share root files with maintained stories.
+- The protected `img/test.html` demonstration remains outside `prototypes/`, though its assets are organized there.
 
 Repository cleanup should be performed incrementally, with local-reference checks before and after every move.
 The documented missing-reference baseline is maintained in [`docs/asset-map.md`](docs/asset-map.md). Run
