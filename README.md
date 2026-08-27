@@ -104,8 +104,9 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   ├── story1/         # Story 1 styles, scripts, and owned images
 │   ├── story2/         # Story 2 quiz and owned images
 │   ├── story3/         # Story 3-owned narrative and resource images
-│   ├── story4/         # Story 4 scripts and particle configuration
+│   ├── story4/         # Story 4 scripts, particle configuration, and owned images
 │   │   ├── app.js
+│   │   ├── images/        # Story 4 resource thumbnails
 │   │   ├── particles.js
 │   │   ├── scripts.js
 │   │   └── config/

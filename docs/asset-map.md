@@ -24,17 +24,19 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `stories/story2/images/` | Story 2-owned narrative and quiz images | Organized; contains character scenes, ASCT+B Reporter artwork, quiz icons, and resource thumbnails used only by Story 2 |
 | `stories/story3/images/` | Story 3-owned narrative and resource images | Organized; contains character scenes, collision-state artwork, kidney variations, and resource thumbnails used only by Story 3 |
 | `stories/story4/` | Story 4 particle runtime, initializer, Bootstrap starter hook, and configuration | Organized; Story 4 only |
+| `stories/story4/images/` | Story 4 resource-card thumbnails | Organized; contains the three external-resource images used only by Story 4 |
 | `stories/story6/img/` | Story 6 narrative artwork plus responsive splash, transition, tissue, mouse, cell-card, and tutorial variants | Story-owned; visible source credits are maintained in `story6.html`; dependency-free generation tools live under `tools/` |
 
 The former root `js/` directory was removed after its consumed Story 4 and prototype files were organized. Its five
 remaining files were unconsumed: two standalone legacy scripts and three redundant fragments already embedded in the
 prototype's `wc.js` bundle.
 
-After the repository-wide unused-asset audit and Story 3 image migration, `img/` contains 82 tracked content files.
+After the repository-wide unused-asset audit and Story 3 and Story 4 image migrations, `img/` contains 79 tracked
+content files.
 The audit removed 85 files with no HTML, CSS, JavaScript, JSON, manifest, inline SVG, or dynamically constructed path
 consumer, including the orphaned `TestSeq/` image sequence. Story 3 then moved 23 confirmed story-specific assets to
-its owned image directory. The repository still contains large video, model, and embedded-data files; file size alone
-is not evidence that an asset is unused.
+its owned image directory, and Story 4 moved three exclusive resource thumbnails. The repository still contains large
+video, model, and embedded-data files; file size alone is not evidence that an asset is unused.
 
 ## Font consolidation TODO
 
@@ -92,7 +94,7 @@ repository-wide reference checks.
 | Story 1 | Partially organized | Uses the navigation-only shared Menu, shared story navigation, and fixed-Dark shared footer; `stories/story1/` owns Story 1 presentation, motion behavior, and its confirmed story-specific image; shared prototype imagery and Story 1 video remain under `img/` |
 | Story 2 | Partially organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story2/` owns its quiz and confirmed story-specific images; body-intro artwork shared with Stories 3 and 5 and common interface images remain under `img/` |
 | Story 3 | Images organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story3/` owns its confirmed story-specific images, while shared body-intro and interface artwork remains under `img/`; embedded data remains deferred |
-| Story 4 | Page chrome and particle implementation adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; particle scripts and JSON ownership are established under `stories/story4/`, while embedded data remains deferred |
+| Story 4 | Images and particle implementation organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story4/` owns its particle scripts, JSON configuration, and confirmed story-specific resource thumbnails, while embedded data remains deferred |
 | Story 5 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story5/` is reserved for future story-owned files |
 | Story 6 | Organized | Independent of root `style.css`; `stories/story6/` owns the narrative implementation, generated responsive artwork, and Story 6 contributor instructions; the page uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons |
 | Prototypes | Partially organized | Scrollytelling Effects, Organ Example, and Visualizing Cells implementations moved under `prototypes/`; compatibility pages preserve published URLs; `img/test.html` remains in place |

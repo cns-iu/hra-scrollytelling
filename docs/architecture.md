@@ -74,6 +74,7 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   └── images/
 │   ├── story4/
 │   │   ├── app.js
+│   │   ├── images/
 │   │   ├── particles.js
 │   │   ├── scripts.js
 │   │   └── config/
@@ -109,9 +110,11 @@ thumbnails under `stories/story3/images/`. The body-intro layers and telescope s
 favicon, and the shared external-link arrow remain under `img/`. Story 3's large inline SVG markup and its rules in the
 legacy root `style.css` remain deferred to separate migrations.
 
-Story 4 owns its particle runtime, inline configuration initializer, and intentionally blank Bootstrap starter hook
-in `stories/story4/`. The Scrollytelling Effects prototype owns its complete `wc.js` web-component bundle alongside
-its prototype script. The former root `js/` directory was removed after repository-wide auditing confirmed that
+Story 4 owns its particle runtime, inline configuration initializer, intentionally blank Bootstrap starter hook, and
+exclusive resource-card thumbnails in `stories/story4/`. Its 24 inline SVG image elements remain embedded in
+`story4.html`; the common favicon and external-link arrow remain under `img/`. The Scrollytelling Effects prototype
+owns its complete `wc.js` web-component bundle alongside its prototype script. The former root `js/` directory was
+removed after repository-wide auditing confirmed that
 `jquery-3.6.3.min.js` and `magnifier.js` had no remaining consumers and that `runtime.js`, `polyfills.js`, and `main.js`
 were redundant build fragments embedded byte-for-byte within the consumed prototype bundle.
 
@@ -205,8 +208,8 @@ these geometry, source-order, ID, ARIA, responsive-image, and deferred-image con
 ## Migration workflow
 
 Migrate one small story at a time. Start broad story migration with `story1.html`; defer broad edits to the
-embedded-data-heavy third and fourth stories. Story 4's isolated particle implementation and configuration are
-organized under `stories/story4/`; its remaining embedded data stays deferred.
+embedded-data-heavy third and fourth stories. Story 4's isolated particle implementation, configuration, and
+exclusive resource thumbnails are organized under `stories/story4/`; its remaining embedded data stays deferred.
 
 1. Run `node tools/check-local-links.mjs --allow-known`.
 2. Identify every HTML, CSS, JavaScript, JSON, manifest, and service-worker consumer of the files being considered.
