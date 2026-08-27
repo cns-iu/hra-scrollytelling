@@ -7,11 +7,11 @@ const projectRoot = process.cwd();
 const storyPath = path.join(projectRoot, "story6.html");
 const files = {
     html: await readFile(storyPath, "utf8"),
-    animations: await readFile(path.join(projectRoot, "story6", "js", "animations.js"), "utf8"),
-    base: await readFile(path.join(projectRoot, "story6", "css", "base.css"), "utf8"),
-    cde: await readFile(path.join(projectRoot, "story6", "css", "cde.css"), "utf8"),
-    media: await readFile(path.join(projectRoot, "story6", "js", "media.js"), "utf8"),
-    narrative: await readFile(path.join(projectRoot, "story6", "css", "narrative.css"), "utf8"),
+    animations: await readFile(path.join(projectRoot, "stories", "story6", "js", "animations.js"), "utf8"),
+    base: await readFile(path.join(projectRoot, "stories", "story6", "css", "base.css"), "utf8"),
+    cde: await readFile(path.join(projectRoot, "stories", "story6", "css", "cde.css"), "utf8"),
+    media: await readFile(path.join(projectRoot, "stories", "story6", "js", "media.js"), "utf8"),
+    narrative: await readFile(path.join(projectRoot, "stories", "story6", "css", "narrative.css"), "utf8"),
 };
 const issues = [];
 
@@ -65,7 +65,7 @@ function checkMarkupContracts() {
     check(countMatches(files.html, /class="tissue-sample"/gu) === 9, "The tissue comparison must contain nine sample cards");
     check(countMatches(files.html, /class="tutorial-callout tutorial-callout--\d"/gu) === 5, "The CDE tutorial must contain five semantic steps");
     check(
-        /<section class="transition transition5[^>]*aria-labelledby="conclusion-title"[\s\S]*?<h2[^>]*id="conclusion-title"[^>]*>Conclusion<\/h2>[\s\S]*?<p class="textbox-transition/iu.test(files.html),
+        /<section\s+[^>]*class="transition transition5[^"]*"[^>]*aria-labelledby="conclusion-title"[\s\S]*?<h2[^>]*id="conclusion-title"[^>]*>Conclusion<\/h2>[\s\S]*?<p class="textbox-transition/iu.test(files.html),
         "The final transition must retain its explicit Conclusion heading and paragraph",
     );
 }
@@ -96,7 +96,7 @@ function checkReaderViewOrder() {
     }
 
     check(files.html.includes("class=\"mouse-reader-overview\""), "Reader View must retain the compact mouse overview");
-    check(files.html.includes("<ol class=\"cde-tutorial-steps\""), "Reader View must retain the ordered CDE instructions");
+    check(/<ol\s+[^>]*class="cde-tutorial-steps"/iu.test(files.html), "Reader View must retain the ordered CDE instructions");
 }
 
 /**
@@ -145,7 +145,7 @@ function checkAnimationGeometry() {
  * @returns {void}
  */
 function checkImagePolicy() {
-    const storyImages = Array.from(files.html.matchAll(/<img\b[^>]*(?:src|data-src)="story6\/img\/[^>]*>/giu), (match) => match[0]);
+    const storyImages = Array.from(files.html.matchAll(/<img\b[^>]*(?:src|data-src)="stories\/story6\/img\/[^>]*>/giu), (match) => match[0]);
 
     for (const image of storyImages) {
         check(/\balt="[^"]*"/u.test(image), `Story 6 image is missing alt text: ${summarizeTag(image)}`);
@@ -157,13 +157,13 @@ function checkImagePolicy() {
         }
     }
 
-    check(files.html.includes("splash-bg-960.webp 960w"), "The splash must retain its 960px source");
-    check(files.html.includes("splash-bg-1920.webp 1920w"), "The splash must retain its 1920px source");
-    check(countMatches(files.html, /-320\.png 320w/gu) === 9, "All nine tissue maps must retain 320px candidates");
-    check(countMatches(files.html, /-640\.png 640w/gu) >= 15, "Tissue, cell, and mouse artwork must retain 640px candidates");
-    check(countMatches(files.html, /tutorial\d-660\.png 660w/gu) === 5, "All tutorial frames must retain 660px candidates");
-    check(countMatches(files.html, /tutorial\d-1320\.png 1320w/gu) === 5, "All tutorial frames must retain 1320px candidates");
-    check(countMatches(files.html, /\bdata-src="story6\/img\//gu) === 8, "Four mouse layers and four tutorial frames must stay request-staged");
+    check(/splash-bg-960\.webp\s+960w/u.test(files.html), "The splash must retain its 960px source");
+    check(/splash-bg-1920\.webp\s+1920w/u.test(files.html), "The splash must retain its 1920px source");
+    check(countMatches(files.html, /-320\.png\s+320w/gu) === 9, "All nine tissue maps must retain 320px candidates");
+    check(countMatches(files.html, /-640\.png\s+640w/gu) >= 15, "Tissue, cell, and mouse artwork must retain 640px candidates");
+    check(countMatches(files.html, /tutorial\d-660\.png\s+660w/gu) === 5, "All tutorial frames must retain 660px candidates");
+    check(countMatches(files.html, /tutorial\d-1320\.png\s+1320w/gu) === 5, "All tutorial frames must retain 1320px candidates");
+    check(countMatches(files.html, /\bdata-src="stories\/story6\/img\//gu) === 8, "Four mouse layers and four tutorial frames must stay request-staged");
     check(files.media.includes("prepareImagesSequentially"), "Story 6 media preparation must remain sequential");
     check(!files.media.includes("DEFAULT_PRELOAD_MARGIN = '300% 0px'"), "The former 300% tissue preload burst must stay removed");
 }
@@ -181,7 +181,7 @@ async function checkLocalImageReferences() {
         for (const candidate of match[1].split(",")) {
             const reference = candidate.trim().split(/\s+/u)[0];
 
-            if (reference.startsWith("story6/img/")) {
+            if (reference.startsWith("stories/story6/img/")) {
                 references.add(reference);
             }
         }
@@ -207,8 +207,8 @@ async function checkAssetInventory() {
 
     for (const filename of removed) {
         try {
-            await access(path.join(projectRoot, "story6", "img", filename));
-            issues.push(`Verified dead asset was reintroduced: story6/img/${filename}`);
+            await access(path.join(projectRoot, "stories", "story6", "img", filename));
+            issues.push(`Verified dead asset was reintroduced: stories/story6/img/${filename}`);
         } catch {
             // Absence is the expected state.
         }
@@ -216,9 +216,9 @@ async function checkAssetInventory() {
 
     for (const filename of reserved) {
         try {
-            await access(path.join(projectRoot, "story6", "img", filename));
+            await access(path.join(projectRoot, "stories", "story6", "img", filename));
         } catch {
-            issues.push(`Reserved Story 6 transition asset is missing: story6/img/${filename}`);
+            issues.push(`Reserved Story 6 transition asset is missing: stories/story6/img/${filename}`);
         }
     }
 }

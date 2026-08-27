@@ -2,17 +2,17 @@
 
 ## Scope and structure
 
-- Treat `../story6.html`, the styles in `css/`, and `story6.js` as one feature even though the HTML entry point remains at the repository root
+- Treat `../../story6.html`, the styles in `css/`, and `story6.js` as one feature even though the HTML entry point remains at the repository root
 - When creating or substantially restructuring files, keep each file at 500 lines or fewer where practical; split larger files by clear responsibility
 - Keep `story6.js` as the small entry point; place focused UI, animation, reveal, and layout responsibilities in `js/` modules
-- Keep `css/base.css` responsible for Story 6 typography tokens, accessibility, and page primitives; use `../shared/css/fonts.css` for font declarations and the repository-level `shared/` styles and modules for the Menu and appearance controls
+- Keep `css/base.css` responsible for Story 6 typography tokens, accessibility, and page primitives; use `../../shared/css/fonts.css` for font declarations and the repository-level `shared/` styles and modules for the Menu and appearance controls
 - Keep `css/theme.css` responsible for Story 6 semantic color roles and scoped System, Light, Dark, High contrast, and forced-colors adaptations
 - Keep `css/splash-transitions.css`, `css/narrative.css`, `css/tissue-comparison.css`, `css/cde.css`, and `css/closing.css` scoped to their named Story 6 regions
 - Keep responsive, animation-failure, and reduced-motion rules beside the component styles they modify rather than collecting them in a separate responsive file
 - Keep Story 6–specific narrative images in `img/` and datasets in `data/`
-- Keep fonts, organization logos, and shared interface icons under the repository-level `../shared/assets/` directory; keep the favicon and legacy cross-story images under `../img/`
-- Resolve paths in `../story6.html` from the repository root, such as `story6/img/example.webp`
-- Resolve paths in `css/*.css` from the `css/` directory, such as `../../shared/assets/icons/info.svg`
+- Keep fonts, organization logos, and shared interface icons under the repository-level `../../shared/assets/` directory; keep the favicon and legacy cross-story images under `../../img/`
+- Resolve paths in `../../story6.html` from the repository root, such as `stories/story6/img/example.webp`
+- Resolve paths in `css/*.css` from the `css/` directory, such as `../../../shared/assets/icons/info.svg`
 - Retain the CDE datasets in `data/` unless the user explicitly requests their removal, but do not request or parse them from the story page
 - Preserve current narrative copy unless the user explicitly requests content editing because Story 6 content may be changing concurrently
 
@@ -27,12 +27,12 @@
 - Keep display formatting in the HTML or presenting component rather than caching formatted strings in JavaScript state
 - Prefer semantic headings, lists, buttons, and links over recreating their behavior with generic elements and ARIA
 - Preserve keyboard operation, visible focus states, native Menu disclosure state, and `aria-current="page"`
-- Keep the shared Menu markup in `../story6.html` and load `../shared/js/main.js`; do not duplicate its disclosure, appearance, or contrast behavior in Story 6 JavaScript
+- Keep the shared Menu markup in `../../story6.html` and load `shared/js/main.js`; do not duplicate its disclosure, appearance, or contrast behavior in Story 6 JavaScript
 - Keep external links opened in a new tab paired with `rel="noopener noreferrer"`
 - Do not embed, import, preload, or construct the Cell Distance Explorer web component in Story 6 because its runtime and dataset parsing block tutorial scrolling
 - End the native-sticky CDE tutorial after its fifth screenshot and proceed directly into Transition 5 without a launch control or interactive explorer state
 - Keep tutorial images on the shared `1320 / 760` stage with an `82.5rem` maximum width
-- Keep CDE tutorial callouts as semantic ordered-list items using the `.tutorial-callout` component and decorative `../shared/assets/icons/info.svg` icon
+- Keep CDE tutorial callouts as semantic ordered-list items using the `.tutorial-callout` component and decorative `../../shared/assets/icons/info.svg` icon
 - Keep tutorial callouts horizontally centered; place narrow-screen callouts below the scaled tutorial image
 - Use a brief crossfade only between tutorial screenshots 1 and 2; switch every later screenshot directly at its step boundary
 - Animate tutorial callouts with restrained opacity and transform changes, and keep their complete text visible in the reduced-motion layout
@@ -99,7 +99,7 @@
 - Use the 960 px transition settings below when regenerating that variant
 
 ```bash
-cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 story6/img/transition-N-1920.webp -o story6/img/transition-N-960.webp
+cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 stories/story6/img/transition-N-1920.webp -o stories/story6/img/transition-N-960.webp
 ```
 
 - Run the command from the repository root and do not install `cwebp` or any other tool without explicit approval
@@ -111,8 +111,8 @@ cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 story6/img/transition-N-1920.we
 Run the dependency-free checks from the repository root after JavaScript or path changes:
 
 ```bash
-for js_file in story6/story6.js story6/js/*.js; do node --check "$js_file" || exit 1; done
-npx --no-install eslint story6/story6.js story6/js/*.js --no-config-lookup --rule 'no-unused-vars:error' --rule 'no-unreachable:error' --rule 'no-dupe-keys:error'
+for js_file in stories/story6/story6.js stories/story6/js/*.js; do node --check "$js_file" || exit 1; done
+npx --no-install eslint stories/story6/story6.js stories/story6/js/*.js --no-config-lookup --rule 'no-unused-vars:error' --rule 'no-unreachable:error' --rule 'no-dupe-keys:error'
 node tools/check-story6.mjs
 git diff --check
 ```

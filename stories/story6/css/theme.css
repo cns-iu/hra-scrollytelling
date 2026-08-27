@@ -19,8 +19,8 @@
     --story-color-info-surface: #f0f5ff;
     --story-color-info-accent: #174a7e;
     --story-color-artwork-surface: #ffffff;
-    --story-resource-logo-sennet: url("../../shared/assets/logos/sennet-logo-light.svg");
-    --story-resource-logo-hra: url("../../shared/assets/logos/hra-light-large.svg");
+    --story-resource-logo-sennet: url("../../../shared/assets/logos/sennet-logo-light.svg");
+    --story-resource-logo-hra: url("../../../shared/assets/logos/hra-light-large.svg");
     --story-color-selection: #201e3d;
     --story-color-on-selection: #ffffff;
     --story-condition-one: #dee5f1;
@@ -58,8 +58,8 @@
     --story-color-on-accent-surface: #e3dfff;
     --story-color-info-surface: #1c2633;
     --story-color-info-accent: #9fc9ff;
-    --story-resource-logo-sennet: url("../../shared/assets/logos/sennet-logo-dark.svg");
-    --story-resource-logo-hra: url("../../shared/assets/logos/hra-dark-large.svg");
+    --story-resource-logo-sennet: url("../../../shared/assets/logos/sennet-logo-dark.svg");
+    --story-resource-logo-hra: url("../../../shared/assets/logos/hra-dark-large.svg");
     --story-color-selection: #ffdad9;
     --story-color-on-selection: #400009;
     --story-condition-one: #1f2023;
@@ -93,8 +93,8 @@
         --story-color-on-accent-surface: #e3dfff;
         --story-color-info-surface: #1c2633;
         --story-color-info-accent: #9fc9ff;
-        --story-resource-logo-sennet: url("../../shared/assets/logos/sennet-logo-dark.svg");
-        --story-resource-logo-hra: url("../../shared/assets/logos/hra-dark-large.svg");
+        --story-resource-logo-sennet: url("../../../shared/assets/logos/sennet-logo-dark.svg");
+        --story-resource-logo-hra: url("../../../shared/assets/logos/hra-dark-large.svg");
         --story-color-selection: #ffdad9;
         --story-color-on-selection: #400009;
         --story-condition-one: #1f2023;
