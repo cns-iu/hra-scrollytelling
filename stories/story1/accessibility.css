@@ -7,7 +7,8 @@ html.story1-reveals-enhanced #one[data-motion-state="running"]
 
 html.story1-reveals-enhanced #one[data-motion-state="running"]
     .story1-scale-figure[data-reveal-state="waiting"] {
-    transform: scale(0.985);
+    opacity: 0.9;
+    transform: translateY(1rem) scale(0.98);
 }
 
 html.story1-reveals-enhanced #one[data-motion-state="running"]
@@ -15,8 +16,34 @@ html.story1-reveals-enhanced #one[data-motion-state="running"]
     opacity: 1;
     transform: none;
     transition:
-        opacity 650ms ease-out,
-        transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 700ms ease-out,
+        transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.story1-reveals-enhanced #one[data-motion-state="running"]
+    .story1-scale-figure::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(
+        110deg,
+        var(--color-surface),
+        var(--color-surface-muted) 65%,
+        transparent
+    );
+    opacity: 0.55;
+    transform: scaleX(1);
+    transform-origin: right center;
+}
+
+html.story1-reveals-enhanced #one[data-motion-state="running"]
+    .story1-scale-figure[data-reveal-state="revealed"]::after {
+    opacity: 0;
+    transform: scaleX(0);
+    transition:
+        opacity 700ms ease-out,
+        transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html.story1-reveals-enhanced #one[data-motion-state="running"]
@@ -45,6 +72,10 @@ html.story1-reveals-enhanced #one[data-motion-state="running"]
     transition: none !important;
 }
 
+#one[data-motion-state="paused"] .story1-scale-figure::after {
+    content: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
     html.story1-page {
         scroll-behavior: auto;
@@ -62,6 +93,10 @@ html.story1-reveals-enhanced #one[data-motion-state="running"]
         opacity: 1 !important;
         transform: none !important;
     }
+
+    #one .story1-scale-figure::after {
+        content: none !important;
+    }
 }
 
 @media (prefers-reduced-transparency: reduce), (forced-colors: active) {
@@ -75,6 +110,10 @@ html.story1-reveals-enhanced #one[data-motion-state="running"]
 
     #one .story1-figure-card {
         display: none;
+    }
+
+    #one .story1-scale-figure::after {
+        content: none !important;
     }
 }
 

@@ -21,6 +21,7 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `img/TestSeq/` | Image sequence used by a legacy story or prototype | Ownership must be verified |
 | `img/UI Assets/` | Legacy shared interface images and font files | Shared paths contain spaces; do not rename broadly |
 | `prototypes/scrollytelling-effects/wc.js` | Bundled CCF Organ Info web component | Organized; Scrollytelling Effects prototype only |
+| `stories/story1/images/` | Story 1-owned narrative images | Organized; contains the HRA macro-to-micro scale overview used only by Story 1 |
 | `stories/story4/` | Story 4 particle runtime, initializer, Bootstrap starter hook, and configuration | Organized; Story 4 only |
 | `stories/story6/img/` | Story 6 narrative artwork plus responsive splash, transition, tissue, mouse, cell-card, and tutorial variants | Story-owned; visible source credits are maintained in `story6.html`; dependency-free generation tools live under `tools/` |
 
@@ -71,7 +72,7 @@ retained CDE datasets are not image assets and remain under `stories/story6/data
 | Area | Status | Notes |
 | --- | --- | --- |
 | Landing page | Organized | Owned by `index.html`, `landing/`, shared HRA fonts, and shared page chrome |
-| Story 1 | Page chrome and accessibility behavior adopted | Uses the navigation-only shared Menu, shared story navigation, and fixed-Dark shared footer; `stories/story1/` owns Story 1 presentation and motion behavior |
+| Story 1 | Partially organized | Uses the navigation-only shared Menu, shared story navigation, and fixed-Dark shared footer; `stories/story1/` owns Story 1 presentation, motion behavior, and its confirmed story-specific image; shared prototype imagery and Story 1 video remain under `img/` |
 | Story 2 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story2/` is reserved for future story-owned files |
 | Story 3 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story3/` is reserved and embedded data remains deferred |
 | Story 4 | Page chrome and particle implementation adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; particle scripts and JSON ownership are established under `stories/story4/`, while embedded data remains deferred |

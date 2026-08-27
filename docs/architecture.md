@@ -61,6 +61,8 @@ Root HTML files remain stable public entry points while their implementation fil
 ├── stories/
 │   ├── story1/
 │   │   ├── accessibility.css
+│   │   ├── images/
+│   │   │   └── hra-scale-overview.png
 │   │   ├── motion-control.js
 │   │   ├── reveals.js
 │   │   └── story1.css

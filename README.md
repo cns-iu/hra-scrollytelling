@@ -101,7 +101,7 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 ├── story5.html
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
 ├── stories/            # Gradually organized story-owned implementation files
-│   ├── story1/         # Story 1 styles, accessibility, and motion/reveal behavior
+│   ├── story1/         # Story 1 styles, scripts, and owned images
 │   ├── story2/         # Reserved Story 2 implementation folder
 │   ├── story3/         # Reserved Story 3 implementation folder
 │   ├── story4/         # Story 4 scripts and particle configuration
