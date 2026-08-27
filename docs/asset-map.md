@@ -17,9 +17,8 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `shared/assets/music/` | Shared story and prototype audio | Consolidated from the former root `music/` directory; `Piano.mp3` is used by Scrollytelling Effects, while maintained-story references to `dramatic.swf.mp3` remain commented out |
 | `shared/` | Namespaced page-chrome fonts, styles, and progressive-enhancement modules for maintained public pages | Menu and footer adopted by the landing page and all six stories |
 | `prototypes/` | Organized legacy prototype implementations and maintenance notes | Scrollytelling Effects, Organ Example, and Visualizing Cells organized; published entry URLs retained |
-| `img/` | Shared story media, story-specific sequences, legacy UI assets, fonts, and prototypes | Unsorted legacy area |
-| `img/TestSeq/` | Image sequence used by a legacy story or prototype | Ownership must be verified |
-| `img/UI Assets/` | Legacy shared interface images and font files | Shared paths contain spaces; do not rename broadly |
+| `img/` | Shared story media, story-specific sequences, legacy UI assets, fonts, and prototypes | Audited for repository consumers; remaining files are referenced by maintained stories or retained prototypes |
+| `img/UI Assets/` | Legacy Story 1 font and background, shared story arrow, and landing-page logos | Audited; unreferenced navigation, counter, funder, and social assets removed; retained paths contain spaces and must not be renamed broadly |
 | `prototypes/scrollytelling-effects/wc.js` | Bundled CCF Organ Info web component | Organized; Scrollytelling Effects prototype only |
 | `stories/story1/images/` | Story 1-owned narrative images | Organized; contains the HRA macro-to-micro scale overview used only by Story 1 |
 | `stories/story2/images/` | Story 2-owned narrative and quiz images | Organized; contains character scenes, ASCT+B Reporter artwork, quiz icons, and resource thumbnails used only by Story 2 |
@@ -30,9 +29,10 @@ The former root `js/` directory was removed after its consumed Story 4 and proto
 remaining files were unconsumed: two standalone legacy scripts and three redundant fragments already embedded in the
 prototype's `wc.js` bundle.
 
-At the time of this inventory, `img/` contains 190 tracked content files and is the largest working-tree asset area. The
-repository also contains large video, model, sprite-sheet, and embedded-data files. File size alone is not evidence
-that an asset is unused.
+After the repository-wide unused-asset audit, `img/` contains 105 tracked content files. The audit removed 85 files
+with no HTML, CSS, JavaScript, JSON, manifest, inline SVG, or dynamically constructed path consumer, including the
+orphaned `TestSeq/` image sequence. The repository still contains large video, model, and embedded-data files; file
+size alone is not evidence that an asset is unused.
 
 ## Known unresolved references
 
