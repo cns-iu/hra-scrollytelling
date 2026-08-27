@@ -190,6 +190,8 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
 - Keep Story 4's particle scripts under `stories/story4/` and the Scrollytelling Effects web-component bundle under
   `prototypes/scrollytelling-effects/`. Do not recreate removed root copies or promote story- or prototype-owned code
   into `shared/js/`.
+- Keep Story 4 presentation under `stories/story4/styles.css`; do not reconnect `story4.html` or its embedded SVGs to
+  root `style.css`.
 - Preserve `VisualizingCells.html` and `organExample.html` as compatibility entry points for the implementations under
   `prototypes/`; do not delete or repurpose those published URLs without explicit approval.
 - Keep Organ Example presentation under `prototypes/organ-example/styles.css`; do not reconnect it to root

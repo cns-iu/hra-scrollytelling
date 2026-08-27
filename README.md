@@ -113,6 +113,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── images/        # Story 4 resource thumbnails
 │   │   ├── particles.js
 │   │   ├── scripts.js
+│   │   ├── styles.css
 │   │   └── config/
 │   │       └── particles.json # Preserved particle configuration reference
 │   ├── story5/         # Story 5 accessibility styles, images, and videos
@@ -120,7 +121,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── images/
 │   │   └── videos/
 │   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
-└── style.css           # Legacy styles retained by Stories 2–5
+└── style.css           # Legacy styles retained by Stories 2, 3, and 5
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and

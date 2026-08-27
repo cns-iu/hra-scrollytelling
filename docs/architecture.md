@@ -10,7 +10,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
   prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
-- Treat `style.css` as a shared legacy stylesheet consumed only by Stories 2–5.
+- Treat `style.css` as a shared legacy stylesheet consumed only by Stories 2, 3, and 5.
 - Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
 - Do not mechanically format `story3.html` or `story4.html`; both contain large embedded data.
@@ -22,7 +22,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | --- | --- | --- |
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
-| Primary stories | `story1.html` through `story6.html` | Story 1 and Story 6 use dedicated implementations; Stories 2–5 retain shared legacy `style.css`; story media lives under its owning story or the appropriate shared asset directory |
+| Primary stories | `story1.html` through `story6.html` | Stories 1, 4, and 6 use dedicated implementations; Stories 2, 3, and 5 retain shared legacy `style.css`; story media lives under its owning story or the appropriate shared asset directory |
 | Prototypes | Compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets; all prototype implementations are independent of the root legacy stylesheet |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
@@ -96,6 +96,7 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   ├── images/
 │   │   ├── particles.js
 │   │   ├── scripts.js
+│   │   ├── styles.css
 │   │   └── config/
 │   │       └── particles.json
 │   └── story5/
@@ -132,13 +133,20 @@ thumbnails under `stories/story3/images/`. The body-intro layers, telescope, and
 stories live under `shared/assets/images/`; the common favicon lives under `shared/assets/icons/`. Story 3's large
 inline SVG markup and its rules in the legacy root `style.css` remain deferred to separate migrations.
 
-Story 4 owns its particle runtime, inline configuration initializer, intentionally blank Bootstrap starter hook, and
-exclusive resource-card thumbnails in `stories/story4/`. Its 24 inline SVG image elements remain embedded in
-`story4.html`; its common favicon and external-link arrow use the organized shared asset directories. The
-Scrollytelling Effects prototype owns its complete `wc.js` web-component bundle alongside its prototype script. The
+Story 4 owns its presentation, particle runtime, inline configuration initializer, intentionally blank Bootstrap
+starter hook, and exclusive resource-card thumbnails in `stories/story4/`. It is independent of the root legacy
+`style.css`; all three page and embedded-SVG stylesheet references resolve to `stories/story4/styles.css`. Its 24
+inline SVG image elements remain embedded in `story4.html`; its common favicon and external-link arrow use the
+organized shared asset directories. The Scrollytelling Effects prototype owns its complete `wc.js` web-component
+bundle alongside its prototype script. The
 former root `js/` directory was removed after repository-wide auditing confirmed that
 `jquery-3.6.3.min.js` and `magnifier.js` had no remaining consumers and that `runtime.js`, `polyfills.js`, and `main.js`
 were redundant build fragments embedded byte-for-byte within the consumed prototype bundle.
+
+Story 4's embedded SVG illustrations contain 47 repeated ID values across 519 ID attributes. Some of those values are
+consumed by Story 4 animation selectors, gradients, masks, or other SVG fragment references, so they were intentionally
+left unchanged during the stylesheet migration. Treat them as a known invalid-markup baseline and clean them up only
+as a separate embedded-SVG migration with before-and-after animation and illustration regression testing.
 
 Story 5 owns its story-specific scene backgrounds, narrative illustrations, media-control icons, and resource
 thumbnails under `stories/story5/images/` and its six videos under `stories/story5/videos/`. The body-intro layers,
