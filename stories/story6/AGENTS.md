@@ -9,11 +9,10 @@
 - Keep `css/theme.css` responsible for Story 6 semantic color roles and scoped System, Light, Dark, High contrast, and forced-colors adaptations
 - Keep `css/splash-transitions.css`, `css/narrative.css`, `css/tissue-comparison.css`, `css/cde.css`, and `css/closing.css` scoped to their named Story 6 regions
 - Keep responsive, animation-failure, and reduced-motion rules beside the component styles they modify rather than collecting them in a separate responsive file
-- Keep Story 6–specific narrative images in `img/` and datasets in `data/`
+- Keep Story 6–specific narrative images in `img/`
 - Keep fonts, organization logos, and shared interface icons under the repository-level `../../shared/assets/` directory; keep the favicon and legacy cross-story images under `../../img/`
 - Resolve paths in `../../story6.html` from the repository root, such as `stories/story6/img/example.webp`
 - Resolve paths in `css/*.css` from the `css/` directory, such as `../../../shared/assets/icons/info.svg`
-- Retain the CDE datasets in `data/` unless the user explicitly requests their removal, but do not request or parse them from the story page
 - Preserve current narrative copy unless the user explicitly requests content editing because Story 6 content may be changing concurrently
 
 ## Implementation guidance
@@ -36,7 +35,7 @@
 - Keep tutorial callouts horizontally centered; place narrow-screen callouts below the scaled tutorial image
 - Use a brief crossfade only between tutorial screenshots 1 and 2; switch every later screenshot directly at its step boundary
 - Animate tutorial callouts with restrained opacity and transform changes, and keep their complete text visible in the reduced-motion layout
-- Do not parse or duplicate the large CSV datasets in page state unless a demonstrated feature requires it
+- Do not introduce large CSV datasets unless a demonstrated feature requires them and their ownership is documented
 - Keep the splash visually editorial rather than application-like: preserve its asymmetric placement, restrained paper surface, compact accent rule, and clear title-first hierarchy
 - Keep the splash background visible around the title card and avoid adding partner marks to the title card unless the user explicitly requests them
 - Preserve the splash title, subtitle, credits, background crop, and opening-question transition as separate responsibilities so visual refinements do not alter narrative content or scroll behavior
@@ -135,7 +134,7 @@ Then open `http://localhost:8000/story6.html` and complete this smoke test:
 - Reload at several story positions and confirm Story 6 restarts at the top before pinned scenes initialize
 - Enable reduced motion and confirm all narrative text and tutorial instructions remain available
 - Change reduced motion while the page is open and resize below and above `36rem` in height; confirm pins are removed and restored without stale spacing or hidden content
-- Confirm Story 6 does not request the CDE web component bundle, stylesheet, or retained datasets
+- Confirm Story 6 does not request the CDE web component bundle or stylesheet
 - Confirm all requested local image, font, script, and stylesheet resources return successfully
 - Select text with a mouse and with mobile long-press, then confirm the selection colors remain readable on light and dark Story 6 surfaces
 - Confirm the tissue comparison is centered, its text remains left-aligned, and all nine samples are reachable without horizontal scrolling

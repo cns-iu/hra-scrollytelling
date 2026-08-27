@@ -81,8 +81,8 @@ Remove the corresponding baseline entry from `tools/check-local-links.mjs` whene
 | `stories/story6/img/splash-bg-{960,1920}.webp` | `stories/story6/img/splash-bg.webp` | Generated responsive derivatives; regenerate with `node tools/generate-story6-splash.mjs --browser=/path/to/chromium` using an existing Chromium-compatible browser |
 | `stories/story6/img/transition4-{960,1920,3840}.webp` | Planned post-CDE transition artwork | Reserved responsive source set for the next Story 6 section; intentionally retained before markup integration |
 
-The unused `CDE-Placeholder.png` and duplicate `cells.webp` were removed after repository-wide reference checks. The
-retained CDE datasets are not image assets and remain under `stories/story6/data/`.
+The unused `CDE-Placeholder.png`, duplicate `cells.webp`, and four unconsumed CDE CSV datasets were removed after
+repository-wide reference checks.
 
 ## Story migration register
 
@@ -94,7 +94,7 @@ retained CDE datasets are not image assets and remain under `stories/story6/data
 | Story 3 | Images organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story3/` owns its confirmed story-specific images, while shared body-intro and interface artwork remains under `img/`; embedded data remains deferred |
 | Story 4 | Page chrome and particle implementation adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; particle scripts and JSON ownership are established under `stories/story4/`, while embedded data remains deferred |
 | Story 5 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story5/` is reserved for future story-owned files |
-| Story 6 | Organized | Independent of root `style.css`; `stories/story6/` owns the narrative implementation, generated responsive artwork, retained datasets, and Story 6 contributor instructions; the page uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons |
+| Story 6 | Organized | Independent of root `style.css`; `stories/story6/` owns the narrative implementation, generated responsive artwork, and Story 6 contributor instructions; the page uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons |
 | Prototypes | Partially organized | Scrollytelling Effects, Organ Example, and Visualizing Cells implementations moved under `prototypes/`; compatibility pages preserve published URLs; `img/test.html` remains in place |
 
 ## Naming rules for future migrations

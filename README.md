@@ -111,7 +111,7 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   │   └── config/
 │   │       └── particles.json # Preserved particle configuration reference
 │   ├── story5/         # Reserved Story 5 implementation folder
-│   └── story6/         # Story 6 styles, scripts, images, and retained datasets
+│   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
 ├── style.css           # Legacy shared story styles
 └── img/                # Shared and story-specific visual assets
 ```
