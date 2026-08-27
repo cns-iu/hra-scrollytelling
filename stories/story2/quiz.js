@@ -37,19 +37,19 @@ if (quiz && checkButton && result) {
         const selectedAnswer = quiz.querySelector('input[name="radiochoice"]:checked');
 
         if (!selectedAnswer) {
-            showResult(' Select an answer before checking.', 'img/UI Assets/error.svg', false);
+            showResult(' Select an answer before checking.', 'stories/story2/images/quiz-error.svg', false);
             return;
         }
 
         if (selectedAnswer.value === 'Choice3') {
             showResult(
                 ' Correct! Squiggy is a squamous cell (and pretty proud of it).',
-                'img/UI Assets/check_circle.svg',
+                'stories/story2/images/quiz-correct.svg',
                 true,
             );
             return;
         }
 
-        showResult(' Not quite, please try again.', 'img/UI Assets/error.svg', false);
+        showResult(' Not quite, please try again.', 'stories/story2/images/quiz-error.svg', false);
     });
 }

@@ -102,7 +102,7 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
 ├── stories/            # Gradually organized story-owned implementation files
 │   ├── story1/         # Story 1 styles, scripts, and owned images
-│   ├── story2/         # Reserved Story 2 implementation folder
+│   ├── story2/         # Story 2 quiz and owned images
 │   ├── story3/         # Reserved Story 3 implementation folder
 │   ├── story4/         # Story 4 scripts and particle configuration
 │   │   ├── app.js
@@ -294,6 +294,8 @@ Also verify:
 - Assets for multiple stories are mixed together under `img/`.
 - Several filenames contain spaces, making path changes more error-prone.
 - Some story documents contain large embedded image data.
+- Story 2's inline SVG artwork contains 11 pre-existing repeated ID values; they are not current interaction targets,
+  but a dedicated cleanup requires visual regression testing
 - Some legacy demonstrations and prototype assets still share root files with maintained stories.
 
 Repository cleanup should be performed incrementally, with local-reference checks before and after every move.

@@ -1085,7 +1085,7 @@ h1 {
 }
 
 #two .scene1 {
-  background-image: url('img/2scene1.svg');
+  background-image: url('stories/story2/images/squiggy-and-cece-at-home.svg');
   background-color: black;
   height: 100vh;
   margin: 0;
@@ -1098,7 +1098,7 @@ h1 {
 }
 
 #two .scene1-1 {
-  background-image: url('img/2scene2.svg');
+  background-image: url('stories/story2/images/squiggy-and-cece-close-up.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1111,7 +1111,7 @@ h1 {
 }
 
 #two .scene1-2 {
-  background-image: url('img/2scene1.svg');
+  background-image: url('stories/story2/images/squiggy-and-cece-at-home.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1124,7 +1124,7 @@ h1 {
 }
 
 #two .scene2 {
-  background-image: url('img/2scene2-2.svg');
+  background-image: url('stories/story2/images/cece-reassures-squiggy.svg');
   background-color: black;
   height: 100vh;
   overflow: hidden;
@@ -1178,7 +1178,7 @@ h1 {
 }
 
 #two .scene7 {
-  background-image: url('img/2scene5.svg');
+  background-image: url('stories/story2/images/biomarker-discussion.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1190,7 +1190,7 @@ h1 {
 }
 
 #two .scene8 {
-  background-image: url('img/2scene6.svg');
+  background-image: url('stories/story2/images/squiggy-discovers-tag.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1202,7 +1202,7 @@ h1 {
 }
 
 #two .scene9 {
-  background-image: url('img/2scene7.svg');
+  background-image: url('stories/story2/images/squiggy-biomarker-tag.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1214,7 +1214,7 @@ h1 {
 }
 
 #two .scene10 {
-  background-image: url('img/2scene8.svg');
+  background-image: url('stories/story2/images/biomarker-tag-close-up.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1226,7 +1226,7 @@ h1 {
 }
 
 #two .scene11 {
-  background-image: url('img/2scene9.svg');
+  background-image: url('stories/story2/images/squiggy-asks-about-biomarkers.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1238,7 +1238,7 @@ h1 {
 }
 
 #two .scene12 {
-  background-image: url('img/2scene10.svg');
+  background-image: url('stories/story2/images/squiggy-refuses-reporter-ride.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1250,7 +1250,7 @@ h1 {
 }
 
 #two .scene13 {
-  background-image: url('img/2scene11.svg');
+  background-image: url('stories/story2/images/squiggy-and-cece-address-readers.svg');
   background-color: white;
   height: 100vh;
   margin: 0;
@@ -1488,7 +1488,7 @@ h1 {
   width: 100vw;
   height: 100vh;
   z-index: -1;
-  background-image: url('img/2scene1.svg');
+  background-image: url('stories/story2/images/squiggy-and-cece-at-home.svg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;

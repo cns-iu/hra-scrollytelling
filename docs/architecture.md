@@ -67,7 +67,9 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   ├── reveals.js
 │   │   └── story1.css
 │   ├── story2/
-│   │   └── .gitkeep
+│   │   ├── images/
+│   │   ├── quiz.css
+│   │   └── quiz.js
 │   ├── story3/
 │   │   └── .gitkeep
 │   ├── story4/
@@ -94,6 +96,13 @@ Story 1 keeps presentation and responsive layout in `stories/story1/story1.css`,
 `stories/story1/accessibility.css`, animated-media controls in `stories/story1/motion-control.js`, and scroll-triggered
 progressive enhancement in `stories/story1/reveals.js`. Its reveals use browser APIs and do not require a third-party
 animation runtime.
+
+Story 2 contains 11 repeated ID values across its large inline SVG illustrations: `branchoff`, `Group-3`, `Group-4`,
+`Group`, `Group-5`, `Rectangle`, `Oval`, `Combined-Shape`, `Group-2`, `Path`, and `Triangle`. These generated drawing
+labels predate the organized Story 2 asset directory and are not currently targeted by repository CSS, JavaScript,
+fragment links, or SVG `href` references. They remain invalid duplicate document IDs and must not be treated as an
+accepted markup pattern. Clean them up as a separate SVG-maintenance change, using unique story-scoped IDs or removing
+unneeded IDs, and visually regression-test every affected illustration before and after the change.
 
 Story 4 owns its particle runtime, inline configuration initializer, and intentionally blank Bootstrap starter hook
 in `stories/story4/`. The Scrollytelling Effects prototype owns its complete `wc.js` web-component bundle alongside
