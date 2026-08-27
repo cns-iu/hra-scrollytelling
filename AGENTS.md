@@ -28,9 +28,10 @@ Landing-page work is intentionally isolated to:
 - `shared/js/contrast.js` for the persistent High contrast switch used by landing and shared page chrome.
 
 Do not reconnect the landing page to the legacy `style.css` or to prototype or story scripts. Do not allow
-landing-page selectors or behavior to affect the story pages. Do not overwrite or repurpose legacy files directly
-under `js/`. Keep the landing stylesheet order `shared/css/fonts.css`, `landing/css/tokens.css`, the shared page-chrome
-stylesheets, then `landing/css/styles.css`, and load `landing/js/main.js` as an ES module.
+landing-page selectors or behavior to affect the story pages. Do not restore a root `js/` directory; place new scripts
+under their owning page, story, prototype, or shared component. Keep the landing stylesheet order
+`shared/css/fonts.css`, `landing/css/tokens.css`, the shared page-chrome stylesheets, then `landing/css/styles.css`, and
+load `landing/js/main.js` as an ES module.
 
 ## Shared page-chrome architecture
 
@@ -172,6 +173,9 @@ prototype pages.
 - Preserve `story0.html` as the compatibility entry point for the Scrollytelling Effects implementation under
   `prototypes/scrollytelling-effects/`. Do not restore a root `scripts.js` or load the prototype script from maintained
   pages.
+- Keep Story 4's particle scripts under `stories/story4/` and the Scrollytelling Effects web-component bundle under
+  `prototypes/scrollytelling-effects/`. Do not recreate removed root copies or promote story- or prototype-owned code
+  into `shared/js/`.
 - Preserve `VisualizingCells.html` and `organExample.html` as compatibility entry points for the implementations under
   `prototypes/`; do not delete or repurpose those published URLs without explicit approval.
 - Do not rewrite Git history to reduce repository size without explicit approval.

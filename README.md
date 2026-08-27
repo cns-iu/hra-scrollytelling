@@ -90,7 +90,7 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── prototypes/         # Organized legacy experiences and their maintenance notes
 │   ├── organ-example/
-│   ├── scrollytelling-effects/
+│   ├── scrollytelling-effects/ # Prototype behavior and bundled web component
 │   └── visualizing-cells/
 ├── docs/               # Architecture and asset-migration records
 ├── tools/              # Dependency-free repository validation
@@ -104,14 +104,16 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   ├── story1/         # Story 1 styles, accessibility, and motion/reveal behavior
 │   ├── story2/         # Reserved Story 2 implementation folder
 │   ├── story3/         # Reserved Story 3 implementation folder
-│   ├── story4/
+│   ├── story4/         # Story 4 scripts and particle configuration
+│   │   ├── app.js
+│   │   ├── particles.js
+│   │   ├── scripts.js
 │   │   └── config/
 │   │       └── particles.json # Preserved particle configuration reference
 │   ├── story5/         # Reserved Story 5 implementation folder
 │   └── story6/         # Story 6 styles, scripts, images, and retained datasets
 ├── style.css           # Legacy shared story styles
 ├── img/                # Shared and story-specific visual assets
-├── js/                 # Story runtimes, utilities, and legacy scripts
 └── Game/               # Isolated generated game and offline runtime
 ```
 

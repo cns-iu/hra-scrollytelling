@@ -10,7 +10,8 @@ The site is served directly by GitHub Pages, so file locations and letter casing
   prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
-- Treat `style.css`, `img/`, and `js/` as shared legacy resources until each consumer has been mapped.
+- Treat `style.css` and `img/` as shared legacy resources until each consumer has been mapped.
+- Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
 - Treat `Game/` as an isolated generated application. Preserve its directory name, internal paths, manifest, and service
   worker scope.
@@ -56,7 +57,8 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   └── index.html
 │   ├── scrollytelling-effects/
 │   │   ├── index.html
-│   │   └── scripts.js
+│   │   ├── scripts.js
+│   │   └── wc.js
 │   └── visualizing-cells/
 │       └── index.html
 ├── stories/
@@ -70,6 +72,9 @@ Root HTML files remain stable public entry points while their implementation fil
 │   ├── story3/
 │   │   └── .gitkeep
 │   ├── story4/
+│   │   ├── app.js
+│   │   ├── particles.js
+│   │   ├── scripts.js
 │   │   └── config/
 │   │       └── particles.json
 │   └── story5/
@@ -91,6 +96,12 @@ Story 1 keeps presentation and responsive layout in `stories/story1/story1.css`,
 `stories/story1/accessibility.css`, animated-media controls in `stories/story1/motion-control.js`, and scroll-triggered
 progressive enhancement in `stories/story1/reveals.js`. Its reveals use browser APIs and do not require a third-party
 animation runtime.
+
+Story 4 owns its particle runtime, inline configuration initializer, and intentionally blank Bootstrap starter hook
+in `stories/story4/`. The Scrollytelling Effects prototype owns its complete `wc.js` web-component bundle alongside
+its prototype script. The former root `js/` directory was removed after repository-wide auditing confirmed that
+`jquery-3.6.3.min.js` and `magnifier.js` had no remaining consumers and that `runtime.js`, `polyfills.js`, and `main.js`
+were redundant build fragments embedded byte-for-byte within the consumed prototype bundle.
 
 ## Shared page chrome
 
@@ -182,8 +193,8 @@ these geometry, source-order, ID, ARIA, responsive-image, and deferred-image con
 ## Migration workflow
 
 Migrate one small story at a time. Start broad story migration with `story1.html`; defer broad edits to the
-embedded-data-heavy third and fourth stories. Isolated, verified files such as Story 4's particle configuration may
-move independently when their ownership is unambiguous.
+embedded-data-heavy third and fourth stories. Story 4's isolated particle implementation and configuration are
+organized under `stories/story4/`; its remaining embedded data stays deferred.
 
 1. Run `node tools/check-local-links.mjs --allow-known`.
 2. Identify every HTML, CSS, JavaScript, JSON, manifest, and service-worker consumer of the files being considered.

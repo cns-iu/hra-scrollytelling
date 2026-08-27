@@ -20,9 +20,14 @@ orphan-file deletion list: some animation and generated-application paths may be
 | `img/` | Shared story media, story-specific sequences, legacy UI assets, fonts, and prototypes | Unsorted legacy area |
 | `img/TestSeq/` | Image sequence used by a legacy story or prototype | Ownership must be verified |
 | `img/UI Assets/` | Legacy shared interface images and font files | Shared paths contain spaces; do not rename broadly |
+| `prototypes/scrollytelling-effects/wc.js` | Bundled CCF Organ Info web component | Organized; Scrollytelling Effects prototype only |
+| `stories/story4/` | Story 4 particle runtime, initializer, Bootstrap starter hook, and configuration | Organized; Story 4 only |
 | `stories/story6/img/` | Story 6 narrative artwork plus responsive splash, transition, tissue, mouse, cell-card, and tutorial variants | Story-owned; visible source credits are maintained in `story6.html`; dependency-free generation tools live under `tools/` |
-| `stories/story4/config/` | Story 4 particle configuration reference | Organized; runtime currently uses the equivalent inline configuration |
 | `Game/` | Generated game images, icons, scripts, manifest, and offline files | Isolated; do not reorganize |
+
+The former root `js/` directory was removed after its consumed Story 4 and prototype files were organized. Its five
+remaining files were unconsumed: two standalone legacy scripts and three redundant fragments already embedded in the
+prototype's `wc.js` bundle.
 
 At the time of this inventory, `img/` contains 211 tracked content files and is the largest working-tree asset area. The
 repository also contains large video, model, sprite-sheet, and embedded-data files. File size alone is not evidence
@@ -70,7 +75,7 @@ retained CDE datasets are not image assets and remain under `stories/story6/data
 | Story 1 | Page chrome and accessibility behavior adopted | Uses the navigation-only shared Menu, shared story navigation, and fixed-Dark shared footer; `stories/story1/` owns Story 1 presentation and motion behavior |
 | Story 2 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story2/` is reserved for future story-owned files |
 | Story 3 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story3/` is reserved and embedded data remains deferred |
-| Story 4 | Page chrome and config adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; particle JSON ownership is established and embedded data remains deferred |
+| Story 4 | Page chrome and particle implementation adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; particle scripts and JSON ownership are established under `stories/story4/`, while embedded data remains deferred |
 | Story 5 | Page chrome adopted | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story5/` is reserved for future story-owned files |
 | Story 6 | Organized | Independent of root `style.css`; `stories/story6/` owns the narrative implementation, generated responsive artwork, retained datasets, and Story 6 contributor instructions; the page uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons |
 | Prototypes | Partially organized | Scrollytelling Effects, Organ Example, and Visualizing Cells implementations moved under `prototypes/`; compatibility pages preserve published URLs; `img/test.html` remains in place |
