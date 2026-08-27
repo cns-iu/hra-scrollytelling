@@ -187,6 +187,8 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
   into `shared/js/`.
 - Preserve `VisualizingCells.html` and `organExample.html` as compatibility entry points for the implementations under
   `prototypes/`; do not delete or repurpose those published URLs without explicit approval.
+- Keep Organ Example presentation under `prototypes/organ-example/styles.css`; do not reconnect it to root
+  `style.css`.
 - Do not rewrite Git history to reduce repository size without explicit approval.
 - Do not expand a task into adjacent story pages or shared components without explaining the relationship and getting
   approval.

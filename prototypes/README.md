@@ -16,9 +16,10 @@ The compatibility pages at the repository root preserve previously published Git
 with JavaScript to the organized implementation and provide an ordinary link when JavaScript is unavailable. Do not
 remove these pages without confirming that no external links or bookmarks still depend on them.
 
-The Organ Example and Visualizing Cells prototypes continue to use the root legacy `style.css`, but each prototype now
-owns its images and videos. Their shared legacy logo lives under `shared/images/`, while the small content offset they
-both need beside the shared Menu lives in `shared/chrome.css`.
+Organ Example owns its presentation in `organ-example/styles.css` and no longer loads the root legacy `style.css`.
+Visualizing Cells continues to use the root stylesheet while owning its images and videos. Their shared legacy logo
+lives under `shared/images/`, while the small content offset they both need beside the shared Menu lives in
+`shared/chrome.css`.
 
 The Scrollytelling Effects prototype owns its behavior and bundled web component in
 `scrollytelling-effects/scripts.js` and `scrollytelling-effects/wc.js` while continuing to use the root legacy

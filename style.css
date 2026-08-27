@@ -1799,11 +1799,6 @@ h1 {
   opacity: 100;
 }
 
-#organs .organparts {
-  opacity: 1;
-  flex: 0 0 40%;
-}
-
 .scrollArrow {
   align-self: center;
   font-size: 1.7rem;
@@ -2855,55 +2850,6 @@ body:has(#bar9:hover) #label9 {
   position: relative;
 }
 
-/*Table styles*/
-.tableExample {
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-right: 0px;
-  max-height: 600px;
-  overflow-y: scroll;
-  flex: 0 0 60%;
-}
-
-/* Center tables for demo */
-table {
-  margin: auto;
-  width: 90%;
-  max-width: 860px;
-}
-
-/* Default Table Style */
-table {
-  color: #333;
-  background: white;
-  border: 1px solid grey;
-  font-size: 12pt;
-  border-collapse: collapse;
-}
-
-tr:hover:not(:first-child) td {
-  /* background-color: rgba(255, 238, 184, 0.441); */
-  cursor: pointer;
-}
-
-table th,
-table tfoot th {
-  color: #777;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-table caption {
-  padding: 0.5em;
-}
-
-table th,
-table td {
-  padding: 0.5em;
-  border: 1px solid lightgrey;
-}
-
-/*End Table styles*/
-
 /* img crossfade */
 #zero .img-wrapper {
   display: grid;
@@ -3419,57 +3365,4 @@ canvas {
   left: 55%;
   top: 33%;
   opacity: 0;
-}
-
-/*organ page*/
-.organflex {
-  display: flex;
-  flex-direction: row;
-  max-width: 900px;
-  margin: auto;
-  margin-bottom: 20px;
-}
-
-@media all and (max-width: 650px) {
-  .organflex {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-.organParts {
-  position: relative;
-  max-width: 360px;
-  width: auto;
-  margin: auto;
-  display: flex;
-  height: 650px !important;
-  margin: auto;
-  justify-content: center;
-}
-
-#sortsvg:hover {
-  cursor: pointer;
-}
-
-.organ {
-  position: absolute;
-  bottom: 0vw;
-  height: 650px !important;
-  width: auto;
-  opacity: 0.5;
-}
-
-#log {
-  background-color: #000000a0;
-  width: 90%;
-  height: auto;
-  margin: auto;
-  padding: 9px;
-  border-radius: 9px;
-  color: white;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: block;
-  box-sizing: border-box;
 }

@@ -57,7 +57,8 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   └── index.html
 │   ├── organ-example/
 │   │   ├── images/
-│   │   └── index.html
+│   │   ├── index.html
+│   │   └── styles.css
 │   ├── scrollytelling-effects/
 │   │   ├── images/
 │   │   ├── index.html
@@ -142,10 +143,10 @@ thumbnails under `stories/story5/images/` and its six videos under `stories/stor
 telescope, and external-link arrow shared with other stories live under `stories/shared/images/`; the common favicon
 lives under `shared/assets/icons/`.
 
-Each retained prototype owns its exclusive images, videos, and models beneath its directory. Prototype-only shared
-artwork lives under `prototypes/shared/`; assets shared with a maintained story live under `shared/assets/`. The root
-legacy `style.css` and shared music remain intentional dependencies. The drag-and-drop answer demo is fully owned by
-`prototypes/drag-and-drop/`.
+Each retained prototype owns its exclusive images, videos, models, and dedicated presentation beneath its directory.
+Prototype-only shared artwork lives under `prototypes/shared/`; assets shared with a maintained story live under
+`shared/assets/`. Organ Example and the drag-and-drop answer demo are independent of the root legacy `style.css`;
+Visualizing Cells and Scrollytelling Effects remain intentional consumers during their staged migrations.
 
 ## Shared page chrome
 

@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+#organs {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Inter", serif;
+}
+
+#organs .prototype-example-main .organflex {
+    display: flex;
+    max-width: 900px;
+    margin: 0 auto 20px;
+    flex-direction: row;
+}
+
+#organs .prototype-example-main .organParts {
+    position: relative;
+    display: flex;
+    width: auto;
+    max-width: 360px;
+    height: 650px;
+    margin: auto;
+    justify-content: center;
+}
+
+#organs .prototype-example-main .organ {
+    position: absolute;
+    bottom: 0;
+    width: auto;
+    height: 650px;
+    opacity: 0.5;
+}
+
+#organs .prototype-example-main .tableExample {
+    max-height: 600px;
+    margin-block: auto;
+    margin-inline-end: 0;
+    overflow-y: scroll;
+    flex: 0 0 60%;
+}
+
+#organs .prototype-example-main table {
+    width: 90%;
+    max-width: 860px;
+    margin: auto;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    color: #333333;
+    background: #ffffff;
+    font-size: 12pt;
+}
+
+#organs .prototype-example-main tr:hover:not(:first-child) td,
+#organs .prototype-example-main #sortsvg:hover {
+    cursor: pointer;
+}
+
+#organs .prototype-example-main table th,
+#organs .prototype-example-main table tfoot th {
+    color: #777777;
+    background: rgb(0 0 0 / 10%);
+}
+
+#organs .prototype-example-main table caption {
+    padding: 0.5em;
+}
+
+#organs .prototype-example-main table th,
+#organs .prototype-example-main table td {
+    padding: 0.5em;
+    border: 1px solid lightgrey;
+}
+
+#organs .prototype-example-main #log {
+    display: block;
+    box-sizing: border-box;
+    width: 90%;
+    height: auto;
+    padding: 9px;
+    margin: 10px auto;
+    border-radius: 9px;
+    color: #ffffff;
+    background-color: #000000a0;
+}
+
+@media (max-width: 650px) {
+    #organs .prototype-example-main .organflex {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
