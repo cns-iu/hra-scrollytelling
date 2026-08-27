@@ -17,9 +17,10 @@ with JavaScript to the organized implementation and provide an ordinary link whe
 remove these pages without confirming that no external links or bookmarks still depend on them.
 
 Organ Example owns its presentation in `organ-example/styles.css` and no longer loads the root legacy `style.css`.
-Visualizing Cells continues to use the root stylesheet while owning its images and videos. Every prototype uses the
-cross-device HRA favicon set under `../shared/assets/icons/`, while the small content offset needed by Organ Example
-and Visualizing Cells beside the shared Menu lives in `shared/chrome.css`.
+Visualizing Cells owns its presentation in `visualizing-cells/styles.css` and its images and videos beneath the same
+directory. Both prototypes are independent of the root legacy stylesheet. Every prototype uses the cross-device HRA
+favicon set under `../shared/assets/icons/`, while the small content offset needed by Organ Example and Visualizing
+Cells beside the shared Menu lives in `shared/chrome.css`.
 
 The Scrollytelling Effects prototype owns its behavior and bundled web component in
 `scrollytelling-effects/scripts.js` and `scrollytelling-effects/wc.js` while continuing to use the root legacy

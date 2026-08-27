@@ -27,6 +27,7 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `prototypes/shared/chrome.css` | Minimal layout adjustments shared by organized prototypes | Used by Organ Example and Visualizing Cells alongside shared page chrome |
 | `prototypes/shared/typography.css` | Shared prototype typography contract | Nunito Sans default across all prototype entry points; prototype-owned rules may specify Metropolis |
 | `prototypes/visualizing-cells/images/` | Visualizing Cells artwork | Organized; prototype only |
+| `prototypes/visualizing-cells/styles.css` | Visualizing Cells page, video, and illustration presentation | Organized; scoped to the prototype and independent of root `style.css` |
 | `prototypes/visualizing-cells/videos/` | Visualizing Cells background video | Organized; prototype only |
 | `prototypes/scrollytelling-effects/wc.js` | Bundled CCF Organ Info web component | Organized; Scrollytelling Effects prototype only |
 | `stories/story1/images/` | Story 1-owned narrative images | Organized; contains the HRA macro-to-micro scale overview used only by Story 1 |
@@ -102,7 +103,7 @@ repository-wide reference checks.
 | Story 4 | Images and particle implementation organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story4/` owns its particle scripts, JSON configuration, and confirmed story-specific resource thumbnails, while embedded data remains deferred |
 | Story 5 | Media organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story5/` owns its accessibility stylesheet, confirmed story-specific images, and videos |
 | Story 6 | Organized | Independent of root `style.css`; `stories/story6/` owns the narrative implementation, generated responsive artwork, and Story 6 contributor instructions; the page uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons |
-| Prototypes | Implementations, media, and page chrome organized | All four prototype implementations own their files under `prototypes/`; Organ Example and Drag-and-Drop Answer Demo are independent of root `style.css`; Scrollytelling Effects, Organ Example, and Visualizing Cells use the navigation-only shared Menu with a fixed-Dark shared footer; compatibility pages preserve published URLs |
+| Prototypes | Implementations, media, and page chrome organized | All four prototype implementations own their files under `prototypes/`; Organ Example, Visualizing Cells, and Drag-and-Drop Answer Demo are independent of root `style.css`; Scrollytelling Effects, Organ Example, and Visualizing Cells use the navigation-only shared Menu with a fixed-Dark shared footer; compatibility pages preserve published URLs |
 
 ## Naming rules for future migrations
 

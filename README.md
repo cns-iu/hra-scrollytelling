@@ -95,7 +95,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   ├── organ-example/           # Prototype implementation and owned images
 │   ├── scrollytelling-effects/  # Prototype code, images, and model
 │   ├── shared/                   # Shared prototype chrome and typography
-│   └── visualizing-cells/       # Prototype implementation, images, and video
+│   └── visualizing-cells/       # Prototype implementation, styles, images, and video
 ├── docs/               # Architecture and asset-migration records
 ├── tools/              # Dependency-free repository validation
 ├── story1.html         # Story experiences
@@ -120,7 +120,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── images/
 │   │   └── videos/
 │   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
-└── style.css           # Legacy styles retained by Stories 2–5 and prototypes
+└── style.css           # Legacy styles retained by Stories 2–5 and Scrollytelling Effects
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and

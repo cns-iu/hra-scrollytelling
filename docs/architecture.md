@@ -10,7 +10,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
   prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
-- Treat `style.css` as a shared legacy stylesheet consumed by Stories 2–5 and retained prototypes.
+- Treat `style.css` as a shared legacy stylesheet consumed by Stories 2–5 and the Scrollytelling Effects prototype.
 - Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
 - Do not mechanically format `story3.html` or `story4.html`; both contain large embedded data.
@@ -71,6 +71,7 @@ Root HTML files remain stable public entry points while their implementation fil
 │   └── visualizing-cells/
 │       ├── images/
 │       ├── index.html
+│       ├── styles.css
 │       └── videos/
 ├── stories/
 │   ├── story1/
@@ -143,8 +144,8 @@ lives under `shared/assets/icons/`.
 
 Each retained prototype owns its exclusive images, videos, models, and dedicated presentation beneath its directory.
 Prototype-only shared artwork lives under `prototypes/shared/`; assets shared with a maintained story live under
-`shared/assets/`. Organ Example and the drag-and-drop answer demo are independent of the root legacy `style.css`;
-Visualizing Cells and Scrollytelling Effects remain intentional consumers during their staged migrations.
+`shared/assets/`. Organ Example, Visualizing Cells, and the drag-and-drop answer demo are independent of the root
+legacy `style.css`; Scrollytelling Effects remains its only prototype consumer during the staged migration.
 All prototype entry points load `shared/css/fonts.css` and use `prototypes/shared/typography.css` to default
 prototype-owned content to Nunito Sans. Prototype-owned styles may select Metropolis where specified. The generated
 Scrollytelling Effects web-component bundle retains its encapsulated internal typography and is not hand-edited for

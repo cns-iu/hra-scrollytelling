@@ -1572,10 +1572,6 @@ h1 {
 }
 
 /* Story three */
-#three .section1 {
-  background-color: #fafafa;
-}
-
 #kidneyorgan {
   opacity: 1;
 }
@@ -1614,143 +1610,12 @@ h1 {
   flex-grow: 2 !important;
 }
 
-#three .section2 {
-  background-color: #fafafa;
-}
-
-.section2-text {
-  padding: 30px;
-  max-width: 650px;
-  margin: auto;
-  justify-content: center;
-}
-
-#three .section3 {
-  padding: 30px;
-  max-width: 650px;
-  margin: auto;
-  justify-content: center;
-}
-
-#three .section4 {
-  padding: 30px;
-  max-width: 650px;
-  margin: auto;
-  justify-content: center;
-}
-
-#three .section5 {
-  display: flex;
-  padding: 30px;
-  max-width: 650px;
-  margin: auto;
-  justify-content: center;
-}
-
-.intestineimg {
-  max-width: 300px;
-  float: left;
-}
-
 .threeimg {
   width: 100%;
 }
 
-#three .section3 img {
-  width: 100%;
-}
-
-.renal {
-  position: relative;
-  height: 200px;
-  margin: auto;
-  display: flex;
-  margin: auto;
-  overflow-x: scroll;
-  justify-content: center;
-}
-
-@media all and (max-width: 523px) {
-  #three .r1 {
-    height: 140px !important;
-  }
-
-  #three .r2 {
-    height: 140px !important;
-  }
-
-  #three .r3 {
-    height: 140px !important;
-  }
-}
-
-@media all and (min-width: 523px) {
-  #three .r1 {
-    height: 200px !important;
-  }
-
-  #three .r2 {
-    height: 200px !important;
-  }
-
-  #three .r3 {
-    height: 200px !important;
-  }
-}
-
-#three .r1 {
-  opacity: 0;
-}
-
-#three .r2 {
-  opacity: 0;
-}
-
-#three .r3 {
-  opacity: 0;
-}
-
 .lung2 {
   width: 100%;
-}
-
-.kidneybody {
-  position: relative;
-  max-width: 360px;
-  height: 500px !important;
-  width: auto;
-  margin: auto;
-  display: flex;
-  height: 500px;
-  margin: auto;
-  justify-content: center;
-}
-
-.bodypart:not(.outsole) {
-  position: absolute;
-  bottom: 0vw;
-  height: 500px !important;
-  width: auto;
-}
-
-.three1 {
-  width: 100%;
-  opacity: 0.5;
-}
-
-.three2 {
-  width: 100%;
-  opacity: 100;
-}
-
-.three3 {
-  width: 100%;
-  opacity: 100;
-}
-
-.three4 {
-  width: 100%;
-  opacity: 100;
 }
 
 .scrollArrow {
