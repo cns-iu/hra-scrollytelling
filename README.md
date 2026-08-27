@@ -122,7 +122,7 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   │   └── videos/
 │   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
 ├── style.css           # Legacy shared story styles
-└── img/                # Legacy font and protected drag-and-drop compatibility page
+└── img/                # Protected drag-and-drop compatibility page
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
@@ -308,8 +308,6 @@ Also verify:
 - Some story documents contain large embedded image data.
 - Story 2's inline SVG artwork contains 11 pre-existing repeated ID values; they are not current interaction targets,
   but a dedicated cleanup requires visual regression testing
-- The legacy `img/UI Assets/Metropolis-Medium.otf` remains until all three retained prototypes load
-  `shared/css/fonts.css`; after visual verification, remove its `style.css` declaration and delete the OTF
 - The protected `img/test.html` demonstration remains outside `prototypes/`, though its assets are organized there.
 
 Repository cleanup should be performed incrementally, with local-reference checks before and after every move.

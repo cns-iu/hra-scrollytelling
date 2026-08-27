@@ -26,8 +26,7 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `prototypes/shared/images/` | Legacy logo shared by retained prototypes | Organized; consumed by Scrollytelling Effects, Organ Example, and Visualizing Cells |
 | `prototypes/visualizing-cells/images/` | Visualizing Cells artwork | Organized; prototype only |
 | `prototypes/visualizing-cells/videos/` | Visualizing Cells background video | Organized; prototype only |
-| `img/` | Protected drag-and-drop compatibility page and deferred legacy font | Audit complete; do not place new assets here |
-| `img/UI Assets/` | Legacy Metropolis OTF | Intentionally retained for the next font-consolidation change |
+| `img/` | Protected drag-and-drop compatibility page | Audit complete; do not place new assets here |
 | `prototypes/scrollytelling-effects/wc.js` | Bundled CCF Organ Info web component | Organized; Scrollytelling Effects prototype only |
 | `stories/story1/images/` | Story 1-owned narrative images | Organized; contains the HRA macro-to-micro scale overview used only by Story 1 |
 | `stories/story1/videos/` | Story 1-owned video backgrounds | Organized; contains two WebM files and one MP4 |
@@ -44,27 +43,19 @@ The former root `js/` directory was removed after its consumed Story 4 and proto
 remaining files were unconsumed: two standalone legacy scripts and three redundant fragments already embedded in the
 prototype's `wc.js` bundle.
 
-After the repository-wide unused-asset audit and ownership migrations, `img/` contains two tracked files:
-`img/test.html` and `img/UI Assets/Metropolis-Medium.otf`.
+After the repository-wide unused-asset audit and ownership migrations, `img/` contains one tracked file:
+`img/test.html`.
 The audit removed 85 files with no HTML, CSS, JavaScript, JSON, manifest, inline SVG, or dynamically constructed path
 consumer, including the orphaned `TestSeq/` image sequence. Story 3 then moved 23 confirmed story-specific assets to
 its owned image directory, Story 4 moved three exclusive resource thumbnails, and Story 5 moved 23 exclusive image
 assets. The remaining consumed assets were organized under the landing page, their owning story or prototype, or a
 shared directory selected according to actual consumers. File size alone is not evidence that an asset is unused.
 
-## Font consolidation TODO
+## Font consolidation
 
-`img/UI Assets/Metropolis-Medium.otf` remains referenced by the legacy `@font-face` declaration in `style.css`.
-Stories 1–5 already load the organized Metropolis 500 and 700 WOFF2 files through `shared/css/fonts.css`, but the
-Scrollytelling Effects, Visualizing Cells, and Organ Example prototypes currently load only `style.css`.
-
-Before deleting the legacy OTF:
-
-1. Add `../../shared/css/fonts.css` to each of the three retained prototype implementations
-2. Remove the legacy Metropolis `@font-face` declaration from `style.css`
-3. Verify Metropolis text weight, layout, and fallback behavior across Stories 1–5 and all three prototypes
-4. Confirm no repository reference to `Metropolis-Medium.otf` remains, then delete the file
-5. Recalculate the tracked `img/` baseline in this document
+Metropolis is consolidated under `shared/assets/fonts/metropolis/`. Stories 1–5 and the Scrollytelling Effects,
+Visualizing Cells, and Organ Example prototypes load the 500 and 700 WOFF2 declarations from
+`shared/css/fonts.css`; the former root OTF and its legacy `style.css` declaration were removed.
 
 ## Known unresolved references
 

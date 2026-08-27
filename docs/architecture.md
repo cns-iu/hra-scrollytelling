@@ -10,8 +10,8 @@ The site is served directly by GitHub Pages, so file locations and letter casing
   prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
-- Treat `style.css` as a shared legacy stylesheet. Keep only the protected drag-and-drop compatibility page and the
-  deferred Metropolis OTF under `img/`.
+- Treat `style.css` as a shared legacy stylesheet. Keep only the protected drag-and-drop compatibility page under
+  `img/`.
 - Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
 - Do not mechanically format `story3.html` or `story4.html`; both contain large embedded data.
@@ -104,8 +104,7 @@ Root HTML files remain stable public entry points while their implementation fil
 ```
 
 The root `img/` audit is complete. `img/test.html` remains at its published location while its SVG assets live under
-`prototypes/drag-and-drop/images/`; `img/UI Assets/Metropolis-Medium.otf` remains temporarily for the documented font
-consolidation follow-up. Do not place new assets under `img/`.
+`prototypes/drag-and-drop/images/`. Do not place new assets under `img/`.
 
 `landing/css/fonts.css` remains as a compatibility bridge for cached landing-page documents. Maintained HTML entry
 points load `shared/css/fonts.css` directly; do not expand the compatibility file into a second font source.
