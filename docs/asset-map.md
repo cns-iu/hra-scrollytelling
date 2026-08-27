@@ -36,6 +36,20 @@ consumer, including the orphaned `TestSeq/` image sequence. Story 3 then moved 2
 its owned image directory. The repository still contains large video, model, and embedded-data files; file size alone
 is not evidence that an asset is unused.
 
+## Font consolidation TODO
+
+`img/UI Assets/Metropolis-Medium.otf` remains referenced by the legacy `@font-face` declaration in `style.css`.
+Stories 1–5 already load the organized Metropolis 500 and 700 WOFF2 files through `shared/css/fonts.css`, but the
+Scrollytelling Effects, Visualizing Cells, and Organ Example prototypes currently load only `style.css`.
+
+Before deleting the legacy OTF:
+
+1. Add `../../shared/css/fonts.css` to each of the three retained prototype implementations
+2. Remove the legacy Metropolis `@font-face` declaration from `style.css`
+3. Verify Metropolis text weight, layout, and fallback behavior across Stories 1–5 and all three prototypes
+4. Confirm no repository reference to `Metropolis-Medium.otf` remains, then delete the file
+5. Recalculate the tracked `img/` baseline in this document
+
 ## Known unresolved references
 
 These references existed before repository organization began:

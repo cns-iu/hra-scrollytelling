@@ -299,6 +299,8 @@ Also verify:
 - Some story documents contain large embedded image data.
 - Story 2's inline SVG artwork contains 11 pre-existing repeated ID values; they are not current interaction targets,
   but a dedicated cleanup requires visual regression testing
+- The legacy `img/UI Assets/Metropolis-Medium.otf` remains until all three retained prototypes load
+  `shared/css/fonts.css`; after visual verification, remove its `style.css` declaration and delete the OTF
 - Some legacy demonstrations and prototype assets still share root files with maintained stories.
 
 Repository cleanup should be performed incrementally, with local-reference checks before and after every move.
