@@ -259,6 +259,8 @@ mobile-browser testing.
 - Do not make broad edits to large embedded story documents.
 - Avoid reorganizing files as part of unrelated feature work.
 - Explain and approve dependency or repository-structure changes before implementing them.
+- Use canonical `https://doi.org/<doi>` links for papers and scholarly publications whenever a DOI exists; retain an authoritative stable URL only when no DOI has been assigned
+- Include all paper, publication, and end-matter reference links in maintainability scans, and replace verified non-DOI publication links with their canonical DOI URLs
 - Keep this README and `AGENTS.md` synchronized with durable architecture and accessibility changes.
 - Follow the repository's branch, review, and release workflow for commits and publication.
 
@@ -287,6 +289,7 @@ Also verify:
 - Focus is visible and is not obscured.
 - No content is clipped after text-spacing changes.
 - Story structure and extraction-hint changes preserve the complete article in Firefox Reader View.
+- Paper, publication, and end-matter reference links use canonical DOI URLs when a verified DOI is available
 
 ## Known technical debt
 

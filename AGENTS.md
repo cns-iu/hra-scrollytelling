@@ -78,6 +78,13 @@ discard, commit, push, or publish changes unless those operations are explicitly
 - When replacing the social preview, update every image URL, dimension, and alternative-description field together.
 - Keep browser theme-color metadata synchronized with system, Light, and Dark appearance modes.
 
+## Publication links
+
+- Link papers and scholarly publications through their canonical `https://doi.org/<doi>` URL whenever a DOI has been assigned
+- Do not substitute a publisher, journal, repository, search-result, or DOI-proxy URL when a verified DOI URL is available
+- Never infer or fabricate a DOI; when no DOI exists, retain the most authoritative stable publication URL and document the exception
+- During every maintainability scan, audit links presented as papers or publications and references listed in story end matter; identify non-DOI links, verify whether each work has a DOI, and replace confirmed matches with the canonical DOI URL
+
 ## Dependencies and runtime
 
 - Do not add, install, remove, or upgrade dependencies.
