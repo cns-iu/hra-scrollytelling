@@ -2241,7 +2241,7 @@ h1 {
   margin: 0;
   text-align: center;
   color: white;
-  background: linear-gradient(270deg, #ff0037, #d4143e, #e5718a);
+  background: linear-gradient(270deg, var(--HRA-blue), var(--HRA-blue2), var(--HRA-blue));
   background-size: 600% 600%;
 
   -webkit-animation: AnimationName 30s ease infinite;
