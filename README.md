@@ -113,8 +113,7 @@ compatibility pages. `img/test.html` remains a legacy demonstration. These are n
 │   ├── story5/         # Reserved Story 5 implementation folder
 │   └── story6/         # Story 6 styles, scripts, images, and retained datasets
 ├── style.css           # Legacy shared story styles
-├── img/                # Shared and story-specific visual assets
-└── Game/               # Isolated generated game and offline runtime
+└── img/                # Shared and story-specific visual assets
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
@@ -214,7 +213,7 @@ Current behavior:
 - Story pages that offer Light, Dark, and System settings apply them only to shared page chrome; story artwork is
   unchanged.
 - Every maintained page uses the compact shared footer with organization links and an accessible back-to-top action.
-- Prototype pages and `Game/` remain outside the shared page-chrome rollout.
+- Prototype pages remain outside the shared page-chrome rollout.
 
 See [`docs/architecture.md`](docs/architecture.md#shared-page-chrome) for component boundaries and maintenance rules.
 
@@ -257,7 +256,7 @@ mobile-browser testing.
 - Preserve progressive enhancement and no-JavaScript access.
 - Keep landing-specific work isolated to `index.html` and `landing/`; place approved cross-page foundations under
   `shared/`.
-- Do not make broad edits to generated `Game/` files or large embedded story documents.
+- Do not make broad edits to large embedded story documents.
 - Avoid reorganizing files as part of unrelated feature work.
 - Explain and approve dependency or repository-structure changes before implementing them.
 - Keep this README and `AGENTS.md` synchronized with durable architecture and accessibility changes.
@@ -295,7 +294,6 @@ Also verify:
 - Assets for multiple stories are mixed together under `img/`.
 - Several filenames contain spaces, making path changes more error-prone.
 - Some story documents contain large embedded image data.
-- The generated game has its own service worker and runtime assumptions.
 - Some legacy demonstrations and prototype assets still share root files with maintained stories.
 
 Repository cleanup should be performed incrementally, with local-reference checks before and after every move.

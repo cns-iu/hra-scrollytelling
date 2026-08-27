@@ -529,11 +529,6 @@ h1 {
   background-color: #ffffff;
 }
 
-#zero #section5 {
-  text-align: center;
-  background-color: #ffffff;
-}
-
 /* styles for magnifier*/
 .magnifier {
   text-align: center;
@@ -3640,20 +3635,6 @@ footer a {
   left: 55%;
   top: 33%;
   opacity: 0;
-}
-
-/* drag drop   */
-.dropbox {
-  cursor: pointer;
-  margin-bottom: 100px;
-  width: 83px;
-  height: 46px;
-}
-
-#equation {
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
 }
 
 /*organ page*/

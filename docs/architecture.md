@@ -13,8 +13,6 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 - Treat `style.css` and `img/` as shared legacy resources until each consumer has been mapped.
 - Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
-- Treat `Game/` as an isolated generated application. Preserve its directory name, internal paths, manifest, and service
-  worker scope.
 - Do not mechanically format `story3.html` or `story4.html`; both contain large embedded data.
 - Move files in small batches and run the local-reference checker before and after every batch.
 
@@ -26,7 +24,6 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
 | Primary stories | `story1.html` through `story6.html` | Stories 1–5 retain shared legacy `style.css`; Story 6 uses only its dedicated `stories/story6/` implementation and namespaced shared page chrome; other stories use shared or story-specific scripts, `img/`, audio under `shared/assets/music/`, and gradually organized files under `stories/` |
 | Prototypes | `img/test.html` and the compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations under `prototypes/` plus shared legacy files |
-| Generated game | `Game/index.html` | Everything under `Game/` |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
 build step, but those existing runtime integrations must still be preserved during story migrations.
@@ -81,8 +78,7 @@ Root HTML files remain stable public entry points while their implementation fil
 │       └── .gitkeep
 ├── docs/
 ├── tools/
-├── img/
-└── Game/
+└── img/
 ```
 
 The `img/` directory remains in place until each asset has a verified owner. The approved empty story directories use
@@ -220,8 +216,8 @@ and behavior under `shared/`, while retaining the semantic markup in each HTML e
 footer, or story-navigation rules only after a repository-wide search confirms that no maintained or prototype page
 still consumes them.
 
-Prototype pages and `Game/` are excluded from this rollout. Their existing navigation and footer behavior must not
-change incidentally.
+Prototype pages are excluded from this rollout. Their existing navigation and footer behavior must not change
+incidentally.
 
 ## Reviewable commit boundaries
 

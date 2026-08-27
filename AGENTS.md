@@ -62,8 +62,7 @@ roots and explicitly approved story surfaces.
 All maintained pages use the canonical shared Menu and footer. Story 1 through Story 5 keep their Menu light and their
 footer on the fixed Dark treatment with `site-chrome--dark`. The landing page and Story 6 allow the shared footer to
 follow their appearance selection. Do not remove a legacy component rule until repository-wide search confirms that
-no maintained or prototype page consumes it. Prototype pages and `Game/` are excluded from the shared page-chrome
-rollout.
+no maintained or prototype page consumes it. Prototype pages are excluded from the shared page-chrome rollout.
 
 All maintained pages use the default shared Menu FAB geometry. Keep story-specific box-model resets scoped to
 story-owned surfaces so they do not override `.site-chrome` component sizing.
@@ -159,15 +158,12 @@ enhancement rather than a substitute for an accessible default page.
 
 ## Repository safety
 
-The repository contains tightly coupled relative paths, filenames with spaces, large media, generated game files, and
-prototype pages.
+The repository contains tightly coupled relative paths, filenames with spaces, large media, and prototype pages.
 
 - Search all HTML, CSS, JavaScript, JSON, and service-worker references before moving or renaming a file.
 - Move assets only in small, explicitly approved batches and validate every affected entry point.
 - Follow the ownership boundaries and copy-first migration workflow in `docs/architecture.md`.
 - Update `docs/asset-map.md` whenever asset ownership or the known missing-reference baseline changes.
-- Treat `Game/` as an isolated generated application. Do not reorganize or hand-edit it unless the task specifically
-  targets the game.
 - Avoid broad formatting or mechanical rewrites of `story3.html` and `story4.html`; they contain large embedded data.
 - Preserve `img/test.html` as legacy/prototype material unless cleanup is explicitly in scope.
 - Preserve `story0.html` as the compatibility entry point for the Scrollytelling Effects implementation under

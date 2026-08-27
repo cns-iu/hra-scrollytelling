@@ -22,8 +22,7 @@ happen in independent, explicitly reviewed changes.
 The Scrollytelling Effects prototype owns its behavior and bundled web component in
 `scrollytelling-effects/scripts.js` and `scrollytelling-effects/wc.js` while continuing to use the root legacy
 `style.css` and `img/` resources. Its audio is organized with shared story audio under `shared/assets/music/`.
-`img/test.html` and the generated `Game/` application remain in their established locations. `Game/` is a published
-application embedded by the prototype, not a prototype folder to move without a dedicated migration plan.
+`img/test.html` remains in its established location.
 
 ## Maintenance rules
 
