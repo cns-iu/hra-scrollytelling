@@ -106,6 +106,7 @@ Root HTML files remain stable public entry points while their implementation fil
 │   └── story5/
 │       ├── accessibility.css
 │       ├── images/
+│       ├── styles.css
 │       └── videos/
 ├── docs/
 └── tools/
@@ -157,10 +158,11 @@ consumed by Story 4 animation selectors, gradients, masks, or other SVG fragment
 left unchanged during the stylesheet migration. Treat them as a known invalid-markup baseline and clean them up only
 as a separate embedded-SVG migration with before-and-after animation and illustration regression testing.
 
-Story 5 owns its story-specific scene backgrounds, narrative illustrations, media-control icons, and resource
-thumbnails under `stories/story5/images/` and its six videos under `stories/story5/videos/`. The body-intro layers,
-telescope, and external-link arrow shared with other stories live under `shared/assets/images/`; the common favicon
-lives under `shared/assets/icons/`.
+Story 5 owns its story-specific scene and media-control presentation under `stories/story5/styles.css`, its scene
+backgrounds, narrative illustrations, media-control icons, and resource thumbnails under `stories/story5/images/`,
+and its six videos under `stories/story5/videos/`. The body-intro layers, telescope, and external-link arrow shared
+with other stories live under `shared/assets/images/`; the common favicon lives under `shared/assets/icons/`. Story 5
+continues to load root `style.css` only for the remaining legacy base, bottom-navigation, and resource-card rules.
 
 Each retained prototype owns its exclusive images, videos, models, and dedicated presentation beneath its directory.
 Prototype-only shared artwork lives under `prototypes/shared/`; assets shared with a maintained story live under

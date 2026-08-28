@@ -116,9 +116,10 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── styles.css
 │   │   └── config/
 │   │       └── particles.json # Preserved particle configuration reference
-│   ├── story5/         # Story 5 accessibility styles, images, and videos
+│   ├── story5/         # Story 5 presentation, accessibility styles, images, and videos
 │   │   ├── accessibility.css
 │   │   ├── images/
+│   │   ├── styles.css
 │   │   └── videos/
 │   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
 └── style.css           # Remaining legacy styles retained by Stories 2, 3, and 5
