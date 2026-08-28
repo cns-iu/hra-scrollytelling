@@ -88,7 +88,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── logos/      # Theme-aware organization logos
 │   │   ├── music/      # Shared story and prototype audio
 │   │   └── videos/     # Video shared by maintained and prototype experiences
-│   ├── css/            # Page chrome plus shared story narrative and dialogue styles
+│   ├── css/            # Page chrome plus shared story narrative, dialogue, and resource-card styles
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── prototypes/         # Organized legacy experiences and their maintenance notes
 │   ├── drag-and-drop/           # Drag-and-drop answer demo and owned assets
@@ -122,13 +122,17 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── styles.css
 │   │   └── videos/
 │   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
-└── style.css           # Remaining legacy styles retained by Stories 2, 3, and 5
+└── style.css           # Remaining legacy base and bottom-navigation styles for Stories 2, 3, and 5
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
 validating every HTML, CSS, JavaScript, JSON, and service-worker reference. See
 [`docs/architecture.md`](docs/architecture.md) for ownership boundaries and the staged target structure, and
 [`docs/asset-map.md`](docs/asset-map.md) for the current migration register.
+
+Stories 2, 3, and 5 share their narrative foundation, character dialogue, and current resource-card presentation
+through focused stylesheets under `shared/css/`. Their remaining dependency on root `style.css` is limited to the
+legacy page base and bottom navigation.
 
 ## Landing-page architecture
 

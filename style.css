@@ -4,10 +4,8 @@
   /*UI styles*/
   --HRA-blue: #201e3d;
   --HRA-blue5: #eff2f5;
-  --HRA-white: #ffffff;
   --HRA-red2: #e00d3a;
   --HRA-red3: #b20a2f;
-  --HRA-gray2: #4c4c58;
 }
 
 html {
@@ -30,11 +28,6 @@ body {
   width: 100%;
   height: 100%;
   padding: 0;
-}
-
-.indexTitle {
-  font-size: 28px;
-  line-height: 42px;
 }
 
 a {
@@ -63,93 +56,24 @@ h1 {
 }
 
 .next,
-.previous,
-.linkbutton {
+.previous {
   color: var(--HRA-red3);
   font-size: 14px;
   cursor: pointer;
   padding: 9px 16px 9px 16px;
 }
 
-.ExternalLinkCard .linkbutton {
-  float: left !important;
-}
-
 .next:hover,
-.previous:hover,
-.linkbutton:hover {
+.previous:hover {
   background-color: rgba(178, 10, 47, 0.08);
 }
 
 .next:active,
-.previous:active,
-.linkbutton:active {
+.previous:active {
   background-color: rgba(178, 10, 47, 0.16);
 }
 
 .next:focus,
-.previous:focus .linkbutton:focus {
+.previous:focus {
   border-color: var(--HRA-red2);
-}
-
-/* ---- external links section cards---- */
-.Externallinkssection {
-  text-align: center;
-  background-color: var(--HRA-white);
-  padding: 80px 16px;
-  align-items: center;
-  margin: auto;
-}
-
-.ExternalLinkCard {
-  padding: 0px;
-  gap: 40px;
-  width: 292px;
-  border-radius: 12px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-.ExternalLinkImg {
-  width: 100%;
-  height: 224px;
-  border-radius: 12px;
-  box-shadow: 0px 5px 16px 0px rgba(32, 30, 61, 0.24);
-  object-fit: cover;
-  margin-bottom: 40px;
-}
-
-.ExternalLinkTitle {
-  font-family: 'Metropolis';
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 36px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-}
-
-.ExternalLinkDesc {
-  font-family: 'Metropolis';
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0.5px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  margin-bottom: 16px;
-  color: var(--HRA-gray2);
-}
-
-.ExternalLinkCards {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  align-content: flex-start;
-  padding: 0px;
-  gap: 64px;
-  justify-content: center;
 }

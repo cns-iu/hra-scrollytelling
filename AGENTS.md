@@ -201,8 +201,9 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
 - Keep Scrollytelling Effects presentation under `prototypes/scrollytelling-effects/`; do not reconnect it to root
   `style.css`.
 - Keep Story 1 presentation under `stories/story1/`; do not reconnect `story1.html` to root `style.css`.
-- Keep the narrative foundation and character-dialogue styles shared by Stories 2, 3, and 5 under `shared/css/`; keep
-  story-specific scenes and interactions under their owning story as they migrate out of root `style.css`.
+- Keep the narrative foundation, character-dialogue, and legacy resource-card styles shared by Stories 2, 3, and 5
+  under `shared/css/`; keep story-specific scenes and interactions under their owning story as they migrate out of
+  root `style.css`.
 - Keep Story 5-specific presentation under `stories/story5/styles.css`; do not restore those rules to root
   `style.css`.
 - Keep Story 2-specific presentation under `stories/story2/styles.css` and its focused quiz component under
