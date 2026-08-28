@@ -67,7 +67,7 @@
     }
 
     .cde-histogram-charts {
-        grid-row: 2;
+        grid-row: 1;
         gap: var(--cde-comparison-visual-gap);
     }
 
@@ -94,7 +94,6 @@
 
     .cde-network-figure img {
         aspect-ratio: 1;
-        background: var(--story-color-artwork-surface);
         border-radius: 50%;
     }
 
@@ -140,7 +139,7 @@
     }
 
     .cde-histogram-legend {
-        grid-row: 1;
+        grid-row: 2;
         position: static;
     }
 
@@ -203,7 +202,7 @@
             grid-row: 1;
             position: sticky;
             top: clamp(1rem, 4vh, 3rem);
-            margin-block-end: clamp(1.125rem, 1.5vw, 1.75rem);
+            margin-block-end: clamp(2rem, 2.5vw, 3rem);
 
             ul {
                 grid-template-columns: minmax(0, 1fr);
@@ -230,6 +229,10 @@
         .cde-comparison__figure {
             width: min(100%, 40rem);
             margin-inline: auto;
+        }
+
+        .cell-type-legend h4 {
+            text-align: center;
         }
 
         .cde-histogram-legend {

@@ -96,6 +96,10 @@ function checkMarkupContracts() {
     check(files.html.includes('href="story/6/css/cde-comparison.css"'), "Story 6 must load the CDE comparison stylesheet");
     check(countMatches(files.html, /class="cde-comparison__figure/gu) === 6, "The CDE comparison must contain six semantic figures");
     check(countMatches(files.html, /class="cell-type-legend/gu) === 2, "The network and histogram comparisons must each retain a shared legend");
+    check(
+        countMatches(files.html, /<li style="--cell-type-color: #ad584f">Endothelial<\/li>/gu) === 1,
+        "The node-distance legend must include the Endothelial cell type with its supplied color",
+    );
     check(files.reveals.includes("setupCdeComparisonReveal()"), "The cell networks and legend must retain their coordinated viewport reveal");
     check(
         /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?\.cde-network-figure,[\s\S]*?\.cde-network-legend[\s\S]*?transition:\s*none\s*!important;/u.test(
@@ -198,8 +202,17 @@ function checkAnimationGeometry() {
         "The histogram legend must be sticky above mobile and static on mobile",
     );
     check(
-        files.cdeComparison.includes("margin-block-end: clamp(1.125rem, 1.5vw, 1.75rem)"),
+        files.cdeComparison.includes("margin-block-end: clamp(2rem, 2.5vw, 3rem)"),
         "The histogram legend must stop above the chart boundary at the final axis",
+    );
+    check(
+        /\.cde-histogram-charts\s*\{[\s\S]*?grid-row:\s*1;[\s\S]*?\.cde-histogram-legend\s*\{[\s\S]*?grid-row:\s*2;/u.test(
+            files.cdeComparison,
+        ) &&
+            /@media\s*\(max-width:\s*47\.999rem\)[\s\S]*?\.cell-type-legend h4\s*\{[\s\S]*?text-align:\s*center;/u.test(
+                files.cdeComparison,
+            ),
+        "Mobile histograms must precede their centered legend title",
     );
     check(
         /\.body-outline\s*\{[\s\S]*?width:\s*auto;[\s\S]*?height:\s*100%;[\s\S]*?object-fit:\s*contain;/u.test(files.narrative),
