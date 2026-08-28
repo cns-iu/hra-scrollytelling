@@ -1,4 +1,5 @@
 const RESIZE_SETTLE_DELAY = 250;
+const SCROLL_SETTLE_DELAY = 180;
 const COARSE_POINTER_QUERY = '(hover: none) and (pointer: coarse)';
 const LARGE_VIEWPORT_HEIGHT = '100lvh';
 
@@ -6,13 +7,10 @@ const LARGE_VIEWPORT_HEIGHT = '100lvh';
  * Configures stable ScrollTrigger measurement and responsive refresh behavior.
  *
  * @param {object|null} ScrollTrigger GSAP ScrollTrigger plugin, or null when unavailable
- * @returns {() => Promise<void>} Function that refreshes story geometry after the next paint
+ * @returns {() => Promise<void>} Function that refreshes story geometry after scrolling and layout settle
  */
 export function setupLayoutStability(ScrollTrigger) {
-    const refreshStoryLayout = async () => {
-        await nextPaint();
-        ScrollTrigger?.refresh();
-    };
+    const refreshStoryLayout = createSettledLayoutRefresh(ScrollTrigger);
 
     updateStableViewportHeight();
     setupSettledResizeRefresh(refreshStoryLayout);
@@ -29,6 +27,63 @@ export function setupLayoutStability(ScrollTrigger) {
     setupInitialLayoutRefresh(refreshStoryLayout);
 
     return refreshStoryLayout;
+}
+
+/**
+ * Coalesces geometry updates and keeps ScrollTrigger from rebuilding pin spacers during active scrolling.
+ *
+ * @param {object|null} ScrollTrigger GSAP ScrollTrigger plugin, or null when unavailable
+ * @returns {() => Promise<void>} Function that requests one refresh after scrolling and layout settle
+ */
+function createSettledLayoutRefresh(ScrollTrigger) {
+    let isScrolling = false;
+    let refreshRunning = false;
+    let scrollTimer;
+    let pendingResolvers = [];
+
+    const flushRefresh = async () => {
+        if (isScrolling || refreshRunning || pendingResolvers.length === 0) {
+            return;
+        }
+
+        refreshRunning = true;
+        await nextPaint();
+
+        if (isScrolling) {
+            refreshRunning = false;
+            return;
+        }
+
+        ScrollTrigger?.refresh();
+
+        const completedResolvers = pendingResolvers;
+        pendingResolvers = [];
+        refreshRunning = false;
+        completedResolvers.forEach((resolve) => resolve());
+
+        if (pendingResolvers.length > 0) {
+            void flushRefresh();
+        }
+    };
+
+    window.addEventListener(
+        'scroll',
+        () => {
+            isScrolling = true;
+            window.clearTimeout(scrollTimer);
+            scrollTimer = window.setTimeout(() => {
+                isScrolling = false;
+                void flushRefresh();
+            }, SCROLL_SETTLE_DELAY);
+        },
+        { passive: true },
+    );
+
+    return () =>
+        new Promise((resolve) => {
+            pendingResolvers.push(resolve);
+            void flushRefresh();
+        });
 }
 
 /**
