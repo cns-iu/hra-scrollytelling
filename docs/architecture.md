@@ -95,7 +95,8 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   ├── quiz.js
 │   │   └── styles.css
 │   ├── story3/
-│   │   └── images/
+│   │   ├── images/
+│   │   └── styles.css
 │   ├── story4/
 │   │   ├── app.js
 │   │   ├── images/
@@ -143,10 +144,12 @@ Story 2 owns its story-specific scenes, video treatment, and legacy quiz layout 
 Its focused quiz component remains separated into `stories/story2/quiz.css` and `stories/story2/quiz.js`. Story 2
 continues to load root `style.css` only for the remaining legacy base, bottom-navigation, and resource-card rules.
 
-Story 3 owns its confirmed story-specific narrative scenes, collision-state artwork, kidney variations, and resource
-thumbnails under `stories/story3/images/`. The body-intro layers, telescope, and external-link arrow shared with other
-stories live under `shared/assets/images/`; the common favicon lives under `shared/assets/icons/`. Story 3's large
-inline SVG markup and its rules in the legacy root `style.css` remain deferred to separate migrations.
+Story 3 owns its story-specific scene and embedded-artwork presentation under `stories/story3/styles.css`, and its
+confirmed narrative scenes, collision-state artwork, kidney variations, and resource thumbnails under
+`stories/story3/images/`. The body-intro layers, telescope, and external-link arrow shared with other stories live
+under `shared/assets/images/`; the common favicon lives under `shared/assets/icons/`. Story 3 continues to load root
+`style.css` only for the remaining legacy base, bottom-navigation, and resource-card rules. Its large inline SVG markup
+remains deferred to a separate migration.
 
 Story 4 owns its presentation, particle runtime, inline configuration initializer, intentionally blank Bootstrap
 starter hook, and exclusive resource-card thumbnails in `stories/story4/`. It is independent of the root legacy

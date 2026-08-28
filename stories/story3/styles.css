@@ -1,0 +1,136 @@
+#main-content.story-main--intrinsic-height > .section2 {
+    height: auto;
+}
+
+#two .scene3-1,
+#two .scene3-2,
+#two .scene3-3,
+#two .scene3-4,
+#two .scene3-5,
+#two .scene3-5-1,
+#two .scene3-6,
+#two .scene3-7,
+#two .scene3-8,
+#two .scene3-9 {
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#two .scene3-1,
+#two .scene3-2,
+#two .scene3-3,
+#two .scene3-4,
+#two .scene3-5,
+#two .scene3-5-1,
+#two .scene3-7,
+#two .scene3-8,
+#two .scene3-9 {
+    margin: 0;
+}
+
+#two .scene3-1 {
+    background-image: url('images/squiggy-greets-cece.svg');
+}
+
+#two .scene3-2 {
+    background-image: url('images/cece-discovers-kidney-tissue.svg');
+}
+
+#two .scene3-3 {
+    background-image: url('images/squiggy-suggests-kidney-placement.svg');
+}
+
+#two .scene3-4 {
+    background-image: url('images/kidney-variation-background.svg');
+}
+
+#two .scene3-5 {
+    background-image: url('images/squiggy-reconsiders-guessing.svg');
+}
+
+#two .scene3-5-1,
+#two .scene3-6 {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#Rectangle1,
+#Rectangle2,
+#Rectangle3,
+#Rectangle4,
+#Rectangle5,
+#Rectangle6,
+#Rectangle7 {
+    opacity: 0;
+}
+
+#two .scene3-6 {
+    margin: auto;
+}
+
+#two .scene3-7 {
+    background-image: url('images/rui-registration-scene.svg');
+}
+
+#two .scene3-8 {
+    background-image: url('images/registered-tissue-data-scene.svg');
+}
+
+#two .scene3-10 {
+    background-color: white;
+    height: auto;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+.imageintrosec {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+}
+
+.imageintro1,
+.imageintro2,
+.imageintro3 {
+    width: 100%;
+    height: 100vh;
+}
+
+.imageintro2,
+.imageintro3 {
+    opacity: 100;
+}
+
+#kidneyorgan {
+    opacity: 1;
+}
+
+#kidneypart1,
+#kidneypart2,
+#kidneypart3,
+#kidneypart4 {
+    opacity: 0;
+}
+
+#changehere {
+    overflow: hidden;
+}
