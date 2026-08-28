@@ -55,6 +55,12 @@ There is no installation or build command.
 | `story4.html` | Data Detangle |
 | `story5.html` | Know Your Body Buddies |
 | `story6.html` | Pan-organ Immunosenescence Atlas |
+| `story/7/` | Story 7 planning directory; `index.html` is not yet implemented |
+
+New stories use the singular `story/<number>/` convention and place their page entry point at
+`story/<number>/index.html`, producing a clean `/story/<number>/` GitHub Pages URL. The existing Stories 1–6 retain
+their current entry points and implementation paths until each is migrated through a separate copy-first change.
+See [`story/7/README.md`](story/7/README.md) for the first new-story contract.
 
 The repository also contains older prototypes and demonstrations. The Scrollytelling Effects, Organ Example,
 Visualizing Cells, and Drag-and-Drop Answer Demo implementations are organized under `prototypes/`, with their
@@ -104,6 +110,9 @@ original URLs retained as compatibility pages. These are not primary entry point
 ├── story4.html
 ├── story5.html
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
+├── story/              # Singular clean-URL convention for new stories
+│   └── 7/
+│       └── README.md   # Story 7 implementation and publication contract
 └── stories/            # Organized story-owned implementation files
     ├── story1/         # Story 1 styles, scripts, owned images, and videos
     ├── story2/         # Story 2 presentation, animation, quiz, and owned images

@@ -6,6 +6,10 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 ## Stability rules
 
 - Keep `index.html` and the root `story*.html` entry points at their current URLs.
+- Place new story entry points at `story/<number>/index.html` so they publish at `/story/<number>/`; do not move the
+  repository landing-page `index.html` into a story directory.
+- Treat the current `stories/storyN/` directories and root Story 1–6 entry points as legacy-but-maintained paths until
+  each story receives an explicitly approved, copy-first migration with compatibility planning.
 - Keep `story0.html`, `VisualizingCells.html`, and `organExample.html` as compatibility entry points for the organized
   prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
@@ -29,6 +33,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
 | Primary stories | `story1.html` through `story6.html` | Stories 1, 4, and 6 use dedicated implementations; Stories 2, 3, and 5 share their narrative foundation, character-dialogue system, and resource-card presentation under `shared/css/`; all six stories use shared end-of-story navigation; story media lives under its owning story or the appropriate shared asset directory |
+| New stories | `story/<number>/index.html` | Singular numbered directories own each new story's entry point and exclusive implementation files; `story/7/README.md` defines the initial contract |
 | Prototypes | Compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets; all prototype implementations are independent of the former root legacy stylesheet |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
@@ -46,6 +51,9 @@ Root HTML files remain stable public entry points while their implementation fil
 ├── story3.html
 ├── story4.html
 ├── story5.html
+├── story/
+│   └── 7/
+│       └── README.md
 ├── landing/
 ├── shared/
 │   ├── assets/

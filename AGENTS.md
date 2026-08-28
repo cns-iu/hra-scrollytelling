@@ -198,6 +198,10 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
 - Move assets only in small, explicitly approved batches and validate every affected entry point.
 - Follow the ownership boundaries and copy-first migration workflow in `docs/architecture.md`.
 - Update `docs/asset-map.md` whenever asset ownership or the known missing-reference baseline changes.
+- Place new stories under `story/<number>/` with their page entry point at `story/<number>/index.html`; never move the
+  repository landing-page `index.html` into a story directory.
+- Preserve the root Story 1–6 entry points and their `stories/storyN/` implementation paths until an explicitly
+  approved, copy-first migration defines compatibility behavior for each published URL.
 - Avoid broad formatting or mechanical rewrites of `story3.html` and `story4.html`; they contain large embedded data.
 - Keep the drag-and-drop answer demo fully owned by `prototypes/drag-and-drop/`; do not recreate a root `img/`
   directory.
