@@ -231,6 +231,26 @@ function checkAnimationGeometry() {
         "Mouse image preparation must refresh downstream ScrollTrigger geometry after decoding",
     );
     check(
+        files.entry.includes("const STORY_MOTION_QUERY = '(prefers-reduced-motion: no-preference)'") &&
+            files.entry.includes("const STORY_HEIGHT_QUERY = '(min-height: 36rem)'") &&
+            /coarsePointerQuery\.matches\s*\?\s*measureStableViewportHeight\(\)/u.test(files.entry),
+        "Mobile animation eligibility must use the stable Story 6 viewport instead of browser chrome-sensitive height changes",
+    );
+    check(
+        files.layout.includes("createSettledLayoutRefresh(ScrollTrigger)") &&
+            files.layout.includes("if (isScrolling || refreshRunning || pendingResolvers.length === 0)") &&
+            /window\.addEventListener\(\s*'scroll',[\s\S]*?\{ passive: true \}/u.test(files.layout),
+        "ScrollTrigger refreshes must wait until active scrolling settles before rebuilding pin spacers",
+    );
+    check(
+        files.html.includes('root.classList.add("story6-loading")') &&
+            files.html.includes('root.classList.add("story6-ready")') &&
+            files.entry.includes("void revealStoryWhenReady(refreshStoryLayout)") &&
+            files.entry.includes("await Promise.allSettled(preparation)") &&
+            /html\.story6-loading #six::before\s*\{[\s\S]*?transition:\s*opacity 1250ms/u.test(files.base),
+        "Story 6 must retain its fail-safe page-color loading overlay and settled fade-in",
+    );
+    check(
         /\.tutorial\s*\{[\s\S]*?opacity:\s*0;[\s\S]*?visibility:\s*hidden;[\s\S]*?\.tutorial1\s*\{[\s\S]*?opacity:\s*1;[\s\S]*?visibility:\s*visible;/u.test(
             files.cde,
         ),
