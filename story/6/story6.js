@@ -8,6 +8,7 @@ const STORY_HEIGHT_QUERY = '(min-height: 36rem)';
 const COARSE_POINTER_QUERY = '(hover: none) and (pointer: coarse)';
 const MINIMUM_ANIMATION_HEIGHT = 36 * 16;
 const ORIENTATION_SETTLE_DELAY = 350;
+const LOADING_OVERLAY_CLEANUP_DELAY = 1400;
 const gsap = window.gsap;
 const ScrollTrigger = window.ScrollTrigger;
 const animationsAvailable = Boolean(gsap && ScrollTrigger);
@@ -25,6 +26,35 @@ setupBackToTopAnimationReset(animationsAvailable ? ScrollTrigger : null);
 
 if (animationsAvailable) {
     setupResponsiveStoryAnimations(gsap, ScrollTrigger, refreshStoryLayout);
+}
+
+void revealStoryWhenReady(refreshStoryLayout);
+
+/**
+ * Reveals Story 6 after its opening artwork, fonts, and initial pin geometry settle.
+ *
+ * @param {() => Promise<void>} refreshLayout Function that refreshes geometry after scrolling settles
+ * @returns {Promise<void>} Promise resolved after the loading overlay begins fading
+ */
+async function revealStoryWhenReady(refreshLayout) {
+    const splashImage = document.querySelector('.splash-image');
+    const preparation = [];
+
+    if (document.fonts?.ready) {
+        preparation.push(document.fonts.ready);
+    }
+
+    if (typeof splashImage?.decode === 'function') {
+        preparation.push(splashImage.decode());
+    }
+
+    await Promise.allSettled(preparation);
+    await refreshLayout();
+
+    document.documentElement.classList.add('story6-ready');
+    window.setTimeout(() => {
+        document.documentElement.classList.remove('story6-loading', 'story6-ready');
+    }, LOADING_OVERLAY_CLEANUP_DELAY);
 }
 
 /**

@@ -59,6 +59,24 @@
       })();
     </script>
     <script>
+      (() => {
+        const root = document.documentElement;
+
+        root.classList.add("story6-loading");
+        window.setTimeout(() => {
+          if (!root.classList.contains("story6-loading")) {
+            return;
+          }
+
+          root.classList.add("story6-ready");
+          window.setTimeout(
+            () => root.classList.remove("story6-loading", "story6-ready"),
+            1400,
+          );
+        }, 3000);
+      })();
+    </script>
+    <script>
       const story6NavigationEntry =
         performance.getEntriesByType("navigation")[0];
 
