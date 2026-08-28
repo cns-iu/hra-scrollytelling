@@ -104,25 +104,24 @@ original URLs retained as compatibility pages. These are not primary entry point
 ├── story4.html
 ├── story5.html
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
-├── stories/            # Gradually organized story-owned implementation files
-│   ├── story1/         # Story 1 styles, scripts, owned images, and videos
-│   ├── story2/         # Story 2 presentation, quiz, and owned images
-│   ├── story3/         # Story 3 presentation and owned narrative and resource images
-│   ├── story4/         # Story 4 scripts, particle configuration, and owned images
-│   │   ├── app.js
-│   │   ├── images/        # Story 4 resource thumbnails
-│   │   ├── particles.js
-│   │   ├── scripts.js
-│   │   ├── styles.css
-│   │   └── config/
-│   │       └── particles.json # Preserved particle configuration reference
-│   ├── story5/         # Story 5 presentation, accessibility styles, images, and videos
-│   │   ├── accessibility.css
-│   │   ├── images/
-│   │   ├── styles.css
-│   │   └── videos/
-│   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
-└── style.css           # Temporary no-op compatibility file pending link removal
+└── stories/            # Organized story-owned implementation files
+    ├── story1/         # Story 1 styles, scripts, owned images, and videos
+    ├── story2/         # Story 2 presentation, quiz, and owned images
+    ├── story3/         # Story 3 presentation and owned narrative and resource images
+    ├── story4/         # Story 4 scripts, particle configuration, and owned images
+    │   ├── app.js
+    │   ├── images/        # Story 4 resource thumbnails
+    │   ├── particles.js
+    │   ├── scripts.js
+    │   ├── styles.css
+    │   └── config/
+    │       └── particles.json # Preserved particle configuration reference
+    ├── story5/         # Story 5 presentation, accessibility styles, images, and videos
+    │   ├── accessibility.css
+    │   ├── images/
+    │   ├── styles.css
+    │   └── videos/
+    └── story6/         # Story 6 styles, scripts, images, and contributor instructions
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
@@ -132,11 +131,10 @@ validating every HTML, CSS, JavaScript, JSON, and service-worker reference. See
 
 Stories 2, 3, and 5 share their narrative foundation, character dialogue, and current resource-card presentation
 through focused stylesheets under `shared/css/`. Their generic page foundation now lives in
-`shared/css/narrative-foundation.css`, while Story 2 owns its quiz color tokens. The three pages retain a temporary,
-no-op link to root `style.css` until that compatibility file is removed. All six stories use the shared two-link story
-navigation; Home fills the unavailable previous slot on Story 1 and the unavailable next slot on Story 6. Story 2
-retains one remote Inter request for its embedded SVG labels; Stories 3 and 5 use the shared self-hosted Nunito Sans
-body font.
+`shared/css/narrative-foundation.css`, while Story 2 owns its quiz color tokens. The former root `style.css` has been
+removed. All six stories use the shared two-link story navigation; Home fills the unavailable previous slot on Story
+1 and the unavailable next slot on Story 6. Story 2 retains one remote Inter request for its embedded SVG labels;
+Stories 3 and 5 use the shared self-hosted Nunito Sans body font.
 
 ## Landing-page architecture
 
@@ -158,7 +156,7 @@ The landing page is deliberately separated from the legacy story implementation:
 Load the landing stylesheets in the documented order so font and design tokens exist before component rules use them.
 The inline script in `index.html` applies a saved theme before paint; keep its storage key aligned with
 `shared/js/theme.js`.
-The landing page does not load `style.css`, prototype or story scripts, remote fonts, or a JavaScript framework.
+The landing page does not use a root stylesheet, prototype or story scripts, remote fonts, or a JavaScript framework.
 
 ### Page metadata
 
@@ -312,7 +310,6 @@ Also verify:
 
 ## Known technical debt
 
-- Stories 2, 3, and 5 retain a temporary no-op reference to root `style.css` pending final compatibility cleanup.
 - Several filenames contain spaces, making path changes more error-prone.
 - Some story documents contain large embedded image data.
 - Story 2's inline SVG artwork contains 11 pre-existing repeated ID values; they are not current interaction targets,

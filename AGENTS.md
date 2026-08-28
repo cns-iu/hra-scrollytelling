@@ -27,7 +27,7 @@ Landing-page work is intentionally isolated to:
   page.
 - `shared/js/contrast.js` for the persistent High contrast switch used by landing and shared page chrome.
 
-Do not reconnect the landing page to the legacy `style.css` or to prototype or story scripts. Do not allow
+Do not recreate or reconnect the landing page to a root `style.css` or to prototype or story scripts. Do not allow
 landing-page selectors or behavior to affect the story pages. Do not restore a root `js/` directory; place new scripts
 under their owning page, story, prototype, or shared component. Keep the landing stylesheet order
 `shared/css/fonts.css`, `landing/css/tokens.css`, the shared page-chrome stylesheets, then `landing/css/styles.css`, and
@@ -210,8 +210,8 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
   `style.css`.
 - Keep Story 1 presentation under `stories/story1/`; do not reconnect `story1.html` to root `style.css`.
 - Keep the narrative foundation, character-dialogue, and legacy resource-card styles shared by Stories 2, 3, and 5
-  under `shared/css/`; keep story-specific scenes and interactions under their owning story. Root `style.css` is a
-  temporary no-op compatibility file; do not restore declarations to it.
+  under `shared/css/`; keep story-specific scenes and interactions under their owning story. Root `style.css` has
+  been removed; do not recreate it.
 - Keep Story 5-specific presentation under `stories/story5/styles.css`; do not restore those rules to root
   `style.css`.
 - Keep Story 2-specific presentation under `stories/story2/styles.css` and its focused quiz component under
