@@ -101,6 +101,24 @@ html.story-flowing .story-narrative .story-intro-summary {
     white-space: normal;
 }
 
+html.story-flowing .story-narrative :where(.story-chapter-heading, .story-scene-summary) {
+    position: relative;
+    width: min(100% - 2rem, var(--narrative-flow-content-width));
+    height: auto;
+    padding: 1rem;
+    margin: 0 auto;
+    overflow: visible;
+    clip: auto;
+    color: #202124;
+    text-align: center;
+    white-space: normal;
+}
+
+html.story-flowing .story-narrative .story-chapter-heading {
+    padding-top: 3rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
 html.story-flowing .story-narrative video[controls] {
     max-width: 100%;
 }

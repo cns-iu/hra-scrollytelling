@@ -106,19 +106,25 @@ original URLs retained as compatibility pages. These are not primary entry point
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
 └── stories/            # Organized story-owned implementation files
     ├── story1/         # Story 1 styles, scripts, owned images, and videos
-    ├── story2/         # Story 2 presentation, quiz, and owned images
-    ├── story3/         # Story 3 presentation and owned narrative and resource images
-    ├── story4/         # Story 4 scripts, particle configuration, and owned images
+    ├── story2/         # Story 2 presentation, animation, quiz, and owned images
+    ├── story3/         # Story 3 presentation, split animation runtime, and owned images
+    ├── story4/         # Story 4 static fallback, motion gate, animations, particles, and owned images
+    │   ├── accessibility.css
     │   ├── app.js
+    │   ├── animations.js
+    │   ├── diagram-detail.js
+    │   ├── diagram-overview.js
     │   ├── images/        # Story 4 resource thumbnails
+    │   ├── motion.js
     │   ├── particles.js
-    │   ├── scripts.js
     │   ├── styles.css
     │   └── config/
     │       └── particles.json # Preserved particle configuration reference
-    ├── story5/         # Story 5 presentation, accessibility styles, images, and videos
+    ├── story5/         # Story 5 presentation, animation, accessible media controls, images, and videos
     │   ├── accessibility.css
+    │   ├── animations.js
     │   ├── images/
+    │   ├── media-controls.js
     │   ├── styles.css
     │   └── videos/
     └── story6/         # Story 6 styles, scripts, images, and contributor instructions
@@ -301,6 +307,7 @@ node --check landing/js/main.js
 node --check shared/js/main.js
 node --check shared/js/menu.js
 node --check shared/js/theme.js
+node tools/check-maintained-pages.mjs
 node tools/check-local-links.mjs --allow-known
 node tools/check-story6.mjs
 ```
@@ -309,6 +316,7 @@ Also verify:
 
 - Local `href`, `src`, and CSS `url()` references resolve.
 - IDs are unique and fragment/ARIA references point to existing elements.
+- The maintained-page checker reports only the documented embedded-SVG duplicate-ID baselines for Stories 2–4.
 - Changed color combinations meet their required contrast ratios.
 - The page is keyboard operable at 320 CSS pixels and up to 400% zoom.
 - Focus is visible and is not obscured.

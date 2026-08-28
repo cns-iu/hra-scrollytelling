@@ -11,6 +11,7 @@ particlesJS.load('particles-js', 'stories/story4/config/particles.json', functio
 
 /* Otherwise just put the config content (json): */
 
+if (window.hraStory4MotionEnabled) {
 particlesJS('particles-js',
   
   {
@@ -131,3 +132,4 @@ particlesJS('particles-js',
   }
 
 );
+}

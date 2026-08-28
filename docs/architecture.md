@@ -98,24 +98,33 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   ├── story1.css
 │   │   └── videos/
 │   ├── story2/
+│   │   ├── animations.js
 │   │   ├── images/
 │   │   ├── quiz.css
 │   │   ├── quiz.js
 │   │   └── styles.css
 │   ├── story3/
+│   │   ├── animations.js
 │   │   ├── images/
+│   │   ├── rui-animations.js
 │   │   └── styles.css
 │   ├── story4/
+│   │   ├── accessibility.css
 │   │   ├── app.js
+│   │   ├── animations.js
+│   │   ├── diagram-detail.js
+│   │   ├── diagram-overview.js
 │   │   ├── images/
+│   │   ├── motion.js
 │   │   ├── particles.js
-│   │   ├── scripts.js
 │   │   ├── styles.css
 │   │   └── config/
 │   │       └── particles.json
 │   └── story5/
 │       ├── accessibility.css
+│       ├── animations.js
 │       ├── images/
+│       ├── media-controls.js
 │       ├── styles.css
 │       └── videos/
 ├── docs/
@@ -154,6 +163,8 @@ unneeded IDs, and visually regression-test every affected illustration before an
 
 Story 2 owns its story-specific scenes, video treatment, and legacy quiz layout under `stories/story2/styles.css`.
 Its focused quiz component remains separated into `stories/story2/quiz.css` and `stories/story2/quiz.js`. Story 2
+owns its scroll-driven runtime in `stories/story2/animations.js`; only this story loads MotionPathPlugin because its
+motion-path scene consumes that plugin. Story 2
 owns its scoped quiz color tokens and retains a single remote Inter request because its generated inline SVG labels
 still specify Inter. Its narrative body uses the shared self-hosted Nunito Sans foundation.
 
@@ -164,9 +175,15 @@ under `shared/assets/images/`; the common favicon lives under `shared/assets/ico
 self-hosted Nunito Sans narrative font, and its large inline SVG markup remains deferred to a separate migration.
 That generated SVG markup retains 18 pre-existing repeated ID values. The semantic page, motion, and inline-style
 migrations do not modify those generated identifiers; resolve them only in a dedicated visual-regression pass.
+Story 3's shared intro and dialogue timelines live in `stories/story3/animations.js`, while RUI-specific illustration
+timelines live in `stories/story3/rui-animations.js`.
 
-Story 4 owns its presentation, particle runtime, inline configuration initializer, intentionally blank Bootstrap
-starter hook, and exclusive resource-card thumbnails in `stories/story4/`. It is independent of the former root legacy
+Story 4 owns its presentation, static accessibility layout, motion gate, particle runtime, configuration initializer,
+three focused animation modules, and exclusive resource-card thumbnails in `stories/story4/`. It defaults to a
+readable `.story4-flowing` document when JavaScript is unavailable, reduced motion is requested, or the viewport is
+too narrow or short for pinned scenes. Its enhanced header provides a visible control to hide ambient animation.
+The unused ScrollMagic, MotionPathPlugin, Bootstrap bundle, and blank Bootstrap starter hook were removed. Story 4 is
+independent of the former root legacy
 `style.css`; all three page and embedded-SVG stylesheet references resolve to `stories/story4/styles.css`. Its 24
 inline SVG image elements remain embedded in `story4.html`; its common favicon and external-link arrow use the
 organized shared asset directories. The Scrollytelling Effects prototype owns its complete `wc.js` web-component
@@ -184,7 +201,14 @@ Story 5 owns its story-specific scene and media-control presentation under `stor
 backgrounds, narrative illustrations, media-control icons, and resource thumbnails under `stories/story5/images/`,
 and its six videos under `stories/story5/videos/`. The body-intro layers, telescope, and external-link arrow shared
 with other stories live under `shared/assets/images/`; the common favicon lives under `shared/assets/icons/`. Story 5
-uses the shared self-hosted Nunito Sans narrative font.
+uses the shared self-hosted Nunito Sans narrative font. Its scroll animation lives in `animations.js`, while
+`media-controls.js` owns scoped event listeners for the six video sequences and their visible play, pause, replay,
+previous-section, and next-section controls. Flowing mode removes autoplay and exposes native video controls.
+
+`tools/check-maintained-pages.mjs` enforces maintained-page metadata, shared chrome, stylesheet order, heading and
+motion contracts, fragment and ARIA references, new-tab safety, and the absence of inline event handlers and retired
+runtimes. It also freezes the known duplicate-ID signatures in the embedded SVG artwork for Stories 2–4 so new ID
+regressions fail without presenting existing generated-artwork debt as newly introduced.
 
 Each retained prototype owns its exclusive images, videos, models, and dedicated presentation beneath its directory.
 Prototype-only shared artwork lives under `prototypes/shared/`; assets shared with a maintained story live under

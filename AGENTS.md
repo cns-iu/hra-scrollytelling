@@ -89,6 +89,10 @@ Load maintained-page styles in ownership order: shared fonts and tokens, shared 
 component foundations, then page- or story-owned styles. Load `shared/css/appearance-controls.css` immediately after
 `shared/css/navigation.css` only on pages that provide those controls. Stories 2, 3, and 5 load
 `shared/css/narrative-accessibility.css` last so their flowing fallback can override enhanced scene geometry.
+Keep scroll-driven story runtimes in their owning story directory. Story 4 defaults to `.story4-flowing` and may
+enable its animated presentation only through `stories/story4/motion.js`. Story 5's six autoplaying narrative videos
+must retain visible play/pause controls whenever the enhanced presentation is active and native controls in flowing
+mode.
 
 Preserve existing uncommitted work and follow the repository's active branch and review workflow. Do not rewrite,
 discard, commit, push, or publish changes unless those operations are explicitly in scope.
@@ -208,6 +212,9 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
   into `shared/js/`.
 - Keep Story 4 presentation under `stories/story4/styles.css`; do not reconnect `story4.html` or its embedded SVGs to
   root `style.css`.
+- Keep Story 4's static fallback in `stories/story4/accessibility.css`, its motion gate in `motion.js`, and its
+  focused scroll timelines in story-owned animation modules. Do not restore the retired Bootstrap, ScrollMagic,
+  MotionPathPlugin, or blank starter-script integrations.
 - Preserve `VisualizingCells.html` and `organExample.html` as compatibility entry points for the implementations under
   `prototypes/`; do not delete or repurpose those published URLs without explicit approval.
 - Keep Organ Example presentation under `prototypes/organ-example/styles.css`; do not reconnect it to root
@@ -225,6 +232,8 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
   viewport is large enough.
 - Keep Story 5-specific presentation under `stories/story5/styles.css`; do not restore those rules to root
   `style.css`.
+- Keep Story 5 scroll animation in `stories/story5/animations.js` and video interaction in `media-controls.js`; do not
+  restore inline event handlers or remove either enhanced play/pause controls or flowing-mode native controls.
 - Keep Story 2-specific presentation under `stories/story2/styles.css` and its focused quiz component under
   `stories/story2/quiz.css`; do not restore those rules to root `style.css`.
 - Keep Story 3-specific presentation under `stories/story3/styles.css`; do not restore those rules to root
@@ -247,13 +256,14 @@ After changes:
 
 1. Run `git diff --check`.
 2. Run `node --check` for each changed JavaScript file, including repository tools.
-3. Run `node tools/check-local-links.mjs --allow-known` and investigate any new failure.
-4. Run `node tools/check-story6.mjs` when Story 6 markup, styles, scripts, or image candidates change.
-5. Confirm IDs are unique and all fragment and ARIA ID references resolve.
-6. Recalculate affected contrast pairs.
-7. Test keyboard and disclosure behavior.
-8. Inspect at 320 CSS pixels, 200% and 400% zoom, reduced motion, reduced transparency, increased contrast, and forced
+3. Run `node tools/check-maintained-pages.mjs` and investigate any new failure.
+4. Run `node tools/check-local-links.mjs --allow-known` and investigate any new failure.
+5. Run `node tools/check-story6.mjs` when Story 6 markup, styles, scripts, or image candidates change.
+6. Confirm IDs are unique and all fragment and ARIA ID references resolve.
+7. Recalculate affected contrast pairs.
+8. Test keyboard and disclosure behavior.
+9. Inspect at 320 CSS pixels, 200% and 400% zoom, reduced motion, reduced transparency, increased contrast, and forced
    colors when a browser is available.
-9. Inspect the complete linear article in Firefox Reader View after changing story structure or content extraction
+10. Inspect the complete linear article in Firefox Reader View after changing story structure or content extraction
    hints.
-10. Report what changed, what was intentionally unchanged, which validations passed, and which manual checks remain.
+11. Report what changed, what was intentionally unchanged, which validations passed, and which manual checks remain.

@@ -13,6 +13,10 @@
     margin-top: 0;
 }
 
+html:not(.story5-animation-ready) .story5-page .talkbubble {
+    visibility: visible;
+}
+
 .story5-page .introcharcece {
     width: 12%;
 }

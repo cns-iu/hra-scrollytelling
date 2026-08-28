@@ -1,12 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="story4-flowing">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Data Detangle</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta
+      name="description"
+      content="Discover how knowledge graphs organize diverse Human Reference Atlas data and connect anatomical structures, cell types, and biomarkers."
+    />
     <link rel="stylesheet" href="shared/css/fonts.css" />
     <link rel="stylesheet" href="shared/css/tokens.css" />
     <link rel="stylesheet" href="shared/css/selection.css" />
@@ -14,6 +16,7 @@
     <link rel="stylesheet" href="shared/css/story-navigation.css" />
     <link rel="stylesheet" href="shared/css/footer.css" />
     <link rel="stylesheet" href="stories/story4/styles.css" />
+    <link rel="stylesheet" href="stories/story4/accessibility.css" />
     <link rel="icon" href="shared/assets/icons/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" href="shared/assets/icons/favicon.svg" type="image/svg+xml" sizes="any" />
     <link rel="apple-touch-icon" href="shared/assets/icons/apple-touch-icon.png" sizes="180x180" />
@@ -26,6 +29,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
+    <script src="stories/story4/motion.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script
@@ -110,12 +114,24 @@
         <div class="header">
           <h1>Data Detangle</h1>
           <h2>How Knowledge Graphs Bring Order to the HRA's Data Diversity</h2>
-          <div id="particles-js"></div>
+          <p class="story4-scene-summary">
+            Follow the connections among Human Reference Atlas data as a
+            knowledge graph brings anatomical structures, cell types, and
+            biomarkers into one navigable network.
+          </p>
+          <div id="particles-js" aria-hidden="true"></div>
+          <button
+            class="story4-motion-toggle"
+            type="button"
+            aria-pressed="false"
+            data-story4-ambient-toggle
+          >
+            Hide ambient animation
+          </button>
         </div>
 
         <div class="section1">
           <div class="scene1" id="changethisbg">
-            <?xml version="1.0" encoding="UTF-8"?>
             <svg
               id="svgLines"
               width="100%"
@@ -581,7 +597,6 @@
           <div class="talkbubble"></div>
 
           <div class="scene15" id="changethisbg1.5">
-            <?xml version="1.0" encoding="UTF-8"?>
             <svg
               id="dataunderstand"
               width="100%"
@@ -906,7 +921,6 @@
           <div class="talkbubble"></div>
 
           <div class="scene2">
-            <?xml version="1.0" encoding="UTF-8"? >
             <svg
               style="top: 40vh"
               width="100%"
@@ -1488,7 +1502,6 @@
           <div class="talkbubble"></div>
 
           <div class="scene17">
-            <?xml version="1.0" encoding="UTF-8"?>
             <svg
               width="100%"
               height="100%"
@@ -1610,7 +1623,6 @@
           <div class="talkbubble"></div>
 
           <div class="scene16">
-            <?xml version="1.0" encoding="UTF-8"?>
             <svg
               width="100%"
               height="100%"
@@ -2124,7 +2136,6 @@
           <div class="talkbubble"></div>
 
           <div class="scene18">
-            <?xml version="1.0" encoding="UTF-8"?>
             <svg
               width="100%"
               height="100%"
@@ -2360,7 +2371,6 @@
           <div class="talkbubble"></div>
 
           <div class="scene19">
-            <?xml version="1.0" encoding="UTF-8"?>
             <svg
               width="100%"
               height="90%"
@@ -2528,7 +2538,6 @@
           <div class="talkbubble"></div>
 
           <div class="scene20">
-            <?xml version="1.0" encoding="UTF-8"?>
             <svg
               width="100%"
               height="70%"
@@ -3899,7 +3908,7 @@
       </section>
 
       <div class="Externallinkssection">
-        <p class="indexTitle" style="margin-bottom: 80px">Resources</p>
+        <h2 class="indexTitle" style="margin-bottom: 80px">Resources</h2>
         <div class="ExternalLinkCards">
           <div class="ExternalLinkCard">
             <img class="ExternalLinkImg" src="stories/story4/images/Link4-1.png" alt="" />
@@ -4061,724 +4070,12 @@
         © 2026 Cyberinfrastructure for Network Science Center
       </p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+    <script src="stories/story4/particles.js"></script>
+    <script src="stories/story4/app.js"></script>
+    <script src="stories/story4/animations.js"></script>
+    <script src="stories/story4/diagram-overview.js"></script>
+    <script src="stories/story4/diagram-detail.js"></script>
   </body>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/MotionPathPlugin.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script src="stories/story4/scripts.js"></script>
-  <script src="stories/story4/particles.js"></script>
-  <script src="stories/story4/app.js"></script>
-  <script>
-    //bg1
-    ScrollTrigger.create({
-      trigger: ".scene1",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=1000%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.create({
-      trigger: ".scene15",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.create({
-      trigger: ".scene2",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=500%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene16",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene17",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene18",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=200%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene19",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene20",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=1400%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    //fade in txt
-    // const scrollbubbles = gsap.utils.toArray(".scrollbubble");
-    // scrollbubbles.forEach((scrollbubble) => {
-    //     let tl2 = gsap.timeline({
-    //         scrollTrigger: {
-    //             onRefresh: self => self.progress && self.animation.progress(1),
-    //             start: "top +=200%",
-    //             trigger: scrollbubble,
-    //             pin: false,
-    //             pinSpacing: false,
-    //             scrub: true,
-    //             markers: false
-    //         }
-    //     });
-
-    //     tl2.to(scrollbubble, {
-    //         autoAlpha: 1
-    //     },
-    //         0.5
-    //     );
-    // });
-
-    //fade in txt
-    // const containers = gsap.utils.toArray(".container");
-    // containers.forEach((container) => {
-    //     let tl = gsap.timeline({
-    //         scrollTrigger: {
-    //             onRefresh: self => self.progress && self.animation.progress(1),
-    //             start: "top top",
-    //             trigger: container,
-    //             pin: true,
-    //             pinSpacing: false,
-    //             scrub: true,
-    //             markers: false
-    //         }
-    //     });
-
-    //     tl.to(container, {
-    //         autoAlpha: 1
-    //     }).to(
-    //         container, {
-    //         autoAlpha: 0
-    //     },
-    //         0.5
-    //     );
-    // });
-
-    //fade in txt
-    // const overlays = gsap.utils.toArray(".overlaybubbles");
-    // overlays.forEach((obubble) => {
-    //     let tl = gsap.timeline({
-    //         scrollTrigger: {
-    //             trigger: obubble,
-    //             pin: true,
-    //             pinSpacing: false,
-    //             scrub: true,
-    //             markers: false
-    //         }
-    //     });
-
-    //     tl.to(obubble, {
-    //         autoAlpha: 1
-    //     }).to(
-    //         obubble, {
-    //         autoAlpha: 0
-    //     },
-    //         0.5
-    //     );
-    // });
-
-    //fade in txt
-    const bubbles = gsap.utils.toArray(".talkbubble");
-    bubbles.forEach((bubble) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: bubble,
-          start: "top top",
-          scrub: 0.5,
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(bubble, {
-        autoAlpha: 1,
-      }).to(
-        bubble,
-        {
-          autoAlpha: 0,
-        },
-        1.8,
-      );
-    });
-
-    window.history.scrollRestoration = "manual";
-
-    // ui explain sectioni
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#Change1",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#LogoLine1,#Line,#LogoLine2,#LogoLine3", {
-        stroke: "rgb(0,0,0)",
-      })
-      .to("#SideLogos", {
-        opacity: 1,
-        duration: 0,
-      })
-      .to("#LogoLine1", {
-        stroke: "rgb(255,0,55)",
-        strokeWidth: 10,
-        duration: 0,
-      })
-      .to("#LogoLine2", {
-        stroke: "rgb(255,0,55)",
-        strokeWidth: 10,
-        duration: 0,
-      })
-      .to("#LogoLine3", {
-        stroke: "rgb(255,0,55)",
-        strokeWidth: 10,
-        duration: 0,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#Change2",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#TypeLogos", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#Change3",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Mess", {
-        opacity: 1,
-      })
-
-      .to("#TypeLogos", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#Change4",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Locks", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#Change5",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 1,
-          pin: false,
-        },
-      })
-      .to("#Locks,#Mess,#TypeLogos,#SideLogos", {
-        opacity: 0,
-      })
-      .to("#LogoLine1,#Line,#LogoLine2,#LogoLine3", {
-        stroke: "rgb(0,0,0)",
-        strokeWidth: 4,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#Change6",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#EatingSystem,#BreathingSystem", {
-        opacity: 0,
-      })
-      .to("#Systempt2", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#Change7",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Systempt3", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#Change8",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Systempt4,#Purple", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#Change9",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Initial", {
-        opacity: 0,
-      })
-      .to("#Combined", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#datachange1",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Data1", {
-        opacity: 0,
-      })
-      .to("#Data2", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#change12",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#likedthing2", {
-        opacity: 0,
-      })
-      .to("#likedthing", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#change11",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Like1", {
-        opacity: 1,
-      })
-      .to("#Like2", {
-        opacity: 1,
-      })
-      .to("#Like3", {
-        opacity: 1,
-      })
-      .to("#Like4", {
-        opacity: 1,
-      })
-      .to("#Like5", {
-        opacity: 1,
-      })
-      .to("#Like6", {
-        opacity: 1,
-      })
-      .to("#Like7", {
-        opacity: 1,
-      })
-      .to("#Like8", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#change13",
-          start: "top",
-          end: "+=50%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Brand1", {
-        opacity: 1,
-      })
-      .to("#Brand2", {
-        opacity: 1,
-      })
-      .to("#Brand3", {
-        opacity: 1,
-      })
-      .to("#Brand4", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#change14",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#RDF1", {
-        opacity: 1,
-      })
-      .to("#RDF2", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#change15",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#closeuplinks1", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#change16",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#subjecthighlight", {
-        opacity: 0.2,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#change17",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#subjecthighlight", {
-        opacity: 0,
-      })
-      .to("#objecthighlight", {
-        opacity: 0.2,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#change18",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#objecthighlight", {
-        opacity: 0,
-      })
-      .to("#predicatehighlight", {
-        opacity: 0.2,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#change19",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 0,
-          pin: false,
-        },
-      })
-      .to("#predicatehighlight", {
-        opacity: 0,
-      })
-      .to("#closeuplinks1", {
-        opacity: 0,
-      })
-      .to("#closeuplinks0", {
-        opacity: 0,
-      })
-      .to("#closeuplinks2", {
-        opacity: 1,
-      })
-      .to("#closeup1", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#changecloseup1",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 0,
-          pin: false,
-        },
-      })
-      .to("#closeup1", {
-        opacity: 0,
-      })
-      .to("#closeup2", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#changecloseup2",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 0,
-          pin: false,
-        },
-      })
-      .to("#closeup2", {
-        opacity: 0,
-      })
-      .to("#closeup3", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#change20",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 0,
-          pin: false,
-        },
-      })
-
-      .to("#closeuplinks2", {
-        opacity: 0,
-      })
-      .to("#closeuplinks3", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#change21",
-          start: "top",
-          end: "+=80%",
-          scrub: true,
-          duration: 10,
-          pin: false,
-        },
-      })
-      .to("#closeuplinks3", {
-        opacity: 0,
-      })
-      .to("#closeuplinks4", {
-        opacity: 1,
-      })
-      .to("#closeuplinks4", {
-        opacity: 0,
-      })
-      .to("#closeuplinks5", {
-        opacity: 1,
-      })
-      .to("#closeuplinks5", {
-        opacity: 0,
-      })
-      .to("#closeuplinks6", {
-        opacity: 1,
-      })
-      .to("#closeuplinks6", {
-        opacity: 0,
-      })
-      .to("#closeuplinks65", {
-        opacity: 1,
-      })
-      .to("#closeuplinks65", {
-        opacity: 0,
-      })
-      .to("#closeuplinks66", {
-        opacity: 1,
-      })
-
-      .to("#closeuplinks68", {
-        opacity: 1,
-      })
-      .to("#closeuplinks66", {
-        opacity: 0,
-      })
-      .to("#closeuplinks7", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#change22",
-          start: "top",
-          end: "+=80%",
-          scrub: true,
-          duration: 10,
-          pin: false,
-        },
-      })
-
-      .to("#closeuplinks7", {
-        opacity: 0,
-      })
-      .to("#closeuplinks8", {
-        opacity: 1,
-      })
-      .to("#closeuplinks68", {
-        opacity: 0,
-      })
-      .to("#closeuplinks8", {
-        opacity: 0,
-      })
-      .to("#closeuplinks9", {
-        opacity: 1,
-      })
-      .to("#closeuplinks9", {
-        opacity: 0,
-      })
-      .to("#closeuplinks10", {
-        opacity: 1,
-      });
-  </script>
 </html>

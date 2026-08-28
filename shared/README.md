@@ -97,6 +97,9 @@ page chrome. Their story-owned styles follow the shared foundation, and `narrati
 Each document starts with `.story-flowing`; `narrative-motion.js` enables pinned animation only when reduced motion is
 off and the viewport is sufficiently large. The flowing mode preserves source order without JavaScript, disables
 nonessential animation, avoids fixed-height text containers, and makes Story 5 narrative videos user-controlled.
+Story-owned chapter headings and summaries remain available to linear and Reader View presentations even when their
+enhanced scene layout visually relies on pinned dialogue and artwork. Dialogue boundaries remain visible in forced
+colors mode.
 
 ## Ownership
 

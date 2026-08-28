@@ -16,6 +16,18 @@ html {
     font-family: var(--font-body);
 }
 
+.story-narrative :where(.story-chapter-heading, .story-scene-summary) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 :where(body.story-narrative) p {
     color: var(--narrative-color-text);
     font-size: 1.125rem;

@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Something's Not Registering!</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta
+      name="description"
+      content="Follow Squiggy and CeCe as they use the Human Reference Atlas Registration User Interface to register a kidney tissue sample."
+    />
     <link rel="stylesheet" href="shared/css/fonts.css" />
     <link rel="stylesheet" href="shared/css/tokens.css" />
     <link rel="stylesheet" href="shared/css/selection.css" />
@@ -113,7 +115,7 @@
       tabindex="-1"
     >
       <!-- section header/intro -->
-      <section class="intro" id="intro">
+      <div class="intro" id="intro">
         <p class="story-intro-summary">
           There are roughly 37 trillion cells in the human body.
         </p>
@@ -131,13 +133,13 @@
             class="picture3 imagepart narrative-telescope"
           />
         </div>
-      </section>
+      </div>
 
-      <section class="section1">
+      <div class="section1">
         <div class="container narrative-intro-copy">
           This is the story of two of them: Squiggy and CeCe.
         </div>
-      </section>
+      </div>
 
       <section class="section13">
         <div class="container2 introline narrative-intro-copy">
@@ -164,7 +166,7 @@
         </div>
       </section>
 
-      <section id="introImageSection">
+      <div id="introImageSection">
         <div
           class="imageintrosec"
           role="img"
@@ -186,9 +188,14 @@
             class="imageintro3 imageparts"
           />
         </div>
-      </section>
+      </div>
 
       <section class="section2">
+        <h2 class="story-chapter-heading">Registering a tissue sample</h2>
+        <p class="story-scene-summary">
+          Squiggy and CeCe use the Registration User Interface to place a
+          kidney tissue sample in a shared three-dimensional reference organ.
+        </p>
         <div class="scene3-1"></div>
 
         <div class="talkbubble">
@@ -363,10 +370,8 @@
         <div class="talkbubble"></div>
 
         <div class="scene3-5-1">
-          <?xml version="1.0" encoding="UTF-8"?>
           <svg
             width="100%"
-            id=""
             height="100%"
             viewBox="0 0 1924 1125"
             version="1.1"
@@ -1052,7 +1057,6 @@
         <div class="talkbubble"></div>
 
         <div class="scene3-6" id="changethisbg">
-          <?xml version="1.0" encoding="UTF-8"?>
           <svg
             width="100%"
             height="100%"
@@ -1785,7 +1789,7 @@
 
         <div class="scene3-10">
           <div class="Externallinkssection">
-            <p class="indexTitle">Resources</p>
+            <h2 class="indexTitle">Resources</h2>
             <div class="ExternalLinkCards">
               <div class="ExternalLinkCard">
                 <img class="ExternalLinkImg" src="stories/story3/images/resource-rui-demo.png" alt="" />
@@ -1972,553 +1976,9 @@
         © 2026 Cyberinfrastructure for Network Science Center
       </p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+    <script src="stories/story3/animations.js"></script>
+    <script src="stories/story3/rui-animations.js"></script>
   </body>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/MotionPathPlugin.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
-
-  <script>
-    if (window.hraStoryMotionEnabled) {
-    //intro part
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: ".fadeimage",
-          start: "top 00px",
-          end: "bottom 0px",
-          scrub: 1,
-          duration: 1,
-          pin: true,
-        },
-      })
-
-      .from(".picture2", {
-        opacity: 0,
-      })
-      .from(".picture3", {
-        opacity: 0,
-      })
-      .to(".picture3", {
-        scale: 1.8,
-      })
-      .to(
-        ".picture3",
-        {
-          scale: 1.8,
-        },
-        "+=2",
-      );
-
-    //typewriter
-    var m = 0;
-    var txt = "There are roughly 37 trillion cells in the human body.";
-    var speed = 40;
-
-    function typeWriter() {
-      if (m < txt.length) {
-        document.getElementById("introTypeLine").textContent += txt.charAt(m);
-        m++;
-        setTimeout(typeWriter, speed);
-      }
-    }
-    window.onload = typeWriter;
-
-    //fade in txt
-    const containers2 = gsap.utils.toArray(".container2");
-    containers2.forEach((container2) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          onRefresh: (self) => self.progress && self.animation.progress(1),
-          start: "top top",
-          end: "+=100%",
-          trigger: container2,
-          pin: true,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(container2, {
-        autoAlpha: 1,
-      }).to(
-        container2,
-        {
-          autoAlpha: 0,
-        },
-        0.5,
-      );
-    });
-
-    /*  function playsound() {
-         var audio = new Audio('shared/assets/music/dramatic.swf.mp3');
-         audio.play();
-         audio.volume = 0.5;
-     }  */
-
-    //bg1
-    ScrollTrigger.create({
-      trigger: ".scene3-1",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=500%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.create({
-      trigger: ".scene3-2",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-3",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-4",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=500%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-5",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=500%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-5-1",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=1000%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-6",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=300%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-7",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=700%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-8",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=500%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-9",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=600%",
-      pin: true,
-      pinSpacing: false,
-    });
-    //fade in txt
-    const scrollbubbles = gsap.utils.toArray(".scrollbubble");
-    scrollbubbles.forEach((scrollbubble) => {
-      let tl2 = gsap.timeline({
-        scrollTrigger: {
-          onRefresh: (self) => self.progress && self.animation.progress(1),
-          start: "top +=200%",
-          trigger: scrollbubble,
-          pin: false,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl2.to(
-        scrollbubble,
-        {
-          autoAlpha: 1,
-        },
-        0.5,
-      );
-    });
-
-    //fade in txt
-    const containers = gsap.utils.toArray(".container");
-    containers.forEach((container) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          onRefresh: (self) => self.progress && self.animation.progress(1),
-          start: "top top",
-          trigger: container,
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(container, {
-        autoAlpha: 1,
-      }).to(
-        container,
-        {
-          autoAlpha: 0,
-        },
-        0.5,
-      );
-    });
-
-    //fade in txt
-    const overlays = gsap.utils.toArray(".overlaybubbles");
-    overlays.forEach((obubble) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: obubble,
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(obubble, {
-        autoAlpha: 1,
-      }).to(
-        obubble,
-        {
-          autoAlpha: 0,
-        },
-        0.5,
-      );
-    });
-
-    //fade in txt
-    const bubbles = gsap.utils.toArray(".talkbubble");
-    bubbles.forEach((bubble) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: bubble,
-          start: "top top",
-          scrub: 0.5,
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(bubble, {
-        autoAlpha: 1,
-      }).to(
-        bubble,
-        {
-          autoAlpha: 0,
-        },
-        1.8,
-      );
-    });
-
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    };
-
-    window.history.scrollRestoration = "manual";
-
-    //drop in 1
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          scrub: 0.2,
-          trigger: ".imageintrosec",
-          start: "-=50%",
-          end: "top",
-          scrub: true,
-          pin: false,
-        },
-      })
-      .from(".imageintro1", {
-        opacity: 100,
-      })
-      .from(".imageintro2", {
-        opacity: 0,
-      })
-      .from(".imageintro3", {
-        opacity: 0,
-      });
-
-    //drop in 2
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: ".scene3-8",
-          start: "top",
-          end: "+=200%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#kidneyorgan", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    //drop in 3
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: ".scene3-4",
-          start: "top",
-          end: "+=100%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#kidneypart1", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#kidneypart2", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#kidneypart3", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#kidneypart4", {
-        opacity: 0.8,
-        delay: 1,
-      });
-
-    //change expression
-    const timeline3 = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#triggerworriedface0",
-        onEnter: changebg3,
-        onEnterBack: changebg3,
-        markers: false,
-        start: "top",
-        end: "+=100%",
-        id: "scene3-6",
-      },
-    });
-
-    function changebg3() {
-      var changebg = document.getElementById("changehere");
-      changebg.style.backgroundImage = "url('stories/story3/images/rui-registration-scene.svg')";
-    }
-
-    //change expression
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#triggerworriedface1",
-        onEnter: changebg,
-        onEnterBack: changebg,
-        // onLeave: rechangebg,
-        markers: false,
-        start: "top",
-        end: "+=100%",
-        id: "scene3-6",
-      },
-    });
-
-    function changebg() {
-      var changebg = document.getElementById("changehere");
-      changebg.style.backgroundImage = "url('stories/story3/images/rui-collision-reaction.svg')";
-    }
-
-    function rechangebg() {
-      var changebg = document.getElementById("changehere");
-      changebg.style.backgroundImage = "url('stories/story3/images/rui-registration-scene.svg')";
-    }
-
-    //change expression
-    const timeline2 = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#triggerworriedface2",
-        onEnter: changebg2,
-        markers: false,
-        start: "top",
-        end: "+=100%",
-        id: "scene3-6",
-      },
-    });
-
-    function changebg2() {
-      var changebg = document.getElementById("changehere");
-      changebg.style.backgroundImage = "url('stories/story3/images/rui-collision-resolved.svg')";
-    }
-
-    // ui explain sectioni
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange1",
-          start: "top",
-          end: "+=100%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle1", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#Rectangle1", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange2",
-          start: "top",
-          end: "+=100%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle2", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#Rectangle2", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange3",
-          start: "top",
-          end: "+=100%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle5", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#Rectangle5", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange4",
-          start: "top",
-          end: "+=100%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle3", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#Rectangle3", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange5",
-          start: "top",
-          end: "+=200%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle6", {
-        opacity: 0.8,
-        delay: 0,
-      })
-      .to("#Rectangle6", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange6",
-          start: "top",
-          end: "+=100%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle4", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#Rectangle4", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange7",
-          start: "top",
-          end: "+=200%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle7", {
-        opacity: 1,
-        delay: 1,
-      });
-    }
-  </script>
 </html>

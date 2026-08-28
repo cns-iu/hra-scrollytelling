@@ -215,3 +215,34 @@
     border-width: 15px;
     border-color: transparent transparent transparent var(--dialogue-color-mac);
 }
+
+@media (forced-colors: active) {
+    .story-narrative :where(
+        .defaulttalk,
+        [class^="cecetalk"],
+        [class*=" cecetalk"],
+        [class^="squiggytalk"],
+        [class*=" squiggytalk"],
+        .mactalk,
+        .mactalk2,
+        .narrator
+    ) {
+        border: 2px solid CanvasText;
+        background: Canvas;
+        color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .story-narrative :where(
+        .defaulttalk,
+        [class^="cecetalk"],
+        [class*=" cecetalk"],
+        [class^="squiggytalk"],
+        [class*=" squiggytalk"],
+        .mactalk,
+        .mactalk2
+    )::after {
+        display: none;
+    }
+}

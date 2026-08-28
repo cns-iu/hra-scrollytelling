@@ -1,6 +1,8 @@
 (function () {
     const root = document.documentElement;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const reducedTransparency = window.matchMedia('(prefers-reduced-transparency: reduce)');
+    const forcedColors = window.matchMedia('(forced-colors: active)');
     const supportedViewport = window.matchMedia(
         '(min-width: 48.01rem) and (min-height: 40.01rem)'
     );
@@ -11,7 +13,7 @@
      * @returns {void}
      */
     function makeNarrativeMediaUserControlled() {
-        document.querySelectorAll('.story-narrative video[autoplay]').forEach((video) => {
+        document.querySelectorAll('.story-narrative video').forEach((video) => {
             video.autoplay = false;
             video.controls = true;
             video.pause();
@@ -43,7 +45,11 @@
      */
     function applyNarrativeMode(allowEnhancement) {
         const canEnhance =
-            allowEnhancement && !reducedMotion.matches && supportedViewport.matches;
+            allowEnhancement &&
+            !reducedMotion.matches &&
+            !reducedTransparency.matches &&
+            !forcedColors.matches &&
+            supportedViewport.matches;
 
         window.hraStoryMotionEnabled = canEnhance;
         root.classList.toggle('story-motion-enabled', canEnhance);
@@ -63,6 +69,8 @@
     });
 
     reducedMotion.addEventListener('change', () => applyNarrativeMode(false));
+    reducedTransparency.addEventListener('change', () => applyNarrativeMode(false));
+    forcedColors.addEventListener('change', () => applyNarrativeMode(false));
     supportedViewport.addEventListener('change', (event) => {
         if (!event.matches) {
             applyNarrativeMode(false);
