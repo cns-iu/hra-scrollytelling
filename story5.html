@@ -1,31 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="story-flowing">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Know Your Body Buddies</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" href="style.css" />
+    <meta
+      name="description"
+      content="Follow Squiggy, CeCe, and Mac as they explore cell-type populations and the communities that make up the human body."
+    />
     <link rel="stylesheet" href="shared/css/fonts.css" />
     <link rel="stylesheet" href="shared/css/tokens.css" />
     <link rel="stylesheet" href="shared/css/selection.css" />
     <link rel="stylesheet" href="shared/css/navigation.css" />
+    <link rel="stylesheet" href="shared/css/story-navigation.css" />
     <link rel="stylesheet" href="shared/css/footer.css" />
+    <link rel="stylesheet" href="shared/css/narrative-foundation.css" />
+    <link rel="stylesheet" href="shared/css/character-dialogue.css" />
+    <link rel="stylesheet" href="shared/css/resource-cards.css" />
+    <link rel="stylesheet" href="stories/story5/styles.css" />
     <link rel="stylesheet" href="stories/story5/accessibility.css" />
+    <link rel="stylesheet" href="shared/css/narrative-accessibility.css" />
     <link rel="icon" href="shared/assets/icons/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" href="shared/assets/icons/favicon.svg" type="image/svg+xml" sizes="any" />
     <link rel="apple-touch-icon" href="shared/assets/icons/apple-touch-icon.png" sizes="180x180" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cutive&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <script src="shared/js/narrative-motion.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script
@@ -46,7 +45,7 @@
     <script type="module" src="shared/js/navigation-only.js"></script>
   </head>
 
-  <body id="two" class="story5section2">
+  <body class="story-narrative story5-page">
     <a class="site-skip-link site-chrome" href="#main-content"
       >Skip to main content</a
     >
@@ -114,8 +113,11 @@
       tabindex="-1"
     >
       <!-- section header/intro -->
-      <section class="intro" id="intro" style="background-color: white">
-        <h3 class="overtext" id="introTypeLine"></h3>
+      <div class="intro" id="intro">
+        <p class="story-intro-summary">
+          There are roughly 37 trillion cells in the human body.
+        </p>
+        <p class="overtext" id="introTypeLine" aria-hidden="true"></p>
         <div
           class="fadeimage"
           role="img"
@@ -126,22 +128,21 @@
           <img
             src="shared/assets/images/telescope.svg"
             alt=""
-            class="picture3 imagepart"
-            style="width: 140px"
+            class="picture3 imagepart narrative-telescope"
           />
         </div>
-      </section>
+      </div>
 
-      <section class="section1">
-        <div class="container" style="left: 20px">
+      <div class="section1">
+        <div class="container narrative-intro-copy">
           This is the story of two of them: Squiggy and CeCe.
         </div>
-      </section>
+      </div>
 
       <section class="section1">
-        <div class="container2 introline" style="left: 20px">
+        <div class="container2 introline narrative-intro-copy">
           <p>On this week's episode:&nbsp;</p>
-          <h1 style="font-size: 1.6em">Know Your Body Buddies</h1>
+          <h1 class="story-episode-title">Know Your Body Buddies</h1>
           <p class="descriptionsection">
             In which our heroes vanquish social anxiety, gain an extra
             dimension, and learn that it takes all types of cells to make a
@@ -152,19 +153,22 @@
               class="introlineimg introcharcece"
               src="stories/story5/images/popup5left.svg"
               alt=""
-              style="width: 12%"
             />
             <img
               class="introlineimg introcharsquiggy"
               src="stories/story5/images/popup5right.svg"
               alt=""
-              style="width: 10%"
             />
           </div>
         </div>
       </section>
 
       <section class="section2">
+        <h2 class="story-chapter-heading">Meeting a cell community</h2>
+        <p class="story-scene-summary">
+          Squiggy, CeCe, and Mac explore how registered tissue samples reveal
+          the cell-type populations that form communities in the human body.
+        </p>
         <div class="scene5-1">
           <img src="stories/story5/images/5sign.svg" alt="" id="sign" class="imageparts" />
           <img src="stories/story5/images/5move1.svg" alt="" id="move1" class="imageparts" />
@@ -225,13 +229,6 @@
             alt=""
             id="bubble1"
             class="imageparts"
-            style="
-              width: 40%;
-              left: 32%;
-              top: 10%;
-              max-width: 500px;
-              min-width: 100px;
-            "
           />
         </div>
         <div class="talkbubble" id="showbubble1">
@@ -327,7 +324,7 @@
         </div>
 
         <div class="talkbubble" id="scrollupto1">
-          <div style="top: -30%; position: relative">
+          <div class="story5-narrative-transition">
             And so down they went...
           </div>
         </div>
@@ -340,7 +337,7 @@
               type="button"
               class="toparrowbutton story5-media-control"
               id="toparrow1"
-              onclick="scrollup1()"
+              data-story5-action="previous"
               aria-label="Return to the previous story section"
             >
               <img src="stories/story5/images/uparrowbutton.svg" alt="" />
@@ -348,18 +345,25 @@
 
             <video
               playsinline
-              autoplay
+              controls
               muted
               class="video5"
               id="sample"
-              onended="onend1()"
             >
               <source src="stories/story5/videos/video5-1.mov" />
             </video>
             <button
               type="button"
+              class="story5-video-toggle story5-media-control"
+              data-story5-action="toggle"
+              aria-pressed="false"
+            >
+              Pause animation
+            </button>
+            <button
+              type="button"
               class="nextsectionbutton story5-media-control"
-              onclick="scroll1()"
+              data-story5-action="next"
               aria-label="Continue to the next story section"
             >
               <img src="stories/story5/images/downarrowbutton.svg" alt="" />
@@ -367,7 +371,7 @@
             <button
               type="button"
               class="repeatbutton story5-media-control"
-              onclick="repeatmovie1()"
+              data-story5-action="replay"
               aria-label="Replay this animation"
               aria-controls="sample"
             >
@@ -385,7 +389,7 @@
           <div id="scrollto1"></div>
         </div>
 
-        <div style="height: 20vh; background-color: black"></div>
+        <div class="story5-scene-spacer"></div>
 
         <div class="talkbubble">
           <div class="cecetalk5">
@@ -413,25 +417,32 @@
               type="button"
               class="toparrowbutton story5-media-control"
               id="toparrow2"
-              onclick="scrollup2()"
+              data-story5-action="previous"
               aria-label="Return to the previous story section"
             >
               <img src="stories/story5/images/uparrowbutton.svg" alt="" />
             </button>
             <video
               playsinline
-              autoplay
+              controls
               muted
               class="video5"
               id="sample2"
-              onended="onend2()"
             >
               <source src="stories/story5/videos/video5-2.mov" />
             </video>
             <button
               type="button"
+              class="story5-video-toggle story5-media-control"
+              data-story5-action="toggle"
+              aria-pressed="false"
+            >
+              Pause animation
+            </button>
+            <button
+              type="button"
               class="nextsectionbutton story5-media-control"
-              onclick="scroll2()"
+              data-story5-action="next"
               aria-label="Continue to the next story section"
             >
               <img src="stories/story5/images/downarrowbutton.svg" alt="" />
@@ -439,7 +450,7 @@
             <button
               type="button"
               class="repeatbutton story5-media-control"
-              onclick="repeatmovie2()"
+              data-story5-action="replay"
               aria-label="Replay this animation"
               aria-controls="sample2"
             >
@@ -452,7 +463,7 @@
         <div class="talkbubble">
           <div class="mactalk"><b>Mac:</b> Exactly!</div>
         </div>
-        <div style="height: 20vh; background-color: black"></div>
+        <div class="story5-scene-spacer"></div>
         <div id="scrollto3"></div>
         <div class="talkbubble">
           <div class="cecetalk5">
@@ -475,7 +486,7 @@
               type="button"
               class="toparrowbutton story5-media-control"
               id="toparrow3"
-              onclick="scrollup3()"
+              data-story5-action="previous"
               aria-label="Return to the previous story section"
             >
               <img src="stories/story5/images/uparrowbutton.svg" alt="" />
@@ -483,18 +494,25 @@
 
             <video
               playsinline
-              autoplay
+              controls
               muted
               class="video5"
               id="sample3"
-              onended="onend3()"
             >
               <source src="stories/story5/videos/video5-3.mov" />
             </video>
             <button
               type="button"
+              class="story5-video-toggle story5-media-control"
+              data-story5-action="toggle"
+              aria-pressed="false"
+            >
+              Pause animation
+            </button>
+            <button
+              type="button"
               class="nextsectionbutton story5-media-control"
-              onclick="scroll3()"
+              data-story5-action="next"
               aria-label="Continue to the next story section"
             >
               <img src="stories/story5/images/downarrowbutton.svg" alt="" />
@@ -502,7 +520,7 @@
             <button
               type="button"
               class="repeatbutton story5-media-control"
-              onclick="repeatmovie3()"
+              data-story5-action="replay"
               aria-label="Replay this animation"
               aria-controls="sample3"
             >
@@ -513,34 +531,34 @@
 
         <div class="scene5-12"></div>
         <div class="talkbubble">
-          <div class="mactalk2" style="top: 18%">
+          <div class="mactalk2 story5-dialogue--lower">
             <b>Mac:</b> Are you saying that the tissue block where I live
             intersects all of those anatomical structures?
           </div>
         </div>
-        <div style="height: 20vh; background-color: black"></div>
+        <div class="story5-scene-spacer"></div>
         <div id="scrollto5"></div>
         <div class="talkbubble">
-          <div class="cecetalk5" style="top: 18%">
+          <div class="cecetalk5 story5-dialogue--lower">
             <b>CeCe:</b> That's exactly what I'm saying. So it's a good idea to
             learn a bit more about them.
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk5" style="top: 18%">
+          <div class="cecetalk5 story5-dialogue--lower">
             <b>CeCe:</b> The HRA has already collected quite a bit of
             information about these anatomical structures from experimental
             datasets.
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk5" style="top: 18%">
+          <div class="cecetalk5 story5-dialogue--lower">
             <b>CeCe:</b> Experimental datasets are tissue data from healthy
             donors for which it is possible to derive cell counts.
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk5" id="scrollupto4" style="top: 18%">
+          <div class="cecetalk5 story5-dialogue--lower" id="scrollupto4">
             <b>CeCe:</b> These datasets are typically found in scholarly papers
             or in online collections of data, which are called portals.
           </div>
@@ -554,7 +572,7 @@
               type="button"
               class="toparrowbutton story5-media-control"
               id="toparrow4"
-              onclick="scrollup4()"
+              data-story5-action="previous"
               aria-label="Return to the previous story section"
             >
               <img src="stories/story5/images/uparrowbutton.svg" alt="" />
@@ -562,18 +580,25 @@
 
             <video
               playsinline
-              autoplay
+              controls
               muted
               class="video5"
               id="sample4"
-              onended="onend4()"
             >
               <source src="stories/story5/videos/video5-4.mov" />
             </video>
             <button
               type="button"
+              class="story5-video-toggle story5-media-control"
+              data-story5-action="toggle"
+              aria-pressed="false"
+            >
+              Pause animation
+            </button>
+            <button
+              type="button"
               class="nextsectionbutton story5-media-control"
-              onclick="scroll4()"
+              data-story5-action="next"
               aria-label="Continue to the next story section"
             >
               <img src="stories/story5/images/downarrowbutton.svg" alt="" />
@@ -581,7 +606,7 @@
             <button
               type="button"
               class="repeatbutton story5-media-control"
-              onclick="repeatmovie4()"
+              data-story5-action="replay"
               aria-label="Replay this animation"
               aria-controls="sample4"
             >
@@ -599,7 +624,7 @@
             given organ.
           </div>
         </div>
-        <div style="height: 20vh; background-color: black"></div>
+        <div class="story5-scene-spacer"></div>
         <div id="scrollto7"></div>
         <div class="talkbubble">
           <div class="cecetalk5" id="scrollupto5">
@@ -617,7 +642,7 @@
               type="button"
               class="toparrowbutton story5-media-control"
               id="toparrow5"
-              onclick="scrollup5()"
+              data-story5-action="previous"
               aria-label="Return to the previous story section"
             >
               <img src="stories/story5/images/uparrowbutton.svg" alt="" />
@@ -625,18 +650,25 @@
 
             <video
               playsinline
-              autoplay
+              controls
               muted
               class="video5"
               id="sample5"
-              onended="onend5()"
             >
               <source src="stories/story5/videos/video5-5.mov" />
             </video>
             <button
               type="button"
+              class="story5-video-toggle story5-media-control"
+              data-story5-action="toggle"
+              aria-pressed="false"
+            >
+              Pause animation
+            </button>
+            <button
+              type="button"
               class="nextsectionbutton story5-media-control"
-              onclick="scroll5()"
+              data-story5-action="next"
               aria-label="Continue to the next story section"
             >
               <img src="stories/story5/images/downarrowbutton.svg" alt="" />
@@ -644,7 +676,7 @@
             <button
               type="button"
               class="repeatbutton story5-media-control"
-              onclick="repeatmovie5()"
+              data-story5-action="replay"
               aria-label="Replay this animation"
               aria-controls="sample5"
             >
@@ -1108,7 +1140,7 @@
               type="button"
               class="toparrowbutton story5-media-control"
               id="toparrow6"
-              onclick="scrollup6()"
+              data-story5-action="previous"
               aria-label="Return to the previous story section"
             >
               <img src="stories/story5/images/uparrowbutton.svg" alt="" />
@@ -1116,18 +1148,25 @@
 
             <video
               playsinline
-              autoplay
+              controls
               muted
               class="video5"
               id="sample6"
-              onended="onend6()"
             >
               <source src="stories/story5/videos/video5-6.mov" />
             </video>
             <button
               type="button"
+              class="story5-video-toggle story5-media-control"
+              data-story5-action="toggle"
+              aria-pressed="false"
+            >
+              Pause animation
+            </button>
+            <button
+              type="button"
               class="nextsectionbutton story5-media-control"
-              onclick="scroll6()"
+              data-story5-action="next"
               aria-label="Continue to the next story section"
             >
               <img src="stories/story5/images/downarrowbutton.svg" alt="" />
@@ -1135,7 +1174,7 @@
             <button
               type="button"
               class="repeatbutton story5-media-control"
-              onclick="repeatmovie6()"
+              data-story5-action="replay"
               aria-label="Replay this animation"
               aria-controls="sample6"
             >
@@ -1148,7 +1187,7 @@
           <!-- Link section-->
 
           <div class="Externallinkssection">
-            <p class="indexTitle" style="margin-bottom: 80px">Resources</p>
+            <h2 class="indexTitle">Resources</h2>
             <div class="ExternalLinkCards">
               <div class="ExternalLinkCard">
                 <img class="ExternalLinkImg" src="stories/story5/images/Link5-1.png" alt="" />
@@ -1168,7 +1207,6 @@
                   <img
                     src="shared/assets/images/arrow.svg"
                     alt=""
-                    style="vertical-align: middle"
                   />
                 </a>
               </div>
@@ -1190,7 +1228,6 @@
                   <img
                     src="shared/assets/images/arrow.svg"
                     alt=""
-                    style="vertical-align: middle"
                   />
                 </a>
               </div>
@@ -1211,46 +1248,51 @@
                   <img
                     src="shared/assets/images/arrow.svg"
                     alt=""
-                    style="vertical-align: middle"
                   />
                 </a>
               </div>
             </div>
           </div>
 
-          <!-- BotNav -->
-          <div style="background-color: white !important">
-            <div class="botNav">
-              <a href="story4.html" class="previous"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-arrow-left"
-                  viewBox="0 -3 16 16"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-                  />
-                </svg>
-                Story 4: <span class="prevTitle">Data Detangle</span></a
-              >
-              <!--  <a href="story3.html" class="next">Story 3: <span class="nextTitle">Learn about Visualizing Cells in the
-                    Human
-                    Body</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-arrow-right" viewBox="0 -3 16 16">
-                    <path fill-rule="evenodd"
-                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                </svg></a> -->
-            </div>
-          </div>
         </div>
       </section>
     </main>
+
+    <nav
+      class="site-story-navigation site-chrome site-chrome--light"
+      aria-label="Story navigation"
+    >
+      <ul class="site-story-navigation__list">
+        <li class="site-story-navigation__item">
+          <a class="site-story-navigation__link" href="story4.html">
+            <span class="site-story-navigation__arrow" aria-hidden="true"
+              >←</span
+            >
+            <span class="site-story-navigation__text">
+              <span class="site-story-navigation__direction"
+                >Previous story</span
+              >
+              <span class="site-story-navigation__title"
+                >Story 4: Data Detangle</span
+              >
+            </span>
+          </a>
+        </li>
+        <li class="site-story-navigation__item">
+          <a class="site-story-navigation__link" href="story6.html">
+            <span class="site-story-navigation__text">
+              <span class="site-story-navigation__direction">Next story</span>
+              <span class="site-story-navigation__title"
+                >Story 6: Pan-organ Immunosenescence Atlas</span
+              >
+            </span>
+            <span class="site-story-navigation__arrow" aria-hidden="true"
+              >→</span
+            >
+          </a>
+        </li>
+      </ul>
+    </nav>
 
     <footer class="site-footer site-chrome site-chrome--dark">
       <nav class="site-footer__organizations" aria-label="Organizations">
@@ -1307,641 +1349,9 @@
         © 2026 Cyberinfrastructure for Network Science Center
       </p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+    <script src="stories/story5/animations.js"></script>
+    <script src="stories/story5/media-controls.js"></script>
   </body>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/MotionPathPlugin.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
-
-  <script>
-    //intro part
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: ".fadeimage",
-          start: "top 00px",
-          end: "bottom 0px",
-          scrub: 1,
-          duration: 1,
-          pin: true,
-        },
-      })
-
-      .from(".picture2", {
-        opacity: 0,
-      })
-      .from(".picture3", {
-        opacity: 0,
-      })
-      .to(".picture3", {
-        scale: 1.8,
-      })
-      .to(
-        ".picture3",
-        {
-          scale: 1.8,
-        },
-        "+=2",
-      );
-
-    //typewriter
-    var m = 0;
-    var txt = "There are roughly 37 trillion cells in the human body.";
-    var speed = 40;
-
-    function typeWriter() {
-      if (m < txt.length) {
-        document.getElementById("introTypeLine").innerHTML += txt.charAt(m);
-        m++;
-        setTimeout(typeWriter, speed);
-      }
-    }
-    window.onload = typeWriter;
-
-    //fade in txt
-    const containers2 = gsap.utils.toArray(".container2");
-    containers2.forEach((container2) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          onRefresh: (self) => self.progress && self.animation.progress(1),
-          start: "top top",
-          end: "+=100%",
-          trigger: container2,
-          pin: true,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(container2, {
-        autoAlpha: 1,
-      }).to(
-        container2,
-        {
-          autoAlpha: 0,
-        },
-        0.5,
-      );
-    });
-
-    /*  function playsound() {
-         var audio = new Audio('shared/assets/music/dramatic.swf.mp3');
-         audio.play();
-         audio.volume = 0.5;
-     }  */
-
-    //bg1
-    ScrollTrigger.create({
-      trigger: ".scene5-1",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-2",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=600%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-3",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=300%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-35",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=300%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-4",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=800%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-5",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=300%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-6",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=300%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-7",
-      onEnter: repeatmovie1,
-      // onBackEnter: replayvideo1,
-      start: "top top",
-      end: "+=100%",
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-8",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=520%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-9",
-      onEnter: repeatmovie2,
-      // onBackEnter: replayvideo2,
-      start: "top top",
-      end: "+=100%",
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-10",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=420%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-11",
-      onEnter: repeatmovie3,
-      start: "top top",
-      end: "+=100%",
-      //onBackEnter: replayvideo3,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-12",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=620%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-13",
-      onEnter: repeatmovie4,
-      start: "top top",
-      end: "+=100%",
-      //onBackEnter: replayvideo4,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-14",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=320%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-15",
-      onEnter: repeatmovie5,
-      start: "top top",
-      end: "+=100%",
-      //onBackEnter: replayvideo4,
-    });
-    /*  ScrollTrigger.create({
-        trigger: ".scene5-155",
-        start: "top top",
-        end: "+=100%",
-    }); */
-    ScrollTrigger.create({
-      trigger: ".scene5-16",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=1200%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene5-17",
-      onEnter: repeatmovie6,
-      start: "top top",
-      end: "+=100%",
-      //onBackEnter: replayvideo4,
-    });
-
-    //fade in txt
-    const containers = gsap.utils.toArray(".container");
-    containers.forEach((container) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          onRefresh: (self) => self.progress && self.animation.progress(1),
-          start: "top top",
-          trigger: container,
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(container, {
-        autoAlpha: 1,
-      }).to(
-        container,
-        {
-          autoAlpha: 0,
-        },
-        0.5,
-      );
-    });
-
-    //fade in txt
-    const overlays = gsap.utils.toArray(".overlaybubbles");
-    overlays.forEach((obubble) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: obubble,
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(obubble, {
-        autoAlpha: 1,
-      }).to(
-        obubble,
-        {
-          autoAlpha: 0,
-        },
-        0.5,
-      );
-    });
-
-    //fade in txt
-    const bubbles = gsap.utils.toArray(".talkbubble");
-    bubbles.forEach((bubble) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: bubble,
-          start: "top top",
-          scrub: 0.5,
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(bubble, {
-        autoAlpha: 1,
-      }).to(
-        bubble,
-        {
-          autoAlpha: 0,
-        },
-        1.8,
-      );
-    });
-
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    };
-
-    window.history.scrollRestoration = "manual";
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#showbubble1",
-          start: "top",
-          end: "+=50%",
-          scrub: true,
-          duration: 1,
-          pin: false,
-        },
-      })
-      .to("#bubble1", {
-        opacity: 1,
-      });
-
-    //BUtton stuff
-    //1
-    //repeat
-    function repeatmovie1() {
-      scrolls1();
-
-      let myVid = document.getElementById("sample");
-      myVid.pause();
-
-      if (myVid.seekable.length > 0) {
-        myVid.currentTime = 0;
-      }
-      myVid.play();
-    }
-
-    //scroll
-    function scrollup1() {
-      let scrollupitem1 = document.getElementById("scrollupto1");
-      scrollupitem1.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-      enableScrolling();
-    }
-
-    function scroll1() {
-      let scrollitem1 = document.getElementById("scrollto1");
-      scrollitem1.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      });
-      enableScrolling();
-    }
-
-    function scrolls1() {
-      /*     let element = document.getElementById("scrollto0");
-           let y = element.getBoundingClientRect().top + window.scrollY + 5;
-           window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-           disableScrolling(); */
-    }
-
-    //Show repeat and down arrow buttons
-    function onend1() {
-      /*   document.getElementById("buttons1").style.opacity = "0.8";
-        document.getElementById("toparrow1").style.opacity = "0.8";
- */
-    }
-
-    //BUtton stuff
-    //2
-    //repeat
-    function repeatmovie2() {
-      scrolls2();
-
-      let myVid2 = document.getElementById("sample2");
-      myVid2.pause();
-
-      if (myVid2.seekable.length > 0) {
-        myVid2.currentTime = 0;
-      }
-      myVid2.play();
-    }
-
-    //scroll
-    function scrollup2() {
-      const scrollupitem2 = document.getElementById("scrollupto2");
-      scrollupitem2.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-      enableScrolling();
-    }
-
-    function scroll2() {
-      const scrollitem2 = document.getElementById("scrollto3");
-      scrollitem2.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-      enableScrolling();
-    }
-
-    function scrolls2() {
-      /* const element2 = document.getElementById("scrollto2");
-        const y = element2.getBoundingClientRect().top + window.scrollY + 5;
-        window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-
-        disableScrolling(); */
-    }
-
-    //Show repeat and down arrow buttons
-    function onend2() {
-      /* document.getElementById("buttons2").style.opacity = "0.8";
-        document.getElementById("toparrow2").style.opacity = "0.8"; */
-    }
-
-    //BUtton stuff
-    //3
-    //repeat
-    function repeatmovie3() {
-      scrolls3();
-
-      let myVid3 = document.getElementById("sample3");
-      myVid3.pause();
-
-      if (myVid3.seekable.length > 0) {
-        myVid3.currentTime = 0;
-      }
-      myVid3.play();
-    }
-
-    //scroll
-    function scrollup3() {
-      const scrollupitem3 = document.getElementById("scrollupto3");
-      scrollupitem3.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-      enableScrolling();
-    }
-
-    function scroll3() {
-      const scrollitem3 = document.getElementById("scrollto5");
-      scrollitem3.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-      enableScrolling();
-    }
-
-    function scrolls3() {
-      /*
-                const element3 = document.getElementById("scrollto4");
-                const y = element3.getBoundingClientRect().top + window.scrollY + 5;
-                window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-        
-                disableScrolling(); */
-    }
-
-    //Show repeat and down arrow buttons
-    function onend3() {
-      /* document.getElementById("buttons3").style.opacity = "0.8";
-        document.getElementById("toparrow3").style.opacity = "0.8"; */
-    }
-
-    //Button stuff
-    //4
-    //repeat
-    function repeatmovie4() {
-      scrolls4();
-
-      let myVid4 = document.getElementById("sample4");
-      myVid4.pause();
-
-      if (myVid4.seekable.length > 0) {
-        myVid4.currentTime = 0;
-      }
-      myVid4.play();
-    }
-
-    //scroll
-    function scrollup4() {
-      const scrollupitem4 = document.getElementById("scrollupto4");
-      scrollupitem4.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-      enableScrolling();
-    }
-
-    function scroll4() {
-      const scrollitem4 = document.getElementById("scrollto7");
-      scrollitem4.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-      enableScrolling();
-    }
-
-    function scrolls4() {
-      /*         const element4 = document.getElementById("scrollto6");
-                const y = element4.getBoundingClientRect().top + window.scrollY + 5;
-                window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-        
-                disableScrolling(); */
-    }
-
-    //Show repeat and down arrow buttons
-    function onend4() {
-      /* document.getElementById("buttons4").style.opacity = "0.8";
-        document.getElementById("toparrow4").style.opacity = "0.8"; */
-    }
-
-    //Button stuff
-    //5
-    //repeat
-    function repeatmovie5() {
-      scrolls5();
-
-      let myVid5 = document.getElementById("sample5");
-      myVid5.pause();
-
-      if (myVid5.seekable.length > 0) {
-        myVid5.currentTime = 0;
-      }
-      myVid5.play();
-    }
-
-    //scroll
-    function scrollup5() {
-      const scrollupitem5 = document.getElementById("scrollupto5");
-      scrollupitem5.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-      enableScrolling();
-    }
-
-    function scroll5() {
-      const scrollitem5 = document.getElementById("scrollto9");
-      scrollitem5.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-      enableScrolling();
-    }
-
-    function scrolls5() {
-      /*       const element5 = document.getElementById("scrollto8");
-              const y = element5.getBoundingClientRect().top + window.scrollY + 5;
-              window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-              disableScrolling(); */
-    }
-
-    //Show repeat and down arrow buttons
-    function onend5() {
-      /*  document.getElementById("buttons5").style.opacity = "0.8";
-         document.getElementById("toparrow5").style.opacity = "0.8"; */
-    }
-
-    //Button stuff
-    //6
-    //repeat
-    function repeatmovie6() {
-      scrolls6();
-
-      let myVid6 = document.getElementById("sample6");
-      myVid6.pause();
-
-      if (myVid6.seekable.length > 0) {
-        myVid6.currentTime = 0;
-      }
-      myVid6.play();
-    }
-
-    //scroll
-    function scrollup6() {
-      const scrollupitem6 = document.getElementById("scrollupto6");
-      scrollupitem6.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-      enableScrolling();
-    }
-    function scroll6() {
-      const scrollitem6 = document.getElementById("scrollto11");
-      scrollitem6.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
-      enableScrolling();
-    }
-
-    function scrolls6() {
-      /*      const element6 = document.getElementById("scrollto10");
-             const y = element6.getBoundingClientRect().top + window.scrollY + 5;
-             window.scrollTo({ top: y, block: "center", behavior: 'instant' });
-             disableScrolling(); */
-    }
-
-    //Show repeat and down arrow buttons
-    function onend6() {
-      /* document.getElementById("buttons6").style.opacity = "0.8";
-        document.getElementById("toparrow6").style.opacity = "0.8"; */
-    }
-
-    //Enable and disable scrolling
-    function disableScrolling() {
-      /*  var x = window.scrollX;
-         var y = window.scrollY;
-         window.onscroll = function () { window.scrollTo(x, y); }; */
-    }
-
-    function enableScrolling() {
-      window.onscroll = function () {};
-    }
-  </script>
 </html>

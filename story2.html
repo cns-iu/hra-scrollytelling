@@ -1,29 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="story-flowing">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Squiggy's Identity Crisis!</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" href="style.css" />
+    <meta
+      name="description"
+      content="Follow Squiggy and CeCe as they use the Human Reference Atlas ASCT+B Reporter to identify Squiggy's cell type."
+    />
     <link rel="stylesheet" href="shared/css/fonts.css" />
     <link rel="stylesheet" href="shared/css/tokens.css" />
     <link rel="stylesheet" href="shared/css/selection.css" />
     <link rel="stylesheet" href="shared/css/navigation.css" />
+    <link rel="stylesheet" href="shared/css/story-navigation.css" />
     <link rel="stylesheet" href="shared/css/footer.css" />
+    <link rel="stylesheet" href="shared/css/narrative-foundation.css" />
+    <link rel="stylesheet" href="shared/css/character-dialogue.css" />
+    <link rel="stylesheet" href="shared/css/resource-cards.css" />
+    <link rel="stylesheet" href="stories/story2/styles.css" />
     <link rel="stylesheet" href="stories/story2/quiz.css" />
+    <link rel="stylesheet" href="shared/css/narrative-accessibility.css" />
     <link rel="icon" href="shared/assets/icons/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" href="shared/assets/icons/favicon.svg" type="image/svg+xml" sizes="any" />
     <link rel="apple-touch-icon" href="shared/assets/icons/apple-touch-icon.png" sizes="180x180" />
+    <script src="shared/js/narrative-motion.js"></script>
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Cutive&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -47,7 +51,7 @@
     <script type="module" src="stories/story2/quiz.js"></script>
   </head>
 
-  <body id="two">
+  <body class="story-narrative story2-page">
     <a class="site-skip-link site-chrome" href="#main-content"
       >Skip to main content</a
     >
@@ -115,8 +119,11 @@
       tabindex="-1"
     >
       <!-- section header/intro -->
-      <section class="intro" id="intro">
-        <h3 class="overtext" id="introTypeLine"></h3>
+      <div class="intro" id="intro">
+        <p class="story-intro-summary">
+          There are roughly 37 trillion cells in the human body.
+        </p>
+        <p class="overtext" id="introTypeLine" aria-hidden="true"></p>
         <div
           class="fadeimage"
           role="img"
@@ -127,22 +134,21 @@
           <img
             src="shared/assets/images/telescope.svg"
             alt=""
-            class="picture3 imagepart"
-            style="width: 140px"
+            class="picture3 imagepart narrative-telescope"
           />
         </div>
-      </section>
+      </div>
 
-      <section class="section1">
-        <div class="container" style="left: 20px">
+      <div class="section1">
+        <div class="container narrative-intro-copy">
           This is the story of two of them: Squiggy and CeCe.
         </div>
-      </section>
+      </div>
 
       <section class="section13">
-        <div class="container2 introline" style="left: 20px">
+        <div class="container2 introline narrative-intro-copy">
           <p>On this week's episode:&nbsp;</p>
-          <h1 style="font-size: 1.6em">Squiggy's Identity Crisis!</h1>
+          <h1 class="story-episode-title">Squiggy's Identity Crisis!</h1>
           <p class="descriptionsection">
             In which our heroes take a ride on HuBMAP's ASCT+B Reporter, learn
             that "partonomy" has <b>nothing</b> to do with the science of
@@ -165,6 +171,11 @@
       </section>
 
       <section class="section2">
+        <h2 class="story-chapter-heading">Finding Squiggy's cell type</h2>
+        <p class="story-scene-summary">
+          Squiggy and CeCe explore anatomical structures, cell types, and
+          biomarkers in the ASCT+B Reporter to identify Squiggy.
+        </p>
         <div class="limit">
           <div class="scene1"></div>
           <div class="talkbubble">
@@ -187,23 +198,23 @@
         <div class="scene1-1"></div>
 
         <div class="talkbubble">
-          <div class="squiggytalk" style="background-color: rgb(153, 202, 244)">
+          <div class="squiggytalk">
             <b>Squiggy:</b> Hey, CeCe?
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+          <div class="cecetalk">
             <b>CeCe:</b> What is it, Squiggy?
           </div>
         </div>
         <div class="talkbubble">
-          <div class="squiggytalk" style="background-color: rgb(153, 202, 244)">
+          <div class="squiggytalk">
             <b>Squiggy:</b> Have you ever wondered about the big questions? You
             know: Who am I? Do I belong? What is my purpose?
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+          <div class="cecetalk">
             <b>CeCe:</b> Sure, Squig. I think everybody does.
           </div>
         </div>
@@ -212,13 +223,13 @@
         <div class="scene1-2"></div>
 
         <div class="talkbubble">
-          <div class="defaulttalk" style="background-color: rgb(153, 202, 244)">
+          <div class="defaulttalk dialogue--squiggy">
             <b>Squiggy:</b> But I have so many questions, and I don't know any
             of the answers. This identity crisis has me all bent out of shape!
           </div>
         </div>
         <div class="talkbubble">
-          <div class="defaulttalk" style="background-color: rgb(243, 167, 167)">
+          <div class="defaulttalk dialogue--cece">
             <b>CeCe:</b> Whoa, Squiq! Don't burst your membrane!
           </div>
         </div>
@@ -269,37 +280,36 @@
             <img
               src="stories/story2/images/asctb-reporter-zoom-target.svg"
               alt=""
-              class="zoompic2 imagepart"
-              style="height: 20vh; top: 50%"
+              class="zoompic2 imagepart story2-zoom-target"
             />
           </div>
         </div>
 
         <div class="talkbubble">
-          <div class="cecetalk" style="margin-top: 80px">
+          <div class="cecetalk story2-dialogue--spaced">
             <b>CeCe:</b> This is the Human Reference Atlas's ASCT+B Reporter!
           </div>
         </div>
 
         <div class="talkbubble">
-          <div class="squiggytalk" style="margin-top: 26px">
+          <div class="squiggytalk story2-dialogue--compact">
             <b>Squiggy:</b> What does it do?
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="margin-top: 80px">
+          <div class="cecetalk story2-dialogue--spaced">
             <b>CeCe:</b> Well, it can help us solve your identity crisis!
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="margin-top: 80px">
+          <div class="cecetalk story2-dialogue--spaced">
             <b>CeCe:</b> The ASCT+B Reporter allows researchers to explore
             anatomical structures, cell types, and biomarkers that make up
             organs.
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="margin-top: 80px">
+          <div class="cecetalk story2-dialogue--spaced">
             <b>CeCe:</b> The data tables from which the Reporter gets its
             information are authored and reviewed by experts in their field.
           </div>
@@ -2032,26 +2042,23 @@
         </section>
 
         <!--last talking section-->
-        <div style="overflow-x: hidden">
+        <div class="story2-dialogue-track">
           <div class="scene7"></div>
 
           <div class="talkbubble">
-            <div
-              class="squiggytalk"
-              style="background-color: rgb(153, 202, 244)"
-            >
+            <div class="squiggytalk">
               <b>Squiggy:</b> Do you think I have biomarkers that would help
               scientists identify what kind of cell type I am?
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> You bet, Squig! Scientists have many ways of
               detecting the presence of characteristic biomarkers.
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> Unfortunately, those are way too complicated to get
               into right now, so let me just look at that tag on your back.
             </div>
@@ -2063,9 +2070,7 @@
 
           <div class="talkbubble">
             <div
-              class="squiggytalk"
-              style="background-color: rgb(153, 202, 244); top: -30%"
-              ;
+              class="squiggytalk story2-dialogue--raised"
             >
               <b>Squiggy:</b> Tag? What tag?
             </div>
@@ -2076,8 +2081,7 @@
 
           <div class="talkbubble">
             <div
-              class="cecetalk2"
-              style="background-color: rgb(243, 167, 167); top: -20%; left: 10%"
+              class="cecetalk2 story2-dialogue--upper-left"
             >
               <b>CeCe:</b>
               Right here!
@@ -2088,10 +2092,7 @@
           <div class="scene10"></div>
 
           <div class="talkbubble">
-            <div
-              class="defaulttalk"
-              style="background-color: rgb(153, 202, 244)"
-            >
+            <div class="defaulttalk dialogue--squiggy">
               <b>Squiggy:</b> Ooooh!
             </div>
           </div>
@@ -2100,16 +2101,13 @@
           <div class="scene11"></div>
 
           <div class="talkbubble">
-            <div
-              class="squiggytalk"
-              style="background-color: rgb(153, 202, 244)"
-            >
+            <div class="squiggytalk">
               <b>Squiggy:</b> But how will these help me find out what kind of
               cell I am?
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> I'll show you. Ready to go on another journey,
               Squiggy?
             </div>
@@ -2118,35 +2116,29 @@
 
           <div class="scene12"></div>
           <div class="talkbubble">
-            <div
-              class="squiggytalk"
-              style="background-color: rgb(153, 202, 244)"
-            >
+            <div class="squiggytalk">
               <b>Squiggy:</b> Oh, CeCe, please... no more! Don't make me ride
               this crazy thing again. I haven't recovered from the last trip!
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> Alright, alright. Don't pop your nucleus. I've got an
               idea.
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> Maybe we could ask these people out here to help.
             </div>
           </div>
           <div class="talkbubble">
-            <div
-              class="squiggytalk"
-              style="background-color: rgb(153, 202, 244)"
-            >
+            <div class="squiggytalk">
               <b>Squiggy:</b> What people?
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> Those nice people out there who have been scrolling
               along and reading our adventure.
             </div>
@@ -2156,20 +2148,17 @@
           <div class="scene13"></div>
 
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> How about it readers? Want to help out our friend?
             </div>
           </div>
           <div class="talkbubble">
-            <div
-              class="squiggytalk"
-              style="background-color: rgb(153, 202, 244)"
-            >
+            <div class="squiggytalk">
               <b>Squiggy:</b> Oh, please say "yes!"
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> Then head over to the Reporter to find out what kind
               of cell type our friend is.
             </div>
@@ -2202,7 +2191,6 @@
                   <img
                     src="shared/assets/images/arrow.svg"
                     alt=""
-                    style="vertical-align: middle"
                   />
                 </a>
               </li>
@@ -2238,7 +2226,6 @@
                     <img
                       src="shared/assets/images/arrow.svg"
                       alt=""
-                      style="vertical-align: middle"
                     />
                   </a>
                 </p>
@@ -2279,7 +2266,7 @@
         </section>
 
         <div class="Externallinkssection">
-          <p class="indexTitle" style="margin-bottom: 80px">Resources</p>
+          <h2 class="indexTitle">Resources</h2>
           <div class="ExternalLinkCards">
             <div class="ExternalLinkCard">
               <img class="ExternalLinkImg" src="stories/story2/images/resource-asctb-tables.png" alt="" />
@@ -2298,7 +2285,6 @@
                 <img
                   src="shared/assets/images/arrow.svg"
                   alt=""
-                  style="vertical-align: middle"
                 />
               </a>
             </div>
@@ -2319,7 +2305,6 @@
                 <img
                   src="shared/assets/images/arrow.svg"
                   alt=""
-                  style="vertical-align: middle"
                 />
               </a>
             </div>
@@ -2340,7 +2325,6 @@
                 <img
                   src="shared/assets/images/arrow.svg"
                   alt=""
-                  style="vertical-align: middle"
                 />
               </a>
             </div>
@@ -2362,54 +2346,50 @@
                 <img
                   src="shared/assets/images/arrow.svg"
                   alt=""
-                  style="vertical-align: middle"
                 />
               </a>
             </div>
           </div>
         </div>
 
-        <!-- BotNav -->
-        <div class="botNav">
-          <a href="story1.html" class="previous"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-arrow-left"
-              viewBox="0 -3 16 16"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-              />
-            </svg>
-            Story 1: <span class="prevTitle">What Is An HRA?</span></a
-          >
-          <a href="story3.html" class="next"
-            >Story 3: <span class="nextTitle">Something's NOT Registering!</span
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-arrow-right"
-              viewBox="0 -3 16 16"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
-              />
-            </svg>
-          </a>
-        </div>
       </section>
     </main>
+
+    <nav
+      class="site-story-navigation site-chrome site-chrome--light"
+      aria-label="Story navigation"
+    >
+      <ul class="site-story-navigation__list">
+        <li class="site-story-navigation__item">
+          <a class="site-story-navigation__link" href="story1.html">
+            <span class="site-story-navigation__arrow" aria-hidden="true"
+              >←</span
+            >
+            <span class="site-story-navigation__text">
+              <span class="site-story-navigation__direction"
+                >Previous story</span
+              >
+              <span class="site-story-navigation__title"
+                >Story 1: What Is An HRA?</span
+              >
+            </span>
+          </a>
+        </li>
+        <li class="site-story-navigation__item">
+          <a class="site-story-navigation__link" href="story3.html">
+            <span class="site-story-navigation__text">
+              <span class="site-story-navigation__direction">Next story</span>
+              <span class="site-story-navigation__title"
+                >Story 3: Something's NOT Registering!</span
+              >
+            </span>
+            <span class="site-story-navigation__arrow" aria-hidden="true"
+              >→</span
+            >
+          </a>
+        </li>
+      </ul>
+    </nav>
 
     <footer class="site-footer site-chrome site-chrome--dark">
       <nav class="site-footer__organizations" aria-label="Organizations">
@@ -2466,391 +2446,9 @@
         © 2026 Cyberinfrastructure for Network Science Center
       </p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/MotionPathPlugin.min.js"></script>
+    <script src="stories/story2/animations.js"></script>
   </body>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/MotionPathPlugin.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
-
-  <script>
-    //intro part
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: ".fadeimage",
-          start: "top 00px",
-          end: "bottom 0px",
-          scrub: 1,
-          duration: 1,
-          pin: true,
-        },
-      })
-
-      .from(".picture2", {
-        opacity: 0,
-      })
-      .from(".picture3", {
-        opacity: 0,
-      })
-      .to(".picture3", {
-        scale: 1.8,
-      })
-      .to(
-        ".picture3",
-        {
-          scale: 1.8,
-        },
-        "+=2",
-      );
-
-    //typewriter
-    var m = 0;
-    var txt = "There are roughly 37 trillion cells in the human body.";
-    var speed = 40;
-
-    function typeWriter() {
-      if (m < txt.length) {
-        document.getElementById("introTypeLine").innerHTML += txt.charAt(m);
-        m++;
-        setTimeout(typeWriter, speed);
-      }
-    }
-    window.onload = typeWriter;
-
-    //fade in txt
-    const containers2 = gsap.utils.toArray(".container2");
-    containers2.forEach((container2) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          onRefresh: (self) => self.progress && self.animation.progress(1),
-          start: "top top",
-          end: "+=100%",
-          trigger: container2,
-          pin: true,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(container2, {
-        autoAlpha: 1,
-      }).to(
-        container2,
-        {
-          autoAlpha: 0,
-        },
-        0.5,
-      );
-    });
-
-    /*  function playsound() {
-         var audio = new Audio('shared/assets/music/dramatic.swf.mp3');
-         audio.play();
-         audio.volume = 0.5;
-     }  */
-
-    //bg1
-    ScrollTrigger.create({
-      trigger: ".scene1",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.create({
-      trigger: ".scene1-1",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=600%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.create({
-      trigger: ".scene1-2",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    //bg2
-    ScrollTrigger.create({
-      trigger: ".scene2",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    //bg3
-    ScrollTrigger.create({
-      trigger: ".scene3",
-      start: "top top",
-      end: "+=500%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    //bg4
-    ScrollTrigger.create({
-      trigger: ".scene4",
-      start: "top top",
-      end: "+=700%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    //bg7
-    ScrollTrigger.create({
-      trigger: ".scene7",
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    //bg8
-    ScrollTrigger.create({
-      trigger: ".scene8",
-      start: "top top",
-      end: "+=200%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.create({
-      trigger: ".scene9",
-      start: "top top",
-      end: "+=200%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.create({
-      trigger: ".scene10",
-      start: "top top",
-      end: "+=200%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.create({
-      trigger: ".scene11",
-      start: "top top",
-      end: "+=300%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.create({
-      trigger: ".scene12",
-      start: "top top",
-      end: "+=600%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.create({
-      trigger: ".scene13",
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.create({
-      trigger: ".videozoom",
-      start: "top top",
-      end: "+=600%",
-      pin: true,
-      scrub: 1,
-      pinSpacing: false,
-    });
-
-    //fade in txt
-    const scrollbubbles = gsap.utils.toArray(".scrollbubble");
-    scrollbubbles.forEach((scrollbubble) => {
-      let tl2 = gsap.timeline({
-        scrollTrigger: {
-          onRefresh: (self) => self.progress && self.animation.progress(1),
-          start: "top +=200%",
-          trigger: scrollbubble,
-          pin: false,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl2.to(
-        scrollbubble,
-        {
-          autoAlpha: 1,
-        },
-        0.5,
-      );
-    });
-
-    //fade in txt
-    const containers = gsap.utils.toArray(".container");
-    containers.forEach((container) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          onRefresh: (self) => self.progress && self.animation.progress(1),
-          start: "top top",
-          trigger: container,
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(container, {
-        autoAlpha: 1,
-      }).to(
-        container,
-        {
-          autoAlpha: 0,
-        },
-        0.5,
-      );
-    });
-
-    //fade in txt
-    const overlays = gsap.utils.toArray(".overlaybubbles");
-    overlays.forEach((obubble) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: obubble,
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(obubble, {
-        autoAlpha: 1,
-      }).to(
-        obubble,
-        {
-          autoAlpha: 0,
-        },
-        0.5,
-      );
-    });
-
-    //fade in txt
-    const bubbles = gsap.utils.toArray(".talkbubble");
-    bubbles.forEach((bubble) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: bubble,
-          start: "top top",
-          scrub: 0.5,
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(bubble, {
-        autoAlpha: 1,
-      }).to(
-        bubble,
-        {
-          autoAlpha: 0,
-        },
-        1.8,
-      );
-    });
-
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    };
-
-    window.history.scrollRestoration = "manual";
-
-    //Line section
-    gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
-
-    gsap.set("#motionSVG", {
-      autoAlpha: 1,
-    });
-
-    gsap.to("#motionSVG", {
-      scrollTrigger: {
-        trigger: "#motionPath",
-        start: "top center",
-        end: () =>
-          "+=" +
-          document.querySelector("#motionPath").getBoundingClientRect().height,
-        scrub: 1.5,
-        markers: false,
-      },
-      ease: pathEase("#motionPath"), // a custom ease that helps keep the tractor centered
-      immediateRender: true,
-      motionPath: {
-        path: "#motionPath",
-        align: "#motionPath",
-        alignOrigin: [0.5, 0.5],
-      },
-    });
-
-    // helper function that returns and ease that bends time to ensure the tractor stays relatively centered. Requires MotionPathPlugin of course
-    function pathEase(path, axis = "y", precision = 1) {
-      let rawPath = MotionPathPlugin.cacheRawPathMeasurements(
-          MotionPathPlugin.getRawPath(gsap.utils.toArray(path)[0]),
-          Math.round(precision * 12),
-        ),
-        useX = axis === "x",
-        start = rawPath[0][useX ? 0 : 1],
-        end =
-          rawPath[rawPath.length - 1][
-            rawPath[rawPath.length - 1].length - (useX ? 2 : 1)
-          ],
-        range = end - start,
-        l = Math.round(precision * 200),
-        inc = 1 / l,
-        positions = [0],
-        a = [],
-        minIndex = 0,
-        getClosest = (p) => {
-          while (positions[minIndex] <= p && minIndex++ < l) {}
-          a.push(
-            ((p - positions[minIndex - 1]) /
-              (positions[minIndex] - positions[minIndex - 1])) *
-              inc +
-              minIndex * inc,
-          );
-        },
-        i = 1,
-        p,
-        v;
-      for (; i < l; i++) {
-        p = i / l;
-        v = MotionPathPlugin.getPositionOnPath(rawPath, p)[axis];
-        positions[i] = (v - start) / range;
-      }
-      positions[l] = 1;
-      for (i = 0; i < l; i++) {
-        getClosest(i / l);
-      }
-      a.push(1);
-      return (p) => {
-        let i = p * l,
-          s = a[i | 0];
-        return s + (a[Math.ceil(i)] - s) * (i % 1);
-      };
-    }
-  </script>
 </html>

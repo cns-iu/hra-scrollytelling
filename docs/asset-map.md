@@ -21,22 +21,37 @@ orphan-file deletion list: some animation paths may be constructed at runtime.
 | `prototypes/` | Organized legacy prototype implementations, owned assets, and maintenance notes | Scrollytelling Effects, Organ Example, Visualizing Cells, and Drag-and-Drop Answer Demo organized; compatibility pages preserve published URLs |
 | `prototypes/drag-and-drop/` | Drag-and-drop answer demo and its SVG artwork | Organized; `index.html` is the canonical implementation |
 | `prototypes/organ-example/images/` | Organ Example artwork | Organized; prototype only |
-| `prototypes/organ-example/styles.css` | Organ Example page, table, and illustration presentation | Organized; scoped to the prototype and independent of root `style.css` |
+| `prototypes/organ-example/styles.css` | Organ Example page, table, and illustration presentation | Organized; scoped to the prototype and independent of the former root `style.css` |
 | `prototypes/scrollytelling-effects/images/` | Scrollytelling Effects artwork and backgrounds | Organized; prototype only |
 | `prototypes/scrollytelling-effects/models/` | Scrollytelling Effects 3D brain model | Organized; prototype only |
+| `prototypes/scrollytelling-effects/styles.css` | Scrollytelling Effects page and demonstration presentation | Organized; scoped to the prototype and independent of the former root `style.css` |
+| `prototypes/scrollytelling-effects/effects.css` | Scrollytelling Effects interactive layouts and reveal animations | Organized; scoped to the prototype and independent of the former root `style.css` |
+| `prototypes/scrollytelling-effects/navigation.css` | Scrollytelling Effects right-side table of contents and content framing | Organized; prototype only |
 | `prototypes/shared/chrome.css` | Minimal layout adjustments shared by organized prototypes | Used by Organ Example and Visualizing Cells alongside shared page chrome |
 | `prototypes/shared/typography.css` | Shared prototype typography contract | Nunito Sans default across all prototype entry points; prototype-owned rules may specify Metropolis |
 | `prototypes/visualizing-cells/images/` | Visualizing Cells artwork | Organized; prototype only |
+| `prototypes/visualizing-cells/styles.css` | Visualizing Cells page, video, and illustration presentation | Organized; scoped to the prototype and independent of the former root `style.css` |
 | `prototypes/visualizing-cells/videos/` | Visualizing Cells background video | Organized; prototype only |
 | `prototypes/scrollytelling-effects/wc.js` | Bundled CCF Organ Info web component | Organized; Scrollytelling Effects prototype only |
 | `stories/story1/images/` | Story 1-owned narrative images | Organized; contains the HRA macro-to-micro scale overview used only by Story 1 |
 | `stories/story1/videos/` | Story 1-owned video backgrounds | Organized; contains two WebM files and one MP4 |
+| `shared/css/narrative-foundation.css` | Page typography, narrative scenes, intro characters, and layered-image foundations shared by Stories 2, 3, and 5 | Organized; owns the remaining shared page foundation and applies the shared Nunito Sans body stack |
+| `shared/css/narrative-accessibility.css` | Flowing layout and motion-preference overrides shared by Stories 2, 3, and 5 | Organized; loaded last by each consumer to preserve readable source order at reduced motion, narrow widths, and high zoom |
+| `shared/css/character-dialogue.css` | Cece, Squiggy, Mac, and neutral dialogue presentation shared by Stories 2, 3, and 5 | Organized; common bubble geometry is consolidated while story-specific positioning variants are preserved |
+| `shared/css/resource-cards.css` | External-resource card layout and action-link presentation shared by Stories 2, 3, and 5 | Organized; preserves the current legacy component while cross-story resource normalization remains deferred |
+| `shared/css/appearance-controls.css` | Optional appearance fieldset and High contrast switch presentation | Organized; used only by the landing page and Story 6, while core Menu presentation remains in `navigation.css` |
+| `shared/js/narrative-motion.js` | Progressive-enhancement motion gate shared by Stories 2, 3, and 5 | Organized; enables pinned animation only when user preferences and viewport geometry support it |
+| `shared/css/story-navigation.css` | Two-link end-of-story navigation shared by all six maintained stories | Organized; Stories 2–5 link backward and forward, while Stories 1 and 6 use Home at the sequence boundaries |
+| `stories/story2/styles.css` | Story 2 scene, video, and legacy quiz presentation | Organized; owns scoped Story 2 quiz color tokens, and its final section uses intrinsic height so shared story navigation and footer remain visible |
 | `stories/story2/images/` | Story 2-owned narrative and quiz images | Organized; contains character scenes, ASCT+B Reporter artwork, quiz icons, and resource thumbnails used only by Story 2 |
+| `stories/story3/styles.css` | Story 3 scene and embedded-artwork presentation | Organized; Story 3 uses the shared narrative page foundation |
 | `stories/story3/images/` | Story 3-owned narrative and resource images | Organized; contains character scenes, collision-state artwork, kidney variations, and resource thumbnails used only by Story 3 |
-| `stories/story4/` | Story 4 particle runtime, initializer, Bootstrap starter hook, and configuration | Organized; Story 4 only |
+| `stories/story4/` | Story 4 presentation, accessibility fallback, motion gate, particle runtime, initializer, and focused animation modules | Organized; independent of the former root `style.css` and used only by Story 4; unused Bootstrap, ScrollMagic, and MotionPath integrations were removed |
 | `stories/story4/images/` | Story 4 resource-card thumbnails | Organized; contains the three external-resource images used only by Story 4 |
+| `stories/story5/styles.css` | Story 5 scene, animation, and media-control presentation | Organized; Story 5 uses the shared narrative page foundation |
 | `stories/story5/images/` | Story 5 scene backgrounds, narrative illustrations, controls, and resource thumbnails | Organized; contains 23 image assets used only by Story 5 |
 | `stories/story5/videos/` | Story 5 narrative videos | Organized; contains six MOV files used only by Story 5 |
+| `tools/check-maintained-pages.mjs` | Dependency-free maintained-page structure and accessibility contract checker | Organized; validates all seven public entry points and freezes the known embedded-SVG duplicate-ID baselines |
 | `stories/story6/img/` | Story 6 narrative artwork plus responsive splash, transition, tissue, mouse, cell-card, and tutorial variants | Story-owned; visible source credits are maintained in `story6.html`; dependency-free generation tools live under `tools/` |
 
 The former root `js/` directory was removed after its consumed Story 4 and prototype files were organized. Its five
@@ -96,13 +111,13 @@ repository-wide reference checks.
 | Area | Status | Notes |
 | --- | --- | --- |
 | Landing page | Organized | Owned by `index.html`, `landing/`, shared HRA fonts, and shared page chrome |
-| Story 1 | Media organized | Uses the navigation-only shared Menu, shared story navigation, and fixed-Dark shared footer; `stories/story1/` owns Story 1 presentation, motion behavior, image, and videos; animated media shared with a prototype is under `shared/assets/` |
-| Story 2 | Images organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story2/` owns its quiz and confirmed story-specific images; cross-story artwork is under `shared/assets/images/` |
-| Story 3 | Images organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story3/` owns its confirmed story-specific images, while cross-story artwork is under `shared/assets/images/`; embedded data remains deferred |
-| Story 4 | Images and particle implementation organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story4/` owns its particle scripts, JSON configuration, and confirmed story-specific resource thumbnails, while embedded data remains deferred |
-| Story 5 | Media organized | Uses the navigation-only shared Menu and fixed-Dark shared footer; `stories/story5/` owns its accessibility stylesheet, confirmed story-specific images, and videos |
-| Story 6 | Organized | Independent of root `style.css`; `stories/story6/` owns the narrative implementation, generated responsive artwork, and Story 6 contributor instructions; the page uses the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons |
-| Prototypes | Implementations, media, and page chrome organized | All four prototype implementations own their files under `prototypes/`; Organ Example and Drag-and-Drop Answer Demo are independent of root `style.css`; Scrollytelling Effects, Organ Example, and Visualizing Cells use the navigation-only shared Menu with a fixed-Dark shared footer; compatibility pages preserve published URLs |
+| Story 1 | Organized | Independent of the former root `style.css`; uses the navigation-only shared Menu, shared story navigation, and fixed-Dark shared footer; `stories/story1/` owns Story 1 presentation, motion behavior, image, and videos; animated media shared with a prototype is under `shared/assets/` |
+| Story 2 | Presentation, runtime, and images organized | Uses the shared semantic narrative and flowing accessibility foundations, character-dialogue system, resource cards, two-link story navigation, navigation-only shared Menu, and fixed-Dark shared footer; `stories/story2/` owns its story-specific presentation, animation runtime, quiz tokens, and confirmed story-specific images; its embedded SVG labels retain one Inter request |
+| Story 3 | Presentation, runtime, and images organized | Uses the shared semantic narrative and flowing accessibility foundations, character-dialogue system, resource cards, two-link story navigation, navigation-only shared Menu, and fixed-Dark shared footer; `stories/story3/` owns its split general and RUI animation modules, story-specific presentation, and confirmed images, while cross-story artwork is under `shared/assets/images/`; 18 pre-existing repeated ID values remain deferred with its embedded SVG data |
+| Story 4 | Presentation and runtime organized | Independent of the former root `style.css`; uses a readable static default, a guarded enhanced layout, an ambient-animation control, shared two-link story navigation, navigation-only shared Menu, and fixed-Dark shared footer; `stories/story4/` owns its presentation, particle scripts, focused animation modules, JSON configuration, and confirmed story-specific resource thumbnails; 47 pre-existing duplicated ID values remain deferred with its embedded SVG data |
+| Story 5 | Presentation, runtime, and media organized | Uses the shared semantic narrative and flowing accessibility foundations, character-dialogue system, resource cards, two-link story navigation, navigation-only shared Menu, and fixed-Dark shared footer; reduced-motion and narrow layouts expose native video controls, while enhanced layouts provide visible play/pause controls; `stories/story5/` owns its story-specific animation and media-control modules, presentation, accessibility stylesheet, confirmed story-specific images, and videos |
+| Story 6 | Organized | Independent of the former root `style.css`; `stories/story6/` owns the narrative implementation, generated responsive artwork, and Story 6 contributor instructions; the page uses shared two-link story navigation with Home in the next slot, the appearance-enabled shared Menu, theme-aware shared footer, consolidated fonts, logos, and interface icons |
+| Prototypes | Implementations, media, and page chrome organized | All four prototype implementations own their files under `prototypes/` and are independent of the former root `style.css`; Scrollytelling Effects, Organ Example, and Visualizing Cells use the navigation-only shared Menu with a fixed-Dark shared footer; compatibility pages preserve published URLs |
 
 ## Naming rules for future migrations
 

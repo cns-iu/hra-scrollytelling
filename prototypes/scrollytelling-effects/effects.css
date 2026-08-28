@@ -1,0 +1,253 @@
+/* Scrollytelling Effects prototype demonstrations and scroll animations. */
+
+#zero .img-wrapper {
+    display: grid;
+    width: 100%;
+    height: 12.5rem;
+}
+
+#zero .img-wrapper div {
+    grid-column: 1;
+    grid-row: 1;
+    background-color: var(--prototype-demo-effect-placeholder);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: opacity 100ms;
+}
+
+#zero .parallax {
+    min-height: 31.25rem;
+    background-image: url("images/bg.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#zero .js-scroll {
+    opacity: 0;
+    transition: opacity 500ms;
+}
+
+#zero .js-scroll.scrolled {
+    opacity: 1;
+}
+
+#zero .scrolled.fade-in {
+    animation: prototype-fade-in 1s ease-in-out both;
+}
+
+#zero .scrolled.fade-in-bottom {
+    animation: prototype-fade-in-bottom 1s ease-in-out both;
+}
+
+#zero .scrolled.slide-left {
+    animation: prototype-slide-in-left 1s ease-in-out both;
+}
+
+#zero .scrolled.slide-right {
+    animation: prototype-slide-in-right 1s ease-in-out both;
+}
+
+@keyframes prototype-slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-6.25rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes prototype-slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(6.25rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes prototype-fade-in-bottom {
+    from {
+        opacity: 0;
+        transform: translateY(3.125rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes prototype-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#zero .brainmodel {
+    position: relative;
+    z-index: 10;
+    top: calc(40% - 15.625rem);
+    width: 100%;
+    max-width: 37.5rem;
+    height: 100%;
+    margin: auto;
+}
+
+#zero .comparisonSection {
+    position: relative;
+    padding-bottom: 56.25%;
+}
+
+#zero .comparisonImage {
+    width: 100%;
+    height: 100%;
+}
+
+#zero .afterImage {
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    transform: translate(100%, 0);
+}
+
+#zero .afterImage img {
+    transform: translate(-100%, 0);
+}
+
+#zero .comparisonImage img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#zero .body {
+    position: relative;
+    display: flex;
+    max-width: 25rem;
+    padding: 15.625rem 1.25rem 1.25rem;
+    margin: auto;
+}
+
+#zero .piece:not(.outsole) {
+    position: absolute;
+    bottom: 7vw;
+}
+
+#zero .midsole {
+    top: 30%;
+    left: 40%;
+    width: 50%;
+}
+
+#zero .midsole2 {
+    top: 2%;
+    left: 10%;
+    width: 50%;
+}
+
+#zero .txt3 {
+    top: 0;
+    left: 10%;
+}
+
+#zero .txt4 {
+    top: 25%;
+    left: 75%;
+}
+
+#zero .txt2 {
+    top: 55%;
+    left: 2%;
+}
+
+#zero .fullbody {
+    width: 80%;
+}
+
+#zero .outsole {
+    top: 10%;
+    left: 5%;
+    width: 50%;
+}
+
+#zero .personskull {
+    position: relative;
+    display: flex;
+    max-width: 22.5rem;
+    height: 31.25rem;
+    margin: auto;
+    background: var(--prototype-demo-inverse-background);
+}
+
+#zero .fullface,
+#zero .brain1,
+#zero .brain2,
+#zero .skull {
+    width: 100%;
+}
+
+#zero .prototype-main .skulltxt1 {
+    top: 10.625rem;
+    left: 34%;
+    width: 6.25rem;
+    color: var(--prototype-demo-inverse-text);
+    text-align: center;
+}
+
+#zero .moveimg {
+    position: relative;
+    display: flex;
+    max-width: 37.5rem;
+    padding-top: 34.375rem;
+    margin: auto;
+    background: var(--prototype-demo-inverse-background);
+}
+
+#zero .graphbg {
+    width: 100%;
+}
+
+#zero .char12 {
+    top: 45%;
+    left: 75%;
+    width: 10%;
+}
+
+#zero .char1 {
+    top: 33%;
+    left: 55%;
+    width: 10%;
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #zero .parallax {
+        background-attachment: scroll;
+    }
+
+    #zero .img-wrapper div,
+    #zero .js-scroll {
+        transition-duration: 0.01ms;
+    }
+
+    #zero .scrolled.fade-in,
+    #zero .scrolled.fade-in-bottom,
+    #zero .scrolled.slide-left,
+    #zero .scrolled.slide-right {
+        animation: none;
+    }
+}

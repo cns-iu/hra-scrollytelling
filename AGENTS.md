@@ -20,14 +20,15 @@ Landing-page work is intentionally isolated to:
 - `shared/css/fonts.css` for typography stacks and font declarations used by the landing page and shared page chrome.
 - `landing/css/fonts.css` as a compatibility bridge for cached documents that still request the former font URL.
 - `landing/css/tokens.css` for landing-page themes and shared design tokens.
-- `shared/css/tokens.css`, `shared/css/selection.css`, `shared/css/navigation.css`, and `shared/css/footer.css` for the
-  canonical Menu, skip link, and footer.
+- `shared/css/tokens.css`, `shared/css/selection.css`, `shared/css/navigation.css`,
+  `shared/css/appearance-controls.css`, and `shared/css/footer.css` for the canonical Menu, optional appearance
+  controls, skip link, and footer.
 - `landing/css/styles.css` for landing-page content, layout, and accessibility adaptations outside shared page chrome.
 - `landing/js/main.js` for initializing the shared Menu, appearance, contrast, and back-to-top modules on the landing
   page.
 - `shared/js/contrast.js` for the persistent High contrast switch used by landing and shared page chrome.
 
-Do not reconnect the landing page to the legacy `style.css` or to prototype or story scripts. Do not allow
+Do not recreate or reconnect the landing page to a root `style.css` or to prototype or story scripts. Do not allow
 landing-page selectors or behavior to affect the story pages. Do not restore a root `js/` directory; place new scripts
 under their owning page, story, prototype, or shared component. Keep the landing stylesheet order
 `shared/css/fonts.css`, `landing/css/tokens.css`, the shared page-chrome stylesheets, then `landing/css/styles.css`, and
@@ -46,8 +47,11 @@ footer, and end-of-story navigation use namespaced foundations under:
 - `shared/assets/logos/` for the landing hero, canonical footer, and theme-aware organization marks.
 - `shared/css/selection.css` for theme-aware text selection scoped to shared page chrome.
 - `shared/css/navigation.css` for the skip link and native Menu disclosure.
+- `shared/css/appearance-controls.css` for the optional appearance fieldset and High contrast switch used only by
+  `index.html` and `story6.html`.
 - `shared/css/footer.css` for the canonical site footer.
-- `shared/css/story-navigation.css` for previous and next story links.
+- `shared/css/story-navigation.css` for the two-link end-of-story sequence: previous and next stories on Stories 2–5,
+  Home in Story 1's previous slot, and Home in Story 6's next slot.
 - `shared/js/main.js`, `shared/js/navigation-only.js`, `shared/js/menu.js`, `shared/js/theme.js`,
   `shared/js/contrast.js`, and `shared/js/back-to-top.js` for progressive enhancement.
 
@@ -67,12 +71,28 @@ follow their appearance selection. Do not remove a legacy component rule until r
 no maintained or prototype page consumes it. The Scrollytelling Effects, Organ Example, and Visualizing Cells
 prototypes explicitly adopt the navigation-only shared Menu and fixed-Dark shared footer. They remain outside shared
 appearance behavior, and prototype-owned content and navigation must stay isolated from shared page chrome.
+
+All six stories use the canonical two-link story-navigation row outside story-owned wrappers. Stories 1–5 keep that
+row on the fixed Light treatment; Story 6 allows it to follow appearance selection. Use Home in Story 1's previous
+slot and Story 6's next slot so every story retains two navigation targets.
+
+Story sections containing final resources or end matter must contribute their full intrinsic height to document flow
+so the following shared story navigation and footer cannot be covered by overflowing story content.
 All prototype entry points load `shared/css/fonts.css` and `prototypes/shared/typography.css`; prototype-owned body
 text defaults to Nunito Sans, while prototype-owned rules may select Metropolis where specified. Do not hand-edit
 generated web-component internals to override their encapsulated typography.
 
 All maintained pages use the default shared Menu FAB geometry. Keep story-specific box-model resets scoped to
 story-owned surfaces so they do not override `.site-chrome` component sizing.
+
+Load maintained-page styles in ownership order: shared fonts and tokens, shared page chrome, shared narrative or
+component foundations, then page- or story-owned styles. Load `shared/css/appearance-controls.css` immediately after
+`shared/css/navigation.css` only on pages that provide those controls. Stories 2, 3, and 5 load
+`shared/css/narrative-accessibility.css` last so their flowing fallback can override enhanced scene geometry.
+Keep scroll-driven story runtimes in their owning story directory. Story 4 defaults to `.story4-flowing` and may
+enable its animated presentation only through `stories/story4/motion.js`. Story 5's six autoplaying narrative videos
+must retain visible play/pause controls whenever the enhanced presentation is active and native controls in flowing
+mode.
 
 Preserve existing uncommitted work and follow the repository's active branch and review workflow. Do not rewrite,
 discard, commit, push, or publish changes unless those operations are explicitly in scope.
@@ -87,10 +107,10 @@ discard, commit, push, or publish changes unless those operations are explicitly
 
 ## Publication links
 
-- Link papers and scholarly publications through their canonical `https://doi.org/<doi>` URL whenever a DOI has been assigned
+- Link papers, scholarly publications, and Zenodo-hosted SOPs through their canonical `https://doi.org/<doi>` URL whenever a DOI has been assigned
 - Do not substitute a publisher, journal, repository, search-result, or DOI-proxy URL when a verified DOI URL is available
 - Never infer or fabricate a DOI; when no DOI exists, retain the most authoritative stable publication URL and document the exception
-- During every maintainability scan, audit links presented as papers or publications and references listed in story end matter; identify non-DOI links, verify whether each work has a DOI, and replace confirmed matches with the canonical DOI URL
+- Verify DOI availability when adding or changing a publication or Zenodo SOP link; recurring DOI audits are not part of unrelated maintainability scans
 
 ## Dependencies and runtime
 
@@ -178,6 +198,10 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
 - Move assets only in small, explicitly approved batches and validate every affected entry point.
 - Follow the ownership boundaries and copy-first migration workflow in `docs/architecture.md`.
 - Update `docs/asset-map.md` whenever asset ownership or the known missing-reference baseline changes.
+- Place new stories under `story/<number>/` with their page entry point at `story/<number>/index.html`; never move the
+  repository landing-page `index.html` into a story directory.
+- Preserve the root Story 1–6 entry points and their `stories/storyN/` implementation paths until an explicitly
+  approved, copy-first migration defines compatibility behavior for each published URL.
 - Avoid broad formatting or mechanical rewrites of `story3.html` and `story4.html`; they contain large embedded data.
 - Keep the drag-and-drop answer demo fully owned by `prototypes/drag-and-drop/`; do not recreate a root `img/`
   directory.
@@ -190,10 +214,35 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
 - Keep Story 4's particle scripts under `stories/story4/` and the Scrollytelling Effects web-component bundle under
   `prototypes/scrollytelling-effects/`. Do not recreate removed root copies or promote story- or prototype-owned code
   into `shared/js/`.
+- Keep Story 4 presentation under `stories/story4/styles.css`; do not reconnect `story4.html` or its embedded SVGs to
+  root `style.css`.
+- Keep Story 4's static fallback in `stories/story4/accessibility.css`, its motion gate in `motion.js`, and its
+  focused scroll timelines in story-owned animation modules. Do not restore the retired Bootstrap, ScrollMagic,
+  MotionPathPlugin, or blank starter-script integrations.
 - Preserve `VisualizingCells.html` and `organExample.html` as compatibility entry points for the implementations under
   `prototypes/`; do not delete or repurpose those published URLs without explicit approval.
 - Keep Organ Example presentation under `prototypes/organ-example/styles.css`; do not reconnect it to root
   `style.css`.
+- Keep Visualizing Cells presentation under `prototypes/visualizing-cells/styles.css`; do not reconnect it to root
+  `style.css`.
+- Keep Scrollytelling Effects presentation under `prototypes/scrollytelling-effects/`; do not reconnect it to root
+  `style.css`.
+- Keep Story 1 presentation under `stories/story1/`; do not reconnect `story1.html` to root `style.css`.
+- Keep the narrative foundation, character-dialogue, and legacy resource-card styles shared by Stories 2, 3, and 5
+  under `shared/css/`; keep story-specific scenes and interactions under their owning story. Root `style.css` has
+  been removed; do not recreate it.
+- Keep `.story-narrative` as the shared semantic page contract for Stories 2, 3, and 5. Their documents default to
+  `.story-flowing`; `shared/js/narrative-motion.js` may enable pinned motion only when reduced motion is off and the
+  viewport is large enough.
+- Keep Story 5-specific presentation under `stories/story5/styles.css`; do not restore those rules to root
+  `style.css`.
+- Keep Story 5 scroll animation in `stories/story5/animations.js` and video interaction in `media-controls.js`; do not
+  restore inline event handlers or remove either enhanced play/pause controls or flowing-mode native controls.
+- Keep Story 2-specific presentation under `stories/story2/styles.css` and its focused quiz component under
+  `stories/story2/quiz.css`; do not restore those rules to root `style.css`.
+- Keep Story 3-specific presentation under `stories/story3/styles.css`; do not restore those rules to root
+  `style.css` or broadly reformat its embedded SVG data.
+- Do not create a new organizational directory directly under `stories/` without explicit approval.
 - Do not rewrite Git history to reduce repository size without explicit approval.
 - Do not expand a task into adjacent story pages or shared components without explaining the relationship and getting
   approval.
@@ -211,13 +260,14 @@ After changes:
 
 1. Run `git diff --check`.
 2. Run `node --check` for each changed JavaScript file, including repository tools.
-3. Run `node tools/check-local-links.mjs --allow-known` and investigate any new failure.
-4. Run `node tools/check-story6.mjs` when Story 6 markup, styles, scripts, or image candidates change.
-5. Confirm IDs are unique and all fragment and ARIA ID references resolve.
-6. Recalculate affected contrast pairs.
-7. Test keyboard and disclosure behavior.
-8. Inspect at 320 CSS pixels, 200% and 400% zoom, reduced motion, reduced transparency, increased contrast, and forced
+3. Run `node tools/check-maintained-pages.mjs` and investigate any new failure.
+4. Run `node tools/check-local-links.mjs --allow-known` and investigate any new failure.
+5. Run `node tools/check-story6.mjs` when Story 6 markup, styles, scripts, or image candidates change.
+6. Confirm IDs are unique and all fragment and ARIA ID references resolve.
+7. Recalculate affected contrast pairs.
+8. Test keyboard and disclosure behavior.
+9. Inspect at 320 CSS pixels, 200% and 400% zoom, reduced motion, reduced transparency, increased contrast, and forced
    colors when a browser is available.
-9. Inspect the complete linear article in Firefox Reader View after changing story structure or content extraction
+10. Inspect the complete linear article in Firefox Reader View after changing story structure or content extraction
    hints.
-10. Report what changed, what was intentionally unchanged, which validations passed, and which manual checks remain.
+11. Report what changed, what was intentionally unchanged, which validations passed, and which manual checks remain.

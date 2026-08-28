@@ -17,19 +17,22 @@ with JavaScript to the organized implementation and provide an ordinary link whe
 remove these pages without confirming that no external links or bookmarks still depend on them.
 
 Organ Example owns its presentation in `organ-example/styles.css` and no longer loads the root legacy `style.css`.
-Visualizing Cells continues to use the root stylesheet while owning its images and videos. Every prototype uses the
-cross-device HRA favicon set under `../shared/assets/icons/`, while the small content offset needed by Organ Example
-and Visualizing Cells beside the shared Menu lives in `shared/chrome.css`.
+Visualizing Cells owns its presentation in `visualizing-cells/styles.css` and its images and videos beneath the same
+directory. Both prototypes are independent of the root legacy stylesheet. Every prototype uses the cross-device HRA
+favicon set under `../shared/assets/icons/`, while the small content offset needed by Organ Example and Visualizing
+Cells beside the shared Menu lives in `shared/chrome.css`.
 
-The Scrollytelling Effects prototype owns its behavior and bundled web component in
-`scrollytelling-effects/scripts.js` and `scrollytelling-effects/wc.js` while continuing to use the root legacy
-`style.css`. Its images and model are organized with the prototype, its audio is under `shared/assets/music/`, and the
-animated media it shares with Story 1 is under `shared/assets/images/` and `shared/assets/videos/`. The drag-and-drop
-answer demo and its three SVG assets live together under `drag-and-drop/`.
+The Scrollytelling Effects prototype owns its page and demonstration presentation in
+`scrollytelling-effects/styles.css`, interactive effects in `scrollytelling-effects/effects.css`, navigation framing
+in `scrollytelling-effects/navigation.css`, behavior in `scrollytelling-effects/scripts.js`, and bundled web component
+in `scrollytelling-effects/wc.js`. It is independent of the root legacy `style.css`. Its images and model are organized
+with the prototype, its audio is under `shared/assets/music/`, and the animated media it shares with Story 1 is under
+`shared/assets/images/` and `shared/assets/videos/`. The drag-and-drop answer demo and its three SVG assets live
+together under `drag-and-drop/`.
 
 Scrollytelling Effects, Organ Example, and Visualizing Cells adopt the navigation-only shared Menu and fixed-Dark
 shared footer. Scrollytelling Effects' lightweight right-side table of contents and responsive content framing remain
-owned by `scrollytelling-effects/navigation.css`; all other demonstration styles remain prototype-owned.
+owned by `scrollytelling-effects/navigation.css`.
 
 All prototype entry points load the approved self-hosted fonts from `shared/css/fonts.css` and the prototype typography
 contract in `shared/typography.css`. Prototype-owned content defaults to Nunito Sans; existing prototype-owned rules

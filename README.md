@@ -55,6 +55,12 @@ There is no installation or build command.
 | `story4.html` | Data Detangle |
 | `story5.html` | Know Your Body Buddies |
 | `story6.html` | Pan-organ Immunosenescence Atlas |
+| `story/7/` | Story 7 planning directory; `index.html` is not yet implemented |
+
+New stories use the singular `story/<number>/` convention and place their page entry point at
+`story/<number>/index.html`, producing a clean `/story/<number>/` GitHub Pages URL. The existing Stories 1–6 retain
+their current entry points and implementation paths until each is migrated through a separate copy-first change.
+See [`story/7/README.md`](story/7/README.md) for the first new-story contract.
 
 The repository also contains older prototypes and demonstrations. The Scrollytelling Effects, Organ Example,
 Visualizing Cells, and Drag-and-Drop Answer Demo implementations are organized under `prototypes/`, with their
@@ -88,14 +94,14 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── logos/      # Theme-aware organization logos
 │   │   ├── music/      # Shared story and prototype audio
 │   │   └── videos/     # Video shared by maintained and prototype experiences
-│   ├── css/            # Fonts, tokens, navigation, footer, and story-navigation styles
+│   ├── css/            # Page chrome plus shared story narrative, dialogue, and resource-card styles
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── prototypes/         # Organized legacy experiences and their maintenance notes
 │   ├── drag-and-drop/           # Drag-and-drop answer demo and owned assets
 │   ├── organ-example/           # Prototype implementation and owned images
-│   ├── scrollytelling-effects/  # Prototype code, images, and model
+│   ├── scrollytelling-effects/  # Prototype-owned styles, code, images, and model
 │   ├── shared/                   # Shared prototype chrome and typography
-│   └── visualizing-cells/       # Prototype implementation, images, and video
+│   └── visualizing-cells/       # Prototype implementation, styles, images, and video
 ├── docs/               # Architecture and asset-migration records
 ├── tools/              # Dependency-free repository validation
 ├── story1.html         # Story experiences
@@ -104,29 +110,47 @@ original URLs retained as compatibility pages. These are not primary entry point
 ├── story4.html
 ├── story5.html
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
-├── stories/            # Gradually organized story-owned implementation files
-│   ├── story1/         # Story 1 styles, scripts, owned images, and videos
-│   ├── story2/         # Story 2 quiz and owned images
-│   ├── story3/         # Story 3-owned narrative and resource images
-│   ├── story4/         # Story 4 scripts, particle configuration, and owned images
-│   │   ├── app.js
-│   │   ├── images/        # Story 4 resource thumbnails
-│   │   ├── particles.js
-│   │   ├── scripts.js
-│   │   └── config/
-│   │       └── particles.json # Preserved particle configuration reference
-│   ├── story5/         # Story 5 accessibility styles, images, and videos
-│   │   ├── accessibility.css
-│   │   ├── images/
-│   │   └── videos/
-│   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
-└── style.css           # Legacy shared story styles
+├── story/              # Singular clean-URL convention for new stories
+│   └── 7/
+│       └── README.md   # Story 7 implementation and publication contract
+└── stories/            # Organized story-owned implementation files
+    ├── story1/         # Story 1 styles, scripts, owned images, and videos
+    ├── story2/         # Story 2 presentation, animation, quiz, and owned images
+    ├── story3/         # Story 3 presentation, split animation runtime, and owned images
+    ├── story4/         # Story 4 static fallback, motion gate, animations, particles, and owned images
+    │   ├── accessibility.css
+    │   ├── app.js
+    │   ├── animations.js
+    │   ├── diagram-detail.js
+    │   ├── diagram-overview.js
+    │   ├── images/        # Story 4 resource thumbnails
+    │   ├── motion.js
+    │   ├── particles.js
+    │   ├── styles.css
+    │   └── config/
+    │       └── particles.json # Preserved particle configuration reference
+    ├── story5/         # Story 5 presentation, animation, accessible media controls, images, and videos
+    │   ├── accessibility.css
+    │   ├── animations.js
+    │   ├── images/
+    │   ├── media-controls.js
+    │   ├── styles.css
+    │   └── videos/
+    └── story6/         # Story 6 styles, scripts, images, and contributor instructions
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
 validating every HTML, CSS, JavaScript, JSON, and service-worker reference. See
 [`docs/architecture.md`](docs/architecture.md) for ownership boundaries and the staged target structure, and
 [`docs/asset-map.md`](docs/asset-map.md) for the current migration register.
+
+Stories 2, 3, and 5 share their narrative foundation, character dialogue, and current resource-card presentation
+through focused stylesheets under `shared/css/`. Their generic page foundation now lives in
+`shared/css/narrative-foundation.css`; their readable narrow-viewport and reduced-motion mode lives in
+`shared/css/narrative-accessibility.css` and `shared/js/narrative-motion.js`, while Story 2 owns its quiz color tokens.
+The former root `style.css` has been removed. All six stories use the shared two-link story navigation; Home fills the
+unavailable previous slot on Story 1 and the unavailable next slot on Story 6. Story 2 retains one remote Inter
+request for its embedded SVG labels; Stories 3 and 5 use the shared self-hosted Nunito Sans body font.
 
 ## Landing-page architecture
 
@@ -140,15 +164,16 @@ The landing page is deliberately separated from the legacy story implementation:
 - `shared/css/fonts.css` owns the self-hosted HRA font declarations and resilient typography stacks.
 - `landing/css/fonts.css` preserves the former font URL for cached landing-page documents.
 - `landing/css/tokens.css` owns light/dark HRA colors, semantic roles, and shared layout tokens.
-- `shared/css/tokens.css`, `shared/css/selection.css`, `shared/css/navigation.css`, and `shared/css/footer.css` own the
-  canonical Menu, skip link, and footer.
+- `shared/css/tokens.css`, `shared/css/selection.css`, `shared/css/navigation.css`,
+  `shared/css/appearance-controls.css`, and `shared/css/footer.css` own the canonical Menu, optional appearance
+  controls, skip link, and footer.
 - `landing/css/styles.css` owns landing content, layout, responsive rules, and page-specific accessibility adaptations.
 - `landing/js/main.js` initializes the shared Menu, appearance, contrast, and back-to-top modules for the landing page.
 
 Load the landing stylesheets in the documented order so font and design tokens exist before component rules use them.
 The inline script in `index.html` applies a saved theme before paint; keep its storage key aligned with
 `shared/js/theme.js`.
-The landing page does not load `style.css`, prototype or story scripts, remote fonts, or a JavaScript framework.
+The landing page does not use a root stylesheet, prototype or story scripts, remote fonts, or a JavaScript framework.
 
 ### Page metadata
 
@@ -202,6 +227,10 @@ The landing page and Story 6 include an Accessibility group with a persistent Hi
 the operating-system contrast preference until a visitor explicitly turns it on or off. Story 1 through Story 5 use
 navigation-only Menus without appearance or High contrast controls.
 
+Maintained pages load shared fonts and tokens before shared component CSS, then load page- or story-owned styles.
+Only the landing page and Story 6 load `shared/css/appearance-controls.css`. Stories 2, 3, and 5 load their shared
+narrative foundations before story-owned CSS and keep the flowing accessibility stylesheet last.
+
 ## Shared page chrome
 
 The maintained landing page and story pages use the same Menu and footer foundations while retaining page-specific
@@ -243,10 +272,12 @@ The landing page targets WCAG 2.2 Level AAA and includes:
 - A persistent three-state appearance preference grouped with a native fieldset and radio controls.
 - A persistent High contrast switch with visible state text and an announced switch state.
 
-The story pages predate this work and are receiving accessibility remediation incrementally. Story 6 now uses a
-readable unpinned default, live reduced-motion handling, and semantic Reader View fallbacks for its animated anatomy,
-tutorial, and conclusion. The repository as a whole should not be described as WCAG AAA conformant until each story
-has been audited and tested.
+The story pages predate this work and are receiving accessibility remediation incrementally. Stories 2, 3, and 5 now
+default to a readable linear layout without JavaScript and use that same mode for reduced motion, narrow viewports,
+and high zoom; pinned GSAP scenes are an enhancement for sufficiently large viewports. Story 6 uses a readable
+unpinned default, live reduced-motion handling, and semantic Reader View fallbacks for its animated anatomy, tutorial,
+and conclusion. The repository as a whole should not be described as WCAG AAA conformant until each story has been
+audited and tested.
 
 All maintained pages should support browser Reader View over time. Keep the complete narrative and end matter in
 semantic source order, exclude decorative animation layers, and provide concise in-flow equivalents for informative
@@ -268,8 +299,8 @@ mobile-browser testing.
 - Do not make broad edits to large embedded story documents.
 - Avoid reorganizing files as part of unrelated feature work.
 - Explain and approve dependency or repository-structure changes before implementing them.
-- Use canonical `https://doi.org/<doi>` links for papers and scholarly publications whenever a DOI exists; retain an authoritative stable URL only when no DOI has been assigned
-- Include all paper, publication, and end-matter reference links in maintainability scans, and replace verified non-DOI publication links with their canonical DOI URLs
+- Use canonical `https://doi.org/<doi>` links for papers, scholarly publications, and Zenodo-hosted SOPs whenever a DOI exists; retain an authoritative stable URL only when no DOI has been assigned
+- Verify DOI availability when adding or changing those links; do not include recurring DOI audits in unrelated maintainability scans
 - Keep this README and `AGENTS.md` synchronized with durable architecture and accessibility changes.
 - Follow the repository's branch, review, and release workflow for commits and publication.
 
@@ -285,6 +316,7 @@ node --check landing/js/main.js
 node --check shared/js/main.js
 node --check shared/js/menu.js
 node --check shared/js/theme.js
+node tools/check-maintained-pages.mjs
 node tools/check-local-links.mjs --allow-known
 node tools/check-story6.mjs
 ```
@@ -293,16 +325,16 @@ Also verify:
 
 - Local `href`, `src`, and CSS `url()` references resolve.
 - IDs are unique and fragment/ARIA references point to existing elements.
+- The maintained-page checker reports only the documented embedded-SVG duplicate-ID baselines for Stories 2–4.
 - Changed color combinations meet their required contrast ratios.
 - The page is keyboard operable at 320 CSS pixels and up to 400% zoom.
 - Focus is visible and is not obscured.
 - No content is clipped after text-spacing changes.
 - Story structure and extraction-hint changes preserve the complete article in Firefox Reader View.
-- Paper, publication, and end-matter reference links use canonical DOI URLs when a verified DOI is available
+- New or changed paper, publication, and Zenodo SOP links use canonical DOI URLs when a verified DOI is available
 
 ## Known technical debt
 
-- Most story pages share one large global stylesheet.
 - Several filenames contain spaces, making path changes more error-prone.
 - Some story documents contain large embedded image data.
 - Story 2's inline SVG artwork contains 11 pre-existing repeated ID values; they are not current interaction targets,

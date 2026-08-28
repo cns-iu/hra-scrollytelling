@@ -12,6 +12,8 @@ Pages adopting the shared components load the stylesheets directly:
 <link rel="stylesheet" href="shared/css/tokens.css">
 <link rel="stylesheet" href="shared/css/selection.css">
 <link rel="stylesheet" href="shared/css/navigation.css">
+<!-- Only on index.html and story6.html: -->
+<link rel="stylesheet" href="shared/css/appearance-controls.css">
 <link rel="stylesheet" href="shared/css/story-navigation.css">
 <link rel="stylesheet" href="shared/css/footer.css">
 ```
@@ -34,7 +36,9 @@ All prototype entry points consume the approved font declarations here through
 select Metropolis where specified.
 
 The current page may omit a component stylesheet it does not use. Font declarations and typography roles must load
-before component tokens and styles.
+before component tokens and styles. `navigation.css` owns only the core Menu and skip link;
+`appearance-controls.css` is optional and belongs immediately after it on pages that offer theme and contrast
+controls.
 
 The landing page keeps `landing/js/main.js` as its page entry point; that module initializes the canonical shared
 Menu, appearance, contrast, and back-to-top modules.
@@ -85,6 +89,17 @@ system selection colors when forced-colors mode is active.
 `contrast.js` follows `prefers-contrast` until a visitor explicitly selects On or Off, persists the choice under
 `hra-high-contrast`, and synchronizes every switch's visible and announced state. Story contrast rules must remain
 inside `.site-chrome` roots so legacy story content is never recolored by this control.
+
+## Shared narrative foundation
+
+Stories 2, 3, and 5 use `.story-narrative` as their semantic page contract and load the shared narrative styles after
+page chrome. Their story-owned styles follow the shared foundation, and `narrative-accessibility.css` loads last.
+Each document starts with `.story-flowing`; `narrative-motion.js` enables pinned animation only when reduced motion is
+off and the viewport is sufficiently large. The flowing mode preserves source order without JavaScript, disables
+nonessential animation, avoids fixed-height text containers, and makes Story 5 narrative videos user-controlled.
+Story-owned chapter headings and summaries remain available to linear and Reader View presentations even when their
+enhanced scene layout visually relies on pinned dialogue and artwork. Dialogue boundaries remain visible in forced
+colors mode.
 
 ## Ownership
 

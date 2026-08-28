@@ -322,11 +322,3 @@
     outline: 3px solid var(--hra-neutral-10);
     outline-offset: 3px;
 }
-
-#six .site-story-navigation__list {
-    grid-template-columns: 1fr;
-}
-
-#six .site-story-navigation__item:last-child {
-    text-align: start;
-}

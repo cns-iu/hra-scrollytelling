@@ -1,0 +1,239 @@
+.story2-page {
+    --story2-color-accent: #e00d3a;
+    --story2-color-accent-strong: #b20a2f;
+    --story2-color-focus: #201e3d;
+    --story2-color-quiz-surface: #eff2f5;
+    --story2-color-scene-surface: #000;
+    --story2-color-page-surface: #fff;
+    --story2-color-on-scene: #fff;
+    --story2-color-choice-surface: #f1f1f1;
+    --story2-color-choice-border: #c6cedd;
+    --story2-color-incorrect-surface: #fee2cf;
+}
+
+.story2-page .story2-zoom-target {
+    height: 20vh;
+    top: 50%;
+}
+
+.story2-page .story2-dialogue--spaced {
+    margin-top: 80px;
+}
+
+.story2-page .story2-dialogue--compact {
+    margin-top: 26px;
+}
+
+.story2-page .story2-dialogue--raised {
+    top: -30%;
+}
+
+.story2-page .story2-dialogue--upper-left {
+    top: -20%;
+    left: 10%;
+}
+
+.story2-page .story2-dialogue-track {
+    overflow-x: hidden;
+}
+
+#main-content.story-main--intrinsic-height > .section2 {
+    height: auto;
+}
+
+.story2-page .videozoom {
+    background-color: var(--story2-color-scene-surface);
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+.story2-page .videozoom img {
+    width: 80%;
+    margin: auto;
+}
+
+.story2-page .videozoom p {
+    text-align: center;
+    color: var(--story2-color-on-scene);
+    opacity: 0.7;
+}
+
+.story2-page .videozoom a {
+    color: var(--story2-color-on-scene);
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+.story2-page .videozoom h1 {
+    margin-top: 40px;
+    color: var(--story2-color-on-scene);
+}
+
+@media all and (max-width: 750px) {
+    .story2-page .videozoom img {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+.story2-page .fadeimage2 {
+    position: relative;
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+    top: -10%;
+}
+
+.story2-page .scene1,
+.story2-page .scene1-1,
+.story2-page .scene1-2,
+.story2-page .scene2 {
+    background-color: var(--story2-color-scene-surface);
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+.story2-page .scene1,
+.story2-page .scene1-2 {
+    background-image: url('images/squiggy-and-cece-at-home.svg');
+}
+
+.story2-page .scene1-1 {
+    background-image: url('images/squiggy-and-cece-close-up.svg');
+}
+
+.story2-page .scene2 {
+    background-image: url('images/cece-reassures-squiggy.svg');
+}
+
+.story2-page .scene3 {
+    background-image: none;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: var(--story2-color-scene-surface);
+}
+
+.story2-page .scene6 {
+    background-color: var(--story2-color-scene-surface);
+    height: 1px;
+}
+
+.story2-page .scene7,
+.story2-page .scene8,
+.story2-page .scene9,
+.story2-page .scene10,
+.story2-page .scene11,
+.story2-page .scene12,
+.story2-page .scene13 {
+    background-color: var(--story2-color-page-surface);
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.story2-page .scene7 {
+    background-image: url('images/biomarker-discussion.svg');
+}
+
+.story2-page .scene8 {
+    background-image: url('images/squiggy-discovers-tag.svg');
+}
+
+.story2-page .scene9 {
+    background-image: url('images/squiggy-biomarker-tag.svg');
+}
+
+.story2-page .scene10 {
+    background-image: url('images/biomarker-tag-close-up.svg');
+}
+
+.story2-page .scene11 {
+    background-image: url('images/squiggy-asks-about-biomarkers.svg');
+}
+
+.story2-page .scene12 {
+    background-image: url('images/squiggy-refuses-reporter-ride.svg');
+}
+
+.story2-page .scene13 {
+    background-image: url('images/squiggy-and-cece-address-readers.svg');
+}
+
+.story2-page .scrollbubble {
+    opacity: 0;
+}
+
+.story2-page .linesection {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.story2-page .sectionquiz {
+    background-color: var(--story2-color-quiz-surface);
+    padding: 32px;
+    line-height: 24px;
+    font-size: 16px;
+    margin-top: 10vh;
+    position: relative;
+}
+
+.story2-page .quizheader {
+    font-size: 28px;
+}
+
+.story2-page .quizp {
+    width: 80%;
+    justify-content: center;
+    margin: auto;
+}
+
+.story2-page .quizp details {
+    padding: 10px;
+}
+
+.story2-page .choiceresult {
+    background-color: var(--story2-color-accent);
+    border: none;
+    margin-top: 3px;
+    color: var(--story2-color-on-scene);
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.story2-page .radiochoice {
+    margin: 0;
+    padding: 12px;
+    background-color: var(--story2-color-choice-surface);
+    font-size: 16px;
+}
+
+.story2-page .radiochoice input {
+    margin-right: 12px;
+    accent-color: var(--story2-color-accent);
+}

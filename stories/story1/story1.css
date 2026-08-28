@@ -1,5 +1,14 @@
 /* Story 1 presentation built from the maintained landing typography and light-theme roles. */
 
+html.story1-page {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
 #one {
     --hra-on-primary-container: #95001e;
     --hra-secondary: #201e3d;
@@ -32,6 +41,10 @@
         radial-gradient(circle at 12% 92%, rgb(198 194 234 / 56%) 0%, transparent 36%),
         radial-gradient(circle at 90% 90%, rgb(255 179 179 / 42%) 0%, transparent 34%);
 
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
     color: var(--color-ink);
     background: var(--color-page);
     font-family: var(--font-body);

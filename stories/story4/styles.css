@@ -1,0 +1,308 @@
+/* Story 4 presentation, scenes, and resources. */
+
+html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+#four {
+    --story4-blue: #201e3d;
+    --story4-blue-muted: #4b4b5e;
+    --story4-page-background: #ffffff;
+    --story4-inverse-background: #000000;
+    --story4-inverse-text: #ffffff;
+    --story4-text: #0e1825;
+    --story4-muted-text: #4c4c58;
+    --story4-link: #6a061c;
+    --story4-link-focus: #e00d3a;
+    --story4-link-hover: rgba(178, 10, 47, 0.08);
+    --story4-link-active: rgba(178, 10, 47, 0.16);
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Inter", serif;
+}
+
+#four main p {
+    color: var(--story4-text);
+    font-size: 1.125rem;
+}
+
+#four main a {
+    color: var(--story4-text);
+    text-decoration: none;
+}
+
+#four .header {
+    padding: 20% 2.5rem;
+    margin: 0;
+    color: var(--story4-inverse-text);
+    background: linear-gradient(
+        270deg,
+        var(--story4-blue),
+        var(--story4-blue-muted),
+        var(--story4-blue)
+    );
+    background-size: 600% 600%;
+    text-align: center;
+    animation: story4-header-gradient 30s ease infinite;
+}
+
+@keyframes story4-header-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#four .talkbubble {
+    display: flex;
+    top: 23vh;
+    width: 80%;
+    height: 100vh;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    color: var(--story4-inverse-background);
+    font-size: 1.4rem;
+    text-align: center;
+    flex-direction: column;
+}
+
+#four .scene1,
+#four .scene15,
+#four .scene16,
+#four .scene17,
+#four .scene18,
+#four .scene19,
+#four .scene20 {
+    min-width: 100%;
+    max-width: 68.75rem;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--story4-page-background);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#four .scene1 {
+    top: 0;
+}
+
+#four .scene15,
+#four .scene16,
+#four .scene17,
+#four .scene18,
+#four .scene19,
+#four .scene20 {
+    top: 6.25rem;
+}
+
+#four .scene2 {
+    display: flex;
+    top: 9.375rem;
+    max-width: 68.75rem;
+    height: 100vh;
+    margin: auto;
+    justify-content: center;
+}
+
+#four .svgparts {
+    overflow: hidden;
+}
+
+#four .svgparts svg {
+    position: relative;
+    display: flex;
+    top: 50vh;
+    max-width: 56.25rem !important;
+    margin: auto;
+    transform: translateY(-50%);
+}
+
+#four :is(
+    #Systempt4,
+    #Systempt3,
+    #Systempt2,
+    #Purple,
+    #Combined,
+    #SideLogos,
+    #RDF1,
+    #RDF2,
+    #Brand1,
+    #Brand2,
+    #Brand3,
+    #Brand4,
+    #closeup3,
+    #closeup2,
+    #closeup1,
+    #Data2,
+    #likedthing,
+    #Locks,
+    #Mess,
+    #TypeLogos,
+    #Like1,
+    #Like2,
+    #Like3,
+    #Like4,
+    #Like5,
+    #Like6,
+    #Like7,
+    #Like8,
+    #closeuplinks1,
+    #closeuplinks2,
+    #closeuplinks3,
+    #closeuplinks4,
+    #closeuplinks5,
+    #closeuplinks6,
+    #closeuplinks65,
+    #closeuplinks66,
+    #closeuplinks68,
+    #closeuplinks7,
+    #closeuplinks8,
+    #closeuplinks9,
+    #closeuplinks10,
+    #predicatehighlight,
+    #objecthighlight,
+    #subjecthighlight
+) {
+    opacity: 0;
+}
+
+#four :is(#LogoLine1, #LogoLine2, #LogoLine3) {
+    stroke: url("#gradient1");
+    stroke-width: 5;
+}
+
+#four #particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+#four #particles-js canvas {
+    display: block;
+}
+
+#four .Externallinkssection {
+    padding: 5rem 1rem;
+    margin: auto;
+    align-items: center;
+    background-color: var(--story4-page-background);
+    text-align: center;
+}
+
+#four .indexTitle {
+    font-size: 1.75rem;
+    line-height: 2.625rem;
+}
+
+#four .ExternalLinkCards {
+    display: flex;
+    padding: 0;
+    gap: 4rem;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+#four .ExternalLinkCard {
+    width: 18.25rem;
+    padding: 0;
+    gap: 2.5rem;
+    border-radius: 0.75rem;
+    flex: none;
+}
+
+#four .ExternalLinkImg {
+    width: 100%;
+    height: 14rem;
+    margin-bottom: 2.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.3125rem 1rem rgba(32, 30, 61, 0.24);
+    object-fit: cover;
+}
+
+#four .ExternalLinkTitle {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 2.25rem;
+    text-align: left;
+    text-decoration-skip-ink: none;
+    text-underline-position: from-font;
+}
+
+#four .ExternalLinkDesc {
+    margin-bottom: 1rem;
+    color: var(--story4-muted-text);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.03125rem;
+    line-height: 1.5rem;
+    text-align: left;
+    text-decoration-skip-ink: none;
+    text-underline-position: from-font;
+}
+
+#four .ExternalLinkCard .linkbutton {
+    float: left;
+}
+
+#four .linkbutton {
+    padding: 0.5625rem 1rem;
+    color: var(--story4-link);
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+#four .linkbutton:hover {
+    background-color: var(--story4-link-hover);
+}
+
+#four .linkbutton:active {
+    background-color: var(--story4-link-active);
+}
+
+#four .linkbutton:focus-visible {
+    outline: 0.2rem solid var(--story4-link-focus);
+    outline-offset: 0.125rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    #four .header {
+        animation: none;
+    }
+}
+
+@media (forced-colors: active) {
+    #four .linkbutton:focus-visible {
+        outline-color: Highlight;
+    }
+}

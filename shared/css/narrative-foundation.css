@@ -1,0 +1,208 @@
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+:where(body.story-narrative) {
+    --narrative-color-text: #0e1825;
+    --narrative-color-page: #fff;
+    --narrative-color-inverse-surface: #000;
+    --narrative-color-on-inverse: #fff;
+    --narrative-color-intro-shadow: #fff;
+
+    height: 100%;
+    margin: 0;
+    font-family: var(--font-body);
+}
+
+.story-narrative :where(.story-chapter-heading, .story-scene-summary) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+:where(body.story-narrative) p {
+    color: var(--narrative-color-text);
+    font-size: 1.125rem;
+}
+
+:where(body.story-narrative) .intro {
+    margin-top: 70px;
+}
+
+:where(.story-narrative) .section1,
+:where(.story-narrative) .section13 {
+    background: var(--narrative-color-inverse-surface);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+:where(.story-narrative) .section2 {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--narrative-color-page);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+:where(.story-narrative) .talkbubble,
+:where(.story-narrative) .container,
+:where(.story-narrative) .container2 {
+    width: 90%;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--narrative-color-on-inverse);
+    visibility: hidden;
+    font-size: 1.5rem;
+    text-align: center;
+    flex-direction: column;
+}
+
+:where(.story-narrative) .container,
+:where(.story-narrative) .container2,
+:where(.story-narrative) .introline .descriptionsection {
+    font-family: 'Metropolis', Helvetica, Arial, sans-serif;
+}
+
+:where(.story-narrative) .introline .descriptionsection {
+    opacity: 0.5;
+    max-width: 600px;
+    margin-top: -10px;
+}
+
+:where(.story-narrative) .introlineimg {
+    position: absolute;
+    width: 10%;
+    top: 32%;
+    animation: pulse-white 3.5s infinite;
+}
+
+:where(.story-narrative) .introcharcece {
+    left: 10%;
+    top: 25%;
+    width: 15%;
+}
+
+:where(.story-narrative) .introcharsquiggy {
+    right: 10%;
+    top: 31%;
+    width: 15%;
+}
+
+@media all and (max-width: 750px) {
+    :where(.story-narrative) .introcharcece {
+        left: 20%;
+        width: 22%;
+        top: 85%;
+    }
+
+    :where(.story-narrative) .introcharsquiggy {
+        top: 85%;
+        width: 22%;
+        right: 20%;
+    }
+}
+
+@keyframes pulse-white {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    :where(.story-narrative) .introlineimg {
+        animation: none;
+    }
+}
+
+:where(.story-narrative) .container h1,
+:where(.story-narrative) .container2 h1 {
+    line-height: 60px;
+}
+
+:where(.story-narrative) .container p,
+:where(.story-narrative) .container2 p {
+    color: var(--narrative-color-on-inverse);
+}
+
+:where(.story-narrative) .fadeimage {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+    height: 100vh;
+    width: auto;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+:where(.story-narrative) .imagepart,
+:where(.story-narrative) .imageparts:not(.outsole) {
+    position: absolute;
+}
+
+:where(.story-narrative) .imagepart,
+:where(.story-narrative) .imageparts svg {
+    height: 100vh;
+}
+
+:where(.story-narrative) .overtext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    font-size: 2.5rem;
+    margin: 0;
+    text-shadow: 1px 1px 2px var(--narrative-color-intro-shadow);
+}
+
+:where(.story-narrative) .narrative-telescope {
+    width: 8.75rem;
+}
+
+:where(.story-narrative) .narrative-intro-copy {
+    left: 1.25rem;
+}
+
+:where(.story-narrative) .story-episode-title {
+    font-size: 1.6em;
+}
+
+:where(.story-narrative) .story-intro-summary {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    border: 0;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}

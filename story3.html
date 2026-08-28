@@ -1,30 +1,29 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="story-flowing">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Something's Not Registering!</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" href="style.css" />
+    <meta
+      name="description"
+      content="Follow Squiggy and CeCe as they use the Human Reference Atlas Registration User Interface to register a kidney tissue sample."
+    />
     <link rel="stylesheet" href="shared/css/fonts.css" />
     <link rel="stylesheet" href="shared/css/tokens.css" />
     <link rel="stylesheet" href="shared/css/selection.css" />
     <link rel="stylesheet" href="shared/css/navigation.css" />
+    <link rel="stylesheet" href="shared/css/story-navigation.css" />
     <link rel="stylesheet" href="shared/css/footer.css" />
+    <link rel="stylesheet" href="shared/css/narrative-foundation.css" />
+    <link rel="stylesheet" href="shared/css/character-dialogue.css" />
+    <link rel="stylesheet" href="shared/css/resource-cards.css" />
+    <link rel="stylesheet" href="stories/story3/styles.css" />
+    <link rel="stylesheet" href="shared/css/narrative-accessibility.css" />
     <link rel="icon" href="shared/assets/icons/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" href="shared/assets/icons/favicon.svg" type="image/svg+xml" sizes="any" />
     <link rel="apple-touch-icon" href="shared/assets/icons/apple-touch-icon.png" sizes="180x180" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cutive&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <script src="shared/js/narrative-motion.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script
@@ -48,7 +47,7 @@
     <script type="module" src="shared/js/navigation-only.js"></script>
   </head>
 
-  <body id="two">
+  <body class="story-narrative story3-page">
     <a class="site-skip-link site-chrome" href="#main-content"
       >Skip to main content</a
     >
@@ -116,8 +115,11 @@
       tabindex="-1"
     >
       <!-- section header/intro -->
-      <section class="intro" id="intro">
-        <h3 class="overtext" id="introTypeLine"></h3>
+      <div class="intro" id="intro">
+        <p class="story-intro-summary">
+          There are roughly 37 trillion cells in the human body.
+        </p>
+        <p class="overtext" id="introTypeLine" aria-hidden="true"></p>
         <div
           class="fadeimage"
           role="img"
@@ -128,22 +130,21 @@
           <img
             src="shared/assets/images/telescope.svg"
             alt=""
-            class="picture3 imagepart"
-            style="width: 140px"
+            class="picture3 imagepart narrative-telescope"
           />
         </div>
-      </section>
+      </div>
 
-      <section class="section1">
-        <div class="container" style="left: 20px">
+      <div class="section1">
+        <div class="container narrative-intro-copy">
           This is the story of two of them: Squiggy and CeCe.
         </div>
-      </section>
+      </div>
 
       <section class="section13">
-        <div class="container2 introline" style="left: 20px">
+        <div class="container2 introline narrative-intro-copy">
           <p>On this week's episode:&nbsp;</p>
-          <h1 style="font-size: 1.6em">Something's NOT Registering!</h1>
+          <h1 class="story-episode-title">Something's NOT Registering!</h1>
           <p class="descriptionsection">
             In which our heroes explore HuBMAP's Registration User Interface
             (RUI), rescue a stray human tissue sample, and learn that, when it
@@ -155,22 +156,19 @@
               class="introlineimg introcharcece"
               src="stories/story3/images/cece-introduction-popup.svg"
               alt=""
-              style="width: 12%"
             />
             <img
               class="introlineimg introcharsquiggy"
               src="stories/story3/images/squiggy-introduction-popup.svg"
               alt=""
-              style="width: 12%"
             />
           </div>
         </div>
       </section>
 
-      <section id="introImageSection" style="height: 100vh">
+      <div id="introImageSection">
         <div
           class="imageintrosec"
-          style="overflow: hidden"
           role="img"
           aria-label="Squiggy and CeCe discover a separated kidney tissue sample"
         >
@@ -178,24 +176,26 @@
             src="stories/story3/images/kidney-discovery-initial.svg"
             alt=""
             class="imageintro1 imageparts"
-            style="width: auto; height: 100%"
           />
           <img
             src="stories/story3/images/kidney-discovery-reveal.svg"
             alt=""
             class="imageintro2 imageparts"
-            style="width: auto; height: 100%"
           />
           <img
             src="stories/story3/images/kidney-discovery-complete.svg"
             alt=""
             class="imageintro3 imageparts"
-            style="width: auto; height: 100%"
           />
         </div>
-      </section>
+      </div>
 
       <section class="section2">
+        <h2 class="story-chapter-heading">Registering a tissue sample</h2>
+        <p class="story-scene-summary">
+          Squiggy and CeCe use the Registration User Interface to place a
+          kidney tissue sample in a shared three-dimensional reference organ.
+        </p>
         <div class="scene3-1"></div>
 
         <div class="talkbubble">
@@ -213,7 +213,6 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="last adventure (opens in a new tab)"
-                style="text-decoration: underline"
                 >last adventure</a
               ></b
             >, I discovered my cell type and resolved my identity crisis.
@@ -235,24 +234,21 @@
         <div class="scene3-2"></div>
         <div class="talkbubble">
           <div
-            class="defaulttalk"
-            style="top: -30%; background-color: rgb(243, 167, 167)"
+            class="defaulttalk dialogue--cece story3-dialogue--raised-strong"
           >
             <b>CeCe:</b> Oh, I do <b>NOT</b> like seeing that!
           </div>
         </div>
         <div class="talkbubble">
           <div
-            class="defaulttalk"
-            style="top: -30%; background-color: rgb(153, 202, 244)"
+            class="defaulttalk dialogue--squiggy story3-dialogue--raised-strong"
           >
             <b>Squiggy:</b> What is it, CeCe?
           </div>
         </div>
         <div class="talkbubble">
           <div
-            class="defaulttalk"
-            style="top: -20%; background-color: rgb(243, 167, 167)"
+            class="defaulttalk dialogue--cece story3-dialogue--raised-medium"
           >
             <b>CeCe:</b> It's a kidney tissue sample, Squig, separated from its
             home organ and all alone.
@@ -262,21 +258,21 @@
 
         <div class="scene3-3"></div>
         <div class="talkbubble">
-          <div class="squiggytalk" style="top: 10%">
+          <div class="squiggytalk story3-dialogue--lower">
             <b>Squiggy:</b> Ah, that's no big deal. We can just pick this little
             guy up, and the next kidney we come across, we can just stick him in
             somewhere!
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk3" style="left: 18%">
+          <div class="cecetalk3 story3-dialogue--left-18">
             <b>CeCe:</b> No way, Squig!! Don't you know that when you're trying
             to identify a tissue sample, it's all about location, location,
             location!
           </div>
         </div>
         <div class="talkbubble">
-          <div class="squiggytalk" style="top: 10%">
+          <div class="squiggytalk story3-dialogue--lower">
             <b>Squiggy:</b> What do you mean? Just look at that kidney! It looks
             the same all over. Just a big brown blob.
           </div>
@@ -294,67 +290,35 @@
             alt=""
             id="kidneypart1"
             class="imageparts"
-            style="
-              width: auto;
-              height: auto;
-              width: 14%;
-              left: 16%;
-              top: 20%;
-              max-width: 200px;
-            "
           />
           <img
             src="stories/story3/images/kidney-variation-upper-right.svg"
             alt=""
             id="kidneypart2"
             class="imageparts"
-            style="
-              width: auto;
-              height: auto;
-              width: 15%;
-              right: 16%;
-              top: 20%;
-              max-width: 200px;
-            "
           />
           <img
             src="stories/story3/images/kidney-variation-lower-left.svg"
             alt=""
             id="kidneypart3"
             class="imageparts"
-            style="
-              width: auto;
-              height: auto;
-              width: 15%;
-              left: 15%;
-              bottom: 20%;
-              max-width: 200px;
-            "
           />
           <img
             src="stories/story3/images/kidney-variation-lower-right.svg"
             alt=""
             id="kidneypart4"
             class="imageparts"
-            style="
-              width: auto;
-              height: auto;
-              width: 15%;
-              right: 15%;
-              bottom: 20%;
-              max-width: 200px;
-            "
           />
         </div>
 
         <div class="talkbubble">
-          <div class="defaulttalk" style="background-color: rgb(243, 167, 167)">
+          <div class="defaulttalk dialogue--cece">
             <b>CeCe:</b> Well, Squig, that "big brown blob" contains a great
             deal of variation.
           </div>
         </div>
         <div class="talkbubble">
-          <div class="defaulttalk" style="background-color: rgb(243, 167, 167)">
+          <div class="defaulttalk dialogue--cece">
             <b>CeCe:</b> Right kidneys are different from left kidneys, men's
             kidneys are different from women's kidneys, and don't get me started
             on how kidneys can vary in shape, size, and location from person to
@@ -362,7 +326,7 @@
           </div>
         </div>
         <div class="talkbubble">
-          <div class="defaulttalk" style="background-color: rgb(243, 167, 167)">
+          <div class="defaulttalk dialogue--cece">
             <b>CeCe:</b> And don't forget that each kidney contains a number of
             distinct anatomical structures. These smaller structures have
             different roles to play and are made up of different kinds of
@@ -371,7 +335,7 @@
         </div>
 
         <div class="talkbubble">
-          <div class="defaulttalk" style="background-color: rgb(243, 167, 167)">
+          <div class="defaulttalk dialogue--cece">
             <b>CeCe:</b> However, two distinct anatomical structures may be only
             millimeters apart.
           </div>
@@ -387,7 +351,7 @@
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk3" style="left: 16%; top: -20%">
+          <div class="cecetalk3 story3-dialogue--left-16 story3-dialogue--raised-medium">
             <b>CeCe:</b> Well, Squig, let's just say that guesstimating is not
             exactly what researchers call "best practice."
           </div>
@@ -398,7 +362,7 @@
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk3" style="left: 16%; top: -20%">
+          <div class="cecetalk3 story3-dialogue--left-16 story3-dialogue--raised-medium">
             <b>CeCe:</b> It's not hard at all, Squiggy. In fact, there's a tool
             to make it really easy!
           </div>
@@ -406,10 +370,8 @@
         <div class="talkbubble"></div>
 
         <div class="scene3-5-1">
-          <?xml version="1.0" encoding="UTF-8"?>
           <svg
             width="100%"
-            id=""
             height="100%"
             viewBox="0 0 1924 1125"
             version="1.1"
@@ -1042,52 +1004,52 @@
           </svg>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="top: -20%; left: 5%">
+          <div class="cecetalk story3-dialogue--raised-medium story3-dialogue--left-5">
             <b>CeCe:</b> Researchers can register their tissue sample data with
             the Registration User Interface tool in the Human Reference Atlas.
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="top: -20%; left: 5%">
+          <div class="cecetalk story3-dialogue--raised-medium story3-dialogue--left-5">
             <b>CeCe:</b> It takes only about 5 minutes to learn how to do it and
             an average of 2 minutes to register a tissue block.
           </div>
         </div>
         <div class="talkbubble" id="UiChange1">
-          <div class="cecetalk" style="top: 0%; left: 5%">
+          <div class="cecetalk story3-dialogue--centered story3-dialogue--left-5">
             <b>CeCe:</b> All we need to do is select the correct organ.
           </div>
         </div>
         <div class="talkbubble" id="UiChange2">
-          <div class="cecetalk" style="top: 0%; left: 5%">
+          <div class="cecetalk story3-dialogue--centered story3-dialogue--left-5">
             <b>CeCe:</b> Now, let's position this kidney just how we want it by
             using these buttons up here.
           </div>
         </div>
         <div class="talkbubble" id="UiChange3">
-          <div class="cecetalk" style="top: 0%; left: 5%">
+          <div class="cecetalk story3-dialogue--centered story3-dialogue--left-5">
             <b>CeCe:</b> Or we can rotate it with a mouse or keypad.
           </div>
         </div>
         <div class="talkbubble" id="UiChange4">
-          <div class="cecetalk" style="top: 0%; left: 5%">
+          <div class="cecetalk story3-dialogue--centered story3-dialogue--left-5">
             <b>CeCe:</b> Now, we can type in the height, width, and depth of our
             tissue block.
           </div>
         </div>
         <div class="talkbubble" id="UiChange5">
-          <div class="squiggytalk" style="top: 0%">
+          <div class="squiggytalk story3-dialogue--centered">
             <b>Squiggy:</b> What's that?
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="top: 0%; left: 5%">
+          <div class="cecetalk story3-dialogue--centered story3-dialogue--left-5">
             <b>CeCe:</b> That's how our tissue block appears in the 3D world of
             the Registration User Interface!
           </div>
         </div>
         <div class="talkbubble" id="UiChange6">
-          <div class="cecetalk" style="top: -20%; left: 5%">
+          <div class="cecetalk story3-dialogue--raised-medium story3-dialogue--left-5">
             <b>CeCe:</b> Now we can use these sliders here to rotate the 3D
             block and move it into the correct place in the kidney.
           </div>
@@ -1095,7 +1057,6 @@
         <div class="talkbubble"></div>
 
         <div class="scene3-6" id="changethisbg">
-          <?xml version="1.0" encoding="UTF-8"?>
           <svg
             width="100%"
             height="100%"
@@ -1695,13 +1656,13 @@
         </div>
 
         <div class="talkbubble" id="UiChange7">
-          <div class="cecetalk" style="top: -10%; left: 0%">
+          <div class="cecetalk story3-dialogue--raised-slight story3-dialogue--left-zero">
             <b>CeCe:</b> Now this is the fun part. I'm going to need your help,
             Squiggy!
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="top: -10%; left: 0%">
+          <div class="cecetalk story3-dialogue--raised-slight story3-dialogue--left-zero">
             <b>CeCe:</b> We just need to move this tissue block so that it's in
             the same place on this model as it was on the actual organ.
           </div>
@@ -1717,9 +1678,8 @@
         </div>
         <div class="talkbubble">
           <div
-            class="cecetalk3"
+            class="cecetalk3 story3-dialogue--left-18 story3-dialogue--lower-strong"
             id="triggerworriedface0"
-            style="left: 18%; top: 20%"
           >
             <b>CeCe:</b> Now this is kind of cool. Watch as we move into the
             space of the 3D model, we'll see an example of what's known as
@@ -1738,12 +1698,12 @@
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk3" style="left: 18%; top: 20%">
+          <div class="cecetalk3 story3-dialogue--left-18 story3-dialogue--lower-strong">
             <b>CeCe:</b> Nope, Squiggy. You supplied ALL the drama we needed.
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk3" style="left: 18%; top: 20%">
+          <div class="cecetalk3 story3-dialogue--left-18 story3-dialogue--lower-strong">
             <b>CeCe:</b> You see, what our block is "colliding" with are
             anatomical structures. The RUI is just letting us know what our
             tissue sample is bumping up against as we move it through the organ.
@@ -1758,40 +1718,30 @@
             src="stories/story3/images/registered-tissue-in-kidney.svg"
             alt="A registered tissue block positioned inside a three-dimensional kidney"
             id="kidneyorgan"
-            style="
-              width: auto;
-              height: auto;
-              width: 20%;
-              max-width: 600px;
-              min-width: 300px;
-              left: 50%;
-              top: 15%;
-              position: relative;
-            "
           />
         </div>
 
         <div class="talkbubble">
-          <div class="squiggytalk" style="top: 5%">
+          <div class="squiggytalk story3-dialogue--lower-slight">
             <b>Squiggy:</b> Well, I see what's been registered already, but it
             looks like more information is needed.
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="top: -25%; left: 0%">
+          <div class="cecetalk story3-dialogue--raised story3-dialogue--left-zero">
             <b>CeCe:</b> That's right, Squig. The Human Reference Atlas is
             always looking for more data.
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="top: -20%; left: 0%">
+          <div class="cecetalk story3-dialogue--raised-medium story3-dialogue--left-zero">
             <b>CeCe:</b> The more tissue that's registered, and the more other
             researchers can benefit from your correctly identified data, the
             more complete our picture of the human body becomes.
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="top: -25%; left: 0%">
+          <div class="cecetalk story3-dialogue--raised story3-dialogue--left-zero">
             <b>CeCe:</b> And that's a very good thing for understanding our body
             in health and disease!
           </div>
@@ -1809,7 +1759,6 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="this link (opens in a new tab)"
-                style="text-decoration: underline"
                 >this link</a
               ></b
             >
@@ -1840,7 +1789,7 @@
 
         <div class="scene3-10">
           <div class="Externallinkssection">
-            <p class="indexTitle" style="margin-bottom: 80px">Resources</p>
+            <h2 class="indexTitle">Resources</h2>
             <div class="ExternalLinkCards">
               <div class="ExternalLinkCard">
                 <img class="ExternalLinkImg" src="stories/story3/images/resource-rui-demo.png" alt="" />
@@ -1860,7 +1809,6 @@
                   <img
                     src="shared/assets/images/arrow.svg"
                     alt=""
-                    style="vertical-align: middle"
                   />
                 </a>
               </div>
@@ -1883,7 +1831,6 @@
                   <img
                     src="shared/assets/images/arrow.svg"
                     alt=""
-                    style="vertical-align: middle"
                   />
                 </a>
               </div>
@@ -1908,7 +1855,6 @@
                   <img
                     src="shared/assets/images/arrow.svg"
                     alt=""
-                    style="vertical-align: middle"
                   />
                 </a>
               </div>
@@ -1929,7 +1875,6 @@
                   <img
                     src="shared/assets/images/arrow.svg"
                     alt=""
-                    style="vertical-align: middle"
                   />
                 </a>
               </div>
@@ -1937,48 +1882,44 @@
           </div>
         </div>
 
-        <!-- BotNav -->
-        <div class="botNav">
-          <a href="story2.html" class="previous"
-            ><svg
-              id="previoussvg"
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-arrow-left"
-              viewBox="0 -3 16 16"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-              />
-            </svg>
-            Story 2: <span class="prevTitle">Identity Crisis</span></a
-          >
-          <a href="story4.html" class="next"
-            >Story 4: <span class="nextTitle">Data Detangle</span
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-arrow-right"
-              viewBox="0 -3 16 16"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
-              />
-            </svg>
-          </a>
-        </div>
       </section>
     </main>
+
+    <nav
+      class="site-story-navigation site-chrome site-chrome--light"
+      aria-label="Story navigation"
+    >
+      <ul class="site-story-navigation__list">
+        <li class="site-story-navigation__item">
+          <a class="site-story-navigation__link" href="story2.html">
+            <span class="site-story-navigation__arrow" aria-hidden="true"
+              >←</span
+            >
+            <span class="site-story-navigation__text">
+              <span class="site-story-navigation__direction"
+                >Previous story</span
+              >
+              <span class="site-story-navigation__title"
+                >Story 2: Squiggy's Identity Crisis!</span
+              >
+            </span>
+          </a>
+        </li>
+        <li class="site-story-navigation__item">
+          <a class="site-story-navigation__link" href="story4.html">
+            <span class="site-story-navigation__text">
+              <span class="site-story-navigation__direction">Next story</span>
+              <span class="site-story-navigation__title"
+                >Story 4: Data Detangle</span
+              >
+            </span>
+            <span class="site-story-navigation__arrow" aria-hidden="true"
+              >→</span
+            >
+          </a>
+        </li>
+      </ul>
+    </nav>
 
     <footer class="site-footer site-chrome site-chrome--dark">
       <nav class="site-footer__organizations" aria-label="Organizations">
@@ -2035,560 +1976,9 @@
         © 2026 Cyberinfrastructure for Network Science Center
       </p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+    <script src="stories/story3/animations.js"></script>
+    <script src="stories/story3/rui-animations.js"></script>
   </body>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/MotionPathPlugin.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
-
-  <script>
-    //intro part
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: ".fadeimage",
-          start: "top 00px",
-          end: "bottom 0px",
-          scrub: 1,
-          duration: 1,
-          pin: true,
-        },
-      })
-
-      .from(".picture2", {
-        opacity: 0,
-      })
-      .from(".picture3", {
-        opacity: 0,
-      })
-      .to(".picture3", {
-        scale: 1.8,
-      })
-      .to(
-        ".picture3",
-        {
-          scale: 1.8,
-        },
-        "+=2",
-      );
-
-    //typewriter
-    var m = 0;
-    var txt = "There are roughly 37 trillion cells in the human body.";
-    var speed = 40;
-
-    function typeWriter() {
-      if (m < txt.length) {
-        document.getElementById("introTypeLine").innerHTML += txt.charAt(m);
-        m++;
-        setTimeout(typeWriter, speed);
-      }
-    }
-    window.onload = typeWriter;
-
-    //fade in txt
-    const containers2 = gsap.utils.toArray(".container2");
-    containers2.forEach((container2) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          onRefresh: (self) => self.progress && self.animation.progress(1),
-          start: "top top",
-          end: "+=100%",
-          trigger: container2,
-          pin: true,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(container2, {
-        autoAlpha: 1,
-      }).to(
-        container2,
-        {
-          autoAlpha: 0,
-        },
-        0.5,
-      );
-    });
-
-    /*  function playsound() {
-         var audio = new Audio('shared/assets/music/dramatic.swf.mp3');
-         audio.play();
-         audio.volume = 0.5;
-     }  */
-
-    //bg1
-    ScrollTrigger.create({
-      trigger: ".scene3-1",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=500%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.create({
-      trigger: ".scene3-2",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-3",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-4",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=500%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-5",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=500%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-5-1",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=1000%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-6",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=300%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-7",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=700%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-8",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=500%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-9",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=600%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
-      trigger: ".scene3-10",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=10%",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    //fade in txt
-    const scrollbubbles = gsap.utils.toArray(".scrollbubble");
-    scrollbubbles.forEach((scrollbubble) => {
-      let tl2 = gsap.timeline({
-        scrollTrigger: {
-          onRefresh: (self) => self.progress && self.animation.progress(1),
-          start: "top +=200%",
-          trigger: scrollbubble,
-          pin: false,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl2.to(
-        scrollbubble,
-        {
-          autoAlpha: 1,
-        },
-        0.5,
-      );
-    });
-
-    //fade in txt
-    const containers = gsap.utils.toArray(".container");
-    containers.forEach((container) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          onRefresh: (self) => self.progress && self.animation.progress(1),
-          start: "top top",
-          trigger: container,
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(container, {
-        autoAlpha: 1,
-      }).to(
-        container,
-        {
-          autoAlpha: 0,
-        },
-        0.5,
-      );
-    });
-
-    //fade in txt
-    const overlays = gsap.utils.toArray(".overlaybubbles");
-    overlays.forEach((obubble) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: obubble,
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(obubble, {
-        autoAlpha: 1,
-      }).to(
-        obubble,
-        {
-          autoAlpha: 0,
-        },
-        0.5,
-      );
-    });
-
-    //fade in txt
-    const bubbles = gsap.utils.toArray(".talkbubble");
-    bubbles.forEach((bubble) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: bubble,
-          start: "top top",
-          scrub: 0.5,
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-          markers: false,
-        },
-      });
-
-      tl.to(bubble, {
-        autoAlpha: 1,
-      }).to(
-        bubble,
-        {
-          autoAlpha: 0,
-        },
-        1.8,
-      );
-    });
-
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    };
-
-    window.history.scrollRestoration = "manual";
-
-    //drop in 1
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          scrub: 0.2,
-          trigger: ".imageintrosec",
-          start: "-=50%",
-          end: "top",
-          scrub: true,
-          pin: false,
-        },
-      })
-      .from(".imageintro1", {
-        opacity: 100,
-      })
-      .from(".imageintro2", {
-        opacity: 0,
-      })
-      .from(".imageintro3", {
-        opacity: 0,
-      });
-
-    //drop in 2
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: ".scene3-8",
-          start: "top",
-          end: "+=200%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#kidneyorgan", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    //drop in 3
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: ".scene3-4",
-          start: "top",
-          end: "+=100%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#kidneypart1", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#kidneypart2", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#kidneypart3", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#kidneypart4", {
-        opacity: 0.8,
-        delay: 1,
-      });
-
-    //change expression
-    const timeline3 = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#triggerworriedface0",
-        onEnter: changebg3,
-        onEnterBack: changebg3,
-        markers: false,
-        start: "top",
-        end: "+=100%",
-        id: "scene3-6",
-      },
-    });
-
-    function changebg3() {
-      var changebg = document.getElementById("changehere");
-      changebg.style.backgroundImage = "url('stories/story3/images/rui-registration-scene.svg')";
-    }
-
-    //change expression
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#triggerworriedface1",
-        onEnter: changebg,
-        onEnterBack: changebg,
-        // onLeave: rechangebg,
-        markers: false,
-        start: "top",
-        end: "+=100%",
-        id: "scene3-6",
-      },
-    });
-
-    function changebg() {
-      var changebg = document.getElementById("changehere");
-      changebg.style.backgroundImage = "url('stories/story3/images/rui-collision-reaction.svg')";
-    }
-
-    function rechangebg() {
-      var changebg = document.getElementById("changehere");
-      changebg.style.backgroundImage = "url('stories/story3/images/rui-registration-scene.svg')";
-    }
-
-    //change expression
-    const timeline2 = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#triggerworriedface2",
-        onEnter: changebg2,
-        markers: false,
-        start: "top",
-        end: "+=100%",
-        id: "scene3-6",
-      },
-    });
-
-    function changebg2() {
-      var changebg = document.getElementById("changehere");
-      changebg.style.backgroundImage = "url('stories/story3/images/rui-collision-resolved.svg')";
-    }
-
-    // ui explain sectioni
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange1",
-          start: "top",
-          end: "+=100%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle1", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#Rectangle1", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange2",
-          start: "top",
-          end: "+=100%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle2", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#Rectangle2", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange3",
-          start: "top",
-          end: "+=100%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle5", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#Rectangle5", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange4",
-          start: "top",
-          end: "+=100%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle3", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#Rectangle3", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange5",
-          start: "top",
-          end: "+=200%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle6", {
-        opacity: 0.8,
-        delay: 0,
-      })
-      .to("#Rectangle6", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange6",
-          start: "top",
-          end: "+=100%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle4", {
-        opacity: 0.8,
-        delay: 1,
-      })
-      .to("#Rectangle4", {
-        opacity: 0,
-        delay: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#UiChange7",
-          start: "top",
-          end: "+=200%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Rectangle7", {
-        opacity: 1,
-        delay: 1,
-      });
-  </script>
 </html>

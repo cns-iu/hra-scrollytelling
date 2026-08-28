@@ -1,0 +1,248 @@
+:where(.story-narrative) {
+    --dialogue-color-text: #000;
+    --dialogue-color-neutral: #fff;
+    --dialogue-color-squiggy: rgb(153 202 244);
+    --dialogue-color-cece: rgb(243 167 167);
+    --dialogue-color-mac: rgb(244 169 196);
+    --dialogue-shadow: rgb(0 0 0 / 54%);
+}
+
+.story-narrative :where(
+    .defaulttalk,
+    .squiggytalk,
+    .cecetalk,
+    .cecetalk2,
+    .cecetalk3,
+    .cecetalk5,
+    .cecetalk6,
+    .squiggytalk5,
+    .squiggytalk6,
+    .mactalk,
+    .mactalk2
+) {
+    width: 80%;
+    max-width: 25rem;
+    margin: 1.875rem auto;
+    padding: 0.75rem;
+    position: relative;
+    color: var(--dialogue-color-text);
+    border-radius: 1.375rem;
+}
+
+.story-narrative :where(
+    .squiggytalk,
+    .cecetalk,
+    .cecetalk2,
+    .cecetalk3,
+    .cecetalk5,
+    .cecetalk6,
+    .squiggytalk5,
+    .squiggytalk6,
+    .mactalk,
+    .mactalk2
+) {
+    box-shadow: var(--dialogue-shadow) 0 3px 8px;
+}
+
+.story-narrative .defaulttalk {
+    background-color: var(--dialogue-color-neutral);
+    box-shadow: var(--dialogue-shadow) 0 3px 4px;
+    top: -15%;
+}
+
+.story-narrative .dialogue--squiggy {
+    background-color: var(--dialogue-color-squiggy);
+}
+
+.story-narrative .dialogue--cece {
+    background-color: var(--dialogue-color-cece);
+}
+
+.story-narrative :where(.squiggytalk, .squiggytalk5, .squiggytalk6) {
+    background-color: var(--dialogue-color-squiggy);
+}
+
+.story-narrative :where(.cecetalk, .cecetalk2, .cecetalk3, .cecetalk5, .cecetalk6) {
+    background-color: var(--dialogue-color-cece);
+}
+
+.story-narrative :where(.mactalk, .mactalk2) {
+    background-color: var(--dialogue-color-mac);
+}
+
+.story-narrative .squiggytalk {
+    right: 0;
+    top: -20%;
+}
+
+.story-narrative .cecetalk {
+    left: 1.25rem;
+    top: -25%;
+}
+
+.story-narrative .cecetalk2 {
+    left: 1.25rem;
+    top: -30%;
+}
+
+.story-narrative .cecetalk3 {
+    left: 10%;
+    top: 10%;
+}
+
+.story-narrative .cecetalk5 {
+    left: 10%;
+    top: -10%;
+}
+
+.story-narrative .cecetalk6 {
+    left: 2%;
+    top: -20%;
+}
+
+.story-narrative .squiggytalk5 {
+    right: -6%;
+    top: -5%;
+}
+
+.story-narrative .squiggytalk6 {
+    right: -6%;
+    top: 10%;
+}
+
+.story-narrative .mactalk {
+    left: 10%;
+    top: -7%;
+}
+
+.story-narrative .mactalk2 {
+    left: -5%;
+    top: 10%;
+}
+
+.story-narrative :where(
+    .squiggytalk,
+    .cecetalk,
+    .cecetalk2,
+    .cecetalk3,
+    .cecetalk5,
+    .cecetalk6,
+    .squiggytalk5,
+    .squiggytalk6,
+    .mactalk,
+    .mactalk2
+)::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+}
+
+.story-narrative .squiggytalk::after {
+    top: 100%;
+    left: 70%;
+    margin-top: -1px;
+    margin-left: -5px;
+    border-width: 18px;
+    border-color: var(--dialogue-color-squiggy) transparent transparent;
+}
+
+.story-narrative .cecetalk::after {
+    top: 100%;
+    left: 40%;
+    margin-top: -1px;
+    margin-left: -5px;
+    border-width: 18px;
+    border-color: var(--dialogue-color-cece) transparent transparent;
+}
+
+.story-narrative .cecetalk2::after {
+    content: ' ';
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    transform: rotate(-90deg);
+    border-color: var(--dialogue-color-cece) transparent transparent;
+}
+
+.story-narrative .cecetalk3::after {
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 15px;
+    border-color: transparent var(--dialogue-color-cece) transparent transparent;
+}
+
+.story-narrative .cecetalk5::after {
+    top: 38%;
+    right: 99%;
+    margin-top: -5px;
+    border-width: 15px;
+    border-color: transparent var(--dialogue-color-cece) transparent transparent;
+}
+
+.story-narrative .cecetalk6::after {
+    top: 100%;
+    left: 40%;
+    margin-top: -1px;
+    margin-left: -5px;
+    border-width: 18px;
+    border-color: var(--dialogue-color-cece) transparent transparent;
+}
+
+.story-narrative :where(.squiggytalk5, .squiggytalk6)::after {
+    top: 100%;
+    left: 30%;
+    margin-top: -1px;
+    margin-left: -5px;
+    border-width: 18px;
+    border-color: var(--dialogue-color-squiggy) transparent transparent;
+}
+
+.story-narrative .mactalk::after {
+    top: 100%;
+    left: 70%;
+    margin-top: -1px;
+    margin-left: -5px;
+    border-width: 18px;
+    border-color: var(--dialogue-color-mac) transparent transparent;
+}
+
+.story-narrative .mactalk2::after {
+    top: 65%;
+    left: 99%;
+    margin-top: -5px;
+    border-width: 15px;
+    border-color: transparent transparent transparent var(--dialogue-color-mac);
+}
+
+@media (forced-colors: active) {
+    .story-narrative :where(
+        .defaulttalk,
+        [class^="cecetalk"],
+        [class*=" cecetalk"],
+        [class^="squiggytalk"],
+        [class*=" squiggytalk"],
+        .mactalk,
+        .mactalk2,
+        .narrator
+    ) {
+        border: 2px solid CanvasText;
+        background: Canvas;
+        color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    .story-narrative :where(
+        .defaulttalk,
+        [class^="cecetalk"],
+        [class*=" cecetalk"],
+        [class^="squiggytalk"],
+        [class*=" squiggytalk"],
+        .mactalk,
+        .mactalk2
+    )::after {
+        display: none;
+    }
+}

@@ -1,0 +1,331 @@
+.story5-page {
+    --story5-color-scene-surface: #000;
+    --story5-color-page-surface: #fff;
+    --story5-color-control-focus: #fff;
+    --story5-color-control-focus-outer: #201e3d;
+
+    background-color: var(--story5-color-scene-surface) !important;
+    background: var(--story5-color-scene-surface);
+}
+
+.story5-page .intro {
+    background-color: var(--story5-color-page-surface);
+    margin-top: 0;
+}
+
+html:not(.story5-animation-ready) .story5-page .talkbubble {
+    visibility: visible;
+}
+
+.story5-page .introcharcece {
+    width: 12%;
+}
+
+.story5-page .introcharsquiggy {
+    width: 10%;
+}
+
+#main-content.story-main--intrinsic-height > .section2 {
+    height: auto;
+}
+
+.story5-page .scene5-1,
+.story5-page .scene5-2,
+.story5-page .scene5-3,
+.story5-page .scene5-35,
+.story5-page .scene5-4,
+.story5-page .scene5-5,
+.story5-page .scene5-6,
+.story5-page .scene5-7,
+.story5-page .scene5-8,
+.story5-page .scene5-9,
+.story5-page .scene5-10,
+.story5-page .scene5-11,
+.story5-page .scene5-12,
+.story5-page .scene5-13,
+.story5-page .scene5-14,
+.story5-page .scene5-15,
+.story5-page .scene5-16,
+.story5-page .scene5-17 {
+    height: 100vh;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+.story5-page .scene5-1,
+.story5-page .scene5-2,
+.story5-page .scene5-3,
+.story5-page .scene5-35,
+.story5-page .scene5-4,
+.story5-page .scene5-5 {
+    margin: 0;
+}
+
+.story5-page .scene5-2,
+.story5-page .scene5-3,
+.story5-page .scene5-35,
+.story5-page .scene5-4,
+.story5-page .scene5-5,
+.story5-page .scene5-6,
+.story5-page .scene5-7,
+.story5-page .scene5-8,
+.story5-page .scene5-9,
+.story5-page .scene5-10,
+.story5-page .scene5-11,
+.story5-page .scene5-12,
+.story5-page .scene5-13,
+.story5-page .scene5-14,
+.story5-page .scene5-15,
+.story5-page .scene5-16,
+.story5-page .scene5-17 {
+    background-color: var(--story5-color-scene-surface);
+}
+
+.story5-page .scene5-6,
+.story5-page .scene5-7,
+.story5-page .scene5-8,
+.story5-page .scene5-9,
+.story5-page .scene5-10,
+.story5-page .scene5-11,
+.story5-page .scene5-12,
+.story5-page .scene5-13,
+.story5-page .scene5-14,
+.story5-page .scene5-15,
+.story5-page .scene5-16,
+.story5-page .scene5-17 {
+    margin: auto;
+}
+
+.story5-page .scene5-1 {
+    background-color: var(--story5-color-page-surface);
+    background-image: url('images/5-1.svg');
+}
+
+.story5-page .scene5-2 {
+    background-image: url('images/5-2.svg');
+}
+
+.story5-page .scene5-3 {
+    background-image: url('images/5-3.svg');
+}
+
+.story5-page .scene5-35 {
+    background-image: url('images/5-35.svg');
+    border-top: 1px solid var(--story5-color-scene-surface);
+    border-bottom: 1px solid var(--story5-color-scene-surface);
+}
+
+.story5-page .scene5-4 {
+    background-image: url('images/5-4.svg');
+}
+
+.story5-page .scene5-5 {
+    background-image: url('images/5-5.svg');
+}
+
+.story5-page .scene5-8 {
+    background-image: url('images/5-8.png');
+}
+
+.story5-page .scene5-10 {
+    background-image: url('images/5-10.png');
+}
+
+.story5-page .scene5-12 {
+    background-image: url('images/5-12.png');
+}
+
+.story5-page .scene5-14 {
+    background-image: url('images/5-14.png');
+}
+
+.story5-page .scene5-16 {
+    background-image: url('images/5-16.png');
+}
+
+.story5-page .scene5-6,
+.story5-page .scene5-8,
+.story5-page .scene5-10,
+.story5-page .scene5-12,
+.story5-page .scene5-14,
+.story5-page .scene5-16 {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.story5-page .scene5-7,
+.story5-page .scene5-9,
+.story5-page .scene5-11,
+.story5-page .scene5-13,
+.story5-page .scene5-15,
+.story5-page .scene5-17 {
+    display: flex;
+    align-items: center;
+}
+
+.story5-page #sign {
+    width: 15%;
+    right: 20%;
+    bottom: 9%;
+    max-width: 500px;
+    min-width: 100px;
+    overflow: hidden;
+}
+
+.story5-page #move1 {
+    animation: MoveUpDown2 2s linear infinite;
+    width: 50%;
+    left: 20%;
+    bottom: 5%;
+    max-width: 500px;
+    min-width: 100px;
+}
+
+@keyframes MoveUpDown2 {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(5%);
+    }
+}
+
+.falling5 {
+    animation: MoveUpDown 2s linear infinite;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    margin: auto;
+    position: relative;
+    top: 35%;
+}
+
+@keyframes MoveUpDown {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(20%);
+    }
+}
+
+.video5 {
+    width: 100%;
+    max-height: 90vh;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    top: 2vh;
+    position: relative;
+}
+
+.vid {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.toparrowbutton {
+    display: flex;
+    margin: auto;
+    bottom: 5px;
+    top: 8vh;
+    position: relative;
+    z-index: 100;
+    opacity: 1;
+}
+
+.nextsectionbutton {
+    position: relative;
+    opacity: 1;
+    margin: auto;
+    top: -8vh;
+    z-index: 100;
+    width: 40px;
+    animation: float-up-down 2s ease-in-out infinite both;
+}
+
+.repeatbutton {
+    position: relative;
+    opacity: 1;
+    margin-left: auto;
+    top: -16vh;
+    z-index: 100;
+    right: 10%;
+    width: 40px;
+}
+
+.repeatbutton,
+.nextsectionbutton {
+    -moz-window-dragging: none;
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+@-webkit-keyframes float-up-down {
+    0% {
+        -webkit-transform: translateY(0);
+    }
+
+    50% {
+        -webkit-transform: translateY(-8%);
+        transform: translateY(-8%);
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+#bubble1,
+#bubble2 {
+    opacity: 0;
+}
+
+#bubble1 {
+    width: 40%;
+    min-width: 100px;
+    max-width: 500px;
+    left: 32%;
+    top: 10%;
+}
+
+.story5-page .story5-narrative-transition {
+    position: relative;
+    top: -30%;
+}
+
+.story5-page .story5-scene-spacer {
+    height: 20vh;
+    background-color: var(--story5-color-scene-surface);
+}
+
+.story5-page .story5-dialogue--lower {
+    top: 18%;
+}
+
+.sceneEnd {
+    background-color: var(--story5-color-page-surface);
+    height: auto;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}

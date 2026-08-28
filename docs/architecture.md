@@ -6,11 +6,21 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 ## Stability rules
 
 - Keep `index.html` and the root `story*.html` entry points at their current URLs.
+- Place new story entry points at `story/<number>/index.html` so they publish at `/story/<number>/`; do not move the
+  repository landing-page `index.html` into a story directory.
+- Treat the current `stories/storyN/` directories and root Story 1–6 entry points as legacy-but-maintained paths until
+  each story receives an explicitly approved, copy-first migration with compatibility planning.
 - Keep `story0.html`, `VisualizingCells.html`, and `organExample.html` as compatibility entry points for the organized
   prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
-- Treat `style.css` as a shared legacy stylesheet consumed by Stories 1–5 and retained prototypes.
+- Root `style.css` has been removed; keep shared foundations under `shared/css/` and story-specific presentation under
+  its owning story instead of recreating a root stylesheet.
+- Keep the narrative foundation, character-dialogue system, and legacy resource-card presentation shared by Stories
+  2, 3, and 5 under `shared/css/`, with filenames that distinguish them from the page-chrome styles in the same
+  directory.
+- Keep `.story-narrative` as the shared page contract for Stories 2, 3, and 5; story-specific page classes own scene
+  tokens and positioning variants.
 - Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
 - Do not mechanically format `story3.html` or `story4.html`; both contain large embedded data.
@@ -22,8 +32,9 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | --- | --- | --- |
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
-| Primary stories | `story1.html` through `story6.html` | Stories 1–5 retain shared legacy `style.css`; Story 6 uses only its dedicated `stories/story6/` implementation and namespaced shared page chrome; story media lives under its owning story or the appropriate shared asset directory |
-| Prototypes | Compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets and the root legacy stylesheet |
+| Primary stories | `story1.html` through `story6.html` | Stories 1, 4, and 6 use dedicated implementations; Stories 2, 3, and 5 share their narrative foundation, character-dialogue system, and resource-card presentation under `shared/css/`; all six stories use shared end-of-story navigation; story media lives under its owning story or the appropriate shared asset directory |
+| New stories | `story/<number>/index.html` | Singular numbered directories own each new story's entry point and exclusive implementation files; `story/7/README.md` defines the initial contract |
+| Prototypes | Compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets; all prototype implementations are independent of the former root legacy stylesheet |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
 build step, but those existing runtime integrations must still be preserved during story migrations.
@@ -40,6 +51,9 @@ Root HTML files remain stable public entry points while their implementation fil
 ├── story3.html
 ├── story4.html
 ├── story5.html
+├── story/
+│   └── 7/
+│       └── README.md
 ├── landing/
 ├── shared/
 │   ├── assets/
@@ -50,7 +64,13 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   ├── music/
 │   │   └── videos/
 │   ├── css/
+│   │   ├── appearance-controls.css
+│   │   ├── character-dialogue.css
+│   │   ├── narrative-accessibility.css
+│   │   ├── narrative-foundation.css
+│   │   └── resource-cards.css
 │   └── js/
+│       └── narrative-motion.js
 ├── prototypes/
 │   ├── drag-and-drop/
 │   │   ├── images/
@@ -60,10 +80,13 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   ├── index.html
 │   │   └── styles.css
 │   ├── scrollytelling-effects/
+│   │   ├── effects.css
 │   │   ├── images/
 │   │   ├── index.html
 │   │   ├── models/
+│   │   ├── navigation.css
 │   │   ├── scripts.js
+│   │   ├── styles.css
 │   │   └── wc.js
 │   ├── shared/
 │   │   ├── chrome.css
@@ -71,6 +94,7 @@ Root HTML files remain stable public entry points while their implementation fil
 │   └── visualizing-cells/
 │       ├── images/
 │       ├── index.html
+│       ├── styles.css
 │       └── videos/
 ├── stories/
 │   ├── story1/
@@ -82,21 +106,34 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   ├── story1.css
 │   │   └── videos/
 │   ├── story2/
+│   │   ├── animations.js
 │   │   ├── images/
 │   │   ├── quiz.css
-│   │   └── quiz.js
+│   │   ├── quiz.js
+│   │   └── styles.css
 │   ├── story3/
-│   │   └── images/
-│   ├── story4/
-│   │   ├── app.js
+│   │   ├── animations.js
 │   │   ├── images/
+│   │   ├── rui-animations.js
+│   │   └── styles.css
+│   ├── story4/
+│   │   ├── accessibility.css
+│   │   ├── app.js
+│   │   ├── animations.js
+│   │   ├── diagram-detail.js
+│   │   ├── diagram-overview.js
+│   │   ├── images/
+│   │   ├── motion.js
 │   │   ├── particles.js
-│   │   ├── scripts.js
+│   │   ├── styles.css
 │   │   └── config/
 │   │       └── particles.json
 │   └── story5/
 │       ├── accessibility.css
+│       ├── animations.js
 │       ├── images/
+│       ├── media-controls.js
+│       ├── styles.css
 │       └── videos/
 ├── docs/
 └── tools/
@@ -105,13 +142,22 @@ Root HTML files remain stable public entry points while their implementation fil
 The former root `img/` directory was removed after its drag-and-drop answer demo and SVG assets were consolidated under
 `prototypes/drag-and-drop/`. Do not recreate the root directory.
 
+Stories 2, 3, and 5 load `shared/css/narrative-foundation.css`, `shared/css/character-dialogue.css`, and
+`shared/css/resource-cards.css`. These shared styles own their common semantic `.story-narrative` page foundation,
+Nunito Sans narrative body, enhanced full-screen containers, introductory character treatment, layered imagery,
+dialogue presentation, and current external-resource card layout. `shared/css/narrative-accessibility.css` and
+`shared/js/narrative-motion.js` own the readable flowing mode used without JavaScript, with reduced motion, and on
+narrow or short viewports. Story-specific scenes, interactive controls, positioning modifiers, and visual tokens
+remain outside these shared files. The resource-card stylesheet preserves the established Stories 2, 3, and 5
+component; normalizing the distinct Story 1, 4, and 6 resource patterns remains separate work.
+
 `landing/css/fonts.css` remains as a compatibility bridge for cached landing-page documents. Maintained HTML entry
 points load `shared/css/fonts.css` directly; do not expand the compatibility file into a second font source.
 
 Story 1 keeps presentation and responsive layout in `stories/story1/story1.css`, motion and user-preference states in
 `stories/story1/accessibility.css`, animated-media controls in `stories/story1/motion-control.js`, and scroll-triggered
 progressive enhancement in `stories/story1/reveals.js`. Its reveals use browser APIs and do not require a third-party
-animation runtime.
+animation runtime. Story 1 is independent of the former root legacy `style.css`.
 
 Story 1 owns its video backgrounds under `stories/story1/videos/`. The GIF sequence and MP4 it shares with the
 Scrollytelling Effects prototype live under `shared/assets/images/` and `shared/assets/videos/`.
@@ -123,28 +169,60 @@ fragment links, or SVG `href` references. They remain invalid duplicate document
 accepted markup pattern. Clean them up as a separate SVG-maintenance change, using unique story-scoped IDs or removing
 unneeded IDs, and visually regression-test every affected illustration before and after the change.
 
-Story 3 owns its confirmed story-specific narrative scenes, collision-state artwork, kidney variations, and resource
-thumbnails under `stories/story3/images/`. The body-intro layers, telescope, and external-link arrow shared with other
-stories live under `shared/assets/images/`; the common favicon lives under `shared/assets/icons/`. Story 3's large
-inline SVG markup and its rules in the legacy root `style.css` remain deferred to separate migrations.
+Story 2 owns its story-specific scenes, video treatment, and legacy quiz layout under `stories/story2/styles.css`.
+Its focused quiz component remains separated into `stories/story2/quiz.css` and `stories/story2/quiz.js`. Story 2
+owns its scroll-driven runtime in `stories/story2/animations.js`; only this story loads MotionPathPlugin because its
+motion-path scene consumes that plugin. Story 2
+owns its scoped quiz color tokens and retains a single remote Inter request because its generated inline SVG labels
+still specify Inter. Its narrative body uses the shared self-hosted Nunito Sans foundation.
 
-Story 4 owns its particle runtime, inline configuration initializer, intentionally blank Bootstrap starter hook, and
-exclusive resource-card thumbnails in `stories/story4/`. Its 24 inline SVG image elements remain embedded in
-`story4.html`; its common favicon and external-link arrow use the organized shared asset directories. The
-Scrollytelling Effects prototype owns its complete `wc.js` web-component bundle alongside its prototype script. The
+Story 3 owns its story-specific scene and embedded-artwork presentation under `stories/story3/styles.css`, and its
+confirmed narrative scenes, collision-state artwork, kidney variations, and resource thumbnails under
+`stories/story3/images/`. The body-intro layers, telescope, and external-link arrow shared with other stories live
+under `shared/assets/images/`; the common favicon lives under `shared/assets/icons/`. Story 3 uses the shared
+self-hosted Nunito Sans narrative font, and its large inline SVG markup remains deferred to a separate migration.
+That generated SVG markup retains 18 pre-existing repeated ID values. The semantic page, motion, and inline-style
+migrations do not modify those generated identifiers; resolve them only in a dedicated visual-regression pass.
+Story 3's shared intro and dialogue timelines live in `stories/story3/animations.js`, while RUI-specific illustration
+timelines live in `stories/story3/rui-animations.js`.
+
+Story 4 owns its presentation, static accessibility layout, motion gate, particle runtime, configuration initializer,
+three focused animation modules, and exclusive resource-card thumbnails in `stories/story4/`. It defaults to a
+readable `.story4-flowing` document when JavaScript is unavailable, reduced motion is requested, or the viewport is
+too narrow or short for pinned scenes. Its enhanced header provides a visible control to hide ambient animation.
+The unused ScrollMagic, MotionPathPlugin, Bootstrap bundle, and blank Bootstrap starter hook were removed. Story 4 is
+independent of the former root legacy
+`style.css`; all three page and embedded-SVG stylesheet references resolve to `stories/story4/styles.css`. Its 24
+inline SVG image elements remain embedded in `story4.html`; its common favicon and external-link arrow use the
+organized shared asset directories. The Scrollytelling Effects prototype owns its complete `wc.js` web-component
+bundle alongside its prototype script. The
 former root `js/` directory was removed after repository-wide auditing confirmed that
 `jquery-3.6.3.min.js` and `magnifier.js` had no remaining consumers and that `runtime.js`, `polyfills.js`, and `main.js`
 were redundant build fragments embedded byte-for-byte within the consumed prototype bundle.
 
-Story 5 owns its story-specific scene backgrounds, narrative illustrations, media-control icons, and resource
-thumbnails under `stories/story5/images/` and its six videos under `stories/story5/videos/`. The body-intro layers,
-telescope, and external-link arrow shared with other stories live under `shared/assets/images/`; the common favicon
-lives under `shared/assets/icons/`.
+Story 4's embedded SVG illustrations contain 47 repeated ID values across 519 ID attributes. Some of those values are
+consumed by Story 4 animation selectors, gradients, masks, or other SVG fragment references, so they were intentionally
+left unchanged during the stylesheet migration. Treat them as a known invalid-markup baseline and clean them up only
+as a separate embedded-SVG migration with before-and-after animation and illustration regression testing.
+
+Story 5 owns its story-specific scene and media-control presentation under `stories/story5/styles.css`, its scene
+backgrounds, narrative illustrations, media-control icons, and resource thumbnails under `stories/story5/images/`,
+and its six videos under `stories/story5/videos/`. The body-intro layers, telescope, and external-link arrow shared
+with other stories live under `shared/assets/images/`; the common favicon lives under `shared/assets/icons/`. Story 5
+uses the shared self-hosted Nunito Sans narrative font. Its scroll animation lives in `animations.js`, while
+`media-controls.js` owns scoped event listeners for the six video sequences and their visible play, pause, replay,
+previous-section, and next-section controls. Flowing mode removes autoplay and exposes native video controls.
+
+`tools/check-maintained-pages.mjs` enforces maintained-page metadata, shared chrome, stylesheet order, heading and
+motion contracts, fragment and ARIA references, new-tab safety, and the absence of inline event handlers and retired
+runtimes. It also freezes the known duplicate-ID signatures in the embedded SVG artwork for Stories 2–4 so new ID
+regressions fail without presenting existing generated-artwork debt as newly introduced.
 
 Each retained prototype owns its exclusive images, videos, models, and dedicated presentation beneath its directory.
 Prototype-only shared artwork lives under `prototypes/shared/`; assets shared with a maintained story live under
-`shared/assets/`. Organ Example and the drag-and-drop answer demo are independent of the root legacy `style.css`;
-Visualizing Cells and Scrollytelling Effects remain intentional consumers during their staged migrations.
+`shared/assets/`. All four prototype implementations are independent of the former root legacy `style.css`. Scrollytelling
+Effects separates page and demonstration presentation in `styles.css`, interactive effects in `effects.css`, and its
+right-side table of contents and content framing in `navigation.css`.
 All prototype entry points load `shared/css/fonts.css` and use `prototypes/shared/typography.css` to default
 prototype-owned content to Nunito Sans. Prototype-owned styles may select Metropolis where specified. The generated
 Scrollytelling Effects web-component bundle retains its encapsulated internal typography and is not hand-edited for
@@ -157,7 +235,8 @@ patterns:
 
 - A fixed, visibly labeled Menu disclosure with links to the landing page and all maintained stories.
 - A canonical shared footer with organization links, a back-to-top action, and copyright information.
-- Previous and next story navigation on story pages.
+- A two-link story-navigation row: previous and next stories on Stories 2–5, Home in Story 1's previous slot, and Home
+  in Story 6's next slot.
 
 These components use namespaced selectors and modules under `shared/` so their behavior and presentation remain
 separate from landing-page layout and story artwork. Shared component selectors must not use legacy generic names such
@@ -184,6 +263,8 @@ JavaScript is unavailable.
 
 The Menu uses ordinary navigation links. Pages that initialize theme selection also include a native radio-group
 fieldset for System settings, Light, and Dark appearance choices; pages without that capability omit the fieldset.
+Core disclosure and skip-link presentation lives in `shared/css/navigation.css`; optional theme and contrast control
+presentation lives in `shared/css/appearance-controls.css` and is loaded only by the landing page and Story 6.
 Menus on pages without appearance selection use the `site-chrome--light` modifier so their presentation remains
 light instead of following the operating-system dark preference.
 On story pages, the selected appearance applies only to the shared page chrome; story artwork and story-specific
@@ -200,8 +281,11 @@ high stacking values that can otherwise change fixed positioning or obscure the 
 account for safe areas, short viewports, 320-pixel reflow, 400% zoom, focus visibility, Escape dismissal,
 outside-pointer dismissal, and focus restoration.
 
-Keep previous and next story navigation outside pinned or transformed story scenes. Keep the shared footer outside
-story-owned wrappers such as `.sceneEnd` so story animation, link, and theme rules cannot obscure or restyle it.
+Keep the two-link story navigation outside pinned or transformed story scenes. Stories 1–5 use the fixed Light
+story-navigation treatment; Story 6 allows it to follow the selected appearance. Keep the shared footer outside
+story-owned wrappers such as `.sceneEnd` so story animation, link, and theme rules cannot obscure or restyle either
+component. A story section containing final resources or end matter must use intrinsic height so overflowing narrative
+content cannot cover the following navigation or footer.
 
 The shared footer is semantic, has accessible names for functional images and links, and reflows without fixed
 heights. Its back-to-top enhancement returns keyboard focus to the main-content target. On Story 1 through Story 5,
@@ -213,6 +297,11 @@ follow the selected appearance. Story navigation remains a separate labeled `nav
 Every maintained page must support a complete linear reading experience for browser Reader View, unavailable
 JavaScript, reduced motion, short viewports, and high browser zoom. The semantic document is the canonical narrative;
 pinning, crossfades, overlays, and staged screenshots enhance that document only after their setup succeeds.
+
+Stories 2, 3, and 5 place the `.story-flowing` class on the document by default. Their synchronous shared motion
+gate replaces it with `.story-motion-enabled` only when reduced motion is off and the viewport supports the pinned
+experience. Returning to flowing mode stops active scroll triggers, exposes narrative copy in source order, disables
+nonessential animation, and makes Story 5 autoplay media user-controlled.
 
 Reader-oriented implementation belongs with each story because its animated visuals and fallback content differ.
 Shared expectations are:
@@ -232,7 +321,7 @@ ordered instructions instead of tutorial screenshots, and an explicit Conclusion
 copy. Its compact image dimension attributes are a documented Reader View sizing exception and must retain accurate
 aspect ratios.
 
-Story 6 is independent of the legacy root `style.css`. Its default scene layout is flowing and readable; the
+Story 6 is independent of the former legacy root `style.css`. Its default scene layout is flowing and readable; the
 `story-animations-enabled` state applies viewport height and clipping only to the pinned cell, mouse, and transition
 scenes. The tissue comparison and CDE tutorial own their longer heights in their component styles so a broad enhanced
 selector cannot clip the organ cards or collapse the tutorial scroll range. `node tools/check-story6.mjs` protects
