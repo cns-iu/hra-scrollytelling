@@ -1,3 +1,26 @@
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+:where(body#two) {
+    --narrative-color-text: #0e1825;
+
+    height: 100%;
+    margin: 0;
+    font-family: var(--font-body);
+}
+
+:where(body#two) p {
+    color: var(--narrative-color-text);
+    font-size: 1.125rem;
+}
+
+:where(body#two) .intro {
+    margin-top: 70px;
+}
+
 #two .section1,
 #two .section13 {
     background: black;
@@ -88,6 +111,16 @@
 
     100% {
         transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .introlineimg {
+        animation: none;
     }
 }
 

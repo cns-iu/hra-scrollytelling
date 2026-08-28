@@ -95,10 +95,10 @@ discard, commit, push, or publish changes unless those operations are explicitly
 
 ## Publication links
 
-- Link papers and scholarly publications through their canonical `https://doi.org/<doi>` URL whenever a DOI has been assigned
+- Link papers, scholarly publications, and Zenodo-hosted SOPs through their canonical `https://doi.org/<doi>` URL whenever a DOI has been assigned
 - Do not substitute a publisher, journal, repository, search-result, or DOI-proxy URL when a verified DOI URL is available
 - Never infer or fabricate a DOI; when no DOI exists, retain the most authoritative stable publication URL and document the exception
-- During every maintainability scan, audit links presented as papers or publications and references listed in story end matter; identify non-DOI links, verify whether each work has a DOI, and replace confirmed matches with the canonical DOI URL
+- Verify DOI availability when adding or changing a publication or Zenodo SOP link; recurring DOI audits are not part of unrelated maintainability scans
 
 ## Dependencies and runtime
 
@@ -210,8 +210,8 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
   `style.css`.
 - Keep Story 1 presentation under `stories/story1/`; do not reconnect `story1.html` to root `style.css`.
 - Keep the narrative foundation, character-dialogue, and legacy resource-card styles shared by Stories 2, 3, and 5
-  under `shared/css/`; keep story-specific scenes and interactions under their owning story as they migrate out of
-  root `style.css`.
+  under `shared/css/`; keep story-specific scenes and interactions under their owning story. Root `style.css` is a
+  temporary no-op compatibility file; do not restore declarations to it.
 - Keep Story 5-specific presentation under `stories/story5/styles.css`; do not restore those rules to root
   `style.css`.
 - Keep Story 2-specific presentation under `stories/story2/styles.css` and its focused quiz component under

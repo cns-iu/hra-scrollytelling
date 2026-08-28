@@ -122,7 +122,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── styles.css
 │   │   └── videos/
 │   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
-└── style.css           # Remaining legacy page foundation and Story 2 color variables
+└── style.css           # Temporary no-op compatibility file pending link removal
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
@@ -131,9 +131,12 @@ validating every HTML, CSS, JavaScript, JSON, and service-worker reference. See
 [`docs/asset-map.md`](docs/asset-map.md) for the current migration register.
 
 Stories 2, 3, and 5 share their narrative foundation, character dialogue, and current resource-card presentation
-through focused stylesheets under `shared/css/`. Their remaining dependency on root `style.css` is limited to the
-legacy page foundation and, for Story 2, its remaining color variables. All six stories use the shared two-link story
-navigation; Home fills the unavailable previous slot on Story 1 and the unavailable next slot on Story 6.
+through focused stylesheets under `shared/css/`. Their generic page foundation now lives in
+`shared/css/narrative-foundation.css`, while Story 2 owns its quiz color tokens. The three pages retain a temporary,
+no-op link to root `style.css` until that compatibility file is removed. All six stories use the shared two-link story
+navigation; Home fills the unavailable previous slot on Story 1 and the unavailable next slot on Story 6. Story 2
+retains one remote Inter request for its embedded SVG labels; Stories 3 and 5 use the shared self-hosted Nunito Sans
+body font.
 
 ## Landing-page architecture
 
@@ -275,8 +278,8 @@ mobile-browser testing.
 - Do not make broad edits to large embedded story documents.
 - Avoid reorganizing files as part of unrelated feature work.
 - Explain and approve dependency or repository-structure changes before implementing them.
-- Use canonical `https://doi.org/<doi>` links for papers and scholarly publications whenever a DOI exists; retain an authoritative stable URL only when no DOI has been assigned
-- Include all paper, publication, and end-matter reference links in maintainability scans, and replace verified non-DOI publication links with their canonical DOI URLs
+- Use canonical `https://doi.org/<doi>` links for papers, scholarly publications, and Zenodo-hosted SOPs whenever a DOI exists; retain an authoritative stable URL only when no DOI has been assigned
+- Verify DOI availability when adding or changing those links; do not include recurring DOI audits in unrelated maintainability scans
 - Keep this README and `AGENTS.md` synchronized with durable architecture and accessibility changes.
 - Follow the repository's branch, review, and release workflow for commits and publication.
 
@@ -305,11 +308,11 @@ Also verify:
 - Focus is visible and is not obscured.
 - No content is clipped after text-spacing changes.
 - Story structure and extraction-hint changes preserve the complete article in Firefox Reader View.
-- Paper, publication, and end-matter reference links use canonical DOI URLs when a verified DOI is available
+- New or changed paper, publication, and Zenodo SOP links use canonical DOI URLs when a verified DOI is available
 
 ## Known technical debt
 
-- Most story pages share one large global stylesheet.
+- Stories 2, 3, and 5 retain a temporary no-op reference to root `style.css` pending final compatibility cleanup.
 - Several filenames contain spaces, making path changes more error-prone.
 - Some story documents contain large embedded image data.
 - Story 2's inline SVG artwork contains 11 pre-existing repeated ID values; they are not current interaction targets,

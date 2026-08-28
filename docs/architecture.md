@@ -10,7 +10,8 @@ The site is served directly by GitHub Pages, so file locations and letter casing
   prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
-- Treat `style.css` as the remaining legacy stylesheet consumed only by Stories 2, 3, and 5.
+- Treat `style.css` as a temporary no-op compatibility file still linked only by Stories 2, 3, and 5; do not add
+  declarations to it.
 - Keep the narrative foundation, character-dialogue system, and legacy resource-card presentation shared by Stories
   2, 3, and 5 under `shared/css/`, with filenames that distinguish them from the page-chrome styles in the same
   directory.
@@ -25,7 +26,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | --- | --- | --- |
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
-| Primary stories | `story1.html` through `story6.html` | Stories 1, 4, and 6 use dedicated implementations; Stories 2, 3, and 5 share their narrative foundation, character-dialogue system, and resource-card presentation under `shared/css/` while retaining the legacy page foundation in `style.css`; all six stories use shared end-of-story navigation; story media lives under its owning story or the appropriate shared asset directory |
+| Primary stories | `story1.html` through `story6.html` | Stories 1, 4, and 6 use dedicated implementations; Stories 2, 3, and 5 share their narrative foundation, character-dialogue system, and resource-card presentation under `shared/css/` while retaining a temporary no-op link to `style.css`; all six stories use shared end-of-story navigation; story media lives under its owning story or the appropriate shared asset directory |
 | Prototypes | Compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets; all prototype implementations are independent of the root legacy stylesheet |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
@@ -120,11 +121,12 @@ The former root `img/` directory was removed after its drag-and-drop answer demo
 `prototypes/drag-and-drop/`. Do not recreate the root directory.
 
 Stories 2, 3, and 5 load `shared/css/narrative-foundation.css`, `shared/css/character-dialogue.css`, and
-`shared/css/resource-cards.css` before the remaining legacy `style.css`. These shared styles own their common
+`shared/css/resource-cards.css`. These shared styles own their common page foundation, Nunito Sans narrative body,
 full-screen containers, introductory character treatment, layered imagery, dialogue presentation, and current
 external-resource card layout. Story-specific scenes, interactive controls, and quizzes remain outside these shared
 files. The resource-card stylesheet preserves the established Stories 2, 3, and 5 component; normalizing the distinct
-Story 1, 4, and 6 resource patterns remains separate work.
+Story 1, 4, and 6 resource patterns remains separate work. The three pages still include a no-op `style.css` link as a
+temporary compatibility step before that root file is removed.
 
 `landing/css/fonts.css` remains as a compatibility bridge for cached landing-page documents. Maintained HTML entry
 points load `shared/css/fonts.css` directly; do not expand the compatibility file into a second font source.
@@ -146,14 +148,16 @@ unneeded IDs, and visually regression-test every affected illustration before an
 
 Story 2 owns its story-specific scenes, video treatment, and legacy quiz layout under `stories/story2/styles.css`.
 Its focused quiz component remains separated into `stories/story2/quiz.css` and `stories/story2/quiz.js`. Story 2
-continues to load root `style.css` only for the remaining legacy page foundation and Story 2 color variables.
+owns its scoped quiz color tokens and retains a single remote Inter request because its generated inline SVG labels
+still specify Inter. Its narrative body uses the shared self-hosted Nunito Sans foundation. Story 2 continues to
+include the temporary no-op root `style.css` link pending final compatibility cleanup.
 
 Story 3 owns its story-specific scene and embedded-artwork presentation under `stories/story3/styles.css`, and its
 confirmed narrative scenes, collision-state artwork, kidney variations, and resource thumbnails under
 `stories/story3/images/`. The body-intro layers, telescope, and external-link arrow shared with other stories live
 under `shared/assets/images/`; the common favicon lives under `shared/assets/icons/`. Story 3 continues to load root
-`style.css` only for the remaining legacy page foundation. Its large inline SVG markup
-remains deferred to a separate migration.
+`style.css` only as a temporary no-op compatibility link. Its narrative body uses the shared self-hosted Nunito Sans
+font, and its large inline SVG markup remains deferred to a separate migration.
 
 Story 4 owns its presentation, particle runtime, inline configuration initializer, intentionally blank Bootstrap
 starter hook, and exclusive resource-card thumbnails in `stories/story4/`. It is independent of the root legacy
@@ -174,7 +178,8 @@ Story 5 owns its story-specific scene and media-control presentation under `stor
 backgrounds, narrative illustrations, media-control icons, and resource thumbnails under `stories/story5/images/`,
 and its six videos under `stories/story5/videos/`. The body-intro layers, telescope, and external-link arrow shared
 with other stories live under `shared/assets/images/`; the common favicon lives under `shared/assets/icons/`. Story 5
-continues to load root `style.css` only for the remaining legacy page foundation.
+continues to load root `style.css` only as a temporary no-op compatibility link and uses the shared self-hosted Nunito
+Sans narrative font.
 
 Each retained prototype owns its exclusive images, videos, models, and dedicated presentation beneath its directory.
 Prototype-only shared artwork lives under `prototypes/shared/`; assets shared with a maintained story live under

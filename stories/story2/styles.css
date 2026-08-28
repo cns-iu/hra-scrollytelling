@@ -1,3 +1,10 @@
+#two {
+    --story2-color-accent: #e00d3a;
+    --story2-color-accent-strong: #b20a2f;
+    --story2-color-focus: #201e3d;
+    --story2-color-quiz-surface: #eff2f5;
+}
+
 #main-content.story-main--intrinsic-height > .section2 {
     height: auto;
 }
@@ -154,7 +161,7 @@
 }
 
 .sectionquiz {
-    background-color: var(--HRA-blue5);
+    background-color: var(--story2-color-quiz-surface);
     padding: 32px;
     line-height: 24px;
     font-size: 16px;
@@ -177,7 +184,7 @@
 }
 
 #two .choiceresult {
-    background-color: var(--HRA-red2);
+    background-color: var(--story2-color-accent);
     border: none;
     margin-top: 3px;
     color: white;
@@ -196,5 +203,5 @@
 
 #two .radiochoice input {
     margin-right: 12px;
-    accent-color: var(--HRA-red2);
+    accent-color: var(--story2-color-accent);
 }

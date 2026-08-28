@@ -2,6 +2,10 @@
     height: auto;
 }
 
+#two .talkbubble a {
+    color: var(--narrative-color-text);
+}
+
 #two .scene3-1,
 #two .scene3-2,
 #two .scene3-3,
