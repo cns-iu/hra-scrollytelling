@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="shared/css/tokens.css" />
     <link rel="stylesheet" href="shared/css/selection.css" />
     <link rel="stylesheet" href="shared/css/navigation.css" />
+    <link rel="stylesheet" href="shared/css/story-navigation.css" />
     <link rel="stylesheet" href="shared/css/footer.css" />
     <link rel="icon" href="shared/assets/icons/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" href="shared/assets/icons/favicon.svg" type="image/svg+xml" sizes="any" />
@@ -3967,46 +3968,43 @@
         </div>
       </div>
 
-      <!-- BotNav -->
-      <div class="botNav">
-        <a href="story3.html" class="previous"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-arrow-left"
-            viewBox="0 -3 16 16"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-            />
-          </svg>
-          Story 3: <span class="prevTitle">Something's NOT Registering</span></a
-        >
-        <a href="story5.html" class="next"
-          >Story 5: <span class="nextTitle">Know your body buddies</span
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-arrow-right"
-            viewBox="0 -3 16 16"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
-            />
-          </svg>
-        </a>
-      </div>
     </main>
+
+    <nav
+      class="site-story-navigation site-chrome site-chrome--light"
+      aria-label="Story navigation"
+    >
+      <ul class="site-story-navigation__list">
+        <li class="site-story-navigation__item">
+          <a class="site-story-navigation__link" href="story3.html">
+            <span class="site-story-navigation__arrow" aria-hidden="true"
+              >←</span
+            >
+            <span class="site-story-navigation__text">
+              <span class="site-story-navigation__direction"
+                >Previous story</span
+              >
+              <span class="site-story-navigation__title"
+                >Story 3: Something's NOT Registering!</span
+              >
+            </span>
+          </a>
+        </li>
+        <li class="site-story-navigation__item">
+          <a class="site-story-navigation__link" href="story5.html">
+            <span class="site-story-navigation__text">
+              <span class="site-story-navigation__direction">Next story</span>
+              <span class="site-story-navigation__title"
+                >Story 5: Know Your Body Buddies</span
+              >
+            </span>
+            <span class="site-story-navigation__arrow" aria-hidden="true"
+              >→</span
+            >
+          </a>
+        </li>
+      </ul>
+    </nav>
 
     <footer class="site-footer site-chrome site-chrome--dark">
       <nav class="site-footer__organizations" aria-label="Organizations">

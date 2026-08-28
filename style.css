@@ -43,37 +43,3 @@ h1 {
 .intro {
   margin-top: 70px;
 }
-
-/* ---- botNav---- */
-.botNav {
-  background-color: var(--HRA-blue5);
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-  font-family: 'Metropolis', Helvetica, Arial, sans-serif;
-  margin: auto;
-  padding: 16px;
-}
-
-.next,
-.previous {
-  color: var(--HRA-red3);
-  font-size: 14px;
-  cursor: pointer;
-  padding: 9px 16px 9px 16px;
-}
-
-.next:hover,
-.previous:hover {
-  background-color: rgba(178, 10, 47, 0.08);
-}
-
-.next:active,
-.previous:active {
-  background-color: rgba(178, 10, 47, 0.16);
-}
-
-.next:focus,
-.previous:focus {
-  border-color: var(--HRA-red2);
-}

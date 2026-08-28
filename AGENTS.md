@@ -47,7 +47,8 @@ footer, and end-of-story navigation use namespaced foundations under:
 - `shared/css/selection.css` for theme-aware text selection scoped to shared page chrome.
 - `shared/css/navigation.css` for the skip link and native Menu disclosure.
 - `shared/css/footer.css` for the canonical site footer.
-- `shared/css/story-navigation.css` for previous and next story links.
+- `shared/css/story-navigation.css` for the two-link end-of-story sequence: previous and next stories on Stories 2–5,
+  Home in Story 1's previous slot, and Home in Story 6's next slot.
 - `shared/js/main.js`, `shared/js/navigation-only.js`, `shared/js/menu.js`, `shared/js/theme.js`,
   `shared/js/contrast.js`, and `shared/js/back-to-top.js` for progressive enhancement.
 
@@ -67,6 +68,13 @@ follow their appearance selection. Do not remove a legacy component rule until r
 no maintained or prototype page consumes it. The Scrollytelling Effects, Organ Example, and Visualizing Cells
 prototypes explicitly adopt the navigation-only shared Menu and fixed-Dark shared footer. They remain outside shared
 appearance behavior, and prototype-owned content and navigation must stay isolated from shared page chrome.
+
+All six stories use the canonical two-link story-navigation row outside story-owned wrappers. Stories 1–5 keep that
+row on the fixed Light treatment; Story 6 allows it to follow appearance selection. Use Home in Story 1's previous
+slot and Story 6's next slot so every story retains two navigation targets.
+
+Story sections containing final resources or end matter must contribute their full intrinsic height to document flow
+so the following shared story navigation and footer cannot be covered by overflowing story content.
 All prototype entry points load `shared/css/fonts.css` and `prototypes/shared/typography.css`; prototype-owned body
 text defaults to Nunito Sans, while prototype-owned rules may select Metropolis where specified. Do not hand-edit
 generated web-component internals to override their encapsulated typography.

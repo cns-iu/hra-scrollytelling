@@ -1,3 +1,7 @@
+#main-content.story-main--intrinsic-height > .section2 {
+    height: auto;
+}
+
 #two .videozoom {
     background-color: black;
     height: 100vh;

@@ -122,7 +122,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── styles.css
 │   │   └── videos/
 │   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
-└── style.css           # Remaining legacy base and bottom-navigation styles for Stories 2, 3, and 5
+└── style.css           # Remaining legacy page foundation and Story 2 color variables
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
@@ -132,7 +132,8 @@ validating every HTML, CSS, JavaScript, JSON, and service-worker reference. See
 
 Stories 2, 3, and 5 share their narrative foundation, character dialogue, and current resource-card presentation
 through focused stylesheets under `shared/css/`. Their remaining dependency on root `style.css` is limited to the
-legacy page base and bottom navigation.
+legacy page foundation and, for Story 2, its remaining color variables. All six stories use the shared two-link story
+navigation; Home fills the unavailable previous slot on Story 1 and the unavailable next slot on Story 6.
 
 ## Landing-page architecture
 

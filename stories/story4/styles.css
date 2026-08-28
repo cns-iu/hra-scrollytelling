@@ -1,4 +1,4 @@
-/* Story 4 presentation, scenes, resources, and legacy story navigation. */
+/* Story 4 presentation, scenes, and resources. */
 
 html {
     width: 100%;
@@ -12,7 +12,6 @@ html {
 #four {
     --story4-blue: #201e3d;
     --story4-blue-muted: #4b4b5e;
-    --story4-navigation-background: #eff2f5;
     --story4-page-background: #ffffff;
     --story4-inverse-background: #000000;
     --story4-inverse-text: #ffffff;
@@ -272,32 +271,22 @@ html {
     float: left;
 }
 
-#four .botNav {
-    display: flex;
-    padding: 1rem;
-    margin: auto;
-    justify-content: space-between;
-    background-color: var(--story4-navigation-background);
-    font-family: var(--font-heading);
-    font-weight: 600;
-}
-
-#four :is(.next, .previous, .linkbutton) {
+#four .linkbutton {
     padding: 0.5625rem 1rem;
     color: var(--story4-link);
     cursor: pointer;
     font-size: 0.875rem;
 }
 
-#four :is(.next, .previous, .linkbutton):hover {
+#four .linkbutton:hover {
     background-color: var(--story4-link-hover);
 }
 
-#four :is(.next, .previous, .linkbutton):active {
+#four .linkbutton:active {
     background-color: var(--story4-link-active);
 }
 
-#four :is(.next, .previous, .linkbutton):focus-visible {
+#four .linkbutton:focus-visible {
     outline: 0.2rem solid var(--story4-link-focus);
     outline-offset: 0.125rem;
 }
@@ -313,7 +302,7 @@ html {
 }
 
 @media (forced-colors: active) {
-    #four :is(.next, .previous, .linkbutton):focus-visible {
+    #four .linkbutton:focus-visible {
         outline-color: Highlight;
     }
 }
