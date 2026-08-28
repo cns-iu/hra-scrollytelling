@@ -1,0 +1,196 @@
+#two .videozoom {
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#two .videozoom img {
+    width: 80%;
+    margin: auto;
+}
+
+.videozoom p {
+    text-align: center;
+    color: white;
+    opacity: 0.7;
+}
+
+.videozoom a {
+    color: white;
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+.videozoom h1 {
+    margin-top: 40px;
+    color: white;
+}
+
+@media all and (max-width: 750px) {
+    #two .videozoom img {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+#two .fadeimage2 {
+    position: relative;
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+    top: -10%;
+}
+
+#two .scene1,
+#two .scene1-1,
+#two .scene1-2,
+#two .scene2 {
+    background-color: black;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100%;
+}
+
+#two .scene1,
+#two .scene1-2 {
+    background-image: url('images/squiggy-and-cece-at-home.svg');
+}
+
+#two .scene1-1 {
+    background-image: url('images/squiggy-and-cece-close-up.svg');
+}
+
+#two .scene2 {
+    background-image: url('images/cece-reassures-squiggy.svg');
+}
+
+#two .scene3 {
+    background-image: none;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: black;
+}
+
+#two .scene6 {
+    background-color: black;
+    height: 1px;
+}
+
+#two .scene7,
+#two .scene8,
+#two .scene9,
+#two .scene10,
+#two .scene11,
+#two .scene12,
+#two .scene13 {
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#two .scene7 {
+    background-image: url('images/biomarker-discussion.svg');
+}
+
+#two .scene8 {
+    background-image: url('images/squiggy-discovers-tag.svg');
+}
+
+#two .scene9 {
+    background-image: url('images/squiggy-biomarker-tag.svg');
+}
+
+#two .scene10 {
+    background-image: url('images/biomarker-tag-close-up.svg');
+}
+
+#two .scene11 {
+    background-image: url('images/squiggy-asks-about-biomarkers.svg');
+}
+
+#two .scene12 {
+    background-image: url('images/squiggy-refuses-reporter-ride.svg');
+}
+
+#two .scene13 {
+    background-image: url('images/squiggy-and-cece-address-readers.svg');
+}
+
+#two .scrollbubble {
+    opacity: 0;
+}
+
+.linesection {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.sectionquiz {
+    background-color: var(--HRA-blue5);
+    padding: 32px;
+    line-height: 24px;
+    font-size: 16px;
+    margin-top: 10vh;
+    position: relative;
+}
+
+#two .quizheader {
+    font-size: 28px;
+}
+
+#two .quizp {
+    width: 80%;
+    justify-content: center;
+    margin: auto;
+}
+
+#two .quizp details {
+    padding: 10px;
+}
+
+#two .choiceresult {
+    background-color: var(--HRA-red2);
+    border: none;
+    margin-top: 3px;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#two .radiochoice {
+    margin: 0;
+    padding: 12px;
+    background-color: #f1f1f1;
+    font-size: 16px;
+}
+
+#two .radiochoice input {
+    margin-right: 12px;
+    accent-color: var(--HRA-red2);
+}

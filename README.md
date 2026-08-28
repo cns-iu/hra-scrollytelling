@@ -106,7 +106,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
 ├── stories/            # Gradually organized story-owned implementation files
 │   ├── story1/         # Story 1 styles, scripts, owned images, and videos
-│   ├── story2/         # Story 2 quiz and owned images
+│   ├── story2/         # Story 2 presentation, quiz, and owned images
 │   ├── story3/         # Story 3-owned narrative and resource images
 │   ├── story4/         # Story 4 scripts, particle configuration, and owned images
 │   │   ├── app.js

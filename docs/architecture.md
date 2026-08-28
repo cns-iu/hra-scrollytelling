@@ -92,7 +92,8 @@ Root HTML files remain stable public entry points while their implementation fil
 │   ├── story2/
 │   │   ├── images/
 │   │   ├── quiz.css
-│   │   └── quiz.js
+│   │   ├── quiz.js
+│   │   └── styles.css
 │   ├── story3/
 │   │   └── images/
 │   ├── story4/
@@ -137,6 +138,10 @@ labels predate the organized Story 2 asset directory and are not currently targe
 fragment links, or SVG `href` references. They remain invalid duplicate document IDs and must not be treated as an
 accepted markup pattern. Clean them up as a separate SVG-maintenance change, using unique story-scoped IDs or removing
 unneeded IDs, and visually regression-test every affected illustration before and after the change.
+
+Story 2 owns its story-specific scenes, video treatment, and legacy quiz layout under `stories/story2/styles.css`.
+Its focused quiz component remains separated into `stories/story2/quiz.css` and `stories/story2/quiz.js`. Story 2
+continues to load root `style.css` only for the remaining legacy base, bottom-navigation, and resource-card rules.
 
 Story 3 owns its confirmed story-specific narrative scenes, collision-state artwork, kidney variations, and resource
 thumbnails under `stories/story3/images/`. The body-intro layers, telescope, and external-link arrow shared with other

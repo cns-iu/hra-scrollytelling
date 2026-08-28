@@ -205,6 +205,8 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
   story-specific scenes and interactions under their owning story as they migrate out of root `style.css`.
 - Keep Story 5-specific presentation under `stories/story5/styles.css`; do not restore those rules to root
   `style.css`.
+- Keep Story 2-specific presentation under `stories/story2/styles.css` and its focused quiz component under
+  `stories/story2/quiz.css`; do not restore those rules to root `style.css`.
 - Do not create a new organizational directory directly under `stories/` without explicit approval.
 - Do not rewrite Git history to reduce repository size without explicit approval.
 - Do not expand a task into adjacent story pages or shared components without explaining the relationship and getting
