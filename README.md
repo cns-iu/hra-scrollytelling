@@ -146,7 +146,7 @@ validating every HTML, CSS, JavaScript, JSON, and service-worker reference. See
 
 Stories 2, 3, and 5 share their narrative foundation, character dialogue, and current resource-card presentation
 through focused stylesheets under `shared/css/`. Their generic page foundation now lives in
-`shared/css/narrative-foundation.css`; their readable narrow-viewport and reduced-motion mode lives in
+`shared/css/narrative-foundation.css`; their readable short-viewport and reduced-motion mode lives in
 `shared/css/narrative-accessibility.css` and `shared/js/narrative-motion.js`, while Story 2 owns its quiz color tokens.
 The former root `style.css` has been removed. All six stories use the shared two-link story navigation; Home fills the
 unavailable previous slot on Story 1 and the unavailable next slot on Story 6. Story 2 retains one remote Inter
@@ -273,8 +273,8 @@ The landing page targets WCAG 2.2 Level AAA and includes:
 - A persistent High contrast switch with visible state text and an announced switch state.
 
 The story pages predate this work and are receiving accessibility remediation incrementally. Stories 2, 3, and 5 now
-default to a readable linear layout without JavaScript and use that same mode for reduced motion, narrow viewports,
-and high zoom; pinned GSAP scenes are an enhancement for sufficiently large viewports. Story 6 uses a readable
+default to a readable linear layout without JavaScript and use that same mode for reduced motion, short viewports,
+and high zoom; portrait phone viewports retain the pinned GSAP experience. Story 6 uses a readable
 unpinned default, live reduced-motion handling, and semantic Reader View fallbacks for its animated anatomy, tutorial,
 and conclusion. The repository as a whole should not be described as WCAG AAA conformant until each story has been
 audited and tested.

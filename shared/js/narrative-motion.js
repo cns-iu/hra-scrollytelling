@@ -3,9 +3,7 @@
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const reducedTransparency = window.matchMedia('(prefers-reduced-transparency: reduce)');
     const forcedColors = window.matchMedia('(forced-colors: active)');
-    const supportedViewport = window.matchMedia(
-        '(min-width: 48.01rem) and (min-height: 40.01rem)'
-    );
+    const supportedViewport = window.matchMedia('(min-height: 30.01rem)');
 
     /**
      * Makes autoplaying narrative media user-controlled in the flowing layout.

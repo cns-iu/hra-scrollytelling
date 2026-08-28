@@ -147,8 +147,9 @@ Stories 2, 3, and 5 load `shared/css/narrative-foundation.css`, `shared/css/char
 Nunito Sans narrative body, enhanced full-screen containers, introductory character treatment, layered imagery,
 dialogue presentation, and current external-resource card layout. `shared/css/narrative-accessibility.css` and
 `shared/js/narrative-motion.js` own the readable flowing mode used without JavaScript, with reduced motion, and on
-narrow or short viewports. Story-specific scenes, interactive controls, positioning modifiers, and visual tokens
-remain outside these shared files. The resource-card stylesheet preserves the established Stories 2, 3, and 5
+short viewports. Portrait phone widths retain the enhanced scroll presentation. Story-specific scenes, interactive
+controls, positioning modifiers, and visual tokens remain outside these shared files. The resource-card stylesheet
+preserves the established Stories 2, 3, and 5
 component; normalizing the distinct Story 1, 4, and 6 resource patterns remains separate work.
 
 `landing/css/fonts.css` remains as a compatibility bridge for cached landing-page documents. Maintained HTML entry
@@ -189,7 +190,8 @@ timelines live in `stories/story3/rui-animations.js`.
 Story 4 owns its presentation, static accessibility layout, motion gate, particle runtime, configuration initializer,
 three focused animation modules, and exclusive resource-card thumbnails in `stories/story4/`. It defaults to a
 readable `.story4-flowing` document when JavaScript is unavailable, reduced motion is requested, or the viewport is
-too narrow or short for pinned scenes. Its enhanced header provides a visible control to hide ambient animation.
+too short for pinned scenes. Portrait phone widths retain the enhanced presentation. Its enhanced header provides a
+visible control to hide ambient animation.
 The unused ScrollMagic, MotionPathPlugin, Bootstrap bundle, and blank Bootstrap starter hook were removed. Story 4 is
 independent of the former root legacy
 `style.css`; all three page and embedded-SVG stylesheet references resolve to `stories/story4/styles.css`. Its 24

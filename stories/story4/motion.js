@@ -1,5 +1,5 @@
 const story4MotionQuery = window.matchMedia(
-    "(prefers-reduced-motion: no-preference) and (min-width: 48.01rem) and (min-height: 40.01rem)",
+    "(prefers-reduced-motion: no-preference) and (min-height: 30.01rem)",
 );
 const story4ReducedTransparency = window.matchMedia("(prefers-reduced-transparency: reduce)");
 const story4ForcedColors = window.matchMedia("(forced-colors: active)");
