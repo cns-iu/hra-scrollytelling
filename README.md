@@ -110,7 +110,8 @@ original URLs retained as compatibility pages. These are not primary entry point
 ├── story4.html
 ├── story5.html
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
-├── story/              # Singular clean-URL convention for new stories
+├── story/              # Singular clean-URL convention for migrated and new stories
+│   ├── 6/              # Story 6 styles, scripts, images, and contributor instructions
 │   └── 7/
 │       └── README.md   # Story 7 implementation and publication contract
 └── stories/            # Organized story-owned implementation files
@@ -129,14 +130,13 @@ original URLs retained as compatibility pages. These are not primary entry point
     │   ├── styles.css
     │   └── config/
     │       └── particles.json # Preserved particle configuration reference
-    ├── story5/         # Story 5 presentation, animation, accessible media controls, images, and videos
-    │   ├── accessibility.css
-    │   ├── animations.js
-    │   ├── images/
-    │   ├── media-controls.js
-    │   ├── styles.css
-    │   └── videos/
-    └── story6/         # Story 6 styles, scripts, images, and contributor instructions
+    └── story5/         # Story 5 presentation, animation, accessible media controls, images, and videos
+        ├── accessibility.css
+        ├── animations.js
+        ├── images/
+        ├── media-controls.js
+        ├── styles.css
+        └── videos/
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and

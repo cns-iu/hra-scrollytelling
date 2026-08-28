@@ -325,7 +325,8 @@ Story 6 is independent of the former legacy root `style.css`. Its default scene 
 `story-animations-enabled` state applies viewport height and clipping only to the pinned cell, mouse, and transition
 scenes. The tissue comparison and CDE tutorial own their longer heights in their component styles so a broad enhanced
 selector cannot clip the organ cards or collapse the tutorial scroll range. `node tools/check-story6.mjs` protects
-these geometry, source-order, ID, ARIA, responsive-image, and deferred-image contracts.
+these geometry, source-order, ID, ARIA, responsive-image, and deferred-image contracts. The published root
+`story6.html` entry point consumes its story-owned implementation and assets from `story/6/`.
 
 ## Migration workflow
 

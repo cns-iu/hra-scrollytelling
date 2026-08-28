@@ -7,6 +7,7 @@ const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
  */
 export function setupContentReveals() {
     setupIllustrationReveals();
+    setupCdeComparisonReveal();
 }
 
 /**
@@ -56,6 +57,65 @@ function setupIllustrationReveals() {
             disableReveals();
         } else {
             enableReveals();
+        }
+    };
+
+    syncRevealState();
+
+    if (typeof motionPreference.addEventListener === 'function') {
+        motionPreference.addEventListener('change', syncRevealState);
+    } else {
+        motionPreference.addListener(syncRevealState);
+    }
+}
+
+/**
+ * Reveals the two cell networks and their shared legend as one coordinated group.
+ *
+ * @returns {void}
+ */
+function setupCdeComparisonReveal() {
+    const comparison = document.querySelector('.cde-network-comparison');
+
+    if (!comparison || !('IntersectionObserver' in window)) {
+        return;
+    }
+
+    const motionPreference = window.matchMedia(REDUCED_MOTION_QUERY);
+    let observer = null;
+
+    const disableReveal = () => {
+        document.body.classList.remove('cde-comparison-reveals-enabled');
+        observer?.disconnect();
+        observer = null;
+    };
+
+    const enableReveal = () => {
+        if (observer || comparison.classList.contains('is-visible')) {
+            return;
+        }
+
+        document.body.classList.add('cde-comparison-reveals-enabled');
+        observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry?.isIntersecting) {
+                    return;
+                }
+
+                comparison.classList.add('is-visible');
+                observer?.disconnect();
+                observer = null;
+            },
+            { threshold: 0.15, rootMargin: '0px 0px -10%' },
+        );
+        observer.observe(comparison);
+    };
+
+    const syncRevealState = () => {
+        if (motionPreference.matches) {
+            disableReveal();
+        } else {
+            enableReveal();
         }
     };
 

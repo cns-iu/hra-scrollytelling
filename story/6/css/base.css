@@ -8,6 +8,10 @@
     }
 }
 
+html:has(body#six) {
+    overflow-x: clip;
+}
+
 #six {
     /* Page-scoped subset of the AtlasNG HRA palette and typography tokens */
     --hra-primary-30: #95001e;

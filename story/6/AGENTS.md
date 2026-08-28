@@ -7,11 +7,11 @@
 - Keep `story6.js` as the small entry point; place focused UI, animation, reveal, and layout responsibilities in `js/` modules
 - Keep `css/base.css` responsible for Story 6 typography tokens, accessibility, and page primitives; use `../../shared/css/fonts.css` for font declarations and the repository-level `shared/` styles and modules for the Menu and appearance controls
 - Keep `css/theme.css` responsible for Story 6 semantic color roles and scoped System, Light, Dark, High contrast, and forced-colors adaptations
-- Keep `css/splash-transitions.css`, `css/narrative.css`, `css/tissue-comparison.css`, `css/cde.css`, and `css/closing.css` scoped to their named Story 6 regions
+- Keep `css/splash-transitions.css`, `css/narrative.css`, `css/tissue-comparison.css`, `css/cde.css`, `css/cde-comparison.css`, and `css/closing.css` scoped to their named Story 6 regions
 - Keep responsive, animation-failure, and reduced-motion rules beside the component styles they modify rather than collecting them in a separate responsive file
 - Keep Story 6–specific narrative images in `img/`
-- Keep fonts, organization logos, and shared interface icons, including the favicon, under the repository-level `../../shared/assets/` directory; keep cross-story narrative images under `../shared/images/`
-- Resolve paths in `../../story6.html` from the repository root, such as `stories/story6/img/example.webp`
+- Keep fonts, organization logos, and shared interface icons, including the favicon, under the repository-level `../../shared/assets/` directory; keep cross-story narrative images under `../../shared/assets/images/`
+- Resolve paths in `../../story6.html` from the repository root, such as `story/6/img/example.webp`
 - Resolve paths in `css/*.css` from the `css/` directory, such as `../../../shared/assets/icons/info.svg`
 - Preserve current narrative copy unless the user explicitly requests content editing because Story 6 content may be changing concurrently
 
@@ -20,7 +20,7 @@
 - Do not add a build step or dependency for Story 6 without explicit approval
 - Keep styles scoped under `#six` unless behavior is genuinely shared by every story
 - Use the page-scoped HRA color and typography tokens for new Story 6 UI rather than introducing unscoped colors or type rules
-- Preserve the image-backed `.transition1`, `.transition2`, `.transition3`, and `.transition5` art direction across System, Light, and Dark; High contrast and forced-colors adaptations may strengthen text and scrims
+- Preserve the image-backed `.transition1`, `.transition2`, `.transition3`, `.transition4`, and `.transition5` art direction across System, Light, and Dark; High contrast and forced-colors adaptations may strengthen text and scrims
 - Keep Story 6 text selectable and preserve the accessible HRA-token-based `::selection` treatment
 - Disable Story 6 custom selection colors in forced-colors mode so the operating system controls the selected-text palette
 - Keep display formatting in the HTML or presenting component rather than caching formatted strings in JavaScript state
@@ -29,7 +29,7 @@
 - Keep the shared Menu markup in `../../story6.html` and load `shared/js/main.js`; do not duplicate its disclosure, appearance, or contrast behavior in Story 6 JavaScript
 - Keep external links opened in a new tab paired with `rel="noopener noreferrer"`
 - Do not embed, import, preload, or construct the Cell Distance Explorer web component in Story 6 because its runtime and dataset parsing block tutorial scrolling
-- End the native-sticky CDE tutorial after its fifth screenshot and proceed directly into Transition 5 without a launch control or interactive explorer state
+- End the native-sticky CDE tutorial after its fifth screenshot and proceed into Transition 4 and the static CDE comparison without a launch control or interactive explorer state
 - Keep tutorial images on the shared `1320 / 760` stage with an `82.5rem` maximum width
 - Keep CDE tutorial callouts as semantic ordered-list items using the `.tutorial-callout` component and decorative `../../shared/assets/icons/info.svg` icon
 - Keep tutorial callouts horizontally centered; place narrow-screen callouts below the scaled tutorial image
@@ -49,7 +49,7 @@
 - Prefer compositor-friendly `transform` and `opacity` animation over layout-triggering properties
 - Use `createTextboxTransition` and `addTextboxChoreography` for transition headings rather than duplicating timelines
 - Present transition headings as an editorial left-aligned column over a section-level contrast scrim; do not reintroduce floating bubbles, borders, or card shadows
-- Keep all four non-splash transition background images static; reserve transition motion for the scrim, heading, and emphasis underline
+- Keep all five non-splash transition background images static; reserve transition motion for the scrim, heading, and emphasis underline
 - Keep each transition question or section-introducing statement in its semantic heading; keep the final conclusion as a paragraph under the explicit Conclusion heading and wrap only the emphasized phrase in `.transition-emphasis`; never construct or rewrite accessible text character by character
 - Limit each transition to one emphasized phrase and animate its underline once after the heading entrance; do not use color alone to communicate emphasis
 - Keep transition questions left-aligned and maintain the narrower opening-question treatment
@@ -98,7 +98,7 @@
 - Use the 960 px transition settings below when regenerating that variant
 
 ```bash
-cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 stories/story6/img/transition-N-1920.webp -o stories/story6/img/transition-N-960.webp
+cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 story/6/img/transition-N-1920.webp -o story/6/img/transition-N-960.webp
 ```
 
 - Run the command from the repository root and do not install `cwebp` or any other tool without explicit approval
@@ -110,8 +110,8 @@ cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 stories/story6/img/transition-N
 Run the dependency-free checks from the repository root after JavaScript or path changes:
 
 ```bash
-for js_file in stories/story6/story6.js stories/story6/js/*.js; do node --check "$js_file" || exit 1; done
-npx --no-install eslint stories/story6/story6.js stories/story6/js/*.js --no-config-lookup --rule 'no-unused-vars:error' --rule 'no-unreachable:error' --rule 'no-dupe-keys:error'
+for js_file in story/6/story6.js story/6/js/*.js; do node --check "$js_file" || exit 1; done
+npx --no-install eslint story/6/story6.js story/6/js/*.js --no-config-lookup --rule 'no-unused-vars:error' --rule 'no-unreachable:error' --rule 'no-dupe-keys:error'
 node tools/check-story6.mjs
 git diff --check
 ```
@@ -139,4 +139,4 @@ Then open `http://localhost:8000/story6.html` and complete this smoke test:
 - Select text with a mouse and with mobile long-press, then confirm the selection colors remain readable on light and dark Story 6 surfaces
 - Confirm the tissue comparison is centered, its text remains left-aligned, and all nine samples are reachable without horizontal scrolling
 - Confirm the Cell Distance Explorer tutorial retains an accessible section name when visible introductory copy is intentionally absent
-- Open Firefox Reader View and confirm the title, all four transition sentences, compact mouse overview, tissue comparison, ordered CDE instructions, Conclusion heading and paragraph, resources, acknowledgments, and references appear once in source order
+- Open Firefox Reader View and confirm the title, all five transition sentences, compact mouse overview, tissue comparison, ordered CDE instructions, CDE comparison, Conclusion heading and paragraph, resources, acknowledgments, and references appear once in source order

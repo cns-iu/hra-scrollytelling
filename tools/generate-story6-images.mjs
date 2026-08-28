@@ -5,7 +5,7 @@ import path from "node:path";
 import { deflateSync, inflateSync } from "node:zlib";
 
 const projectRoot = process.cwd();
-const imageDirectory = path.join(projectRoot, "stories", "story6", "img");
+const imageDirectory = path.join(projectRoot, "story", "6", "img");
 const tissueNames = [
     "liver-young",
     "liver-aged",

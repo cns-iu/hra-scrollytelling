@@ -9,10 +9,12 @@ let destinationTimer;
 /**
  * Stages Story 6 image requests by narrative sequence instead of requesting every layer at startup.
  *
+ * @param {object} [options] Preparation callbacks
+ * @param {() => void} [options.onMouseImagesPrepared] Called after the mouse image group settles
  * @returns {void}
  */
-export function setupStoryImagePreparation() {
-    setupMouseImagePreparation();
+export function setupStoryImagePreparation({ onMouseImagesPrepared = () => {} } = {}) {
+    setupMouseImagePreparation(onMouseImagesPrepared);
     setupTissueImagePreparation();
     setupTutorialImagePreparation();
 }
@@ -20,13 +22,15 @@ export function setupStoryImagePreparation() {
 /**
  * Loads and decodes the mouse base and organ layers before the mouse transition completes.
  *
+ * @param {() => void} onPrepared Called after the mouse image group settles
  * @returns {void}
  */
-function setupMouseImagePreparation() {
+function setupMouseImagePreparation(onPrepared) {
     prepareWhenNear({
         targets: [document.querySelector('.transition1'), document.querySelector('.section3')],
         images: Array.from(document.querySelectorAll('.mouse-image img')),
         rootMargin: getConnectionAwareMargin(FAR_PRELOAD_MARGIN),
+        onPrepared,
     });
 }
 
@@ -74,9 +78,10 @@ function setupTutorialImagePreparation() {
  * @param {Array<Element|null>} options.targets Elements whose proximity starts preparation
  * @param {HTMLImageElement[]} options.images Images to request and decode in order
  * @param {string} options.rootMargin IntersectionObserver preload margin
+ * @param {() => void} [options.onPrepared] Called after the complete image group settles
  * @returns {void}
  */
-function prepareWhenNear({ targets, images, rootMargin }) {
+function prepareWhenNear({ targets, images, rootMargin, onPrepared = () => {} }) {
     const observedTargets = targets.filter(Boolean);
 
     if (observedTargets.length === 0 || images.length === 0) {
@@ -86,7 +91,7 @@ function prepareWhenNear({ targets, images, rootMargin }) {
     let prepared = false;
     let observer = null;
     let removeDestinationCheck = () => {};
-    const prepare = () => {
+    const prepare = async () => {
         if (prepared) {
             return;
         }
@@ -94,11 +99,12 @@ function prepareWhenNear({ targets, images, rootMargin }) {
         prepared = true;
         observer?.disconnect();
         removeDestinationCheck();
-        void prepareImagesSequentially(images);
+        await prepareImagesSequentially(images);
+        onPrepared();
     };
 
     if (!('IntersectionObserver' in window)) {
-        prepare();
+        void prepare();
         return;
     }
 
@@ -108,7 +114,7 @@ function prepareWhenNear({ targets, images, rootMargin }) {
                 return;
             }
 
-            prepare();
+            void prepare();
         },
         { rootMargin },
     );
@@ -122,7 +128,7 @@ function prepareWhenNear({ targets, images, rootMargin }) {
         });
 
         if (destinationIsVisible) {
-            prepare();
+            void prepare();
         }
     });
 }

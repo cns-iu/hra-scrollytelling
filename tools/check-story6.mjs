@@ -5,20 +5,49 @@ import path from "node:path";
 
 const projectRoot = process.cwd();
 const storyPath = path.join(projectRoot, "story6.html");
+const storyDirectory = path.join(projectRoot, "story", "6");
+const storyImageDirectory = path.join(storyDirectory, "img");
+const chartSvgNames = [
+    "2m-cde-600x600.svg",
+    "2m-violin-800x533.svg",
+    "24m-violin-600x600.svg",
+    "24m-violin-800x533.svg",
+    "2m-histogram-640x560.svg",
+    "2m-histogram-900x600.svg",
+    "2m-histogram-1200x600.svg",
+    "24m-histogram-640x560.svg",
+    "24m-histogram-900x600.svg",
+    "24m-histogram-1200x600.svg",
+];
 const files = {
     html: await readFile(storyPath, "utf8"),
-    animations: await readFile(path.join(projectRoot, "stories", "story6", "js", "animations.js"), "utf8"),
-    base: await readFile(path.join(projectRoot, "stories", "story6", "css", "base.css"), "utf8"),
-    cde: await readFile(path.join(projectRoot, "stories", "story6", "css", "cde.css"), "utf8"),
-    media: await readFile(path.join(projectRoot, "stories", "story6", "js", "media.js"), "utf8"),
-    narrative: await readFile(path.join(projectRoot, "stories", "story6", "css", "narrative.css"), "utf8"),
+    entry: await readFile(path.join(storyDirectory, "story6.js"), "utf8"),
+    animations: await readFile(path.join(storyDirectory, "js", "animations.js"), "utf8"),
+    base: await readFile(path.join(storyDirectory, "css", "base.css"), "utf8"),
+    cde: await readFile(path.join(storyDirectory, "css", "cde.css"), "utf8"),
+    cdeComparison: await readFile(path.join(storyDirectory, "css", "cde-comparison.css"), "utf8"),
+    layout: await readFile(path.join(storyDirectory, "js", "layout.js"), "utf8"),
+    media: await readFile(path.join(storyDirectory, "js", "media.js"), "utf8"),
+    narrative: await readFile(path.join(storyDirectory, "css", "narrative.css"), "utf8"),
+    reveals: await readFile(path.join(storyDirectory, "js", "reveals.js"), "utf8"),
+    theme: await readFile(path.join(storyDirectory, "css", "theme.css"), "utf8"),
 };
+const chartSvgs = await Promise.all(
+    chartSvgNames.map(async (name) => ({
+        name,
+        source: await readFile(path.join(storyImageDirectory, name), "utf8"),
+    })),
+);
+const nunitoSansFont = await readFile(
+    path.join(projectRoot, "shared", "assets", "fonts", "nunito-sans", "nunito-sans-latin-wght-normal.woff2"),
+);
 const issues = [];
 
 checkMarkupContracts();
 checkReaderViewOrder();
 checkAnimationGeometry();
 checkImagePolicy();
+checkSvgTypography();
 await checkLocalImageReferences();
 await checkAssetInventory();
 checkIdsAndReferences();
@@ -64,6 +93,40 @@ function checkMarkupContracts() {
     check(countMatches(files.html, /class="organ-comparison"/gu) === 3, "The tissue comparison must contain three organ cards");
     check(countMatches(files.html, /class="tissue-sample"/gu) === 9, "The tissue comparison must contain nine sample cards");
     check(countMatches(files.html, /class="tutorial-callout tutorial-callout--\d"/gu) === 5, "The CDE tutorial must contain five semantic steps");
+    check(files.html.includes('href="story/6/css/cde-comparison.css"'), "Story 6 must load the CDE comparison stylesheet");
+    check(countMatches(files.html, /class="cde-comparison__figure/gu) === 6, "The CDE comparison must contain six semantic figures");
+    check(countMatches(files.html, /class="cell-type-legend/gu) === 2, "The network and histogram comparisons must each retain a shared legend");
+    check(files.reveals.includes("setupCdeComparisonReveal()"), "The cell networks and legend must retain their coordinated viewport reveal");
+    check(
+        /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?\.cde-network-figure,[\s\S]*?\.cde-network-legend[\s\S]*?transition:\s*none\s*!important;/u.test(
+            files.cdeComparison,
+        ),
+        "The CDE comparison reveal must expose static content when reduced motion is requested",
+    );
+    check(
+        files.theme.includes("--hra-background: var(--story-color-page)") &&
+            files.theme.includes("--hra-on-background: var(--story-color-text)") &&
+            files.theme.includes("--hra-on-surface-variant: var(--story-color-text)") &&
+            files.cdeComparison.includes("color: var(--hra-on-background)") &&
+            files.cdeComparison.includes("color: var(--hra-on-surface-variant)") &&
+            files.cdeComparison.includes("background: var(--hra-background)"),
+        "The CDE comparison must use Story 6's scoped background, on-background, and on-surface-variant roles",
+    );
+    check(
+        files.cdeComparison.includes("--cde-comparison-section-gap: clamp(7rem, 12vw, 12rem)") &&
+            files.cdeComparison.includes("--cde-comparison-visual-gap: clamp(5rem, 10vw, 10rem)"),
+        "The CDE comparison must retain breathing room between narrative and visualization groups",
+    );
+    check(
+        countMatches(files.cdeComparison, /font:\s*var\(--hra-type-title-medium\);/gu) >= 2,
+        "CDE visualization and legend titles must use shared Title Medium typography",
+    );
+    check(
+        /font:\s*var\(--type-body-primary-weight\)\s+var\(--type-body-medium-size\)\s*\/\s*var\(--type-body-medium-line-height\)[\s\S]*?var\(--hra-font-plain\);/u.test(
+            files.cdeComparison,
+        ),
+        "CDE legend labels must use shared Body Medium typography",
+    );
     check(
         /<section\s+[^>]*class="transition transition5[^"]*"[^>]*aria-labelledby="conclusion-title"[\s\S]*?<h2[^>]*id="conclusion-title"[^>]*>Conclusion<\/h2>[\s\S]*?<p class="textbox-transition/iu.test(files.html),
         "The final transition must retain its explicit Conclusion heading and paragraph",
@@ -82,6 +145,8 @@ function checkReaderViewOrder() {
         "laboratory mice",
         "tissue-comparison-title",
         "cde-tutorial-title",
+        "Measuring distances between cells reveals how their spatial",
+        "cde-comparison-title",
         "conclusion-title",
         "resources-title",
         "acknowledgments-title",
@@ -110,6 +175,10 @@ function checkAnimationGeometry() {
         "Enhanced mode must not force every story scene to one clipped viewport",
     );
     check(
+        /html:has\(body#six\)\s*\{\s*overflow-x:\s*clip;/u.test(files.base),
+        "Story 6 must clip transformed illustration overflow at the root viewport",
+    );
+    check(
         /&\.story-animations-enabled\s*\{\s*\.section2,\s*\.section3,\s*\.transition\s*\{\s*height:\s*var\(--story-viewport-height\);\s*overflow:\s*hidden;/u.test(files.base),
         "Enhanced viewport sizing must stay limited to the genuinely pinned scenes",
     );
@@ -123,8 +192,30 @@ function checkAnimationGeometry() {
     );
     check(files.animations.includes("createScrubbedTrigger('.section5', 'bottom bottom', true)"), "The CDE tutorial must remain directly scrubbed");
     check(
+        /\.cde-histogram-legend\s*\{[\s\S]*?position:\s*sticky;[\s\S]*?@media\s*\(max-width:\s*47\.999rem\)[\s\S]*?\.cde-histogram-legend\s*\{[\s\S]*?position:\s*static;/u.test(
+            files.cdeComparison,
+        ),
+        "The histogram legend must be sticky above mobile and static on mobile",
+    );
+    check(
+        files.cdeComparison.includes("margin-block-end: clamp(1.125rem, 1.5vw, 1.75rem)"),
+        "The histogram legend must stop above the chart boundary at the final axis",
+    );
+    check(
         /\.body-outline\s*\{[\s\S]*?width:\s*auto;[\s\S]*?height:\s*100%;[\s\S]*?object-fit:\s*contain;/u.test(files.narrative),
         "Body artwork must retain height-driven, aspect-preserving sizing",
+    );
+    check(
+        files.narrative.includes("aspect-ratio: 16 / 9") &&
+            files.narrative.includes("pointer-events: none") &&
+            /\.mouse-image\s*\{[\s\S]*?img\s*\{[\s\S]*?object-fit:\s*contain;/u.test(files.narrative),
+        "The desktop mouse stage must preserve the complete artwork and leave narrative text selectable",
+    );
+    check(
+        files.entry.includes("setupStoryImagePreparation({ onMouseImagesPrepared: refreshStoryLayout })") &&
+            files.media.includes("await prepareImagesSequentially(images)") &&
+            files.layout.includes("ScrollTrigger?.refresh()"),
+        "Mouse image preparation must refresh downstream ScrollTrigger geometry after decoding",
     );
     check(
         /\.tutorial\s*\{[\s\S]*?opacity:\s*0;[\s\S]*?visibility:\s*hidden;[\s\S]*?\.tutorial1\s*\{[\s\S]*?opacity:\s*1;[\s\S]*?visibility:\s*visible;/u.test(
@@ -134,7 +225,7 @@ function checkAnimationGeometry() {
     );
     check(!/textbox[^\n]*autoAlpha|autoAlpha[^\n]*textbox/iu.test(files.animations), "Semantic transition text must not use autoAlpha");
 
-    for (const selector of [".page-header", ".section2", ".section3", ".transition1", ".transition2", ".transition3", ".section5", ".transition5"]) {
+    for (const selector of [".page-header", ".section2", ".section3", ".transition1", ".transition2", ".transition3", ".section5", ".transition4", ".transition5"]) {
         check(files.html.includes(selector.slice(1)), `Animation selector has no matching Story 6 markup: ${selector}`);
     }
 }
@@ -145,7 +236,7 @@ function checkAnimationGeometry() {
  * @returns {void}
  */
 function checkImagePolicy() {
-    const storyImages = Array.from(files.html.matchAll(/<img\b[^>]*(?:src|data-src)="stories\/story6\/img\/[^>]*>/giu), (match) => match[0]);
+    const storyImages = Array.from(files.html.matchAll(/<img\b[^>]*(?:src|data-src)="story\/6\/img\/[^>]*>/giu), (match) => match[0]);
 
     for (const image of storyImages) {
         check(/\balt="[^"]*"/u.test(image), `Story 6 image is missing alt text: ${summarizeTag(image)}`);
@@ -163,9 +254,52 @@ function checkImagePolicy() {
     check(countMatches(files.html, /-640\.png\s+640w/gu) >= 15, "Tissue, cell, and mouse artwork must retain 640px candidates");
     check(countMatches(files.html, /tutorial\d-660\.png\s+660w/gu) === 5, "All tutorial frames must retain 660px candidates");
     check(countMatches(files.html, /tutorial\d-1320\.png\s+1320w/gu) === 5, "All tutorial frames must retain 1320px candidates");
-    check(countMatches(files.html, /\bdata-src="stories\/story6\/img\//gu) === 8, "Four mouse layers and four tutorial frames must stay request-staged");
+    check(countMatches(files.html, /cell-distance-vis-(?:560|800)\.png\s+(?:560|800)w/gu) === 4, "Both cell networks must retain 560px and 800px candidates");
+    check(countMatches(files.html, /histogram-(?:640x560|900x600|1200x600)\.svg/gu) === 6, "Both histograms must retain all three responsive layouts");
+    check(countMatches(files.html, /\bdata-src="story\/6\/img\//gu) === 8, "Four mouse layers and four tutorial frames must stay request-staged");
     check(files.media.includes("prepareImagesSequentially"), "Story 6 media preparation must remain sequential");
     check(!files.media.includes("DEFAULT_PRELOAD_MARGIN = '300% 0px'"), "The former 300% tissue preload burst must stay removed");
+}
+
+/**
+ * Checks that responsive chart SVGs load Nunito Sans and retain shared axis typography.
+ *
+ * @returns {void}
+ */
+function checkSvgTypography() {
+    for (const { name, source } of chartSvgs) {
+        const bodyValueCount = name.includes('histogram') ? 21 : 19;
+        const embeddedFont = source.match(/src: url\("data:font\/woff2;base64,([^"]+)"\) format\("woff2-variations"\)/u);
+
+        check(Boolean(embeddedFont), `${name} must embed the shared Nunito Sans font for external-image rendering`);
+
+        if (embeddedFont) {
+            check(
+                Buffer.from(embeddedFont[1], 'base64').equals(nunitoSansFont),
+                `${name} embedded Nunito Sans data must match the shared font source`,
+            );
+        }
+
+        check(
+            !source.includes('../../../shared/assets/fonts/'),
+            `${name} must not depend on an external font request from SVG image context`,
+        );
+        check(
+            countMatches(
+                source,
+                /font-family="Nunito Sans Variable, sans-serif" font-size="12" font-weight="400" letter-spacing="0\.4px"/gu,
+            ) === bodyValueCount,
+            `${name} axis values must use 12px Body Small typography`,
+        );
+        check(
+            countMatches(
+                source,
+                /font-family="Nunito Sans Variable, sans-serif" font-size="14" font-weight="500" letter-spacing="0\.5px"/gu,
+            ) === 2,
+            `${name} axis titles must use 14px Label Medium typography`,
+        );
+        check(!source.includes('font-family="Nunito Sans"'), `${name} must not depend on an unavailable local Nunito Sans face`);
+    }
 }
 
 /**
@@ -181,7 +315,7 @@ async function checkLocalImageReferences() {
         for (const candidate of match[1].split(",")) {
             const reference = candidate.trim().split(/\s+/u)[0];
 
-            if (reference.startsWith("stories/story6/img/")) {
+            if (reference.startsWith("story/6/img/")) {
                 references.add(reference);
             }
         }
@@ -197,28 +331,28 @@ async function checkLocalImageReferences() {
 }
 
 /**
- * Verifies the Story 6 binary inventory, including removed and reserved assets.
+ * Verifies the Story 6 binary inventory, including removed and required assets.
  *
  * @returns {Promise<void>} Resolves after each inventory path is checked
  */
 async function checkAssetInventory() {
     const removed = ["CDE-Placeholder.png", "cells.webp"];
-    const reserved = ["transition4-960.webp", "transition4-1920.webp", "transition4-3840.webp"];
+    const required = ["transition4-960.webp", "transition4-1920.webp", "transition4-3840.webp"];
 
     for (const filename of removed) {
         try {
-            await access(path.join(projectRoot, "stories", "story6", "img", filename));
-            issues.push(`Verified dead asset was reintroduced: stories/story6/img/${filename}`);
+            await access(path.join(storyImageDirectory, filename));
+            issues.push(`Verified dead asset was reintroduced: story/6/img/${filename}`);
         } catch {
             // Absence is the expected state.
         }
     }
 
-    for (const filename of reserved) {
+    for (const filename of required) {
         try {
-            await access(path.join(projectRoot, "stories", "story6", "img", filename));
+            await access(path.join(storyImageDirectory, filename));
         } catch {
-            issues.push(`Reserved Story 6 transition asset is missing: stories/story6/img/${filename}`);
+            issues.push(`Required Story 6 transition asset is missing: story/6/img/${filename}`);
         }
     }
 }
