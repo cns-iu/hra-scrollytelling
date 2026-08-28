@@ -1,0 +1,204 @@
+.defaulttalk,
+.squiggytalk,
+.cecetalk,
+.cecetalk2,
+.cecetalk3,
+.cecetalk5,
+.cecetalk6,
+.squiggytalk5,
+.squiggytalk6,
+.mactalk,
+.mactalk2 {
+    padding: 12px;
+    color: black !important;
+    max-width: 400px;
+    width: 80%;
+    border-radius: 22px;
+    margin: auto;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.squiggytalk,
+.cecetalk,
+.cecetalk2,
+.cecetalk3,
+.cecetalk5,
+.cecetalk6,
+.squiggytalk5,
+.squiggytalk6,
+.mactalk,
+.mactalk2 {
+    box-shadow: rgba(0, 0, 0, 0.54) 0 3px 8px;
+}
+
+.defaulttalk {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.54) 0 3px 4px;
+    top: -15%;
+}
+
+.squiggytalk,
+.squiggytalk5,
+.squiggytalk6 {
+    background-color: rgb(153, 202, 244);
+}
+
+.cecetalk,
+.cecetalk2,
+.cecetalk3,
+.cecetalk5,
+.cecetalk6 {
+    background-color: rgb(243, 167, 167);
+}
+
+.mactalk,
+.mactalk2 {
+    background-color: rgb(244, 169, 196);
+}
+
+.squiggytalk {
+    right: 0;
+    top: -20%;
+}
+
+.cecetalk {
+    left: 20px;
+    top: -25%;
+}
+
+.cecetalk2 {
+    left: 20px;
+    top: -30%;
+}
+
+.cecetalk3 {
+    left: 10%;
+    top: 10%;
+}
+
+.cecetalk5 {
+    left: 10%;
+    top: -10%;
+}
+
+.cecetalk6 {
+    left: 2%;
+    top: -20%;
+}
+
+.squiggytalk5 {
+    right: -6%;
+    top: -5%;
+}
+
+.squiggytalk6 {
+    right: -6%;
+    top: 10%;
+}
+
+.mactalk {
+    left: 10%;
+    top: -7%;
+}
+
+.mactalk2 {
+    left: -5%;
+    top: 10%;
+}
+
+.squiggytalk:after,
+.cecetalk:after,
+.cecetalk2:after,
+.cecetalk3:after,
+.cecetalk5:after,
+.cecetalk6:after,
+.squiggytalk5:after,
+.squiggytalk6:after,
+.mactalk:after,
+.mactalk2:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+}
+
+.squiggytalk:after {
+    top: 100%;
+    left: 70%;
+    margin-left: -5px;
+    border-width: 18px;
+    margin-top: -1px;
+    border-color: rgb(153, 202, 244) transparent transparent transparent;
+}
+
+.cecetalk:after {
+    top: 100%;
+    left: 40%;
+    margin-left: -5px;
+    margin-top: -1px;
+    border-width: 18px;
+    border-color: rgb(243, 167, 167) transparent transparent transparent;
+}
+
+.cecetalk2:after {
+    content: ' ';
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    transform: rotate(-90deg);
+    border-color: rgb(243, 167, 167) transparent transparent transparent;
+}
+
+.cecetalk3:after {
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 15px;
+    border-color: transparent rgb(243, 167, 167) transparent transparent;
+}
+
+.cecetalk5:after {
+    top: 38%;
+    right: 99%;
+    margin-top: -5px;
+    border-width: 15px;
+    border-color: transparent rgb(243, 167, 167) transparent transparent;
+}
+
+.cecetalk6:after {
+    top: 100%;
+    left: 40%;
+    margin-left: -5px;
+    margin-top: -1px;
+    border-width: 18px;
+    border-color: rgb(243, 167, 167) transparent transparent transparent;
+}
+
+.squiggytalk5:after,
+.squiggytalk6:after {
+    top: 100%;
+    left: 30%;
+    margin-left: -5px;
+    border-width: 18px;
+    margin-top: -1px;
+    border-color: rgb(153, 202, 244) transparent transparent transparent;
+}
+
+.mactalk:after {
+    top: 100%;
+    left: 70%;
+    margin-left: -5px;
+    border-width: 18px;
+    margin-top: -1px;
+    border-color: rgb(244, 169, 196) transparent transparent transparent;
+}
+
+.mactalk2:after {
+    top: 65%;
+    left: 99%;
+    margin-top: -5px;
+    border-width: 15px;
+    border-color: transparent transparent transparent rgb(244, 169, 196);
+}

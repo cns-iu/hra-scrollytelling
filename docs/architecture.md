@@ -10,7 +10,9 @@ The site is served directly by GitHub Pages, so file locations and letter casing
   prototype implementations.
 - Keep landing-page-specific implementation under `landing/`; keep approved landing-and-story fonts and page chrome
   under `shared/`.
-- Treat `style.css` as a shared legacy stylesheet consumed only by Stories 2, 3, and 5.
+- Treat `style.css` as the remaining legacy stylesheet consumed only by Stories 2, 3, and 5.
+- Keep the narrative foundation and character-dialogue system shared by Stories 2, 3, and 5 under `shared/css/`, with
+  filenames that distinguish them from the page-chrome styles in the same directory.
 - Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
 - Do not mechanically format `story3.html` or `story4.html`; both contain large embedded data.
@@ -22,7 +24,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | --- | --- | --- |
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
-| Primary stories | `story1.html` through `story6.html` | Stories 1, 4, and 6 use dedicated implementations; Stories 2, 3, and 5 retain shared legacy `style.css`; story media lives under its owning story or the appropriate shared asset directory |
+| Primary stories | `story1.html` through `story6.html` | Stories 1, 4, and 6 use dedicated implementations; Stories 2, 3, and 5 share their narrative foundation and character-dialogue system under `shared/css/` while retaining remaining legacy rules in `style.css`; story media lives under its owning story or the appropriate shared asset directory |
 | Prototypes | Compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets; all prototype implementations are independent of the root legacy stylesheet |
 
 Some story pages load established libraries from content-delivery networks. The repository has no package manager or
@@ -50,6 +52,8 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   ├── music/
 │   │   └── videos/
 │   ├── css/
+│   │   ├── character-dialogue.css
+│   │   └── narrative-foundation.css
 │   └── js/
 ├── prototypes/
 │   ├── drag-and-drop/
@@ -109,6 +113,11 @@ Root HTML files remain stable public entry points while their implementation fil
 
 The former root `img/` directory was removed after its drag-and-drop answer demo and SVG assets were consolidated under
 `prototypes/drag-and-drop/`. Do not recreate the root directory.
+
+Stories 2, 3, and 5 load `shared/css/narrative-foundation.css` and `shared/css/character-dialogue.css` before the
+remaining legacy `style.css`. The shared narrative styles own
+their common full-screen containers, introductory character treatment, layered imagery, and dialogue presentation.
+Story-specific scenes, interactive controls, quizzes, and resource cards remain outside these shared files.
 
 `landing/css/fonts.css` remains as a compatibility bridge for cached landing-page documents. Maintained HTML entry
 points load `shared/css/fonts.css` directly; do not expand the compatibility file into a second font source.

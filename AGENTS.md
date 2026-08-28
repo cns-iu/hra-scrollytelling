@@ -201,6 +201,9 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
 - Keep Scrollytelling Effects presentation under `prototypes/scrollytelling-effects/`; do not reconnect it to root
   `style.css`.
 - Keep Story 1 presentation under `stories/story1/`; do not reconnect `story1.html` to root `style.css`.
+- Keep the narrative foundation and character-dialogue styles shared by Stories 2, 3, and 5 under `shared/css/`; keep
+  story-specific scenes and interactions under their owning story as they migrate out of root `style.css`.
+- Do not create a new organizational directory directly under `stories/` without explicit approval.
 - Do not rewrite Git history to reduce repository size without explicit approval.
 - Do not expand a task into adjacent story pages or shared components without explaining the relationship and getting
   approval.

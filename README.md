@@ -88,7 +88,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── logos/      # Theme-aware organization logos
 │   │   ├── music/      # Shared story and prototype audio
 │   │   └── videos/     # Video shared by maintained and prototype experiences
-│   ├── css/            # Fonts, tokens, navigation, footer, and story-navigation styles
+│   ├── css/            # Page chrome plus shared story narrative and dialogue styles
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── prototypes/         # Organized legacy experiences and their maintenance notes
 │   ├── drag-and-drop/           # Drag-and-drop answer demo and owned assets
@@ -121,7 +121,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── images/
 │   │   └── videos/
 │   └── story6/         # Story 6 styles, scripts, images, and contributor instructions
-└── style.css           # Legacy styles retained by Stories 2, 3, and 5
+└── style.css           # Remaining legacy styles retained by Stories 2, 3, and 5
 ```
 
 The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
