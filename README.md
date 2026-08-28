@@ -131,10 +131,11 @@ validating every HTML, CSS, JavaScript, JSON, and service-worker reference. See
 
 Stories 2, 3, and 5 share their narrative foundation, character dialogue, and current resource-card presentation
 through focused stylesheets under `shared/css/`. Their generic page foundation now lives in
-`shared/css/narrative-foundation.css`, while Story 2 owns its quiz color tokens. The former root `style.css` has been
-removed. All six stories use the shared two-link story navigation; Home fills the unavailable previous slot on Story
-1 and the unavailable next slot on Story 6. Story 2 retains one remote Inter request for its embedded SVG labels;
-Stories 3 and 5 use the shared self-hosted Nunito Sans body font.
+`shared/css/narrative-foundation.css`; their readable narrow-viewport and reduced-motion mode lives in
+`shared/css/narrative-accessibility.css` and `shared/js/narrative-motion.js`, while Story 2 owns its quiz color tokens.
+The former root `style.css` has been removed. All six stories use the shared two-link story navigation; Home fills the
+unavailable previous slot on Story 1 and the unavailable next slot on Story 6. Story 2 retains one remote Inter
+request for its embedded SVG labels; Stories 3 and 5 use the shared self-hosted Nunito Sans body font.
 
 ## Landing-page architecture
 
@@ -148,8 +149,9 @@ The landing page is deliberately separated from the legacy story implementation:
 - `shared/css/fonts.css` owns the self-hosted HRA font declarations and resilient typography stacks.
 - `landing/css/fonts.css` preserves the former font URL for cached landing-page documents.
 - `landing/css/tokens.css` owns light/dark HRA colors, semantic roles, and shared layout tokens.
-- `shared/css/tokens.css`, `shared/css/selection.css`, `shared/css/navigation.css`, and `shared/css/footer.css` own the
-  canonical Menu, skip link, and footer.
+- `shared/css/tokens.css`, `shared/css/selection.css`, `shared/css/navigation.css`,
+  `shared/css/appearance-controls.css`, and `shared/css/footer.css` own the canonical Menu, optional appearance
+  controls, skip link, and footer.
 - `landing/css/styles.css` owns landing content, layout, responsive rules, and page-specific accessibility adaptations.
 - `landing/js/main.js` initializes the shared Menu, appearance, contrast, and back-to-top modules for the landing page.
 
@@ -210,6 +212,10 @@ The landing page and Story 6 include an Accessibility group with a persistent Hi
 the operating-system contrast preference until a visitor explicitly turns it on or off. Story 1 through Story 5 use
 navigation-only Menus without appearance or High contrast controls.
 
+Maintained pages load shared fonts and tokens before shared component CSS, then load page- or story-owned styles.
+Only the landing page and Story 6 load `shared/css/appearance-controls.css`. Stories 2, 3, and 5 load their shared
+narrative foundations before story-owned CSS and keep the flowing accessibility stylesheet last.
+
 ## Shared page chrome
 
 The maintained landing page and story pages use the same Menu and footer foundations while retaining page-specific
@@ -251,10 +257,12 @@ The landing page targets WCAG 2.2 Level AAA and includes:
 - A persistent three-state appearance preference grouped with a native fieldset and radio controls.
 - A persistent High contrast switch with visible state text and an announced switch state.
 
-The story pages predate this work and are receiving accessibility remediation incrementally. Story 6 now uses a
-readable unpinned default, live reduced-motion handling, and semantic Reader View fallbacks for its animated anatomy,
-tutorial, and conclusion. The repository as a whole should not be described as WCAG AAA conformant until each story
-has been audited and tested.
+The story pages predate this work and are receiving accessibility remediation incrementally. Stories 2, 3, and 5 now
+default to a readable linear layout without JavaScript and use that same mode for reduced motion, narrow viewports,
+and high zoom; pinned GSAP scenes are an enhancement for sufficiently large viewports. Story 6 uses a readable
+unpinned default, live reduced-motion handling, and semantic Reader View fallbacks for its animated anatomy, tutorial,
+and conclusion. The repository as a whole should not be described as WCAG AAA conformant until each story has been
+audited and tested.
 
 All maintained pages should support browser Reader View over time. Keep the complete narrative and end matter in
 semantic source order, exclude decorative animation layers, and provide concise in-flow equivalents for informative

@@ -15,6 +15,8 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 - Keep the narrative foundation, character-dialogue system, and legacy resource-card presentation shared by Stories
   2, 3, and 5 under `shared/css/`, with filenames that distinguish them from the page-chrome styles in the same
   directory.
+- Keep `.story-narrative` as the shared page contract for Stories 2, 3, and 5; story-specific page classes own scene
+  tokens and positioning variants.
 - Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
 - Do not mechanically format `story3.html` or `story4.html`; both contain large embedded data.
@@ -54,10 +56,13 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   ├── music/
 │   │   └── videos/
 │   ├── css/
+│   │   ├── appearance-controls.css
 │   │   ├── character-dialogue.css
+│   │   ├── narrative-accessibility.css
 │   │   ├── narrative-foundation.css
 │   │   └── resource-cards.css
 │   └── js/
+│       └── narrative-motion.js
 ├── prototypes/
 │   ├── drag-and-drop/
 │   │   ├── images/
@@ -121,11 +126,13 @@ The former root `img/` directory was removed after its drag-and-drop answer demo
 `prototypes/drag-and-drop/`. Do not recreate the root directory.
 
 Stories 2, 3, and 5 load `shared/css/narrative-foundation.css`, `shared/css/character-dialogue.css`, and
-`shared/css/resource-cards.css`. These shared styles own their common page foundation, Nunito Sans narrative body,
-full-screen containers, introductory character treatment, layered imagery, dialogue presentation, and current
-external-resource card layout. Story-specific scenes, interactive controls, and quizzes remain outside these shared
-files. The resource-card stylesheet preserves the established Stories 2, 3, and 5 component; normalizing the distinct
-Story 1, 4, and 6 resource patterns remains separate work.
+`shared/css/resource-cards.css`. These shared styles own their common semantic `.story-narrative` page foundation,
+Nunito Sans narrative body, enhanced full-screen containers, introductory character treatment, layered imagery,
+dialogue presentation, and current external-resource card layout. `shared/css/narrative-accessibility.css` and
+`shared/js/narrative-motion.js` own the readable flowing mode used without JavaScript, with reduced motion, and on
+narrow or short viewports. Story-specific scenes, interactive controls, positioning modifiers, and visual tokens
+remain outside these shared files. The resource-card stylesheet preserves the established Stories 2, 3, and 5
+component; normalizing the distinct Story 1, 4, and 6 resource patterns remains separate work.
 
 `landing/css/fonts.css` remains as a compatibility bridge for cached landing-page documents. Maintained HTML entry
 points load `shared/css/fonts.css` directly; do not expand the compatibility file into a second font source.
@@ -155,6 +162,8 @@ confirmed narrative scenes, collision-state artwork, kidney variations, and reso
 `stories/story3/images/`. The body-intro layers, telescope, and external-link arrow shared with other stories live
 under `shared/assets/images/`; the common favicon lives under `shared/assets/icons/`. Story 3 uses the shared
 self-hosted Nunito Sans narrative font, and its large inline SVG markup remains deferred to a separate migration.
+That generated SVG markup retains 18 pre-existing repeated ID values. The semantic page, motion, and inline-style
+migrations do not modify those generated identifiers; resolve them only in a dedicated visual-regression pass.
 
 Story 4 owns its presentation, particle runtime, inline configuration initializer, intentionally blank Bootstrap
 starter hook, and exclusive resource-card thumbnails in `stories/story4/`. It is independent of the former root legacy
@@ -222,6 +231,8 @@ JavaScript is unavailable.
 
 The Menu uses ordinary navigation links. Pages that initialize theme selection also include a native radio-group
 fieldset for System settings, Light, and Dark appearance choices; pages without that capability omit the fieldset.
+Core disclosure and skip-link presentation lives in `shared/css/navigation.css`; optional theme and contrast control
+presentation lives in `shared/css/appearance-controls.css` and is loaded only by the landing page and Story 6.
 Menus on pages without appearance selection use the `site-chrome--light` modifier so their presentation remains
 light instead of following the operating-system dark preference.
 On story pages, the selected appearance applies only to the shared page chrome; story artwork and story-specific
@@ -254,6 +265,11 @@ follow the selected appearance. Story navigation remains a separate labeled `nav
 Every maintained page must support a complete linear reading experience for browser Reader View, unavailable
 JavaScript, reduced motion, short viewports, and high browser zoom. The semantic document is the canonical narrative;
 pinning, crossfades, overlays, and staged screenshots enhance that document only after their setup succeeds.
+
+Stories 2, 3, and 5 place the `.story-flowing` class on the document by default. Their synchronous shared motion
+gate replaces it with `.story-motion-enabled` only when reduced motion is off and the viewport supports the pinned
+experience. Returning to flowing mode stops active scroll triggers, exposes narrative copy in source order, disables
+nonessential animation, and makes Story 5 autoplay media user-controlled.
 
 Reader-oriented implementation belongs with each story because its animated visuals and fallback content differ.
 Shared expectations are:

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="story-flowing">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,20 +7,22 @@
     <title>Squiggy's Identity Crisis!</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" href="shared/css/narrative-foundation.css" />
-    <link rel="stylesheet" href="shared/css/character-dialogue.css" />
-    <link rel="stylesheet" href="shared/css/resource-cards.css" />
-    <link rel="stylesheet" href="stories/story2/styles.css" />
     <link rel="stylesheet" href="shared/css/fonts.css" />
     <link rel="stylesheet" href="shared/css/tokens.css" />
     <link rel="stylesheet" href="shared/css/selection.css" />
     <link rel="stylesheet" href="shared/css/navigation.css" />
     <link rel="stylesheet" href="shared/css/story-navigation.css" />
     <link rel="stylesheet" href="shared/css/footer.css" />
+    <link rel="stylesheet" href="shared/css/narrative-foundation.css" />
+    <link rel="stylesheet" href="shared/css/character-dialogue.css" />
+    <link rel="stylesheet" href="shared/css/resource-cards.css" />
+    <link rel="stylesheet" href="stories/story2/styles.css" />
     <link rel="stylesheet" href="stories/story2/quiz.css" />
+    <link rel="stylesheet" href="shared/css/narrative-accessibility.css" />
     <link rel="icon" href="shared/assets/icons/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" href="shared/assets/icons/favicon.svg" type="image/svg+xml" sizes="any" />
     <link rel="apple-touch-icon" href="shared/assets/icons/apple-touch-icon.png" sizes="180x180" />
+    <script src="shared/js/narrative-motion.js"></script>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
@@ -47,7 +49,7 @@
     <script type="module" src="stories/story2/quiz.js"></script>
   </head>
 
-  <body id="two">
+  <body class="story-narrative story2-page">
     <a class="site-skip-link site-chrome" href="#main-content"
       >Skip to main content</a
     >
@@ -116,7 +118,10 @@
     >
       <!-- section header/intro -->
       <section class="intro" id="intro">
-        <h3 class="overtext" id="introTypeLine"></h3>
+        <p class="story-intro-summary">
+          There are roughly 37 trillion cells in the human body.
+        </p>
+        <p class="overtext" id="introTypeLine" aria-hidden="true"></p>
         <div
           class="fadeimage"
           role="img"
@@ -127,22 +132,21 @@
           <img
             src="shared/assets/images/telescope.svg"
             alt=""
-            class="picture3 imagepart"
-            style="width: 140px"
+            class="picture3 imagepart narrative-telescope"
           />
         </div>
       </section>
 
       <section class="section1">
-        <div class="container" style="left: 20px">
+        <div class="container narrative-intro-copy">
           This is the story of two of them: Squiggy and CeCe.
         </div>
       </section>
 
       <section class="section13">
-        <div class="container2 introline" style="left: 20px">
+        <div class="container2 introline narrative-intro-copy">
           <p>On this week's episode:&nbsp;</p>
-          <h1 style="font-size: 1.6em">Squiggy's Identity Crisis!</h1>
+          <h1 class="story-episode-title">Squiggy's Identity Crisis!</h1>
           <p class="descriptionsection">
             In which our heroes take a ride on HuBMAP's ASCT+B Reporter, learn
             that "partonomy" has <b>nothing</b> to do with the science of
@@ -187,23 +191,23 @@
         <div class="scene1-1"></div>
 
         <div class="talkbubble">
-          <div class="squiggytalk" style="background-color: rgb(153, 202, 244)">
+          <div class="squiggytalk">
             <b>Squiggy:</b> Hey, CeCe?
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+          <div class="cecetalk">
             <b>CeCe:</b> What is it, Squiggy?
           </div>
         </div>
         <div class="talkbubble">
-          <div class="squiggytalk" style="background-color: rgb(153, 202, 244)">
+          <div class="squiggytalk">
             <b>Squiggy:</b> Have you ever wondered about the big questions? You
             know: Who am I? Do I belong? What is my purpose?
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+          <div class="cecetalk">
             <b>CeCe:</b> Sure, Squig. I think everybody does.
           </div>
         </div>
@@ -212,13 +216,13 @@
         <div class="scene1-2"></div>
 
         <div class="talkbubble">
-          <div class="defaulttalk" style="background-color: rgb(153, 202, 244)">
+          <div class="defaulttalk dialogue--squiggy">
             <b>Squiggy:</b> But I have so many questions, and I don't know any
             of the answers. This identity crisis has me all bent out of shape!
           </div>
         </div>
         <div class="talkbubble">
-          <div class="defaulttalk" style="background-color: rgb(243, 167, 167)">
+          <div class="defaulttalk dialogue--cece">
             <b>CeCe:</b> Whoa, Squiq! Don't burst your membrane!
           </div>
         </div>
@@ -269,37 +273,36 @@
             <img
               src="stories/story2/images/asctb-reporter-zoom-target.svg"
               alt=""
-              class="zoompic2 imagepart"
-              style="height: 20vh; top: 50%"
+              class="zoompic2 imagepart story2-zoom-target"
             />
           </div>
         </div>
 
         <div class="talkbubble">
-          <div class="cecetalk" style="margin-top: 80px">
+          <div class="cecetalk story2-dialogue--spaced">
             <b>CeCe:</b> This is the Human Reference Atlas's ASCT+B Reporter!
           </div>
         </div>
 
         <div class="talkbubble">
-          <div class="squiggytalk" style="margin-top: 26px">
+          <div class="squiggytalk story2-dialogue--compact">
             <b>Squiggy:</b> What does it do?
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="margin-top: 80px">
+          <div class="cecetalk story2-dialogue--spaced">
             <b>CeCe:</b> Well, it can help us solve your identity crisis!
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="margin-top: 80px">
+          <div class="cecetalk story2-dialogue--spaced">
             <b>CeCe:</b> The ASCT+B Reporter allows researchers to explore
             anatomical structures, cell types, and biomarkers that make up
             organs.
           </div>
         </div>
         <div class="talkbubble">
-          <div class="cecetalk" style="margin-top: 80px">
+          <div class="cecetalk story2-dialogue--spaced">
             <b>CeCe:</b> The data tables from which the Reporter gets its
             information are authored and reviewed by experts in their field.
           </div>
@@ -2032,26 +2035,23 @@
         </section>
 
         <!--last talking section-->
-        <div style="overflow-x: hidden">
+        <div class="story2-dialogue-track">
           <div class="scene7"></div>
 
           <div class="talkbubble">
-            <div
-              class="squiggytalk"
-              style="background-color: rgb(153, 202, 244)"
-            >
+            <div class="squiggytalk">
               <b>Squiggy:</b> Do you think I have biomarkers that would help
               scientists identify what kind of cell type I am?
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> You bet, Squig! Scientists have many ways of
               detecting the presence of characteristic biomarkers.
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> Unfortunately, those are way too complicated to get
               into right now, so let me just look at that tag on your back.
             </div>
@@ -2063,9 +2063,7 @@
 
           <div class="talkbubble">
             <div
-              class="squiggytalk"
-              style="background-color: rgb(153, 202, 244); top: -30%"
-              ;
+              class="squiggytalk story2-dialogue--raised"
             >
               <b>Squiggy:</b> Tag? What tag?
             </div>
@@ -2076,8 +2074,7 @@
 
           <div class="talkbubble">
             <div
-              class="cecetalk2"
-              style="background-color: rgb(243, 167, 167); top: -20%; left: 10%"
+              class="cecetalk2 story2-dialogue--upper-left"
             >
               <b>CeCe:</b>
               Right here!
@@ -2088,10 +2085,7 @@
           <div class="scene10"></div>
 
           <div class="talkbubble">
-            <div
-              class="defaulttalk"
-              style="background-color: rgb(153, 202, 244)"
-            >
+            <div class="defaulttalk dialogue--squiggy">
               <b>Squiggy:</b> Ooooh!
             </div>
           </div>
@@ -2100,16 +2094,13 @@
           <div class="scene11"></div>
 
           <div class="talkbubble">
-            <div
-              class="squiggytalk"
-              style="background-color: rgb(153, 202, 244)"
-            >
+            <div class="squiggytalk">
               <b>Squiggy:</b> But how will these help me find out what kind of
               cell I am?
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> I'll show you. Ready to go on another journey,
               Squiggy?
             </div>
@@ -2118,35 +2109,29 @@
 
           <div class="scene12"></div>
           <div class="talkbubble">
-            <div
-              class="squiggytalk"
-              style="background-color: rgb(153, 202, 244)"
-            >
+            <div class="squiggytalk">
               <b>Squiggy:</b> Oh, CeCe, please... no more! Don't make me ride
               this crazy thing again. I haven't recovered from the last trip!
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> Alright, alright. Don't pop your nucleus. I've got an
               idea.
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> Maybe we could ask these people out here to help.
             </div>
           </div>
           <div class="talkbubble">
-            <div
-              class="squiggytalk"
-              style="background-color: rgb(153, 202, 244)"
-            >
+            <div class="squiggytalk">
               <b>Squiggy:</b> What people?
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> Those nice people out there who have been scrolling
               along and reading our adventure.
             </div>
@@ -2156,20 +2141,17 @@
           <div class="scene13"></div>
 
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> How about it readers? Want to help out our friend?
             </div>
           </div>
           <div class="talkbubble">
-            <div
-              class="squiggytalk"
-              style="background-color: rgb(153, 202, 244)"
-            >
+            <div class="squiggytalk">
               <b>Squiggy:</b> Oh, please say "yes!"
             </div>
           </div>
           <div class="talkbubble">
-            <div class="cecetalk" style="background-color: rgb(243, 167, 167)">
+            <div class="cecetalk">
               <b>CeCe:</b> Then head over to the Reporter to find out what kind
               of cell type our friend is.
             </div>
@@ -2202,7 +2184,6 @@
                   <img
                     src="shared/assets/images/arrow.svg"
                     alt=""
-                    style="vertical-align: middle"
                   />
                 </a>
               </li>
@@ -2238,7 +2219,6 @@
                     <img
                       src="shared/assets/images/arrow.svg"
                       alt=""
-                      style="vertical-align: middle"
                     />
                   </a>
                 </p>
@@ -2279,7 +2259,7 @@
         </section>
 
         <div class="Externallinkssection">
-          <p class="indexTitle" style="margin-bottom: 80px">Resources</p>
+          <p class="indexTitle">Resources</p>
           <div class="ExternalLinkCards">
             <div class="ExternalLinkCard">
               <img class="ExternalLinkImg" src="stories/story2/images/resource-asctb-tables.png" alt="" />
@@ -2298,7 +2278,6 @@
                 <img
                   src="shared/assets/images/arrow.svg"
                   alt=""
-                  style="vertical-align: middle"
                 />
               </a>
             </div>
@@ -2319,7 +2298,6 @@
                 <img
                   src="shared/assets/images/arrow.svg"
                   alt=""
-                  style="vertical-align: middle"
                 />
               </a>
             </div>
@@ -2340,7 +2318,6 @@
                 <img
                   src="shared/assets/images/arrow.svg"
                   alt=""
-                  style="vertical-align: middle"
                 />
               </a>
             </div>
@@ -2362,7 +2339,6 @@
                 <img
                   src="shared/assets/images/arrow.svg"
                   alt=""
-                  style="vertical-align: middle"
                 />
               </a>
             </div>
@@ -2471,6 +2447,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
 
   <script>
+    if (window.hraStoryMotionEnabled) {
     //intro part
     gsap
       .timeline({
@@ -2509,7 +2486,7 @@
 
     function typeWriter() {
       if (m < txt.length) {
-        document.getElementById("introTypeLine").innerHTML += txt.charAt(m);
+        document.getElementById("introTypeLine").textContent += txt.charAt(m);
         m++;
         setTimeout(typeWriter, speed);
       }
@@ -2848,6 +2825,7 @@
           s = a[i | 0];
         return s + (a[Math.ceil(i)] - s) * (i % 1);
       };
+    }
     }
   </script>
 </html>

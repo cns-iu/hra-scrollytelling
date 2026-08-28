@@ -1,204 +1,217 @@
-.defaulttalk,
-.squiggytalk,
-.cecetalk,
-.cecetalk2,
-.cecetalk3,
-.cecetalk5,
-.cecetalk6,
-.squiggytalk5,
-.squiggytalk6,
-.mactalk,
-.mactalk2 {
-    padding: 12px;
-    color: black !important;
-    max-width: 400px;
+:where(.story-narrative) {
+    --dialogue-color-text: #000;
+    --dialogue-color-neutral: #fff;
+    --dialogue-color-squiggy: rgb(153 202 244);
+    --dialogue-color-cece: rgb(243 167 167);
+    --dialogue-color-mac: rgb(244 169 196);
+    --dialogue-shadow: rgb(0 0 0 / 54%);
+}
+
+.story-narrative :where(
+    .defaulttalk,
+    .squiggytalk,
+    .cecetalk,
+    .cecetalk2,
+    .cecetalk3,
+    .cecetalk5,
+    .cecetalk6,
+    .squiggytalk5,
+    .squiggytalk6,
+    .mactalk,
+    .mactalk2
+) {
     width: 80%;
-    border-radius: 22px;
-    margin: auto;
+    max-width: 25rem;
+    margin: 1.875rem auto;
+    padding: 0.75rem;
     position: relative;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    color: var(--dialogue-color-text);
+    border-radius: 1.375rem;
 }
 
-.squiggytalk,
-.cecetalk,
-.cecetalk2,
-.cecetalk3,
-.cecetalk5,
-.cecetalk6,
-.squiggytalk5,
-.squiggytalk6,
-.mactalk,
-.mactalk2 {
-    box-shadow: rgba(0, 0, 0, 0.54) 0 3px 8px;
+.story-narrative :where(
+    .squiggytalk,
+    .cecetalk,
+    .cecetalk2,
+    .cecetalk3,
+    .cecetalk5,
+    .cecetalk6,
+    .squiggytalk5,
+    .squiggytalk6,
+    .mactalk,
+    .mactalk2
+) {
+    box-shadow: var(--dialogue-shadow) 0 3px 8px;
 }
 
-.defaulttalk {
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.54) 0 3px 4px;
+.story-narrative .defaulttalk {
+    background-color: var(--dialogue-color-neutral);
+    box-shadow: var(--dialogue-shadow) 0 3px 4px;
     top: -15%;
 }
 
-.squiggytalk,
-.squiggytalk5,
-.squiggytalk6 {
-    background-color: rgb(153, 202, 244);
+.story-narrative .dialogue--squiggy {
+    background-color: var(--dialogue-color-squiggy);
 }
 
-.cecetalk,
-.cecetalk2,
-.cecetalk3,
-.cecetalk5,
-.cecetalk6 {
-    background-color: rgb(243, 167, 167);
+.story-narrative .dialogue--cece {
+    background-color: var(--dialogue-color-cece);
 }
 
-.mactalk,
-.mactalk2 {
-    background-color: rgb(244, 169, 196);
+.story-narrative :where(.squiggytalk, .squiggytalk5, .squiggytalk6) {
+    background-color: var(--dialogue-color-squiggy);
 }
 
-.squiggytalk {
+.story-narrative :where(.cecetalk, .cecetalk2, .cecetalk3, .cecetalk5, .cecetalk6) {
+    background-color: var(--dialogue-color-cece);
+}
+
+.story-narrative :where(.mactalk, .mactalk2) {
+    background-color: var(--dialogue-color-mac);
+}
+
+.story-narrative .squiggytalk {
     right: 0;
     top: -20%;
 }
 
-.cecetalk {
-    left: 20px;
+.story-narrative .cecetalk {
+    left: 1.25rem;
     top: -25%;
 }
 
-.cecetalk2 {
-    left: 20px;
+.story-narrative .cecetalk2 {
+    left: 1.25rem;
     top: -30%;
 }
 
-.cecetalk3 {
+.story-narrative .cecetalk3 {
     left: 10%;
     top: 10%;
 }
 
-.cecetalk5 {
+.story-narrative .cecetalk5 {
     left: 10%;
     top: -10%;
 }
 
-.cecetalk6 {
+.story-narrative .cecetalk6 {
     left: 2%;
     top: -20%;
 }
 
-.squiggytalk5 {
+.story-narrative .squiggytalk5 {
     right: -6%;
     top: -5%;
 }
 
-.squiggytalk6 {
+.story-narrative .squiggytalk6 {
     right: -6%;
     top: 10%;
 }
 
-.mactalk {
+.story-narrative .mactalk {
     left: 10%;
     top: -7%;
 }
 
-.mactalk2 {
+.story-narrative .mactalk2 {
     left: -5%;
     top: 10%;
 }
 
-.squiggytalk:after,
-.cecetalk:after,
-.cecetalk2:after,
-.cecetalk3:after,
-.cecetalk5:after,
-.cecetalk6:after,
-.squiggytalk5:after,
-.squiggytalk6:after,
-.mactalk:after,
-.mactalk2:after {
+.story-narrative :where(
+    .squiggytalk,
+    .cecetalk,
+    .cecetalk2,
+    .cecetalk3,
+    .cecetalk5,
+    .cecetalk6,
+    .squiggytalk5,
+    .squiggytalk6,
+    .mactalk,
+    .mactalk2
+)::after {
     content: '';
     position: absolute;
     border-style: solid;
 }
 
-.squiggytalk:after {
+.story-narrative .squiggytalk::after {
     top: 100%;
     left: 70%;
+    margin-top: -1px;
     margin-left: -5px;
     border-width: 18px;
-    margin-top: -1px;
-    border-color: rgb(153, 202, 244) transparent transparent transparent;
+    border-color: var(--dialogue-color-squiggy) transparent transparent;
 }
 
-.cecetalk:after {
+.story-narrative .cecetalk::after {
     top: 100%;
     left: 40%;
-    margin-left: -5px;
     margin-top: -1px;
+    margin-left: -5px;
     border-width: 18px;
-    border-color: rgb(243, 167, 167) transparent transparent transparent;
+    border-color: var(--dialogue-color-cece) transparent transparent;
 }
 
-.cecetalk2:after {
+.story-narrative .cecetalk2::after {
     content: ' ';
     top: 50%;
     left: 100%;
     margin-top: -5px;
     border-width: 5px;
     transform: rotate(-90deg);
-    border-color: rgb(243, 167, 167) transparent transparent transparent;
+    border-color: var(--dialogue-color-cece) transparent transparent;
 }
 
-.cecetalk3:after {
+.story-narrative .cecetalk3::after {
     top: 50%;
     right: 100%;
     margin-top: -5px;
     border-width: 15px;
-    border-color: transparent rgb(243, 167, 167) transparent transparent;
+    border-color: transparent var(--dialogue-color-cece) transparent transparent;
 }
 
-.cecetalk5:after {
+.story-narrative .cecetalk5::after {
     top: 38%;
     right: 99%;
     margin-top: -5px;
     border-width: 15px;
-    border-color: transparent rgb(243, 167, 167) transparent transparent;
+    border-color: transparent var(--dialogue-color-cece) transparent transparent;
 }
 
-.cecetalk6:after {
+.story-narrative .cecetalk6::after {
     top: 100%;
     left: 40%;
-    margin-left: -5px;
     margin-top: -1px;
+    margin-left: -5px;
     border-width: 18px;
-    border-color: rgb(243, 167, 167) transparent transparent transparent;
+    border-color: var(--dialogue-color-cece) transparent transparent;
 }
 
-.squiggytalk5:after,
-.squiggytalk6:after {
+.story-narrative :where(.squiggytalk5, .squiggytalk6)::after {
     top: 100%;
     left: 30%;
+    margin-top: -1px;
     margin-left: -5px;
     border-width: 18px;
-    margin-top: -1px;
-    border-color: rgb(153, 202, 244) transparent transparent transparent;
+    border-color: var(--dialogue-color-squiggy) transparent transparent;
 }
 
-.mactalk:after {
+.story-narrative .mactalk::after {
     top: 100%;
     left: 70%;
+    margin-top: -1px;
     margin-left: -5px;
     border-width: 18px;
-    margin-top: -1px;
-    border-color: rgb(244, 169, 196) transparent transparent transparent;
+    border-color: var(--dialogue-color-mac) transparent transparent;
 }
 
-.mactalk2:after {
+.story-narrative .mactalk2::after {
     top: 65%;
     left: 99%;
     margin-top: -5px;
     border-width: 15px;
-    border-color: transparent transparent transparent rgb(244, 169, 196);
+    border-color: transparent transparent transparent var(--dialogue-color-mac);
 }

@@ -1,0 +1,112 @@
+html.story-flowing,
+html.story-flowing body.story-narrative {
+    height: auto;
+    min-height: 100%;
+    overflow-x: clip;
+}
+
+html.story-flowing .story-narrative {
+    --narrative-flow-content-width: 52rem;
+    --narrative-flow-scene-height: min(70svh, 40rem);
+}
+
+html.story-flowing .story-narrative :where(.section1, .section13, .section2) {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+}
+
+html.story-flowing .story-narrative :where(.talkbubble, .container, .container2, .scrollbubble) {
+    box-sizing: border-box;
+    display: flex;
+    height: auto;
+    min-height: 0;
+    max-width: var(--narrative-flow-content-width);
+    margin-inline: auto;
+    padding: clamp(2rem, 7vw, 5rem) 1rem;
+    position: relative;
+    inset: auto !important;
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+html.story-flowing .story-narrative :where(.container, .container2) {
+    min-height: 18rem;
+}
+
+html.story-flowing .story-narrative :where(.talkbubble, .scrollbubble) {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+html.story-flowing .story-narrative :where(.talkbubble, .scrollbubble) > * {
+    inset: auto !important;
+    margin-block: 0;
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+html.story-flowing .story-narrative .talkbubble:empty {
+    display: none;
+}
+
+html.story-flowing .story-narrative :where(.fadeimage, .fadeimage2, .videozoom, .imageintrosec),
+html.story-flowing .story-narrative [class^='scene'],
+html.story-flowing .story-narrative [class*=' scene'] {
+    box-sizing: border-box;
+    height: auto;
+    min-height: var(--narrative-flow-scene-height);
+    overflow: clip;
+    position: relative;
+    inset: auto !important;
+    transform: none !important;
+}
+
+html.story-flowing .story-narrative :where(.fadeimage, .fadeimage2, .videozoom) {
+    min-height: min(80svh, 45rem);
+}
+
+html.story-flowing .story-narrative :where(.introlineimg, #move1, #move2, #move3) {
+    animation: none;
+}
+
+html.story-flowing .story-narrative .story5-scene-spacer {
+    display: none;
+}
+
+html.story-flowing .story-narrative .story5-media-control {
+    display: none;
+}
+
+html.story-flowing .story-narrative :where(.overtext, .imagepart, .imageparts) {
+    animation: none;
+}
+
+html.story-flowing .story-narrative .overtext {
+    display: none;
+}
+
+html.story-flowing .story-narrative .story-intro-summary {
+    position: relative;
+    width: min(100% - 2rem, var(--narrative-flow-content-width));
+    height: auto;
+    padding: 2rem 1rem 0;
+    margin: 0 auto;
+    overflow: visible;
+    clip: auto;
+    text-align: center;
+    white-space: normal;
+}
+
+html.story-flowing .story-narrative video[controls] {
+    max-width: 100%;
+}
+
+@media (forced-colors: active) {
+    html.story-flowing .story-narrative :where(.talkbubble, .scrollbubble) > * {
+        border: 1px solid CanvasText;
+    }
+}

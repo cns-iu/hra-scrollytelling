@@ -19,6 +19,7 @@
 .Externallinkssection .indexTitle {
     font-size: 28px;
     line-height: 42px;
+    margin-bottom: 80px;
 }
 
 .ExternalLinkCards {
@@ -79,6 +80,10 @@
     font-size: 14px;
     cursor: pointer;
     padding: 9px 16px;
+}
+
+:where(.Externallinkssection, .story-quiz) .linkbutton img {
+    vertical-align: middle;
 }
 
 .Externallinkssection .ExternalLinkCard .linkbutton {

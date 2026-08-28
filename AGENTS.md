@@ -20,8 +20,9 @@ Landing-page work is intentionally isolated to:
 - `shared/css/fonts.css` for typography stacks and font declarations used by the landing page and shared page chrome.
 - `landing/css/fonts.css` as a compatibility bridge for cached documents that still request the former font URL.
 - `landing/css/tokens.css` for landing-page themes and shared design tokens.
-- `shared/css/tokens.css`, `shared/css/selection.css`, `shared/css/navigation.css`, and `shared/css/footer.css` for the
-  canonical Menu, skip link, and footer.
+- `shared/css/tokens.css`, `shared/css/selection.css`, `shared/css/navigation.css`,
+  `shared/css/appearance-controls.css`, and `shared/css/footer.css` for the canonical Menu, optional appearance
+  controls, skip link, and footer.
 - `landing/css/styles.css` for landing-page content, layout, and accessibility adaptations outside shared page chrome.
 - `landing/js/main.js` for initializing the shared Menu, appearance, contrast, and back-to-top modules on the landing
   page.
@@ -46,6 +47,8 @@ footer, and end-of-story navigation use namespaced foundations under:
 - `shared/assets/logos/` for the landing hero, canonical footer, and theme-aware organization marks.
 - `shared/css/selection.css` for theme-aware text selection scoped to shared page chrome.
 - `shared/css/navigation.css` for the skip link and native Menu disclosure.
+- `shared/css/appearance-controls.css` for the optional appearance fieldset and High contrast switch used only by
+  `index.html` and `story6.html`.
 - `shared/css/footer.css` for the canonical site footer.
 - `shared/css/story-navigation.css` for the two-link end-of-story sequence: previous and next stories on Stories 2–5,
   Home in Story 1's previous slot, and Home in Story 6's next slot.
@@ -81,6 +84,11 @@ generated web-component internals to override their encapsulated typography.
 
 All maintained pages use the default shared Menu FAB geometry. Keep story-specific box-model resets scoped to
 story-owned surfaces so they do not override `.site-chrome` component sizing.
+
+Load maintained-page styles in ownership order: shared fonts and tokens, shared page chrome, shared narrative or
+component foundations, then page- or story-owned styles. Load `shared/css/appearance-controls.css` immediately after
+`shared/css/navigation.css` only on pages that provide those controls. Stories 2, 3, and 5 load
+`shared/css/narrative-accessibility.css` last so their flowing fallback can override enhanced scene geometry.
 
 Preserve existing uncommitted work and follow the repository's active branch and review workflow. Do not rewrite,
 discard, commit, push, or publish changes unless those operations are explicitly in scope.
@@ -212,6 +220,9 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
 - Keep the narrative foundation, character-dialogue, and legacy resource-card styles shared by Stories 2, 3, and 5
   under `shared/css/`; keep story-specific scenes and interactions under their owning story. Root `style.css` has
   been removed; do not recreate it.
+- Keep `.story-narrative` as the shared semantic page contract for Stories 2, 3, and 5. Their documents default to
+  `.story-flowing`; `shared/js/narrative-motion.js` may enable pinned motion only when reduced motion is off and the
+  viewport is large enough.
 - Keep Story 5-specific presentation under `stories/story5/styles.css`; do not restore those rules to root
   `style.css`.
 - Keep Story 2-specific presentation under `stories/story2/styles.css` and its focused quiz component under
