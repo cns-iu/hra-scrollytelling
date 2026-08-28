@@ -14,7 +14,7 @@ if (!browserArgument) {
 
 const browserPath = browserArgument.slice("--browser=".length);
 const projectRoot = process.cwd();
-const imageDirectory = path.join(projectRoot, "stories", "story6", "img");
+const imageDirectory = path.join(projectRoot, "story", "6", "img");
 const source = await readFile(path.join(imageDirectory, "splash-bg.webp"));
 const server = createServer((request, response) => {
     const requestUrl = new URL(request.url ?? "/", "http://localhost");

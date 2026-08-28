@@ -19,6 +19,9 @@
     --story-color-info-surface: #f0f5ff;
     --story-color-info-accent: #174a7e;
     --story-color-artwork-surface: #ffffff;
+    --hra-background: var(--story-color-page);
+    --hra-on-background: var(--story-color-text);
+    --hra-on-surface-variant: var(--story-color-text);
     --story-resource-logo-sennet: url("../../../shared/assets/logos/sennet-logo-light.svg");
     --story-resource-logo-hra: url("../../../shared/assets/logos/hra-light-large.svg");
     --story-color-selection: #201e3d;

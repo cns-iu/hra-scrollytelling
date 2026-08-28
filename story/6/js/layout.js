@@ -6,14 +6,19 @@ const LARGE_VIEWPORT_HEIGHT = '100lvh';
  * Configures stable ScrollTrigger measurement and responsive refresh behavior.
  *
  * @param {object|null} ScrollTrigger GSAP ScrollTrigger plugin, or null when unavailable
- * @returns {void}
+ * @returns {() => Promise<void>} Function that refreshes story geometry after the next paint
  */
 export function setupLayoutStability(ScrollTrigger) {
+    const refreshStoryLayout = async () => {
+        await nextPaint();
+        ScrollTrigger?.refresh();
+    };
+
     updateStableViewportHeight();
-    setupSettledResizeRefresh(ScrollTrigger);
+    setupSettledResizeRefresh(refreshStoryLayout);
 
     if (!ScrollTrigger) {
-        return;
+        return refreshStoryLayout;
     }
 
     ScrollTrigger.config({
@@ -21,7 +26,9 @@ export function setupLayoutStability(ScrollTrigger) {
         autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load',
     });
 
-    setupInitialLayoutRefresh(ScrollTrigger);
+    setupInitialLayoutRefresh(refreshStoryLayout);
+
+    return refreshStoryLayout;
 }
 
 /**
@@ -54,17 +61,16 @@ export function setupBackToTopAnimationReset(ScrollTrigger) {
 /**
  * Refreshes the measured layout after fonts and page assets settle.
  *
- * @param {object} ScrollTrigger GSAP ScrollTrigger plugin
+ * @param {() => Promise<void>} refreshStoryLayout Function that refreshes story geometry after paint
  * @returns {void}
  */
-function setupInitialLayoutRefresh(ScrollTrigger) {
+function setupInitialLayoutRefresh(refreshStoryLayout) {
     const refreshInitialLayout = async () => {
         if (document.fonts?.ready) {
             await document.fonts.ready;
         }
 
-        await nextPaint();
-        ScrollTrigger.refresh();
+        await refreshStoryLayout();
     };
 
     void refreshInitialLayout();
@@ -77,10 +83,10 @@ function setupInitialLayoutRefresh(ScrollTrigger) {
 /**
  * Debounces resize measurement so pinned scenes are not rebuilt every frame.
  *
- * @param {object|null} ScrollTrigger GSAP ScrollTrigger plugin, or null when unavailable
+ * @param {() => Promise<void>} refreshStoryLayout Function that refreshes story geometry after paint
  * @returns {void}
  */
-function setupSettledResizeRefresh(ScrollTrigger) {
+function setupSettledResizeRefresh(refreshStoryLayout) {
     const coarsePointer = window.matchMedia(COARSE_POINTER_QUERY);
     let previousWidth = window.innerWidth;
     let resizeTimer;
@@ -97,8 +103,7 @@ function setupSettledResizeRefresh(ScrollTrigger) {
         window.clearTimeout(resizeTimer);
         resizeTimer = window.setTimeout(async () => {
             updateStableViewportHeight();
-            await nextPaint();
-            ScrollTrigger?.refresh();
+            await refreshStoryLayout();
         }, RESIZE_SETTLE_DELAY);
     });
 }

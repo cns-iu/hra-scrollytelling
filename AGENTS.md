@@ -233,7 +233,7 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
   been removed; do not recreate it.
 - Keep `.story-narrative` as the shared semantic page contract for Stories 2, 3, and 5. Their documents default to
   `.story-flowing`; `shared/js/narrative-motion.js` may enable pinned motion only when reduced motion is off and the
-  viewport is large enough.
+  viewport is tall enough, including portrait phone widths.
 - Keep Story 5-specific presentation under `stories/story5/styles.css`; do not restore those rules to root
   `style.css`.
 - Keep Story 5 scroll animation in `stories/story5/animations.js` and video interaction in `media-controls.js`; do not

@@ -24,6 +24,7 @@ export function setupStoryAnimations({ gsap, ScrollTrigger }) {
         timelines.push(createTextboxTransition(gsap, '.transition2'));
         timelines.push(createTextboxTransition(gsap, '.transition3'));
         timelines.push(setupCdeTutorialTimeline(gsap));
+        timelines.push(createTextboxTransition(gsap, '.transition4'));
         timelines.push(createTextboxTransition(gsap, '.transition5'));
     } catch (error) {
         revertTimelines(timelines);
