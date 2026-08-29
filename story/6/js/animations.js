@@ -19,12 +19,12 @@ export function setupStoryAnimations({ gsap, ScrollTrigger }) {
     try {
         timelines.push(setupHeaderTimeline(gsap));
         timelines.push(setupCellIntroductionTimeline(gsap));
-        timelines.push(createTextboxTransition(gsap, '.transition1'));
+        timelines.push(createTextboxTransition(gsap, '.transition1', { nativeStickyOnTouch: true }));
         timelines.push(setupMouseTimeline(gsap));
-        timelines.push(createTextboxTransition(gsap, '.transition2'));
-        timelines.push(createTextboxTransition(gsap, '.transition3'));
+        timelines.push(createTextboxTransition(gsap, '.transition2', { nativeStickyOnTouch: true }));
+        timelines.push(createTextboxTransition(gsap, '.transition3', { nativeStickyOnTouch: true }));
         timelines.push(setupCdeTutorialTimeline(gsap));
-        timelines.push(createTextboxTransition(gsap, '.transition4'));
+        timelines.push(createTextboxTransition(gsap, '.transition4', { nativeStickyOnTouch: true }));
         timelines.push(createTextboxTransition(gsap, '.transition5', { nativeStickyOnTouch: true }));
     } catch (error) {
         revertTimelines(timelines);
