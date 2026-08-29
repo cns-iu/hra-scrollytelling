@@ -356,7 +356,7 @@
     @media (hover: none) and (pointer: coarse) {
         &.story-animations-enabled .transition5 {
             display: block;
-            height: 340vh;
+            height: calc(var(--story-viewport-height) * 3.4);
             overflow: visible;
             padding-inline: 0;
         }
