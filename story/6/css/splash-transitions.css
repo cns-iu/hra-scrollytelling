@@ -354,14 +354,14 @@
     }
 
     @media (hover: none) and (pointer: coarse) {
-        &.story-animations-enabled .transition5 {
+        &.story-animations-enabled section.transition {
             display: block;
             height: calc(var(--story-viewport-height) * 3.4);
             overflow: visible;
             padding-inline: 0;
         }
 
-        &.story-animations-enabled .transition5 .transition__stage {
+        &.story-animations-enabled section.transition .transition__stage {
             position: sticky;
             top: 0;
             isolation: isolate;

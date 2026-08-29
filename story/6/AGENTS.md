@@ -46,7 +46,7 @@
 
 - Preserve native browser scrolling and do not introduce scroll hijacking or a smoothing dependency
 - Use the shared `pinnedScrollScrub` value for animated pinned scenes on fine-pointer devices so transitions respond consistently; use direct scrubbing on coarse-pointer devices so touch scrolling does not retain a catch-up tween
-- Keep Transition 5 on an intrinsic native-sticky stage for coarse-pointer devices; scrub its timeline against the section's own scroll range instead of restoring a fixed ScrollTrigger pin near the end of the document
+- Keep every `.transition` section (Transitions 1 through 5, including the conclusion) on an intrinsic native-sticky stage for coarse-pointer devices; scrub each timeline against its own section's scroll range instead of a fixed ScrollTrigger pin. Mixing a JS-driven pin on one transition with native-sticky on an adjacent one previously desynced ScrollTrigger's cached geometry on upward mobile scroll, so keep all five on the same mechanism rather than reintroducing `pin: true` for any of them
 - Keep the native-sticky CDE tutorial mapped directly to scroll position with `scrub: true`; do not add smoothing that can let its timeline lag behind the sticky scene
 - Prefer compositor-friendly `transform` and `opacity` animation over layout-triggering properties
 - Use `createTextboxTransition` and `addTextboxChoreography` for transition headings rather than duplicating timelines
@@ -131,6 +131,7 @@ Then open `http://localhost:8000/story6.html` and complete this smoke test:
 - Distinguish desktop device-emulation artifacts from behavior reproduced in an actual mobile browser
 - Scroll from the splash into “What is immunosenescence?” and confirm the background fade remains while the card entrance, hold, and exit match later transitions
 - Scroll slowly and quickly through every pinned scene and confirm animations follow without jumps when mobile browser controls resize the viewport
+- On an actual mobile browser, scroll both forward and backward through every transition, especially reversing direction across the boundary between a pinned scene (header, section2, section3) and a native-sticky transition; confirm the rest of the story does not desync or jump
 - Resize desktop width and height continuously, then confirm pinned scenes settle into the correct layout without overlapping or retaining stale measurements
 - Open the story menu by pointer and keyboard, then close it with its button, `Escape`, and an outside click
 - Confirm the menu stays inside the viewport and identifies Story 6 as the current page
