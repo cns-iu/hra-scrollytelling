@@ -45,6 +45,7 @@
 
 - Preserve native browser scrolling and do not introduce scroll hijacking or a smoothing dependency
 - Use the shared `pinnedScrollScrub` value for animated pinned scenes on fine-pointer devices so transitions respond consistently; use direct scrubbing on coarse-pointer devices so touch scrolling does not retain a catch-up tween
+- Keep Transition 5 on an intrinsic native-sticky stage for coarse-pointer devices; scrub its timeline against the section's own scroll range instead of restoring a fixed ScrollTrigger pin near the end of the document
 - Keep the native-sticky CDE tutorial mapped directly to scroll position with `scrub: true`; do not add smoothing that can let its timeline lag behind the sticky scene
 - Prefer compositor-friendly `transform` and `opacity` animation over layout-triggering properties
 - Use `createTextboxTransition` and `addTextboxChoreography` for transition headings rather than duplicating timelines
@@ -94,6 +95,7 @@
 - Keep the 960, 1920, and 3840 WebP transition variants together and update the complete `srcset` and fallback `src` when renaming one
 - Use the 1920 WebP as each transition image's fallback `src`; do not retain a duplicate PNG fallback
 - Load Transition 3 eagerly at high priority so rapid scrolling cannot outrun its request; keep all other non-splash transition backgrounds lazy
+- Prepare and decode Transition 5 from the histogram comparison so its lazy artwork is ready before the native-sticky conclusion begins
 - Preserve transparent backgrounds when optimizing transition images
 - Use the 960 px transition settings below when regenerating that variant
 

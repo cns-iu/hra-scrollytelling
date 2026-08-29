@@ -30,6 +30,7 @@ const files = {
     media: await readFile(path.join(storyDirectory, "js", "media.js"), "utf8"),
     narrative: await readFile(path.join(storyDirectory, "css", "narrative.css"), "utf8"),
     reveals: await readFile(path.join(storyDirectory, "js", "reveals.js"), "utf8"),
+    splashTransitions: await readFile(path.join(storyDirectory, "css", "splash-transitions.css"), "utf8"),
     theme: await readFile(path.join(storyDirectory, "css", "theme.css"), "utf8"),
 };
 const chartSvgs = await Promise.all(
@@ -249,6 +250,20 @@ function checkAnimationGeometry() {
             files.entry.includes("await Promise.allSettled(preparation)") &&
             /html\.story6-loading #six::before\s*\{[\s\S]*?transition:\s*opacity 1250ms/u.test(files.base),
         "Story 6 must retain its fail-safe page-color loading overlay and settled fade-in",
+    );
+    check(
+        /class="transition transition5[\s\S]*?class="transition__stage"/u.test(files.html) &&
+            files.animations.includes("createTextboxTransition(gsap, '.transition5', { nativeStickyOnTouch: true })") &&
+            /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?&\.story-animations-enabled \.transition5[\s\S]*?height:\s*340vh;[\s\S]*?\.transition__stage\s*\{[\s\S]*?position:\s*sticky;/u.test(
+                files.splashTransitions,
+            ),
+        "The mobile conclusion must use an intrinsic native-sticky scene instead of a fixed ScrollTrigger pin",
+    );
+    check(
+        files.media.includes("setupConclusionImagePreparation()") &&
+            files.media.includes("document.querySelector('.cde-histogram-comparison')") &&
+            files.media.includes("document.querySelectorAll('.transition5 .transition__background')"),
+        "The conclusion artwork must begin decoding from the preceding histogram comparison",
     );
     check(
         /\.tutorial\s*\{[\s\S]*?opacity:\s*0;[\s\S]*?visibility:\s*hidden;[\s\S]*?\.tutorial1\s*\{[\s\S]*?opacity:\s*1;[\s\S]*?visibility:\s*visible;/u.test(

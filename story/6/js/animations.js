@@ -25,7 +25,7 @@ export function setupStoryAnimations({ gsap, ScrollTrigger }) {
         timelines.push(createTextboxTransition(gsap, '.transition3'));
         timelines.push(setupCdeTutorialTimeline(gsap));
         timelines.push(createTextboxTransition(gsap, '.transition4'));
-        timelines.push(createTextboxTransition(gsap, '.transition5'));
+        timelines.push(createTextboxTransition(gsap, '.transition5', { nativeStickyOnTouch: true }));
     } catch (error) {
         revertTimelines(timelines);
         throw error;
@@ -163,9 +163,11 @@ function setupCdeTutorialTimeline(gsap) {
  *
  * @param {object} gsap GSAP runtime
  * @param {string} selector The transition section selector
+ * @param {object} [options] Transition behavior
+ * @param {boolean} [options.nativeStickyOnTouch=false] Whether coarse pointers use the section's native-sticky stage
  * @returns {object|null} The configured GSAP timeline
  */
-function createTextboxTransition(gsap, selector) {
+function createTextboxTransition(gsap, selector, { nativeStickyOnTouch = false } = {}) {
     const section = document.querySelector(selector);
     const textbox = section?.querySelector('.textbox-transition');
 
@@ -174,8 +176,9 @@ function createTextboxTransition(gsap, selector) {
     }
 
     const overlay = section.querySelector('.transition__overlay');
+    const useNativeSticky = nativeStickyOnTouch && window.matchMedia(DIRECT_TOUCH_SCROLL_QUERY).matches;
     const timeline = gsap.timeline({
-        scrollTrigger: createPinnedTrigger(section, '+=240%'),
+        scrollTrigger: useNativeSticky ? createScrubbedTrigger(section, 'bottom bottom', true) : createPinnedTrigger(section, '+=240%'),
     });
 
     return addTextboxChoreography(timeline, textbox, overlay, 0.15, 0.25, 0.72);
