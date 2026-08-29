@@ -12,6 +12,21 @@
     font-family: var(--site-chrome-font-body);
 }
 
+#main-content .story-end-matter--loading {
+    min-height: clamp(12rem, 30vh, 20rem);
+}
+
+#main-content .story-end-matter__status {
+    width: min(calc(100% - 2rem), 44rem);
+    margin: 0 auto;
+    padding: clamp(4rem, 8vw, 7.5rem) 1rem;
+    color: var(--site-chrome-color-text);
+    font: var(--type-body-primary-weight) var(--type-body-large-size) / var(--type-body-large-line-height)
+        var(--site-chrome-font-body);
+    letter-spacing: var(--type-body-large-letter-spacing);
+    text-align: center;
+}
+
 #main-content .story-end-matter *,
 #main-content .story-end-matter *::before,
 #main-content .story-end-matter *::after {

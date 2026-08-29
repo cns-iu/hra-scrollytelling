@@ -5,22 +5,22 @@
         "items": [
             {
                 "eyebrow": "Video tutorial",
-                "title": "Cell-type annotation video",
-                "description": "If you want to see how researchers use the tools introduced in this scrollytale, check out this video on improving cell-type annotation.",
+                "title": "Improve Cell Type Annotation",
+                "description": "Learn how to use the HRA's cell type annotation tool.",
                 "href": "https://www.youtube.com/watch?v=KuZ_bwLHipM&t=1s",
-                "newTab": true
+                "newTab": false
             },
             {
-                "eyebrow": "Animation",
-                "title": "HRA animation",
-                "description": "Want to see more animations detailing features of the Human Reference Atlas?",
+                "eyebrow": "Video",
+                "title": "Vasculature Common Coordinate Framework (VCCF)",
+                "description": "Discover how researchers map the body's blood vessels and how they connect to HRA data.",
                 "href": "https://www.youtube.com/watch?v=zQeMgxo8n_U",
-                "newTab": true
+                "newTab": false
             },
             {
-                "eyebrow": "Related story",
+                "eyebrow": "Story",
                 "title": "Data Detangle",
-                "description": "Did you miss the previous episode?",
+                "description": "Explore how the HRA Knowledge Graph helps researchers find and connect data across different sources.",
                 "href": "story4.html",
                 "newTab": false
             }

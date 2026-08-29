@@ -21,6 +21,7 @@ const chartSvgNames = [
 ];
 const files = {
     html: await readFile(storyPath, "utf8"),
+    endMatter: JSON.parse(await readFile(path.join(storyDirectory, "end-matter.json"), "utf8")),
     entry: await readFile(path.join(storyDirectory, "story6.js"), "utf8"),
     animations: await readFile(path.join(storyDirectory, "js", "animations.js"), "utf8"),
     base: await readFile(path.join(storyDirectory, "css", "base.css"), "utf8"),
@@ -88,11 +89,16 @@ function checkMarkupContracts() {
     check(!files.html.includes('href="style.css"'), "Story 6 must not load the legacy root style.css");
     check(files.html.includes('href="shared/css/story-navigation.css"'), "Story 6 must load the maintained story-navigation stylesheet");
     check(files.html.includes('href="shared/css/story-end-matter.css"'), "Story 6 must load the shared end-matter stylesheet");
+    check(files.html.includes('src="shared/js/story-end-matter.js"'), "Story 6 must load the shared end-matter runtime");
     check(files.html.includes('class="site-story-navigation site-chrome"'), "Story 6 must use the shared story-navigation component");
-    check(files.html.includes('class="story-end-matter site-chrome"'), "Story 6 must use the shared generated end-matter component");
+    check(
+        files.html.includes('class="story-end-matter site-chrome" data-story-end-matter-source="story/6/end-matter.json"'),
+        "Story 6 must use its story-owned runtime end-matter source",
+    );
+    check(!files.html.includes("story-end-matter__section"), "Story 6 must not duplicate JSON-authored end matter in HTML");
     check(!files.html.includes("sceneEnd"), "Legacy sceneEnd markup must stay removed");
     check(!files.html.includes("showpicture2"), "The unused showpicture2 hook must stay removed");
-    check(!/\bet al\./iu.test(files.html), "Story 6 publication citations must retain their complete named bylines");
+    check(!/\bet al\./iu.test(JSON.stringify(files.endMatter)), "Story 6 publication citations must retain their complete named bylines");
     check(
         /#main-content\s*>\s*:not\(\.story-end-matter\)\s+a\s*\{\s*color:\s*inherit;/u.test(files.base),
         "Story 6 in-text links must inherit the surrounding text color",
@@ -159,9 +165,6 @@ function checkReaderViewOrder() {
         "Measuring distances between cells reveals how their spatial",
         "cde-comparison-title",
         "conclusion-title",
-        "resources-title",
-        "acknowledgments-title",
-        "references-title",
     ];
     let previousIndex = -1;
 

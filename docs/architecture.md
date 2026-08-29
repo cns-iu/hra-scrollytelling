@@ -18,8 +18,8 @@ The site is served directly by GitHub Pages, so file locations and letter casing
   its owning story instead of recreating a root stylesheet.
 - Keep the narrative foundation and character-dialogue system shared by Stories 2, 3, and 5 under `shared/css/`, with
   filenames that distinguish them from the page-chrome styles in the same directory.
-- Keep the shared end-matter presentation under `shared/css/story-end-matter.css`; keep content in each story's
-  `end-matter.json` and generate committed semantic markup with `tools/render-story-end-matter.mjs`.
+- Keep shared end-matter presentation and rendering under `shared/css/story-end-matter.css` and
+  `shared/js/story-end-matter.js`; keep content only in each story's `end-matter.json`.
 - Keep `.story-narrative` as the shared page contract for Stories 2, 3, and 5; story-specific page classes own scene
   tokens and positioning variants.
 - Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
@@ -33,7 +33,7 @@ The site is served directly by GitHub Pages, so file locations and letter casing
 | --- | --- | --- |
 | Landing page | `index.html` | `landing/assets/`, `landing/css/`, landing initialization under `landing/js/`, and shared HRA fonts and page chrome |
 | Shared page chrome | `index.html` and `story1.html` through `story6.html` | Namespaced fonts, styles, assets, and progressive-enhancement modules under `shared/`; the landing page and Story 6 offer appearance controls |
-| Primary stories | `story1.html` through `story6.html` | Stories 1, 4, and 6 use dedicated implementations; Stories 2, 3, and 5 share their narrative foundation and character-dialogue system; all six stories use shared generated end matter and end-of-story navigation; story media lives under its owning story or the appropriate shared asset directory |
+| Primary stories | `story1.html` through `story6.html` | Stories 1, 4, and 6 use dedicated implementations; Stories 2, 3, and 5 share their narrative foundation and character-dialogue system; all six stories use shared runtime end matter and end-of-story navigation; story media lives under its owning story or the appropriate shared asset directory |
 | New stories | `story/<number>/index.html` | Singular numbered directories own each new story's entry point and exclusive implementation files; `story/7/README.md` defines the initial contract |
 | Prototypes | Compatibility pages `story0.html`, `VisualizingCells.html`, and `organExample.html` | Organized implementations and owned assets under `prototypes/`, plus intentionally shared assets; all prototype implementations are independent of the former root legacy stylesheet |
 
@@ -71,7 +71,9 @@ Root HTML files remain stable public entry points while their implementation fil
 │   │   ├── narrative-foundation.css
 │   │   └── story-end-matter.css
 │   └── js/
-│       └── narrative-motion.js
+│       ├── narrative-motion.js
+│       ├── story-end-matter-schema.mjs
+│       └── story-end-matter.js
 ├── prototypes/
 │   ├── drag-and-drop/
 │   │   ├── images/
@@ -154,13 +156,13 @@ devices, height-only resize events do not rebuild every ScrollTrigger; viewport-
 for orientation and layout changes. Story-specific scenes, interactive controls, positioning modifiers, and visual
 tokens remain outside these shared files.
 
-All six maintained stories load `shared/css/story-end-matter.css`. Resources, optional acknowledgments, and optional
-references are authored in `end-matter.json` inside each story's owning directory. The dependency-free
-`tools/story-end-matter-schema.mjs` validates those sources, and `tools/render-story-end-matter.mjs` replaces marked
-blocks in the root story entry points.
-Generated HTML remains committed so no JavaScript is required at runtime and Firefox Reader View retains complete,
-ordered end matter. Stories 1–5 apply the fixed Light component treatment; Story 6 follows its shared appearance
-selection.
+All six maintained stories load `shared/css/story-end-matter.css` and `shared/js/story-end-matter.js`. Resources,
+optional acknowledgments, and optional references are authored only in `end-matter.json` inside each story's owning
+directory. Each root story entry point provides one `data-story-end-matter-source` placeholder. The dependency-free
+runtime fetches and validates that JSON through `shared/js/story-end-matter-schema.mjs`, then creates semantic sections
+with DOM APIs. Stories 1–5 apply the fixed Light component treatment; Story 6 follows its shared appearance selection.
+End matter requires JavaScript and may be omitted from Reader View; a failed request produces an in-flow error without
+affecting the narrative, story navigation, or footer.
 
 The version 1 authoring shape is intentionally small:
 
@@ -257,7 +259,7 @@ patterns:
 
 - A fixed, visibly labeled Menu disclosure with links to the landing page and all maintained stories.
 - A canonical shared footer with organization links, a back-to-top action, and copyright information.
-- A generated end-matter component for Resources and optional Acknowledgments and References sections.
+- A JSON-authored runtime end-matter component for Resources and optional Acknowledgments and References sections.
 - A two-link story-navigation row: previous and next stories on Stories 2–5, Home in Story 1's previous slot, and Home
   in Story 6's next slot.
 
@@ -304,8 +306,9 @@ high stacking values that can otherwise change fixed positioning or obscure the 
 account for safe areas, short viewports, 320-pixel reflow, 400% zoom, focus visibility, Escape dismissal,
 outside-pointer dismissal, and focus restoration.
 
-Keep the generated end matter and two-link story navigation outside pinned or transformed story scenes. Stories 1–5
-use the fixed Light end-matter and story-navigation treatments; Story 6 allows them to follow the selected appearance.
+Keep the runtime end-matter placeholder and two-link story navigation outside pinned or transformed story scenes.
+Stories 1–5 use the fixed Light end-matter and story-navigation treatments; Story 6 allows them to follow the selected
+appearance.
 Keep the shared footer outside story-owned wrappers so story animation, link, and theme rules cannot obscure or
 restyle these components. A story section containing final resources or end matter must use intrinsic height so
 overflowing narrative content cannot cover the following navigation or footer.
@@ -317,9 +320,10 @@ follow the selected appearance. Story navigation remains a separate labeled `nav
 
 ## Reader View and linear fallbacks
 
-Every maintained page must support a complete linear reading experience for browser Reader View, unavailable
-JavaScript, reduced motion, short viewports, and high browser zoom. The semantic document is the canonical narrative;
-pinning, crossfades, overlays, and staged screenshots enhance that document only after their setup succeeds.
+Every maintained page must support a complete linear narrative for browser Reader View, unavailable JavaScript,
+reduced motion, short viewports, and high browser zoom. Runtime end matter is an explicit exception and may be absent
+without JavaScript or in Reader View. The semantic document is the canonical narrative; pinning, crossfades, overlays,
+and staged screenshots enhance that document only after their setup succeeds.
 
 Stories 2, 3, and 5 place the `.story-flowing` class on the document by default. Their synchronous shared motion
 gate replaces it with `.story-motion-enabled` only when reduced motion is off and the viewport supports the pinned
@@ -329,7 +333,8 @@ nonessential animation, and makes Story 5 autoplay media user-controlled.
 Reader-oriented implementation belongs with each story because its animated visuals and fallback content differ.
 Shared expectations are:
 
-- Keep narrative copy and end matter in the primary `main` or `article` source order
+- Keep narrative copy in the primary `main` or `article` source order and place the runtime end-matter target after the
+  conclusion
 - Use native headings, paragraphs, figures, captions, and lists before extraction-oriented class hints
 - Exclude decorative animation layers from alternative output and provide one compact in-flow equivalent for an
   informative animated visual
