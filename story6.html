@@ -690,16 +690,10 @@
 
       <section
         class="section4 story-scene"
-        aria-labelledby="tissue-comparison-title"
+        aria-label="Tissue comparison across young, aged, and treated mice"
       >
         <div class="tissue-comparison">
           <header class="tissue-comparison__intro">
-            <p class="tissue-comparison__eyebrow" aria-hidden="true">
-              Cell sample comparison
-            </p>
-            <h2 id="tissue-comparison-title">
-              Compare tissue across three organs
-            </h2>
             <p>
               Researchers collected tissue from young mice, aged mice, and aged
               mice treated with dasatinib and quercetin (D&amp;Q) drugs that
@@ -1076,7 +1070,7 @@
                 <span class="visually-hidden"
                   >The central Visualization panel is highlighted.
                 </span>
-                Use the Visualization panel to navigate the cells spatially:
+                Use the node distance visualization to navigate cells spatially:
                 <ul>
                   <li>
                     Zoom in and out with the mouse pinwheel or pinch using the
@@ -1163,15 +1157,9 @@
               cell for this comparison.
             </p>
             <p>
-              The Cell Distance Explorer’s node-distance visualization maps each
-              cell coordinate and its connection to the nearest anchor cell.
-              Rotate, zoom, and pan through the visualization in 3D, select cells
-              to inspect their properties, and erase unwanted regions or
-              artifacts for analysis.
-            </p>
-            <p>
-              Compare the 2-month and 24-month spleen samples to see how cell
-              clusters, distances, and neighborhoods differ with age.
+              The node-distance visualization maps each cell coordinate and its connection 
+              to the nearest anchor cell. Compare the 2-month and 24-month spleen samples to 
+              see how cell clusters, distances, and neighborhoods differ with age.
             </p>
           </div>
 
@@ -1219,21 +1207,21 @@
               aria-labelledby="cde-network-legend-title"
             >
               <h4 id="cde-network-legend-title">Cell types</h4>
-              <ul>
-                <li style="--cell-type-color: #ccebc5">Activated leukocyte</li>
-                <li style="--cell-type-color: #1c1b1e">All cells</li>
-                <li style="--cell-type-color: #ffffb3">B cell</li>
-                <li style="--cell-type-color: #8dd3c7">Dendritic cell</li>
-                <li style="--cell-type-color: #ad584f">Endothelial</li>
-                <li style="--cell-type-color: #ffed6f">Erythroid</li>
-                <li style="--cell-type-color: #fdb462">Granulocyte</li>
-                <li style="--cell-type-color: #fccde5">Helper T cell</li>
-                <li style="--cell-type-color: #bebada">Macrophage</li>
-                <li style="--cell-type-color: #d9d9d9">Naive B cell</li>
-                <li style="--cell-type-color: #bc80bd">Other</li>
-                <li style="--cell-type-color: #fb8072">Plasma B cell</li>
-                <li style="--cell-type-color: #b3de69">Stromal</li>
-                <li style="--cell-type-color: #80b1d3">T cell</li>
+              <ul role="list">
+                <li data-cell-type="activated-leukocyte">Activated leukocyte</li>
+                <li data-cell-type="all-cells">All cells</li>
+                <li data-cell-type="b-cell">B cell</li>
+                <li data-cell-type="dendritic-cell">Dendritic cell</li>
+                <li data-cell-type="endothelial">Endothelial</li>
+                <li data-cell-type="erythroid">Erythroid</li>
+                <li data-cell-type="granulocyte">Granulocyte</li>
+                <li data-cell-type="helper-t-cell">Helper T cell</li>
+                <li data-cell-type="macrophage">Macrophage</li>
+                <li data-cell-type="naive-b-cell">Naive B cell</li>
+                <li data-cell-type="other">Other</li>
+                <li data-cell-type="plasma-b-cell">Plasma B cell</li>
+                <li data-cell-type="stromal">Stromal</li>
+                <li data-cell-type="t-cell">T cell</li>
               </ul>
             </div>
           </div>
@@ -1316,20 +1304,20 @@
               aria-labelledby="cde-histogram-legend-title"
             >
               <h4 id="cde-histogram-legend-title">Cell types</h4>
-              <ul>
-                <li style="--cell-type-color: #ccebc5">Activated leukocyte</li>
-                <li style="--cell-type-color: #1c1b1e">All cells</li>
-                <li style="--cell-type-color: #ffffb3">B cell</li>
-                <li style="--cell-type-color: #8dd3c7">Dendritic cell</li>
-                <li style="--cell-type-color: #ffed6f">Erythroid</li>
-                <li style="--cell-type-color: #fdb462">Granulocyte</li>
-                <li style="--cell-type-color: #fccde5">Helper T cell</li>
-                <li style="--cell-type-color: #bebada">Macrophage</li>
-                <li style="--cell-type-color: #d9d9d9">Naive B cell</li>
-                <li style="--cell-type-color: #bc80bd">Other</li>
-                <li style="--cell-type-color: #fb8072">Plasma B cell</li>
-                <li style="--cell-type-color: #b3de69">Stromal</li>
-                <li style="--cell-type-color: #80b1d3">T cell</li>
+              <ul role="list">
+                <li data-cell-type="activated-leukocyte">Activated leukocyte</li>
+                <li data-cell-type="all-cells">All cells</li>
+                <li data-cell-type="b-cell">B cell</li>
+                <li data-cell-type="dendritic-cell">Dendritic cell</li>
+                <li data-cell-type="erythroid">Erythroid</li>
+                <li data-cell-type="granulocyte">Granulocyte</li>
+                <li data-cell-type="helper-t-cell">Helper T cell</li>
+                <li data-cell-type="macrophage">Macrophage</li>
+                <li data-cell-type="naive-b-cell">Naive B cell</li>
+                <li data-cell-type="other">Other</li>
+                <li data-cell-type="plasma-b-cell">Plasma B cell</li>
+                <li data-cell-type="stromal">Stromal</li>
+                <li data-cell-type="t-cell">T cell</li>
               </ul>
             </div>
             <div class="cde-histogram-charts">

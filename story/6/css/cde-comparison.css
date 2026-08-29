@@ -136,6 +136,21 @@
             border: 1px solid var(--story-color-border);
             border-radius: 50%;
         }
+
+        li[data-cell-type="activated-leukocyte"] { --cell-type-color: #ccebc5; }
+        li[data-cell-type="all-cells"] { --cell-type-color: #1c1b1e; }
+        li[data-cell-type="b-cell"] { --cell-type-color: #ffffb3; }
+        li[data-cell-type="dendritic-cell"] { --cell-type-color: #8dd3c7; }
+        li[data-cell-type="endothelial"] { --cell-type-color: #ad584f; }
+        li[data-cell-type="erythroid"] { --cell-type-color: #ffed6f; }
+        li[data-cell-type="granulocyte"] { --cell-type-color: #fdb462; }
+        li[data-cell-type="helper-t-cell"] { --cell-type-color: #fccde5; }
+        li[data-cell-type="macrophage"] { --cell-type-color: #bebada; }
+        li[data-cell-type="naive-b-cell"] { --cell-type-color: #d9d9d9; }
+        li[data-cell-type="other"] { --cell-type-color: #bc80bd; }
+        li[data-cell-type="plasma-b-cell"] { --cell-type-color: #fb8072; }
+        li[data-cell-type="stromal"] { --cell-type-color: #b3de69; }
+        li[data-cell-type="t-cell"] { --cell-type-color: #80b1d3; }
     }
 
     .cde-histogram-legend {
@@ -233,6 +248,11 @@
 
         .cell-type-legend h4 {
             text-align: center;
+        }
+
+        .cell-type-legend ul {
+            grid-template-columns: repeat(auto-fit, minmax(9rem, max-content));
+            justify-content: center;
         }
 
         .cde-histogram-legend {

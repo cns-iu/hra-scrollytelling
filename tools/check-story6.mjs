@@ -263,7 +263,7 @@ function checkAnimationGeometry() {
     check(
         /class="transition transition5[\s\S]*?class="transition__stage"/u.test(files.html) &&
             files.animations.includes("createTextboxTransition(gsap, '.transition5', { nativeStickyOnTouch: true })") &&
-            /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?&\.story-animations-enabled \.transition5[\s\S]*?height:\s*340vh;[\s\S]*?\.transition__stage\s*\{[\s\S]*?position:\s*sticky;/u.test(
+            /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?&\.story-animations-enabled \.transition5[\s\S]*?height:\s*calc\(var\(--story-viewport-height\) \* 3\.4\);[\s\S]*?\.transition__stage\s*\{[\s\S]*?position:\s*sticky;/u.test(
                 files.splashTransitions,
             ),
         "The mobile conclusion must use an intrinsic native-sticky scene instead of a fixed ScrollTrigger pin",
