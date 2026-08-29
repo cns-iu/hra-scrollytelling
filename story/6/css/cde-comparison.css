@@ -235,6 +235,11 @@
             text-align: center;
         }
 
+        .cell-type-legend ul {
+            grid-template-columns: repeat(auto-fit, minmax(9rem, max-content));
+            justify-content: center;
+        }
+
         .cde-histogram-legend {
             position: static;
         }
