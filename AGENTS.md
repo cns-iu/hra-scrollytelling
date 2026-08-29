@@ -52,14 +52,15 @@ footer, and end-of-story navigation use namespaced foundations under:
 - `shared/css/footer.css` for the canonical site footer.
 - `shared/css/story-navigation.css` for the two-link end-of-story sequence: previous and next stories on Stories 2–5,
   Home in Story 1's previous slot, and Home in Story 6's next slot.
-- `shared/css/story-end-matter.css` for the generated Resources, Acknowledgments, and References sections used by all
-  maintained stories.
+- `shared/css/story-end-matter.css`, `shared/js/story-end-matter.js`, and `shared/js/story-end-matter-schema.mjs` for the
+  JSON-authored Resources, Acknowledgments, and References sections used by all maintained stories.
 - `shared/js/main.js`, `shared/js/navigation-only.js`, `shared/js/menu.js`, `shared/js/theme.js`,
   `shared/js/contrast.js`, and `shared/js/back-to-top.js` for progressive enhancement.
 
-Keep essential shared component markup in every consuming HTML page; do not inject it with JavaScript. Add the
-`site-chrome` class to each component root so story appearance changes do not affect story artwork. On story pages
-that offer appearance selection, System settings, Light, and Dark apply only to shared page chrome. Preserve
+Keep essential shared component markup in every consuming HTML page; runtime-rendered story end matter is the explicit
+exception. Add the `site-chrome` class to each component root so story appearance changes do not affect story artwork.
+On story pages that offer appearance selection, System settings, Light, and Dark apply only to shared page chrome.
+Preserve
 `hra-landing-theme` as the storage key during migration. Include the appearance fieldset only when a page initializes
 theme selection; omit it when appearance is not an available option. Add `site-chrome--light` to the Menu root on
 pages without appearance selection so the Menu does not follow the operating-system dark preference. Keep the High
@@ -80,8 +81,8 @@ slot and Story 6's next slot so every story retains two navigation targets.
 
 Story sections containing final resources or end matter must contribute their full intrinsic height to document flow
 so the following shared story navigation and footer cannot be covered by overflowing story content.
-Keep each story's end-matter content in its owning `end-matter.json`; regenerate the committed semantic HTML with
-`node tools/render-story-end-matter.mjs` and verify it with `node tools/render-story-end-matter.mjs --check`.
+Keep each story's end-matter content in its owning `end-matter.json`; the shared runtime validates and renders that
+single source into the story's `data-story-end-matter-source` placeholder.
 All prototype entry points load `shared/css/fonts.css` and `prototypes/shared/typography.css`; prototype-owned body
 text defaults to Nunito Sans, while prototype-owned rules may select Metropolis where specified. Do not hand-edit
 generated web-component internals to override their encapsulated typography.
@@ -161,13 +162,13 @@ enhancement rather than a substitute for an accessible default page.
   text alternative when an animated visual carries information that the surrounding copy does not
 - Use `article-content` and `article-header` only as extraction hints where testing shows they help; keep the underlying
   HTML semantic because browser extraction heuristics and class handling can change
-- Preserve final summaries, conclusions, resources, acknowledgments, and references inside the primary article source
-  order so extraction does not stop before them
+- Preserve final summaries and conclusions inside the primary article source order so extraction does not stop before
+  them; place the runtime end-matter placeholder after the conclusion
 - Use source-pixel image dimensions by default; when compact `width` and `height` values intentionally control Reader
   View sizing, preserve the asset's aspect ratio, document the exception, and verify the normal page still reserves
   stable image space
 - Test Reader View in Firefox after structural story changes and confirm the title, every transition sentence,
-  informative image alternative, conclusion, and end matter appear once in the intended order
+  informative image alternative, and conclusion appear once in the intended order; runtime end matter may be omitted
 
 ## Styling and themes
 
@@ -269,13 +270,12 @@ After changes:
 2. Run `node --check` for each changed JavaScript file, including repository tools.
 3. Run `node tools/check-maintained-pages.mjs` and investigate any new failure.
 4. Run `node tools/check-local-links.mjs --allow-known` and investigate any new failure.
-5. Run `node tools/render-story-end-matter.mjs --check` when maintained story end matter changes.
-6. Run `node tools/check-story6.mjs` when Story 6 markup, styles, scripts, or image candidates change.
-7. Confirm IDs are unique and all fragment and ARIA ID references resolve.
-8. Recalculate affected contrast pairs.
-9. Test keyboard and disclosure behavior.
-10. Inspect at 320 CSS pixels, 200% and 400% zoom, reduced motion, reduced transparency, increased contrast, and forced
+5. Run `node tools/check-story6.mjs` when Story 6 markup, styles, scripts, or image candidates change.
+6. Confirm IDs are unique and all fragment and ARIA ID references resolve.
+7. Recalculate affected contrast pairs.
+8. Test keyboard and disclosure behavior.
+9. Inspect at 320 CSS pixels, 200% and 400% zoom, reduced motion, reduced transparency, increased contrast, and forced
    colors when a browser is available.
-11. Inspect the complete linear article in Firefox Reader View after changing story structure or content extraction
+10. Inspect the complete linear article in Firefox Reader View after changing story structure or content extraction
    hints.
-12. Report what changed, what was intentionally unchanged, which validations passed, and which manual checks remain.
+11. Report what changed, what was intentionally unchanged, which validations passed, and which manual checks remain.

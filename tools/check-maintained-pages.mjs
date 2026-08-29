@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { validateEndMatter } from "../shared/js/story-end-matter-schema.mjs";
 
 const maintainedPages = [
     "index.html",
@@ -9,6 +10,15 @@ const maintainedPages = [
     "story5.html",
     "story6.html",
 ];
+
+const storyEndMatterSources = {
+    "story1.html": "stories/story1/end-matter.json",
+    "story2.html": "stories/story2/end-matter.json",
+    "story3.html": "stories/story3/end-matter.json",
+    "story4.html": "stories/story4/end-matter.json",
+    "story5.html": "stories/story5/end-matter.json",
+    "story6.html": "story/6/end-matter.json",
+};
 
 const knownDuplicateIds = {
     "story2.html": [
@@ -162,11 +172,24 @@ function checkPage(file, source) {
     ]);
 
     if (/^story[1-6]\.html$/.test(file)) {
+        const endMatterSource = storyEndMatterSources[file];
+
         assertPage(html.includes("shared/css/story-navigation.css"), file, "missing shared story navigation styles");
         assertPage(html.includes("site-story-navigation"), file, "missing shared story navigation markup");
         assertPage(html.includes("shared/css/story-end-matter.css"), file, "missing shared story end-matter styles");
-        assertPage(html.includes("story-end-matter site-chrome"), file, "missing generated story end matter");
-        assertPage(html.includes('id="resources-title"'), file, "missing the centered Resources section heading");
+        assertPage(html.includes("shared/js/story-end-matter.js"), file, "missing shared story end-matter runtime");
+        assertPage(
+            (html.match(/data-story-end-matter-source=/g) ?? []).length === 1,
+            file,
+            "must provide exactly one story end-matter placeholder",
+        );
+        assertPage(
+            html.includes(`data-story-end-matter-source="${endMatterSource}"`),
+            file,
+            `end-matter placeholder must reference ${endMatterSource}`,
+        );
+        assertPage(html.includes("story-end-matter site-chrome"), file, "missing shared story end-matter surface");
+        assertPage(!html.includes("story-end-matter__section"), file, "contains duplicated generated end-matter content");
     }
 
     if (["story2.html", "story3.html", "story5.html"].includes(file)) {
@@ -193,7 +216,19 @@ for (const file of maintainedPages) {
     checkPage(file, await readFile(file, "utf8"));
 }
 
+for (const [file, source] of Object.entries(storyEndMatterSources)) {
+    try {
+        const data = JSON.parse(await readFile(source, "utf8"));
+        const issues = validateEndMatter(data);
+
+        issues.forEach((issue) => assertPage(false, source, issue));
+    } catch (error) {
+        assertPage(false, file, `cannot read ${source}: ${error.message}`);
+    }
+}
+
 const story4App = await readFile("stories/story4/app.js", "utf8");
+const storyEndMatterRuntime = await readFile("shared/js/story-end-matter.js", "utf8");
 const narrativeFoundation = await readFile("shared/css/narrative-foundation.css", "utf8");
 const narrativeDialogue = await readFile("shared/css/character-dialogue.css", "utf8");
 const narrativeAccessibility = await readFile("shared/css/narrative-accessibility.css", "utf8");
@@ -204,6 +239,14 @@ const story5Styles = await readFile("stories/story5/styles.css", "utf8");
 const story5Animations = await readFile("stories/story5/animations.js", "utf8");
 const story5MediaControls = await readFile("stories/story5/media-controls.js", "utf8");
 assertPage(story4App.includes("window.hraStory4MotionEnabled"), "stories/story4/app.js", "particle initialization is not motion-gated");
+assertPage(
+    storyEndMatterRuntime.includes("validateEndMatter") &&
+        storyEndMatterRuntime.includes("fetch(source") &&
+        storyEndMatterRuntime.includes("document.createElement") &&
+        !storyEndMatterRuntime.includes("innerHTML"),
+    "shared/js/story-end-matter.js",
+    "runtime must validate and render story-owned JSON without HTML-string injection",
+);
 assertPage(
     narrativeFoundation.includes("--narrative-type-body:") &&
         narrativeFoundation.includes("--narrative-type-dialogue:") &&

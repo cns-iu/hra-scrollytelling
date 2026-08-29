@@ -8,7 +8,7 @@
 - Keep `css/base.css` responsible for Story 6 typography tokens, accessibility, and page primitives; use `../../shared/css/fonts.css` for font declarations and the repository-level `shared/` styles and modules for the Menu and appearance controls
 - Keep `css/theme.css` responsible for Story 6 semantic color roles and scoped System, Light, Dark, High contrast, and forced-colors adaptations
 - Keep `css/splash-transitions.css`, `css/narrative.css`, `css/tissue-comparison.css`, `css/cde.css`, and `css/cde-comparison.css` scoped to their named Story 6 regions
-- Keep Resources, Acknowledgments, and References content in `end-matter.json`; shared presentation belongs to `../../shared/css/story-end-matter.css`, and committed markup is generated with `node tools/render-story-end-matter.mjs`
+- Keep Resources, Acknowledgments, and References content in `end-matter.json`; shared presentation and runtime rendering belong to `../../shared/css/story-end-matter.css` and `../../shared/js/story-end-matter.js`
 - Keep responsive, animation-failure, and reduced-motion rules beside the component styles they modify rather than collecting them in a separate responsive file
 - Keep Story 6–specific narrative images in `img/`
 - Keep fonts, organization logos, and shared interface icons, including the favicon, under the repository-level `../../shared/assets/` directory; keep cross-story narrative images under `../../shared/assets/images/`
@@ -68,13 +68,13 @@
 ## Reader View
 
 - Treat Firefox Reader View as a supported Story 6 presentation and preserve `article-content` and `article-header` extraction hints alongside semantic HTML
-- Keep all narrative copy, transition sentences, the explicit Conclusion heading and paragraph, resources, acknowledgments, and references inside the primary article source order
+- Keep all narrative copy, transition sentences, and the explicit Conclusion heading and paragraph inside the primary article source order; runtime end matter may be omitted from Reader View
 - Keep transition backgrounds, layered mouse anatomy, tutorial screenshots, overlays, and interface accents decorative with empty alternatives and `aria-hidden="true"`
 - Keep `.mouse-reader-overview` in the HTML without `aria-hidden`; Story 6 CSS hides it during the enhanced mouse animation while Reader View and the linear fallback expose it
 - Keep the CDE tutorial instructions as an ordered list containing the complete text equivalent of its screenshots
 - Do not hide Reader View fallback content with the HTML `hidden` attribute, inline styles, or `aria-hidden`; browser Reader View removes page styling but may preserve those states
 - Preserve the current compact image `width` and `height` attributes as a deliberate Reader View sizing exception; keep every pair proportional to its source asset and verify normal-page layout stability
-- After structural or narrative changes, verify the Firefox Reader View output from the title through the conclusion and references, checking for missing, duplicated, or out-of-order content
+- After structural or narrative changes, verify the Firefox Reader View output from the title through the conclusion, checking for missing, duplicated, or out-of-order narrative content
 
 ## Tissue comparison
 
@@ -142,4 +142,4 @@ Then open `http://localhost:8000/story6.html` and complete this smoke test:
 - Select text with a mouse and with mobile long-press, then confirm the selection colors remain readable on light and dark Story 6 surfaces
 - Confirm the tissue comparison is centered, its text remains left-aligned, and all nine samples are reachable without horizontal scrolling
 - Confirm the Cell Distance Explorer tutorial retains an accessible section name when visible introductory copy is intentionally absent
-- Open Firefox Reader View and confirm the title, all five transition sentences, compact mouse overview, tissue comparison, ordered CDE instructions, CDE comparison, Conclusion heading and paragraph, resources, acknowledgments, and references appear once in source order
+- Open Firefox Reader View and confirm the title, all five transition sentences, compact mouse overview, tissue comparison, ordered CDE instructions, CDE comparison, and Conclusion heading and paragraph appear once in source order

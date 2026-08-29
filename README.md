@@ -151,10 +151,10 @@ Stories 2, 3, and 5 share their narrative foundation and character dialogue thro
 The shared foundation defines semantic narrative, dialogue, episode-title, and chapter-heading type roles. Enhanced
 scenes use a stable small-viewport height, and coarse-pointer motion ignores height-only browser-chrome resizes while
 still refreshing after viewport-width changes.
-All six stories keep end-matter content in `end-matter.json` within the owning story directory. Run
-`node tools/render-story-end-matter.mjs` after editing that content; the generated semantic HTML remains committed so
-the sections work without JavaScript and remain available to Reader View. The former root `style.css` has been
-removed. All six stories use the shared two-link story navigation; Home fills the
+All six stories keep end-matter content in `end-matter.json` within the owning story directory. The shared
+`story-end-matter.js` module validates and renders that single source into each story's small end-matter placeholder.
+End matter requires JavaScript and may be omitted from Reader View. The former root `style.css` has been removed. All
+six stories use the shared two-link story navigation; Home fills the
 unavailable previous slot on Story 1 and the unavailable next slot on Story 6. Story 2 retains one remote Inter
 request for its embedded SVG labels; Stories 3 and 5 use the shared self-hosted Nunito Sans body font.
 
@@ -284,9 +284,9 @@ unpinned default, live reduced-motion handling, and semantic Reader View fallbac
 and conclusion. The repository as a whole should not be described as WCAG AAA conformant until each story has been
 audited and tested.
 
-All maintained pages should support browser Reader View over time. Keep the complete narrative and end matter in
-semantic source order, exclude decorative animation layers, and provide concise in-flow equivalents for informative
-visual sequences. Story 6 is the current reference implementation; see
+All maintained pages should support browser Reader View over time. Keep the complete narrative in semantic source
+order, exclude decorative animation layers, and provide concise in-flow equivalents for informative visual sequences.
+Runtime end matter may be omitted. Story 6 is the current reference implementation; see
 [`docs/architecture.md`](docs/architecture.md#reader-view-and-linear-fallbacks).
 
 Automated checks are not sufficient for conformance. Final validation must include real-browser keyboard, screen

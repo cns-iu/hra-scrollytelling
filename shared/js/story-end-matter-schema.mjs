@@ -1,5 +1,5 @@
 /**
- * Validates the concise Story end-matter schema.
+ * Validates the shared Story end-matter content schema.
  *
  * @param {unknown} data Parsed JSON content
  * @returns {string[]} Validation issue messages
