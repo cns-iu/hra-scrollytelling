@@ -1,5 +1,6 @@
 const PINNED_SCROLL_SCRUB = 0.6;
 const DIRECT_TOUCH_SCROLL_QUERY = '(hover: none) and (pointer: coarse)';
+let nextRefreshPriority = 0;
 
 /**
  * Creates all pinned Story 6 timelines.
@@ -14,6 +15,7 @@ export function setupStoryAnimations({ gsap, ScrollTrigger }) {
         return () => {};
     }
 
+    nextRefreshPriority = 0;
     const timelines = [];
 
     try {
@@ -249,6 +251,12 @@ function createPinnedTrigger(trigger, end) {
 /**
  * Returns shared ScrollTrigger settings for a scrubbed scene.
  *
+ * Assigns a descending `refreshPriority` in call order so triggers refresh top-to-bottom,
+ * matching their document order. Every pinned scene inserts a pin-spacer that pushes later
+ * content down; refreshing out of order lets a downstream trigger measure its start/end
+ * before an upstream pin-spacer's height is accounted for, leaving its geometry permanently
+ * wrong until the next refresh recalculates it against a moving target.
+ *
  * @param {string|HTMLElement} trigger Scene selector or element
  * @param {string} end Scroll distance or end position for the scene
  * @param {number|boolean} [scrub=PINNED_SCROLL_SCRUB] Scroll-to-animation synchronization behavior
@@ -261,6 +269,7 @@ function createScrubbedTrigger(trigger, end, scrub = PINNED_SCROLL_SCRUB) {
         end,
         scrub,
         invalidateOnRefresh: true,
+        refreshPriority: nextRefreshPriority--,
     };
 }
 

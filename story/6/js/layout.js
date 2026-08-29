@@ -1,7 +1,7 @@
 const RESIZE_SETTLE_DELAY = 250;
 const SCROLL_SETTLE_DELAY = 180;
 const COARSE_POINTER_QUERY = '(hover: none) and (pointer: coarse)';
-const LARGE_VIEWPORT_HEIGHT = '100lvh';
+let largestObservedViewportHeight = 0;
 
 /**
  * Configures stable ScrollTrigger measurement and responsive refresh behavior.
@@ -73,6 +73,7 @@ function createSettledLayoutRefresh(ScrollTrigger) {
             window.clearTimeout(scrollTimer);
             scrollTimer = window.setTimeout(() => {
                 isScrolling = false;
+                updateStableViewportHeight();
                 void flushRefresh();
             }, SCROLL_SETTLE_DELAY);
         },
@@ -155,6 +156,11 @@ function setupSettledResizeRefresh(refreshStoryLayout) {
         }
 
         previousWidth = currentWidth;
+
+        if (widthChanged) {
+            resetStableViewportHeightTracking();
+        }
+
         window.clearTimeout(resizeTimer);
         resizeTimer = window.setTimeout(async () => {
             updateStableViewportHeight();
@@ -166,14 +172,33 @@ function setupSettledResizeRefresh(refreshStoryLayout) {
 /**
  * Stores a stable viewport height without exposing space behind retractable mobile browser controls.
  *
+ * Coarse-pointer browsers resolve `lvh` and `window.innerHeight` live as their toolbar
+ * retracts or reappears during an in-progress scroll gesture, not only on discrete resize
+ * events. Feeding that moving target into ScrollTrigger geometry made pinned and native-sticky
+ * scenes drift further out of sync with the scroll position the longer a session ran. Tracking
+ * the largest height observed so far freezes a single pixel value once the toolbar has fully
+ * retracted, so repeated ScrollTrigger refreshes measure against a fixed number instead of a
+ * continuously repainted CSS unit.
+ *
  * @returns {void}
  */
 function updateStableViewportHeight() {
-    const useLargeMobileViewport =
-        window.matchMedia(COARSE_POINTER_QUERY).matches && typeof CSS !== 'undefined' && CSS.supports('height', LARGE_VIEWPORT_HEIGHT);
-    const viewportHeight = useLargeMobileViewport ? LARGE_VIEWPORT_HEIGHT : `${window.innerHeight}px`;
+    largestObservedViewportHeight = Math.max(largestObservedViewportHeight, window.innerHeight);
+
+    const useStableMobileViewport = window.matchMedia(COARSE_POINTER_QUERY).matches;
+    const viewportHeight = useStableMobileViewport ? `${largestObservedViewportHeight}px` : `${window.innerHeight}px`;
 
     document.body.style.setProperty('--story-viewport-height', viewportHeight);
+}
+
+/**
+ * Forgets the tracked large-viewport height so a genuine resize (not a toolbar retraction)
+ * can establish a new baseline instead of keeping a stale, larger value.
+ *
+ * @returns {void}
+ */
+function resetStableViewportHeightTracking() {
+    largestObservedViewportHeight = 0;
 }
 
 /**
