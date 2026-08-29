@@ -148,6 +148,9 @@ Stories 2, 3, and 5 share their narrative foundation and character dialogue thro
 `shared/css/`. Their generic page foundation now lives in
 `shared/css/narrative-foundation.css`; their readable short-viewport and reduced-motion mode lives in
 `shared/css/narrative-accessibility.css` and `shared/js/narrative-motion.js`, while Story 2 owns its quiz color tokens.
+The shared foundation defines semantic narrative, dialogue, episode-title, and chapter-heading type roles. Enhanced
+scenes use a stable small-viewport height, and coarse-pointer motion ignores height-only browser-chrome resizes while
+still refreshing after viewport-width changes.
 All six stories keep end-matter content in `end-matter.json` within the owning story directory. Run
 `node tools/render-story-end-matter.mjs` after editing that content; the generated semantic HTML remains committed so
 the sections work without JavaScript and remain available to Reader View. The former root `style.css` has been

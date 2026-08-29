@@ -194,9 +194,55 @@ for (const file of maintainedPages) {
 }
 
 const story4App = await readFile("stories/story4/app.js", "utf8");
+const narrativeFoundation = await readFile("shared/css/narrative-foundation.css", "utf8");
+const narrativeDialogue = await readFile("shared/css/character-dialogue.css", "utf8");
+const narrativeAccessibility = await readFile("shared/css/narrative-accessibility.css", "utf8");
+const narrativeMotion = await readFile("shared/js/narrative-motion.js", "utf8");
+const story2Styles = await readFile("stories/story2/styles.css", "utf8");
+const story3Styles = await readFile("stories/story3/styles.css", "utf8");
+const story5Styles = await readFile("stories/story5/styles.css", "utf8");
 const story5Animations = await readFile("stories/story5/animations.js", "utf8");
 const story5MediaControls = await readFile("stories/story5/media-controls.js", "utf8");
 assertPage(story4App.includes("window.hraStory4MotionEnabled"), "stories/story4/app.js", "particle initialization is not motion-gated");
+assertPage(
+    narrativeFoundation.includes("--narrative-type-body:") &&
+        narrativeFoundation.includes("--narrative-type-dialogue:") &&
+        narrativeFoundation.includes("--narrative-type-episode-title:"),
+    "shared/css/narrative-foundation.css",
+    "missing the shared semantic narrative typography roles",
+);
+assertPage(
+    narrativeFoundation.includes("--narrative-viewport-height: 100svh"),
+    "shared/css/narrative-foundation.css",
+    "missing the stable mobile scene-height enhancement",
+);
+assertPage(
+    narrativeDialogue.includes("font: var(--narrative-type-dialogue)"),
+    "shared/css/character-dialogue.css",
+    "dialogue does not consume the shared typography role",
+);
+assertPage(
+    narrativeAccessibility.includes("font: var(--narrative-type-section-heading)"),
+    "shared/css/narrative-accessibility.css",
+    "flowing chapter headings do not consume the shared typography role",
+);
+assertPage(
+    narrativeMotion.includes("autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load'") &&
+        narrativeMotion.includes("window.innerWidth === coarseViewportWidth") &&
+        narrativeMotion.includes("!event.matches && !coarsePointer.matches") &&
+        narrativeMotion.includes("if (!supportedViewport.matches)") &&
+        narrativeMotion.includes("!window.gsap || !window.ScrollTrigger"),
+    "shared/js/narrative-motion.js",
+    "coarse-pointer scrolling can regress during browser-chrome changes or failed motion setup",
+);
+for (const [file, source] of [
+    ["stories/story2/styles.css", story2Styles],
+    ["stories/story3/styles.css", story3Styles],
+    ["stories/story5/styles.css", story5Styles],
+]) {
+    assertPage(!/height:\s*100vh/u.test(source), file, "contains a browser-chrome-sensitive scene height");
+}
+assertPage(!/opacity:\s*100\b/u.test(story3Styles), "stories/story3/styles.css", "contains an invalid opacity value");
 assertPage(!/\brepeatmovie\d\b/.test(story5Animations), "stories/story5/animations.js", "references a removed global video callback");
 assertPage(story5Animations.includes("enableStory5FlowingFallback"), "stories/story5/animations.js", "missing its initialization fallback");
 assertPage(story5MediaControls.includes("IntersectionObserver"), "stories/story5/media-controls.js", "video autoplay is not viewport-gated");

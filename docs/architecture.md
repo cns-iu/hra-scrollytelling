@@ -147,8 +147,12 @@ Stories 2, 3, and 5 load `shared/css/narrative-foundation.css` and `shared/css/c
 styles own their common semantic `.story-narrative` page foundation, Nunito Sans narrative body, enhanced full-screen
 containers, introductory character treatment, layered imagery, and dialogue presentation. `shared/css/narrative-accessibility.css` and
 `shared/js/narrative-motion.js` own the readable flowing mode used without JavaScript, with reduced motion, and on
-short viewports. Portrait phone widths retain the enhanced scroll presentation. Story-specific scenes, interactive
-controls, positioning modifiers, and visual tokens remain outside these shared files.
+short viewports. The foundation maps body, dialogue, intro lead, episode title, overlay, and chapter heading to named
+typography roles instead of independent hard-coded sizes. Portrait phone widths retain the enhanced scroll
+presentation, using `100svh` where supported so browser chrome does not change pinned scene height. On coarse-pointer
+devices, height-only resize events do not rebuild every ScrollTrigger; viewport-width changes still refresh geometry
+for orientation and layout changes. Story-specific scenes, interactive controls, positioning modifiers, and visual
+tokens remain outside these shared files.
 
 All six maintained stories load `shared/css/story-end-matter.css`. Resources, optional acknowledgments, and optional
 references are authored in `end-matter.json` inside each story's owning directory. The dependency-free

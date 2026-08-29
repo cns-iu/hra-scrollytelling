@@ -47,7 +47,7 @@ html:not(.story5-animation-ready) .story5-page .talkbubble {
 .story5-page .scene5-15,
 .story5-page .scene5-16,
 .story5-page .scene5-17 {
-    height: 100vh;
+    height: var(--narrative-viewport-height);
     overflow: hidden;
     top: 0;
     background-repeat: no-repeat;

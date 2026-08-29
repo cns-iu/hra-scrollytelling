@@ -1,19 +1,46 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    overflow-x: clip;
     height: 100%;
 }
 
 :where(body.story-narrative) {
+    /* Narrative color roles */
     --narrative-color-text: #0e1825;
     --narrative-color-page: #fff;
     --narrative-color-inverse-surface: #000;
     --narrative-color-on-inverse: #fff;
+    --narrative-color-on-inverse-muted: #d4dde6;
     --narrative-color-intro-shadow: #fff;
+
+    /* Stable enhanced-scene geometry */
+    --narrative-viewport-height: 100vh;
+
+    /* Shared type hierarchy */
+    --narrative-type-body: var(--type-body-primary-weight) var(--type-body-large-size) / var(--type-body-large-line-height)
+        var(--font-body);
+    --narrative-type-dialogue: var(--type-body-primary-weight) clamp(1.125rem, 1.075rem + 0.25vw, 1.25rem) / 1.5
+        var(--font-body);
+    --narrative-type-intro-lead: var(--type-headline-primary-weight) var(--type-headline-small-size) /
+        var(--type-headline-small-line-height) var(--font-heading);
+    --narrative-type-episode-title: var(--type-display-primary-weight) clamp(2rem, 5vw, var(--type-display-medium-size)) /
+        1.2 var(--font-heading);
+    --narrative-type-overlay: var(--type-display-emphasized-weight) clamp(2rem, 6vw, var(--type-display-large-size)) / 1.2
+        var(--font-heading);
+    --narrative-type-section-heading: var(--type-headline-primary-weight) clamp(1.75rem, 4vw, 2.5rem) / 1.2
+        var(--font-heading);
 
     height: 100%;
     margin: 0;
-    font-family: var(--font-body);
+    font: var(--narrative-type-body);
+    letter-spacing: var(--type-body-large-letter-spacing);
+}
+
+@supports (height: 100svh) {
+    :where(body.story-narrative) {
+        --narrative-viewport-height: 100svh;
+    }
 }
 
 .story-narrative :where(.story-chapter-heading, .story-scene-summary) {
@@ -30,7 +57,9 @@ html {
 
 :where(body.story-narrative) p {
     color: var(--narrative-color-text);
-    font-size: 1.125rem;
+    font: var(--narrative-type-body);
+    letter-spacing: var(--type-body-large-letter-spacing);
+    text-wrap: pretty;
 }
 
 :where(body.story-narrative) .intro {
@@ -49,7 +78,7 @@ html {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100vh;
+    height: var(--narrative-viewport-height);
     background-color: var(--narrative-color-page);
     background-repeat: no-repeat;
     background-position: center center;
@@ -61,27 +90,39 @@ html {
 :where(.story-narrative) .container2 {
     width: 90%;
     height: auto;
-    min-height: 100vh;
+    min-height: var(--narrative-viewport-height);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--narrative-color-on-inverse);
     visibility: hidden;
-    font-size: 1.5rem;
     text-align: center;
     flex-direction: column;
 }
 
-:where(.story-narrative) .container,
-:where(.story-narrative) .container2,
-:where(.story-narrative) .introline .descriptionsection {
-    font-family: 'Metropolis', Helvetica, Arial, sans-serif;
+:where(.story-narrative) .container {
+    max-width: 52rem;
+    margin-inline: auto;
+    font: var(--narrative-type-intro-lead);
+    letter-spacing: var(--type-headline-small-primary-letter-spacing);
+    text-wrap: balance;
+}
+
+:where(.story-narrative) .container2 {
+    max-width: 52rem;
+    margin-inline: auto;
+    font: var(--narrative-type-body);
+    letter-spacing: var(--type-body-large-letter-spacing);
 }
 
 :where(.story-narrative) .introline .descriptionsection {
-    opacity: 0.5;
+    color: var(--narrative-color-on-inverse-muted);
+    font: var(--narrative-type-body);
+    letter-spacing: var(--type-body-large-letter-spacing);
     max-width: 600px;
     margin-top: -10px;
+    opacity: 1;
+    text-wrap: pretty;
 }
 
 :where(.story-narrative) .introlineimg {
@@ -141,11 +182,6 @@ html {
     }
 }
 
-:where(.story-narrative) .container h1,
-:where(.story-narrative) .container2 h1 {
-    line-height: 60px;
-}
-
 :where(.story-narrative) .container p,
 :where(.story-narrative) .container2 p {
     color: var(--narrative-color-on-inverse);
@@ -155,7 +191,7 @@ html {
     overflow-x: hidden;
     overflow-y: hidden;
     position: relative;
-    height: 100vh;
+    height: var(--narrative-viewport-height);
     width: auto;
     display: flex;
     margin: auto;
@@ -169,18 +205,22 @@ html {
 
 :where(.story-narrative) .imagepart,
 :where(.story-narrative) .imageparts svg {
-    height: 100vh;
+    height: var(--narrative-viewport-height);
 }
 
 :where(.story-narrative) .overtext {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    width: min(80vw, 42rem);
+    transform: translateX(-50%);
     z-index: 200;
-    font-size: 2.5rem;
+    font: var(--narrative-type-overlay);
+    letter-spacing: var(--type-display-large-letter-spacing);
     margin: 0;
+    text-align: left;
     text-shadow: 1px 1px 2px var(--narrative-color-intro-shadow);
+    text-wrap: wrap;
 }
 
 :where(.story-narrative) .narrative-telescope {
@@ -192,7 +232,11 @@ html {
 }
 
 :where(.story-narrative) .story-episode-title {
-    font-size: 1.6em;
+    max-width: 42rem;
+    margin-block: 0.5rem 1rem;
+    font: var(--narrative-type-episode-title);
+    letter-spacing: var(--type-display-medium-letter-spacing);
+    text-wrap: balance;
 }
 
 :where(.story-narrative) .story-intro-summary {

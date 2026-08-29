@@ -19,7 +19,7 @@
 
 .story3-page #introImageSection,
 .story3-page .imageintrosec {
-    height: 100vh;
+    height: var(--narrative-viewport-height);
 }
 
 .story3-page .imageintrosec {
@@ -37,7 +37,7 @@
 .story3-page .scene3-8,
 .story3-page .scene3-9 {
     background-color: var(--story3-color-scene-surface);
-    height: 100vh;
+    height: var(--narrative-viewport-height);
     overflow: hidden;
     top: 0;
     background-repeat: no-repeat;
@@ -108,7 +108,7 @@
 
 .story3-page .imageintrosec {
     position: relative;
-    height: 100vh;
+    height: var(--narrative-viewport-height);
     overflow: hidden;
     top: 0;
     background-repeat: no-repeat;
@@ -129,7 +129,7 @@
 
 .story3-page .imageintro2,
 .story3-page .imageintro3 {
-    opacity: 100;
+    opacity: 1;
 }
 
 .story3-page #kidneyorgan {
