@@ -85,8 +85,8 @@ html:has(body#six) {
         font-weight: var(--hra-type-body-large-emphasized-weight);
     }
 
-    #main-content a {
-        color: var(--hra-neutral-10);
+    #main-content > :not(.story-end-matter) a {
+        color: inherit;
         text-decoration: underline;
         text-decoration-thickness: 0.08em;
         text-underline-offset: 0.16em;

@@ -43,7 +43,7 @@
 
 .story2-page .videozoom {
     background-color: var(--story2-color-scene-surface);
-    height: 100vh;
+    height: var(--narrative-viewport-height);
     width: 100%;
     overflow: hidden;
     margin: 0;
@@ -85,7 +85,7 @@
 
 .story2-page .fadeimage2 {
     position: relative;
-    height: 100vh;
+    height: var(--narrative-viewport-height);
     justify-content: center;
     display: flex;
     top: -10%;
@@ -96,7 +96,7 @@
 .story2-page .scene1-2,
 .story2-page .scene2 {
     background-color: var(--story2-color-scene-surface);
-    height: 100vh;
+    height: var(--narrative-viewport-height);
     overflow: hidden;
     margin: 0;
     top: 0;
@@ -121,7 +121,7 @@
 
 .story2-page .scene3 {
     background-image: none;
-    height: 100vh;
+    height: var(--narrative-viewport-height);
     overflow: hidden;
     margin: 0;
     top: 0;
@@ -144,7 +144,7 @@
 .story2-page .scene12,
 .story2-page .scene13 {
     background-color: var(--story2-color-page-surface);
-    height: 100vh;
+    height: var(--narrative-viewport-height);
     margin: 0;
     overflow: hidden;
     top: 0;

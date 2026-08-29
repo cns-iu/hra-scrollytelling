@@ -27,6 +27,10 @@
     position: relative;
     color: var(--dialogue-color-text);
     border-radius: 1.375rem;
+    font: var(--narrative-type-dialogue);
+    letter-spacing: var(--type-body-large-letter-spacing);
+    text-align: left;
+    text-wrap: pretty;
 }
 
 .story-narrative :where(

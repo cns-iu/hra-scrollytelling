@@ -30,6 +30,7 @@ const files = {
     media: await readFile(path.join(storyDirectory, "js", "media.js"), "utf8"),
     narrative: await readFile(path.join(storyDirectory, "css", "narrative.css"), "utf8"),
     reveals: await readFile(path.join(storyDirectory, "js", "reveals.js"), "utf8"),
+    splashTransitions: await readFile(path.join(storyDirectory, "css", "splash-transitions.css"), "utf8"),
     theme: await readFile(path.join(storyDirectory, "css", "theme.css"), "utf8"),
 };
 const chartSvgs = await Promise.all(
@@ -86,10 +87,16 @@ function check(condition, message) {
 function checkMarkupContracts() {
     check(!files.html.includes('href="style.css"'), "Story 6 must not load the legacy root style.css");
     check(files.html.includes('href="shared/css/story-navigation.css"'), "Story 6 must load the maintained story-navigation stylesheet");
+    check(files.html.includes('href="shared/css/story-end-matter.css"'), "Story 6 must load the shared end-matter stylesheet");
     check(files.html.includes('class="site-story-navigation site-chrome"'), "Story 6 must use the shared story-navigation component");
+    check(files.html.includes('class="story-end-matter site-chrome"'), "Story 6 must use the shared generated end-matter component");
     check(!files.html.includes("sceneEnd"), "Legacy sceneEnd markup must stay removed");
     check(!files.html.includes("showpicture2"), "The unused showpicture2 hook must stay removed");
     check(!/\bet al\./iu.test(files.html), "Story 6 publication citations must retain their complete named bylines");
+    check(
+        /#main-content\s*>\s*:not\(\.story-end-matter\)\s+a\s*\{\s*color:\s*inherit;/u.test(files.base),
+        "Story 6 in-text links must inherit the surrounding text color",
+    );
     check(countMatches(files.html, /class="organ-comparison"/gu) === 3, "The tissue comparison must contain three organ cards");
     check(countMatches(files.html, /class="tissue-sample"/gu) === 9, "The tissue comparison must contain nine sample cards");
     check(countMatches(files.html, /class="tutorial-callout tutorial-callout--\d"/gu) === 5, "The CDE tutorial must contain five semantic steps");
@@ -249,6 +256,20 @@ function checkAnimationGeometry() {
             files.entry.includes("await Promise.allSettled(preparation)") &&
             /html\.story6-loading #six::before\s*\{[\s\S]*?transition:\s*opacity 1250ms/u.test(files.base),
         "Story 6 must retain its fail-safe page-color loading overlay and settled fade-in",
+    );
+    check(
+        /class="transition transition5[\s\S]*?class="transition__stage"/u.test(files.html) &&
+            files.animations.includes("createTextboxTransition(gsap, '.transition5', { nativeStickyOnTouch: true })") &&
+            /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?&\.story-animations-enabled \.transition5[\s\S]*?height:\s*340vh;[\s\S]*?\.transition__stage\s*\{[\s\S]*?position:\s*sticky;/u.test(
+                files.splashTransitions,
+            ),
+        "The mobile conclusion must use an intrinsic native-sticky scene instead of a fixed ScrollTrigger pin",
+    );
+    check(
+        files.media.includes("setupConclusionImagePreparation()") &&
+            files.media.includes("document.querySelector('.cde-histogram-comparison')") &&
+            files.media.includes("document.querySelectorAll('.transition5 .transition__background')"),
+        "The conclusion artwork must begin decoding from the preceding histogram comparison",
     );
     check(
         /\.tutorial\s*\{[\s\S]*?opacity:\s*0;[\s\S]*?visibility:\s*hidden;[\s\S]*?\.tutorial1\s*\{[\s\S]*?opacity:\s*1;[\s\S]*?visibility:\s*visible;/u.test(

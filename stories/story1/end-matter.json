@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "resources": {
+        "title": "Resources",
+        "items": [
+            {
+                "eyebrow": "Website",
+                "title": "Human Reference Atlas",
+                "description": "Ready to learn more about the Human Reference Atlas?",
+                "href": "https://humanatlas.io/",
+                "newTab": false
+            }
+        ]
+    }
+}

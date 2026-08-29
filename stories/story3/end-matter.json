@@ -1,0 +1,36 @@
+{
+    "version": 1,
+    "resources": {
+        "title": "Resources",
+        "items": [
+            {
+                "eyebrow": "Video tutorial",
+                "title": "RUI tutorial",
+                "description": "If you prefer your demos conducted by a real human being, not a couple of animated cells, check out this video on the Registration User Interface.",
+                "href": "https://www.youtube.com/watch?v=gY3_-LIoKaU",
+                "newTab": true
+            },
+            {
+                "eyebrow": "Publication",
+                "title": "RUI publication",
+                "description": "Alright smarty pants, I bet you're ready to read a paper about this! Check out this one from the journal Communications Biology.",
+                "href": "https://doi.org/10.1038/s42003-022-03644-x",
+                "newTab": true
+            },
+            {
+                "eyebrow": "Procedure",
+                "title": "Standard operating procedure (SOP)",
+                "description": "Avoid the embarrassment of using the RUI with your procedures all unstandardized. These RUI standard operating procedures will help you do things the right way!",
+                "href": "https://doi.org/10.5281/zenodo.14346542",
+                "newTab": true
+            },
+            {
+                "eyebrow": "Related story",
+                "title": "Squiggy's Identity Crisis!",
+                "description": "Did you miss CeCe and Squiggy's first adventure?",
+                "href": "story2.html",
+                "newTab": false
+            }
+        ]
+    }
+}

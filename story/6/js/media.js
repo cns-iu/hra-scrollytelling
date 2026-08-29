@@ -17,6 +17,7 @@ export function setupStoryImagePreparation({ onMouseImagesPrepared = () => {} } 
     setupMouseImagePreparation(onMouseImagesPrepared);
     setupTissueImagePreparation();
     setupTutorialImagePreparation();
+    setupConclusionImagePreparation();
 }
 
 /**
@@ -68,6 +69,19 @@ function setupTutorialImagePreparation() {
         targets: [document.querySelector('.setup3'), document.querySelector('.section5')],
         images: images.slice(2),
         rootMargin: getConnectionAwareMargin(NEAR_PRELOAD_MARGIN),
+    });
+}
+
+/**
+ * Decodes the conclusion artwork while the reader is still moving through the histogram comparison.
+ *
+ * @returns {void}
+ */
+function setupConclusionImagePreparation() {
+    prepareWhenNear({
+        targets: [document.querySelector('.cde-histogram-comparison'), document.querySelector('.transition5')],
+        images: Array.from(document.querySelectorAll('.transition5 .transition__background')),
+        rootMargin: getConnectionAwareMargin(FAR_PRELOAD_MARGIN),
     });
 }
 

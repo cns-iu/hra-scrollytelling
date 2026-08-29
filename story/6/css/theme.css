@@ -14,16 +14,12 @@
     --story-color-border-subtle: var(--story-color-outline-variant);
     --story-color-label: #26282b;
     --story-color-on-label: #eff2f5;
-    --story-color-accent-surface: #e3dfff;
-    --story-color-on-accent-surface: #171533;
     --story-color-info-surface: #f0f5ff;
     --story-color-info-accent: #174a7e;
     --story-color-artwork-surface: #ffffff;
     --hra-background: var(--story-color-page);
     --hra-on-background: var(--story-color-text);
     --hra-on-surface-variant: var(--story-color-text);
-    --story-resource-logo-sennet: url("../../../shared/assets/logos/sennet-logo-light.svg");
-    --story-resource-logo-hra: url("../../../shared/assets/logos/hra-light-large.svg");
     --story-color-selection: #201e3d;
     --story-color-on-selection: #ffffff;
     --story-condition-one: #dee5f1;
@@ -57,12 +53,8 @@
     --story-color-border-subtle: var(--story-color-outline-variant);
     --story-color-label: #d4dde6;
     --story-color-on-label: #26282b;
-    --story-color-accent-surface: #171533;
-    --story-color-on-accent-surface: #e3dfff;
     --story-color-info-surface: #1c2633;
     --story-color-info-accent: #9fc9ff;
-    --story-resource-logo-sennet: url("../../../shared/assets/logos/sennet-logo-dark.svg");
-    --story-resource-logo-hra: url("../../../shared/assets/logos/hra-dark-large.svg");
     --story-color-selection: #ffdad9;
     --story-color-on-selection: #400009;
     --story-condition-one: #1f2023;
@@ -92,12 +84,8 @@
         --story-color-border-subtle: var(--story-color-outline-variant);
         --story-color-label: #d4dde6;
         --story-color-on-label: #26282b;
-        --story-color-accent-surface: #171533;
-        --story-color-on-accent-surface: #e3dfff;
         --story-color-info-surface: #1c2633;
         --story-color-info-accent: #9fc9ff;
-        --story-resource-logo-sennet: url("../../../shared/assets/logos/sennet-logo-dark.svg");
-        --story-resource-logo-hra: url("../../../shared/assets/logos/hra-dark-large.svg");
         --story-color-selection: #ffdad9;
         --story-color-on-selection: #400009;
         --story-condition-one: #1f2023;
@@ -128,8 +116,7 @@
     }
 }
 
-#six #main-content :is(a, button, [tabindex]):focus-visible,
-#six .references a:focus {
+#six #main-content :is(a, button, [tabindex]):focus-visible {
     outline-color: var(--story-color-focus);
 }
 
@@ -154,12 +141,7 @@
 #six .page-header .title-card .title .main,
 #six .tissue-comparison__intro h2,
 #six .organ-comparison h3,
-#six .tissue-comparison__takeaway,
-#six .resources__header h2,
-#six .acknowledgments__header h2,
-#six .acknowledgments__list strong,
-#six .references .header,
-#six .resource-card__title {
+#six .tissue-comparison__takeaway {
     color: var(--story-color-heading);
 }
 #six .page-header .title-card .title .subtitle,
@@ -167,10 +149,7 @@
 #six .intro .text p,
 #six .section2-2 .text p,
 #six .tissue-comparison__intro p:not(.tissue-comparison__eyebrow),
-#six .tissue-comparison__takeaway p,
-#six .resources__header > p:last-child,
-#six .resource-card__description,
-#six .references p {
+#six .tissue-comparison__takeaway p {
     color: var(--story-color-text);
 }
 #six .page-header .title-card .bottom {
@@ -185,8 +164,7 @@
 }
 
 #six .intro,
-#six .section2-2,
-#six .resources {
+#six .section2-2 {
     background: linear-gradient(var(--story-color-page), var(--story-color-surface-low));
 }
 
@@ -204,7 +182,6 @@
 }
 
 #six section.section4,
-#six .references,
 #six section.section5,
 #six .cde-tutorial-stage {
     background: var(--story-color-surface-low);
@@ -225,8 +202,7 @@
 
 #six .image-card,
 #six .organ-comparison,
-#six .tissue-comparison__takeaway,
-#six .acknowledgments__list li {
+#six .tissue-comparison__takeaway {
     background: var(--story-color-card);
     border-color: var(--story-color-border-subtle);
     box-shadow: var(--story-shadow);
@@ -243,9 +219,7 @@
 
 #six .tissue-comparison__eyebrow,
 #six .organ-comparison__number,
-#six .tissue-comparison__takeaway .tissue-comparison__takeaway-label,
-#six .resources__eyebrow,
-#six .reference-list li::marker {
+#six .tissue-comparison__takeaway .tissue-comparison__takeaway-label {
     color: var(--story-color-accent);
 }
 
@@ -292,25 +266,6 @@
     outline-color: var(--story-color-focus);
 }
 
-#six .resource-card__action {
-    text-decoration: underline;
-    text-decoration-thickness: 0.08em;
-    text-underline-offset: 0.16em;
-}
-
-#six .acknowledgments {
-    color: var(--story-color-on-accent-surface);
-    background: var(--story-color-accent-surface);
-}
-
-#six .acknowledgments__list li {
-    color: var(--story-color-text);
-}
-
-#six .reference-list li {
-    border-color: var(--story-color-border-subtle);
-}
-
 #six:not(.story-animations-enabled) .page-header {
     --story-splash-overlay-opacity: 1;
 }
@@ -345,9 +300,7 @@
     .organ-comparison,
     .tissue-sample,
     .tissue-comparison__takeaway,
-    .tutorial-callout,
-    .resource-card,
-    .acknowledgments__list li
+    .tutorial-callout
 ) {
     border-color: var(--story-color-border);
     border-width: 0.1875rem;
@@ -378,9 +331,7 @@
         .organ-comparison,
         .tissue-sample,
         .tissue-comparison__takeaway,
-        .tutorial-callout,
-        .resource-card,
-        .acknowledgments__list li
+        .tutorial-callout
     ) {
         border-color: var(--story-color-border);
         border-width: 0.1875rem;
@@ -408,12 +359,12 @@
 @media (forced-colors: active) {
     #six,
     #six #main-content,
-    #six :is(.page-header, .intro, .section2-2, .setup, .section3, .section4, .section5, .resources, .acknowledgments, .references) {
+    #six :is(.page-header, .intro, .section2-2, .setup, .section3, .section4, .section5) {
         color: CanvasText;
         background: Canvas;
     }
 
-    #six :is(.title-card, .image-card, .organ-comparison, .tissue-sample, .tissue-comparison__takeaway, .tutorial-callout, .resource-card, .acknowledgments__list li) {
+    #six :is(.title-card, .image-card, .organ-comparison, .tissue-sample, .tissue-comparison__takeaway, .tutorial-callout) {
         color: CanvasText;
         background: Canvas;
         border: 2px solid CanvasText;

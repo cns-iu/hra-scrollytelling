@@ -7,7 +7,8 @@
 - Keep `story6.js` as the small entry point; place focused UI, animation, reveal, and layout responsibilities in `js/` modules
 - Keep `css/base.css` responsible for Story 6 typography tokens, accessibility, and page primitives; use `../../shared/css/fonts.css` for font declarations and the repository-level `shared/` styles and modules for the Menu and appearance controls
 - Keep `css/theme.css` responsible for Story 6 semantic color roles and scoped System, Light, Dark, High contrast, and forced-colors adaptations
-- Keep `css/splash-transitions.css`, `css/narrative.css`, `css/tissue-comparison.css`, `css/cde.css`, `css/cde-comparison.css`, and `css/closing.css` scoped to their named Story 6 regions
+- Keep `css/splash-transitions.css`, `css/narrative.css`, `css/tissue-comparison.css`, `css/cde.css`, and `css/cde-comparison.css` scoped to their named Story 6 regions
+- Keep Resources, Acknowledgments, and References content in `end-matter.json`; shared presentation belongs to `../../shared/css/story-end-matter.css`, and committed markup is generated with `node tools/render-story-end-matter.mjs`
 - Keep responsive, animation-failure, and reduced-motion rules beside the component styles they modify rather than collecting them in a separate responsive file
 - Keep Story 6–specific narrative images in `img/`
 - Keep fonts, organization logos, and shared interface icons, including the favicon, under the repository-level `../../shared/assets/` directory; keep cross-story narrative images under `../../shared/assets/images/`
@@ -39,12 +40,13 @@
 - Keep the splash visually editorial rather than application-like: preserve its asymmetric placement, restrained paper surface, compact accent rule, and clear title-first hierarchy
 - Keep the splash background visible around the title card and avoid adding partner marks to the title card unless the user explicitly requests them
 - Preserve the splash title, subtitle, credits, background crop, and opening-question transition as separate responsibilities so visual refinements do not alter narrative content or scroll behavior
-- Keep closing resources as a semantic card list with descriptive external-link actions; keep contributor acknowledgments in a separate section rather than mixing credits into resource cards
+- Keep closing resources as a semantic card list with eyebrow, title, and description; keep contributor acknowledgments in a separate section rather than mixing credits into resource cards
 
 ## Scrolling and animation
 
 - Preserve native browser scrolling and do not introduce scroll hijacking or a smoothing dependency
 - Use the shared `pinnedScrollScrub` value for animated pinned scenes on fine-pointer devices so transitions respond consistently; use direct scrubbing on coarse-pointer devices so touch scrolling does not retain a catch-up tween
+- Keep Transition 5 on an intrinsic native-sticky stage for coarse-pointer devices; scrub its timeline against the section's own scroll range instead of restoring a fixed ScrollTrigger pin near the end of the document
 - Keep the native-sticky CDE tutorial mapped directly to scroll position with `scrub: true`; do not add smoothing that can let its timeline lag behind the sticky scene
 - Prefer compositor-friendly `transform` and `opacity` animation over layout-triggering properties
 - Use `createTextboxTransition` and `addTextboxChoreography` for transition headings rather than duplicating timelines
@@ -94,6 +96,7 @@
 - Keep the 960, 1920, and 3840 WebP transition variants together and update the complete `srcset` and fallback `src` when renaming one
 - Use the 1920 WebP as each transition image's fallback `src`; do not retain a duplicate PNG fallback
 - Load Transition 3 eagerly at high priority so rapid scrolling cannot outrun its request; keep all other non-splash transition backgrounds lazy
+- Prepare and decode Transition 5 from the histogram comparison so its lazy artwork is ready before the native-sticky conclusion begins
 - Preserve transparent backgrounds when optimizing transition images
 - Use the 960 px transition settings below when regenerating that variant
 
