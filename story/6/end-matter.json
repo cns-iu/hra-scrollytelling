@@ -1,0 +1,185 @@
+{
+    "version": 1,
+    "resources": {
+        "title": "Resources",
+        "intro": "Explore the data, tools, and research communities behind this story.",
+        "items": [
+            {
+                "eyebrow": "App",
+                "title": "Cell Distance Explorer",
+                "description": "Compute, visualize, and explore cell distance distributions in spatial omics datasets.",
+                "href": "https://apps.humanatlas.io/cde/",
+                "newTab": true
+            },
+            {
+                "eyebrow": "Data",
+                "title": "SenNet Data Portal",
+                "description": "Explore and download cellular senescence datasets from across the SenNet consortium.",
+                "href": "https://data.sennetconsortium.org/",
+                "newTab": true
+            },
+            {
+                "eyebrow": "Website",
+                "title": "Human Reference Atlas",
+                "description": "Explore reference maps and tools for understanding the cells and structures of the human body.",
+                "href": "https://humanatlas.io/",
+                "newTab": true
+            },
+            {
+                "eyebrow": "Website",
+                "title": "SenNet Community",
+                "description": "Learn about the consortium and connect with the researchers advancing senescence science.",
+                "href": "https://sennetconsortium.org/",
+                "newTab": true
+            }
+        ]
+    },
+    "acknowledgments": {
+        "title": "Acknowledgments",
+        "items": [
+            {
+                "label": "Data",
+                "text": "Anthony Fung and Rong Fan (Yale University), Andreas Bueckle (Indiana University)"
+            },
+            {
+                "label": "Story authors",
+                "text": "Anthony Fung (Yale University), Todd Theriault, Elizabeth Maier, and Katy Börner (Indiana University)"
+            },
+            {
+                "label": "Cell Distance Explorer design and implementation",
+                "text": "Yashvardhan Jain, Elizabeth Maier, Katy Börner, Bruce W. Herr II, Daniel Bolin, and Edward Lu (Indiana University)"
+            },
+            {
+                "label": "Web design and development",
+                "text": "Edward Lu and Elizabeth Maier (Indiana University)"
+            }
+        ]
+    },
+    "references": {
+        "title": "References",
+        "items": [
+            {
+                "type": "journal-article",
+                "authors": [
+                    "Bueckle, Andreas",
+                    "Bruce W. Herr II",
+                    "Lu Chen",
+                    "Daniel Bolin",
+                    "Danial Qaurooni",
+                    "Michael Ginda",
+                    "Yashvardhan Jain",
+                    "Aleix Puig-Barbe",
+                    "Kristin Ardlie",
+                    "Fusheng Wang",
+                    "Katy Börner"
+                ],
+                "title": "Cell Type Populations for 3D Anatomical Structures of the Human Reference Atlas",
+                "containerTitle": "Scientific Data",
+                "year": "2026",
+                "volume": "13",
+                "issue": "1",
+                "articleNumber": "716",
+                "doi": "10.1038/s41597-026-06642-4"
+            },
+            {
+                "type": "preprint",
+                "authors": [
+                    "Jain, Yashvardhan",
+                    "Jodie Jepson",
+                    "Roy Chen",
+                    "Elizabeth Maier",
+                    "Bruce W. Herr II",
+                    "Aleix Puig-Barbe",
+                    "Ellen M. Quardokus",
+                    "Danial Qaurooni",
+                    "Clarence Yapp",
+                    "Samuel L. Ewing",
+                    "Archibald Enninful",
+                    "Negin Farzad",
+                    "Andreas Bueckle",
+                    "Quinn T. Easter",
+                    "Bruno Matuck",
+                    "Chenchen Zhu",
+                    "Emma Marie Monte",
+                    "Jeffrey M. Purkerson",
+                    "Matthew Jehrio",
+                    "Ravi S. Misra",
+                    "Rong Fan",
+                    "Fiona Ginty",
+                    "Arivarasan Karunamurthy",
+                    "Jean Fan",
+                    "Martha Campbell-Thompson",
+                    "Gloria S. Pryhuber",
+                    "Kevin M. Byrd",
+                    "John W. Hickey",
+                    "Katy Börner"
+                ],
+                "title": "Exploring Endothelial Cell Environments across Organs in Spatially Resolved Omics Data",
+                "containerTitle": "bioRxiv",
+                "date": "September 25, 2025",
+                "doi": "10.1101/2025.09.23.678129"
+            },
+            {
+                "type": "journal-article",
+                "authors": [
+                    "Börner, Katy",
+                    "Philip D. Blood",
+                    "Jonathan C. Silverstein",
+                    "Matthew Ruffalo",
+                    "Rahul Satija",
+                    "Sarah A. Teichmann",
+                    "Gloria J. Pryhuber",
+                    "Ravi S. Misra",
+                    "Jeffrey M. Purkerson",
+                    "Jean Fan",
+                    "John W. Hickey",
+                    "Gesmira Molla",
+                    "Chuan Xu",
+                    "Yun Zhang",
+                    "Griffin M. Weber",
+                    "Yashvardhan Jain",
+                    "Danial Qaurooni",
+                    "Yongxin Kong",
+                    "HRA Team",
+                    "Andreas Bueckle",
+                    "Bruce W. Herr II"
+                ],
+                "title": "Human BioMolecular Atlas Program (HuBMAP): 3D Human Reference Atlas Construction and Usage",
+                "containerTitle": "Nature Methods",
+                "year": "2025",
+                "volume": "22",
+                "issue": "4",
+                "pages": "845–860",
+                "doi": "10.1038/s41592-024-02563-5"
+            },
+            {
+                "type": "webpage",
+                "authors": [
+                    "National Institute on Aging"
+                ],
+                "title": "Does Cellular Senescence Hold Secrets for Healthier Aging?",
+                "publisher": "National Institutes of Health",
+                "date": "July 13, 2021",
+                "url": "https://www.nia.nih.gov/news/does-cellular-senescence-hold-secrets-healthier-aging"
+            },
+            {
+                "type": "journal-article",
+                "authors": [
+                    "Xu, Chengying",
+                    "Zhimei Qiu",
+                    "Qing Guo",
+                    "Youyang Huang",
+                    "Yongchao Zhao",
+                    "Ranzun Zhao"
+                ],
+                "title": "The Role of Cellular Senescence in Cardiovascular Disease",
+                "containerTitle": "Cell Death Discovery",
+                "year": "2025",
+                "volume": "11",
+                "articleNumber": "Article 431",
+                "date": "October 6, 2025",
+                "doi": "10.1038/s41420-025-02720-5"
+            }
+        ]
+    }
+}

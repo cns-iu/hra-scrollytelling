@@ -164,6 +164,9 @@ function checkPage(file, source) {
     if (/^story[1-6]\.html$/.test(file)) {
         assertPage(html.includes("shared/css/story-navigation.css"), file, "missing shared story navigation styles");
         assertPage(html.includes("site-story-navigation"), file, "missing shared story navigation markup");
+        assertPage(html.includes("shared/css/story-end-matter.css"), file, "missing shared story end-matter styles");
+        assertPage(html.includes("story-end-matter site-chrome"), file, "missing generated story end matter");
+        assertPage(html.includes('id="resources-title"'), file, "missing the centered Resources section heading");
     }
 
     if (["story2.html", "story3.html", "story5.html"].includes(file)) {

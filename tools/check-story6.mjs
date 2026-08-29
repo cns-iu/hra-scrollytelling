@@ -87,10 +87,16 @@ function check(condition, message) {
 function checkMarkupContracts() {
     check(!files.html.includes('href="style.css"'), "Story 6 must not load the legacy root style.css");
     check(files.html.includes('href="shared/css/story-navigation.css"'), "Story 6 must load the maintained story-navigation stylesheet");
+    check(files.html.includes('href="shared/css/story-end-matter.css"'), "Story 6 must load the shared end-matter stylesheet");
     check(files.html.includes('class="site-story-navigation site-chrome"'), "Story 6 must use the shared story-navigation component");
+    check(files.html.includes('class="story-end-matter site-chrome"'), "Story 6 must use the shared generated end-matter component");
     check(!files.html.includes("sceneEnd"), "Legacy sceneEnd markup must stay removed");
     check(!files.html.includes("showpicture2"), "The unused showpicture2 hook must stay removed");
     check(!/\bet al\./iu.test(files.html), "Story 6 publication citations must retain their complete named bylines");
+    check(
+        /#main-content\s*>\s*:not\(\.story-end-matter\)\s+a\s*\{\s*color:\s*inherit;/u.test(files.base),
+        "Story 6 in-text links must inherit the surrounding text color",
+    );
     check(countMatches(files.html, /class="organ-comparison"/gu) === 3, "The tissue comparison must contain three organ cards");
     check(countMatches(files.html, /class="tissue-sample"/gu) === 9, "The tissue comparison must contain nine sample cards");
     check(countMatches(files.html, /class="tutorial-callout tutorial-callout--\d"/gu) === 5, "The CDE tutorial must contain five semantic steps");

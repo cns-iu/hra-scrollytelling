@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "resources": {
+        "title": "Resources",
+        "items": [
+            {
+                "eyebrow": "Documentation",
+                "title": "Explore HRA data",
+                "description": "Want to learn how the HRA puts all that data to use? Check out the apps overview of some of the neat things the HRA can do!",
+                "href": "https://docs.humanatlas.io/apps",
+                "newTab": true
+            },
+            {
+                "eyebrow": "Developer tools",
+                "title": "HRA APIs",
+                "description": "So now you're like, \"Enough talk already! Show me the data!!\" Relax: you can hook up to HRA data by visiting our API page.",
+                "href": "https://apps.humanatlas.io/api",
+                "newTab": true
+            },
+            {
+                "eyebrow": "Related story",
+                "title": "What is an HRA?",
+                "description": "What? You don't know what an HRA is or why we really, really need one? Get caught up with our very first scrollytale!",
+                "href": "story1.html",
+                "newTab": false
+            }
+        ]
+    }
+}

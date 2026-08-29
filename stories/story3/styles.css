@@ -106,18 +106,6 @@
     background-image: url('images/registered-tissue-data-scene.svg');
 }
 
-.story3-page .scene3-10 {
-    background-color: var(--story3-color-page-surface);
-    height: auto;
-    overflow: hidden;
-    margin: 0;
-    top: 0;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    min-width: 100%;
-}
-
 .story3-page .imageintrosec {
     position: relative;
     height: 100vh;

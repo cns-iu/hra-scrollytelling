@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "resources": {
+        "title": "Resources",
+        "items": [
+            {
+                "eyebrow": "Video tutorial",
+                "title": "Cell-type annotation video",
+                "description": "If you want to see how researchers use the tools introduced in this scrollytale, check out this video on improving cell-type annotation.",
+                "href": "https://www.youtube.com/watch?v=KuZ_bwLHipM&t=1s",
+                "newTab": true
+            },
+            {
+                "eyebrow": "Animation",
+                "title": "HRA animation",
+                "description": "Want to see more animations detailing features of the Human Reference Atlas?",
+                "href": "https://www.youtube.com/watch?v=zQeMgxo8n_U",
+                "newTab": true
+            },
+            {
+                "eyebrow": "Related story",
+                "title": "Data Detangle",
+                "description": "Did you miss the previous episode?",
+                "href": "story4.html",
+                "newTab": false
+            }
+        ]
+    }
+}

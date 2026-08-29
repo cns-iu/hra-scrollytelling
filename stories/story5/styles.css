@@ -317,15 +317,3 @@ html:not(.story5-animation-ready) .story5-page .talkbubble {
 .story5-page .story5-dialogue--lower {
     top: 18%;
 }
-
-.sceneEnd {
-    background-color: var(--story5-color-page-surface);
-    height: auto;
-    overflow: hidden;
-    margin: 0;
-    top: 0;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    min-width: 100%;
-}

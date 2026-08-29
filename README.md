@@ -94,7 +94,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── logos/      # Theme-aware organization logos
 │   │   ├── music/      # Shared story and prototype audio
 │   │   └── videos/     # Video shared by maintained and prototype experiences
-│   ├── css/            # Page chrome plus shared story narrative, dialogue, and resource-card styles
+│   ├── css/            # Page chrome plus shared story narrative, dialogue, and end-matter styles
 │   └── js/             # Progressive-enhancement navigation and appearance modules
 ├── prototypes/         # Organized legacy experiences and their maintenance notes
 │   ├── drag-and-drop/           # Drag-and-drop answer demo and owned assets
@@ -111,7 +111,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 ├── story5.html
 ├── story6.html         # Pan-organ Immunosenescence Atlas entry point
 ├── story/              # Singular clean-URL convention for migrated and new stories
-│   ├── 6/              # Story 6 styles, scripts, images, and contributor instructions
+│   ├── 6/              # Story 6 styles, scripts, images, end-matter JSON, and contributor instructions
 │   └── 7/
 │       └── README.md   # Story 7 implementation and publication contract
 └── stories/            # Organized story-owned implementation files
@@ -124,7 +124,7 @@ original URLs retained as compatibility pages. These are not primary entry point
     │   ├── animations.js
     │   ├── diagram-detail.js
     │   ├── diagram-overview.js
-    │   ├── images/        # Story 4 resource thumbnails
+    │   ├── images/        # Story 4 narrative artwork
     │   ├── motion.js
     │   ├── particles.js
     │   ├── styles.css
@@ -144,11 +144,14 @@ validating every HTML, CSS, JavaScript, JSON, and service-worker reference. See
 [`docs/architecture.md`](docs/architecture.md) for ownership boundaries and the staged target structure, and
 [`docs/asset-map.md`](docs/asset-map.md) for the current migration register.
 
-Stories 2, 3, and 5 share their narrative foundation, character dialogue, and current resource-card presentation
-through focused stylesheets under `shared/css/`. Their generic page foundation now lives in
+Stories 2, 3, and 5 share their narrative foundation and character dialogue through focused stylesheets under
+`shared/css/`. Their generic page foundation now lives in
 `shared/css/narrative-foundation.css`; their readable short-viewport and reduced-motion mode lives in
 `shared/css/narrative-accessibility.css` and `shared/js/narrative-motion.js`, while Story 2 owns its quiz color tokens.
-The former root `style.css` has been removed. All six stories use the shared two-link story navigation; Home fills the
+All six stories keep end-matter content in `end-matter.json` within the owning story directory. Run
+`node tools/render-story-end-matter.mjs` after editing that content; the generated semantic HTML remains committed so
+the sections work without JavaScript and remain available to Reader View. The former root `style.css` has been
+removed. All six stories use the shared two-link story navigation; Home fills the
 unavailable previous slot on Story 1 and the unavailable next slot on Story 6. Story 2 retains one remote Inter
 request for its embedded SVG labels; Stories 3 and 5 use the shared self-hosted Nunito Sans body font.
 
@@ -159,8 +162,7 @@ The landing page is deliberately separated from the legacy story implementation:
 - `index.html` owns its semantic structure and editorial content.
 - `landing/assets/backgrounds/` contains the Light and Dark decorative splash artwork.
 - `shared/assets/icons/menu.svg` is the Material Menu glyph used by the landing and shared-story extended FABs.
-- `shared/assets/logos/` contains the theme-aware organization marks used by the landing hero, footer, and Story 6
-  resource cards.
+- `shared/assets/logos/` contains the theme-aware organization marks used by the landing hero and footer.
 - `shared/css/fonts.css` owns the self-hosted HRA font declarations and resilient typography stacks.
 - `landing/css/fonts.css` preserves the former font URL for cached landing-page documents.
 - `landing/css/tokens.css` owns light/dark HRA colors, semantic roles, and shared layout tokens.
