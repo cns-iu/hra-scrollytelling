@@ -1,7 +1,7 @@
 const RESIZE_SETTLE_DELAY = 250;
 const SCROLL_SETTLE_DELAY = 180;
 const COARSE_POINTER_QUERY = '(hover: none) and (pointer: coarse)';
-let largestObservedViewportHeight = 0;
+const MOBILE_CHROME_SAFETY_MARGIN_PX = 150;
 
 /**
  * Configures stable ScrollTrigger measurement and responsive refresh behavior.
@@ -156,10 +156,6 @@ function setupSettledResizeRefresh(refreshStoryLayout) {
 
         previousWidth = currentWidth;
 
-        if (widthChanged) {
-            resetStableViewportHeightTracking();
-        }
-
         window.clearTimeout(resizeTimer);
         resizeTimer = window.setTimeout(async () => {
             updateStableViewportHeight();
@@ -169,42 +165,34 @@ function setupSettledResizeRefresh(refreshStoryLayout) {
 }
 
 /**
- * Stores the stable viewport height that scroll-driven scenes size their ScrollTrigger scroll
- * distance against — not the height visible content itself renders at.
+ * Stores a stable viewport height that never changes mid-scroll, for both a scene's
+ * ScrollTrigger scroll distance and the sticky stage that visibly renders it.
  *
- * Coarse-pointer browsers resolve `lvh`, `dvh`, and `window.innerHeight` live as their toolbar
- * retracts or reappears, including continuously throughout an in-progress scroll gesture, not
- * only on discrete resize events. Feeding that moving target into ScrollTrigger geometry made
- * scroll distance drift out of sync with actual scroll position the longer a session ran, and
- * updating it reactively on every scroll settle left it stale for the entire duration of an
- * active scroll — undersized relative to the real, currently-retracted toolbar state — which
- * both left a visible gap under sticky content and shrank each scene's effective scroll
- * distance enough that a fast flick could blow through an entire reveal in too few frames to
- * render. This value only updates on load and once a genuine resize (not a toolbar-only one)
- * settles, so ScrollTrigger's cached geometry is never invalidated mid-gesture. The sticky
- * scene stages that render this height on screen use a separately live `dvh` value instead
- * (see the coarse-pointer rules in splash-transitions.css/narrative.css), so they always fill
- * the actual current viewport with no gap regardless of how stale this value is mid-session.
+ * Coarse-pointer browsers resolve `svh`, `lvh`, `dvh`, and `window.innerHeight` live as their
+ * toolbar retracts or reappears, including continuously throughout an in-progress scroll
+ * gesture, not only on discrete resize events — this is true even of `lvh`/`svh`, which per
+ * spec should be static. Feeding any of those into ScrollTrigger geometry drifts scroll
+ * distance out of sync with actual scroll position over a session, and using one as a sticky
+ * stage's own `height` makes that stage visibly grow or shrink in real time while GSAP is
+ * simultaneously animating scroll-driven transforms inside it — most visible right at the
+ * splash, where the reader's very first scroll gesture is also typically the first moment the
+ * toolbar starts retracting.
+ *
+ * A fixed safety margin is added on top of the measured height so the value is generously
+ * larger than the true viewport even once the toolbar fully retracts, rather than trying to
+ * track that growth. Overshooting only crops slightly off-screen on an `overflow: hidden`
+ * stage, which is invisible; undershooting leaves a visible gap. This value only updates on
+ * load and once a genuine resize (not a toolbar-only one) settles, so it never changes mid-scroll.
  *
  * @returns {void}
  */
 function updateStableViewportHeight() {
-    largestObservedViewportHeight = Math.max(largestObservedViewportHeight, window.innerHeight);
-
     const useStableMobileViewport = window.matchMedia(COARSE_POINTER_QUERY).matches;
-    const viewportHeight = useStableMobileViewport ? `${largestObservedViewportHeight}px` : `${window.innerHeight}px`;
+    const viewportHeight = useStableMobileViewport
+        ? `${window.innerHeight + MOBILE_CHROME_SAFETY_MARGIN_PX}px`
+        : `${window.innerHeight}px`;
 
     document.body.style.setProperty('--story-viewport-height', viewportHeight);
-}
-
-/**
- * Forgets the tracked large-viewport height so a genuine resize (not a toolbar retraction)
- * can establish a new baseline instead of keeping a stale, larger value.
- *
- * @returns {void}
- */
-function resetStableViewportHeightTracking() {
-    largestObservedViewportHeight = 0;
 }
 
 /**
