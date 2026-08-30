@@ -110,7 +110,8 @@ function checkMarkupContracts() {
     check(countMatches(files.html, /class="cde-comparison__figure/gu) === 6, "The CDE comparison must contain six semantic figures");
     check(countMatches(files.html, /class="cell-type-legend/gu) === 2, "The network and histogram comparisons must each retain a shared legend");
     check(
-        countMatches(files.html, /<li style="--cell-type-color: #ad584f">Endothelial<\/li>/gu) === 1,
+        countMatches(files.html, /<li data-cell-type="endothelial">Endothelial<\/li>/gu) === 1 &&
+            files.cdeComparison.includes('li[data-cell-type="endothelial"] { --cell-type-color: #ad584f; }'),
         "The node-distance legend must include the Endothelial cell type with its supplied color",
     );
     check(files.reveals.includes("setupCdeComparisonReveal()"), "The cell networks and legend must retain their coordinated viewport reveal");
@@ -235,10 +236,8 @@ function checkAnimationGeometry() {
         "The desktop mouse stage must preserve the complete artwork and leave narrative text selectable",
     );
     check(
-        files.entry.includes("setupStoryImagePreparation({ onMouseImagesPrepared: refreshStoryLayout })") &&
-            files.media.includes("await prepareImagesSequentially(images)") &&
-            files.layout.includes("ScrollTrigger?.refresh()"),
-        "Mouse image preparation must refresh downstream ScrollTrigger geometry after decoding",
+        files.entry.includes("setupStoryImagePreparation();") && files.media.includes("await prepareImagesSequentially(images)"),
+        "Mouse image preparation must stage and decode images without a downstream ScrollTrigger refresh",
     );
     check(
         files.entry.includes("const STORY_MOTION_QUERY = '(prefers-reduced-motion: no-preference)'") &&
@@ -262,11 +261,32 @@ function checkAnimationGeometry() {
     );
     check(
         /class="transition transition5[\s\S]*?class="transition__stage"/u.test(files.html) &&
-            files.animations.includes("createTextboxTransition(gsap, '.transition5', { nativeStickyOnTouch: true })") &&
+            files.animations.includes("createTextboxTransition(gsap, '.transition5')") &&
             /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?&\.story-animations-enabled section\.transition[\s\S]*?height:\s*calc\(var\(--story-viewport-height\) \* 3\.4\);[\s\S]*?\.transition__stage\s*\{[\s\S]*?position:\s*sticky;/u.test(
                 files.splashTransitions,
             ),
         "The mobile conclusion must use an intrinsic native-sticky scene instead of a fixed ScrollTrigger pin",
+    );
+    check(
+        files.animations.includes("function createResponsiveSceneTrigger(") &&
+            !files.animations.includes("nativeStickyOnTouch") &&
+            files.animations.includes("createResponsiveSceneTrigger('.page-header-scene', '+=325%')") &&
+            files.animations.includes("createResponsiveSceneTrigger('.section2', '+=250%')") &&
+            files.animations.includes("createResponsiveSceneTrigger('.section3', '+=500%')"),
+        "Every scroll-driven Story 6 scene must resolve its ScrollTrigger through createResponsiveSceneTrigger so coarse pointers stay on one native-sticky mechanism end to end",
+    );
+    check(
+        /class="page-header-scene"[\s\S]*?class="page-header /u.test(files.html) &&
+            /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?&\.story-animations-enabled \.page-header-scene\s*\{[\s\S]*?height:\s*calc\(var\(--story-viewport-height\) \* 4\.25\);[\s\S]*?&\.story-animations-enabled \.page-header-scene \.page-header\s*\{[\s\S]*?position:\s*sticky;/u.test(
+                files.splashTransitions,
+            ),
+        "The splash header must use an intrinsic native-sticky scene on coarse pointers instead of a fixed ScrollTrigger pin",
+    );
+    check(
+        /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?&\.story-animations-enabled section\.section2\s*\{[\s\S]*?height:\s*calc\(var\(--story-viewport-height\) \* 3\.5\);[\s\S]*?&\.story-animations-enabled section\.section3\s*\{[\s\S]*?height:\s*calc\(var\(--story-viewport-height\) \* 6\);[\s\S]*?position:\s*sticky;/u.test(
+            files.narrative,
+        ),
+        "The cell-introduction and mouse scenes must use an intrinsic native-sticky stage on coarse pointers instead of a fixed ScrollTrigger pin",
     );
     check(
         files.media.includes("setupConclusionImagePreparation()") &&

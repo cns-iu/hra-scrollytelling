@@ -21,13 +21,13 @@ export function setupStoryAnimations({ gsap, ScrollTrigger }) {
     try {
         timelines.push(setupHeaderTimeline(gsap));
         timelines.push(setupCellIntroductionTimeline(gsap));
-        timelines.push(createTextboxTransition(gsap, '.transition1', { nativeStickyOnTouch: true }));
+        timelines.push(createTextboxTransition(gsap, '.transition1'));
         timelines.push(setupMouseTimeline(gsap));
-        timelines.push(createTextboxTransition(gsap, '.transition2', { nativeStickyOnTouch: true }));
-        timelines.push(createTextboxTransition(gsap, '.transition3', { nativeStickyOnTouch: true }));
+        timelines.push(createTextboxTransition(gsap, '.transition2'));
+        timelines.push(createTextboxTransition(gsap, '.transition3'));
         timelines.push(setupCdeTutorialTimeline(gsap));
-        timelines.push(createTextboxTransition(gsap, '.transition4', { nativeStickyOnTouch: true }));
-        timelines.push(createTextboxTransition(gsap, '.transition5', { nativeStickyOnTouch: true }));
+        timelines.push(createTextboxTransition(gsap, '.transition4'));
+        timelines.push(createTextboxTransition(gsap, '.transition5'));
     } catch (error) {
         revertTimelines(timelines);
         throw error;
@@ -46,7 +46,7 @@ function setupHeaderTimeline(gsap) {
     const question = document.querySelector('.textbox-transition1');
     const timeline = gsap.timeline({
         defaults: { ease: 'none' },
-        scrollTrigger: createPinnedTrigger('.page-header', '+=325%'),
+        scrollTrigger: createResponsiveSceneTrigger('.page-header-scene', '+=325%'),
     });
 
     timeline
@@ -72,7 +72,7 @@ function setupCellIntroductionTimeline(gsap) {
     return gsap
         .timeline({
             defaults: { ease: 'none' },
-            scrollTrigger: createPinnedTrigger('.section2', '+=250%'),
+            scrollTrigger: createResponsiveSceneTrigger('.section2', '+=250%'),
         })
         .set('.picture2', { autoAlpha: 0 })
         .to('.picture2', { autoAlpha: 0, duration: 1 })
@@ -90,7 +90,7 @@ function setupMouseTimeline(gsap) {
     return gsap
         .timeline({
             defaults: { ease: 'none' },
-            scrollTrigger: createPinnedTrigger('.section3', '+=500%'),
+            scrollTrigger: createResponsiveSceneTrigger('.section3', '+=500%'),
         })
         .set('.thymus, .liver, .spleen, .pancreas', { autoAlpha: 0 })
         .set('.all', { autoAlpha: 1 })
@@ -161,15 +161,13 @@ function setupCdeTutorialTimeline(gsap) {
 }
 
 /**
- * Creates a pinned transition with the shared editorial-heading choreography.
+ * Creates a transition scene with the shared editorial-heading choreography.
  *
  * @param {object} gsap GSAP runtime
  * @param {string} selector The transition section selector
- * @param {object} [options] Transition behavior
- * @param {boolean} [options.nativeStickyOnTouch=false] Whether coarse pointers use the section's native-sticky stage
  * @returns {object|null} The configured GSAP timeline
  */
-function createTextboxTransition(gsap, selector, { nativeStickyOnTouch = false } = {}) {
+function createTextboxTransition(gsap, selector) {
     const section = document.querySelector(selector);
     const textbox = section?.querySelector('.textbox-transition');
 
@@ -178,9 +176,8 @@ function createTextboxTransition(gsap, selector, { nativeStickyOnTouch = false }
     }
 
     const overlay = section.querySelector('.transition__overlay');
-    const useNativeSticky = nativeStickyOnTouch && window.matchMedia(DIRECT_TOUCH_SCROLL_QUERY).matches;
     const timeline = gsap.timeline({
-        scrollTrigger: useNativeSticky ? createScrubbedTrigger(section, 'bottom bottom', true) : createPinnedTrigger(section, '+=240%'),
+        scrollTrigger: createResponsiveSceneTrigger(section, '+=240%'),
     });
 
     return addTextboxChoreography(timeline, textbox, overlay, 0.15, 0.25, 0.72);
@@ -232,17 +229,38 @@ function addTextboxChoreography(timeline, textbox, overlay, overlayPosition, tex
 }
 
 /**
- * Returns the shared ScrollTrigger settings for a pinned scene.
+ * Returns ScrollTrigger settings for a scene, using the section's native-sticky stage on
+ * coarse-pointer devices instead of a JS-driven ScrollTrigger pin.
+ *
+ * A GSAP pin-spacer's height is recalculated on every refresh, and mobile browsers resize the
+ * visual viewport continuously as their toolbar retracts mid-gesture; a fast flick scroll can
+ * outrun that recalculation and produce a visible jump entering or leaving the pinned scene.
+ * Native CSS `position: sticky` has no such spacer to keep in sync, so every scene the reader
+ * scrolls through on a coarse pointer uses it, keeping one consistent scroll mechanism end to
+ * end instead of switching strategies between adjacent scenes.
+ *
+ * @param {string|HTMLElement} trigger Scene selector or element
+ * @param {string} pinnedEnd Scroll distance for the fine-pointer pinned scene, e.g. '+=250%'
+ * @returns {object} ScrollTrigger configuration
+ */
+function createResponsiveSceneTrigger(trigger, pinnedEnd) {
+    if (window.matchMedia(DIRECT_TOUCH_SCROLL_QUERY).matches) {
+        return createScrubbedTrigger(trigger, 'bottom bottom', true);
+    }
+
+    return createPinnedTrigger(trigger, pinnedEnd);
+}
+
+/**
+ * Returns the shared ScrollTrigger settings for a fine-pointer pinned scene.
  *
  * @param {string|HTMLElement} trigger Scene selector or element
  * @param {string} end Scroll distance for the pinned scene
  * @returns {object} ScrollTrigger configuration
  */
 function createPinnedTrigger(trigger, end) {
-    const scrub = window.matchMedia(DIRECT_TOUCH_SCROLL_QUERY).matches ? true : PINNED_SCROLL_SCRUB;
-
     return {
-        ...createScrubbedTrigger(trigger, end, scrub),
+        ...createScrubbedTrigger(trigger, end, PINNED_SCROLL_SCRUB),
         pin: true,
         anticipatePin: 1,
     };

@@ -266,41 +266,43 @@
       id="main-content"
       tabindex="-1"
     >
-      <header class="page-header article-header">
-        <img
-          class="splash-image"
-          src="story/6/img/splash-bg-1920.webp"
-          srcset="
-            story/6/img/splash-bg-960.webp   960w,
-            story/6/img/splash-bg-1920.webp 1920w,
-            story/6/img/splash-bg.webp      3840w
-          "
-          sizes="100vw"
-          alt=""
-          aria-hidden="true"
-          width="3840"
-          height="2160"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <div class="title-card">
-          <div class="title">
-            <h1 class="main">Pan-organ Immunosenescence Atlas</h1>
-            <p class="subtitle">A story about how cells change over time</p>
+      <div class="page-header-scene">
+        <header class="page-header article-header">
+          <img
+            class="splash-image"
+            src="story/6/img/splash-bg-1920.webp"
+            srcset="
+              story/6/img/splash-bg-960.webp   960w,
+              story/6/img/splash-bg-1920.webp 1920w,
+              story/6/img/splash-bg.webp      3840w
+            "
+            sizes="100vw"
+            alt=""
+            aria-hidden="true"
+            width="3840"
+            height="2160"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <div class="title-card">
+            <div class="title">
+              <h1 class="main">Pan-organ Immunosenescence Atlas</h1>
+              <p class="subtitle">A story about how cells change over time</p>
+            </div>
+            <p class="bottom">
+              Created by <a href="https://www.fan-lab.org">Fan Lab</a> at Yale
+              University and the
+              <a href="https://cns.iu.edu"
+                >Cyberinfrastructure for Network Science Center</a
+              >
+              at Indiana University
+            </p>
           </div>
-          <p class="bottom">
-            Created by <a href="https://www.fan-lab.org">Fan Lab</a> at Yale
-            University and the
-            <a href="https://cns.iu.edu"
-              >Cyberinfrastructure for Network Science Center</a
-            >
-            at Indiana University
-          </p>
-        </div>
-        <h2 class="textbox-transition1">
-          What is <span class="transition-emphasis">immunosenescence</span>?
-        </h2>
-      </header>
+          <h2 class="textbox-transition1">
+            What is <span class="transition-emphasis">immunosenescence</span>?
+          </h2>
+        </header>
+      </div>
 
       <!-- section header/intro -->
       <div class="intro" id="intro">
@@ -694,8 +696,11 @@
 
       <section
         class="section4 story-scene"
-        aria-label="Tissue comparison across young, aged, and treated mice"
+        aria-labelledby="tissue-comparison-title"
       >
+        <h2 class="visually-hidden" id="tissue-comparison-title">
+          Tissue comparison across young, aged, and treated mice
+        </h2>
         <div class="tissue-comparison">
           <header class="tissue-comparison__intro">
             <p>

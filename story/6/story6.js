@@ -21,7 +21,7 @@ if (animationsAvailable) {
 
 setupContentReveals();
 const refreshStoryLayout = setupLayoutStability(animationsAvailable ? ScrollTrigger : null);
-setupStoryImagePreparation({ onMouseImagesPrepared: refreshStoryLayout });
+setupStoryImagePreparation();
 setupBackToTopAnimationReset(animationsAvailable ? ScrollTrigger : null);
 
 if (animationsAvailable) {

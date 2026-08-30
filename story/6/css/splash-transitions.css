@@ -354,6 +354,17 @@
     }
 
     @media (hover: none) and (pointer: coarse) {
+        &.story-animations-enabled .page-header-scene {
+            display: block;
+            height: calc(var(--story-viewport-height) * 4.25);
+            overflow: visible;
+        }
+
+        &.story-animations-enabled .page-header-scene .page-header {
+            position: sticky;
+            top: 0;
+        }
+
         &.story-animations-enabled section.transition {
             display: block;
             height: calc(var(--story-viewport-height) * 3.4);

@@ -9,12 +9,10 @@ let destinationTimer;
 /**
  * Stages Story 6 image requests by narrative sequence instead of requesting every layer at startup.
  *
- * @param {object} [options] Preparation callbacks
- * @param {() => void} [options.onMouseImagesPrepared] Called after the mouse image group settles
  * @returns {void}
  */
-export function setupStoryImagePreparation({ onMouseImagesPrepared = () => {} } = {}) {
-    setupMouseImagePreparation(onMouseImagesPrepared);
+export function setupStoryImagePreparation() {
+    setupMouseImagePreparation();
     setupTissueImagePreparation();
     setupTutorialImagePreparation();
     setupConclusionImagePreparation();
@@ -23,15 +21,19 @@ export function setupStoryImagePreparation({ onMouseImagesPrepared = () => {} } 
 /**
  * Loads and decodes the mouse base and organ layers before the mouse transition completes.
  *
- * @param {() => void} onPrepared Called after the mouse image group settles
+ * The mouse-image container is sized by a fixed `aspect-ratio` and every organ layer is an
+ * absolutely positioned overlay, so decoding these images never changes any element's layout
+ * box. A ScrollTrigger refresh here is therefore unnecessary; a prior version queued one, but
+ * that refresh only fires whenever scrolling next settles, which during a continuous fast
+ * scroll could be far downstream, resetting a scene the reader had already reached.
+ *
  * @returns {void}
  */
-function setupMouseImagePreparation(onPrepared) {
+function setupMouseImagePreparation() {
     prepareWhenNear({
         targets: [document.querySelector('.transition1'), document.querySelector('.section3')],
         images: Array.from(document.querySelectorAll('.mouse-image img')),
         rootMargin: getConnectionAwareMargin(FAR_PRELOAD_MARGIN),
-        onPrepared,
     });
 }
 

@@ -424,6 +424,25 @@
     }
 
 
+    @media (hover: none) and (pointer: coarse) {
+        &.story-animations-enabled section.section2 {
+            height: calc(var(--story-viewport-height) * 3.5);
+            overflow: visible;
+        }
+
+        &.story-animations-enabled section.section3 {
+            height: calc(var(--story-viewport-height) * 6);
+            overflow: visible;
+        }
+
+        &.story-animations-enabled section.section2 .fadeimage,
+        &.story-animations-enabled section.section3 .scene5-1 {
+            position: sticky;
+            top: 0;
+            overflow: hidden;
+        }
+    }
+
     @media (prefers-reduced-motion: reduce) {
         .story-illustration {
             opacity: 1 !important;
