@@ -9,7 +9,8 @@
         position: relative;
         height: calc(
             var(--cde-tutorial-scene-height) + var(--cde-tutorial-scene-height) + var(--cde-tutorial-scene-height) +
-                var(--cde-tutorial-scene-height) + var(--cde-tutorial-scene-height) + var(--cde-tutorial-scene-height)
+                var(--cde-tutorial-scene-height) + var(--cde-tutorial-scene-height) + var(--cde-tutorial-scene-height) +
+                var(--story-scroll-safety-margin)
         );
         overflow: visible;
     }
@@ -18,6 +19,7 @@
         position: sticky;
         top: 0;
         height: var(--cde-tutorial-scene-height);
+        will-change: transform;
     }
 
     .cde-tutorial-visual {

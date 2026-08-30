@@ -230,6 +230,12 @@ function checkAnimationGeometry() {
         "Body artwork must retain height-driven, aspect-preserving sizing",
     );
     check(
+        /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?\.body-outline\s*\{[\s\S]*?height:\s*90%;/u.test(
+            files.narrative,
+        ),
+        "Coarse pointers must back the body artwork off full height so its outstretched hands stay inside the frame",
+    );
+    check(
         files.narrative.includes("aspect-ratio: 16 / 9") &&
             files.narrative.includes("pointer-events: none") &&
             /\.mouse-image\s*\{[\s\S]*?img\s*\{[\s\S]*?object-fit:\s*contain;/u.test(files.narrative),
@@ -260,9 +266,13 @@ function checkAnimationGeometry() {
         "Story 6 must retain its fail-safe page-color loading overlay and settled fade-in",
     );
     check(
+        /html\.story6-loading\s*\{[\s\S]*?overflow:\s*hidden;/u.test(files.base),
+        "Story 6 must hold scroll position while loading so a scene can't be reached before initial ScrollTrigger geometry settles",
+    );
+    check(
         /class="transition transition5[\s\S]*?class="transition__stage"/u.test(files.html) &&
             files.animations.includes("createTextboxTransition(gsap, '.transition5')") &&
-            /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?&\.story-animations-enabled section\.transition[\s\S]*?height:\s*calc\(var\(--story-viewport-height\) \* 3\.4\);[\s\S]*?\.transition__stage\s*\{[\s\S]*?position:\s*sticky;/u.test(
+            /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?&\.story-animations-enabled section\.transition[\s\S]*?height:\s*calc\(\(var\(--story-viewport-height\) \* 3\.4\) \+ var\(--story-scroll-safety-margin\)\);[\s\S]*?\.transition__stage\s*\{[\s\S]*?position:\s*sticky;/u.test(
                 files.splashTransitions,
             ),
         "The mobile conclusion must use an intrinsic native-sticky scene instead of a fixed ScrollTrigger pin",
@@ -277,13 +287,13 @@ function checkAnimationGeometry() {
     );
     check(
         /class="page-header-scene"[\s\S]*?class="page-header /u.test(files.html) &&
-            /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?&\.story-animations-enabled \.page-header-scene\s*\{[\s\S]*?height:\s*calc\(var\(--story-viewport-height\) \* 4\.25\);[\s\S]*?&\.story-animations-enabled \.page-header-scene \.page-header\s*\{[\s\S]*?position:\s*sticky;/u.test(
+            /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?&\.story-animations-enabled \.page-header-scene\s*\{[\s\S]*?height:\s*calc\(\(var\(--story-viewport-height\) \* 4\.25\) \+ var\(--story-scroll-safety-margin\)\);[\s\S]*?&\.story-animations-enabled \.page-header-scene \.page-header\s*\{[\s\S]*?position:\s*sticky;/u.test(
                 files.splashTransitions,
             ),
         "The splash header must use an intrinsic native-sticky scene on coarse pointers instead of a fixed ScrollTrigger pin",
     );
     check(
-        /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?&\.story-animations-enabled section\.section2\s*\{[\s\S]*?height:\s*calc\(var\(--story-viewport-height\) \* 3\.5\);[\s\S]*?&\.story-animations-enabled section\.section3\s*\{[\s\S]*?height:\s*calc\(var\(--story-viewport-height\) \* 6\);[\s\S]*?position:\s*sticky;/u.test(
+        /@media\s*\(hover:\s*none\)\s*and\s*\(pointer:\s*coarse\)[\s\S]*?&\.story-animations-enabled section\.section2\s*\{[\s\S]*?height:\s*calc\(\(var\(--story-viewport-height\) \* 3\.5\) \+ var\(--story-scroll-safety-margin\)\);[\s\S]*?&\.story-animations-enabled section\.section3\s*\{[\s\S]*?height:\s*calc\(\(var\(--story-viewport-height\) \* 6\) \+ var\(--story-scroll-safety-margin\)\);[\s\S]*?position:\s*sticky;/u.test(
             files.narrative,
         ),
         "The cell-introduction and mouse scenes must use an intrinsic native-sticky stage on coarse pointers instead of a fixed ScrollTrigger pin",
