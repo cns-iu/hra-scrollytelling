@@ -439,6 +439,8 @@
         &.story-animations-enabled section.section3 .scene5-1 {
             position: sticky;
             top: 0;
+            height: 100vh;
+            height: 100dvh;
             overflow: hidden;
         }
     }

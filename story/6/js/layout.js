@@ -73,7 +73,6 @@ function createSettledLayoutRefresh(ScrollTrigger) {
             window.clearTimeout(scrollTimer);
             scrollTimer = window.setTimeout(() => {
                 isScrolling = false;
-                updateStableViewportHeight();
                 void flushRefresh();
             }, SCROLL_SETTLE_DELAY);
         },
@@ -170,15 +169,22 @@ function setupSettledResizeRefresh(refreshStoryLayout) {
 }
 
 /**
- * Stores a stable viewport height without exposing space behind retractable mobile browser controls.
+ * Stores the stable viewport height that scroll-driven scenes size their ScrollTrigger scroll
+ * distance against — not the height visible content itself renders at.
  *
- * Coarse-pointer browsers resolve `lvh` and `window.innerHeight` live as their toolbar
- * retracts or reappears during an in-progress scroll gesture, not only on discrete resize
- * events. Feeding that moving target into ScrollTrigger geometry made pinned and native-sticky
- * scenes drift further out of sync with the scroll position the longer a session ran. Tracking
- * the largest height observed so far freezes a single pixel value once the toolbar has fully
- * retracted, so repeated ScrollTrigger refreshes measure against a fixed number instead of a
- * continuously repainted CSS unit.
+ * Coarse-pointer browsers resolve `lvh`, `dvh`, and `window.innerHeight` live as their toolbar
+ * retracts or reappears, including continuously throughout an in-progress scroll gesture, not
+ * only on discrete resize events. Feeding that moving target into ScrollTrigger geometry made
+ * scroll distance drift out of sync with actual scroll position the longer a session ran, and
+ * updating it reactively on every scroll settle left it stale for the entire duration of an
+ * active scroll — undersized relative to the real, currently-retracted toolbar state — which
+ * both left a visible gap under sticky content and shrank each scene's effective scroll
+ * distance enough that a fast flick could blow through an entire reveal in too few frames to
+ * render. This value only updates on load and once a genuine resize (not a toolbar-only one)
+ * settles, so ScrollTrigger's cached geometry is never invalidated mid-gesture. The sticky
+ * scene stages that render this height on screen use a separately live `dvh` value instead
+ * (see the coarse-pointer rules in splash-transitions.css/narrative.css), so they always fill
+ * the actual current viewport with no gap regardless of how stale this value is mid-session.
  *
  * @returns {void}
  */

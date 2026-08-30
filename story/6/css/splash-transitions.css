@@ -363,6 +363,8 @@
         &.story-animations-enabled .page-header-scene .page-header {
             position: sticky;
             top: 0;
+            height: 100vh;
+            height: 100dvh;
         }
 
         &.story-animations-enabled section.transition {
@@ -380,7 +382,8 @@
             align-items: center;
             justify-content: flex-start;
             box-sizing: border-box;
-            height: var(--story-viewport-height);
+            height: 100vh;
+            height: 100dvh;
             overflow: hidden;
             padding-inline: 1.25rem;
             background: var(--hra-secondary);
