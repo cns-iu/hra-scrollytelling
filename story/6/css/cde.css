@@ -17,8 +17,7 @@
     .cde-tutorial-stage {
         position: sticky;
         top: 0;
-        height: 100vh;
-        height: 100dvh;
+        height: var(--cde-tutorial-scene-height);
     }
 
     .cde-tutorial-visual {
