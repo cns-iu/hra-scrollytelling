@@ -356,18 +356,19 @@
     @media (hover: none) and (pointer: coarse) {
         &.story-animations-enabled .page-header-scene {
             display: block;
-            height: calc(var(--story-viewport-height) * 4.25);
+            height: calc((var(--story-viewport-height) * 4.25) + var(--story-scroll-safety-margin));
             overflow: visible;
         }
 
         &.story-animations-enabled .page-header-scene .page-header {
             position: sticky;
             top: 0;
+            will-change: transform;
         }
 
         &.story-animations-enabled section.transition {
             display: block;
-            height: calc(var(--story-viewport-height) * 3.4);
+            height: calc((var(--story-viewport-height) * 3.4) + var(--story-scroll-safety-margin));
             overflow: visible;
             padding-inline: 0;
         }
@@ -384,6 +385,7 @@
             overflow: hidden;
             padding-inline: 1.25rem;
             background: var(--hra-secondary);
+            will-change: transform;
         }
     }
 

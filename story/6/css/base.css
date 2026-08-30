@@ -42,6 +42,7 @@ html:has(body#six) {
     --hra-type-label-large-tracking: 0.006rem;
     --story-section-inline-padding: clamp(1rem, 4vw, 1.5rem);
     --story-viewport-height: 100dvh;
+    --story-scroll-safety-margin: 0px;
     --story-cde-stage-aspect-ratio: 1320 / 760;
     --story-cde-stage-max-width: 82.5rem;
 
@@ -141,6 +142,15 @@ html:has(body#six) {
     background: var(--story-color-page, var(--hra-neutral-98));
 }
 
+html.story6-loading {
+    /* The loading overlay only blocks pointer-events, not scrolling, so a fast scroll
+       during this window can still move the page while GSAP is measuring initial
+       ScrollTrigger geometry against pre-font-load layout. Locking scroll here keeps the
+       reader from reaching a scene before that geometry settles, instead of relying on
+       the opaque overlay alone to discourage interaction. */
+    overflow: hidden;
+}
+
 html.story6-loading #six::before {
     pointer-events: auto;
     visibility: visible;
@@ -174,5 +184,11 @@ html.story6-loading.story6-ready #six::before {
 @media (forced-colors: active) {
     #six::before {
         background: Canvas;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    #six {
+        --story-scroll-safety-margin: 150px;
     }
 }

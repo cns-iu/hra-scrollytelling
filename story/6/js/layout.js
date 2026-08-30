@@ -1,7 +1,6 @@
 const RESIZE_SETTLE_DELAY = 250;
 const SCROLL_SETTLE_DELAY = 180;
 const COARSE_POINTER_QUERY = '(hover: none) and (pointer: coarse)';
-const MOBILE_CHROME_SAFETY_MARGIN_PX = 150;
 
 /**
  * Configures stable ScrollTrigger measurement and responsive refresh behavior.
@@ -165,8 +164,7 @@ function setupSettledResizeRefresh(refreshStoryLayout) {
 }
 
 /**
- * Stores a stable viewport height that never changes mid-scroll, for both a scene's
- * ScrollTrigger scroll distance and the sticky stage that visibly renders it.
+ * Stores a stable viewport height that never changes mid-scroll.
  *
  * Coarse-pointer browsers resolve `svh`, `lvh`, `dvh`, and `window.innerHeight` live as their
  * toolbar retracts or reappears, including continuously throughout an in-progress scroll
@@ -178,21 +176,19 @@ function setupSettledResizeRefresh(refreshStoryLayout) {
  * splash, where the reader's very first scroll gesture is also typically the first moment the
  * toolbar starts retracting.
  *
- * A fixed safety margin is added on top of the measured height so the value is generously
- * larger than the true viewport even once the toolbar fully retracts, rather than trying to
- * track that growth. Overshooting only crops slightly off-screen on an `overflow: hidden`
- * stage, which is invisible; undershooting leaves a visible gap. This value only updates on
- * load and once a genuine resize (not a toolbar-only one) settles, so it never changes mid-scroll.
+ * This value is always the exact measured viewport, with no added margin, because every sticky
+ * stage (`.page-header`, `.fadeimage`, `.scene5-1`, `.transition__stage`, `.cde-tutorial-stage`)
+ * renders its own box at this height — inflating it here would make those boxes taller than the
+ * real viewport and push their centered or bottom-aligned content visibly downward. A scene's
+ * outer scroll-distance box needs a safety margin instead, added in CSS only against the
+ * `--story-scroll-safety-margin` token so it never reaches the stage's own height. This value
+ * only updates on load and once a genuine resize (not a toolbar-only one) settles, so it never
+ * changes mid-scroll.
  *
  * @returns {void}
  */
 function updateStableViewportHeight() {
-    const useStableMobileViewport = window.matchMedia(COARSE_POINTER_QUERY).matches;
-    const viewportHeight = useStableMobileViewport
-        ? `${window.innerHeight + MOBILE_CHROME_SAFETY_MARGIN_PX}px`
-        : `${window.innerHeight}px`;
-
-    document.body.style.setProperty('--story-viewport-height', viewportHeight);
+    document.body.style.setProperty('--story-viewport-height', `${window.innerHeight}px`);
 }
 
 /**

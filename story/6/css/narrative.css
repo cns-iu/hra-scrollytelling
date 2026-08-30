@@ -201,13 +201,24 @@
     }
 
     .body-outline {
+        /* No max-width: on narrow viewports this image's tall aspect ratio needs more
+           width than the screen to reach full height; .section2's overflow: hidden crops
+           the excess evenly instead of the browser shrinking the whole image to fit. */
         display: block;
         width: auto;
         height: 100%;
-        max-width: 100%;
-        max-height: 100%;
         object-fit: contain;
         object-position: center bottom;
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+        /* At full height, this figure's outstretched hands are wider than a typical phone
+           screen (measured ~79% of the source image's width) and get cropped by the
+           overflow above. Backing off to 90% height keeps the hands inside the frame with
+           some margin, trading a small gap for no longer cutting off the art. */
+        .body-outline {
+            height: 90%;
+        }
     }
 
     .picture1 {
@@ -426,12 +437,12 @@
 
     @media (hover: none) and (pointer: coarse) {
         &.story-animations-enabled section.section2 {
-            height: calc(var(--story-viewport-height) * 3.5);
+            height: calc((var(--story-viewport-height) * 3.5) + var(--story-scroll-safety-margin));
             overflow: visible;
         }
 
         &.story-animations-enabled section.section3 {
-            height: calc(var(--story-viewport-height) * 6);
+            height: calc((var(--story-viewport-height) * 6) + var(--story-scroll-safety-margin));
             overflow: visible;
         }
 
@@ -440,6 +451,7 @@
             position: sticky;
             top: 0;
             overflow: hidden;
+            will-change: transform;
         }
     }
 
