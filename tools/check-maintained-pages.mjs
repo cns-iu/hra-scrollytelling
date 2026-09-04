@@ -315,6 +315,7 @@ const narrativeFoundation = await readFile("shared/css/narrative-foundation.css"
 const narrativeDialogue = await readFile("shared/css/character-dialogue.css", "utf8");
 const narrativeAccessibility = await readFile("shared/css/narrative-accessibility.css", "utf8");
 const narrativeMotion = await readFile("shared/js/narrative-motion.js", "utf8");
+const motionPreferences = await readFile("shared/js/motion-preferences.js", "utf8");
 const story3Styles = await readSource(storyCss(storyByNumber.get(3), "styles.css"));
 const story5AnimationsSource = await readSource(story5Animations);
 const story5MediaControlsSource = await readSource(story5MediaControls);
@@ -350,13 +351,23 @@ assertPage(
     "flowing chapter headings do not consume the shared typography role",
 );
 assertPage(
-    narrativeMotion.includes("autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load'") &&
-        narrativeMotion.includes("window.innerWidth === coarseViewportWidth") &&
-        narrativeMotion.includes("!event.matches && !coarsePointer.matches") &&
-        narrativeMotion.includes("if (!supportedViewport.matches)") &&
-        narrativeMotion.includes("!window.gsap || !window.ScrollTrigger"),
+    motionPreferences.includes("autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load'") &&
+        motionPreferences.includes("window.innerWidth === coarseViewportWidth") &&
+        motionPreferences.includes("if (!supportedViewport.matches)"),
+    "shared/js/motion-preferences.js",
+    "coarse-pointer scrolling can regress during browser-chrome changes",
+);
+assertPage(
+    narrativeMotion.includes("!event.matches && !coarsePointer.matches") &&
+        narrativeMotion.includes("!window.gsap || !window.ScrollTrigger") &&
+        narrativeMotion.includes("stabilizeScrollGeometry"),
     "shared/js/narrative-motion.js",
-    "coarse-pointer scrolling can regress during browser-chrome changes or failed motion setup",
+    "narrative motion can regress when setup fails or the viewport becomes unsupported",
+);
+assertPage(
+    (await readSource(storyJs(storyByNumber.get(4), "motion.js"))).includes("stabilizeScrollGeometry"),
+    storyJs(storyByNumber.get(4), "motion.js"),
+    "Story 4 does not stabilize coarse-pointer scroll geometry",
 );
 for (const story of stories.filter((entry) => entry.narrative)) {
     const file = storyCss(story, "styles.css");

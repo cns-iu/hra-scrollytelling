@@ -1,8 +1,9 @@
+const { QUERY, setMotionState, haltAnimation, stabilizeScrollGeometry } = window.hraMotionPreferences;
 const story4MotionQuery = window.matchMedia(
-    "(prefers-reduced-motion: no-preference) and (min-height: 30.01rem)",
+    `${QUERY.noPreferenceMotion} and ${QUERY.supportedViewport}`,
 );
-const story4ReducedTransparency = window.matchMedia("(prefers-reduced-transparency: reduce)");
-const story4ForcedColors = window.matchMedia("(forced-colors: active)");
+const story4ReducedTransparency = window.matchMedia(QUERY.reducedTransparency);
+const story4ForcedColors = window.matchMedia(QUERY.forcedColors);
 
 /**
  * Updates the document classes used by Story 4's enhanced and linear layouts.
@@ -11,11 +12,12 @@ const story4ForcedColors = window.matchMedia("(forced-colors: active)");
  * @returns {void}
  */
 function setStory4MotionMode(enabled) {
-    const root = document.documentElement;
-
-    window.hraStory4MotionEnabled = enabled;
-    root.classList.toggle("story4-motion-enabled", enabled);
-    root.classList.toggle("story4-flowing", !enabled);
+    setMotionState({
+        flag: 'hraStory4MotionEnabled',
+        enabledClass: 'story4-motion-enabled',
+        flowingClass: 'story4-flowing',
+        enabled,
+    });
 }
 
 /**
@@ -38,15 +40,7 @@ function pauseStory4SvgAnimation() {
  */
 function stopStory4Motion() {
     setStory4MotionMode(false);
-
-    if (window.ScrollTrigger) {
-        window.ScrollTrigger.getAll().forEach((trigger) => trigger.kill(true));
-    }
-
-    if (window.gsap) {
-        window.gsap.globalTimeline.clear();
-    }
-
+    haltAnimation();
     pauseStory4SvgAnimation();
 }
 
@@ -72,7 +66,9 @@ setStory4MotionMode(
 document.addEventListener("DOMContentLoaded", () => {
     const button = document.querySelector("[data-story4-ambient-toggle]");
 
-    if (!window.hraStory4MotionEnabled) {
+    if (window.hraStory4MotionEnabled) {
+        stabilizeScrollGeometry({ onUnsupportedViewport: stopStory4Motion });
+    } else {
         pauseStory4SvgAnimation();
     }
 
