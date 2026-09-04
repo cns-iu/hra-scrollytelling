@@ -2,17 +2,17 @@
 
 ## Scope and structure
 
-- Treat `../../story6.html`, the styles in `css/`, and `story6.js` as one feature even though the HTML entry point remains at the repository root
+- Treat `index.html`, the styles in `css/`, and `js/story6.js` as one feature even though the HTML entry point remains at the repository root
 - When creating or substantially restructuring files, keep each file at 500 lines or fewer where practical; split larger files by clear responsibility
-- Keep `story6.js` as the small entry point; place focused UI, animation, reveal, and layout responsibilities in `js/` modules
+- Keep `js/story6.js` as the small entry point; place focused UI, animation, reveal, and layout responsibilities in `js/` modules
 - Keep `css/base.css` responsible for Story 6 typography tokens, accessibility, and page primitives; use `../../shared/css/fonts.css` for font declarations and the repository-level `shared/` styles and modules for the Menu and appearance controls
 - Keep `css/theme.css` responsible for Story 6 semantic color roles and scoped System, Light, Dark, High contrast, and forced-colors adaptations
 - Keep `css/splash-transitions.css`, `css/narrative.css`, `css/tissue-comparison.css`, `css/cde.css`, and `css/cde-comparison.css` scoped to their named Story 6 regions
 - Keep Resources, Acknowledgments, and References content in `end-matter.json`; shared presentation and runtime rendering belong to `../../shared/css/story-end-matter.css` and `../../shared/js/story-end-matter.js`
 - Keep responsive, animation-failure, and reduced-motion rules beside the component styles they modify rather than collecting them in a separate responsive file
-- Keep Story 6–specific narrative images in `img/`
+- Keep Story 6–specific narrative images in `images/`
 - Keep fonts, organization logos, and shared interface icons, including the favicon, under the repository-level `../../shared/assets/` directory; keep cross-story narrative images under `../../shared/assets/images/`
-- Resolve paths in `../../story6.html` from the repository root, such as `story/6/img/example.webp`
+- Resolve paths in `index.html` from the repository root, such as `story/6/images/example.webp`
 - Resolve paths in `css/*.css` from the `css/` directory, such as `../../../shared/assets/icons/info.svg`
 - Preserve current narrative copy unless the user explicitly requests content editing because Story 6 content may be changing concurrently
 
@@ -27,7 +27,7 @@
 - Keep display formatting in the HTML or presenting component rather than caching formatted strings in JavaScript state
 - Prefer semantic headings, lists, buttons, and links over recreating their behavior with generic elements and ARIA
 - Preserve keyboard operation, visible focus states, native Menu disclosure state, and `aria-current="page"`
-- Keep the shared Menu markup in `../../story6.html` and load `shared/js/main.js`; do not duplicate its disclosure, appearance, or contrast behavior in Story 6 JavaScript
+- Keep the shared Menu markup in `index.html` and load `shared/js/main.js`; do not duplicate its disclosure, appearance, or contrast behavior in Story 6 JavaScript
 - Keep external links opened in a new tab paired with `rel="noopener noreferrer"`
 - Do not embed, import, preload, or construct the Cell Distance Explorer web component in Story 6 because its runtime and dataset parsing block tutorial scrolling
 - End the native-sticky CDE tutorial after its fifth screenshot and proceed into Transition 4 and the static CDE comparison without a launch control or interactive explorer state
@@ -105,11 +105,11 @@
 - Load Transition 3 eagerly at high priority so rapid scrolling cannot outrun its request; keep all other non-splash transition backgrounds lazy
 - Prepare and decode Transition 5 from the histogram comparison so its lazy artwork is ready before the native-sticky conclusion begins
 - Preserve transparent backgrounds when optimizing transition images
-- On coarse pointers, `.body-outline` renders at 90% height instead of 100% (`narrative.css`) because at full height this figure's outstretched hands are wider than a typical phone screen and get cropped by `.section2`'s overflow; this value is a measured estimate (hands span roughly 79% of the source image's width), not an exact fit, so re-check it visually against both `2-bodyintro1.webp` and `2-bodyintro2.webp` if either is replaced
+- On coarse pointers, `.body-outline` renders at 90% height instead of 100% (`narrative.css`) because at full height this figure's outstretched hands are wider than a typical phone screen and get cropped by `.section2`'s overflow; this value is a measured estimate (hands span roughly 79% of the source image's width), not an exact fit, so re-check it visually against both `shared/assets/images/2-bodyintro1.webp` and `2-bodyintro2.webp` if either is replaced
 - Use the 960 px transition settings below when regenerating that variant
 
 ```bash
-cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 story/6/img/transition-N-1920.webp -o story/6/img/transition-N-960.webp
+cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 story/6/images/transition-N-1920.webp -o story/6/images/transition-N-960.webp
 ```
 
 - Run the command from the repository root and do not install `cwebp` or any other tool without explicit approval
@@ -121,8 +121,8 @@ cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 story/6/img/transition-N-1920.w
 Run the dependency-free checks from the repository root after JavaScript or path changes:
 
 ```bash
-for js_file in story/6/story6.js story/6/js/*.js; do node --check "$js_file" || exit 1; done
-npx --no-install eslint story/6/story6.js story/6/js/*.js --no-config-lookup --rule 'no-unused-vars:error' --rule 'no-unreachable:error' --rule 'no-dupe-keys:error'
+for js_file in story/6/js/story6.js story/6/js/*.js; do node --check "$js_file" || exit 1; done
+npx --no-install eslint story/6/js/story6.js story/6/js/*.js --no-config-lookup --rule 'no-unused-vars:error' --rule 'no-unreachable:error' --rule 'no-dupe-keys:error'
 node tools/check-story6.mjs
 git diff --check
 ```
