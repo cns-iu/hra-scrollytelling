@@ -25,7 +25,12 @@ html {
     height: 100%;
     padding: 0;
     margin: 0;
-    font-family: "Inter", serif;
+    font-family: var(--font-body);
+}
+
+/* Metropolis for headings, matching the other stories. */
+#four :where(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-heading);
 }
 
 #four main p {
