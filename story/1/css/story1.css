@@ -1,6 +1,7 @@
 /* Story 1 presentation built from the maintained landing typography and light-theme roles. */
 
 html.story1-page {
+    color-scheme: light;
     width: 100%;
     height: 100%;
     padding: 0;
@@ -10,21 +11,7 @@ html.story1-page {
 }
 
 #one {
-    /* Story 1 has no theme control yet, so it pins the shared light roles. */
-    --color-ink: var(--hra-light-on-surface-variant);
-    --color-heading: var(--hra-light-secondary);
-    --color-accent-text: var(--hra-light-on-primary-container);
-    --color-page: var(--hra-light-surface-variant);
-    --color-surface: var(--hra-light-surface);
-    --color-surface-muted: var(--hra-light-surface-container);
-    --color-surface-hover: var(--hra-light-surface-container-low);
-    --color-outline-variant: var(--hra-light-outline-variant);
-    --color-selection: var(--hra-light-secondary);
-    --color-on-selection: var(--hra-light-on-secondary);
-    --focus-color: var(--hra-light-secondary);
-    --radius-small: 0.5rem;
-    --radius-card: 0.75rem;
-    --radius-large: 1rem;
+    /* Colour and radius roles come from shared/css/component-roles.css. */
     --story1-content-width: 44rem;
     --story1-hero-width: 72rem;
     --story1-hero-mesh:
@@ -32,6 +19,9 @@ html.story1-page {
         radial-gradient(circle at 92% 8%, rgb(227 223 255 / 82%) 0%, transparent 32%),
         radial-gradient(circle at 12% 92%, rgb(198 194 234 / 56%) 0%, transparent 36%),
         radial-gradient(circle at 90% 90%, rgb(255 179 179 / 42%) 0%, transparent 34%);
+
+    /* The hero wash is tinted artwork, so it needs a dark counterpart rather
+       than a role swap. Values mirror the landing hero's dark mesh. */
 
     width: 100%;
     height: 100%;
@@ -54,7 +44,6 @@ html.story1-page {
 }
 
 #one #main-content {
-    color-scheme: light;
     color: var(--color-ink);
     background: var(--color-page);
     font-family: var(--font-body);
@@ -130,8 +119,8 @@ html.story1-page {
     padding: 0.625rem 0.875rem;
     border: 0.125rem solid transparent;
     border-radius: var(--radius-small);
-    color: var(--hra-light-on-secondary);
-    background: var(--color-accent-text);
+    color: var(--color-on-action);
+    background: var(--color-action);
     cursor: pointer;
     font: inherit;
     font-weight: var(--type-label-emphasized-weight);
@@ -421,5 +410,34 @@ html.story1-page {
 
     #one .img-three {
         grid-template-columns: 1fr;
+    }
+}
+
+/* --- Dark appearance -------------------------------------------------- */
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+:root[data-theme="dark"] #one {
+    --story1-hero-mesh:
+        radial-gradient(circle at 8% 12%, rgb(149 0 30 / 44%) 0%, transparent 34%),
+        radial-gradient(circle at 92% 8%, rgb(23 21 51 / 88%) 0%, transparent 32%),
+        radial-gradient(circle at 12% 92%, rgb(75 75 94 / 62%) 0%, transparent 36%),
+        radial-gradient(circle at 90% 90%, rgb(255 179 179 / 16%) 0%, transparent 34%);
+}
+
+/* System-theme fallback when JavaScript is unavailable. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        color-scheme: dark;
+    }
+
+    :root:not([data-theme]) #one {
+        --story1-hero-mesh:
+            radial-gradient(circle at 8% 12%, rgb(149 0 30 / 44%) 0%, transparent 34%),
+            radial-gradient(circle at 92% 8%, rgb(23 21 51 / 88%) 0%, transparent 32%),
+            radial-gradient(circle at 12% 92%, rgb(75 75 94 / 62%) 0%, transparent 36%),
+            radial-gradient(circle at 90% 90%, rgb(255 179 179 / 16%) 0%, transparent 34%);
     }
 }
