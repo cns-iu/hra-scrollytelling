@@ -134,7 +134,9 @@ html.story4-flowing #four .story4-scene-summary {
     margin: 0 auto;
     overflow: visible;
     clip: auto;
-    color: var(--story4-text);
+    /* Inside the navy header, so it takes the inverse text colour rather than
+       the body colour, which was unreadable against the gradient in light mode. */
+    color: var(--story4-inverse-text);
     text-align: center;
     white-space: normal;
 }

@@ -10,8 +10,12 @@ html {
 }
 
 #four {
-    --story4-blue: #201e3d;
-    --story4-blue-muted: #4b4b5e;
+    /* Inverse surfaces. These carry --story4-inverse-text (white) and must not
+       follow the theme: the text cannot darken, so the surface has to stay dark.
+       Same reason the full-bleed scenes in Stories 2, 3 and 5 stay black in both
+       appearances. */
+    --story4-inverse-surface: #201e3d;
+    --story4-inverse-surface-muted: #4b4b5e;
     --story4-page-background: #ffffff;
     /* The inverse scene stays black in both themes; it is the backdrop the
        inline diagram artwork was drawn against. */
@@ -46,18 +50,53 @@ html {
 }
 
 #four .header {
-    padding: 20% 2.5rem;
+    /* Fill the viewport rather than deriving height from width. The previous
+       `padding: 20%` resolved against the container's width, so the splash
+       behaved like a fixed aspect ratio. */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 4rem 2.5rem;
     margin: 0;
     color: var(--story4-inverse-text);
     background: linear-gradient(
         270deg,
-        var(--story4-blue),
-        var(--story4-blue-muted),
-        var(--story4-blue)
+        var(--story4-inverse-surface),
+        var(--story4-inverse-surface-muted),
+        var(--story4-inverse-surface)
     );
     background-size: 600% 600%;
     text-align: center;
     animation: story4-header-gradient 30s ease infinite;
+}
+
+/* Small-viewport height, so collapsing mobile browser chrome cannot reflow the
+   splash mid-scroll. */
+@supports (height: 100svh) {
+    #four .header {
+        min-height: 100svh;
+    }
+}
+
+#four .header .subtitle {
+    margin: 0;
+    /* On the inverse surface, so it must not inherit the body text colour that
+       `#four main p` would otherwise apply. */
+    color: var(--story4-inverse-text);
+    font-family: var(--font-body);
+    font-size: var(--type-title-large-size);
+    font-weight: var(--type-title-large-primary-weight);
+    line-height: var(--type-title-large-line-height);
+    letter-spacing: var(--type-title-large-letter-spacing);
+}
+
+/* The particle field is decorative and aria-hidden; it must not sit between the
+   pointer and the text it covers, or the title cannot be selected. */
+#four .header > :where(h1, .subtitle, .story4-scene-summary) {
+    position: relative;
+    z-index: 1;
 }
 
 @keyframes story4-header-gradient {
@@ -198,6 +237,7 @@ html {
 
 #four #particles-js {
     position: absolute;
+    pointer-events: none;
     top: 0;
     left: 0;
     width: 100%;
@@ -250,8 +290,6 @@ html {
 /* --- Dark appearance -------------------------------------------------- */
 
 :root[data-theme="dark"] #four {
-    --story4-blue: var(--hra-dark-on-secondary-container);
-    --story4-blue-muted: var(--hra-dark-tertiary);
     --story4-page-background: var(--hra-dark-surface);
     --story4-text: var(--hra-dark-on-surface);
     --story4-muted-text: var(--hra-dark-outline);
@@ -264,8 +302,6 @@ html {
 /* System-theme fallback when JavaScript is unavailable. */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) #four {
-        --story4-blue: var(--hra-dark-on-secondary-container);
-        --story4-blue-muted: var(--hra-dark-tertiary);
         --story4-page-background: var(--hra-dark-surface);
         --story4-text: var(--hra-dark-on-surface);
         --story4-muted-text: var(--hra-dark-outline);
