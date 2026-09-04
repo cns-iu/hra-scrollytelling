@@ -10,26 +10,18 @@ html.story1-page {
 }
 
 #one {
-    --hra-on-primary-container: #95001e;
-    --hra-secondary: #201e3d;
-    --hra-on-secondary: #ffffff;
-    --hra-surface: #fafbfc;
-    --hra-surface-variant: #dee5f1;
-    --hra-on-surface-variant: #393f45;
-    --hra-surface-container-low: #eef2f6;
-    --hra-surface-container: #e4eaf0;
-    --hra-outline-variant: #c6cedd;
-    --color-ink: var(--hra-on-surface-variant);
-    --color-heading: var(--hra-secondary);
-    --color-accent-text: var(--hra-on-primary-container);
-    --color-page: var(--hra-surface-variant);
-    --color-surface: var(--hra-surface);
-    --color-surface-muted: var(--hra-surface-container);
-    --color-surface-hover: var(--hra-surface-container-low);
-    --color-outline-variant: var(--hra-outline-variant);
-    --color-selection: var(--hra-secondary);
-    --color-on-selection: var(--hra-on-secondary);
-    --focus-color: var(--hra-secondary);
+    /* Story 1 has no theme control yet, so it pins the shared light roles. */
+    --color-ink: var(--hra-light-on-surface-variant);
+    --color-heading: var(--hra-light-secondary);
+    --color-accent-text: var(--hra-light-on-primary-container);
+    --color-page: var(--hra-light-surface-variant);
+    --color-surface: var(--hra-light-surface);
+    --color-surface-muted: var(--hra-light-surface-container);
+    --color-surface-hover: var(--hra-light-surface-container-low);
+    --color-outline-variant: var(--hra-light-outline-variant);
+    --color-selection: var(--hra-light-secondary);
+    --color-on-selection: var(--hra-light-on-secondary);
+    --focus-color: var(--hra-light-secondary);
     --radius-small: 0.5rem;
     --radius-card: 0.75rem;
     --radius-large: 1rem;
@@ -138,7 +130,7 @@ html.story1-page {
     padding: 0.625rem 0.875rem;
     border: 0.125rem solid transparent;
     border-radius: var(--radius-small);
-    color: var(--hra-on-secondary);
+    color: var(--hra-light-on-secondary);
     background: var(--color-accent-text);
     cursor: pointer;
     font: inherit;
