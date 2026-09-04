@@ -1,37 +1,41 @@
 import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { validateEndMatter } from "../shared/js/story-end-matter-schema.mjs";
 
-const maintainedPages = [
-    "index.html",
-    "story1.html",
-    "story2.html",
-    "story3.html",
-    "story4.html",
-    "story5.html",
-    "story6.html",
+/*
+ * Story layout manifest.
+ *
+ * Every page and asset path in this file is derived from these entries, so a
+ * story that moves only needs its `page`, `dir`, `cssDir` and `jsDir` updated
+ * here. `narrative` marks the stories that consume the shared narrative motion
+ * gate and chapter headings.
+ */
+const stories = [
+    { n: 1, page: "story1.html", dir: "stories/story1", cssDir: "", jsDir: "" },
+    { n: 2, page: "story2.html", dir: "stories/story2", cssDir: "", jsDir: "", narrative: true },
+    { n: 3, page: "story3.html", dir: "stories/story3", cssDir: "", jsDir: "", narrative: true },
+    { n: 4, page: "story4.html", dir: "stories/story4", cssDir: "", jsDir: "" },
+    { n: 5, page: "story5.html", dir: "stories/story5", cssDir: "", jsDir: "", narrative: true },
+    { n: 6, page: "story6.html", dir: "story/6", cssDir: "css", jsDir: "js" },
 ];
 
-const storyEndMatterSources = {
-    "story1.html": "stories/story1/end-matter.json",
-    "story2.html": "stories/story2/end-matter.json",
-    "story3.html": "stories/story3/end-matter.json",
-    "story4.html": "stories/story4/end-matter.json",
-    "story5.html": "stories/story5/end-matter.json",
-    "story6.html": "story/6/end-matter.json",
-};
+const maintainedPages = [
+    { page: "index.html", tokensUrl: "landing/css/tokens.css" },
+    ...stories.map((story) => ({ page: story.page, tokensUrl: "shared/css/tokens.css", story })),
+];
 
 const knownDuplicateIds = {
-    "story2.html": [
+    2: [
         "Combined-Shape:5", "Group-2:10", "Group-3:8", "Group-4:2", "Group-5:2",
         "Oval:23", "Rectangle:15", "Triangle:12", "branchoff:13",
     ],
-    "story3.html": [
+    3: [
         "2scene1-(2):2", "Combined-Shape:13", "Group-17:2", "Group-2:4", "Group-3:4",
         "Group-5:3", "Group:2", "KissMe,I’mSquamous:2", "Layer_3:2", "Oval:53",
         "Page-1:2", "Path:5", "Rectangle:8", "Screenshot-2023-09-29-at-14.22.11:2",
         "filter-1:2", "filter-3:2", "filter-4:2", "path-2:2",
     ],
-    "story4.html": [
+    4: [
         "Artboard:8", "Bitmap:4", "CenterLogo:6", "Digestive-System:2", "Group-2:10",
         "Group-3:9", "Group-4:7", "Group-5:3", "Group-6:2", "Group:14",
         "Ice-cream:2", "KidneyExtractionCode-(1):2", "Large-Intestine:2", "Left-Female-Kidney:7",
@@ -46,6 +50,77 @@ const knownDuplicateIds = {
 };
 
 const errors = [];
+
+/**
+ * Joins repository-relative path segments, ignoring empty ones.
+ *
+ * @param {...string} segments Path segments
+ * @returns {string} Repository-relative path
+ */
+function joinPath(...segments) {
+    return path.posix.join(...segments.filter((segment) => segment !== ""));
+}
+
+/**
+ * Rewrites a repository-relative path as the page itself would reference it.
+ *
+ * @param {string} page Repository-relative page path
+ * @param {string} target Repository-relative target path
+ * @returns {string} Reference as it appears in the page source
+ */
+function relativeRef(page, target) {
+    return path.posix.relative(path.posix.dirname(page), target);
+}
+
+/**
+ * Resolves a story-owned stylesheet path.
+ *
+ * @param {object} story Story manifest entry
+ * @param {string} name Stylesheet file name
+ * @returns {string} Repository-relative path
+ */
+function storyCss(story, name) {
+    return joinPath(story.dir, story.cssDir, name);
+}
+
+/**
+ * Resolves a story-owned script path.
+ *
+ * @param {object} story Story manifest entry
+ * @param {string} name Script file name
+ * @returns {string} Repository-relative path
+ */
+function storyJs(story, name) {
+    return joinPath(story.dir, story.jsDir, name);
+}
+
+/**
+ * Resolves a story's end-matter document.
+ *
+ * @param {object} story Story manifest entry
+ * @returns {string} Repository-relative path
+ */
+function storyEndMatter(story) {
+    return joinPath(story.dir, "end-matter.json");
+}
+
+/**
+ * Reads a repository file, recording a readable failure when it is missing.
+ *
+ * Story-owned paths are derived from the manifest, so a stale manifest entry
+ * must report which contract lost its file rather than crashing on ENOENT.
+ *
+ * @param {string} file Repository-relative path
+ * @returns {Promise<string>} File contents, or an empty string when missing
+ */
+async function readSource(file) {
+    try {
+        return await readFile(file, "utf8");
+    } catch (error) {
+        errors.push(`${file}: cannot be read (${error.code ?? error.message})`);
+        return "";
+    }
+}
 
 /**
  * Removes comments so retired markup does not satisfy maintained-page checks.
@@ -121,18 +196,19 @@ function duplicateIdSignature(ids) {
 /**
  * Checks one public entry point against shared structure and accessibility contracts.
  *
- * @param {string} file Page name
+ * @param {object} entry Maintained-page manifest entry
  * @param {string} source Raw page source
  * @returns {void}
  */
-function checkPage(file, source) {
+function checkPage(entry, source) {
+    const { page: file, story } = entry;
     const html = withoutComments(source);
     const ids = attributeValues(html, "id");
     const idSet = new Set(ids);
     const headings = [...html.matchAll(/<h([1-6])\b/gi)].map((match) => Number(match[1]));
     const description = html.match(/<meta\s+name=["']description["']\s+content="([^"]*)"/i);
     const actualDuplicates = duplicateIdSignature(ids);
-    const expectedDuplicates = [...(knownDuplicateIds[file] ?? [])].sort();
+    const expectedDuplicates = [...(knownDuplicateIds[story?.n] ?? [])].sort();
 
     assertPage(description?.[1].trim().length > 0, file, "missing a non-empty meta description");
     assertPage(!/<meta\s+name=["']keywords["']/i.test(html), file, "contains obsolete keyword metadata");
@@ -165,19 +241,19 @@ function checkPage(file, source) {
 
     checkStylesheetOrder(html, file, [
         "shared/css/fonts.css",
-        file === "index.html" ? "landing/css/tokens.css" : "shared/css/tokens.css",
+        entry.tokensUrl,
         "shared/css/selection.css",
         "shared/css/navigation.css",
         "shared/css/footer.css",
-    ]);
+    ].map((url) => relativeRef(file, url)));
 
-    if (/^story[1-6]\.html$/.test(file)) {
-        const endMatterSource = storyEndMatterSources[file];
+    if (story) {
+        const endMatterSource = relativeRef(file, storyEndMatter(story));
 
-        assertPage(html.includes("shared/css/story-navigation.css"), file, "missing shared story navigation styles");
+        assertPage(html.includes(relativeRef(file, "shared/css/story-navigation.css")), file, "missing shared story navigation styles");
         assertPage(html.includes("site-story-navigation"), file, "missing shared story navigation markup");
-        assertPage(html.includes("shared/css/story-end-matter.css"), file, "missing shared story end-matter styles");
-        assertPage(html.includes("shared/js/story-end-matter.js"), file, "missing shared story end-matter runtime");
+        assertPage(html.includes(relativeRef(file, "shared/css/story-end-matter.css")), file, "missing shared story end-matter styles");
+        assertPage(html.includes(relativeRef(file, "shared/js/story-end-matter.js")), file, "missing shared story end-matter runtime");
         assertPage(
             (html.match(/data-story-end-matter-source=/g) ?? []).length === 1,
             file,
@@ -192,53 +268,57 @@ function checkPage(file, source) {
         assertPage(!html.includes("story-end-matter__section"), file, "contains duplicated generated end-matter content");
     }
 
-    if (["story2.html", "story3.html", "story5.html"].includes(file)) {
+    if (story?.narrative) {
         assertPage(/<html[^>]*\bstory-flowing\b/.test(html), file, "missing the linear-layout default");
-        assertPage(html.includes("shared/js/narrative-motion.js"), file, "missing the narrative motion gate");
+        assertPage(html.includes(relativeRef(file, "shared/js/narrative-motion.js")), file, "missing the narrative motion gate");
         assertPage(html.includes("story-chapter-heading"), file, "missing the narrative chapter heading");
-        assertPage(html.includes(`stories/${file.replace(".html", "")}/animations.js`), file, "missing its story-owned animation runtime");
+        assertPage(html.includes(relativeRef(file, storyJs(story, "animations.js"))), file, "missing its story-owned animation runtime");
     }
 
-    if (file === "story4.html") {
+    if (story?.n === 4) {
         assertPage(/<html[^>]*\bstory4-flowing\b/.test(html), file, "missing Story 4's linear-layout default");
-        assertPage(html.includes("stories/story4/motion.js"), file, "missing Story 4's motion gate");
+        assertPage(html.includes(relativeRef(file, storyJs(story, "motion.js"))), file, "missing Story 4's motion gate");
         assertPage(html.includes("data-story4-ambient-toggle"), file, "missing Story 4's ambient-animation control");
     }
 
-    if (file === "story5.html") {
+    if (story?.n === 5) {
         assertPage((html.match(/data-story5-action=["']toggle["']/g) ?? []).length === 6, file, "must provide six video pause controls");
         assertPage((html.match(/<video\b[^>]*\bcontrols\b/gi) ?? []).length === 6, file, "must provide six no-JavaScript video controls");
         assertPage(!/<video\b[^>]*\bautoplay\b/i.test(html), file, "must not autoplay video before enhancement");
     }
 }
 
-for (const file of maintainedPages) {
-    checkPage(file, await readFile(file, "utf8"));
+for (const entry of maintainedPages) {
+    checkPage(entry, await readSource(entry.page));
 }
 
-for (const [file, source] of Object.entries(storyEndMatterSources)) {
+for (const story of stories) {
+    const source = storyEndMatter(story);
+
     try {
         const data = JSON.parse(await readFile(source, "utf8"));
         const issues = validateEndMatter(data);
 
         issues.forEach((issue) => assertPage(false, source, issue));
     } catch (error) {
-        assertPage(false, file, `cannot read ${source}: ${error.message}`);
+        assertPage(false, story.page, `cannot read ${source}: ${error.message}`);
     }
 }
 
-const story4App = await readFile("stories/story4/app.js", "utf8");
+const storyByNumber = new Map(stories.map((story) => [story.n, story]));
+const story4App = storyJs(storyByNumber.get(4), "app.js");
+const story5Animations = storyJs(storyByNumber.get(5), "animations.js");
+const story5MediaControls = storyJs(storyByNumber.get(5), "media-controls.js");
+const story4AppSource = await readSource(story4App);
 const storyEndMatterRuntime = await readFile("shared/js/story-end-matter.js", "utf8");
 const narrativeFoundation = await readFile("shared/css/narrative-foundation.css", "utf8");
 const narrativeDialogue = await readFile("shared/css/character-dialogue.css", "utf8");
 const narrativeAccessibility = await readFile("shared/css/narrative-accessibility.css", "utf8");
 const narrativeMotion = await readFile("shared/js/narrative-motion.js", "utf8");
-const story2Styles = await readFile("stories/story2/styles.css", "utf8");
-const story3Styles = await readFile("stories/story3/styles.css", "utf8");
-const story5Styles = await readFile("stories/story5/styles.css", "utf8");
-const story5Animations = await readFile("stories/story5/animations.js", "utf8");
-const story5MediaControls = await readFile("stories/story5/media-controls.js", "utf8");
-assertPage(story4App.includes("window.hraStory4MotionEnabled"), "stories/story4/app.js", "particle initialization is not motion-gated");
+const story3Styles = await readSource(storyCss(storyByNumber.get(3), "styles.css"));
+const story5AnimationsSource = await readSource(story5Animations);
+const story5MediaControlsSource = await readSource(story5MediaControls);
+assertPage(story4AppSource.includes("window.hraStory4MotionEnabled"), story4App, "particle initialization is not motion-gated");
 assertPage(
     storyEndMatterRuntime.includes("validateEndMatter") &&
         storyEndMatterRuntime.includes("fetch(source") &&
@@ -278,17 +358,15 @@ assertPage(
     "shared/js/narrative-motion.js",
     "coarse-pointer scrolling can regress during browser-chrome changes or failed motion setup",
 );
-for (const [file, source] of [
-    ["stories/story2/styles.css", story2Styles],
-    ["stories/story3/styles.css", story3Styles],
-    ["stories/story5/styles.css", story5Styles],
-]) {
-    assertPage(!/height:\s*100vh/u.test(source), file, "contains a browser-chrome-sensitive scene height");
+for (const story of stories.filter((entry) => entry.narrative)) {
+    const file = storyCss(story, "styles.css");
+
+    assertPage(!/height:\s*100vh/u.test(await readSource(file)), file, "contains a browser-chrome-sensitive scene height");
 }
-assertPage(!/opacity:\s*100\b/u.test(story3Styles), "stories/story3/styles.css", "contains an invalid opacity value");
-assertPage(!/\brepeatmovie\d\b/.test(story5Animations), "stories/story5/animations.js", "references a removed global video callback");
-assertPage(story5Animations.includes("enableStory5FlowingFallback"), "stories/story5/animations.js", "missing its initialization fallback");
-assertPage(story5MediaControls.includes("IntersectionObserver"), "stories/story5/media-controls.js", "video autoplay is not viewport-gated");
+assertPage(!/opacity:\s*100\b/u.test(story3Styles), storyCss(storyByNumber.get(3), "styles.css"), "contains an invalid opacity value");
+assertPage(!/\brepeatmovie\d\b/.test(story5AnimationsSource), story5Animations, "references a removed global video callback");
+assertPage(story5AnimationsSource.includes("enableStory5FlowingFallback"), story5Animations, "missing its initialization fallback");
+assertPage(story5MediaControlsSource.includes("IntersectionObserver"), story5MediaControls, "video autoplay is not viewport-gated");
 
 if (errors.length > 0) {
     console.error(`Maintained-page checks failed (${errors.length}):`);
