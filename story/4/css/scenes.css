@@ -136,10 +136,15 @@
  */
 #four .story4-scene {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
-    gap: clamp(2rem, 5vw, 5rem);
+    /* The illustration is always width-constrained - it letterboxes inside its
+       box - so every pixel taken from the prose column, the gap or the outer
+       padding goes straight into how large the artwork renders. The prose is
+       given a range rather than a fixed width so it yields on narrower
+       viewports instead of squeezing the artwork. */
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 26rem);
+    gap: clamp(1.5rem, 3vw, 3rem);
     align-items: start;
-    padding-inline: clamp(1rem, 4vw, 4rem);
+    padding-inline: clamp(1rem, 2.5vw, 2.5rem);
 }
 
 #four .story4-scene__stage {
@@ -162,7 +167,7 @@
 }
 
 #four .story4-step {
-    max-width: 34rem;
+    /* The column governs the measure; no max-width needed here. */
     margin: 0 0 55svh;
     line-height: 1.6;
     text-align: start;
@@ -190,10 +195,11 @@
     transform: none;
 }
 
-/* Below this the diagrams lose too much width beside prose, so the stage
-   becomes a band above the text. Story 6 collapses at 48rem; these
-   illustrations carry baked-in labels and need more room than that. */
-@media (max-width: 64rem) {
+/* Below this the illustration is bigger stacked above the prose than it is
+   beside it - at 1100px a full-width band renders it about 960px across against
+   roughly 600px in two columns - so the stage becomes a band. Story 6 collapses
+   at 48rem; these diagrams carry baked-in labels and need far more room. */
+@media (max-width: 75rem) {
     #four .story4-scene {
         grid-template-columns: minmax(0, 1fr);
     }
@@ -210,11 +216,14 @@
     }
 
     #four .story4-scene__prose {
+        /* Stacked, the column is the full page width, so the measure has to be
+           capped here or lines run to 100+ characters. */
+        width: min(100%, 34rem);
+        margin-inline: auto;
         padding-block: 6svh 12svh;
     }
 
     #four .story4-step {
-        max-width: none;
         margin-bottom: 40svh;
     }
 }
