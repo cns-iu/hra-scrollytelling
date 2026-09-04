@@ -1,0 +1,41 @@
+<!--
+  Canonical page chrome. tools/check-maintained-pages.mjs asserts every
+  maintained page carries this block verbatim.
+
+  {{root}} stands for the page's path back to the repository root: empty
+  on index.html, ../../ on story/N/index.html.
+
+  Normalised before comparison: whitespace, and the aria-current="page"
+  marker on the active navigation item.
+-->
+<fieldset class="site-appearance">
+          <legend>Appearance</legend>
+          <label class="site-appearance-choice">
+            <input
+              type="radio"
+              name="color-theme"
+              value="system"
+              data-site-theme-choice
+              checked
+            />
+            <span>System settings</span>
+          </label>
+          <label class="site-appearance-choice">
+            <input
+              type="radio"
+              name="color-theme"
+              value="light"
+              data-site-theme-choice
+            />
+            <span>Light</span>
+          </label>
+          <label class="site-appearance-choice">
+            <input
+              type="radio"
+              name="color-theme"
+              value="dark"
+              data-site-theme-choice
+            />
+            <span>Dark</span>
+          </label>
+        </fieldset>

@@ -5,7 +5,9 @@ import path from "node:path";
 
 const projectRoot = process.cwd();
 const allowKnown = process.argv.includes("--allow-known");
-const ignoredDirectories = new Set([".agents", ".codex", ".git"]);
+// "fixtures" holds canonical chrome templates whose {{root}} placeholders are
+// resolved per page by check-maintained-pages.mjs, not by a browser.
+const ignoredDirectories = new Set([".agents", ".codex", ".git", "fixtures"]);
 const scannableExtensions = new Set([".css", ".html"]);
 
 // Remove an entry when its underlying reference is repaired or intentionally deleted.

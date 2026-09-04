@@ -193,6 +193,78 @@ function duplicateIdSignature(ids) {
         .sort();
 }
 
+
+/*
+ * Canonical page chrome.
+ *
+ * The menu, footer and appearance controls are copied into every maintained
+ * page by hand, and they had already drifted - modifier classes on some pages,
+ * a self-closed <path> on another. Rather than add a build step, each block is
+ * stored once under shared/fixtures/ and asserted here.
+ *
+ * Two differences are legitimate and normalised away before comparison:
+ * the page's path back to the repository root, and the aria-current marker on
+ * whichever navigation item is active.
+ */
+const chromeBlocks = [
+    { fixture: "menu.html", open: '<details class="site-menu', close: "</details>" },
+    { fixture: "footer.html", open: '<footer class="site-footer', close: "</footer>" },
+    { fixture: "appearance.html", open: '<fieldset class="site-appearance">', close: "</fieldset>" },
+    { fixture: "contrast.html", open: '<fieldset class="site-accessibility"', close: "</fieldset>" },
+];
+
+/**
+ * Extracts one chrome block from a page.
+ *
+ * @param {string} html Page source
+ * @param {object} block Chrome block descriptor
+ * @returns {string|null} Block source, or null when the page lacks it
+ */
+function extractBlock(html, block) {
+    const start = html.indexOf(block.open);
+
+    if (start < 0) {
+        return null;
+    }
+
+    const end = html.indexOf(block.close, start);
+
+    return end < 0 ? null : html.slice(start, end + block.close.length);
+}
+
+/**
+ * Reduces a chrome block to a comparable form.
+ *
+ * The formatter re-wraps the surrounding tags whenever the aria-current marker
+ * moves to a different navigation item, so comparison ignores whitespace
+ * between and inside tags. Attribute values and element order are still
+ * compared exactly. The marker itself is dropped because it legitimately
+ * differs per page.
+ *
+ * @param {string} source Block source
+ * @returns {string} Comparable block
+ */
+function normalizeChrome(source) {
+    return source
+        .replace(/<!--[\s\S]*?-->/g, "")
+        .replace(/\s*aria-current="page"/g, "")
+        .replace(/\s+/g, " ")
+        .replace(/\s+>/g, ">")
+        .replace(/>\s+</g, "><")
+        .trim();
+}
+
+/**
+ * Renders a fixture for one page by resolving its root-relative placeholder.
+ *
+ * @param {string} source Fixture source
+ * @param {string} root The page's relative path back to the repository root
+ * @returns {string} Comparable block for that page
+ */
+function renderFixture(source, root) {
+    return normalizeChrome(source.split("{{root}}").join(root));
+}
+
 /**
  * Checks one public entry point against shared structure and accessibility contracts.
  *
@@ -288,8 +360,46 @@ function checkPage(entry, source) {
     }
 }
 
+const fixtures = Object.fromEntries(
+    await Promise.all(chromeBlocks.map(async (block) => [
+        block.fixture,
+        await readSource(joinPath("shared/fixtures", block.fixture)),
+    ])),
+);
+
+
+/**
+ * Asserts a page carries the canonical chrome verbatim.
+ *
+ * @param {object} entry Maintained-page manifest entry
+ * @param {string} source Raw page source
+ * @returns {void}
+ */
+function checkChrome(entry, source) {
+    const depth = entry.page.split("/").length - 1;
+    const root = "../".repeat(depth);
+
+    chromeBlocks.forEach((block) => {
+        const found = extractBlock(source, block);
+
+        if (found === null) {
+            assertPage(false, entry.page, `missing the shared ${block.fixture.replace(".html", "")} chrome`);
+            return;
+        }
+
+        assertPage(
+            normalizeChrome(found) === renderFixture(fixtures[block.fixture], root),
+            entry.page,
+            `${block.fixture.replace(".html", "")} chrome has drifted from shared/fixtures/${block.fixture}`,
+        );
+    });
+}
+
 for (const entry of maintainedPages) {
-    checkPage(entry, await readSource(entry.page));
+    const source = await readSource(entry.page);
+
+    checkPage(entry, source);
+    checkChrome(entry, source);
 }
 
 for (const story of stories) {
