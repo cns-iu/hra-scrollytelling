@@ -37,18 +37,19 @@ select Metropolis where specified.
 
 The current page may omit a component stylesheet it does not use. Font declarations and typography roles must load
 before component tokens and styles. `navigation.css` owns only the core Menu and skip link;
-`appearance-controls.css` is optional and belongs immediately after it on pages that offer theme and contrast
-controls.
+`appearance-controls.css` follows it on every maintained page; all seven offer theme and contrast controls.
 
-The landing page keeps `landing/js/main.js` as its page entry point; that module initializes the canonical shared
-Menu, appearance, contrast, and back-to-top modules.
+Every maintained page, landing and story alike, loads `shared/js/main.js` as its entry point; that module initializes
+the canonical shared Menu, appearance, contrast, and back-to-top modules. `shared/js/navigation-only.js` remains
+available for a page that deliberately omits appearance controls, but no maintained page currently uses it.
 
 ## Markup contract
 
 - Add `site-chrome` to each shared component root, including the skip link, so theme tokens remain scoped away from
   story artwork.
-- Add `site-chrome--light` to the Menu root when the page does not offer appearance selection. This keeps that Menu
-  light regardless of the operating-system preference without changing other shared components.
+- Add `site-chrome--light` to the Menu root only on a page that offers no appearance selection, which today means
+  the prototype pages. It keeps that Menu light regardless of the operating-system preference. Maintained pages must
+  not carry it: `shared/fixtures/menu.html` omits it, and the maintained-page check fails if a page adds it.
 - Implement the Menu with a `details[data-site-menu]` root and a visible `summary` labeled “Menu.”
 - Add `data-site-menu-panel`, `role="region"`, an accessible label, and `tabindex="-1"` to the disclosure panel.
 - Add `data-site-menu-close` to the explicit close button.
@@ -59,7 +60,7 @@ Menu, appearance, contrast, and back-to-top modules.
   input and `data-site-theme-status` to the visually hidden polite status region.
 - Omit the complete appearance fieldset and theme-status region when appearance is not an available page option, and
   apply the light-only Menu modifier described above.
-- On `index.html` and `story6.html`, add a hidden fieldset with `data-contrast-controls`, a visible High contrast button
+- On every maintained page, add a hidden fieldset with `data-contrast-controls`, a visible High contrast button
   with `role="switch"`, `aria-checked`, and `data-contrast-toggle`, plus visible state text marked with
   `data-contrast-state`. The shared module reveals the fieldset only after the control is functional.
 - Use `aria-current="page"` on the current internal page link.

@@ -1,0 +1,229 @@
+/*
+ * Story 4 scenes: the pinned illustration sequence and its dialogue bubbles.
+ *
+ * Offsets are not set here. Each scene and bubble is position:static until
+ * ScrollTrigger pins it, and the flowing fallback in accessibility.css sets
+ * `inset: auto !important`, so any `top` declared here would never apply.
+ * Scroll position is owned entirely by the triggers in js/animations.js.
+ */
+
+#four .talkbubble {
+    display: flex;
+    width: 80%;
+    height: 100vh;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    /* Sits on the scene surface, which follows the theme, so the text must
+       too. Pinned to #000 this was black-on-near-black in dark mode. */
+    color: var(--story4-text);
+    font-size: 1.4rem;
+    text-align: center;
+    flex-direction: column;
+}
+
+#four .scene1,
+#four .scene2,
+#four .scene15,
+#four .scene16,
+#four .scene17,
+#four .scene18,
+#four .scene19,
+#four .scene20 {
+    min-width: 100%;
+    max-width: 68.75rem;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--story4-page-background);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#four .scene15,
+#four .scene16,
+#four .scene17,
+#four .scene18,
+#four .scene2 {
+    display: flex;
+    max-width: 68.75rem;
+    height: 100vh;
+    margin: auto;
+    justify-content: center;
+}
+
+#four .svgparts {
+    /* clip, not hidden, so the sticky scene stages inside can stick. */
+    overflow: clip;
+}
+
+#four .svgparts svg {
+    position: relative;
+    display: flex;
+    top: 50vh;
+    max-width: 56.25rem !important;
+    margin: auto;
+    transform: translateY(-50%);
+}
+
+#four :is(
+    #Systempt4,
+    #Systempt3,
+    #Systempt2,
+    #Purple,
+    #Combined,
+    #SideLogos,
+    #RDF1,
+    #RDF2,
+    #Brand1,
+    #Brand2,
+    #Brand3,
+    #Brand4,
+    #closeup3,
+    #closeup2,
+    #closeup1,
+    #Data2,
+    #likedthing,
+    #Locks,
+    #Mess,
+    #TypeLogos,
+    #Like1,
+    #Like2,
+    #Like3,
+    #Like4,
+    #Like5,
+    #Like6,
+    #Like7,
+    #Like8,
+    #closeuplinks1,
+    #closeuplinks2,
+    #closeuplinks3,
+    #closeuplinks4,
+    #closeuplinks5,
+    #closeuplinks6,
+    #closeuplinks65,
+    #closeuplinks66,
+    #closeuplinks68,
+    #closeuplinks7,
+    #closeuplinks8,
+    #closeuplinks9,
+    #closeuplinks10,
+    #predicatehighlight,
+    #objecthighlight,
+    #subjecthighlight
+) {
+    opacity: 0;
+}
+
+#four :is(#LogoLine1, #LogoLine2, #LogoLine3) {
+    stroke: url("#gradient1");
+    stroke-width: 5;
+}
+
+/*
+ * Readable scene layout.
+ *
+ * The illustration holds still in its own column while the prose scrolls past,
+ * so text never sits on top of artwork. The scroll budget comes from the prose
+ * column's height and a native `position: sticky` stage - the same idiom Story 6
+ * uses in cde.css - rather than a ScrollTrigger pin.
+ *
+ * Prose is first in source order and placed into the second column, so Reader
+ * View, screen readers and the no-JS document get the narrative before the
+ * decorative artwork.
+ */
+#four .story4-scene {
+    display: grid;
+    /* The illustration is always width-constrained - it letterboxes inside its
+       box - so every pixel taken from the prose column, the gap or the outer
+       padding goes straight into how large the artwork renders. The prose is
+       given a range rather than a fixed width so it yields on narrower
+       viewports instead of squeezing the artwork. */
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 26rem);
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: start;
+    padding-inline: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+#four .story4-scene__stage {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 0;
+    display: grid;
+    height: 100svh;
+    place-items: center;
+}
+
+#four .story4-scene__prose {
+    grid-column: 2;
+    grid-row: 1;
+    /* Leading space so each step arrives near the middle of the viewport, level
+       with the centred illustration, rather than at the very top. The trailing
+       space keeps the stage stuck until the last step has been read. */
+    padding-block: 35svh 30svh;
+}
+
+#four .story4-step {
+    /* The column governs the measure; no max-width needed here. */
+    margin: 0 0 55svh;
+    line-height: 1.6;
+    text-align: start;
+    text-wrap: pretty;
+}
+
+/* The staged illustration fills its column instead of the viewport. */
+#four .story4-scene .story4-scene__stage [class^="scene"] {
+    min-width: 0;
+    max-width: none;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    overflow: visible;
+    background: none;
+}
+
+#four .story4-scene .story4-scene__stage svg {
+    position: static;
+    top: auto;
+    margin: 0;
+    /* overrides the !important on `#four .svgparts svg` */
+    max-width: 100% !important;
+    max-height: 100%;
+    transform: none;
+}
+
+/* Below this the illustration is bigger stacked above the prose than it is
+   beside it - at 1100px a full-width band renders it about 960px across against
+   roughly 600px in two columns - so the stage becomes a band. Story 6 collapses
+   at 48rem; these diagrams carry baked-in labels and need far more room. */
+@media (max-width: 75rem) {
+    #four .story4-scene {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #four .story4-scene__stage {
+        grid-column: 1;
+        grid-row: 1;
+        height: 60svh;
+    }
+
+    #four .story4-scene__prose {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    #four .story4-scene__prose {
+        /* Stacked, the column is the full page width, so the measure has to be
+           capped here or lines run to 100+ characters. */
+        width: min(100%, 34rem);
+        margin-inline: auto;
+        padding-block: 6svh 12svh;
+    }
+
+    #four .story4-step {
+        margin-bottom: 40svh;
+    }
+}

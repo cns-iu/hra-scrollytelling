@@ -1,0 +1,68 @@
+/* Story 4 page foundation: document layout, typography, and link roles. */
+
+/* Story 4 presentation, scenes, and resources. */
+html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    /* clip, not hidden: hidden would make the root a scroll container and stop
+       the sticky scene stages from sticking. */
+    overflow-x: clip;
+    scroll-behavior: smooth;
+}
+
+#four {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-body);
+}
+
+/* Metropolis for headings, matching the other stories. */
+#four :where(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-heading);
+}
+
+#four main p {
+    color: var(--story4-text);
+    font-size: 1.125rem;
+}
+
+#four main a {
+    color: var(--story4-text);
+    text-decoration: none;
+}
+
+#four .linkbutton {
+    padding: 0.5625rem 1rem;
+    color: var(--story4-link);
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+#four .linkbutton:hover {
+    background-color: var(--story4-link-hover);
+}
+
+#four .linkbutton:active {
+    background-color: var(--story4-link-active);
+}
+
+#four .linkbutton:focus-visible {
+    outline: 0.2rem solid var(--story4-link-focus);
+    outline-offset: 0.125rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+@media (forced-colors: active) {
+    #four .linkbutton:focus-visible {
+        outline-color: Highlight;
+    }
+}

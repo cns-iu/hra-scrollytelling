@@ -1,0 +1,230 @@
+/* Story 4 splash: the editorial title block, its scrim, and the particle field. */
+
+#four .header {
+    /* Fill the viewport rather than deriving height from width. The previous
+       `padding: 20%` resolved against the container's width, so the splash
+       behaved like a fixed aspect ratio. */
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: end;
+    min-height: 100vh;
+    padding: clamp(1.5rem, 4vw, 4rem);
+    margin: 0;
+    color: var(--story4-inverse-text);
+    background: linear-gradient(
+        270deg,
+        var(--story4-inverse-surface),
+        var(--story4-inverse-surface-muted),
+        var(--story4-inverse-surface)
+    );
+    background-size: 600% 600%;
+    text-align: start;
+    isolation: isolate;
+    animation: story4-header-gradient 30s ease infinite;
+}
+
+/*
+ * Reading scrim.
+ *
+ * The gradient's muted stop plus a particle dot behind a glyph measured 2.89:1
+ * for the kicker - the particle field brightens local patches well past the
+ * stop colour. Story 6 solves the same problem the same way, with a scrim over
+ * its splash photo (`.page-header::after`). It darkens the column the text
+ * occupies and fades out, so the particle field still reads across the rest.
+ */
+#four .header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        rgb(32 30 61 / 94%),
+        rgb(32 30 61 / 88%) 34%,
+        rgb(32 30 61 / 46%) 56%,
+        transparent 78%
+    );
+}
+
+/* Small-viewport height, so collapsing mobile browser chrome cannot reflow the
+   splash mid-scroll. */
+@supports (height: 100svh) {
+    #four .header {
+        min-height: 100svh;
+    }
+}
+
+/*
+ * Editorial title stack, following the kicker / title / deck pattern Story 1
+ * established in `#one .story1-heading`, retuned for this inverse surface.
+ */
+#four .story4-title-block {
+    box-sizing: border-box;
+    grid-column: 2 / span 7;
+    justify-self: start;
+    display: grid;
+    gap: 1rem;
+    width: min(100%, 44rem);
+    margin-bottom: clamp(1rem, 6vh, 4rem);
+    padding-inline-start: clamp(1rem, 2.5vw, 1.75rem);
+    border-inline-start: 0.25rem solid var(--story4-splash-accent);
+}
+
+#four .story4-kicker {
+    margin: 0;
+    color: var(--story4-splash-accent);
+    font-family: var(--font-body);
+    font-size: var(--type-body-large-size);
+    font-weight: var(--type-label-emphasized-weight);
+    line-height: var(--type-body-large-line-height);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+#four .story4-title-block h1 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(var(--type-display-medium-size), 4vw, 3.75rem);
+    font-weight: var(--type-display-emphasized-weight);
+    line-height: 1.08;
+    letter-spacing: var(--type-display-large-letter-spacing);
+    text-wrap: balance;
+}
+
+#four .header .subtitle {
+    max-width: 32rem;
+    margin: 0;
+    padding-top: 1rem;
+    border-block-start: 0.125rem solid var(--story4-splash-rule);
+    /* On the inverse surface, so it must not inherit the body text colour that
+       `#four main p` would otherwise apply. */
+    color: var(--story4-inverse-text);
+    font-family: var(--font-body);
+    font-size: clamp(var(--type-title-large-size), 2vw, var(--type-headline-small-size));
+    font-weight: var(--type-title-large-primary-weight);
+    line-height: var(--type-headline-small-line-height);
+    letter-spacing: var(--type-title-large-letter-spacing);
+    text-wrap: pretty;
+}
+
+/* The particle field is decorative and aria-hidden; it must not sit between the
+   pointer and the text it covers, or the title cannot be selected. */
+#four .header > :where(.story4-title-block, .story4-scene-summary) {
+    position: relative;
+    z-index: 2;
+}
+
+/* Tablet: widen the block and centre it vertically, as Story 6 does. */
+@media (min-width: 601px) and (max-width: 900px) {
+    #four .header {
+        align-items: center;
+    }
+
+    #four .story4-title-block {
+        grid-column: 2 / -2;
+        margin-bottom: 0;
+    }
+}
+
+/* Phone: the 12-column grid has no room, so stack and fill the width. */
+@media (max-width: 600px) {
+    #four .header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(1.25rem, 6vh, 3rem) 1rem;
+    }
+
+    #four .story4-title-block {
+        width: 100%;
+        margin-bottom: 0;
+        padding-inline-start: 1rem;
+        border-inline-start-width: 0.1875rem;
+    }
+
+    #four .story4-title-block h1 {
+        font-size: clamp(1.75rem, 8vw, 2.5rem);
+        letter-spacing: -0.035em;
+    }
+
+    #four .header::after {
+        background: linear-gradient(
+            180deg,
+            transparent,
+            rgb(32 30 61 / 62%) 28%,
+            rgb(32 30 61 / 88%)
+        );
+    }
+}
+
+/* Short landscape viewports: keep the deck on screen. */
+@media (max-height: 600px) {
+    #four .header {
+        padding-block: 1.5rem;
+    }
+
+    #four .story4-title-block {
+        gap: 0.625rem;
+        margin-bottom: 0;
+    }
+
+    #four .story4-title-block h1 {
+        font-size: clamp(1.75rem, 5vh, 2.5rem);
+    }
+}
+
+/* The deck rule is the only translucent value on the splash. */
+@media (prefers-reduced-transparency: reduce) {
+    #four {
+        --story4-splash-rule: var(--hra-dark-outline);
+    }
+
+    #four .header::after {
+        background: none;
+    }
+
+    /* The ambient field is itself a 40%-opacity overlay, and without the scrim
+       its bright particles are what push the kicker under AA. */
+    #four #particles-js {
+        display: none;
+    }
+}
+
+@keyframes story4-header-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#four #particles-js {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+#four #particles-js canvas {
+    display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #four .header {
+        animation: none;
+    }
+}

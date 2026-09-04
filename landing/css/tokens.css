@@ -1,61 +1,9 @@
 :root {
+    /* Colour roles live in shared/css/tokens.css and component roles in
+       shared/css/component-roles.css; this file owns only the landing hero. */
     color-scheme: light;
 
-    /* Landing-page HRA light-theme roles from the Figma color guidance. */
-    --hra-primary: #e00d3a;
-    --hra-on-primary: #ffffff;
-    --hra-primary-container: #ffdad9;
-    --hra-on-primary-container: #95001e;
-    --hra-primary-fixed: #ffdad9;
-    --hra-on-primary-fixed: #400009;
-    --hra-secondary: #201e3d;
-    --hra-on-secondary: #ffffff;
-    --hra-secondary-container: #e3dfff;
-    --hra-on-secondary-container: #171533;
-    --hra-tertiary: #4b4b5e;
-    --hra-on-tertiary: #ffffff;
-    --hra-background: #fafbfc;
-    --hra-on-background: #1c1b1e;
-    --hra-surface: #fafbfc;
-    --hra-on-surface: #1c1b1e;
-    --hra-surface-bright: #fafbfc;
-    --hra-surface-variant: #dee5f1;
-    --hra-on-surface-variant: #393f45;
-    --hra-outline: #909bad;
-    --hra-outline-variant: #c6cedd;
-    --hra-surface-container-lowest: #ffffff;
-    --hra-surface-container-low: #eef2f6;
-    --hra-surface-container: #e4eaf0;
-    --hra-surface-container-high: #dde5ec;
-    --hra-surface-container-highest: #d4dde6;
-    --hra-inverse-surface: #26282b;
-    --hra-inverse-on-surface: #eff2f5;
-    --hra-inverse-primary: #ffb3b3;
-
-    /* Component roles use AAA-safe pairings from the HRA palette. */
-    --color-ink: var(--hra-on-surface-variant);
-    --color-card-ink: var(--hra-on-surface);
-    --color-heading: var(--hra-secondary);
-    --color-accent-text: var(--hra-on-primary-container);
-    --color-page: var(--hra-surface-variant);
-    --color-surface: var(--hra-surface);
-    --color-surface-muted: var(--hra-surface-container);
-    --color-card: var(--hra-surface);
-    --color-card-hover: var(--hra-surface-container-low);
-    --color-border: #6f7b8c;
-    --color-card-outline-start: var(--hra-on-primary-container);
-    --color-card-outline-highlight: var(--hra-primary);
-    --color-card-outline-middle: var(--hra-secondary);
-    --color-card-outline-deep: var(--hra-on-secondary-container);
-    --color-card-outline-end: var(--hra-tertiary);
-    --color-card-outline-neutral: var(--color-border);
-    --color-card-outline-inverse: var(--hra-inverse-surface);
-    --color-selection: var(--hra-secondary);
-    --color-on-selection: var(--hra-on-secondary);
-    --color-action: var(--hra-on-primary-container);
-    --color-on-action: var(--hra-on-primary);
-    --color-badge: var(--hra-secondary);
-    --color-on-badge: var(--hra-on-secondary);
+    
     --focus-color: var(--hra-secondary);
     --hero-overlay-start: rgb(250 251 252 / 100%);
     --hero-overlay-middle: rgb(250 251 252 / 82%);
@@ -66,52 +14,12 @@
         radial-gradient(circle at 92% 8%, rgb(227 223 255 / 82%) 0%, transparent 32%),
         radial-gradient(circle at 12% 92%, rgb(198 194 234 / 56%) 0%, transparent 36%),
         radial-gradient(circle at 90% 90%, rgb(255 179 179 / 42%) 0%, transparent 34%);
-    /* Layout tokens shared by landing-page components. */
-    --content-width: 72rem;
+    /* Landing-only layout. */
     --landing-content-width: 76rem;
-    --reading-width: 65ch;
-    --radius-small: 0.5rem;
-    --radius-card: 0.75rem;
-    --radius-large: 1rem;
 }
 
 :root[data-theme="dark"] {
     color-scheme: dark;
-    --hra-primary: #ffb3b3;
-    --hra-on-primary: #680015;
-    --hra-primary-container: #95001e;
-    --hra-on-primary-container: #ffdad9;
-    --hra-primary-fixed: #ffdad9;
-    --hra-on-primary-fixed: #400009;
-    --hra-secondary: #c6c2ea;
-    --hra-on-secondary: #0f0d2b;
-    --hra-secondary-container: #171533;
-    --hra-on-secondary-container: #e3dfff;
-    --hra-tertiary: #c6c4db;
-    --hra-on-tertiary: #2f2f41;
-    --hra-background: #161719;
-    --hra-on-background: #d4dde6;
-    --hra-surface: #161719;
-    --hra-on-surface: #d4dde6;
-    --hra-surface-bright: #34383c;
-    --hra-surface-variant: #393f45;
-    --hra-on-surface-variant: #dee5f1;
-    --hra-outline: #aab4c5;
-    --hra-outline-variant: #393f45;
-    --hra-surface-container-lowest: #101113;
-    --hra-surface-container-low: #1c1b1e;
-    --hra-surface-container: #1f2023;
-    --hra-surface-container-high: #22262a;
-    --hra-surface-container-highest: #2f3337;
-    --hra-inverse-surface: #d4dde6;
-    --hra-inverse-on-surface: #26282b;
-    --hra-inverse-primary: #e00d3a;
-    --color-accent-text: var(--hra-primary);
-    --color-border: var(--hra-outline);
-    --color-action: var(--hra-primary);
-    --color-on-action: var(--hra-on-primary);
-    --color-selection: var(--hra-primary-fixed);
-    --color-on-selection: var(--hra-on-primary-fixed);
     --focus-color: var(--hra-primary);
     --hero-overlay-start: rgb(22 23 25 / 100%);
     --hero-overlay-middle: rgb(22 23 25 / 88%);
@@ -128,41 +36,6 @@
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
         color-scheme: dark;
-        --hra-primary: #ffb3b3;
-        --hra-on-primary: #680015;
-        --hra-primary-container: #95001e;
-        --hra-on-primary-container: #ffdad9;
-        --hra-primary-fixed: #ffdad9;
-        --hra-on-primary-fixed: #400009;
-        --hra-secondary: #c6c2ea;
-        --hra-on-secondary: #0f0d2b;
-        --hra-secondary-container: #171533;
-        --hra-on-secondary-container: #e3dfff;
-        --hra-tertiary: #c6c4db;
-        --hra-on-tertiary: #2f2f41;
-        --hra-background: #161719;
-        --hra-on-background: #d4dde6;
-        --hra-surface: #161719;
-        --hra-on-surface: #d4dde6;
-        --hra-surface-bright: #34383c;
-        --hra-surface-variant: #393f45;
-        --hra-on-surface-variant: #dee5f1;
-        --hra-outline: #aab4c5;
-        --hra-outline-variant: #393f45;
-        --hra-surface-container-lowest: #101113;
-        --hra-surface-container-low: #1c1b1e;
-        --hra-surface-container: #1f2023;
-        --hra-surface-container-high: #22262a;
-        --hra-surface-container-highest: #2f3337;
-        --hra-inverse-surface: #d4dde6;
-        --hra-inverse-on-surface: #26282b;
-        --hra-inverse-primary: #e00d3a;
-        --color-accent-text: var(--hra-primary);
-        --color-border: var(--hra-outline);
-        --color-action: var(--hra-primary);
-        --color-on-action: var(--hra-on-primary);
-        --color-selection: var(--hra-primary-fixed);
-        --color-on-selection: var(--hra-on-primary-fixed);
         --focus-color: var(--hra-primary);
         --hero-overlay-start: rgb(22 23 25 / 100%);
         --hero-overlay-middle: rgb(22 23 25 / 88%);

@@ -5,7 +5,9 @@ import path from "node:path";
 
 const projectRoot = process.cwd();
 const allowKnown = process.argv.includes("--allow-known");
-const ignoredDirectories = new Set([".agents", ".codex", ".git"]);
+// "fixtures" holds canonical chrome templates whose {{root}} placeholders are
+// resolved per page by check-maintained-pages.mjs, not by a browser.
+const ignoredDirectories = new Set([".agents", ".codex", ".git", "fixtures"]);
 const scannableExtensions = new Set([".css", ".html"]);
 
 // Remove an entry when its underlying reference is repaired or intentionally deleted.
@@ -35,7 +37,9 @@ async function collectFiles(directory) {
 }
 
 function extractHtmlReferences(source) {
-    const attributePattern = /\b(href|poster|src|srcset)\s*=\s*(?:"([^"]*)"|'([^']*)')/gi;
+    // `xlink:href` included so inline-SVG <image> references are checked too;
+    // Story 4's illustration rasters are addressed that way.
+    const attributePattern = /\b(?:xlink:)?(href|poster|src|srcset)\s*=\s*(?:"([^"]*)"|'([^']*)')/gi;
     const references = [];
     let match;
 

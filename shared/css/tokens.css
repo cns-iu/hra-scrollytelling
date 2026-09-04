@@ -1,46 +1,241 @@
 /*
- * Shared page-chrome tokens.
+ * Shared design tokens.
  *
- * Keep these roles scoped to `.site-chrome` so story artwork and legacy page
- * styles do not inherit theme changes during the staged migration.
+ * This file is the single source of the HRA colour values. They are declared
+ * three times and only three times:
+ *
+ *   --hra-light-*   the fixed light value, never changes with the theme
+ *   --hra-dark-*    the fixed dark value, never changes with the theme
+ *   --hra-*         the theme-reactive role, aliasing one of the two above
+ *
+ * Chrome that follows the theme consumes --hra-*. Chrome pinned to one
+ * appearance - a dark footer on a light page - consumes --hra-light-* or
+ * --hra-dark-* directly, which is why the fixed sets exist.
+ *
+ * `color-scheme` is deliberately not declared at :root here. Stories 1-5 do
+ * not yet carry theme controls, and declaring it would give them dark form
+ * controls and scrollbars under a dark system preference while their content
+ * stayed light.
  */
+
+:root {
+    /* Fixed light values. */
+    --hra-light-primary: #e00d3a;
+    --hra-light-on-primary: #ffffff;
+    --hra-light-primary-container: #ffdad9;
+    --hra-light-on-primary-container: #95001e;
+    --hra-light-primary-fixed: #ffdad9;
+    --hra-light-on-primary-fixed: #400009;
+    --hra-light-secondary: #201e3d;
+    --hra-light-on-secondary: #ffffff;
+    --hra-light-secondary-container: #e3dfff;
+    --hra-light-on-secondary-container: #171533;
+    --hra-light-tertiary: #4b4b5e;
+    --hra-light-on-tertiary: #ffffff;
+    --hra-light-background: #fafbfc;
+    --hra-light-on-background: #1c1b1e;
+    --hra-light-surface: #fafbfc;
+    --hra-light-on-surface: #1c1b1e;
+    --hra-light-surface-bright: #fafbfc;
+    --hra-light-surface-variant: #dee5f1;
+    --hra-light-on-surface-variant: #393f45;
+    --hra-light-outline: #909bad;
+    --hra-light-outline-variant: #c6cedd;
+    --hra-light-surface-container-lowest: #ffffff;
+    --hra-light-surface-container-low: #eef2f6;
+    --hra-light-surface-container: #e4eaf0;
+    --hra-light-surface-container-high: #dde5ec;
+    --hra-light-surface-container-highest: #d4dde6;
+    --hra-light-inverse-surface: #26282b;
+    --hra-light-inverse-on-surface: #eff2f5;
+    --hra-light-inverse-primary: #ffb3b3;
+    --hra-light-outline-strong: #6f7b8c;
+    --hra-light-outline-muted: #9392a3;
+    --hra-light-acknowledgments: #e2e0f8;
+    --hra-light-on-acknowledgments: #3d3d50;
+
+    /* Fixed dark values. */
+    --hra-dark-primary: #ffb3b3;
+    --hra-dark-on-primary: #680015;
+    --hra-dark-primary-container: #95001e;
+    --hra-dark-on-primary-container: #ffdad9;
+    --hra-dark-primary-fixed: #ffdad9;
+    --hra-dark-on-primary-fixed: #400009;
+    --hra-dark-secondary: #c6c2ea;
+    --hra-dark-on-secondary: #0f0d2b;
+    --hra-dark-secondary-container: #171533;
+    --hra-dark-on-secondary-container: #e3dfff;
+    --hra-dark-tertiary: #c6c4db;
+    --hra-dark-on-tertiary: #2f2f41;
+    --hra-dark-background: #161719;
+    --hra-dark-on-background: #d4dde6;
+    --hra-dark-surface: #161719;
+    --hra-dark-on-surface: #d4dde6;
+    --hra-dark-surface-bright: #34383c;
+    --hra-dark-surface-variant: #393f45;
+    --hra-dark-on-surface-variant: #dee5f1;
+    --hra-dark-outline: #aab4c5;
+    --hra-dark-outline-variant: #393f45;
+    --hra-dark-surface-container-lowest: #101113;
+    --hra-dark-surface-container-low: #1c1b1e;
+    --hra-dark-surface-container: #1f2023;
+    --hra-dark-surface-container-high: #22262a;
+    --hra-dark-surface-container-highest: #2f3337;
+    --hra-dark-inverse-surface: #d4dde6;
+    --hra-dark-inverse-on-surface: #26282b;
+    --hra-dark-inverse-primary: #e00d3a;
+    --hra-dark-outline-strong: #aab4c5;
+    --hra-dark-outline-muted: #aab4c5;
+    --hra-dark-acknowledgments: #3d3d50;
+    --hra-dark-on-acknowledgments: #e2e0f8;
+
+    /* Theme-reactive roles. */
+    --hra-primary: var(--hra-light-primary);
+    --hra-on-primary: var(--hra-light-on-primary);
+    --hra-primary-container: var(--hra-light-primary-container);
+    --hra-on-primary-container: var(--hra-light-on-primary-container);
+    --hra-primary-fixed: var(--hra-light-primary-fixed);
+    --hra-on-primary-fixed: var(--hra-light-on-primary-fixed);
+    --hra-secondary: var(--hra-light-secondary);
+    --hra-on-secondary: var(--hra-light-on-secondary);
+    --hra-secondary-container: var(--hra-light-secondary-container);
+    --hra-on-secondary-container: var(--hra-light-on-secondary-container);
+    --hra-tertiary: var(--hra-light-tertiary);
+    --hra-on-tertiary: var(--hra-light-on-tertiary);
+    --hra-background: var(--hra-light-background);
+    --hra-on-background: var(--hra-light-on-background);
+    --hra-surface: var(--hra-light-surface);
+    --hra-on-surface: var(--hra-light-on-surface);
+    --hra-surface-bright: var(--hra-light-surface-bright);
+    --hra-surface-variant: var(--hra-light-surface-variant);
+    --hra-on-surface-variant: var(--hra-light-on-surface-variant);
+    --hra-outline: var(--hra-light-outline);
+    --hra-outline-variant: var(--hra-light-outline-variant);
+    --hra-surface-container-lowest: var(--hra-light-surface-container-lowest);
+    --hra-surface-container-low: var(--hra-light-surface-container-low);
+    --hra-surface-container: var(--hra-light-surface-container);
+    --hra-surface-container-high: var(--hra-light-surface-container-high);
+    --hra-surface-container-highest: var(--hra-light-surface-container-highest);
+    --hra-inverse-surface: var(--hra-light-inverse-surface);
+    --hra-inverse-on-surface: var(--hra-light-inverse-on-surface);
+    --hra-inverse-primary: var(--hra-light-inverse-primary);
+    --hra-outline-strong: var(--hra-light-outline-strong);
+    --hra-outline-muted: var(--hra-light-outline-muted);
+    --hra-acknowledgments: var(--hra-light-acknowledgments);
+    --hra-on-acknowledgments: var(--hra-light-on-acknowledgments);
+}
+
+:root[data-theme="dark"] {
+    --hra-primary: var(--hra-dark-primary);
+    --hra-on-primary: var(--hra-dark-on-primary);
+    --hra-primary-container: var(--hra-dark-primary-container);
+    --hra-on-primary-container: var(--hra-dark-on-primary-container);
+    --hra-primary-fixed: var(--hra-dark-primary-fixed);
+    --hra-on-primary-fixed: var(--hra-dark-on-primary-fixed);
+    --hra-secondary: var(--hra-dark-secondary);
+    --hra-on-secondary: var(--hra-dark-on-secondary);
+    --hra-secondary-container: var(--hra-dark-secondary-container);
+    --hra-on-secondary-container: var(--hra-dark-on-secondary-container);
+    --hra-tertiary: var(--hra-dark-tertiary);
+    --hra-on-tertiary: var(--hra-dark-on-tertiary);
+    --hra-background: var(--hra-dark-background);
+    --hra-on-background: var(--hra-dark-on-background);
+    --hra-surface: var(--hra-dark-surface);
+    --hra-on-surface: var(--hra-dark-on-surface);
+    --hra-surface-bright: var(--hra-dark-surface-bright);
+    --hra-surface-variant: var(--hra-dark-surface-variant);
+    --hra-on-surface-variant: var(--hra-dark-on-surface-variant);
+    --hra-outline: var(--hra-dark-outline);
+    --hra-outline-variant: var(--hra-dark-outline-variant);
+    --hra-surface-container-lowest: var(--hra-dark-surface-container-lowest);
+    --hra-surface-container-low: var(--hra-dark-surface-container-low);
+    --hra-surface-container: var(--hra-dark-surface-container);
+    --hra-surface-container-high: var(--hra-dark-surface-container-high);
+    --hra-surface-container-highest: var(--hra-dark-surface-container-highest);
+    --hra-inverse-surface: var(--hra-dark-inverse-surface);
+    --hra-inverse-on-surface: var(--hra-dark-inverse-on-surface);
+    --hra-inverse-primary: var(--hra-dark-inverse-primary);
+    --hra-outline-strong: var(--hra-dark-outline-strong);
+    --hra-outline-muted: var(--hra-dark-outline-muted);
+    --hra-acknowledgments: var(--hra-dark-acknowledgments);
+    --hra-on-acknowledgments: var(--hra-dark-on-acknowledgments);
+}
+
+/* System-theme fallback when JavaScript is unavailable. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --hra-primary: var(--hra-dark-primary);
+        --hra-on-primary: var(--hra-dark-on-primary);
+        --hra-primary-container: var(--hra-dark-primary-container);
+        --hra-on-primary-container: var(--hra-dark-on-primary-container);
+        --hra-primary-fixed: var(--hra-dark-primary-fixed);
+        --hra-on-primary-fixed: var(--hra-dark-on-primary-fixed);
+        --hra-secondary: var(--hra-dark-secondary);
+        --hra-on-secondary: var(--hra-dark-on-secondary);
+        --hra-secondary-container: var(--hra-dark-secondary-container);
+        --hra-on-secondary-container: var(--hra-dark-on-secondary-container);
+        --hra-tertiary: var(--hra-dark-tertiary);
+        --hra-on-tertiary: var(--hra-dark-on-tertiary);
+        --hra-background: var(--hra-dark-background);
+        --hra-on-background: var(--hra-dark-on-background);
+        --hra-surface: var(--hra-dark-surface);
+        --hra-on-surface: var(--hra-dark-on-surface);
+        --hra-surface-bright: var(--hra-dark-surface-bright);
+        --hra-surface-variant: var(--hra-dark-surface-variant);
+        --hra-on-surface-variant: var(--hra-dark-on-surface-variant);
+        --hra-outline: var(--hra-dark-outline);
+        --hra-outline-variant: var(--hra-dark-outline-variant);
+        --hra-surface-container-lowest: var(--hra-dark-surface-container-lowest);
+        --hra-surface-container-low: var(--hra-dark-surface-container-low);
+        --hra-surface-container: var(--hra-dark-surface-container);
+        --hra-surface-container-high: var(--hra-dark-surface-container-high);
+        --hra-surface-container-highest: var(--hra-dark-surface-container-highest);
+        --hra-inverse-surface: var(--hra-dark-inverse-surface);
+        --hra-inverse-on-surface: var(--hra-dark-inverse-on-surface);
+        --hra-inverse-primary: var(--hra-dark-inverse-primary);
+        --hra-outline-strong: var(--hra-dark-outline-strong);
+        --hra-outline-muted: var(--hra-dark-outline-muted);
+        --hra-acknowledgments: var(--hra-dark-acknowledgments);
+        --hra-on-acknowledgments: var(--hra-dark-on-acknowledgments);
+    }
+}
 
 .site-chrome {
     color-scheme: light;
-    --site-chrome-color-text: #1c1b1e;
-    --site-chrome-color-heading: #201e3d;
-    --site-chrome-color-accent: #95001e;
-    --site-chrome-color-action: #95001e;
-    --site-chrome-color-on-action: #ffffff;
-    --site-chrome-color-surface: #ffffff;
-    --site-chrome-color-panel: #fafbfc;
-    --site-chrome-color-surface-muted: #e4eaf0;
-    --site-chrome-color-surface-hover: #eef2f6;
-    --site-chrome-color-selected: #d4dde6;
-    --site-chrome-color-menu-active: #e3dfff;
-    --site-chrome-color-on-menu-active: #171533;
-    --site-chrome-color-menu-indicator: #95001e;
-    --site-chrome-color-selection: #201e3d;
-    --site-chrome-color-on-selection: #ffffff;
-    --site-chrome-color-switch-track: #d4dde6;
-    --site-chrome-color-switch-border: #6f7b8c;
-    --site-chrome-color-switch-thumb: #393f45;
-    --site-chrome-color-switch-track-selected: #95001e;
-    --site-chrome-color-switch-thumb-selected: #ffffff;
-    --site-chrome-color-border: #6f7b8c;
-    --site-chrome-color-outline-variant: #c6cedd;
-    --site-chrome-color-acknowledgments: #E2E0F8;
-    --site-chrome-color-on-acknowledgments: #3D3D50;
-    --site-chrome-color-footer: #201e3d;
-    --site-chrome-color-on-footer: #ffffff;
-    --site-chrome-color-footer-border: #9392a3;
-    --site-chrome-color-focus: #201e3d;
-    --site-chrome-color-focus-contrast: #ffffff;
+    --site-chrome-color-text: var(--hra-light-on-surface);
+    --site-chrome-color-heading: var(--hra-light-secondary);
+    --site-chrome-color-accent: var(--hra-light-on-primary-container);
+    --site-chrome-color-action: var(--hra-light-on-primary-container);
+    --site-chrome-color-on-action: var(--hra-light-on-primary);
+    --site-chrome-color-surface: var(--hra-light-surface-container-lowest);
+    --site-chrome-color-panel: var(--hra-light-surface);
+    --site-chrome-color-surface-muted: var(--hra-light-surface-container);
+    --site-chrome-color-surface-hover: var(--hra-light-surface-container-low);
+    --site-chrome-color-selected: var(--hra-light-surface-container-highest);
+    --site-chrome-color-menu-active: var(--hra-light-secondary-container);
+    --site-chrome-color-on-menu-active: var(--hra-light-on-secondary-container);
+    --site-chrome-color-menu-indicator: var(--hra-light-on-primary-container);
+    --site-chrome-color-selection: var(--hra-light-secondary);
+    --site-chrome-color-on-selection: var(--hra-light-on-secondary);
+    --site-chrome-color-switch-track: var(--hra-light-surface-container-highest);
+    --site-chrome-color-switch-border: var(--hra-light-outline-strong);
+    --site-chrome-color-switch-thumb: var(--hra-light-on-surface-variant);
+    --site-chrome-color-switch-track-selected: var(--hra-light-on-primary-container);
+    --site-chrome-color-switch-thumb-selected: var(--hra-light-on-primary);
+    --site-chrome-color-border: var(--hra-light-outline-strong);
+    --site-chrome-color-outline-variant: var(--hra-light-outline-variant);
+    --site-chrome-color-acknowledgments: var(--hra-light-acknowledgments);
+    --site-chrome-color-on-acknowledgments: var(--hra-light-on-acknowledgments);
+    --site-chrome-color-footer: var(--hra-light-secondary);
+    --site-chrome-color-on-footer: var(--hra-light-on-primary);
+    --site-chrome-color-footer-border: var(--hra-light-outline-muted);
+    --site-chrome-color-focus: var(--hra-light-secondary);
+    --site-chrome-color-focus-contrast: var(--hra-light-on-primary);
     --site-chrome-shadow-color: rgb(32 30 61 / 18%);
     --site-chrome-shadow-menu: 0 1rem 2.5rem var(--site-chrome-shadow-color);
-    --site-chrome-fab-container: #26282b;
-    --site-chrome-fab-content: #eff2f5;
-    --site-chrome-fab-state-layer: #eff2f5;
+    --site-chrome-fab-container: var(--hra-light-inverse-surface);
+    --site-chrome-fab-content: var(--hra-light-inverse-on-surface);
+    --site-chrome-fab-state-layer: var(--hra-light-inverse-on-surface);
     --site-chrome-fab-focus-ring: var(--site-chrome-color-focus);
     --site-chrome-fab-hover-state-opacity: 8%;
     --site-chrome-fab-pressed-state-opacity: 12%;
@@ -90,76 +285,76 @@
 .site-chrome.site-chrome--dark,
 :root[data-theme="dark"] .site-chrome:not(.site-chrome--light) {
     color-scheme: dark;
-    --site-chrome-color-text: #d4dde6;
-    --site-chrome-color-heading: #e3dfff;
-    --site-chrome-color-accent: #ffb3b3;
-    --site-chrome-color-action: #ffb3b3;
-    --site-chrome-color-on-action: #680015;
-    --site-chrome-color-surface: #101113;
-    --site-chrome-color-panel: #161719;
-    --site-chrome-color-surface-muted: #1f2023;
-    --site-chrome-color-surface-hover: #22262a;
-    --site-chrome-color-selected: #2f3337;
-    --site-chrome-color-menu-active: #171533;
-    --site-chrome-color-on-menu-active: #e3dfff;
-    --site-chrome-color-menu-indicator: #ffb3b3;
-    --site-chrome-color-selection: #ffdad9;
-    --site-chrome-color-on-selection: #400009;
-    --site-chrome-color-switch-track: #2f3337;
-    --site-chrome-color-switch-border: #aab4c5;
-    --site-chrome-color-switch-thumb: #dee5f1;
-    --site-chrome-color-switch-track-selected: #ffb3b3;
-    --site-chrome-color-switch-thumb-selected: #680015;
-    --site-chrome-color-border: #aab4c5;
-    --site-chrome-color-outline-variant: #393f45;
-    --site-chrome-color-acknowledgments: #3D3D50;
-    --site-chrome-color-on-acknowledgments: #E2E0F8;
-    --site-chrome-color-footer: #101113;
-    --site-chrome-color-on-footer: #d4dde6;
-    --site-chrome-color-footer-border: #aab4c5;
-    --site-chrome-color-focus: #ffb3b3;
-    --site-chrome-color-focus-contrast: #101113;
+    --site-chrome-color-text: var(--hra-dark-on-surface);
+    --site-chrome-color-heading: var(--hra-dark-on-secondary-container);
+    --site-chrome-color-accent: var(--hra-dark-primary);
+    --site-chrome-color-action: var(--hra-dark-primary);
+    --site-chrome-color-on-action: var(--hra-dark-on-primary);
+    --site-chrome-color-surface: var(--hra-dark-surface-container-lowest);
+    --site-chrome-color-panel: var(--hra-dark-surface);
+    --site-chrome-color-surface-muted: var(--hra-dark-surface-container);
+    --site-chrome-color-surface-hover: var(--hra-dark-surface-container-high);
+    --site-chrome-color-selected: var(--hra-dark-surface-container-highest);
+    --site-chrome-color-menu-active: var(--hra-dark-secondary-container);
+    --site-chrome-color-on-menu-active: var(--hra-dark-on-secondary-container);
+    --site-chrome-color-menu-indicator: var(--hra-dark-primary);
+    --site-chrome-color-selection: var(--hra-dark-primary-fixed);
+    --site-chrome-color-on-selection: var(--hra-dark-on-primary-fixed);
+    --site-chrome-color-switch-track: var(--hra-dark-surface-container-highest);
+    --site-chrome-color-switch-border: var(--hra-dark-outline);
+    --site-chrome-color-switch-thumb: var(--hra-dark-on-surface-variant);
+    --site-chrome-color-switch-track-selected: var(--hra-dark-primary);
+    --site-chrome-color-switch-thumb-selected: var(--hra-dark-on-primary);
+    --site-chrome-color-border: var(--hra-dark-outline);
+    --site-chrome-color-outline-variant: var(--hra-dark-outline-variant);
+    --site-chrome-color-acknowledgments: var(--hra-dark-acknowledgments);
+    --site-chrome-color-on-acknowledgments: var(--hra-dark-on-acknowledgments);
+    --site-chrome-color-footer: var(--hra-dark-surface-container-lowest);
+    --site-chrome-color-on-footer: var(--hra-dark-on-surface);
+    --site-chrome-color-footer-border: var(--hra-dark-outline);
+    --site-chrome-color-focus: var(--hra-dark-primary);
+    --site-chrome-color-focus-contrast: var(--hra-dark-surface-container-lowest);
     --site-chrome-shadow-color: rgb(0 0 0 / 58%);
-    --site-chrome-fab-container: #d4dde6;
-    --site-chrome-fab-content: #26282b;
-    --site-chrome-fab-state-layer: #26282b;
+    --site-chrome-fab-container: var(--hra-dark-inverse-surface);
+    --site-chrome-fab-content: var(--hra-dark-inverse-on-surface);
+    --site-chrome-fab-state-layer: var(--hra-dark-inverse-on-surface);
 }
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) .site-chrome:not(.site-chrome--light) {
         color-scheme: dark;
-        --site-chrome-color-text: #d4dde6;
-        --site-chrome-color-heading: #e3dfff;
-        --site-chrome-color-accent: #ffb3b3;
-        --site-chrome-color-action: #ffb3b3;
-        --site-chrome-color-on-action: #680015;
-        --site-chrome-color-surface: #101113;
-        --site-chrome-color-panel: #161719;
-        --site-chrome-color-surface-muted: #1f2023;
-        --site-chrome-color-surface-hover: #22262a;
-        --site-chrome-color-selected: #2f3337;
-        --site-chrome-color-menu-active: #171533;
-        --site-chrome-color-on-menu-active: #e3dfff;
-        --site-chrome-color-menu-indicator: #ffb3b3;
-        --site-chrome-color-selection: #ffdad9;
-        --site-chrome-color-on-selection: #400009;
-        --site-chrome-color-switch-track: #2f3337;
-        --site-chrome-color-switch-border: #aab4c5;
-        --site-chrome-color-switch-thumb: #dee5f1;
-        --site-chrome-color-switch-track-selected: #ffb3b3;
-        --site-chrome-color-switch-thumb-selected: #680015;
-        --site-chrome-color-border: #aab4c5;
-        --site-chrome-color-outline-variant: #393f45;
-        --site-chrome-color-acknowledgments: #3D3D50;
-        --site-chrome-color-on-acknowledgments: #E2E0F8;
-        --site-chrome-color-footer: #101113;
-        --site-chrome-color-on-footer: #d4dde6;
-        --site-chrome-color-footer-border: #aab4c5;
-        --site-chrome-color-focus: #ffb3b3;
-        --site-chrome-color-focus-contrast: #101113;
+        --site-chrome-color-text: var(--hra-dark-on-surface);
+        --site-chrome-color-heading: var(--hra-dark-on-secondary-container);
+        --site-chrome-color-accent: var(--hra-dark-primary);
+        --site-chrome-color-action: var(--hra-dark-primary);
+        --site-chrome-color-on-action: var(--hra-dark-on-primary);
+        --site-chrome-color-surface: var(--hra-dark-surface-container-lowest);
+        --site-chrome-color-panel: var(--hra-dark-surface);
+        --site-chrome-color-surface-muted: var(--hra-dark-surface-container);
+        --site-chrome-color-surface-hover: var(--hra-dark-surface-container-high);
+        --site-chrome-color-selected: var(--hra-dark-surface-container-highest);
+        --site-chrome-color-menu-active: var(--hra-dark-secondary-container);
+        --site-chrome-color-on-menu-active: var(--hra-dark-on-secondary-container);
+        --site-chrome-color-menu-indicator: var(--hra-dark-primary);
+        --site-chrome-color-selection: var(--hra-dark-primary-fixed);
+        --site-chrome-color-on-selection: var(--hra-dark-on-primary-fixed);
+        --site-chrome-color-switch-track: var(--hra-dark-surface-container-highest);
+        --site-chrome-color-switch-border: var(--hra-dark-outline);
+        --site-chrome-color-switch-thumb: var(--hra-dark-on-surface-variant);
+        --site-chrome-color-switch-track-selected: var(--hra-dark-primary);
+        --site-chrome-color-switch-thumb-selected: var(--hra-dark-on-primary);
+        --site-chrome-color-border: var(--hra-dark-outline);
+        --site-chrome-color-outline-variant: var(--hra-dark-outline-variant);
+        --site-chrome-color-acknowledgments: var(--hra-dark-acknowledgments);
+        --site-chrome-color-on-acknowledgments: var(--hra-dark-on-acknowledgments);
+        --site-chrome-color-footer: var(--hra-dark-surface-container-lowest);
+        --site-chrome-color-on-footer: var(--hra-dark-on-surface);
+        --site-chrome-color-footer-border: var(--hra-dark-outline);
+        --site-chrome-color-focus: var(--hra-dark-primary);
+        --site-chrome-color-focus-contrast: var(--hra-dark-surface-container-lowest);
         --site-chrome-shadow-color: rgb(0 0 0 / 58%);
-        --site-chrome-fab-container: #d4dde6;
-        --site-chrome-fab-content: #26282b;
-        --site-chrome-fab-state-layer: #26282b;
+        --site-chrome-fab-container: var(--hra-dark-inverse-surface);
+        --site-chrome-fab-content: var(--hra-dark-inverse-on-surface);
+        --site-chrome-fab-state-layer: var(--hra-dark-inverse-on-surface);
     }
 }

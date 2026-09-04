@@ -1,0 +1,123 @@
+<!--
+  Canonical page chrome. tools/check-maintained-pages.mjs asserts every
+  maintained page carries this block verbatim.
+
+  {{root}} stands for the page's path back to the repository root: empty
+  on index.html, ../../ on story/N/index.html.
+
+  Normalised before comparison: whitespace, and the aria-current="page"
+  marker on the active navigation item.
+-->
+<details class="site-menu site-chrome" data-site-menu>
+      <summary>
+        <span
+          class="site-menu-icon site-menu-icon-menu"
+          aria-hidden="true"
+        ></span>
+        <svg
+          class="site-menu-icon site-menu-icon-close"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="m6 6 12 12M18 6 6 18"></path>
+        </svg>
+        <span>Menu</span>
+      </summary>
+
+      <div
+        class="site-menu-panel"
+        data-site-menu-panel
+        role="region"
+        aria-labelledby="site-menu-title"
+        tabindex="-1"
+      >
+        <div class="site-menu-header">
+          <p class="site-menu-title" id="site-menu-title">Menu</p>
+          <button
+            class="site-menu-close"
+            type="button"
+            aria-label="Close Menu"
+            data-site-menu-close
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="m6 6 12 12M18 6 6 18"></path>
+            </svg>
+          </button>
+        </div>
+
+        <nav class="site-menu-nav" aria-labelledby="site-navigation-label">
+          <p class="site-menu-label" id="site-navigation-label">Navigate</p>
+          <ul role="list">
+            <li><a href="{{root}}index.html" aria-current="page">Home</a></li>
+            <li><a href="{{root}}story/1/">What Is a Human Reference Atlas?</a></li>
+            <li><a href="{{root}}story/2/">Squiggy's Identity Crisis!</a></li>
+            <li><a href="{{root}}story/3/">Something's Not Registering!</a></li>
+            <li><a href="{{root}}story/4/">Data Detangle</a></li>
+            <li><a href="{{root}}story/5/">Know Your Body Buddies</a></li>
+            <li><a href="{{root}}story/6/">Pan-organ Immunosenescence Atlas</a></li>
+          </ul>
+        </nav>
+
+        <fieldset class="site-appearance">
+          <legend>Appearance</legend>
+          <label class="site-appearance-choice">
+            <input
+              type="radio"
+              name="color-theme"
+              value="system"
+              data-site-theme-choice
+              checked
+            />
+            <span>System settings</span>
+          </label>
+          <label class="site-appearance-choice">
+            <input
+              type="radio"
+              name="color-theme"
+              value="light"
+              data-site-theme-choice
+            />
+            <span>Light</span>
+          </label>
+          <label class="site-appearance-choice">
+            <input
+              type="radio"
+              name="color-theme"
+              value="dark"
+              data-site-theme-choice
+            />
+            <span>Dark</span>
+          </label>
+        </fieldset>
+
+        <fieldset class="site-accessibility" data-contrast-controls hidden>
+          <legend>Accessibility</legend>
+          <button
+            class="site-contrast-switch"
+            type="button"
+            role="switch"
+            aria-checked="false"
+            data-contrast-toggle
+          >
+            <span class="site-contrast-switch__label">High contrast</span>
+            <span class="site-contrast-switch__track" aria-hidden="true">
+              <span class="site-contrast-switch__thumb"></span>
+            </span>
+            <span
+              class="site-contrast-switch__state"
+              data-contrast-state
+              aria-hidden="true"
+              >Off</span
+            >
+          </button>
+        </fieldset>
+
+        <span
+          class="site-chrome-visually-hidden"
+          data-site-theme-status
+          aria-live="polite"
+          aria-atomic="true"
+        ></span>
+      </div>
+    </details>

@@ -1,0 +1,206 @@
+/* Story 4 accessibility affordances. */
+
+#four {
+    --story4-control-surface: #ffffff;
+    --story4-control-text: #202124;
+}
+
+:root[data-theme="dark"] #four {
+    --story4-control-surface: var(--hra-dark-surface-container-high);
+    --story4-control-text: var(--hra-dark-on-surface);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) #four {
+        --story4-control-surface: var(--hra-dark-surface-container-high);
+        --story4-control-text: var(--hra-dark-on-surface);
+    }
+}
+
+.story4-motion-toggle {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 3;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0.625rem 0.875rem;
+    border: 2px solid currentColor;
+    border-radius: 999px;
+    background: var(--story4-control-surface);
+    color: var(--story4-control-text);
+    font: 700 1rem/1.2 var(--font-body);
+    cursor: pointer;
+}
+
+#four .header {
+    position: relative;
+}
+
+.story4-motion-toggle:focus-visible {
+    outline: 0.2rem solid var(--story4-control-surface);
+    outline-offset: 0.2rem;
+    box-shadow: 0 0 0 0.45rem var(--story4-control-text);
+}
+
+html:not(.story4-motion-enabled) .story4-motion-toggle,
+html.story4-ambient-hidden #particles-js {
+    display: none;
+}
+
+html.story4-ambient-hidden .header {
+    animation-play-state: paused;
+}
+
+html.story4-flowing,
+html.story4-flowing body#four {
+    height: auto;
+    min-height: 100%;
+    overflow-x: clip;
+}
+
+html.story4-flowing #four .header {
+    /* Back to a stacked column: the grid's bottom-left composition is for the
+       animated splash, and here the scene summary becomes visible and must read
+       in order after the title block. */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 32rem;
+    animation: none;
+}
+
+html.story4-flowing #four .story4-title-block {
+    width: min(100% - 2rem, 52rem);
+    margin: 0 auto;
+}
+
+html.story4-flowing #four #particles-js {
+    display: none;
+}
+
+html.story4-flowing #four :where(.section1, .svgparts) {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+}
+
+html.story4-flowing #four [class^="scene"],
+html.story4-flowing #four [class*=" scene"] {
+    box-sizing: border-box;
+    height: auto;
+    min-height: min(70svh, 40rem);
+    overflow: clip;
+    position: relative;
+    inset: auto !important;
+    transform: none !important;
+}
+
+html.story4-flowing #four .talkbubble {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: min(100% - 2rem, 52rem);
+    height: auto;
+    min-height: 0;
+    margin-inline: auto;
+    padding: clamp(2rem, 7vw, 5rem) 1rem;
+    position: relative;
+    inset: auto !important;
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+html.story4-flowing #four .talkbubble > * {
+    inset: auto !important;
+    margin-block: 0;
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+html.story4-flowing #four .talkbubble:empty {
+    display: none;
+}
+
+.story4-scene-summary {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+html.story4-flowing #four .story4-scene-summary {
+    position: relative;
+    width: min(100% - 2rem, 52rem);
+    height: auto;
+    padding: 2rem 1rem 0;
+    margin: 0 auto;
+    overflow: visible;
+    clip: auto;
+    /* Inside the navy header, so it takes the inverse text colour rather than
+       the body colour, which was unreadable against the gradient in light mode. */
+    color: var(--story4-inverse-text);
+    text-align: center;
+    white-space: normal;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+    #four .header {
+        background: #162a5b;
+    }
+}
+
+@media (forced-colors: active) {
+    /* Both splash rules are borders, so they would otherwise drop out. */
+    #four .story4-title-block {
+        border-inline-start-color: CanvasText;
+    }
+
+    #four .header .subtitle {
+        border-block-start-color: CanvasText;
+    }
+
+    #four .story4-motion-toggle,
+    #four .talkbubble > * {
+        border: 2px solid CanvasText;
+        background: Canvas;
+        color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: auto;
+    }
+
+    #four .story4-motion-toggle:focus-visible {
+        outline-color: Highlight;
+        box-shadow: none;
+    }
+}
+
+/* The readable scene layout collapses to source order: prose, then artwork. */
+html.story4-flowing #four .story4-scene {
+    display: block;
+    padding-inline: 0;
+}
+
+html.story4-flowing #four .story4-scene__prose {
+    width: min(100% - 2rem, 52rem);
+    margin-inline: auto;
+    padding-block: clamp(2rem, 7vw, 5rem);
+}
+
+html.story4-flowing #four .story4-scene__stage {
+    position: static;
+    height: auto;
+}
+
+html.story4-flowing #four .story4-step {
+    max-width: none;
+    margin-bottom: 1.5rem;
+}

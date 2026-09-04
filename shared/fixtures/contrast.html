@@ -1,0 +1,31 @@
+<!--
+  Canonical page chrome. tools/check-maintained-pages.mjs asserts every
+  maintained page carries this block verbatim.
+
+  {{root}} stands for the page's path back to the repository root: empty
+  on index.html, ../../ on story/N/index.html.
+
+  Normalised before comparison: whitespace, and the aria-current="page"
+  marker on the active navigation item.
+-->
+<fieldset class="site-accessibility" data-contrast-controls hidden>
+          <legend>Accessibility</legend>
+          <button
+            class="site-contrast-switch"
+            type="button"
+            role="switch"
+            aria-checked="false"
+            data-contrast-toggle
+          >
+            <span class="site-contrast-switch__label">High contrast</span>
+            <span class="site-contrast-switch__track" aria-hidden="true">
+              <span class="site-contrast-switch__thumb"></span>
+            </span>
+            <span
+              class="site-contrast-switch__state"
+              data-contrast-state
+              aria-hidden="true"
+              >Off</span
+            >
+          </button>
+        </fieldset>

@@ -49,18 +49,21 @@ There is no installation or build command.
 | Page | Experience |
 | --- | --- |
 | `index.html` | Landing page and entry point to the story collection |
-| `story1.html` | What Is a Human Reference Atlas? |
-| `story2.html` | Squiggy's Identity Crisis! |
-| `story3.html` | Something's Not Registering! |
-| `story4.html` | Data Detangle |
-| `story5.html` | Know Your Body Buddies |
-| `story6.html` | Pan-organ Immunosenescence Atlas |
+| `story/1/` | What Is a Human Reference Atlas? |
+| `story/2/` | Squiggy's Identity Crisis! |
+| `story/3/` | Something's Not Registering! |
+| `story/4/` | Data Detangle |
+| `story/5/` | Know Your Body Buddies |
+| `story/6/` | Pan-organ Immunosenescence Atlas |
 | `story/7/` | Story 7 planning directory; `index.html` is not yet implemented |
 
-New stories use the singular `story/<number>/` convention and place their page entry point at
-`story/<number>/index.html`, producing a clean `/story/<number>/` GitHub Pages URL. The existing Stories 1–6 retain
-their current entry points and implementation paths until each is migrated through a separate copy-first change.
-See [`story/7/README.md`](story/7/README.md) for the first new-story contract.
+Every story uses the singular `story/<number>/` convention, with its page entry point at
+`story/<number>/index.html` and a clean `/story/<number>/` GitHub Pages URL. Each story owns its `css/`, `js/`,
+`images/` and `video/` subdirectories alongside that page.
+
+The former root entry points, `story1.html` through `story6.html`, remain as redirect stubs so previously shared
+links keep working. They carry `noindex, follow` and a canonical link to the new URL. See
+[`story/7/README.md`](story/7/README.md) for the contract a new story follows.
 
 The repository also contains older prototypes and demonstrations. The Scrollytelling Effects, Organ Example,
 Visualizing Cells, and Drag-and-Drop Answer Demo implementations are organized under `prototypes/`, with their
@@ -71,6 +74,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 ```text
 .
 ├── index.html          # Accessible landing-page structure and content
+├── package.json        # Names the repository checks; no dependencies, no build step
 ├── landing/            # Isolated landing-page implementation
 │   ├── assets/
 │   │   ├── backgrounds/
@@ -78,15 +82,11 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   │   └── splash-human-light.png # Light-theme decorative splash artwork
 │   │   ├── hero.png            # Previous single-theme hero artwork
 │   │   └── social-preview.png  # 1200×630 link-preview artwork
-│   ├── css/
-│   │   ├── fonts.css   # Compatibility bridge for cached landing pages
-│   │   ├── tokens.css  # HRA themes and shared design tokens
-│   │   └── styles.css  # Components, layout, and accessibility adaptations
-│   └── js/
-│       ├── main.js     # Landing-page entry point
-│       ├── menu.js     # Menu disclosure and focus behavior
-│       └── theme.js    # Appearance preferences and persistence
-├── shared/             # Landing-and-story page-chrome foundation
+│   └── css/
+│       ├── fonts.css   # Compatibility bridge for cached landing pages
+│       ├── tokens.css  # Landing hero artwork and landing-only layout
+│       └── styles.css  # Components, layout, and accessibility adaptations
+├── shared/             # Landing-and-story foundation
 │   ├── assets/
 │   │   ├── fonts/      # Self-hosted HRA webfonts and licenses
 │   │   ├── icons/      # Shared interface icons, favicon set, and retained organ icons
@@ -94,55 +94,42 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   │   ├── logos/      # Theme-aware organization logos
 │   │   ├── music/      # Shared story and prototype audio
 │   │   └── videos/     # Video shared by maintained and prototype experiences
-│   ├── css/            # Page chrome plus shared story narrative, dialogue, and end-matter styles
-│   └── js/             # Progressive-enhancement navigation and appearance modules
-├── prototypes/         # Organized legacy experiences and their maintenance notes
-│   ├── drag-and-drop/           # Drag-and-drop answer demo and owned assets
-│   ├── organ-example/           # Prototype implementation and owned images
-│   ├── scrollytelling-effects/  # Prototype-owned styles, code, images, and model
-│   ├── shared/                   # Shared prototype chrome and typography
-│   └── visualizing-cells/       # Prototype implementation, styles, images, and video
-├── docs/               # Architecture and asset-migration records
-├── tools/              # Dependency-free repository validation
-├── story1.html         # Story experiences
+│   ├── css/            # Design tokens, component roles, page chrome, and narrative styles
+│   ├── fixtures/       # Canonical chrome markup asserted against every maintained page
+│   └── js/             # Progressive-enhancement navigation, appearance, and narrative modules
+├── story/              # One directory per story, published at /story/<number>/
+│   ├── 1/              # index.html plus css/, js/, images/, video/, end-matter.json
+│   ├── 2/
+│   ├── 3/
+│   ├── 4/              # Also config/particles.json, the preserved particle reference
+│   ├── 5/
+│   ├── 6/              # Also AGENTS.md, the story's contributor instructions
+│   └── 7/
+│       └── README.md   # Story 7 implementation and publication contract
+├── story1.html         # Redirect stubs preserving the former story URLs
 ├── story2.html
 ├── story3.html
 ├── story4.html
 ├── story5.html
-├── story6.html         # Pan-organ Immunosenescence Atlas entry point
-├── story/              # Singular clean-URL convention for migrated and new stories
-│   ├── 6/              # Story 6 styles, scripts, images, end-matter JSON, and contributor instructions
-│   └── 7/
-│       └── README.md   # Story 7 implementation and publication contract
-└── stories/            # Organized story-owned implementation files
-    ├── story1/         # Story 1 styles, scripts, owned images, and videos
-    ├── story2/         # Story 2 presentation, animation, quiz, and owned images
-    ├── story3/         # Story 3 presentation, split animation runtime, and owned images
-    ├── story4/         # Story 4 static fallback, motion gate, animations, particles, and owned images
-    │   ├── accessibility.css
-    │   ├── app.js
-    │   ├── animations.js
-    │   ├── diagram-detail.js
-    │   ├── diagram-overview.js
-    │   ├── images/        # Story 4 narrative artwork
-    │   ├── motion.js
-    │   ├── particles.js
-    │   ├── styles.css
-    │   └── config/
-    │       └── particles.json # Preserved particle configuration reference
-    └── story5/         # Story 5 presentation, animation, accessible media controls, images, and videos
-        ├── accessibility.css
-        ├── animations.js
-        ├── images/
-        ├── media-controls.js
-        ├── styles.css
-        └── videos/
+├── story6.html
+├── story0.html         # Redirect stubs preserving the former prototype URLs
+├── VisualizingCells.html
+├── organExample.html
+├── prototypes/         # Organized legacy experiences and their maintenance notes
+│   ├── drag-and-drop/           # Drag-and-drop answer demo and owned assets
+│   ├── organ-example/           # Prototype implementation and owned images
+│   ├── scrollytelling-effects/  # Prototype-owned styles, code, images, and model
+│   ├── shared/                  # Shared prototype chrome, typography, and images
+│   └── visualizing-cells/       # Prototype implementation, styles, images, and video
+├── docs/               # Architecture and asset-migration records
+└── tools/              # Dependency-free repository validation
 ```
 
-The current layout contains tightly coupled relative paths. Do not move files or assets without first mapping and
-validating every HTML, CSS, JavaScript, JSON, and service-worker reference. See
-[`docs/architecture.md`](docs/architecture.md) for ownership boundaries and the staged target structure, and
-[`docs/asset-map.md`](docs/asset-map.md) for the current migration register.
+Relative paths inside a story resolve from `story/<number>/`: story-owned files as `css/…`, `js/…`, `images/…` and
+`video/…`, and shared files as `../../shared/…`. Do not move files or assets without first mapping and validating
+every HTML, CSS, JavaScript, and JSON reference; `npm run check:links` resolves every one of them. See
+[`docs/architecture.md`](docs/architecture.md) for ownership boundaries and
+[`docs/asset-map.md`](docs/asset-map.md) for the asset register.
 
 Stories 2, 3, and 5 share their narrative foundation and character dialogue through focused stylesheets under
 `shared/css/`. Their generic page foundation now lives in
@@ -156,7 +143,14 @@ All six stories keep end-matter content in `end-matter.json` within the owning s
 End matter requires JavaScript and may be omitted from Reader View. The former root `style.css` has been removed. All
 six stories use the shared two-link story navigation; Home fills the
 unavailable previous slot on Story 1 and the unavailable next slot on Story 6. Story 2 retains one remote Inter
-request for its embedded SVG labels; Stories 3 and 5 use the shared self-hosted Nunito Sans body font.
+request for its embedded SVG labels, the only third-party font request in the repository; every other story uses the
+shared self-hosted Metropolis and Nunito Sans faces.
+
+Stories 2, 3, 4 and 5 also share their scroll timelines. The intro typewriter and the container, bubble and dialogue
+cross-fades live once in `shared/js/narrative-timeline.js`; each story supplies only its own scene triggers. The
+motion preference gate that stops animation for reduced-motion, reduced-transparency, forced-colors and short
+viewports lives in `shared/js/motion-preferences.js`, consumed by both `shared/js/narrative-motion.js` and Story 4's
+own `motion.js`.
 
 ## Landing-page architecture
 
@@ -168,12 +162,18 @@ The landing page is deliberately separated from the legacy story implementation:
 - `shared/assets/logos/` contains the theme-aware organization marks used by the landing hero and footer.
 - `shared/css/fonts.css` owns the self-hosted HRA font declarations and resilient typography stacks.
 - `landing/css/fonts.css` preserves the former font URL for cached landing-page documents.
-- `landing/css/tokens.css` owns light/dark HRA colors, semantic roles, and shared layout tokens.
-- `shared/css/tokens.css`, `shared/css/selection.css`, `shared/css/navigation.css`,
-  `shared/css/appearance-controls.css`, and `shared/css/footer.css` own the canonical Menu, optional appearance
-  controls, skip link, and footer.
+- `shared/css/tokens.css` is the single source of every HRA colour value. Each value is declared exactly three
+  times: `--hra-light-*` and `--hra-dark-*` hold the fixed appearance, and `--hra-*` is the theme-reactive role
+  aliasing one of them. Chrome pinned to one appearance consumes a fixed set directly.
+- `shared/css/component-roles.css` maps those colour roles onto semantic component roles (`--color-ink`,
+  `--color-surface`, `--focus-color`, and the radius and width scale) for the landing page and any story that follows
+  the site palette.
+- `landing/css/tokens.css` owns only the landing hero artwork, overlays, and landing-specific layout.
+- `shared/css/selection.css`, `shared/css/navigation.css`, `shared/css/appearance-controls.css`, and
+  `shared/css/footer.css` own the canonical Menu, appearance controls, skip link, and footer.
 - `landing/css/styles.css` owns landing content, layout, responsive rules, and page-specific accessibility adaptations.
-- `landing/js/main.js` initializes the shared Menu, appearance, contrast, and back-to-top modules for the landing page.
+- `shared/js/main.js` initializes the shared Menu, appearance, contrast, and back-to-top modules for every maintained
+  page, including the landing page.
 
 Load the landing stylesheets in the documented order so font and design tokens exist before component rules use them.
 The inline script in `index.html` applies a saved theme before paint; keep its storage key aligned with
@@ -228,13 +228,12 @@ scroll within short or highly zoomed viewports. Appearance controls belong only 
 selection; omit the fieldset when appearance is not an available page option. A page without appearance selection
 uses the shared Menu's light treatment rather than changing it with the operating-system preference.
 
-The landing page and Story 6 include an Accessibility group with a persistent High contrast switch. The switch follows
-the operating-system contrast preference until a visitor explicitly turns it on or off. Story 1 through Story 5 use
-navigation-only Menus without appearance or High contrast controls.
+Every maintained page includes an Accessibility group with a persistent High contrast switch. The switch follows the
+operating-system contrast preference until a visitor explicitly turns it on or off.
 
 Maintained pages load shared fonts and tokens before shared component CSS, then load page- or story-owned styles.
-Only the landing page and Story 6 load `shared/css/appearance-controls.css`. Stories 2, 3, and 5 load their shared
-narrative foundations before story-owned CSS and keep the flowing accessibility stylesheet last.
+All seven load `shared/css/appearance-controls.css`. Stories 2, 3, and 5 load their shared narrative foundations
+before story-owned CSS and keep the flowing accessibility stylesheet last.
 
 ## Shared page chrome
 
@@ -250,10 +249,12 @@ documented in [`shared/README.md`](shared/README.md).
 
 Current behavior:
 
-- `story1.html` through `story5.html` use a light navigation-only Menu and the fixed Dark footer treatment.
-- `index.html` and `story6.html` use the shared Menu with System settings, Light, Dark, and High contrast controls.
-- Story pages that offer Light, Dark, and System settings apply them only to shared page chrome; story artwork is
-  unchanged.
+- The landing page and all six stories use the shared Menu with System settings, Light, Dark, and High contrast
+  controls, and the same footer treatment. `shared/fixtures/` holds that markup once, and
+  `tools/check-maintained-pages.mjs` asserts every page still matches it.
+- Appearance selection applies to page chrome and to each story's reading surface. Story artwork is unchanged: the
+  full-bleed scenes behind the illustrations stay black in both appearances, because the artwork was drawn against
+  them.
 - Every maintained page uses the compact shared footer with organization links and an accessible back-to-top action.
 - Scrollytelling Effects, Organ Example, and Visualizing Cells use the navigation-only shared Menu and fixed-Dark
   shared footer; their content and any prototype-specific navigation remain independently owned.
@@ -317,20 +318,20 @@ Before handing off a change:
 
 ```bash
 git diff --check
-node --check landing/js/main.js
-node --check shared/js/main.js
-node --check shared/js/menu.js
-node --check shared/js/theme.js
-node tools/check-maintained-pages.mjs
-node tools/check-local-links.mjs --allow-known
-node tools/check-story6.mjs
+npm run check
 ```
+
+`npm run check` runs the link, maintained-page, and Story 6 checkers in turn. They can also be run individually as
+`npm run check:links`, `npm run check:pages`, and `npm run check:story6`. There are still no installed dependencies;
+`package.json` exists only to name these commands.
 
 Also verify:
 
 - Local `href`, `src`, and CSS `url()` references resolve.
 - IDs are unique and fragment/ARIA references point to existing elements.
 - The maintained-page checker reports only the documented embedded-SVG duplicate-ID baselines for Stories 2–4.
+- Page chrome still matches `shared/fixtures/`; the checker fails if any page's Menu, footer, or appearance controls
+  drift from it.
 - Changed color combinations meet their required contrast ratios.
 - The page is keyboard operable at 320 CSS pixels and up to 400% zoom.
 - Focus is visible and is not obscured.
