@@ -1,8 +1,14 @@
-/* Story 4 scenes: the pinned illustration sequence and its dialogue bubbles. */
+/*
+ * Story 4 scenes: the pinned illustration sequence and its dialogue bubbles.
+ *
+ * Offsets are not set here. Each scene and bubble is position:static until
+ * ScrollTrigger pins it, and the flowing fallback in accessibility.css sets
+ * `inset: auto !important`, so any `top` declared here would never apply.
+ * Scroll position is owned entirely by the triggers in js/animations.js.
+ */
 
 #four .talkbubble {
     display: flex;
-    top: 23vh;
     width: 80%;
     height: 100vh;
     margin: auto;
@@ -36,22 +42,12 @@
     background-size: cover;
 }
 
-#four .scene1 {
-    top: 0;
-}
-
 #four .scene15,
 #four .scene16,
 #four .scene17,
 #four .scene18,
-#four .scene19,
-#four .scene20 {
-    top: 6.25rem;
-}
-
 #four .scene2 {
     display: flex;
-    top: 9.375rem;
     max-width: 68.75rem;
     height: 100vh;
     margin: auto;
