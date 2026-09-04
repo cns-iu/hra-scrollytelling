@@ -1,0 +1,76 @@
+/*
+ * Story 4 colour roles and canvas appearance.
+ *
+ * The token layer, mirroring story/6/css/theme.css: this file owns every value,
+ * and nothing else in Story 4 writes a colour.
+ */
+
+/*
+ * Canvas appearance.
+ *
+ * The page advertises `color-scheme: light dark` in its meta tag, so without a
+ * declaration the browser paints the canvas from the OS preference - a dark
+ * canvas even when the visitor has chosen Light, showing through anything that
+ * does not paint its own background. This must sit on the ROOT element: on the
+ * body it styles only that box and leaves the canvas untouched. This file is
+ * loaded by exactly one page, so :root is already story-scoped.
+ */
+:root {
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        color-scheme: dark;
+    }
+}
+
+#four {
+    /* Inverse surfaces. These carry --story4-inverse-text (white) and must not
+       follow the theme: the text cannot darken, so the surface has to stay dark.
+       Same reason the full-bleed scenes in Stories 2, 3 and 5 stay black in both
+       appearances. */
+    --story4-inverse-surface: #201e3d;
+    --story4-inverse-surface-muted: #4b4b5e;
+    /* Splash accents, fixed for the same reason as the surface. HRA red
+       (#e00d3a) is only ~3.2:1 on #201e3d, which fails AA for the kicker's
+       small bold text; the light primary clears it on both gradient stops. */
+    --story4-splash-accent: var(--hra-dark-primary);
+    --story4-splash-rule: color-mix(in srgb, var(--story4-inverse-text) 32%, transparent);
+    --story4-page-background: #ffffff;
+    --story4-inverse-text: #ffffff;
+    --story4-text: #0e1825;
+    --story4-muted-text: #4c4c58;
+    --story4-link: #6a061c;
+    --story4-link-focus: #e00d3a;
+    --story4-link-hover: rgba(178, 10, 47, 0.08);
+    --story4-link-active: rgba(178, 10, 47, 0.16);
+}
+
+/* --- Dark appearance -------------------------------------------------- */
+:root[data-theme="dark"] #four {
+    --story4-page-background: var(--hra-dark-surface);
+    --story4-text: var(--hra-dark-on-surface);
+    --story4-muted-text: var(--hra-dark-outline);
+    --story4-link: var(--hra-dark-primary);
+    --story4-link-focus: var(--hra-dark-primary);
+    --story4-link-hover: rgb(255 179 179 / 12%);
+    --story4-link-active: rgb(255 179 179 / 20%);
+}
+
+/* System-theme fallback when JavaScript is unavailable. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) #four {
+        --story4-page-background: var(--hra-dark-surface);
+        --story4-text: var(--hra-dark-on-surface);
+        --story4-muted-text: var(--hra-dark-outline);
+        --story4-link: var(--hra-dark-primary);
+        --story4-link-focus: var(--hra-dark-primary);
+        --story4-link-hover: rgb(255 179 179 / 12%);
+        --story4-link-active: rgb(255 179 179 / 20%);
+    }
+}

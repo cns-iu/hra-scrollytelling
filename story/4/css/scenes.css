@@ -1,0 +1,126 @@
+/* Story 4 scenes: the pinned illustration sequence and its dialogue bubbles. */
+
+#four .talkbubble {
+    display: flex;
+    top: 23vh;
+    width: 80%;
+    height: 100vh;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    /* Sits on the scene surface, which follows the theme, so the text must
+       too. Pinned to #000 this was black-on-near-black in dark mode. */
+    color: var(--story4-text);
+    font-size: 1.4rem;
+    text-align: center;
+    flex-direction: column;
+}
+
+#four .scene1,
+#four .scene2,
+#four .scene15,
+#four .scene16,
+#four .scene17,
+#four .scene18,
+#four .scene19,
+#four .scene20 {
+    min-width: 100%;
+    max-width: 68.75rem;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--story4-page-background);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#four .scene1 {
+    top: 0;
+}
+
+#four .scene15,
+#four .scene16,
+#four .scene17,
+#four .scene18,
+#four .scene19,
+#four .scene20 {
+    top: 6.25rem;
+}
+
+#four .scene2 {
+    display: flex;
+    top: 9.375rem;
+    max-width: 68.75rem;
+    height: 100vh;
+    margin: auto;
+    justify-content: center;
+}
+
+#four .svgparts {
+    overflow: hidden;
+}
+
+#four .svgparts svg {
+    position: relative;
+    display: flex;
+    top: 50vh;
+    max-width: 56.25rem !important;
+    margin: auto;
+    transform: translateY(-50%);
+}
+
+#four :is(
+    #Systempt4,
+    #Systempt3,
+    #Systempt2,
+    #Purple,
+    #Combined,
+    #SideLogos,
+    #RDF1,
+    #RDF2,
+    #Brand1,
+    #Brand2,
+    #Brand3,
+    #Brand4,
+    #closeup3,
+    #closeup2,
+    #closeup1,
+    #Data2,
+    #likedthing,
+    #Locks,
+    #Mess,
+    #TypeLogos,
+    #Like1,
+    #Like2,
+    #Like3,
+    #Like4,
+    #Like5,
+    #Like6,
+    #Like7,
+    #Like8,
+    #closeuplinks1,
+    #closeuplinks2,
+    #closeuplinks3,
+    #closeuplinks4,
+    #closeuplinks5,
+    #closeuplinks6,
+    #closeuplinks65,
+    #closeuplinks66,
+    #closeuplinks68,
+    #closeuplinks7,
+    #closeuplinks8,
+    #closeuplinks9,
+    #closeuplinks10,
+    #predicatehighlight,
+    #objecthighlight,
+    #subjecthighlight
+) {
+    opacity: 0;
+}
+
+#four :is(#LogoLine1, #LogoLine2, #LogoLine3) {
+    stroke: url("#gradient1");
+    stroke-width: 5;
+}
