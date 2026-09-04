@@ -3,9 +3,15 @@
     --story2-color-accent-strong: #b20a2f;
     --story2-color-focus: #201e3d;
     --story2-color-quiz-surface: #eff2f5;
+    /* The scene surface stays black in both themes; it is the backdrop the
+       illustration artwork was drawn against, as is the text over it. */
     --story2-color-scene-surface: #000;
     --story2-color-page-surface: #fff;
     --story2-color-on-scene: #fff;
+    /* Foreground for the accent-filled quiz button. Distinct from
+       --story2-color-on-scene, which is text over the black scene and must
+       stay white in both themes. */
+    --story2-color-on-accent: #fff;
     --story2-color-choice-surface: #f1f1f1;
     --story2-color-choice-border: #c6cedd;
     --story2-color-incorrect-surface: #fee2cf;
@@ -219,7 +225,7 @@
     background-color: var(--story2-color-accent);
     border: none;
     margin-top: 3px;
-    color: var(--story2-color-on-scene);
+    color: var(--story2-color-on-accent);
     padding: 8px 16px;
     text-decoration: none;
     border-radius: 4px;
@@ -236,4 +242,33 @@
 .story2-page .radiochoice input {
     margin-right: 12px;
     accent-color: var(--story2-color-accent);
+}
+
+/* --- Dark appearance -------------------------------------------------- */
+
+:root[data-theme="dark"] .story2-page {
+    --story2-color-accent: var(--hra-dark-primary);
+    --story2-color-on-accent: var(--hra-dark-on-primary);
+    --story2-color-accent-strong: var(--hra-dark-on-primary-container);
+    --story2-color-focus: var(--hra-dark-primary);
+    --story2-color-quiz-surface: var(--hra-dark-surface-container);
+    --story2-color-page-surface: var(--hra-dark-surface);
+    --story2-color-choice-surface: var(--hra-dark-surface-container-high);
+    --story2-color-choice-border: var(--hra-dark-outline-variant);
+    --story2-color-incorrect-surface: var(--hra-dark-surface-container-highest);
+}
+
+/* System-theme fallback when JavaScript is unavailable. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .story2-page {
+        --story2-color-accent: var(--hra-dark-primary);
+    --story2-color-on-accent: var(--hra-dark-on-primary);
+        --story2-color-accent-strong: var(--hra-dark-on-primary-container);
+        --story2-color-focus: var(--hra-dark-primary);
+        --story2-color-quiz-surface: var(--hra-dark-surface-container);
+        --story2-color-page-surface: var(--hra-dark-surface);
+        --story2-color-choice-surface: var(--hra-dark-surface-container-high);
+        --story2-color-choice-border: var(--hra-dark-outline-variant);
+        --story2-color-incorrect-surface: var(--hra-dark-surface-container-highest);
+    }
 }

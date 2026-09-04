@@ -1,4 +1,6 @@
 .story5-page {
+    /* The scene surface stays black in both themes; it is the backdrop the
+       illustration artwork was drawn against. */
     --story5-color-scene-surface: #000;
     --story5-color-page-surface: #fff;
     --story5-color-control-focus: #fff;
@@ -316,4 +318,21 @@ html:not(.story5-animation-ready) .story5-page .talkbubble {
 
 .story5-page .story5-dialogue--lower {
     top: 18%;
+}
+
+/* --- Dark appearance -------------------------------------------------- */
+
+:root[data-theme="dark"] .story5-page {
+    --story5-color-page-surface: var(--hra-dark-surface);
+    --story5-color-control-focus: var(--hra-dark-surface-container-lowest);
+    --story5-color-control-focus-outer: var(--hra-dark-primary);
+}
+
+/* System-theme fallback when JavaScript is unavailable. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .story5-page {
+        --story5-color-page-surface: var(--hra-dark-surface);
+        --story5-color-control-focus: var(--hra-dark-surface-container-lowest);
+        --story5-color-control-focus-outer: var(--hra-dark-primary);
+    }
 }

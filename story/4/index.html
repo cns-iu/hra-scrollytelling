@@ -9,10 +9,62 @@
       name="description"
       content="Discover how knowledge graphs organize diverse Human Reference Atlas data and connect anatomical structures, cell types, and biomarkers."
     />
+    <!-- Apply saved appearance and contrast preferences before styles paint. -->
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      content="#dee5f1"
+      data-light-color="#dee5f1"
+      data-dark-color="#393f45"
+    />
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem("hra-landing-theme");
+          const savedContrast = localStorage.getItem("hra-high-contrast");
+          const systemTheme =
+            typeof window.matchMedia === "function" &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          const activeTheme =
+            savedTheme === "light" || savedTheme === "dark"
+              ? savedTheme
+              : systemTheme;
+          const themeColor = document.querySelector('meta[name="theme-color"]');
+
+          if (
+            savedTheme === "system" ||
+            savedTheme === "light" ||
+            savedTheme === "dark"
+          ) {
+            document.documentElement.dataset.themeMode = savedTheme;
+            if (savedTheme === "light" || savedTheme === "dark") {
+              document.documentElement.dataset.theme = savedTheme;
+            }
+          }
+
+          if (savedContrast === "more" || savedContrast === "standard") {
+            document.documentElement.dataset.contrast = savedContrast;
+          }
+
+          if (themeColor) {
+            themeColor.content =
+              activeTheme === "dark"
+                ? themeColor.dataset.darkColor
+                : themeColor.dataset.lightColor;
+          }
+        } catch {
+          // The system theme remains the fallback when storage is unavailable.
+        }
+      })();
+    </script>
+
     <link rel="stylesheet" href="../../shared/css/fonts.css" />
     <link rel="stylesheet" href="../../shared/css/tokens.css" />
     <link rel="stylesheet" href="../../shared/css/selection.css" />
     <link rel="stylesheet" href="../../shared/css/navigation.css" />
+    <link rel="stylesheet" href="../../shared/css/appearance-controls.css" />
     <link rel="stylesheet" href="../../shared/css/story-navigation.css" />
     <link rel="stylesheet" href="../../shared/css/footer.css" />
     <link rel="stylesheet" href="../../shared/css/story-end-matter.css" />
@@ -41,7 +93,7 @@
 
       gtag("config", "G-E1811WRJJD");
     </script>
-    <script type="module" src="../../shared/js/navigation-only.js"></script>
+    <script type="module" src="../../shared/js/main.js"></script>
     <script type="module" src="../../shared/js/story-end-matter.js"></script>
   </head>
 
@@ -50,7 +102,7 @@
       >Skip to main content</a
     >
 
-    <details class="site-menu site-chrome site-chrome--light" data-site-menu>
+    <details class="site-menu site-chrome" data-site-menu>
       <summary>
         <span
           class="site-menu-icon site-menu-icon-menu"
@@ -100,6 +152,67 @@
             <li><a href="../6/">Pan-organ Immunosenescence Atlas</a></li>
           </ul>
         </nav>
+
+        <fieldset class="site-appearance">
+          <legend>Appearance</legend>
+          <label class="site-appearance-choice">
+            <input
+              type="radio"
+              name="color-theme"
+              value="system"
+              data-site-theme-choice
+              checked
+            />
+            <span>System settings</span>
+          </label>
+          <label class="site-appearance-choice">
+            <input
+              type="radio"
+              name="color-theme"
+              value="light"
+              data-site-theme-choice
+            />
+            <span>Light</span>
+          </label>
+          <label class="site-appearance-choice">
+            <input
+              type="radio"
+              name="color-theme"
+              value="dark"
+              data-site-theme-choice
+            />
+            <span>Dark</span>
+          </label>
+        </fieldset>
+
+        <fieldset class="site-accessibility" data-contrast-controls hidden>
+          <legend>Accessibility</legend>
+          <button
+            class="site-contrast-switch"
+            type="button"
+            role="switch"
+            aria-checked="false"
+            data-contrast-toggle
+          >
+            <span class="site-contrast-switch__label">High contrast</span>
+            <span class="site-contrast-switch__track" aria-hidden="true">
+              <span class="site-contrast-switch__thumb"></span>
+            </span>
+            <span
+              class="site-contrast-switch__state"
+              data-contrast-state
+              aria-hidden="true"
+              >Off</span
+            >
+          </button>
+        </fieldset>
+
+        <span
+          class="site-chrome-visually-hidden"
+          data-site-theme-status
+          aria-live="polite"
+          aria-atomic="true"
+        ></span>
       </div>
     </details>
 
@@ -3902,11 +4015,11 @@
         </div>
       </section>
 
-      <div class="story-end-matter site-chrome site-chrome--light" data-story-end-matter-source="end-matter.json"></div>
+      <div class="story-end-matter site-chrome" data-story-end-matter-source="end-matter.json"></div>
     </main>
 
     <nav
-      class="site-story-navigation site-chrome site-chrome--light"
+      class="site-story-navigation site-chrome"
       aria-label="Story navigation"
     >
       <ul class="site-story-navigation__list">
@@ -3941,7 +4054,7 @@
       </ul>
     </nav>
 
-    <footer class="site-footer site-chrome site-chrome--dark">
+    <footer class="site-footer site-chrome">
       <nav class="site-footer__organizations" aria-label="Organizations">
         <a
           class="site-footer__organization-link"

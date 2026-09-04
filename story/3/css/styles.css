@@ -1,6 +1,19 @@
 .story3-page {
+    /* The scene surface stays black in both themes; it is the backdrop the
+       illustration artwork was drawn against. */
     --story3-color-scene-surface: #000;
     --story3-color-page-surface: #fff;
+}
+
+:root[data-theme="dark"] .story3-page {
+    --story3-color-page-surface: var(--hra-dark-surface);
+}
+
+/* System-theme fallback when JavaScript is unavailable. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .story3-page {
+        --story3-color-page-surface: var(--hra-dark-surface);
+    }
 }
 
 #main-content.story-main--intrinsic-height > .section2 {

@@ -13,6 +13,8 @@ html {
     --story4-blue: #201e3d;
     --story4-blue-muted: #4b4b5e;
     --story4-page-background: #ffffff;
+    /* The inverse scene stays black in both themes; it is the backdrop the
+       inline diagram artwork was drawn against. */
     --story4-inverse-background: #000000;
     --story4-inverse-text: #ffffff;
     --story4-text: #0e1825;
@@ -242,5 +244,34 @@ html {
 @media (forced-colors: active) {
     #four .linkbutton:focus-visible {
         outline-color: Highlight;
+    }
+}
+
+/* --- Dark appearance -------------------------------------------------- */
+
+:root[data-theme="dark"] #four {
+    --story4-blue: var(--hra-dark-on-secondary-container);
+    --story4-blue-muted: var(--hra-dark-tertiary);
+    --story4-page-background: var(--hra-dark-surface);
+    --story4-text: var(--hra-dark-on-surface);
+    --story4-muted-text: var(--hra-dark-outline);
+    --story4-link: var(--hra-dark-primary);
+    --story4-link-focus: var(--hra-dark-primary);
+    --story4-link-hover: rgb(255 179 179 / 12%);
+    --story4-link-active: rgb(255 179 179 / 20%);
+}
+
+/* System-theme fallback when JavaScript is unavailable. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) #four {
+        --story4-blue: var(--hra-dark-on-secondary-container);
+        --story4-blue-muted: var(--hra-dark-tertiary);
+        --story4-page-background: var(--hra-dark-surface);
+        --story4-text: var(--hra-dark-on-surface);
+        --story4-muted-text: var(--hra-dark-outline);
+        --story4-link: var(--hra-dark-primary);
+        --story4-link-focus: var(--hra-dark-primary);
+        --story4-link-hover: rgb(255 179 179 / 12%);
+        --story4-link-active: rgb(255 179 179 / 20%);
     }
 }

@@ -136,3 +136,22 @@
         outline-color: Highlight;
     }
 }
+
+/* --- Dark appearance -------------------------------------------------- */
+
+:root[data-theme="dark"] .story2-page .story-quiz {
+    --resource-action-color: var(--hra-dark-primary);
+    --resource-action-hover: rgb(255 179 179 / 12%);
+    --resource-action-active: rgb(255 179 179 / 20%);
+    --resource-focus-color: var(--hra-dark-primary);
+}
+
+/* System-theme fallback when JavaScript is unavailable. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .story2-page .story-quiz {
+        --resource-action-color: var(--hra-dark-primary);
+        --resource-action-hover: rgb(255 179 179 / 12%);
+        --resource-action-active: rgb(255 179 179 / 20%);
+        --resource-focus-color: var(--hra-dark-primary);
+    }
+}

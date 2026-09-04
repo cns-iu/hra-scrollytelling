@@ -1,3 +1,22 @@
+/* Story 4 accessibility affordances. */
+
+#four {
+    --story4-control-surface: #ffffff;
+    --story4-control-text: #202124;
+}
+
+:root[data-theme="dark"] #four {
+    --story4-control-surface: var(--hra-dark-surface-container-high);
+    --story4-control-text: var(--hra-dark-on-surface);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) #four {
+        --story4-control-surface: var(--hra-dark-surface-container-high);
+        --story4-control-text: var(--hra-dark-on-surface);
+    }
+}
+
 .story4-motion-toggle {
     position: absolute;
     right: 1rem;
@@ -8,8 +27,8 @@
     padding: 0.625rem 0.875rem;
     border: 2px solid currentColor;
     border-radius: 999px;
-    background: #ffffff;
-    color: #202124;
+    background: var(--story4-control-surface);
+    color: var(--story4-control-text);
     font: 700 1rem/1.2 var(--font-body);
     cursor: pointer;
 }
@@ -19,9 +38,9 @@
 }
 
 .story4-motion-toggle:focus-visible {
-    outline: 0.2rem solid #ffffff;
+    outline: 0.2rem solid var(--story4-control-surface);
     outline-offset: 0.2rem;
-    box-shadow: 0 0 0 0.45rem #202124;
+    box-shadow: 0 0 0 0.45rem var(--story4-control-text);
 }
 
 html:not(.story4-motion-enabled) .story4-motion-toggle,
@@ -115,7 +134,7 @@ html.story4-flowing #four .story4-scene-summary {
     margin: 0 auto;
     overflow: visible;
     clip: auto;
-    color: #202124;
+    color: var(--story4-text);
     text-align: center;
     white-space: normal;
 }

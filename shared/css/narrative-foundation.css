@@ -14,6 +14,15 @@ html {
     --narrative-color-on-inverse-muted: #d4dde6;
     --narrative-color-intro-shadow: #fff;
 
+    /*
+     * Dark appearance.
+     *
+     * Only the reading surface and its text follow the theme. The scene roles
+     * below stay black-on-white in both themes on purpose: the full-bleed
+     * scenes are cinematic backdrops for illustration artwork, and inverting
+     * them would invert the artwork's own contrast.
+     */
+
     /* Stable enhanced-scene geometry */
     --narrative-viewport-height: 100vh;
 
@@ -35,6 +44,21 @@ html {
     margin: 0;
     font: var(--narrative-type-body);
     letter-spacing: var(--type-body-large-letter-spacing);
+}
+
+:root[data-theme="dark"] :where(body.story-narrative) {
+    --narrative-color-text: var(--hra-dark-on-surface);
+    --narrative-color-page: var(--hra-dark-surface);
+    --narrative-color-intro-shadow: var(--hra-dark-surface-container-lowest);
+}
+
+/* System-theme fallback when JavaScript is unavailable. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) :where(body.story-narrative) {
+        --narrative-color-text: var(--hra-dark-on-surface);
+        --narrative-color-page: var(--hra-dark-surface);
+        --narrative-color-intro-shadow: var(--hra-dark-surface-container-lowest);
+    }
 }
 
 @supports (height: 100svh) {
