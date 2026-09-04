@@ -37,7 +37,9 @@ async function collectFiles(directory) {
 }
 
 function extractHtmlReferences(source) {
-    const attributePattern = /\b(href|poster|src|srcset)\s*=\s*(?:"([^"]*)"|'([^']*)')/gi;
+    // `xlink:href` included so inline-SVG <image> references are checked too;
+    // Story 4's illustration rasters are addressed that way.
+    const attributePattern = /\b(?:xlink:)?(href|poster|src|srcset)\s*=\s*(?:"([^"]*)"|'([^']*)')/gi;
     const references = [];
     let match;
 
