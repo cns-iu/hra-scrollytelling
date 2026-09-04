@@ -55,7 +55,8 @@
 }
 
 #four .svgparts {
-    overflow: hidden;
+    /* clip, not hidden, so the sticky scene stages inside can stick. */
+    overflow: clip;
 }
 
 #four .svgparts svg {
@@ -119,4 +120,101 @@
 #four :is(#LogoLine1, #LogoLine2, #LogoLine3) {
     stroke: url("#gradient1");
     stroke-width: 5;
+}
+
+/*
+ * Readable scene layout.
+ *
+ * The illustration holds still in its own column while the prose scrolls past,
+ * so text never sits on top of artwork. The scroll budget comes from the prose
+ * column's height and a native `position: sticky` stage - the same idiom Story 6
+ * uses in cde.css - rather than a ScrollTrigger pin.
+ *
+ * Prose is first in source order and placed into the second column, so Reader
+ * View, screen readers and the no-JS document get the narrative before the
+ * decorative artwork.
+ */
+#four .story4-scene {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+    padding-inline: clamp(1rem, 4vw, 4rem);
+}
+
+#four .story4-scene__stage {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 0;
+    display: grid;
+    height: 100svh;
+    place-items: center;
+}
+
+#four .story4-scene__prose {
+    grid-column: 2;
+    grid-row: 1;
+    /* Leading space so each step arrives near the middle of the viewport, level
+       with the centred illustration, rather than at the very top. The trailing
+       space keeps the stage stuck until the last step has been read. */
+    padding-block: 35svh 30svh;
+}
+
+#four .story4-step {
+    max-width: 34rem;
+    margin: 0 0 55svh;
+    line-height: 1.6;
+    text-align: start;
+    text-wrap: pretty;
+}
+
+/* The staged illustration fills its column instead of the viewport. */
+#four .story4-scene .story4-scene__stage [class^="scene"] {
+    min-width: 0;
+    max-width: none;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    overflow: visible;
+    background: none;
+}
+
+#four .story4-scene .story4-scene__stage svg {
+    position: static;
+    top: auto;
+    margin: 0;
+    /* overrides the !important on `#four .svgparts svg` */
+    max-width: 100% !important;
+    max-height: 100%;
+    transform: none;
+}
+
+/* Below this the diagrams lose too much width beside prose, so the stage
+   becomes a band above the text. Story 6 collapses at 48rem; these
+   illustrations carry baked-in labels and need more room than that. */
+@media (max-width: 64rem) {
+    #four .story4-scene {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #four .story4-scene__stage {
+        grid-column: 1;
+        grid-row: 1;
+        height: 60svh;
+    }
+
+    #four .story4-scene__prose {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    #four .story4-scene__prose {
+        padding-block: 6svh 12svh;
+    }
+
+    #four .story4-step {
+        max-width: none;
+        margin-bottom: 40svh;
+    }
 }

@@ -5,15 +5,8 @@
  * @returns {void}
  */
 export function setupSceneTriggers() {
-    //bg1
-    ScrollTrigger.create({
-      trigger: ".scene1",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=1000%",
-      pin: true,
-      pinSpacing: false,
-    });
+    // .scene1 is not pinned here: it uses a native sticky stage in scenes.css,
+    // so the illustration holds while its prose column scrolls past.
 
     ScrollTrigger.create({
       trigger: ".scene15",

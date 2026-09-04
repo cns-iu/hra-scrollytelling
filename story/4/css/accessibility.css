@@ -182,3 +182,25 @@ html.story4-flowing #four .story4-scene-summary {
         box-shadow: none;
     }
 }
+
+/* The readable scene layout collapses to source order: prose, then artwork. */
+html.story4-flowing #four .story4-scene {
+    display: block;
+    padding-inline: 0;
+}
+
+html.story4-flowing #four .story4-scene__prose {
+    width: min(100% - 2rem, 52rem);
+    margin-inline: auto;
+    padding-block: clamp(2rem, 7vw, 5rem);
+}
+
+html.story4-flowing #four .story4-scene__stage {
+    position: static;
+    height: auto;
+}
+
+html.story4-flowing #four .story4-step {
+    max-width: none;
+    margin-bottom: 1.5rem;
+}

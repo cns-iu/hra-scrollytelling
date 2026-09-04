@@ -6,7 +6,9 @@ html {
     height: 100%;
     padding: 0;
     margin: 0;
-    overflow-x: hidden;
+    /* clip, not hidden: hidden would make the root a scroll container and stop
+       the sticky scene stages from sticking. */
+    overflow-x: clip;
     scroll-behavior: smooth;
 }
 
