@@ -11,12 +11,12 @@ import { validateEndMatter } from "../shared/js/story-end-matter-schema.mjs";
  * gate and chapter headings.
  */
 const stories = [
-    { n: 1, page: "story1.html", dir: "stories/story1", cssDir: "", jsDir: "" },
-    { n: 2, page: "story2.html", dir: "stories/story2", cssDir: "", jsDir: "", narrative: true },
-    { n: 3, page: "story3.html", dir: "stories/story3", cssDir: "", jsDir: "", narrative: true },
-    { n: 4, page: "story4.html", dir: "stories/story4", cssDir: "", jsDir: "" },
-    { n: 5, page: "story5.html", dir: "stories/story5", cssDir: "", jsDir: "", narrative: true },
-    { n: 6, page: "story6.html", dir: "story/6", cssDir: "css", jsDir: "js" },
+    { n: 1, page: "story/1/index.html", dir: "story/1", cssDir: "css", jsDir: "js" },
+    { n: 2, page: "story/2/index.html", dir: "story/2", cssDir: "css", jsDir: "js", narrative: true },
+    { n: 3, page: "story/3/index.html", dir: "story/3", cssDir: "css", jsDir: "js", narrative: true },
+    { n: 4, page: "story/4/index.html", dir: "story/4", cssDir: "css", jsDir: "js" },
+    { n: 5, page: "story/5/index.html", dir: "story/5", cssDir: "css", jsDir: "js", narrative: true },
+    { n: 6, page: "story/6/index.html", dir: "story/6", cssDir: "css", jsDir: "js" },
 ];
 
 const maintainedPages = [

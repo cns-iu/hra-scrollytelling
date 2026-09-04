@@ -59,23 +59,23 @@
 }
 
 .story3-page .scene3-1 {
-    background-image: url('images/squiggy-greets-cece.svg');
+    background-image: url('../images/squiggy-greets-cece.svg');
 }
 
 .story3-page .scene3-2 {
-    background-image: url('images/cece-discovers-kidney-tissue.svg');
+    background-image: url('../images/cece-discovers-kidney-tissue.svg');
 }
 
 .story3-page .scene3-3 {
-    background-image: url('images/squiggy-suggests-kidney-placement.svg');
+    background-image: url('../images/squiggy-suggests-kidney-placement.svg');
 }
 
 .story3-page .scene3-4 {
-    background-image: url('images/kidney-variation-background.svg');
+    background-image: url('../images/kidney-variation-background.svg');
 }
 
 .story3-page .scene3-5 {
-    background-image: url('images/squiggy-reconsiders-guessing.svg');
+    background-image: url('../images/squiggy-reconsiders-guessing.svg');
 }
 
 .story3-page .scene3-5-1,
@@ -99,11 +99,11 @@
 }
 
 .story3-page .scene3-7 {
-    background-image: url('images/rui-registration-scene.svg');
+    background-image: url('../images/rui-registration-scene.svg');
 }
 
 .story3-page .scene3-8 {
-    background-image: url('images/registered-tissue-data-scene.svg');
+    background-image: url('../images/registered-tissue-data-scene.svg');
 }
 
 .story3-page .imageintrosec {

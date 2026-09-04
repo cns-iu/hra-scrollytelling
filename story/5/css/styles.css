@@ -102,49 +102,49 @@ html:not(.story5-animation-ready) .story5-page .talkbubble {
 
 .story5-page .scene5-1 {
     background-color: var(--story5-color-page-surface);
-    background-image: url('images/5-1.svg');
+    background-image: url('../images/5-1.svg');
 }
 
 .story5-page .scene5-2 {
-    background-image: url('images/5-2.svg');
+    background-image: url('../images/5-2.svg');
 }
 
 .story5-page .scene5-3 {
-    background-image: url('images/5-3.svg');
+    background-image: url('../images/5-3.svg');
 }
 
 .story5-page .scene5-35 {
-    background-image: url('images/5-35.svg');
+    background-image: url('../images/5-35.svg');
     border-top: 1px solid var(--story5-color-scene-surface);
     border-bottom: 1px solid var(--story5-color-scene-surface);
 }
 
 .story5-page .scene5-4 {
-    background-image: url('images/5-4.svg');
+    background-image: url('../images/5-4.svg');
 }
 
 .story5-page .scene5-5 {
-    background-image: url('images/5-5.svg');
+    background-image: url('../images/5-5.svg');
 }
 
 .story5-page .scene5-8 {
-    background-image: url('images/5-8.png');
+    background-image: url('../images/5-8.png');
 }
 
 .story5-page .scene5-10 {
-    background-image: url('images/5-10.png');
+    background-image: url('../images/5-10.png');
 }
 
 .story5-page .scene5-12 {
-    background-image: url('images/5-12.png');
+    background-image: url('../images/5-12.png');
 }
 
 .story5-page .scene5-14 {
-    background-image: url('images/5-14.png');
+    background-image: url('../images/5-14.png');
 }
 
 .story5-page .scene5-16 {
-    background-image: url('images/5-16.png');
+    background-image: url('../images/5-16.png');
 }
 
 .story5-page .scene5-6,

@@ -75,7 +75,7 @@ if (window.hraStoryMotionEnabled) {
     });
 
     /*  function playsound() {
-         var audio = new Audio('shared/assets/music/dramatic.swf.mp3');
+         var audio = new Audio('../../shared/assets/music/dramatic.swf.mp3');
          audio.play();
          audio.volume = 0.5;
      }  */

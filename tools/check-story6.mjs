@@ -11,10 +11,10 @@ const projectRoot = process.cwd();
  * Every path and every reference asserted below is derived from these four
  * values, so relocating the story only requires updating this block.
  */
-const storyPage = "story6.html";
+const storyPage = "story/6/index.html";
 const storyDir = "story/6";
-const storyImageFolder = "img";
-const storyEntryScript = "story6.js";
+const storyImageFolder = "images";
+const storyEntryScript = "js/story6.js";
 
 const storyPath = path.join(projectRoot, storyPage);
 const storyDirectory = path.join(projectRoot, storyDir);

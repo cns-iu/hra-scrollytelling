@@ -4,7 +4,7 @@
 
 /* To load the Story 4 config file, host the site locally before using this example. */
 /*
-particlesJS.load('particles-js', 'stories/story4/config/particles.json', function() {
+particlesJS.load('particles-js', 'config/particles.json', function() {
   console.log('particles.js loaded - callback');
 });
 */

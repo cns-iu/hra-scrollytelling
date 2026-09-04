@@ -108,15 +108,15 @@
 
 .story2-page .scene1,
 .story2-page .scene1-2 {
-    background-image: url('images/squiggy-and-cece-at-home.svg');
+    background-image: url('../images/squiggy-and-cece-at-home.svg');
 }
 
 .story2-page .scene1-1 {
-    background-image: url('images/squiggy-and-cece-close-up.svg');
+    background-image: url('../images/squiggy-and-cece-close-up.svg');
 }
 
 .story2-page .scene2 {
-    background-image: url('images/cece-reassures-squiggy.svg');
+    background-image: url('../images/cece-reassures-squiggy.svg');
 }
 
 .story2-page .scene3 {
@@ -154,31 +154,31 @@
 }
 
 .story2-page .scene7 {
-    background-image: url('images/biomarker-discussion.svg');
+    background-image: url('../images/biomarker-discussion.svg');
 }
 
 .story2-page .scene8 {
-    background-image: url('images/squiggy-discovers-tag.svg');
+    background-image: url('../images/squiggy-discovers-tag.svg');
 }
 
 .story2-page .scene9 {
-    background-image: url('images/squiggy-biomarker-tag.svg');
+    background-image: url('../images/squiggy-biomarker-tag.svg');
 }
 
 .story2-page .scene10 {
-    background-image: url('images/biomarker-tag-close-up.svg');
+    background-image: url('../images/biomarker-tag-close-up.svg');
 }
 
 .story2-page .scene11 {
-    background-image: url('images/squiggy-asks-about-biomarkers.svg');
+    background-image: url('../images/squiggy-asks-about-biomarkers.svg');
 }
 
 .story2-page .scene12 {
-    background-image: url('images/squiggy-refuses-reporter-ride.svg');
+    background-image: url('../images/squiggy-refuses-reporter-ride.svg');
 }
 
 .story2-page .scene13 {
-    background-image: url('images/squiggy-and-cece-address-readers.svg');
+    background-image: url('../images/squiggy-and-cece-address-readers.svg');
 }
 
 .story2-page .scrollbubble {

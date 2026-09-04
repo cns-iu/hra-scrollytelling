@@ -85,7 +85,7 @@ if (window.hraStoryMotionEnabled) {
 
     function changebg3() {
       var changebg = document.getElementById("changehere");
-      changebg.style.backgroundImage = "url('stories/story3/images/rui-registration-scene.svg')";
+      changebg.style.backgroundImage = "url('images/rui-registration-scene.svg')";
     }
 
     //change expression
@@ -104,12 +104,12 @@ if (window.hraStoryMotionEnabled) {
 
     function changebg() {
       var changebg = document.getElementById("changehere");
-      changebg.style.backgroundImage = "url('stories/story3/images/rui-collision-reaction.svg')";
+      changebg.style.backgroundImage = "url('images/rui-collision-reaction.svg')";
     }
 
     function rechangebg() {
       var changebg = document.getElementById("changehere");
-      changebg.style.backgroundImage = "url('stories/story3/images/rui-registration-scene.svg')";
+      changebg.style.backgroundImage = "url('images/rui-registration-scene.svg')";
     }
 
     //change expression
@@ -126,7 +126,7 @@ if (window.hraStoryMotionEnabled) {
 
     function changebg2() {
       var changebg = document.getElementById("changehere");
-      changebg.style.backgroundImage = "url('stories/story3/images/rui-collision-resolved.svg')";
+      changebg.style.backgroundImage = "url('images/rui-collision-resolved.svg')";
     }
 
     // ui explain sectioni

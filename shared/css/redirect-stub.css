@@ -1,0 +1,49 @@
+/*
+ * Redirect-stub presentation.
+ *
+ * Retired entry points render this for the moment before window.location
+ * replaces them, so it stays dependency-light and self-contained: no tokens,
+ * no fonts, no scripts. Values mirror shared/css/tokens.css by hand.
+ */
+
+body {
+  box-sizing: border-box;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem;
+  color: #1c1b1e;
+  background: #fafbfc;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+main {
+  width: min(100%, 42rem);
+  margin-inline: auto;
+}
+
+a {
+  color: #400009;
+  text-decoration-thickness: 0.15em;
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible {
+  outline: 0.2rem solid #400009;
+  outline-offset: 0.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #d4dde6;
+    background: #161719;
+  }
+
+  a {
+    color: #ffdad9;
+  }
+
+  a:focus-visible {
+    outline-color: #ffdad9;
+  }
+}
