@@ -1,3 +1,27 @@
+/*
+ * Canvas appearance.
+ *
+ * The page advertises `color-scheme: light dark` in its meta tag, so without a
+ * declaration the browser paints the canvas from the OS preference - a dark
+ * canvas even when the visitor has chosen Light, showing through anything that
+ * does not paint its own background. This must sit on the ROOT element: on the
+ * body it styles only that box and leaves the canvas untouched. This file is
+ * loaded by exactly one page, so :root is already story-scoped.
+ */
+:root {
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        color-scheme: dark;
+    }
+}
+
 .story5-page {
     /* The scene surface stays black in both themes; it is the backdrop the
        illustration artwork was drawn against. */

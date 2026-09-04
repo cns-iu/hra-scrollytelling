@@ -7,4 +7,16 @@
         background: var(--site-chrome-color-selection);
         text-shadow: none;
     }
+
+    /*
+     * Story content is a sibling of the chrome, not a descendant, so the rule
+     * above never reached it and selections fell back to the browser default.
+     * These roles are theme-reactive and live on :root, so one rule covers every
+     * story; Stories 1 and 6 keep their own more specific rules.
+     */
+    #main-content ::selection {
+        color: var(--hra-on-secondary);
+        background: var(--hra-secondary);
+        text-shadow: none;
+    }
 }

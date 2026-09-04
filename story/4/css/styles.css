@@ -1,3 +1,27 @@
+/*
+ * Canvas appearance.
+ *
+ * The page advertises `color-scheme: light dark` in its meta tag, so without a
+ * declaration the browser paints the canvas from the OS preference - a dark
+ * canvas even when the visitor has chosen Light, showing through anything that
+ * does not paint its own background. This must sit on the ROOT element: on the
+ * body it styles only that box and leaves the canvas untouched. This file is
+ * loaded by exactly one page, so :root is already story-scoped.
+ */
+:root {
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        color-scheme: dark;
+    }
+}
+
 /* Story 4 presentation, scenes, and resources. */
 
 html {
@@ -22,9 +46,6 @@ html {
     --story4-splash-accent: var(--hra-dark-primary);
     --story4-splash-rule: color-mix(in srgb, var(--story4-inverse-text) 32%, transparent);
     --story4-page-background: #ffffff;
-    /* The inverse scene stays black in both themes; it is the backdrop the
-       inline diagram artwork was drawn against. */
-    --story4-inverse-background: #000000;
     --story4-inverse-text: #ffffff;
     --story4-text: #0e1825;
     --story4-muted-text: #4c4c58;
@@ -269,13 +290,16 @@ html {
     align-items: center;
     justify-content: center;
     visibility: hidden;
-    color: var(--story4-inverse-background);
+    /* Sits on the scene surface, which follows the theme, so the text must
+       too. Pinned to #000 this was black-on-near-black in dark mode. */
+    color: var(--story4-text);
     font-size: 1.4rem;
     text-align: center;
     flex-direction: column;
 }
 
 #four .scene1,
+#four .scene2,
 #four .scene15,
 #four .scene16,
 #four .scene17,
