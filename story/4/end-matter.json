@@ -5,22 +5,22 @@
         "items": [
             {
                 "eyebrow": "Documentation",
-                "title": "Explore HRA data",
-                "description": "Want to learn how the HRA puts all that data to use? Check out the apps overview of some of the neat things the HRA can do!",
+                "title": "Explore HRA apps",
+                "description": "Discover the many ways to explore Human Reference Atlas data.",
                 "href": "https://docs.humanatlas.io/apps",
                 "newTab": true
             },
             {
-                "eyebrow": "Developer tools",
-                "title": "HRA APIs",
-                "description": "So now you're like, \"Enough talk already! Show me the data!!\" Relax: you can hook up to HRA data by visiting our API page.",
+                "eyebrow": "Apps",
+                "title": "APIs",
+                "description": "Use HRA data in your own applications.",
                 "href": "https://apps.humanatlas.io/api",
                 "newTab": true
             },
             {
-                "eyebrow": "Related story",
-                "title": "What is an HRA?",
-                "description": "What? You don't know what an HRA is or why we really, really need one? Get caught up with our very first scrollytale!",
+                "eyebrow": "Story",
+                "title": "What is a Human Reference Atlas?",
+                "description": "Read the first scrollytale to learn about the Human Reference Atlas and how it is being built.",
                 "href": "../1/",
                 "newTab": false
             }
