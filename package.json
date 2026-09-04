@@ -1,0 +1,20 @@
+{
+  "name": "hra-scrollytelling",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Human Reference Atlas scrollytelling stories. Static HTML, CSS and JavaScript with no build step; these scripts only name the repository's existing checks.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "check": "npm run check:links && npm run check:pages && npm run check:story6",
+    "check:links": "node tools/check-local-links.mjs --allow-known",
+    "check:pages": "node tools/check-maintained-pages.mjs",
+    "check:story6": "node tools/check-story6.mjs",
+    "serve": "python3 -m http.server 8000",
+    "images:story6": "node tools/generate-story6-images.mjs",
+    "splash:story6": "node tools/generate-story6-splash.mjs"
+  }
+}
