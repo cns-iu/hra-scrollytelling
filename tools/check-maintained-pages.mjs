@@ -416,10 +416,10 @@ for (const story of stories) {
 }
 
 const storyByNumber = new Map(stories.map((story) => [story.n, story]));
-const story4App = storyJs(storyByNumber.get(4), "app.js");
+const story4Entry = storyJs(storyByNumber.get(4), "story4.js");
 const story5Animations = storyJs(storyByNumber.get(5), "animations.js");
 const story5MediaControls = storyJs(storyByNumber.get(5), "media-controls.js");
-const story4AppSource = await readSource(story4App);
+const story4EntrySource = await readSource(story4Entry);
 const storyEndMatterRuntime = await readFile("shared/js/story-end-matter.js", "utf8");
 const narrativeFoundation = await readFile("shared/css/narrative-foundation.css", "utf8");
 const narrativeDialogue = await readFile("shared/css/character-dialogue.css", "utf8");
@@ -429,7 +429,12 @@ const motionPreferences = await readFile("shared/js/motion-preferences.js", "utf
 const story3Styles = await readSource(storyCss(storyByNumber.get(3), "styles.css"));
 const story5AnimationsSource = await readSource(story5Animations);
 const story5MediaControlsSource = await readSource(story5MediaControls);
-assertPage(story4AppSource.includes("window.hraStory4MotionEnabled"), story4App, "particle initialization is not motion-gated");
+assertPage(
+    story4EntrySource.includes("window.hraStory4MotionEnabled") &&
+        story4EntrySource.includes("setupParticles"),
+    story4Entry,
+    "Story 4's entry point does not motion-gate its scroll and particle setup",
+);
 assertPage(
     storyEndMatterRuntime.includes("validateEndMatter") &&
         storyEndMatterRuntime.includes("fetch(source") &&

@@ -1,4 +1,10 @@
-if (window.hraStory4MotionEnabled) {
+/**
+ * Scrubs the knowledge-graph overview: the source logos, the connecting
+ * lines, and the triple that assembles from them.
+ *
+ * @returns {void}
+ */
+export function setupDiagramOverview() {
     // ui explain sectioni
     gsap
       .timeline({

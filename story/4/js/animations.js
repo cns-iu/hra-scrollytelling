@@ -1,4 +1,10 @@
-if (window.hraStory4MotionEnabled) {
+/**
+ * Pins each illustration scene for the length of its scroll budget, then
+ * hands the dialogue bubbles to the shared narrative timeline.
+ *
+ * @returns {void}
+ */
+export function setupSceneTriggers() {
     //bg1
     ScrollTrigger.create({
       trigger: ".scene1",

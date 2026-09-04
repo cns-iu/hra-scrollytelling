@@ -11,7 +11,15 @@ particlesJS.load('particles-js', 'config/particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
-if (window.hraStory4MotionEnabled) {
+/**
+ * Starts the ambient particle field behind the splash.
+ *
+ * Motion-gated by story4.js: the field is decorative, so it must not run when
+ * the visitor has asked for reduced motion.
+ *
+ * @returns {void}
+ */
+export function setupParticles() {
 particlesJS('particles-js',
   
   {

@@ -1,4 +1,10 @@
-if (window.hraStory4MotionEnabled) {
+/**
+ * Scrubs the close-up sequence that walks through a single triple and the
+ * reference organ it resolves to.
+ *
+ * @returns {void}
+ */
+export function setupDiagramDetail() {
     gsap
       .timeline({
         scrollTrigger: {
