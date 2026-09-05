@@ -204,10 +204,28 @@
         grid-template-columns: minmax(0, 1fr);
     }
 
+    /*
+     * Stacked, the stage becomes a sticky band at the top of the viewport and
+     * the prose scrolls beneath it. A grid item's sticky containing block is the
+     * grid CONTAINER, not its row, so the band stays for the whole section - and
+     * because the stage follows the prose in source order it paints above it.
+     * That is the intended sticky-header behaviour, but it only reads correctly
+     * if the band is opaque; left transparent, text showed through the artwork
+     * and appeared to pop out on top of it.
+     */
     #four .story4-scene__stage {
+        z-index: 1;
         grid-column: 1;
         grid-row: 1;
-        height: 60svh;
+        height: 42svh;
+        background: var(--story4-page-background);
+        /* A defined edge, so prose passing beneath reads as scrolling under a
+           panel rather than as text being cut in half. */
+        border-block-end: 1px solid var(--hra-outline-variant);
+    }
+
+    #four .story4-scene .story4-scene__stage [class^="scene"] {
+        background: var(--story4-page-background);
     }
 
     #four .story4-scene__prose {
