@@ -27,41 +27,51 @@ config/         particles.json, kept as a reference copy
 
 ## Scene sequence
 
-Scenes are pinned with `pinSpacing: false`, so they reserve no scroll space of
-their own. The budget comes from the natural height of each full-viewport block,
-and each `end: "+=N%"` says how long that layer stays pinned. Measured at
-1440×900:
+Scenes are numbered in the order they play, `.scene1` through `.scene8`, and the
+class name, the DOM order and the reading order all agree.
 
-| order | scene | pin window | budget |
-| --- | --- | --- | --- |
-| 1 | `.scene1` | 900 → 9900 | +=1000% |
-| 2 | `.scene15` | 10800 → 14400 | +=400% |
-| 3 | `.scene2` | 15300 → 19800 | +=500% |
-| 4 | `.scene17` | 20700 → 24300 | +=400% |
-| 5 | `.scene16` | 25200 → 28800 | +=400% |
-| 6 | `.scene18` | 29700 → 31500 | +=200% |
-| 7 | `.scene19` | 32400 → 36000 | +=400% |
-| 8 | `.scene20` | 36900 → 49500 | +=1400% |
+Converted scenes use a native sticky stage: a tall section supplies the scroll
+budget while the plate holds still and the prose column scrolls beside it. They
+have no `ScrollTrigger.create` pin at all — only the `#Change*` timelines, which
+are `pin: false` and scrub against the prose step that carries the matching id.
 
-Document scroll is 50,682px and the furthest trigger ends at 50,400px, so the
-sequence fits with room to spare. The gaps between scenes are filled by
-dialogue-bubble triggers, which interleave one per viewport.
+Scenes still on the old mechanism are pinned with `pinSpacing: false`, so they
+reserve no scroll space of their own; the budget comes from the natural height of
+each full-viewport block, and each `end: "+=N%"` says how long that layer stays
+pinned.
+
+| scene | mechanism | beats |
+| --- | --- | --- |
+| `.scene1` | sticky plate | Change1–Change5 |
+| `.scene2` | sticky plate | datachange1 |
+| `.scene3` | sticky plate | Change8, Change9 |
+| `.scene4` | sticky plate | change13 |
+| `.scene5` | pinned overlay | — |
+| `.scene6` | pinned overlay | — |
+| `.scene7` | pinned overlay | — |
+| `.scene8` | pinned overlay | 9 beats |
 
 ## Traps
 
 Things that look like bugs but are not, and things that are easy to break:
 
-- **Scene names are not in visual order.** `.scene17` plays before `.scene16`,
-  and `.scene15` plays second. Position comes from DOM order, not from the name
-  or from the order of the `ScrollTrigger.create` calls in `animations.js`
-  (which lists 16 before 17). Renaming them would be a large, risky diff for
-  cosmetic gain.
+- **Position comes from DOM order, not from the class name.** The names are
+  sequential now, but nothing enforces that. They were originally 1, 15, 2, 17,
+  16, 18, 19, 20 and played in that DOM order regardless, which read as a bug and
+  was not one. If a scene is reordered, renumber it too.
+- **A per-scene `--story4-stage-ratio` override must come after the plate rule.**
+  Both selectors carry one id and three classes, so source order decides. Placed
+  earlier it loses silently and the plate renders at the wrong shape.
+- **Stacked-layout rules must match the alternation's specificity.**
+  `:nth-of-type(even)` adds a pseudo-class, so a bare `#four .story4-scene` in
+  the narrow media query loses to it and the two-column layout survives onto
+  phones.
 - **Do not set `top` on a scene or bubble in CSS.** They are `position: static`
   until ScrollTrigger pins them, and the flowing fallback sets
   `inset: auto !important`. Four such declarations existed and had never applied
   once. Scroll position belongs to the triggers.
-- **Two SVGs are deliberately short.** `.scene19`'s SVG is `height="90%"` and
-  `.scene20`'s is `height="70%"` while the rest are `100%`. `.scene2` also has a
+- **Two SVGs are deliberately short.** `.scene7`'s SVG is `height="90%"` and
+  `.scene8`'s is `height="70%"` while the rest are `100%`. `.scene3` also has a
   different `viewBox` aspect (1921×1180 against 1922×1082) and an inline
   `style="top: 40vh"` that overrides the shared `top: 50vh`. These are artwork
   framing decisions; changing them moves the illustrations.

@@ -10,7 +10,7 @@ export function setupSceneTriggers() {
 
 
     ScrollTrigger.create({
-      trigger: ".scene16",
+      trigger: ".scene5",
       anticipatePin: 1,
       start: "top top",
       end: "+=400%",
@@ -18,7 +18,7 @@ export function setupSceneTriggers() {
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: ".scene18",
+      trigger: ".scene6",
       anticipatePin: 1,
       start: "top top",
       end: "+=200%",
@@ -26,7 +26,7 @@ export function setupSceneTriggers() {
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: ".scene19",
+      trigger: ".scene7",
       anticipatePin: 1,
       start: "top top",
       end: "+=400%",
@@ -34,7 +34,7 @@ export function setupSceneTriggers() {
       pinSpacing: false,
     });
     ScrollTrigger.create({
-      trigger: ".scene20",
+      trigger: ".scene8",
       anticipatePin: 1,
       start: "top top",
       end: "+=1400%",

@@ -168,8 +168,10 @@ export function setupDiagramOverview() {
       .timeline({
         scrollTrigger: {
           autoAlpha: 1,
-          trigger: "#Change9",
-          start: "top",
+          /* Scene 3's prose is one block now, so this second beat rides the
+             same element as the first, starting 40% of a viewport later. */
+          trigger: "#Change8",
+          start: "top -40%",
           end: "+=20%",
           scrub: true,
           duration: 3,

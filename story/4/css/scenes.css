@@ -24,13 +24,13 @@
 }
 
 #four .scene1,
+#four .scene3,
 #four .scene2,
-#four .scene15,
-#four .scene16,
-#four .scene17,
-#four .scene18,
-#four .scene19,
-#four .scene20 {
+#four .scene5,
+#four .scene4,
+#four .scene6,
+#four .scene7,
+#four .scene8 {
     min-width: 100%;
     max-width: 68.75rem;
     height: 100vh;
@@ -42,11 +42,11 @@
     background-size: cover;
 }
 
-#four .scene15,
-#four .scene16,
-#four .scene17,
-#four .scene18,
-#four .scene2 {
+#four .scene2,
+#four .scene5,
+#four .scene4,
+#four .scene6,
+#four .scene3 {
     display: flex;
     max-width: 68.75rem;
     height: 100vh;
@@ -241,8 +241,8 @@
     box-shadow: 0 0.5rem 1.5rem rgb(23 23 23 / 10%);
 }
 
-/* Scene 2's illustration is a different shape from the rest. */
-#four .story4-scene .story4-scene__stage .scene2 {
+/* Scene 3's illustration is a different shape from the rest. */
+#four .story4-scene .story4-scene__stage .scene3 {
     --story4-stage-ratio: 1921 / 1180;
 }
 
@@ -264,7 +264,11 @@
    roughly 600px in two columns - so the stage becomes a band. Story 6 collapses
    at 48rem; these diagrams carry baked-in labels and need far more room. */
 @media (max-width: 75rem) {
-    #four .story4-scene {
+    /* The alternation selectors carry an extra pseudo-class, so they outrank a
+       bare `#four .story4-scene` here and kept both columns on narrow screens.
+       Every stacked rule has to match their specificity to win. */
+    #four .story4-scene,
+    #four .story4-scene:nth-of-type(even) {
         grid-template-columns: minmax(0, 1fr);
     }
 
@@ -277,7 +281,8 @@
      * if the band is opaque; left transparent, text showed through the artwork
      * and appeared to pop out on top of it.
      */
-    #four .story4-scene__stage {
+    #four .story4-scene__stage,
+    #four .story4-scene:nth-of-type(even) .story4-scene__stage {
         z-index: 1;
         grid-column: 1;
         grid-row: 1;
@@ -287,7 +292,8 @@
         background: var(--story4-page-background);
     }
 
-    #four .story4-scene__prose {
+    #four .story4-scene__prose,
+    #four .story4-scene:nth-of-type(even) .story4-scene__prose {
         grid-column: 1;
         grid-row: 2;
     }
