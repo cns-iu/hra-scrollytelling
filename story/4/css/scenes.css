@@ -135,6 +135,13 @@
  * decorative artwork.
  */
 #four .story4-scene {
+    /* Trailing space below the last step, and the reason the plate outlives the
+       prose. The stage unsticks when the section's bottom reaches the bottom of
+       the viewport, so the space after the last step has to exceed one viewport
+       before the plate is still present while that step is read - and exceed it
+       by enough that the scene's last artwork beat finishes first. Per-scene
+       override if an artwork sequence needs longer. See README, "Outro budget". */
+    --story4-scene-outro: 90svh;
     display: grid;
     /* The illustration is always width-constrained - it letterboxes inside its
        box - so every pixel taken from the prose column, the gap or the outer
@@ -145,6 +152,18 @@
     gap: clamp(1.5rem, 3vw, 3rem);
     align-items: start;
     padding-inline: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+/*
+ * Scene 3's prose was merged into a single short paragraph, so its two artwork
+ * beats hang off one step and run 35% of a viewport past its top - much further
+ * past the last step than any other scene. It buys the extra room here rather
+ * than compressing the beats, which suits the scene anyway: the text is one
+ * line and the artwork is the content. Keyed to the plate, not a position, so
+ * it survives renumbering.
+ */
+#four .story4-scene:has(.scene3) {
+    --story4-scene-outro: 130svh;
 }
 
 /* The stage is only the sticky positioning context; the plate inside carries
@@ -186,9 +205,8 @@
     grid-column: 2;
     grid-row: 1;
     /* Leading space so each step arrives near the middle of the viewport, level
-       with the centred illustration, rather than at the very top. The trailing
-       space keeps the stage stuck until the last step has been read. */
-    padding-block: 35svh 30svh;
+       with the centred illustration, rather than at the very top. */
+    padding-block: 35svh var(--story4-scene-outro);
 }
 
 #four .story4-step {
@@ -269,7 +287,15 @@
        Every stacked rule has to match their specificity to win. */
     #four .story4-scene,
     #four .story4-scene:nth-of-type(even) {
+        /* The band is 42svh rather than a full viewport, so the stage unsticks
+           much later relative to the section's end and needs far less trailing
+           space than the two-column layout to outlive its prose. */
+        --story4-scene-outro: 30svh;
         grid-template-columns: minmax(0, 1fr);
+    }
+
+    #four .story4-scene:has(.scene3) {
+        --story4-scene-outro: 60svh;
     }
 
     /*
@@ -303,7 +329,7 @@
            capped here or lines run to 100+ characters. */
         width: min(100%, 34rem);
         margin-inline: auto;
-        padding-block: 6svh 12svh;
+        padding-block: 6svh var(--story4-scene-outro);
     }
 
     #four .story4-step {

@@ -51,6 +51,36 @@ pinned.
 | `.scene7` | pinned overlay | — |
 | `.scene8` | pinned overlay | 9 beats |
 
+## Outro budget
+
+A converted scene's plate is a `position: sticky` stage, so it unsticks the
+moment the section's bottom edge reaches the bottom of the stage - not when the
+prose runs out. Everything below the last step is what keeps the plate on screen,
+and it has two jobs:
+
+- outlast the **last step**, so the closing paragraph is read beside the artwork
+  rather than after it has gone; and
+- outlast the **last artwork beat**, so the final state of the illustration is
+  actually seen.
+
+`--story4-scene-outro` on `#four .story4-scene` is that space, spent as the prose
+column's bottom padding. Because the stage is a full `100svh` in two columns, the
+trailing space has to exceed one viewport before the plate is present at all for
+the last step; the base value is `90svh`, which with the step's own `55svh`
+margin holds the plate for roughly `45svh` past the last step. Stacked, the band
+is only `42svh`, so it unsticks far later and the override drops to `30svh`.
+
+Scene 3 overrides it to `130svh` (`60svh` stacked). Its prose is one short
+merged paragraph, so both of its beats hang off a single step and finish 35% of
+a viewport past it - much further out than any other scene. The override is keyed
+`:has(.scene3)`, to the plate rather than a position, so renumbering cannot
+detach it.
+
+**Check this after changing step spacing, beat offsets, or the number of steps in
+a scene.** For every scene, the section's release point (`section.bottom -
+stage.height`) must sit after both the last step's top and the last beat's `end`.
+Scene 1's beat slack is the tightest, around 150px on a short viewport.
+
 ## Traps
 
 Things that look like bugs but are not, and things that are easy to break:
@@ -75,6 +105,11 @@ Things that look like bugs but are not, and things that are easy to break:
   different `viewBox` aspect (1921×1180 against 1922×1082) and an inline
   `style="top: 40vh"` that overrides the shared `top: 50vh`. These are artwork
   framing decisions; changing them moves the illustrations.
+- **A beat that ends after the plate unsticks plays to nobody.** Every scene had
+  this: the outro was `30svh` and the closing paragraph arrived 8-37px *after*
+  the plate had left, while scenes 1 and 3 ran 172px and 529px of animation past
+  it. Scene 3's was self-inflicted - a `start: "top -40%"` added when its three
+  steps were merged into one. See "Outro budget".
 - **The splash gradient must stay dark.** `--story4-inverse-surface` and
   `-muted` carry white text, so they do not follow the theme. See the comment in
   `theme.css`.

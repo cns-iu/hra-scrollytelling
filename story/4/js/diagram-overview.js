@@ -154,7 +154,7 @@ export function setupDiagramOverview() {
           autoAlpha: 1,
           trigger: "#Change8",
           start: "top",
-          end: "+=20%",
+          end: "+=15%",
           scrub: true,
           duration: 3,
           pin: false,
@@ -169,9 +169,12 @@ export function setupDiagramOverview() {
         scrollTrigger: {
           autoAlpha: 1,
           /* Scene 3's prose is one block now, so this second beat rides the
-             same element as the first, starting 40% of a viewport later. */
+             same element as the first, picking up where the first one ends.
+             It used to start 40% of a viewport later, which ran the sequence
+             on past the point where the sticky stage unsticks - the artwork
+             finished changing after it had scrolled out of view. */
           trigger: "#Change8",
-          start: "top -40%",
+          start: "top -15%",
           end: "+=20%",
           scrub: true,
           duration: 3,
