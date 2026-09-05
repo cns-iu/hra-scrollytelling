@@ -147,7 +147,11 @@
     padding-inline: clamp(1rem, 2.5vw, 2.5rem);
 }
 
+/* The stage is only the sticky positioning context; the plate inside carries
+   the visual treatment, so it can hug the artwork rather than framing a
+   viewport-tall block of empty surface. */
 #four .story4-scene__stage {
+    box-sizing: border-box;
     grid-column: 1;
     grid-row: 1;
     position: sticky;
@@ -155,6 +159,9 @@
     display: grid;
     height: 100svh;
     place-items: center;
+    /* makes cqw/cqh available to the plate, so it can fit itself to whichever
+       dimension binds without needing a breakpoint for each regime */
+    container-type: size;
 }
 
 #four .story4-scene__prose {
@@ -174,20 +181,48 @@
     text-wrap: pretty;
 }
 
-/* The staged illustration fills its column instead of the viewport. */
+/*
+ * The plate. It hugs the illustration - no inner padding by default; set
+ * --story4-stage-padding on an individual scene when one needs breathing room.
+ *
+ * The surface is fixed light in both appearances. These illustrations are
+ * black-stroke, white-fill line art, so on a themed surface their strokes
+ * disappear and their filled panels float: measured on scene 1, a themed plate
+ * left 43% of the frame very dark against 53% very light, where the light plate
+ * gives 1% against 95%.
+ */
 #four .story4-scene .story4-scene__stage [class^="scene"] {
+    --story4-stage-padding: 0;
+    /* Scene 1's viewBox. Set per scene when an illustration has a different
+       shape; the plate then shrinks to fit whichever of width or height binds
+       first, so the artwork is never cropped or letterboxed. */
+    --story4-stage-ratio: 1922 / 1082;
+
+    box-sizing: border-box;
+    /*
+     * Fit the plate to the stage, preserving the artwork's ratio, whichever
+     * dimension binds. aspect-ratio alone cannot do this: it only fills in an
+     * unspecified dimension, so once one axis is clamped the other stops
+     * following. Both axes are stated here against the stage's container size.
+     * Height must also be reset from the base scene rule's `height: 100vh`.
+     */
+    width: min(100cqw, calc(100cqh * (var(--story4-stage-ratio))));
     min-width: 0;
-    max-width: none;
-    height: 100%;
-    display: grid;
-    place-items: center;
-    overflow: visible;
-    background: none;
+    max-width: 100%;
+    height: min(100cqh, calc(100cqw / (var(--story4-stage-ratio))));
+    padding: var(--story4-stage-padding);
+    overflow: hidden;
+    background: var(--hra-light-surface-container-lowest);
+    border: 2px solid var(--hra-outline-variant);
+    box-shadow: 0 0.5rem 1.5rem rgb(23 23 23 / 10%);
 }
 
 #four .story4-scene .story4-scene__stage svg {
     position: static;
     top: auto;
+    display: block;
+    width: 100%;
+    height: 100%;
     margin: 0;
     /* overrides the !important on `#four .svgparts svg` */
     max-width: 100% !important;
@@ -218,13 +253,8 @@
         grid-column: 1;
         grid-row: 1;
         height: 42svh;
-        background: var(--story4-page-background);
-        /* A defined edge, so prose passing beneath reads as scrolling under a
-           panel rather than as text being cut in half. */
-        border-block-end: 1px solid var(--hra-outline-variant);
-    }
-
-    #four .story4-scene .story4-scene__stage [class^="scene"] {
+        /* opaque, so prose scrolling beneath the band is hidden rather than
+           showing through around the plate */
         background: var(--story4-page-background);
     }
 
