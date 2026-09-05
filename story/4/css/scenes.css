@@ -241,6 +241,11 @@
     box-shadow: 0 0.5rem 1.5rem rgb(23 23 23 / 10%);
 }
 
+/* Scene 2's illustration is a different shape from the rest. */
+#four .story4-scene .story4-scene__stage .scene2 {
+    --story4-stage-ratio: 1921 / 1180;
+}
+
 #four .story4-scene .story4-scene__stage svg {
     position: static;
     top: auto;
