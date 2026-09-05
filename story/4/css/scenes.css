@@ -164,6 +164,24 @@
     container-type: size;
 }
 
+/*
+ * Scenes alternate which side holds the artwork. nth-of-type counts <section>
+ * elements, and unconverted scenes are still <div>, so this stays correct
+ * during the rollout. Prose is first in source order throughout; only the
+ * column assignment changes.
+ */
+#four .story4-scene:nth-of-type(even) {
+    grid-template-columns: minmax(16rem, 26rem) minmax(0, 1fr);
+}
+
+#four .story4-scene:nth-of-type(even) .story4-scene__prose {
+    grid-column: 1;
+}
+
+#four .story4-scene:nth-of-type(even) .story4-scene__stage {
+    grid-column: 2;
+}
+
 #four .story4-scene__prose {
     grid-column: 2;
     grid-row: 1;
@@ -189,10 +207,13 @@
  * black-stroke, white-fill line art, so on a themed surface their strokes
  * disappear and their filled panels float: measured on scene 1, a themed plate
  * left 43% of the frame very dark against 53% very light, where the light plate
- * gives 1% against 95%.
+ * gives 1% against 95%. surface-bright's dark value (#34383c) puts the black
+ * strokes at 1.78:1; its light value (#fafbfc) at 20.27:1, so the plate takes
+ * the light value in both appearances.
  */
 #four .story4-scene .story4-scene__stage [class^="scene"] {
     --story4-stage-padding: 0;
+    --story4-stage-radius: 1rem;
     /* Scene 1's viewBox. Set per scene when an illustration has a different
        shape; the plate then shrinks to fit whichever of width or height binds
        first, so the artwork is never cropped or letterboxed. */
@@ -212,8 +233,11 @@
     height: min(100cqh, calc(100cqw / (var(--story4-stage-ratio))));
     padding: var(--story4-stage-padding);
     overflow: hidden;
-    background: var(--hra-light-surface-container-lowest);
+    background: var(--hra-light-surface-bright);
     border: 2px solid var(--hra-outline-variant);
+    /* overflow: hidden above means this clips the artwork's full-bleed edges,
+       which is what makes the radius read */
+    border-radius: var(--story4-stage-radius);
     box-shadow: 0 0.5rem 1.5rem rgb(23 23 23 / 10%);
 }
 
