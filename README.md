@@ -375,6 +375,27 @@ list to follow and to update.
   and carry fallback text so unsupported browsers fail visibly rather than silently. With approval to use `ffmpeg`,
   the remux is lossless and per file: `ffmpeg -i video5-N.mov -c copy -movflags +faststart video5-N.mp4`, after
   which each `<source>` becomes `type="video/mp4"`.
+- The landing hero artwork is still PNG: `landing/assets/backgrounds/splash-human-light.png` (344 KB) and
+  `splash-human-dark.png` (320 KB). It is the largest remaining first-paint cost on the landing page. The loading
+  gate preloads whichever variant the resolved appearance selects, so the reader no longer waits for it behind a
+  shifting layout, but the bytes are unchanged. `tools/generate-story4-webp.mjs` records the browser-encoded WebP
+  path this repository already uses, which roughly halved Story 4's raster artwork; the same approach applies here.
+  The artwork is referenced as a CSS `background-image` through `--hero-artwork` in `landing/css/tokens.css`, so
+  the conversion also needs the preload in `index.html` and the token to move together.
+- Fifty images across Stories 2, 3 and 5 carry no intrinsic `width` and `height` (10, 13 and 27 respectively), and
+  those stories use no `aspect-ratio` reservation either. Most sit inside pinned, absolutely positioned scenes
+  where the reflow is contained, but Story 5's repeated media-control icon rows are in normal flow and do shift
+  their controls as they load. Stories 1, 4 and 6 are already complete, and Story 6's markup is the model to
+  follow. The fix is mechanical but wants visual checks per scene, because a wrong intrinsic ratio changes layout
+  rather than only reserving it.
+- Story 1's hero video (`#vid`) declares no `width`, `height`, or `poster`, and `story/1/css/story1.css` gives it
+  `height: auto` under a `max-height: 38rem` cap, so its box has no reserved height until metadata arrives. The
+  loading gate hides the resulting jump on first load; the underlying reservation is still missing, and the same
+  pattern applies to the inline media further down the page.
+- The loading-gate work has not been measured with Lighthouse. The changes were verified behaviourally in headless
+  Chromium (state classes present before deferred modules run, no stranded `inert` or scroll lock, no veil with
+  scripts blocked, zero horizontal shift on release), but no before-and-after CLS or LCP numbers were captured for
+  the landing page, Story 3, or Story 4.
 
 Repository cleanup should be performed incrementally, with local-reference checks before and after every move.
 The documented missing-reference baseline is maintained in [`docs/asset-map.md`](docs/asset-map.md). Run
