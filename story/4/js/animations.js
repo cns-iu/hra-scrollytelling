@@ -11,14 +11,6 @@ export function setupSceneTriggers() {
 
 
     ScrollTrigger.create({
-      trigger: ".scene6",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=200%",
-      pin: true,
-      pinSpacing: false,
-    });
-    ScrollTrigger.create({
       trigger: ".scene7",
       anticipatePin: 1,
       start: "top top",
