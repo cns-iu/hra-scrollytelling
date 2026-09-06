@@ -54,7 +54,6 @@
 }
 
 .site-footer__organization-link img {
-    display: block;
     max-width: 100%;
     height: auto;
 }
@@ -84,39 +83,47 @@
  * carries near-white ink - so the footer swaps them with the appearance now
  * that it follows the theme rather than sitting on a fixed indigo band.
  */
-/* These must outrank `.site-footer__organization-link img`, which sets
-   `display: block` on both marks. */
-.site-footer__organization-link img.site-footer__logo--dark {
+/*
+ * Exactly one mark is shown at a time. The marks own their `display` outright
+ * - the rule above deliberately sets none - so the swap cannot be undone by a
+ * more specific `img` rule elsewhere, which is what previously left both
+ * marks painted side by side in Light.
+ */
+.site-footer__logo {
     display: none;
 }
 
-:root[data-theme="dark"] .site-footer__organization-link img.site-footer__logo--light {
+.site-footer__logo--light {
+    display: block;
+}
+
+:root[data-theme="dark"] .site-footer__logo--light {
     display: none;
 }
 
-:root[data-theme="dark"] .site-footer__organization-link img.site-footer__logo--dark {
+:root[data-theme="dark"] .site-footer__logo--dark {
     display: block;
 }
 
 @media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) .site-footer__organization-link img.site-footer__logo--light {
+    :root:not([data-theme]) .site-footer__logo--light {
         display: none;
     }
 
-    :root:not([data-theme]) .site-footer__organization-link img.site-footer__logo--dark {
+    :root:not([data-theme]) .site-footer__logo--dark {
         display: block;
     }
 }
 
 /* Chrome pinned to one appearance keeps that appearance's mark. */
-.site-chrome--dark .site-footer__organization-link img.site-footer__logo--light,
-.site-chrome--light .site-footer__organization-link img.site-footer__logo--dark {
-    display: none;
+.site-chrome--light .site-footer__logo--light,
+.site-chrome--dark .site-footer__logo--dark {
+    display: block;
 }
 
-.site-chrome--dark .site-footer__organization-link img.site-footer__logo--dark,
-.site-chrome--light .site-footer__organization-link img.site-footer__logo--light {
-    display: block;
+.site-chrome--light .site-footer__logo--dark,
+.site-chrome--dark .site-footer__logo--light {
+    display: none;
 }
 
 .site-footer__copyright {
