@@ -353,6 +353,12 @@ Also verify:
 - Story 2's inline SVG artwork contains 11 pre-existing repeated ID values; they are not current interaction targets,
   but a dedicated cleanup requires visual regression testing
 - The drag-and-drop answer demo and its assets are organized together under `prototypes/drag-and-drop/`
+- Story 5's six videos are QuickTime-only (`ftyp` brand `qt  `) and will not play in Firefox. Their streams are
+  already H.264/AAC, so the fix is a container remux, not a re-encode; it needs `ffmpeg`, which is not installed
+  and which the dependency policy forbids adding. The `<source>` elements now declare `type="video/quicktime"`
+  and carry fallback text so unsupported browsers fail visibly rather than silently. With approval to use `ffmpeg`,
+  the remux is lossless and per file: `ffmpeg -i video5-N.mov -c copy -movflags +faststart video5-N.mp4`, after
+  which each `<source>` becomes `type="video/mp4"`.
 
 Repository cleanup should be performed incrementally, with local-reference checks before and after every move.
 The documented missing-reference baseline is maintained in [`docs/asset-map.md`](docs/asset-map.md). Run
