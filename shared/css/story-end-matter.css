@@ -297,18 +297,6 @@
     outline-offset: 3px;
 }
 
-#main-content .story-end-matter__visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-    border: 0;
-}
-
 @media (max-width: 47.999rem) {
     #main-content .story-resource-list {
         grid-template-columns: minmax(0, 1fr);

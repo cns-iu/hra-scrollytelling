@@ -39,24 +39,6 @@
     line-height: var(--type-label-medium-line-height);
 }
 
-/*
- * The label that names the number for assistive technology. Hidden here
- * rather than relying on a page-level utility, so the component carries its
- * own accessible name wherever it is used - the landing page defines
- * `.visually-hidden`, but the stories do not load that stylesheet.
- */
-.hra-number .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    border: 0;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-}
-
 @media (forced-colors: active) {
     .hra-number {
         border: 0.125rem solid CanvasText;

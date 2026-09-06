@@ -1,10 +1,9 @@
 :root {
-    /* Colour roles live in shared/css/tokens.css and component roles in
-       shared/css/component-roles.css; this file owns only the landing hero. */
+    /* Colour roles live in shared/css/tokens.css and component roles, including
+       --focus-color, in shared/css/component-roles.css, which index.html loads
+       after this file; this file owns only the landing hero. */
     color-scheme: light;
 
-    
-    --focus-color: var(--hra-secondary);
     --hero-overlay-start: rgb(250 251 252 / 100%);
     --hero-overlay-middle: rgb(250 251 252 / 82%);
     --hero-overlay-end: rgb(250 251 252 / 14%);
@@ -20,7 +19,6 @@
 
 :root[data-theme="dark"] {
     color-scheme: dark;
-    --focus-color: var(--hra-primary);
     --hero-overlay-start: rgb(22 23 25 / 100%);
     --hero-overlay-middle: rgb(22 23 25 / 88%);
     --hero-overlay-end: rgb(22 23 25 / 36%);
@@ -36,7 +34,6 @@
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
         color-scheme: dark;
-        --focus-color: var(--hra-primary);
         --hero-overlay-start: rgb(22 23 25 / 100%);
         --hero-overlay-middle: rgb(22 23 25 / 88%);
         --hero-overlay-end: rgb(22 23 25 / 36%);

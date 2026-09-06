@@ -95,6 +95,11 @@ All seven maintained pages, landing and Stories 1 through 6 alike, use the compl
 Light, Dark, and High contrast controls. Shared component styles remain scoped to the Menu, skip link, footer, and any
 shared story navigation.
 
+`navigation.css` also defines the repository's one visually-hidden utility. Prefer
+`.site-chrome-visually-hidden` in new markup; the rule aliases the older names (`.visually-hidden`,
+`.story-end-matter__visually-hidden`, `.story4-scene-summary`, and the narrative heading and summary classes) so
+existing pages keep working. Do not re-declare those properties in a story or landing stylesheet.
+
 `selection.css` applies theme-aware selection colors only inside `.site-chrome` components. Light chrome uses deep
 plum with white text, while Dark chrome uses pale pink with deep burgundy text. The stylesheet defers to operating-
 system selection colors when forced-colors mode is active.

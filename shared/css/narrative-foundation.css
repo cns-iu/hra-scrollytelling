@@ -69,18 +69,6 @@ html {
     }
 }
 
-.story-narrative :where(.story-chapter-heading, .story-scene-summary) {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-    border: 0;
-}
-
 :where(body.story-narrative) p {
     color: var(--narrative-color-text);
     font: var(--narrative-type-body);
@@ -321,16 +309,4 @@ html {
     font: var(--narrative-type-episode-title);
     letter-spacing: var(--type-display-medium-letter-spacing);
     text-wrap: balance;
-}
-
-:where(.story-narrative) .story-intro-summary {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    border: 0;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
 }

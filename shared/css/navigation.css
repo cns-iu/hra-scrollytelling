@@ -315,7 +315,21 @@
     inset-inline-start: 0.5rem;
 }
 
-.site-chrome-visually-hidden {
+/*
+ * The canonical visually-hidden utility.
+ *
+ * This rule had been copied into seven stylesheets under seven names, one of
+ * them working around the fact that stories do not load the landing page's
+ * copy. navigation.css is loaded by every maintained page and every prototype,
+ * so the aliases below let each consumer keep its own class name while the
+ * declarations live once. Prefer .site-chrome-visually-hidden in new markup.
+ */
+.site-chrome-visually-hidden,
+.visually-hidden,
+.story-end-matter__visually-hidden,
+.story4-scene-summary,
+.story-narrative :where(.story-chapter-heading, .story-scene-summary),
+:where(.story-narrative) .story-intro-summary {
     position: absolute;
     width: 1px;
     height: 1px;

@@ -74,18 +74,6 @@ html.story4-flowing #four [class*=" scene"] {
     transform: none !important;
 }
 
-.story4-scene-summary {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-    border: 0;
-}
-
 html.story4-flowing #four .story4-scene-summary {
     position: relative;
     width: min(100% - 2rem, 52rem);

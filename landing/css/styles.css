@@ -71,18 +71,6 @@ samp {
     outline-offset: 0.2rem;
 }
 
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-    border: 0;
-}
-
 .hero-brand-link {
     display: flex;
     width: fit-content;
@@ -291,7 +279,6 @@ h1 {
     letter-spacing: var(--type-body-large-letter-spacing);
     line-height: var(--type-body-large-line-height);
 }
-
 
 @media (max-width: 72rem) {
     .story-grid {
