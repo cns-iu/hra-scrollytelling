@@ -40,7 +40,7 @@ export function setupDiagramDetail() {
              and revealed it only once that text had scrolled away. Runs long,
              because this is the diagram the sentence is describing. */
           trigger: "#change14",
-          start: "top 75%",
+          start: "top 95%",
           end: "+=45%",
           scrub: true,
           duration: 3,

@@ -198,6 +198,12 @@
     --story4-scene-hold: 150svh;
 }
 
+/* Scene 7's triple is the densest single image in the story - three labelled
+   panels to read across - so it holds longer than the shared default. */
+#four .story4-scene:has(.scene7) {
+    --story4-scene-hold: 110svh;
+}
+
 #four .story4-scene--hold-last .story4-step:last-of-type {
     position: sticky;
     top: 35svh;
