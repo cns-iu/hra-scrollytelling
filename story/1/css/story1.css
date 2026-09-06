@@ -142,7 +142,7 @@ html.story1-page {
     padding: clamp(0.5rem, 1.5vw, 1rem) clamp(0.5rem, 1.5vw, 1rem) 0;
     overflow: hidden;
     align-items: flex-end;
-    border: 0.125rem solid var(--color-outline-variant);
+    border: 0.125rem solid var(--color-border);
     border-radius: var(--radius-large);
     background: var(--color-surface);
     grid-column: 2;
@@ -174,7 +174,7 @@ html.story1-page {
     display: grid;
     padding: 0 0 0 clamp(1rem, 2.5vw, 1.75rem);
     margin: 0;
-    border-inline-start: 0.25rem solid var(--color-outline-variant);
+    border-inline-start: 0.25rem solid var(--color-border);
     color: var(--color-heading);
     gap: 1rem;
     opacity: 1;
@@ -208,7 +208,7 @@ html.story1-page {
     display: block;
     max-width: 26rem;
     padding-top: 1rem;
-    border-block-start: 0.125rem solid var(--color-outline-variant);
+    border-block-start: 0.125rem solid var(--color-border);
     color: var(--color-ink);
     font-family: var(--font-body);
     font-size: clamp(var(--type-title-large-size), 2vw, var(--type-headline-small-size));
@@ -274,15 +274,52 @@ html.story1-page {
     margin: 0;
     overflow: hidden;
     flex-direction: column;
-    border: 0.125rem solid var(--color-outline-variant);
+    border: 0.125rem solid var(--color-border);
     border-radius: var(--radius-card);
     background: var(--color-surface);
 }
 
+/*
+ * Cropping to the artwork.
+ *
+ * Each GIF has a transparent margin baked into its canvas - 46px of image1's
+ * 400px on the left, 79px of image3's 303px on every side - so a card with
+ * zero padding still showed a wide gap. The card cannot hug artwork it cannot
+ * see, so the image is scaled until its content box, not its canvas, fills
+ * the frame, and the surplus is clipped by the card's own overflow. The zoom
+ * is eased a little under the value that would fill the frame exactly, so no
+ * part of the illustration is cut off at the edges.
+ *
+ * The three content boxes share an aspect ratio within 0.05, so one frame
+ * ratio covers them. Values are per-file: re-measure if artwork is replaced.
+ */
 #one .img-above-text img {
     display: block;
     width: 100%;
     height: auto;
+    aspect-ratio: 0.94;
+    object-fit: cover;
+    object-position: var(--story1-gif-focus, 50% 50%);
+    transform: scale(var(--story1-gif-zoom, 1));
+    transform-origin: var(--story1-gif-focus, 50% 50%);
+}
+
+/* image1: 400x415, content inset L46 R35 T31 B46. */
+#one .cell1 img {
+    --story1-gif-zoom: 1.20;
+    --story1-gif-focus: 51.4% 48.2%;
+}
+
+/* image2: 400x415, content inset L39 R65 T51 B39. */
+#one .cell2 img {
+    --story1-gif-zoom: 1.28;
+    --story1-gif-focus: 46.8% 51.4%;
+}
+
+/* image3: 303x303, content inset L79 R79 T79 B73. */
+#one .cell3 img {
+    --story1-gif-zoom: 1.90;
+    --story1-gif-focus: 50% 51%;
 }
 
 #one .img-above-text .scroll-caption {
@@ -332,7 +369,7 @@ html.story1-page {
     margin-block: clamp(2rem, 5vw, 3rem);
     margin-inline: calc((100% - var(--story1-scale-width)) / 2);
     overflow: hidden;
-    border: 0.125rem solid var(--color-outline-variant);
+    border: 0.125rem solid var(--color-border);
     border-radius: var(--radius-card);
     background: var(--color-surface);
 }
@@ -391,15 +428,6 @@ html.story1-page {
     color-scheme: dark;
 }
 
-/*
- * The decorative splash rules consume --color-outline-variant and friends, but
- * component-roles.css only remaps a few roles for dark, so the lines kept
- * their light value against a dark hero. Remap what Story 1 actually uses.
- */
-:root[data-theme="dark"] {
-    --color-outline-variant: var(--hra-dark-outline-variant);
-}
-
 :root[data-theme="dark"] #one {
     --story1-hero-mesh:
         radial-gradient(circle at 8% 12%, rgb(149 0 30 / 44%) 0%, transparent 34%),
@@ -412,10 +440,6 @@ html.story1-page {
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
         color-scheme: dark;
-    }
-
-    :root:not([data-theme]) {
-        --color-outline-variant: var(--hra-dark-outline-variant);
     }
 
     :root:not([data-theme]) #one {
