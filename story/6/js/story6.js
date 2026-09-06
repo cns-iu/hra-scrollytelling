@@ -2,7 +2,7 @@ import { setupStoryAnimations } from './animations.js';
 import { setupBackToTopAnimationReset, setupLayoutStability } from './layout.js';
 import { setupStoryImagePreparation } from './media.js';
 import { setupContentReveals } from './reveals.js';
-import { releaseWhenReady } from '../../shared/js/loading-readiness.js';
+import { releaseWhenReady } from '../../../shared/js/loading-readiness.js';
 
 const STORY_MOTION_QUERY = '(prefers-reduced-motion: no-preference)';
 const STORY_HEIGHT_QUERY = '(min-height: 36rem)';

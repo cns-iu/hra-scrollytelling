@@ -7,8 +7,15 @@ const projectRoot = process.cwd();
 const allowKnown = process.argv.includes("--allow-known");
 // "fixtures" holds canonical chrome templates whose {{root}} placeholders are
 // resolved per page by check-maintained-pages.mjs, not by a browser.
-const ignoredDirectories = new Set([".agents", ".codex", ".git", "fixtures"]);
-const scannableExtensions = new Set([".css", ".html", ".json"]);
+const ignoredDirectories = new Set([
+    ".agents",
+    ".codex",
+    ".git",
+    "fixtures",
+    "node_modules",
+]);
+const scannableExtensions = new Set([".css", ".html", ".js", ".json", ".mjs"]);
+const scriptExtensions = new Set([".js", ".mjs"]);
 
 // Remove an entry when its underlying reference is repaired or intentionally deleted.
 const knownMissingReferences = new Set([
@@ -110,6 +117,36 @@ function extractCssReferences(source) {
     return references;
 }
 
+/*
+ * Relative specifiers in JavaScript modules. A browser resolves these against
+ * the module's own directory rather than the page that loaded it, so a story
+ * module reaching shared/ needs one more `..` than the page's markup does.
+ * Nothing checked them until a wrong depth in Story 6's entry module aborted
+ * it before it could run, leaving the whole story unanimated.
+ *
+ * Bare specifiers are skipped: none of the shipped modules use a package, and
+ * the tools import Node built-ins that resolve with no file behind them.
+ */
+function extractScriptReferences(source) {
+    const withoutComments = source
+        .replaceAll(/\/\*[\s\S]*?\*\//gu, "")
+        .replaceAll(/(^|[^:])\/\/[^\n]*/gu, "$1");
+    const specifierPattern =
+        /(?:\bfrom\s*|\bimport\s*\(\s*|\bimport\s+)(?:"([^"]+)"|'([^']+)')/gu;
+    const references = [];
+    let match;
+
+    while ((match = specifierPattern.exec(withoutComments)) !== null) {
+        const specifier = match[1] ?? match[2];
+
+        if (specifier.startsWith("./") || specifier.startsWith("../")) {
+            references.push(specifier);
+        }
+    }
+
+    return references;
+}
+
 function extractIds(source) {
     const idPattern = /\bid\s*=\s*(?:"([^"]+)"|'([^']+)')/gi;
     const ids = new Set();
@@ -137,11 +174,15 @@ function decodePathname(pathname) {
     }
 }
 
-async function resolveTarget(sourcePath, pathname) {
+async function resolveTarget(sourcePath, pathname, exactFile = false) {
     const decodedPathname = decodePathname(pathname);
     const target = decodedPathname.startsWith("/")
         ? path.join(projectRoot, decodedPathname.slice(1))
         : path.resolve(path.dirname(sourcePath), decodedPathname);
+
+    if (exactFile) {
+        return target;
+    }
 
     try {
         const targetStats = await stat(target);
@@ -179,6 +220,8 @@ for (const file of files) {
         references = extractHtmlReferences(source);
     } else if (extension === ".json") {
         references = extractJsonReferences(source);
+    } else if (scriptExtensions.has(extension)) {
+        references = extractScriptReferences(source);
     } else {
         references = extractCssReferences(source);
     }
@@ -197,12 +240,18 @@ for (const file of files) {
         }
 
         referenceCount += 1;
+        const isScriptReference = scriptExtensions.has(extension);
         const target = pathname
-            ? await resolveTarget(file, pathname.split("?")[0])
+            ? await resolveTarget(file, pathname.split("?")[0], isScriptReference)
             : file;
 
         try {
-            await stat(target);
+            const targetStats = await stat(target);
+
+            // A directory satisfies a markup href, but never an import.
+            if (isScriptReference && targetStats.isDirectory()) {
+                throw new Error("directory");
+            }
         } catch {
             issues.push({
                 kind: "missing-file",
@@ -255,7 +304,7 @@ for (const issue of uniqueIssues) {
 }
 
 console.log(
-    `Checked ${files.length} HTML/CSS files and ${referenceCount} unique local references.`,
+    `Checked ${files.length} HTML/CSS/JS files and ${referenceCount} unique local references.`,
 );
 
 if (uniqueIssues.length === 0) {

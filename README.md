@@ -128,8 +128,10 @@ original URLs retained as compatibility pages. These are not primary entry point
 └── tools/              # Dependency-free checks and asset generators
 ```
 
-Relative paths inside a story resolve from `story/<number>/`: story-owned files as `css/…`, `js/…`, `images/…` and
-`video/…`, and shared files as `../../shared/…`. Do not move files or assets without first mapping and validating
+Relative paths in a story's markup resolve from `story/<number>/`: story-owned files as `css/…`, `js/…`, `images/…`
+and `video/…`, and shared files as `../../shared/…`. Import specifiers inside a JavaScript module resolve from that
+module's own directory instead, so a module in `story/<number>/js/` reaches shared code as `../../../shared/…` — one
+level deeper than the page that loads it. Do not move files or assets without first mapping and validating
 every HTML, CSS, JavaScript, and JSON reference; `npm run check:links` resolves every one of them. See
 [`docs/architecture.md`](docs/architecture.md) for ownership boundaries and
 [`docs/asset-map.md`](docs/asset-map.md) for the asset register.
