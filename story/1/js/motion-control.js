@@ -78,14 +78,21 @@ const setMotionPaused = (isPaused) => {
         return;
     }
 
+    /*
+     * The state attribute leads the GIF swap on resume and follows it on
+     * pause, which is why it is written in both branches rather than once at
+     * the end. `accessibility.css` hides a GIF that is animating while the
+     * story is paused, so on resume the state has to clear before the
+     * animated source is restored, and on pause the frame has to be frozen
+     * before the state makes that rule apply.
+     */
     if (isPaused) {
         animatedGifs.forEach(freezeGif);
+        storyRoot.dataset.motionState = 'paused';
     } else {
         storyRoot.dataset.motionState = 'running';
         animatedGifs.forEach(restoreGif);
     }
-
-    storyRoot.dataset.motionState = isPaused ? 'paused' : 'running';
     controlLabel.textContent = isPaused ? 'Resume animations' : 'Pause animations';
 
     videos.forEach((video) => {

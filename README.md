@@ -168,6 +168,13 @@ The landing page is deliberately separated from the legacy story implementation:
 - `shared/css/component-roles.css` maps those colour roles onto semantic component roles (`--color-ink`,
   `--color-surface`, `--focus-color`, and the radius and width scale) for the landing page and any story that follows
   the site palette.
+- `shared/css/buttons.css` owns `.hra-button`, the Material 3 button shared by every maintained page: text,
+  outlined, elevated, filled, tonal, extended-FAB and icon variants, built on the colour roles rather than on
+  values of its own. The tonal, elevated and FAB variants carry a boundary because their containers sit within
+  about 1.2:1 of the page surface, under the 3:1 non-text minimum.
+- `shared/css/numbers.css` owns `.hra-number`, the filled numeral circle used by the landing story cards and by
+  story step lists, with a `--compact` size for numbers set beside body copy. It hides its own assistive label,
+  so it does not depend on the landing page's `.visually-hidden`.
 - `landing/css/tokens.css` owns only the landing hero artwork, overlays, and landing-specific layout.
 - `shared/css/selection.css`, `shared/css/navigation.css`, `shared/css/appearance-controls.css`, and
   `shared/css/footer.css` own the canonical Menu, appearance controls, skip link, and footer.

@@ -284,28 +284,32 @@ html.story1-page {
     flex-direction: column;
     border: 0.125rem solid var(--color-border);
     border-radius: var(--radius-card);
-    background: var(--color-surface);
+    color: var(--color-card-ink);
+    background: var(--color-card);
 }
 
 /*
- * Cropping to the artwork.
+ * Card artwork.
  *
- * Each GIF has a transparent margin baked into its canvas - 46px of image1's
- * 400px on the left, 79px of image3's 303px on every side - so a card with
- * zero padding still showed a wide gap. The card cannot hug artwork it cannot
- * see, so the image is scaled until its content box, not its canvas, fills
- * the frame, and the surplus is clipped by the card's own overflow. The zoom
- * is eased a little under the value that would fill the frame exactly, so no
- * part of the illustration is cut off at the edges.
+ * Each GIF carries a wide transparent margin baked into its canvas - 46px of
+ * image1's 400px on the left, 79px of image3's 303px on every side - so a card
+ * with no padding still showed a gap. Each image is scaled and re-centred on
+ * its own content box, measured from the files, and the surplus clipped by the
+ * card. Values are per-file: re-measure if the artwork is replaced, or trim
+ * the margins in the source files and drop these.
  *
- * The three content boxes share an aspect ratio within 0.05, so one frame
- * ratio covers them. Values are per-file: re-measure if artwork is replaced.
+ * The image area keeps a fixed light backing in both appearances: the drawings
+ * are transparent line art in near-black ink, so on the dark card their
+ * outlines would all but disappear, and they carry information the caption
+ * does not repeat. Same reason the full-bleed scenes in Stories 2, 3 and 5
+ * stay black in both appearances.
  */
 #one .img-above-text img {
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 0.94;
+    aspect-ratio: var(--story1-gif-ratio, 0.94);
+    background: var(--hra-light-surface-container-lowest);
     object-fit: cover;
     object-position: var(--story1-gif-focus, 50% 50%);
     transform: scale(var(--story1-gif-zoom, 1));
@@ -324,9 +328,11 @@ html.story1-page {
     --story1-gif-focus: 46.8% 51.4%;
 }
 
-/* image3: 303x303, content inset L79 R79 T79 B73. */
+/* image3: 303x303, content inset L79 R79 T79 B73. Its content box is nearly
+   square, so it takes its own frame ratio rather than the shared 0.94. */
 #one .cell3 img {
-    --story1-gif-zoom: 1.90;
+    --story1-gif-ratio: 0.96;
+    --story1-gif-zoom: 1.75;
     --story1-gif-focus: 50% 51%;
 }
 
@@ -341,16 +347,25 @@ html.story1-page {
 #one .img-above-text .scroll-caption {
     position: relative;
     z-index: 1;
-    padding: 1rem;
+    padding: 1.25rem;
     border-block-start: 0.0625rem solid var(--color-border);
-    background: var(--color-surface);
+    color: var(--color-card-ink);
+    background: var(--color-card);
 }
 
-#one .img-above-text .scroll-caption p {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.625rem;
+/*
+ * The number heads the caption, as it does on the landing page's story cards,
+ * rather than sitting inline with the first line of text.
+ *
+ * The colour is set here because `#one #main-content p` outranks the caption
+ * container on specificity and would otherwise keep the body ink.
+ */
+#one #main-content .img-above-text .scroll-caption p {
+    display: grid;
+    justify-items: start;
+    gap: 0.75rem;
     margin: 0;
+    color: var(--color-card-ink);
 }
 
 #one .scroll-caption p {

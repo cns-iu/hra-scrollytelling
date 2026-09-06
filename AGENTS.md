@@ -26,6 +26,8 @@ Landing-page work is intentionally isolated to:
 - `landing/css/fonts.css` as a compatibility bridge for cached documents that still request the former font URL.
 - `shared/css/tokens.css` for every HRA colour value; `landing/css/tokens.css` now owns only the landing hero.
 - `shared/css/component-roles.css` for the semantic component roles built on those colours.
+- `shared/css/buttons.css` for the shared Material 3 button, and `shared/css/numbers.css` for the numbered
+  circle used by the landing story cards and by story step lists.
 - `shared/css/selection.css`, `shared/css/navigation.css`, `shared/css/appearance-controls.css`, and
   `shared/css/footer.css` for the canonical Menu, appearance controls, skip link, and footer.
 - `landing/css/styles.css` for landing-page content, layout, and accessibility adaptations outside shared page chrome.
@@ -49,6 +51,11 @@ footer, and end-of-story navigation use namespaced foundations under:
 - `shared/assets/icons/favicon.svg`, `favicon.ico`, and `apple-touch-icon.png` for the cross-device favicon set used by
   every HTML entry point.
 - `shared/assets/logos/` for the landing hero, canonical footer, and theme-aware organization marks.
+- `shared/css/buttons.css` for `.hra-button`: the Material 3 text, outlined, elevated, filled, tonal,
+  extended-FAB and icon variants shared by every maintained page. Stories consume it for their own controls;
+  it writes no colour of its own.
+- `shared/css/numbers.css` for `.hra-number`, the filled numeral circle, with a `--compact` size for numbers
+  set beside body copy.
 - `shared/css/selection.css` for theme-aware text selection scoped to shared page chrome.
 - `shared/css/navigation.css` for the skip link and native Menu disclosure.
 - `shared/css/appearance-controls.css` for the appearance fieldset and High contrast switch, used by every
@@ -184,6 +191,9 @@ enhancement rather than a substitute for an accessible default page.
   license files under `shared/assets/fonts/`; do not add or replace font files without explicit approval.
 - Keep component and accessibility rules in `landing/css/styles.css` rather than duplicating tokens in component
   selectors.
+- Build controls from `.hra-button` and numerals from `.hra-number` rather than restyling a button or drawing a
+  numbered glyph per story. A story may override the shared component's own custom properties for a local
+  pairing, but should not restate its geometry.
 - Keep the fixed top-left Menu control visibly labeled. Use ordinary navigation links, not `role="menu"`, for page and
   story navigation.
 - Preserve the Menu panel's explicit close control, Escape behavior, outside-pointer dismissal, and focus restoration.
