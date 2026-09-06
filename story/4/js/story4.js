@@ -10,17 +10,35 @@
  */
 const GSAP_BASE = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5';
 
+/*
+ * Subresource-integrity digests for the pinned GSAP build, as published by
+ * cdnjs. A tampered or swapped file fails the check and never executes; the
+ * static document is the fallback either way.
+ */
+const GSAP_INTEGRITY = {
+    'gsap.min.js': 'sha512-cOH8ndwGgPo+K7pTvMrqYbmI8u8k6Sho3js0gOqVWTmQMlLIi6TbqGWRTpf1ga8ci9H3iPsvDLr4X7xwhC/+DQ==',
+    'ScrollTrigger.min.js': 'sha512-AMl4wfwAmDM1lsQvVBBRHYENn1FR8cfOTpt8QVbb/P55mYOdahHD4LmHM1W55pNe3j/3od8ELzPf/8eNkkjISQ==',
+};
+
 /**
  * Loads a classic script and resolves once its global is available.
  *
  * @param {string} source Script URL
+ * @param {string} [integrity] Subresource-integrity digest for a remote script
  * @returns {Promise<void>} Settles when the script has run, or failed to
  */
-function loadScript(source) {
+function loadScript(source, integrity) {
     return new Promise((resolve, reject) => {
         const script = document.createElement('script');
 
         script.src = source;
+
+        if (integrity) {
+            script.integrity = integrity;
+            script.crossOrigin = 'anonymous';
+            script.referrerPolicy = 'no-referrer';
+        }
+
         script.onload = () => resolve();
         script.onerror = () => reject(new Error(`Failed to load ${source}`));
         document.head.append(script);
@@ -37,8 +55,8 @@ function loadScript(source) {
  */
 if (window.hraStory4MotionEnabled) {
     try {
-        await loadScript(`${GSAP_BASE}/gsap.min.js`);
-        await loadScript(`${GSAP_BASE}/ScrollTrigger.min.js`);
+        await loadScript(`${GSAP_BASE}/gsap.min.js`, GSAP_INTEGRITY['gsap.min.js']);
+        await loadScript(`${GSAP_BASE}/ScrollTrigger.min.js`, GSAP_INTEGRITY['ScrollTrigger.min.js']);
 
         if (window.gsap && window.ScrollTrigger) {
             const { setupDiagramOverview } = await import('./diagram-overview.js');
