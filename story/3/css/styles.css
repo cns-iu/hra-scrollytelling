@@ -44,11 +44,6 @@
     height: auto;
 }
 
-.story3-page .talkbubble a {
-    color: var(--narrative-color-text);
-    text-decoration: underline;
-}
-
 .story3-page .introcharcece,
 .story3-page .introcharsquiggy {
     width: min(12%, 7rem);

@@ -48,6 +48,35 @@
     box-shadow: var(--dialogue-shadow) 0 3px 8px;
 }
 
+/*
+ * Links inside a bubble.
+ *
+ * The bubbles are deliberately theme-invariant: their pastel backgrounds and
+ * --dialogue-color-text are the same in Light and Dark. A link inside one must
+ * therefore inherit that fixed colour. Story 3 previously set these from
+ * --narrative-color-text, which is theme-reactive, so in Dark the link turned
+ * near-white on an unchanged pink bubble. Inherit instead, and keep the
+ * underline so the link is still distinguishable without relying on colour.
+ */
+.story-narrative :where(
+    .defaulttalk,
+    .squiggytalk,
+    .squiggytalk2,
+    .squiggytalk3,
+    .cecetalk,
+    .cecetalk2,
+    .cecetalk3,
+    .cecetalk5,
+    .cecetalk6,
+    .squiggytalk5,
+    .squiggytalk6,
+    .mactalk,
+    .mactalk2
+) :where(a, a:visited, a:hover, a:active) {
+    color: inherit;
+    text-decoration: underline;
+}
+
 .story-narrative .defaulttalk {
     background-color: var(--dialogue-color-neutral);
     box-shadow: var(--dialogue-shadow) 0 3px 4px;
