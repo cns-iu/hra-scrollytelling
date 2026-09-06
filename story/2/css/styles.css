@@ -24,7 +24,7 @@
 
 .story2-page {
     --story2-color-accent: #e00d3a;
-    --story2-color-accent-strong: #b20a2f;
+    --story2-color-accent-strong: var(--hra-light-on-primary-container);
     --story2-color-focus: #201e3d;
     --story2-color-quiz-surface: #eff2f5;
     /* The scene surface stays black in both themes; it is the backdrop the
@@ -36,8 +36,11 @@
        --story2-color-on-scene, which is text over the black scene and must
        stay white in both themes. */
     --story2-color-on-accent: #fff;
-    --story2-color-choice-surface: #f1f1f1;
-    --story2-color-choice-border: #c6cedd;
+    --story2-color-choice-surface: var(--hra-light-surface-container-lowest);
+    --story2-color-choice-surface-hover: var(--hra-light-surface-container-low);
+    --story2-color-choice-surface-selected: var(--hra-light-primary-container);
+    --story2-color-choice-border: var(--hra-light-outline-strong);
+    --story2-color-correct-surface: var(--hra-light-secondary-container);
     --story2-color-incorrect-surface: #fee2cf;
 }
 
@@ -223,49 +226,41 @@
 }
 
 .story2-page .sectionquiz {
-    background-color: var(--story2-color-quiz-surface);
-    padding: 32px;
-    line-height: 24px;
-    font-size: 16px;
-    margin-top: 10vh;
     position: relative;
+    padding: clamp(1.5rem, 5vw, 3rem);
+    margin-top: 10vh;
+    background-color: var(--story2-color-quiz-surface);
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .story2-page .quizheader {
-    font-size: 28px;
+    margin-block: 0 1rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 4vw, 1.75rem);
+    line-height: 1.2;
 }
 
 .story2-page .quizp {
-    width: 80%;
-    justify-content: center;
-    margin: auto;
+    width: min(100%, 44rem);
+    margin-inline: auto;
 }
 
-.story2-page .quizp details {
-    padding: 10px;
+/*
+ * Quiz controls.
+ *
+ * The shared button supplies the form; the pairing is Story 2's own so it
+ * survives the theme switch. Both use accent-strong rather than the accent:
+ * white on HRA red measures 4.90:1, which passes AA but not the AAA target,
+ * while on-primary-container reaches 9.14:1.
+ */
+.story2-page .story-quiz .choiceresult.hra-button {
+    --hra-button-action: var(--story2-color-accent-strong);
+    --hra-button-on-action: var(--story2-color-on-accent);
 }
 
-.story2-page .choiceresult {
-    background-color: var(--story2-color-accent);
-    border: none;
-    margin-top: 3px;
-    color: var(--story2-color-on-accent);
-    padding: 8px 16px;
-    text-decoration: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.story2-page .radiochoice {
-    margin: 0;
-    padding: 12px;
-    background-color: var(--story2-color-choice-surface);
-    font-size: 16px;
-}
-
-.story2-page .radiochoice input {
-    margin-right: 12px;
-    accent-color: var(--story2-color-accent);
+.story2-page .story-quiz .hra-button--text {
+    --hra-button-action: var(--story2-color-accent-strong);
 }
 
 /* --- Dark appearance -------------------------------------------------- */
@@ -278,7 +273,10 @@
     --story2-color-quiz-surface: var(--hra-dark-surface-container);
     --story2-color-page-surface: var(--hra-dark-surface);
     --story2-color-choice-surface: var(--hra-dark-surface-container-high);
+    --story2-color-choice-surface-hover: var(--hra-dark-surface-container-highest);
+    --story2-color-choice-surface-selected: var(--hra-dark-primary-container);
     --story2-color-choice-border: var(--hra-dark-outline-variant);
+    --story2-color-correct-surface: var(--hra-dark-secondary-container);
     --story2-color-incorrect-surface: var(--hra-dark-surface-container-highest);
 }
 
@@ -286,13 +284,16 @@
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) .story2-page {
         --story2-color-accent: var(--hra-dark-primary);
-    --story2-color-on-accent: var(--hra-dark-on-primary);
+        --story2-color-on-accent: var(--hra-dark-on-primary);
         --story2-color-accent-strong: var(--hra-dark-on-primary-container);
         --story2-color-focus: var(--hra-dark-primary);
         --story2-color-quiz-surface: var(--hra-dark-surface-container);
         --story2-color-page-surface: var(--hra-dark-surface);
         --story2-color-choice-surface: var(--hra-dark-surface-container-high);
+        --story2-color-choice-surface-hover: var(--hra-dark-surface-container-highest);
+        --story2-color-choice-surface-selected: var(--hra-dark-primary-container);
         --story2-color-choice-border: var(--hra-dark-outline-variant);
+        --story2-color-correct-surface: var(--hra-dark-secondary-container);
         --story2-color-incorrect-surface: var(--hra-dark-surface-container-highest);
     }
 }

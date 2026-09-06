@@ -2291,17 +2291,22 @@
         >
           <div class="quizp">
             <h2 class="mb-4 mt-4 quizheader" id="story-quiz-title">
-              What Is Squiggy's Cell Type?
+              What is Squiggy's cell type?
             </h2>
 
-            <ul class="story-quiz__instructions">
+            <p class="story-quiz__lead">
+              Use the ASCT+B Reporter to identify Squiggy's cell type, then
+              record your answer below.
+            </p>
+
+            <ol class="story-quiz__instructions">
               <li>
-                Head over to the ASCT+B Reporter to find out:
+                Open the ASCT+B Reporter:
                 <a
                   href="https://apps.humanatlas.io/asctb-reporter/vis?selectedOrgans=knee-v1.2&playground=false&omapSelectedOrgans="
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="linkbutton"
+                  class="hra-button hra-button--text"
                   aria-label="ASCT+B Reporter (opens in a new tab)"
                   >ASCT+B Reporter
                   <img
@@ -2311,34 +2316,31 @@
                 </a>
               </li>
               <li>
-                Remember, Squiggy's biomarkers are Keratin 5/6, Keratin 7, p60.
+                Select the large intestine ASCT+B table. Squiggy is found there,
+                among other places in the body, so starting there narrows the
+                search considerably.
               </li>
               <li>
-                Along with being characterized by those biomarkers, Squiggy is a
-                type of cell that can be found hanging out in the large
-                intestine (among other places throughout the body).
+                Match against Squiggy's biomarkers: Keratin 5/6, Keratin 7, and
+                p60.
               </li>
-              <li>
-                Choosing only the large intestine ASCT+B table and starting from
-                there will make your job a lot easier!
-              </li>
-            </ul>
+            </ol>
 
             <details class="story-quiz__hint">
-              <summary>
+              <summary class="hra-button hra-button--text">
                 <img src="images/quiz-hint.svg" alt="" />
-                Hint
+                <span>Show a hint</span>
               </summary>
               <div class="story-quiz__hint-content">
-                <p>If you're stuck, watch this tutorial video:</p>
+                <p>Watch a short tutorial on using the ASCT+B Reporter:</p>
                 <p>
                   <a
                     href="https://www.youtube.com/embed/pzUFmDhQEO8"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="linkbutton"
-                    aria-label="Watch video (opens in a new tab)"
-                    >Watch video
+                    class="hra-button hra-button--text"
+                    aria-label="Watch the tutorial video (opens in a new tab)"
+                    >Watch the tutorial
                     <img
                       src="../../shared/assets/images/arrow.svg"
                       alt=""
@@ -2349,7 +2351,7 @@
             </details>
 
             <fieldset class="story-quiz__choices">
-              <legend>Hey I know! Squiggy's cell type is ...</legend>
+              <legend>Select Squiggy's cell type</legend>
               <label class="radiochoice">
                 <input type="radio" name="radiochoice" value="Choice1" />
                 <span>Sebocyte</span>
@@ -2367,8 +2369,12 @@
                 <span>Subepithelial membrane</span>
               </label>
             </fieldset>
-            <button type="button" class="choiceresult" data-story-quiz-check>
-              Check Answer
+            <button
+              type="button"
+              class="hra-button hra-button--filled choiceresult"
+              data-story-quiz-check
+            >
+              Check answer
             </button>
             <p
               id="result"
