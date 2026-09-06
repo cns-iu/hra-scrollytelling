@@ -174,7 +174,8 @@ Story 3's shared intro and dialogue timelines live in `story/3/js/animations.js`
 timelines live in `story/3/js/rui-animations.js`.
 
 Story 4 owns its presentation, static accessibility layout, motion gate, particle runtime, configuration initializer,
-and three focused animation modules in `story/4/`. It defaults to a
+and three focused animation modules in `story/4/`. Its entry point injects GSAP, ScrollTrigger and the particle runtime
+only when the motion gate allows them to run, so a reduced-motion visitor fetches none of that ~152 KB. It defaults to a
 readable `.story4-flowing` document when JavaScript is unavailable, reduced motion is requested, or the viewport is
 too short for pinned scenes. Portrait phone widths retain the enhanced presentation. Its enhanced header provides a
 visible control to hide ambient animation.
@@ -208,6 +209,12 @@ motion contracts, fragment and ARIA references, new-tab safety, and the absence 
 runtimes. It also freezes the known duplicate-ID signatures in the embedded SVG artwork for Stories 2 and 3 so new ID
 regressions fail without presenting existing generated-artwork debt as newly introduced. Story 4 has no such entry;
 its IDs are unique and the checker asserts that directly.
+
+`tools/png-codec.mjs` is the repository's only image-processing dependency: a self-contained PNG decoder,
+area-averaging resampler and encoder over `node:zlib`, shared by `tools/generate-story4-images.mjs` and
+`tools/generate-story6-images.mjs`. It handles 8-bit RGB and RGBA and rejects palette, 16-bit and interlaced files
+rather than mangling them, so a generator skips what it cannot safely resample. The repository declares no npm
+dependencies and assumes no image binaries, which is why this exists rather than sharp or ImageMagick.
 
 Each retained prototype owns its exclusive images, videos, models, and dedicated presentation beneath its directory.
 Prototype-only shared artwork lives under `prototypes/shared/`; assets shared with a maintained story live under

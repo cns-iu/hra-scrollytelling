@@ -169,6 +169,46 @@ keeps it off that edge. Where the plate is width-bound rather than height-bound 
 the narrowest phones - the plate spans the full width and the 1rem is measured
 from the viewport instead.
 
+## Assistive technology
+
+Every illustration SVG carries `aria-hidden="true"`, and that is deliberate
+rather than inherited. Each scene's prose states in text what its artwork shows,
+so the illustrations are visual restatement rather than additional information;
+exposing them would make a screen reader read the same content twice.
+
+Scene 8 is the one worth re-checking if the artwork changes, because its RDF
+table looks like content. Its only real text is "Left Female Kidney", which the
+prose already gives, and the table itself is a raster, so it carries nothing to
+assistive technology either way. If a scene ever gains artwork whose meaning is
+*not* in its prose, give that SVG a real `<title>`/`<desc>` and drop
+`aria-hidden` for it rather than adding alt text to the plate.
+
+The Sketch exporter's `<title>Artboard</title>` and `<desc>Created with
+Sketch.</desc>` were removed. They were never announced — `aria-hidden` already
+hid them — so that was byte cleanup, not an accessibility fix.
+
+## Loading
+
+The animation runtime is not declared in `index.html`. `js/story4.js` injects
+GSAP, ScrollTrigger and `js/particles.js` inside the `hraStory4MotionEnabled`
+gate, so a reduced-motion visitor fetches none of that ~152 KB and gets the
+static document instead.
+
+The rasters, by contrast, all load up front, and an attempt to defer them was
+reverted. `loading="lazy"` is an HTML `<img>` attribute and is **ignored on SVG
+`<image>`**, so deferral needs a JavaScript `href` swap. Stripping the `href` at
+runtime does not work either: Chrome's preload scanner requests the images
+during parse — measured at +49ms against +163ms for the inline script that would
+strip them — so the requests are already in flight. The only approach that
+defers is authoring `data-href` in the markup, which blanks every illustration
+with JavaScript disabled and drops the artwork out of `check-local-links.mjs`,
+which scans only `href`/`src`/`srcset`. Weigh those costs before trying again.
+
+`npm run images:story4` keeps the rasters near twice their rendered size, taking
+targets from each `<image>`'s width attribute. It is idempotent and skips any
+file the resample would enlarge — photographic sources compress better at their
+original scale.
+
 ## Traps
 
 Things that look like bugs but are not, and things that are easy to break:
