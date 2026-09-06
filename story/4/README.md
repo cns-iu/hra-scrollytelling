@@ -70,16 +70,45 @@ the last step; the base value is `90svh`, which with the step's own `55svh`
 margin holds the plate for roughly `45svh` past the last step. Stacked, the band
 is only `42svh`, so it unsticks far later and the override drops to `30svh`.
 
-Scene 3 overrides it to `130svh` (`60svh` stacked). Its prose is one short
-merged paragraph, so both of its beats hang off a single step and finish 35% of
-a viewport past it - much further out than any other scene. The override is keyed
-`:has(.scene3)`, to the plate rather than a position, so renumbering cannot
-detach it.
+Scene 3 is a held scene, so its beats finish inside the hold and it needs no
+extra outro in two columns. Stacked, where there is no hold, it keeps a `60svh`
+override. See "Held scenes".
 
 **Check this after changing step spacing, beat offsets, or the number of steps in
 a scene.** For every scene, the section's release point (`section.bottom -
 stage.height`) must sit after both the last step's top and the last beat's `end`.
 Scene 1's beat slack is the tightest, around 150px on a short viewport.
+
+## Held scenes
+
+`.story4-scene--hold` stops the prose as well as the artwork: the step sticks
+near the top of the viewport, the reader scrolls through the illustration's beats
+with the text standing still, and only then does the column move on. Scene 3 is
+the case for it - one short paragraph against an illustration that changes twice,
+where the artwork is the content.
+
+Three things have to line up, and each has a reason:
+
+- **The hold's length is `.story4-scene__hold`, an empty spacer after the step -
+  never the step's own margin.** A sticky box is constrained to its containing
+  block's content box *reduced by its own margins*, so `margin-bottom` on the
+  step buys it nothing: the margin box and the content box grow together and the
+  travel stays exactly zero. Only a sibling adds room. `--story4-scene-hold` is
+  that spacer's height and therefore the distance the step travels before it
+  unsticks.
+- **The step sticks at the prose column's leading padding** (`top: 35svh`), which
+  is where it already sits when the section reaches the top of the viewport, so
+  it settles rather than jumps.
+- **The beats key to the section, not the step.** ScrollTrigger measures a
+  trigger's position once per refresh and would read a stuck element's shifted
+  rect, so a sticky element must never be a trigger. `#scene3-hold` is that
+  handle, and its top is also the moment the step locks.
+
+Stacked, there is no hold: the stage is a band across the top 42svh, so a held
+step would sit behind it. The spacer collapses to `0`, the step goes back to
+`static`, and the beats return to `#Change8` with their original spans. That
+split lives in a `gsap.matchMedia()` block in `js/diagram-overview.js`, keyed to
+the same 75rem breakpoint as the CSS - change one and change the other.
 
 ## Traps
 
@@ -110,6 +139,12 @@ Things that look like bugs but are not, and things that are easy to break:
   the plate had left, while scenes 1 and 3 ran 172px and 529px of animation past
   it. Scene 3's was self-inflicted - a `start: "top -40%"` added when its three
   steps were merged into one. See "Outro budget".
+- **A step's own margin cannot make it sticky.** The sticky constraint rect is
+  the containing block's content box minus the element's own margins, so a step
+  with `margin-bottom: 80svh` inside a column sized by that same margin has zero
+  travel and silently behaves as `static` - computed style still reads `sticky`,
+  which makes it look like a browser bug. Hold distance comes from a sibling. See
+  "Held scenes".
 - **The splash gradient must stay dark.** `--story4-inverse-surface` and
   `-muted` carry white text, so they do not follow the theme. See the comment in
   `theme.css`.

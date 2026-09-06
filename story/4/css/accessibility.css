@@ -212,4 +212,11 @@ html.story4-flowing #four .story4-scene .story4-scene__stage [class^="scene"] {
 html.story4-flowing #four .story4-step {
     max-width: none;
     margin-bottom: 1.5rem;
+    /* Releases a held scene's step along with the stage above. */
+    position: static;
+}
+
+/* The hold spacer is pure scroll budget; flowing, there is nothing to hold. */
+html.story4-flowing #four .story4-scene__hold {
+    height: 0;
 }

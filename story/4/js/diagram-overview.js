@@ -148,45 +148,72 @@ export function setupDiagramOverview() {
         opacity: 1,
       });
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#Change8",
-          start: "top",
-          end: "+=15%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Systempt4,#Purple", {
-        opacity: 1,
-      });
+    /*
+     * Scene 3's prose is one short paragraph carrying two artwork beats, and the
+     * two layouts want different timing for them.
+     *
+     * Held (two columns): the step is sticky, so the beats hang off the SECTION
+     * instead. ScrollTrigger measures a trigger's position once per refresh and
+     * would read a stuck element's shifted rect, so a sticky element must never
+     * be a trigger. The section's top is also the moment the step locks, which
+     * is where the sequence should begin. It runs long - 55% of a viewport - so
+     * there is something to scroll through while the text stands still.
+     *
+     * Stacked: the stage is a band across the top of the viewport and the prose
+     * scrolls beneath it as in every other scene, so the beats stay keyed to the
+     * step and keep their original, shorter spans. See css/scenes.css.
+     */
+    gsap.matchMedia().add(
+      {
+        held: "(min-width: 75.0625rem)",
+        stacked: "(max-width: 75rem)",
+      },
+      (context) => {
+        const { held } = context.conditions;
+        const trigger = held ? "#scene3-hold" : "#Change8";
+        const first = held
+          ? { start: "top top", end: "+=25%" }
+          : { start: "top", end: "+=15%" };
+        const second = held
+          ? { start: "top -25%", end: "+=30%" }
+          : { start: "top -15%", end: "+=20%" };
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          /* Scene 3's prose is one block now, so this second beat rides the
-             same element as the first, picking up where the first one ends.
-             It used to start 40% of a viewport later, which ran the sequence
-             on past the point where the sticky stage unsticks - the artwork
-             finished changing after it had scrolled out of view. */
-          trigger: "#Change8",
-          start: "top -15%",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Initial", {
-        opacity: 0,
-      })
-      .to("#Combined", {
-        opacity: 1,
-      });
+        gsap
+          .timeline({
+            scrollTrigger: {
+              autoAlpha: 1,
+              trigger,
+              start: first.start,
+              end: first.end,
+              scrub: true,
+              duration: 3,
+              pin: false,
+            },
+          })
+          .to("#Systempt4,#Purple", {
+            opacity: 1,
+          });
+
+        gsap
+          .timeline({
+            scrollTrigger: {
+              autoAlpha: 1,
+              trigger,
+              start: second.start,
+              end: second.end,
+              scrub: true,
+              duration: 3,
+              pin: false,
+            },
+          })
+          .to("#Initial", {
+            opacity: 0,
+          })
+          .to("#Combined", {
+            opacity: 1,
+          });
+      },
+    );
 
     gsap
       .timeline({

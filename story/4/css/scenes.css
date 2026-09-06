@@ -155,15 +155,39 @@
 }
 
 /*
- * Scene 3's prose was merged into a single short paragraph, so its two artwork
- * beats hang off one step and run 35% of a viewport past its top - much further
- * past the last step than any other scene. It buys the extra room here rather
- * than compressing the beats, which suits the scene anyway: the text is one
- * line and the artwork is the content. Keyed to the plate, not a position, so
- * it survives renumbering.
+ * A held scene stops its prose as well as its artwork, so the reader scrolls
+ * through the illustration's beats with the text standing still, and only then
+ * does the column move on. Scene 3 is the case for it: one short paragraph
+ * against an illustration that changes twice, where the artwork is the content.
+ *
+ * The step sticks at the prose column's own leading padding, so it locks exactly
+ * where it already sits when the section reaches the top of the viewport - it
+ * settles rather than jumps.
+ *
+ * The hold's length is the SPACER's height, not the step's margin. A sticky box
+ * is constrained to its containing block's content box reduced by its own
+ * margins, so a step's `margin-bottom` buys it exactly nothing: margin box and
+ * content box grow together and the travel stays zero. Only a sibling adds room.
+ * That is what `.story4-scene__hold` is - an empty block after the step whose
+ * height is the distance the step can travel before it unsticks.
+ *
+ * The beats span 55svh of it; the remaining 25svh leaves the finished artwork on
+ * screen, still held, before the prose releases. They are keyed to the section
+ * rather than to the step, because ScrollTrigger measures a trigger's position
+ * once per refresh and would read a stuck element's shifted rect. See
+ * js/diagram-overview.js.
  */
-#four .story4-scene:has(.scene3) {
-    --story4-scene-outro: 130svh;
+#four .story4-scene--hold {
+    --story4-scene-hold: 80svh;
+}
+
+#four .story4-scene--hold .story4-step {
+    position: sticky;
+    top: 35svh;
+}
+
+#four .story4-scene__hold {
+    height: var(--story4-scene-hold);
 }
 
 /* The stage is only the sticky positioning context; the plate inside carries
@@ -294,9 +318,6 @@
         grid-template-columns: minmax(0, 1fr);
     }
 
-    #four .story4-scene:has(.scene3) {
-        --story4-scene-outro: 60svh;
-    }
 
     /*
      * Stacked, the stage becomes a sticky band at the top of the viewport and
@@ -334,5 +355,20 @@
 
     #four .story4-step {
         margin-bottom: 40svh;
+    }
+
+    /*
+     * No hold when stacked. The stage is a band across the top 42svh, so a step
+     * held near the top of the viewport would sit behind it. The prose scrolls
+     * beneath the band as it does in every other scene, and the beats stay keyed
+     * to the step - see the matchMedia block in js/diagram-overview.js.
+     */
+    #four .story4-scene--hold .story4-step {
+        position: static;
+    }
+
+    #four .story4-scene--hold {
+        --story4-scene-hold: 0px;
+        --story4-scene-outro: 60svh;
     }
 }
