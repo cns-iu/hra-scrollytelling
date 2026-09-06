@@ -122,7 +122,7 @@ original URLs retained as compatibility pages. These are not primary entry point
 │   ├── shared/                  # Shared prototype chrome, typography, and images
 │   └── visualizing-cells/       # Prototype implementation, styles, images, and video
 ├── docs/               # Architecture and asset-migration records
-└── tools/              # Dependency-free repository validation
+└── tools/              # Dependency-free checks and asset generators
 ```
 
 Relative paths inside a story resolve from `story/<number>/`: story-owned files as `css/…`, `js/…`, `images/…` and
@@ -142,9 +142,8 @@ All six stories keep end-matter content in `end-matter.json` within the owning s
 `story-end-matter.js` module validates and renders that single source into each story's small end-matter placeholder.
 End matter requires JavaScript and may be omitted from Reader View. The former root `style.css` has been removed. All
 six stories use the shared two-link story navigation; Home fills the
-unavailable previous slot on Story 1 and the unavailable next slot on Story 6. Story 2 retains one remote Inter
-request for its embedded SVG labels, the only third-party font request in the repository; every other story uses the
-shared self-hosted Metropolis and Nunito Sans faces.
+unavailable previous slot on Story 1 and the unavailable next slot on Story 6. Every story uses the shared self-hosted Metropolis and
+Nunito Sans faces; the repository makes no third-party font request.
 
 Stories 2, 3, 4 and 5 also share their scroll timelines. The intro typewriter and the container, bubble and dialogue
 cross-fades live once in `shared/js/narrative-timeline.js`; each story supplies only its own scene triggers. The
@@ -330,21 +329,19 @@ npm run check
 
 `npm run check` runs the link, maintained-page, and Story 6 checkers in turn. They can also be run individually as
 `npm run check:links`, `npm run check:pages`, and `npm run check:story6`. There are still no installed dependencies;
-`package.json` exists only to name these commands.
+`package.json` names these checks and the asset generators under `tools/`. `.github/workflows/check.yml` runs
+`npm run check` on every push and pull request, so a drifting page fails in CI as well as locally.
 
-Also verify:
+`tools/` also holds the asset generators: `images:story6` and `splash:story6` remain re-runnable, while both Story 4
+generators are spent — the WebP migration rewrote the `.png` references they select their sources from. Provenance and
+regeneration commands for every generated asset are in [`docs/asset-map.md`](docs/asset-map.md).
 
-- Local `href`, `src`, and CSS `url()` references resolve.
-- IDs are unique and fragment/ARIA references point to existing elements.
-- The maintained-page checker reports only the documented embedded-SVG duplicate-ID baselines for Stories 2–4.
-- Page chrome still matches `shared/fixtures/`; the checker fails if any page's Menu, footer, or appearance controls
-  drift from it.
-- Changed color combinations meet their required contrast ratios.
-- The page is keyboard operable at 320 CSS pixels and up to 400% zoom.
-- Focus is visible and is not obscured.
-- No content is clipped after text-spacing changes.
-- Story structure and extraction-hint changes preserve the complete article in Firefox Reader View.
-- New or changed paper, publication, and Zenodo SOP links use canonical DOI URLs when a verified DOI is available
+The checkers cover what can be automated: local `href`, `src` and CSS `url()` references, unique IDs, fragment and
+ARIA resolution, chrome drift against `shared/fixtures/`, and the documented duplicate-ID baselines.
+
+The manual checks that follow — contrast, keyboard operation, zoom and reflow, Reader View, DOI links — are kept as one
+numbered procedure in [`AGENTS.md`](AGENTS.md#editing-and-validation) rather than repeated here, so there is a single
+list to follow and to update.
 
 ## Known technical debt
 

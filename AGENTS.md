@@ -65,13 +65,18 @@ footer, and end-of-story navigation use namespaced foundations under:
   Home in Story 1's previous slot, and Home in Story 6's next slot.
 - `shared/css/story-end-matter.css`, `shared/js/story-end-matter.js`, and `shared/js/story-end-matter-schema.mjs` for the
   JSON-authored Resources, Acknowledgments, and References sections used by all maintained stories.
+- `shared/js/theme-bootstrap.js` for the stored appearance and contrast preferences. It must stay a blocking classic
+  script in `<head>` ahead of the stylesheets: a module script is deferred and would flash the system appearance
+  first. Every maintained page loads it, and `tools/check-maintained-pages.mjs` asserts that it does.
 - `shared/js/main.js`, `shared/js/menu.js`, `shared/js/theme.js`, `shared/js/contrast.js`, and
-  `shared/js/back-to-top.js` for progressive enhancement. `shared/js/navigation-only.js` is retained for pages that
-  deliberately omit appearance controls; no maintained page currently uses it.
+  `shared/js/back-to-top.js` for progressive enhancement. All seven maintained pages load `main.js`.
+  `shared/js/navigation-only.js` is the entry point for the three prototypes, which deliberately omit appearance
+  controls; no maintained page uses it.
 - `shared/js/narrative-timeline.js` for the scroll timelines shared by Stories 2-5, and
   `shared/js/motion-preferences.js` for the motion gate shared by `narrative-motion.js` and Story 4's `motion.js`.
-- `shared/fixtures/` for the canonical Menu, footer, and appearance-control markup. Every maintained page must match
-  it; `tools/check-maintained-pages.mjs` fails on any drift.
+- `shared/fixtures/` for the canonical Menu and footer markup: `menu.html` and `footer.html`. The appearance and
+  contrast fieldsets live inside the Menu, so they are sliced out of `menu.html` rather than stored separately — edit
+  them there. Every maintained page must match; `tools/check-maintained-pages.mjs` fails on any drift.
 
 Keep essential shared component markup in every consuming HTML page; runtime-rendered story end matter is the explicit
 exception. Add the `site-chrome` class to each component root so story appearance changes do not affect story artwork.
@@ -286,11 +291,16 @@ After changes:
    `node --input-type=module --check < file` for ES modules.
 3. Run `npm run check`, which runs the link, maintained-page, and Story 6 checkers in turn, and investigate any new
    failure. The individual scripts are `npm run check:links`, `check:pages`, and `check:story6`.
-4. Confirm IDs are unique and all fragment and ARIA ID references resolve.
-5. Recalculate affected contrast pairs, in both Light and Dark.
-6. Test keyboard and disclosure behavior.
-7. Inspect at 320 CSS pixels, 200% and 400% zoom, reduced motion, reduced transparency, increased contrast, and forced
-   colors when a browser is available.
-8. Inspect the complete linear article in Firefox Reader View after changing story structure or content extraction
+4. Confirm IDs are unique and all fragment and ARIA ID references resolve. The maintained-page checker should report
+   only the documented embedded-SVG duplicate-ID baselines for Stories 2-4.
+5. Confirm page chrome still matches `shared/fixtures/`. The checker fails if any page's Menu, footer, or appearance
+   controls drift from it; `menu.html` is also the source of the appearance and contrast blocks.
+6. Recalculate affected contrast pairs, in both Light and Dark.
+7. Test keyboard and disclosure behavior, and confirm focus stays visible and unobscured.
+8. Inspect at 320 CSS pixels, 200% and 400% zoom, reduced motion, reduced transparency, increased contrast, and forced
+   colors when a browser is available. Confirm no content is clipped after text-spacing changes.
+9. Inspect the complete linear article in Firefox Reader View after changing story structure or content extraction
    hints.
-9. Report what changed, what was intentionally unchanged, which validations passed, and which manual checks remain.
+10. Confirm new or changed paper, publication, and Zenodo SOP links use canonical DOI URLs when a verified DOI is
+    available.
+11. Report what changed, what was intentionally unchanged, which validations passed, and which manual checks remain.

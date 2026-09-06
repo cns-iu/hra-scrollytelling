@@ -2,7 +2,7 @@
   "name": "hra-scrollytelling",
   "version": "1.0.0",
   "private": true,
-  "description": "Human Reference Atlas scrollytelling stories. Static HTML, CSS and JavaScript with no build step; these scripts only name the repository's existing checks.",
+  "description": "Human Reference Atlas scrollytelling stories. Static HTML, CSS and JavaScript with no build step; these scripts name the repository's checks and its asset generators.",
   "license": "MIT",
   "type": "module",
   "engines": {

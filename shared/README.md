@@ -35,8 +35,8 @@ Pages with the enhanced shared Menu load the module entry point:
 <script type="module" src="shared/js/main.js"></script>
 ```
 
-Story 1 through Story 5 and the organized Scrollytelling Effects, Organ Example, and Visualizing Cells prototypes load
-only navigation and back-to-top behavior:
+The Scrollytelling Effects, Organ Example, and Visualizing Cells prototypes load only navigation and back-to-top
+behavior, because they offer no appearance controls:
 
 ```html
 <script type="module" src="shared/js/navigation-only.js"></script>
@@ -51,8 +51,8 @@ before component tokens and styles. `navigation.css` owns only the core Menu and
 `appearance-controls.css` follows it on every maintained page; all seven offer theme and contrast controls.
 
 Every maintained page, landing and story alike, loads `shared/js/main.js` as its entry point; that module initializes
-the canonical shared Menu, appearance, contrast, and back-to-top modules. `shared/js/navigation-only.js` remains
-available for a page that deliberately omits appearance controls, but no maintained page currently uses it.
+the canonical shared Menu, appearance, contrast, and back-to-top modules. `shared/js/navigation-only.js` is the
+entry point for the three prototypes above, which deliberately omit appearance controls; no maintained page uses it.
 
 ## Markup contract
 
@@ -77,7 +77,8 @@ available for a page that deliberately omits appearance controls, but no maintai
 - Use `aria-current="page"` on the current internal page link.
 - Keep the footer in a native `footer` and each link collection in an appropriately named `nav`.
 - Use the organization marks under `shared/assets/logos/` for the landing hero and canonical footer.
-- Add `site-chrome--dark` to footers on Story 1 through Story 5 so they use the fixed Dark treatment.
+- Do not add `site-chrome--light` or `site-chrome--dark` to a maintained page: those modifiers pin the chrome to one
+  appearance and would override the visitor's choice. They belong only to the prototypes, which offer no controls.
 - Add `data-back-to-top` to the footer's same-page link so the shared enhancement moves focus to the main target.
 - Keep previous and next story links in a separate `nav` labeled “Story navigation.”
 
@@ -90,9 +91,9 @@ Essential landmarks and links must remain in the page HTML. Shared JavaScript en
 available appearance controls; it does not fetch or inject component markup. Appearance choices remain hidden if
 JavaScript is unavailable so the page does not present controls that cannot change the saved preference.
 
-The landing page and Story 6 use the complete shared Menu with System settings, Light, Dark, and High contrast
-controls. Story 1 through Story 5 use the navigation-only variant. Shared component styles remain scoped to the Menu,
-skip link, footer, and any shared story navigation.
+All seven maintained pages, landing and Stories 1 through 6 alike, use the complete shared Menu with System settings,
+Light, Dark, and High contrast controls. Shared component styles remain scoped to the Menu, skip link, footer, and any
+shared story navigation.
 
 `selection.css` applies theme-aware selection colors only inside `.site-chrome` components. Light chrome uses deep
 plum with white text, while Dark chrome uses pale pink with deep burgundy text. The stylesheet defers to operating-

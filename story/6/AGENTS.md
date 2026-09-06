@@ -2,7 +2,7 @@
 
 ## Scope and structure
 
-- Treat `index.html`, the styles in `css/`, and `js/story6.js` as one feature even though the HTML entry point remains at the repository root
+- Treat `index.html`, the styles in `css/`, and `js/story6.js` as one feature; the entry point is `story/6/index.html`, and the root `story6.html` is only a redirect stub preserving the published URL
 - When creating or substantially restructuring files, keep each file at 500 lines or fewer where practical; split larger files by clear responsibility
 - Keep `js/story6.js` as the small entry point; place focused UI, animation, reveal, and layout responsibilities in `js/` modules
 - Keep `css/base.css` responsible for Story 6 typography tokens, accessibility, and page primitives; use `../../shared/css/fonts.css` for font declarations and the repository-level `shared/` styles and modules for the Menu and appearance controls
@@ -133,7 +133,7 @@ Preview from the repository root so root-relative project paths behave like depl
 python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000/story6.html` and complete this smoke test:
+Then open `http://localhost:8000/story/6/` and complete this smoke test:
 
 - At 320, 375, 768, and 1440 CSS pixels, confirm there is no horizontal scroll and the splash title stays inside its card
 - Distinguish desktop device-emulation artifacts from behavior reproduced in an actual mobile browser

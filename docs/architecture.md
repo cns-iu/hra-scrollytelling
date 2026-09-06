@@ -159,8 +159,8 @@ Story 2 owns its story-specific scenes, video treatment, and legacy quiz layout 
 Its focused quiz component remains separated into `story/2/css/quiz.css` and `story/2/js/quiz.js`. Story 2
 owns its scroll-driven runtime in `story/2/js/animations.js`; only this story loads MotionPathPlugin because its
 motion-path scene consumes that plugin. Story 2
-owns its scoped quiz color tokens and retains a single remote Inter request because its generated inline SVG labels
-still specify Inter. Its narrative body uses the shared self-hosted Nunito Sans foundation.
+owns its scoped quiz color tokens. Its inline SVG labels were Sketch exports naming Inter; they now specify the
+shared self-hosted Nunito Sans, so the repository makes no third-party font request.
 
 Story 3 owns its story-specific scene and embedded-artwork presentation under `story/3/css/styles.css`, and its
 confirmed narrative scenes, collision-state artwork, and kidney variations under
