@@ -346,11 +346,13 @@ list to follow and to update.
 
 ## Known technical debt
 
-- Several filenames contain spaces, making path changes more error-prone.
-- Some story documents contain large embedded image data.
-- Story 2's inline SVG artwork contains 11 pre-existing repeated ID values; they are not current interaction targets,
-  but a dedicated cleanup requires visual regression testing
-- The drag-and-drop answer demo and its assets are organized together under `prototypes/drag-and-drop/`
+- Stories 2 and 3 carry pre-existing repeated ID values in their inline SVG artwork: 9 and 18 distinct ids
+  respectively, matching the baselines in `tools/check-maintained-pages.mjs`, which fails if the set changes. They are
+  not current interaction targets, but a dedicated cleanup requires visual regression testing.
+- The `.git` directory is roughly 822 MB against a 152 MB working tree, from large binaries committed and later
+  deleted under the retired `img/` and `stories/` layouts. A fresh clone therefore costs far more than the site needs.
+  Reducing it means rewriting history, which breaks every existing clone and needs explicit approval; see the
+  repository-safety rules in [`AGENTS.md`](AGENTS.md).
 - Story 5's six videos are QuickTime-only (`ftyp` brand `qt  `) and will not play in Firefox. Their streams are
   already H.264/AAC, so the fix is a container remux, not a re-encode; it needs `ffmpeg`, which is not installed
   and which the dependency policy forbids adding. The `<source>` elements now declare `type="video/quicktime"`
