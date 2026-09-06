@@ -387,7 +387,8 @@ commit. A reviewer should be able to identify the affected story or shared compo
 
 ## Validation boundaries
 
-The local-reference checker statically validates HTML attributes, HTML fragments, and CSS `url()` values. It cannot
+The local-reference checker statically validates HTML attributes, HTML fragments, CSS `url()` values, and the local
+link fields in the story `end-matter.json` files. It cannot
 prove that dynamically constructed JavaScript paths, animation timelines, third-party libraries, service workers, or
 visual layouts still behave correctly. Every migration therefore also requires a real-browser review of the affected
 page.

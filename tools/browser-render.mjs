@@ -56,7 +56,7 @@ function renderDocument(executable, profilePath, pageUrl) {
             pageUrl,
         ];
         const child = spawn(executable, args, {
-            cwd: executable.toLowerCase().endsWith(".exe") ? "/mnt/c/Windows" : projectRoot,
+            cwd: executable.toLowerCase().endsWith(".exe") ? windowsCwd() : projectRoot,
             stdio: ["ignore", "pipe", "pipe"],
         });
         const output = [];
@@ -84,6 +84,19 @@ function renderDocument(executable, profilePath, pageUrl) {
             resolve(Buffer.concat(output).toString("utf8"));
         });
     });
+}
+
+/**
+ * Working directory for a Windows browser launched from WSL.
+ *
+ * Spawning a .exe with a WSL cwd makes Windows warn and fall back, so hand it a
+ * Windows-side directory. SystemRoot names it when the interop environment
+ * exposes it; /mnt/c/Windows is the default mount otherwise.
+ *
+ * @returns {string} Directory to spawn the browser from
+ */
+function windowsCwd() {
+    return process.env.SYSTEMROOT_WSL ?? "/mnt/c/Windows";
 }
 
 /**

@@ -32,12 +32,15 @@ Create only the directories the implementation actually needs:
 ```text
 story/7/
 ├── index.html
-├── README.md
 ├── css/
 ├── images/
 ├── js/
 └── video/
 ```
+
+A per-story `README.md` or `AGENTS.md` is optional and worth adding only where the story has decisions a maintainer
+would otherwise have to reconstruct; today Story 4 keeps a `README.md` and Story 6 an `AGENTS.md`, and Stories 1, 2, 3
+and 5 have neither.
 
 - Keep Story 7-exclusive presentation and scripts in this directory
 - Keep Story 7-exclusive images and video in the corresponding local asset directories

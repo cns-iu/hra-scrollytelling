@@ -8,7 +8,7 @@ const allowKnown = process.argv.includes("--allow-known");
 // "fixtures" holds canonical chrome templates whose {{root}} placeholders are
 // resolved per page by check-maintained-pages.mjs, not by a browser.
 const ignoredDirectories = new Set([".agents", ".codex", ".git", "fixtures"]);
-const scannableExtensions = new Set([".css", ".html"]);
+const scannableExtensions = new Set([".css", ".html", ".json"]);
 
 // Remove an entry when its underlying reference is repaired or intentionally deleted.
 const knownMissingReferences = new Set([
@@ -58,6 +58,37 @@ function extractHtmlReferences(source) {
         } else {
             references.push(value);
         }
+    }
+
+    return references;
+}
+
+/*
+ * Local links authored in JSON, which today means the story end-matter files.
+ * Three of them cross-link to sibling stories, and nothing validated those
+ * paths while the scan covered only markup and stylesheets.
+ */
+function extractJsonReferences(source) {
+    const references = [];
+
+    const walk = (node) => {
+        if (Array.isArray(node)) {
+            node.forEach(walk);
+        } else if (node && typeof node === "object") {
+            for (const [key, value] of Object.entries(node)) {
+                if (typeof value === "string" && /^(?:href|image|logo|src)$/iu.test(key)) {
+                    references.push(value);
+                } else {
+                    walk(value);
+                }
+            }
+        }
+    };
+
+    try {
+        walk(JSON.parse(source));
+    } catch {
+        // A malformed end-matter file is reported by the maintained-page check.
     }
 
     return references;
@@ -142,9 +173,15 @@ for (const file of files.filter((candidate) => path.extname(candidate) === ".htm
 for (const file of files) {
     const extension = path.extname(file).toLowerCase();
     const source = await readFile(file, "utf8");
-    const references = extension === ".html"
-        ? extractHtmlReferences(source)
-        : extractCssReferences(source);
+    let references;
+
+    if (extension === ".html") {
+        references = extractHtmlReferences(source);
+    } else if (extension === ".json") {
+        references = extractJsonReferences(source);
+    } else {
+        references = extractCssReferences(source);
+    }
 
     for (const reference of new Set(references)) {
         const trimmedReference = reference.trim();

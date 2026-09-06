@@ -112,7 +112,12 @@
 cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 story/6/images/transition-N-1920.webp -o story/6/images/transition-N-960.webp
 ```
 
-- Run the command from the repository root and do not install `cwebp` or any other tool without explicit approval
+- Run the command from the repository root and do not install `cwebp` or any other tool without explicit approval.
+  `cwebp` is not installed here, so that command cannot be run as written; it records the settings the current files
+  were produced with. Without approval to install it, re-encode through the repository's own browser-based encoder
+  instead — `tools/generate-story6-splash.mjs` shows the canvas `toDataURL("image/webp", quality)` path, which needs
+  only a Chromium-compatible browser that already exists on the machine. Note that it re-encodes from a lossy source,
+  so prefer regenerating from the 3840 master rather than the 1920 variant
 - Regenerate responsive PNG candidates with `node tools/generate-story6-images.mjs`; the tool uses only Node built-ins and preserves RGB/RGBA transparency and source color metadata
 - Regenerate the responsive splash with `node tools/generate-story6-splash.mjs --browser=/path/to/chromium`; use an existing Chromium-compatible browser and do not install one for this task without approval
 
