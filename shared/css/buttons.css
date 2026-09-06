@@ -67,6 +67,11 @@
     user-select: none;
 }
 
+/* `display` here would otherwise defeat the hidden attribute. */
+.hra-button[hidden] {
+    display: none;
+}
+
 /*
  * State layer.
  *
