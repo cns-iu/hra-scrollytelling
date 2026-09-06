@@ -123,6 +123,16 @@
     --hra-outline-muted: var(--hra-light-outline-muted);
     --hra-acknowledgments: var(--hra-light-acknowledgments);
     --hra-on-acknowledgments: var(--hra-light-on-acknowledgments);
+
+    /*
+     * State-layer opacities.
+     *
+     * The Material state layer, shared by every button and by the Menu FAB.
+     * Appearance-independent, so they are declared once and never remapped.
+     */
+    --hra-state-hover-opacity: 8%;
+    --hra-state-focus-opacity: 12%;
+    --hra-state-pressed-opacity: 12%;
 }
 
 :root[data-theme="dark"] {
@@ -226,20 +236,20 @@
     --site-chrome-color-outline-variant: var(--hra-light-outline-variant);
     --site-chrome-color-acknowledgments: var(--hra-light-acknowledgments);
     --site-chrome-color-on-acknowledgments: var(--hra-light-on-acknowledgments);
-    --site-chrome-color-footer: var(--hra-light-secondary);
-    --site-chrome-color-on-footer: var(--hra-light-on-primary);
+    --site-chrome-color-footer: var(--hra-light-surface-variant);
+    --site-chrome-color-on-footer: var(--hra-light-on-surface-variant);
     --site-chrome-color-footer-border: var(--hra-light-outline-muted);
     --site-chrome-color-focus: var(--hra-light-secondary);
     --site-chrome-color-focus-contrast: var(--hra-light-on-primary);
     --site-chrome-shadow-color: rgb(32 30 61 / 18%);
     --site-chrome-shadow-menu: 0 1rem 2.5rem var(--site-chrome-shadow-color);
-    --site-chrome-fab-container: var(--hra-light-inverse-surface);
-    --site-chrome-fab-content: var(--hra-light-inverse-on-surface);
-    --site-chrome-fab-state-layer: var(--hra-light-inverse-on-surface);
+    --site-chrome-fab-container: var(--hra-light-primary-container);
+    --site-chrome-fab-content: var(--hra-light-on-primary-container);
+    --site-chrome-fab-state-layer: var(--hra-light-on-primary-container);
     --site-chrome-fab-focus-ring: var(--site-chrome-color-focus);
-    --site-chrome-fab-hover-state-opacity: 8%;
-    --site-chrome-fab-pressed-state-opacity: 12%;
-    --site-chrome-fab-focus-state-opacity: 12%;
+    --site-chrome-fab-hover-state-opacity: var(--hra-state-hover-opacity);
+    --site-chrome-fab-pressed-state-opacity: var(--hra-state-pressed-opacity);
+    --site-chrome-fab-focus-state-opacity: var(--hra-state-focus-opacity);
     --site-chrome-shadow-fab: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%),
         0 1px 18px 0 rgb(0 0 0 / 12%);
     --site-chrome-shadow-fab-raised: 0 5px 5px -3px rgb(0 0 0 / 20%), 0 8px 10px 1px rgb(0 0 0 / 14%),
@@ -309,15 +319,15 @@
     --site-chrome-color-outline-variant: var(--hra-dark-outline-variant);
     --site-chrome-color-acknowledgments: var(--hra-dark-acknowledgments);
     --site-chrome-color-on-acknowledgments: var(--hra-dark-on-acknowledgments);
-    --site-chrome-color-footer: var(--hra-dark-surface-container-lowest);
-    --site-chrome-color-on-footer: var(--hra-dark-on-surface);
+    --site-chrome-color-footer: var(--hra-dark-surface-variant);
+    --site-chrome-color-on-footer: var(--hra-dark-on-surface-variant);
     --site-chrome-color-footer-border: var(--hra-dark-outline);
     --site-chrome-color-focus: var(--hra-dark-primary);
     --site-chrome-color-focus-contrast: var(--hra-dark-surface-container-lowest);
     --site-chrome-shadow-color: rgb(0 0 0 / 58%);
-    --site-chrome-fab-container: var(--hra-dark-inverse-surface);
-    --site-chrome-fab-content: var(--hra-dark-inverse-on-surface);
-    --site-chrome-fab-state-layer: var(--hra-dark-inverse-on-surface);
+    --site-chrome-fab-container: var(--hra-dark-primary-container);
+    --site-chrome-fab-content: var(--hra-dark-on-primary-container);
+    --site-chrome-fab-state-layer: var(--hra-dark-on-primary-container);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -347,14 +357,14 @@
         --site-chrome-color-outline-variant: var(--hra-dark-outline-variant);
         --site-chrome-color-acknowledgments: var(--hra-dark-acknowledgments);
         --site-chrome-color-on-acknowledgments: var(--hra-dark-on-acknowledgments);
-        --site-chrome-color-footer: var(--hra-dark-surface-container-lowest);
-        --site-chrome-color-on-footer: var(--hra-dark-on-surface);
+        --site-chrome-color-footer: var(--hra-dark-surface-variant);
+        --site-chrome-color-on-footer: var(--hra-dark-on-surface-variant);
         --site-chrome-color-footer-border: var(--hra-dark-outline);
         --site-chrome-color-focus: var(--hra-dark-primary);
         --site-chrome-color-focus-contrast: var(--hra-dark-surface-container-lowest);
         --site-chrome-shadow-color: rgb(0 0 0 / 58%);
-        --site-chrome-fab-container: var(--hra-dark-inverse-surface);
-        --site-chrome-fab-content: var(--hra-dark-inverse-on-surface);
-        --site-chrome-fab-state-layer: var(--hra-dark-inverse-on-surface);
+        --site-chrome-fab-container: var(--hra-dark-primary-container);
+        --site-chrome-fab-content: var(--hra-dark-on-primary-container);
+        --site-chrome-fab-state-layer: var(--hra-dark-on-primary-container);
     }
 }
