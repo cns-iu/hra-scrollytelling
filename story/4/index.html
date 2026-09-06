@@ -3971,9 +3971,12 @@
         © 2026 Cyberinfrastructure for Network Science Center
       </p>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
-    <script src="js/particles.js"></script>
+    <!--
+      GSAP, ScrollTrigger and particles.js are loaded by js/story4.js, and only
+      when the motion gate allows them to run. Declared here they downloaded
+      about 150 KB for every visitor, including the reduced-motion readers who
+      never execute a line of them.
+    -->
     <script type="module" src="js/story4.js"></script>
   </body>
 </html>
