@@ -5,18 +5,11 @@
  * @returns {void}
  */
 export function setupSceneTriggers() {
-    // .scene1 is not pinned here: it uses a native sticky stage in scenes.css,
-    // so the illustration holds while its prose column scrolls past.
+    // Converted scenes are not pinned here: they use a native sticky stage in
+    // scenes.css, so the illustration holds while its prose column scrolls past.
+    // Only the scenes still on the talkbubble overlay pattern remain below.
 
 
-    ScrollTrigger.create({
-      trigger: ".scene5",
-      anticipatePin: 1,
-      start: "top top",
-      end: "+=400%",
-      pin: true,
-      pinSpacing: false,
-    });
     ScrollTrigger.create({
       trigger: ".scene6",
       anticipatePin: 1,
