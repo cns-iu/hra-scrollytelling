@@ -10,7 +10,8 @@ html:has(body#six) {
     --hra-primary-80: #ffb3b3;
     --hra-secondary-40: #201e3d;
     --hra-secondary-80: #c6c2ea;
-    --hra-secondary: var(--hra-secondary-40);
+    /* Story-6-private; must not shadow the theme-reactive shared --hra-secondary. */
+    --story6-secondary: var(--hra-secondary-40);
     --hra-secondary-fixed-dim: var(--hra-secondary-80);
     --hra-tertiary-30: #3d3d50;
     --hra-tertiary-90: #e2e0f8;
