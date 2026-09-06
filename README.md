@@ -226,6 +226,11 @@ Component rules in `landing/css/styles.css` use discrete scale roles rather than
 step down to the approved Display Small role on narrow viewports. The 11- and 12-pixel scale roles are retained as
 tokens but are not used for essential landing-page content.
 
+Story prose uses the body-large role — `--type-body-large-size`, `--type-body-large-line-height` and
+`--type-body-large-letter-spacing` — on every story, so paragraphs read the same from one story to the next. A story
+may still size its own distinct roles, such as a splash subtitle or an eyebrow, but not its ordinary paragraph text;
+`tools/check-maintained-pages.mjs` fails on a raw `font-size` in a story's prose rule.
+
 ### Navigation and appearance
 
 The fixed top-left Menu control provides quick access to the landing page, every story, and appearance preferences.

@@ -219,7 +219,6 @@
 #four .story4-step {
     /* The column governs the measure; no max-width needed here. */
     margin: 0 0 55svh;
-    line-height: 1.6;
     text-align: start;
     text-wrap: pretty;
 }

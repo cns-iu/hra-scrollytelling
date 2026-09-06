@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { validateEndMatter } from "../shared/js/story-end-matter-schema.mjs";
 
@@ -508,6 +508,32 @@ assertPage(
     "shared/css/narrative-foundation.css",
     "the episode block children must stay border-box so their padding cannot overflow the viewport",
 );
+
+/*
+ * Story prose uses the shared body-large role on every story. Story 4 carried a
+ * hard-coded 1.125rem from its original Inter design through the migration to
+ * the house Nunito Sans, so its paragraphs read a size larger than every other
+ * story's. A raw font-size on a story's prose is what that drift looked like.
+ */
+for (const story of stories) {
+    const styles = await Promise.all(
+        (await readdir(joinPath(story.dir, story.cssDir)))
+            .filter((name) => name.endsWith(".css"))
+            .map(async (name) => [name, await readSource(storyCss(story, name))]),
+    );
+
+    styles.forEach(([name, source]) => {
+        const proseRule = source.match(/[^{}]*\b(?:main p|story\d*-step|scene__prose)[^{}]*\{[^}]*\}/g) ?? [];
+
+        proseRule.forEach((rule) => {
+            assertPage(
+                !/font-size:\s*[\d.]+(?:rem|px|em)/.test(rule),
+                joinPath(story.dir, story.cssDir, name),
+                "story prose must take font-size from --type-body-large-size, not a raw value",
+            );
+        });
+    });
+}
 
 assertPage(
     storyEndMatterRuntime.includes("validateEndMatter") &&

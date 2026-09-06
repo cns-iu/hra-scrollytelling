@@ -25,9 +25,17 @@ html {
     font-family: var(--font-heading);
 }
 
+/*
+ * Story prose uses the shared body-large role, like every other story. The
+ * 1.125rem here was carried over from Story 4's original Inter design and
+ * outlived the migration to the house Nunito Sans, leaving this the only story
+ * whose paragraphs did not match the type scale.
+ */
 #four main p {
     color: var(--story4-text);
-    font-size: 1.125rem;
+    font-size: var(--type-body-large-size);
+    line-height: var(--type-body-large-line-height);
+    letter-spacing: var(--type-body-large-letter-spacing);
 }
 
 #four main a {

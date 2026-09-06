@@ -272,6 +272,11 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
 - Keep `.story-narrative` as the shared semantic page contract for Stories 2, 3, and 5. Their documents default to
   `.story-flowing`; `shared/js/narrative-motion.js` may enable pinned motion only when reduced motion is off and the
   viewport is tall enough, including portrait phone widths.
+- Size story prose from the shared body-large role (`--type-body-large-size` with its line-height and letter-spacing
+  companions), never a raw value. Story 4 carried a hard-coded `1.125rem` from its original Inter design through the
+  migration to the house Nunito Sans, so its paragraphs read a size larger than every other story's until it was
+  corrected; the maintained-page check now fails on a raw `font-size` in a story's prose rule. Distinct roles such as a
+  splash subtitle or eyebrow may still be sized separately.
 - Keep shared narrative typography mapped to named roles in `shared/css/narrative-foundation.css`. Enhanced scenes in
   Stories 2, 3, and 5 must use `--narrative-viewport-height` instead of direct `100vh` sizing, and coarse-pointer
   refresh behavior must ignore height-only browser-chrome changes without suppressing width-change refreshes.
