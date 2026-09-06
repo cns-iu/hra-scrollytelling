@@ -30,14 +30,14 @@
      * tokens.css, so the --hra-* palette is the fallback and the real
      * contract. Where a page supplies the semantic role, it wins.
      */
-    --hra-button-action: var(--color-action, var(--hra-on-primary-container));
-    --hra-button-on-action: var(--color-on-action, var(--hra-on-primary));
+    --hra-button-action: var(--color-action);
+    --hra-button-on-action: var(--color-on-action);
     --hra-button-container: transparent;
     --hra-button-content: var(--hra-button-action);
     --hra-button-outline: transparent;
     --hra-button-elevation: none;
     --hra-button-elevation-hover: none;
-    --hra-button-focus-ring: var(--focus-color, var(--hra-secondary));
+    --hra-button-focus-ring: var(--focus-color);
     /* Boundary for containers that are too close in luminance to the page to
        meet the 3:1 non-text minimum on their own. */
     --hra-button-edge: var(--hra-outline-strong);
@@ -218,22 +218,17 @@
 /*
  * Dark appearance.
  *
- * component-roles.css remaps --color-action and --focus-color for dark, but
- * the stories that do not load it need the same flip from their fallbacks.
+ * Only the outline changes here. --color-action, --color-on-action and
+ * --focus-color already flip in component-roles.css, which every maintained
+ * page loads, so restating them would duplicate that mapping.
  */
 :root[data-theme="dark"] .hra-button {
     --hra-button-edge: var(--hra-outline);
-    --hra-button-action: var(--color-action, var(--hra-primary));
-    --hra-button-on-action: var(--color-on-action, var(--hra-on-primary));
-    --hra-button-focus-ring: var(--focus-color, var(--hra-primary));
 }
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) .hra-button {
         --hra-button-edge: var(--hra-outline);
-        --hra-button-action: var(--color-action, var(--hra-primary));
-        --hra-button-on-action: var(--color-on-action, var(--hra-on-primary));
-        --hra-button-focus-ring: var(--focus-color, var(--hra-primary));
     }
 }
 

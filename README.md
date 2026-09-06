@@ -165,8 +165,9 @@ The landing page is deliberately separated from the legacy story implementation:
   times: `--hra-light-*` and `--hra-dark-*` hold the fixed appearance, and `--hra-*` is the theme-reactive role
   aliasing one of them. Chrome pinned to one appearance consumes a fixed set directly.
 - `shared/css/component-roles.css` maps those colour roles onto semantic component roles (`--color-ink`,
-  `--color-surface`, `--focus-color`, and the radius and width scale) for the landing page and any story that follows
-  the site palette.
+  `--color-surface`, `--focus-color`, and the radius and width scale). Every maintained page loads it, directly after
+  the palette and before any component that consumes a role, so shared components can name a role outright instead of
+  carrying a fallback for pages that might omit it.
 - `shared/css/buttons.css` owns `.hra-button`, the Material 3 button shared by every maintained page: text,
   outlined, elevated, filled, tonal, extended-FAB and icon variants, built on the colour roles rather than on
   values of its own. The tonal, elevated and FAB variants carry a boundary because their containers sit within

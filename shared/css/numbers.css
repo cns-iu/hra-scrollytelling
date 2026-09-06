@@ -19,8 +19,8 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: var(--color-on-badge, var(--hra-on-secondary));
-    background: var(--color-badge, var(--hra-secondary));
+    color: var(--color-on-badge);
+    background: var(--color-badge);
     font-family: var(--font-body);
     font-size: var(--type-label-large-size);
     font-variant-numeric: tabular-nums;

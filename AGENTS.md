@@ -25,7 +25,10 @@ Landing-page work is intentionally isolated to:
 - `shared/css/fonts.css` for typography stacks and font declarations used by the landing page and shared page chrome.
 - `landing/css/fonts.css` as a compatibility bridge for cached documents that still request the former font URL.
 - `shared/css/tokens.css` for every HRA colour value; `landing/css/tokens.css` now owns only the landing hero.
-- `shared/css/component-roles.css` for the semantic component roles built on those colours.
+- `shared/css/component-roles.css` for the semantic component roles built on those colours. Every maintained page
+  loads it, immediately after the palette and before any component that consumes a role; the maintained-page
+  check asserts that position. Do not reintroduce `var(--role, fallback)` in a shared component - a fallback
+  silently substitutes a different colour instead of failing, which is how it previously reached only two pages.
 - `shared/css/buttons.css` for the shared Material 3 button, and `shared/css/numbers.css` for the numbered
   circle used by the landing story cards and by story step lists.
 - `shared/css/selection.css`, `shared/css/navigation.css`, `shared/css/appearance-controls.css`, and

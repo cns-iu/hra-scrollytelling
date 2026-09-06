@@ -317,13 +317,48 @@ function checkPage(entry, source) {
         assertPage(rel.includes("noopener") && rel.includes("noreferrer"), file, "new-tab link needs noopener noreferrer");
     });
 
+    /*
+     * The full shared preamble, in load order. It had been asserted five deep,
+     * which let component-roles.css reach only two of the seven pages; the
+     * shared components then needed var(--role, fallback) workarounds, and one
+     * story shipped a hard-coded radius its token could never reach.
+     *
+     * component-roles.css maps tokens.css to semantic roles, so it follows the
+     * palette and precedes every component that consumes one.
+     */
     checkStylesheetOrder(html, file, [
         "shared/css/fonts.css",
         entry.tokensUrl,
+        "shared/css/component-roles.css",
+        "shared/css/buttons.css",
+        "shared/css/numbers.css",
         "shared/css/selection.css",
         "shared/css/navigation.css",
+        "shared/css/appearance-controls.css",
         "shared/css/footer.css",
     ].map((url) => relativeRef(file, url)));
+
+    if (story?.narrative) {
+        /*
+         * The narrative stories layer the shared foundation and dialogue on
+         * top, and close with narrative-accessibility.css, whose rules are
+         * scoped to html.story-flowing and carry !important: it has to win over
+         * the story's own presentation, so it stays the final stylesheet.
+         */
+        checkStylesheetOrder(html, file, [
+            "shared/css/narrative-foundation.css",
+            "shared/css/character-dialogue.css",
+        ].map((url) => relativeRef(file, url)));
+
+        const accessibility = relativeRef(file, "shared/css/narrative-accessibility.css");
+        const stylesheets = [...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*href="([^"]+)"/g)].map((match) => match[1]);
+
+        assertPage(
+            stylesheets.at(-1) === accessibility,
+            file,
+            `${accessibility} must be the last stylesheet so its linear-layout rules win`,
+        );
+    }
 
     if (story) {
         const endMatterSource = relativeRef(file, storyEndMatter(story));
