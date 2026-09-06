@@ -140,6 +140,42 @@ keeps it off that edge. Where the plate is width-bound rather than height-bound 
 the narrowest phones - the plate spans the full width and the 1rem is measured
 from the viewport instead.
 
+## Remaining: scene 8
+
+Scenes 1-7 use the plate-and-prose pattern. **Scene 8 is the only scene still on
+the original pinned-overlay pattern**, and the only thing keeping that pattern's
+code alive. It is the largest scene on the page:
+
+| bubbles | beats | words | rasters | viewBox |
+| --- | --- | --- | --- | --- |
+| 14 | 8 | 315 | 13 | `1922 1082` (default - no ratio override needed) |
+
+Everything serving it is isolated, so converting it and deleting the old pattern
+are one job:
+
+- `css/scenes.css` - the first block: `#four .scene8` and `#four .talkbubble`.
+  The `height: 100vh` there is the original of the first plate-sizing trap below;
+  narrowing that rule to `.scene8` means it no longer reaches converted scenes.
+- `css/accessibility.css` - `html.story4-flowing #four .talkbubble`, its `> *`
+  and `:empty` variants, and the forced-colors `> *` rule.
+- `js/animations.js` - the `.scene8` `ScrollTrigger.create` pin and the
+  `hraNarrativeTimeline.fadeTalkBubbles()` call.
+
+**`.talkbubble` is deliberately not scoped to `.scene8`.** The bubbles are
+siblings that follow the scene div rather than children of it, so
+`.scene8 .talkbubble` matches nothing and silently drops the styling. Every
+remaining `.talkbubble` in the document belongs to scene 8, so the bare selector
+is already exact - verify with a count before assuming otherwise.
+
+To convert it, follow scenes 5-7: prose first in source order, each untriggered
+lead-in merged into the triggered fragment it introduces so every beat keeps a
+step, ids moved from the bubbles onto the paragraphs, trailing empty bubble and
+inline `top: -25vh` dropped. Then check the outro budget and, because it has
+eight beats, the dwell between each - see "Dwell".
+
+The frozen duplicate-ID baseline must not move; it is what proves no `id` was
+lost while regrouping.
+
 ## Traps
 
 Things that look like bugs but are not, and things that are easy to break:

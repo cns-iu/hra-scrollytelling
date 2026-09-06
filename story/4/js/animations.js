@@ -19,6 +19,9 @@ export function setupSceneTriggers() {
       pinSpacing: false,
     });
 
+    // Scene 8 only - the last scene on the overlay pattern, and the only
+    // remaining .talkbubble consumer. Deletes with the .talkbubble rules in
+    // css/ when that scene is converted.
     hraNarrativeTimeline.fadeTalkBubbles();
 
 }

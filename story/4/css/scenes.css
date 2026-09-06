@@ -1,8 +1,21 @@
 /*
- * Story 4 scenes: the pinned illustration sequence and its dialogue bubbles.
+ * Story 4 scenes: the plate-and-prose sequence, plus what is left of the
+ * original pinned-overlay pattern.
  *
- * Offsets are not set here. Each scene and bubble is position:static until
- * ScrollTrigger pins it, and the flowing fallback in accessibility.css sets
+ * Scenes 1-7 use the plate-and-prose pattern further down this file. Scene 8 is
+ * the last scene still on the original pattern - a ScrollTrigger pin with
+ * centred .talkbubble overlays - and is the only consumer of this first block.
+ * When it is converted, this block, the matching rules in accessibility.css, and
+ * the fadeTalkBubbles() call in js/animations.js all delete together. See
+ * README, "Remaining: scene 8".
+ *
+ * `.talkbubble` cannot be scoped to `.scene8`: the bubbles are SIBLINGS that
+ * follow the scene div, not children of it, so a descendant selector matches
+ * nothing. Every remaining `.talkbubble` in the document belongs to scene 8, so
+ * the bare selector is already exact.
+ *
+ * Offsets are not set here. Scene 8 and its bubbles are position:static until
+ * ScrollTrigger pins them, and the flowing fallback in accessibility.css sets
  * `inset: auto !important`, so any `top` declared here would never apply.
  * Scroll position is owned entirely by the triggers in js/animations.js.
  */
@@ -23,13 +36,9 @@
     flex-direction: column;
 }
 
-#four .scene1,
-#four .scene3,
-#four .scene2,
-#four .scene5,
-#four .scene4,
-#four .scene6,
-#four .scene7,
+/* Scene 8 only. The converted scenes get their box from the plate rule instead;
+   this `height: 100vh` is the one that used to leak into them and is the first
+   of the three plate-sizing traps in the README. */
 #four .scene8 {
     min-width: 100%;
     max-width: 68.75rem;
@@ -40,18 +49,6 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-#four .scene2,
-#four .scene5,
-#four .scene4,
-#four .scene6,
-#four .scene3 {
-    display: flex;
-    max-width: 68.75rem;
-    height: 100vh;
-    margin: auto;
-    justify-content: center;
 }
 
 #four .svgparts {
