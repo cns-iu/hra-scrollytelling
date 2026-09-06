@@ -3,18 +3,12 @@
 import { createServer } from "node:http";
 import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { spawn } from "node:child_process";
 import { tmpdir } from "node:os";
+import { renderDocument, toBrowserPath, resolveBrowserPath } from "./browser-render.mjs";
 
-const browserArgument = process.argv.find((argument) => argument.startsWith("--browser="));
-
-if (!browserArgument) {
-    throw new Error("Pass an existing Chromium browser path with --browser=/absolute/path/to/browser");
-}
-
-const browserPath = browserArgument.slice("--browser=".length);
+const browserPath = resolveBrowserPath(process.argv);
 const projectRoot = process.cwd();
-const imageDirectory = path.join(projectRoot, "story", "6", "img");
+const imageDirectory = path.join(projectRoot, "story", "6", "images");
 const source = await readFile(path.join(imageDirectory, "splash-bg.webp"));
 const server = createServer((request, response) => {
     const requestUrl = new URL(request.url ?? "/", "http://localhost");
@@ -100,79 +94,4 @@ try {
 } finally {
     server.close();
     await rm(profileDirectory, { recursive: true, force: true });
-}
-
-/**
- * Runs a Chromium browser long enough for the renderer page to emit an encoded data URL.
- *
- * @param {string} executable Existing Chromium-compatible browser executable
- * @param {string} profilePath Isolated temporary browser profile
- * @param {string} pageUrl Local renderer page
- * @returns {Promise<string>} Serialized renderer document
- */
-function renderDocument(executable, profilePath, pageUrl) {
-    return new Promise((resolve, reject) => {
-        const args = [
-            "--headless=new",
-            "--disable-background-networking",
-            "--disable-component-update",
-            "--disable-default-apps",
-            "--disable-extensions",
-            "--no-default-browser-check",
-            "--no-first-run",
-            `--user-data-dir=${profilePath}`,
-            "--virtual-time-budget=10000",
-            "--dump-dom",
-            pageUrl,
-        ];
-        const child = spawn(executable, args, {
-            cwd: executable.toLowerCase().endsWith(".exe") ? "/mnt/c/Windows" : projectRoot,
-            stdio: ["ignore", "pipe", "pipe"],
-        });
-        const output = [];
-        const errors = [];
-        const timeout = setTimeout(() => {
-            child.kill();
-            reject(new Error("Browser image rendering timed out"));
-        }, 30000);
-
-        child.stdout.on("data", (chunk) => output.push(chunk));
-        child.stderr.on("data", (chunk) => errors.push(chunk));
-        child.once("error", (error) => {
-            clearTimeout(timeout);
-            reject(error);
-        });
-        child.once("close", (code) => {
-            clearTimeout(timeout);
-
-            if (code !== 0) {
-                const detail = Buffer.concat(errors).toString("utf8").slice(-2000);
-                reject(new Error(`Browser image rendering exited with code ${code}: ${detail}`));
-                return;
-            }
-
-            resolve(Buffer.concat(output).toString("utf8"));
-        });
-    });
-}
-
-/**
- * Converts a WSL temporary path for a Windows browser while leaving Linux browser paths unchanged.
- *
- * @param {string} profileDirectory Local temporary directory
- * @param {string} executable Browser executable
- * @returns {string} Browser-readable profile path
- */
-function toBrowserPath(profileDirectory, executable) {
-    if (!executable.toLowerCase().endsWith(".exe")) {
-        return profileDirectory;
-    }
-
-    const distribution = process.env.WSL_DISTRO_NAME;
-
-    if (!distribution) {
-        throw new Error("A Windows browser path requires WSL_DISTRO_NAME");
-    }
-
-    return `\\\\wsl.localhost\\${distribution}${profileDirectory.replaceAll("/", "\\")}`;
 }

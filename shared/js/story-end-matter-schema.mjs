@@ -1,3 +1,17 @@
+/*
+ * The shared end-matter schema, used by both the browser renderer and
+ * tools/check-maintained-pages.mjs - the reason this file carries the .mjs
+ * extension while its siblings are .js.
+ *
+ * The schema is wider than current content. Stories 1-5 author `resources`
+ * only; Story 6 is the sole consumer of `acknowledgments`, `references` and a
+ * section `intro`, and no story yet supplies `acknowledgments.funding` or
+ * `funders`. Those two are implemented end to end all the same - validated
+ * here, rendered by story-end-matter.js, and styled in story-end-matter.css
+ * including print rules - so a story can add funding credit as content alone,
+ * with no code change. Unused is not unfinished; do not strip them as dead.
+ */
+
 /**
  * Validates the shared Story end-matter content schema.
  *

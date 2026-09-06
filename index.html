@@ -59,53 +59,29 @@
       data-light-color="#dee5f1"
       data-dark-color="#393f45"
     />
-    <script>
-      (() => {
-        try {
-          const savedTheme = localStorage.getItem("hra-landing-theme");
-          const savedContrast = localStorage.getItem("hra-high-contrast");
-          const systemTheme =
-            typeof window.matchMedia === "function" &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches
-              ? "dark"
-              : "light";
-          const activeTheme =
-            savedTheme === "light" || savedTheme === "dark"
-              ? savedTheme
-              : systemTheme;
-          const themeColor = document.querySelector('meta[name="theme-color"]');
+    <script src="shared/js/theme-bootstrap.js"></script>
 
-          if (
-            savedTheme === "system" ||
-            savedTheme === "light" ||
-            savedTheme === "dark"
-          ) {
-            document.documentElement.dataset.themeMode = savedTheme;
-            if (savedTheme === "light" || savedTheme === "dark") {
-              document.documentElement.dataset.theme = savedTheme;
-            }
-          }
+    <!-- Critical typography: discovered here rather than after fonts.css parses. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="shared/assets/fonts/nunito-sans/nunito-sans-latin-wght-normal.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="shared/assets/fonts/metropolis/metropolis-latin-500-normal.woff2" />
 
-          if (savedContrast === "more" || savedContrast === "standard") {
-            document.documentElement.dataset.contrast = savedContrast;
-          }
-
-          if (themeColor) {
-            themeColor.content =
-              activeTheme === "dark"
-                ? themeColor.dataset.darkColor
-                : themeColor.dataset.lightColor;
-          }
-        } catch {
-          // The system theme remains the fallback when storage is unavailable.
-        }
-      })();
-    </script>
+    <!-- Holds an opaque veil until the first paint is trustworthy. Must stay a
+         blocking classic script after the appearance bootstrap and ahead of the
+         stylesheets: a module script is deferred and would paint bare first. -->
+    <script
+      data-preload-image="landing/assets/backgrounds/splash-human-{theme}.png"
+      src="shared/js/loading-gate.js"></script>
 
     <!-- Landing-page assets -->
     <link rel="stylesheet" href="shared/css/fonts.css" />
+    <link rel="stylesheet" href="shared/css/loading-gate.css" />
     <link rel="stylesheet" href="landing/css/tokens.css" />
     <link rel="stylesheet" href="shared/css/tokens.css" />
+    <link rel="stylesheet" href="shared/css/component-roles.css" />
+    <link rel="stylesheet" href="shared/css/buttons.css" />
+    <link rel="stylesheet" href="shared/css/numbers.css" />
     <link rel="stylesheet" href="shared/css/selection.css" />
     <link rel="stylesheet" href="shared/css/navigation.css" />
     <link rel="stylesheet" href="shared/css/appearance-controls.css" />
@@ -132,7 +108,7 @@
     </script>
 
     <!-- Progressive enhancement -->
-    <script type="module" src="landing/js/main.js"></script>
+    <script type="module" src="shared/js/main.js"></script>
   </head>
 
   <body>
@@ -184,12 +160,12 @@
           <p class="site-menu-label" id="site-navigation-label">Navigate</p>
           <ul role="list">
             <li><a href="index.html" aria-current="page">Home</a></li>
-            <li><a href="story1.html">What Is a Human Reference Atlas?</a></li>
-            <li><a href="story2.html">Squiggy's Identity Crisis!</a></li>
-            <li><a href="story3.html">Something's Not Registering!</a></li>
-            <li><a href="story4.html">Data Detangle</a></li>
-            <li><a href="story5.html">Know Your Body Buddies</a></li>
-            <li><a href="story6.html">Pan-organ Immunosenescence Atlas</a></li>
+            <li><a href="story/1/">What Is a Human Reference Atlas?</a></li>
+            <li><a href="story/2/">Squiggy's Identity Crisis!</a></li>
+            <li><a href="story/3/">Something's Not Registering!</a></li>
+            <li><a href="story/4/">Data Detangle</a></li>
+            <li><a href="story/5/">Know Your Body Buddies</a></li>
+            <li><a href="story/6/">Pan-organ Immunosenescence Atlas</a></li>
           </ul>
         </nav>
 
@@ -288,8 +264,8 @@
 
           <ol class="story-grid" role="list" aria-label="Human Atlas stories">
             <li>
-              <a class="story-card" href="story1.html">
-                <span class="story-number">
+              <a class="story-card" href="story/1/">
+                <span class="hra-number story-number">
                   <span aria-hidden="true">01</span>
                   <span class="visually-hidden">Story 1:</span>
                 </span>
@@ -301,8 +277,8 @@
               </a>
             </li>
             <li>
-              <a class="story-card" href="story2.html">
-                <span class="story-number">
+              <a class="story-card" href="story/2/">
+                <span class="hra-number story-number">
                   <span aria-hidden="true">02</span>
                   <span class="visually-hidden">Story 2:</span>
                 </span>
@@ -314,8 +290,8 @@
               </a>
             </li>
             <li>
-              <a class="story-card" href="story3.html">
-                <span class="story-number">
+              <a class="story-card" href="story/3/">
+                <span class="hra-number story-number">
                   <span aria-hidden="true">03</span>
                   <span class="visually-hidden">Story 3:</span>
                 </span>
@@ -327,8 +303,8 @@
               </a>
             </li>
             <li>
-              <a class="story-card" href="story4.html">
-                <span class="story-number">
+              <a class="story-card" href="story/4/">
+                <span class="hra-number story-number">
                   <span aria-hidden="true">04</span>
                   <span class="visually-hidden">Story 4:</span>
                 </span>
@@ -340,8 +316,8 @@
               </a>
             </li>
             <li>
-              <a class="story-card" href="story5.html">
-                <span class="story-number">
+              <a class="story-card" href="story/5/">
+                <span class="hra-number story-number">
                   <span aria-hidden="true">05</span>
                   <span class="visually-hidden">Story 5:</span>
                 </span>
@@ -353,8 +329,8 @@
               </a>
             </li>
             <li>
-              <a class="story-card" href="story6.html">
-                <span class="story-number">
+              <a class="story-card" href="story/6/">
+                <span class="hra-number story-number">
                   <span aria-hidden="true">06</span>
                   <span class="visually-hidden">Story 6:</span>
                 </span>
@@ -378,6 +354,14 @@
           aria-label="Human Reference Atlas"
         >
           <img
+            class="site-footer__logo site-footer__logo--light"
+            src="shared/assets/logos/hra-light-large.svg"
+            alt=""
+            width="148"
+            height="63"
+          />
+          <img
+            class="site-footer__logo site-footer__logo--dark"
             src="shared/assets/logos/hra-dark-large.svg"
             alt=""
             width="148"
@@ -393,6 +377,14 @@
           aria-label="Cyberinfrastructure for Network Science Center"
         >
           <img
+            class="site-footer__logo site-footer__logo--light"
+            src="shared/assets/logos/cns-light-long.svg"
+            alt=""
+            width="239"
+            height="40"
+          />
+          <img
+            class="site-footer__logo site-footer__logo--dark"
             src="shared/assets/logos/cns-dark-long.svg"
             alt=""
             width="239"
@@ -403,7 +395,7 @@
           >
         </a>
       </nav>
-      <a class="site-footer__back-to-top" href="#main-content" data-back-to-top>
+      <a class="hra-button hra-button--text site-footer__back-to-top" href="#main-content" data-back-to-top>
         <svg
           aria-hidden="true"
           viewBox="0 0 24 24"

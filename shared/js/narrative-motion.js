@@ -1,53 +1,10 @@
 (function () {
-    const root = document.documentElement;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const reducedTransparency = window.matchMedia('(prefers-reduced-transparency: reduce)');
-    const forcedColors = window.matchMedia('(forced-colors: active)');
-    const supportedViewport = window.matchMedia('(min-height: 30.01rem)');
-    const coarsePointer = window.matchMedia('(pointer: coarse)');
-    let coarseViewportWidth = window.innerWidth;
-    let coarseResizeFrame = 0;
-
-    /**
-     * Refreshes pinned geometry after a real coarse-pointer width change.
-     *
-     * @returns {void}
-     */
-    function refreshAfterCoarseWidthChange() {
-        if (window.innerWidth === coarseViewportWidth) {
-            return;
-        }
-
-        coarseViewportWidth = window.innerWidth;
-
-        if (!supportedViewport.matches) {
-            applyNarrativeMode(false);
-            return;
-        }
-
-        if (!window.ScrollTrigger) {
-            return;
-        }
-
-        window.cancelAnimationFrame(coarseResizeFrame);
-        coarseResizeFrame = window.requestAnimationFrame(() => {
-            window.ScrollTrigger.refresh();
-        });
-    }
-
-    /**
-     * Ignores height-only mobile browser chrome resizes while preserving orientation refreshes.
-     *
-     * @returns {void}
-     */
-    function stabilizeMobileScrollGeometry() {
-        if (coarsePointer.matches && window.ScrollTrigger) {
-            window.ScrollTrigger.config({
-                autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load',
-            });
-            window.addEventListener('resize', refreshAfterCoarseWidthChange, { passive: true });
-        }
-    }
+    const { QUERY, setMotionState, haltAnimation, stabilizeScrollGeometry } = window.hraMotionPreferences;
+    const reducedMotion = window.matchMedia(QUERY.reducedMotion);
+    const reducedTransparency = window.matchMedia(QUERY.reducedTransparency);
+    const forcedColors = window.matchMedia(QUERY.forcedColors);
+    const supportedViewport = window.matchMedia(QUERY.supportedViewport);
+    const coarsePointer = window.matchMedia(QUERY.coarsePointer);
 
     /**
      * Makes autoplaying narrative media user-controlled in the flowing layout.
@@ -68,14 +25,7 @@
      * @returns {void}
      */
     function stopNarrativeMotion() {
-        if (window.ScrollTrigger) {
-            window.ScrollTrigger.getAll().forEach((trigger) => trigger.kill(true));
-        }
-
-        if (window.gsap) {
-            window.gsap.globalTimeline.clear();
-        }
-
+        haltAnimation();
         makeNarrativeMediaUserControlled();
     }
 
@@ -93,9 +43,12 @@
             !forcedColors.matches &&
             supportedViewport.matches;
 
-        window.hraStoryMotionEnabled = canEnhance;
-        root.classList.toggle('story-motion-enabled', canEnhance);
-        root.classList.toggle('story-flowing', !canEnhance);
+        setMotionState({
+            flag: 'hraStoryMotionEnabled',
+            enabledClass: 'story-motion-enabled',
+            flowingClass: 'story-flowing',
+            enabled: canEnhance,
+        });
 
         if (!canEnhance && document.readyState !== 'loading') {
             stopNarrativeMotion();
@@ -108,7 +61,7 @@
         if (window.hraStoryMotionEnabled && (!window.gsap || !window.ScrollTrigger)) {
             applyNarrativeMode(false);
         } else {
-            stabilizeMobileScrollGeometry();
+            stabilizeScrollGeometry({ onUnsupportedViewport: () => applyNarrativeMode(false) });
         }
 
         if (!window.hraStoryMotionEnabled) {

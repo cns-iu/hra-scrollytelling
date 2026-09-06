@@ -1,0 +1,36 @@
+{
+    "version": 1,
+    "resources": {
+        "title": "Resources",
+        "items": [
+            {
+                "eyebrow": "Video tutorial",
+                "title": "Registration User Interface tutorial",
+                "description": "Learn how to register tissue spatially with the HRA's Registration User Interface.",
+                "href": "https://www.youtube.com/watch?v=18imQj068Iw",
+                "newTab": false
+            },
+            {
+                "eyebrow": "Publication",
+                "title": "Tissue registration and exploration user interfaces in support of a human reference atlas",
+                "description": "This Nature Communications Biology paper introduces HRA tools for registering tissue in 3D.",
+                "href": "https://doi.org/10.1038/s42003-022-03644-x",
+                "newTab": false
+            },
+            {
+                "eyebrow": "Standard operating procedure (SOP)",
+                "title": "Using the Standalone Registration User Interface",
+                "description": "This SOP explains how to register healthy human tissue blocks in 3D using the HRA Registration User Interface.",
+                "href": "https://doi.org/10.5281/zenodo.14346542",
+                "newTab": false
+            },
+            {
+                "eyebrow": "Story",
+                "title": "Squiggy's Identity Crisis!",
+                "description": "Explore how clear, consistent identities help connect biological information.",
+                "href": "../2/",
+                "newTab": false
+            }
+        ]
+    }
+}

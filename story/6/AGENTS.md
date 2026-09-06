@@ -2,17 +2,17 @@
 
 ## Scope and structure
 
-- Treat `../../story6.html`, the styles in `css/`, and `story6.js` as one feature even though the HTML entry point remains at the repository root
+- Treat `index.html`, the styles in `css/`, and `js/story6.js` as one feature; the entry point is `story/6/index.html`, and the root `story6.html` is only a redirect stub preserving the published URL
 - When creating or substantially restructuring files, keep each file at 500 lines or fewer where practical; split larger files by clear responsibility
-- Keep `story6.js` as the small entry point; place focused UI, animation, reveal, and layout responsibilities in `js/` modules
+- Keep `js/story6.js` as the small entry point; place focused UI, animation, reveal, and layout responsibilities in `js/` modules
 - Keep `css/base.css` responsible for Story 6 typography tokens, accessibility, and page primitives; use `../../shared/css/fonts.css` for font declarations and the repository-level `shared/` styles and modules for the Menu and appearance controls
 - Keep `css/theme.css` responsible for Story 6 semantic color roles and scoped System, Light, Dark, High contrast, and forced-colors adaptations
 - Keep `css/splash-transitions.css`, `css/narrative.css`, `css/tissue-comparison.css`, `css/cde.css`, and `css/cde-comparison.css` scoped to their named Story 6 regions
 - Keep Resources, Acknowledgments, and References content in `end-matter.json`; shared presentation and runtime rendering belong to `../../shared/css/story-end-matter.css` and `../../shared/js/story-end-matter.js`
 - Keep responsive, animation-failure, and reduced-motion rules beside the component styles they modify rather than collecting them in a separate responsive file
-- Keep Story 6–specific narrative images in `img/`
+- Keep Story 6–specific narrative images in `images/`
 - Keep fonts, organization logos, and shared interface icons, including the favicon, under the repository-level `../../shared/assets/` directory; keep cross-story narrative images under `../../shared/assets/images/`
-- Resolve paths in `../../story6.html` from the repository root, such as `story/6/img/example.webp`
+- Resolve paths in `index.html` from the repository root, such as `story/6/images/example.webp`
 - Resolve paths in `css/*.css` from the `css/` directory, such as `../../../shared/assets/icons/info.svg`
 - Preserve current narrative copy unless the user explicitly requests content editing because Story 6 content may be changing concurrently
 
@@ -27,7 +27,7 @@
 - Keep display formatting in the HTML or presenting component rather than caching formatted strings in JavaScript state
 - Prefer semantic headings, lists, buttons, and links over recreating their behavior with generic elements and ARIA
 - Preserve keyboard operation, visible focus states, native Menu disclosure state, and `aria-current="page"`
-- Keep the shared Menu markup in `../../story6.html` and load `shared/js/main.js`; do not duplicate its disclosure, appearance, or contrast behavior in Story 6 JavaScript
+- Keep the shared Menu markup in `index.html` and load `shared/js/main.js`; do not duplicate its disclosure, appearance, or contrast behavior in Story 6 JavaScript
 - Keep external links opened in a new tab paired with `rel="noopener noreferrer"`
 - Do not embed, import, preload, or construct the Cell Distance Explorer web component in Story 6 because its runtime and dataset parsing block tutorial scrolling
 - End the native-sticky CDE tutorial after its fifth screenshot and proceed into Transition 4 and the static CDE comparison without a launch control or interactive explorer state
@@ -65,7 +65,7 @@
 - Limit the enhanced one-viewport height and clipping rule to `.section2`, `.section3`, and `.transition` on fine-pointer devices; never apply it to every `.story-scene`, because the flowing tissue comparison and six-viewport CDE tutorial own different geometry. On coarse-pointer devices each scene's outer element instead gets a taller `calc(var(--story-viewport-height) * N)` height (matching its original pinned scroll distance) with `overflow: visible`, so its inner sticky stage has room to scroll past
 - Do not add a ScrollTrigger refresh in response to image loading unless a specific element's layout box genuinely depends on the image's own dimensions; a refresh queued during an async load only fires whenever scrolling next settles, which during continuous fast scrolling can be far downstream and will reset whatever scene the reader has since reached. Prefer reserving layout space with CSS (`aspect-ratio`, absolutely-positioned layers, explicit `width`/`height`) so no refresh is needed at all
 - Assign every scene's ScrollTrigger a descending `refreshPriority` in document order (handled automatically inside `createScrubbedTrigger`); GSAP recommends this for pages with several sequential pinned or scrubbed scenes so each pin-spacer's height is added to downstream scenes' start/end values before they refresh, not after
-- `html.story6-loading` sets `overflow: hidden` (`base.css`) so the reader cannot scroll while the opaque loading overlay is up. Triggers are created against whatever layout exists at that moment, including flowing, non-`.story-scene` content like `.intro`, whose height depends on font metrics and can still shift once web fonts finish loading; the settled-fonts refresh corrects that afterward. Without the scroll lock, a fast scroll during that window can reach a scene before the correction lands, so its scrub timeline is driven by a stale start/end and visibly snaps to the corrected position the moment the refresh fires — reproducible on every reload by scrolling immediately, and absent once the page has settled. The overlay's own `pointer-events: auto` only blocks clicks, not scrolling, so it does not prevent this on its own
+- The shared loading gate (`shared/js/loading-gate.js`, `shared/css/loading-gate.css`) sets `overflow: hidden` on `html.hra-loading` so the reader cannot scroll while the opaque veil is up; Story 6 holds that veil until its settled pin geometry has been refreshed by passing `refreshStoryLayout` to `releaseWhenReady()` in `js/story6.js`, and marks its splash with `data-loading-gate-hero` so the veil also waits for that artwork to decode. Triggers are created against whatever layout exists at that moment, including flowing, non-`.story-scene` content like `.intro`, whose height depends on font metrics and can still shift once web fonts finish loading; the settled-fonts refresh corrects that afterward. Without the scroll lock, a fast scroll during that window can reach a scene before the correction lands, so its scrub timeline is driven by a stale start/end and visibly snaps to the corrected position the moment the refresh fires — reproducible on every reload by scrolling immediately, and absent once the page has settled. The veil's own `pointer-events: auto` only blocks clicks, not scrolling, so it does not prevent this on its own
 - Enable pinned animation only while `prefers-reduced-motion` is `no-preference` and the viewport is at least `36rem` high; follow live preference and viewport changes by reverting timelines and restoring the linear layout
 - Any new motion must have a `prefers-reduced-motion` state that exposes the same narrative and controls without pinning or animation
 - Never leave meaningful content hidden when GSAP, ScrollTrigger, or IntersectionObserver is unavailable
@@ -105,14 +105,19 @@
 - Load Transition 3 eagerly at high priority so rapid scrolling cannot outrun its request; keep all other non-splash transition backgrounds lazy
 - Prepare and decode Transition 5 from the histogram comparison so its lazy artwork is ready before the native-sticky conclusion begins
 - Preserve transparent backgrounds when optimizing transition images
-- On coarse pointers, `.body-outline` renders at 90% height instead of 100% (`narrative.css`) because at full height this figure's outstretched hands are wider than a typical phone screen and get cropped by `.section2`'s overflow; this value is a measured estimate (hands span roughly 79% of the source image's width), not an exact fit, so re-check it visually against both `2-bodyintro1.webp` and `2-bodyintro2.webp` if either is replaced
+- On coarse pointers, `.body-outline` renders at 90% height instead of 100% (`narrative.css`) because at full height this figure's outstretched hands are wider than a typical phone screen and get cropped by `.section2`'s overflow; this value is a measured estimate (hands span roughly 79% of the source image's width), not an exact fit, so re-check it visually against both `shared/assets/images/2-bodyintro1.webp` and `2-bodyintro2.webp` if either is replaced
 - Use the 960 px transition settings below when regenerating that variant
 
 ```bash
-cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 story/6/img/transition-N-1920.webp -o story/6/img/transition-N-960.webp
+cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 story/6/images/transition-N-1920.webp -o story/6/images/transition-N-960.webp
 ```
 
-- Run the command from the repository root and do not install `cwebp` or any other tool without explicit approval
+- Run the command from the repository root and do not install `cwebp` or any other tool without explicit approval.
+  `cwebp` is not installed here, so that command cannot be run as written; it records the settings the current files
+  were produced with. Without approval to install it, re-encode through the repository's own browser-based encoder
+  instead — `tools/generate-story6-splash.mjs` shows the canvas `toDataURL("image/webp", quality)` path, which needs
+  only a Chromium-compatible browser that already exists on the machine. Note that it re-encodes from a lossy source,
+  so prefer regenerating from the 3840 master rather than the 1920 variant
 - Regenerate responsive PNG candidates with `node tools/generate-story6-images.mjs`; the tool uses only Node built-ins and preserves RGB/RGBA transparency and source color metadata
 - Regenerate the responsive splash with `node tools/generate-story6-splash.mjs --browser=/path/to/chromium`; use an existing Chromium-compatible browser and do not install one for this task without approval
 
@@ -121,8 +126,8 @@ cwebp -q 82 -alpha_q 90 -m 6 -mt -resize 960 540 story/6/img/transition-N-1920.w
 Run the dependency-free checks from the repository root after JavaScript or path changes:
 
 ```bash
-for js_file in story/6/story6.js story/6/js/*.js; do node --check "$js_file" || exit 1; done
-npx --no-install eslint story/6/story6.js story/6/js/*.js --no-config-lookup --rule 'no-unused-vars:error' --rule 'no-unreachable:error' --rule 'no-dupe-keys:error'
+for js_file in story/6/js/story6.js story/6/js/*.js; do node --check "$js_file" || exit 1; done
+npx --no-install eslint story/6/js/story6.js story/6/js/*.js --no-config-lookup --rule 'no-unused-vars:error' --rule 'no-unreachable:error' --rule 'no-dupe-keys:error'
 node tools/check-story6.mjs
 git diff --check
 ```
@@ -133,7 +138,7 @@ Preview from the repository root so root-relative project paths behave like depl
 python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000/story6.html` and complete this smoke test:
+Then open `http://localhost:8000/story/6/` and complete this smoke test:
 
 - At 320, 375, 768, and 1440 CSS pixels, confirm there is no horizontal scroll and the splash title stays inside its card
 - Distinguish desktop device-emulation artifacts from behavior reproduced in an actual mobile browser

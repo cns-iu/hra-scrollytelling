@@ -4,9 +4,34 @@ import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 
 const projectRoot = process.cwd();
-const storyPath = path.join(projectRoot, "story6.html");
-const storyDirectory = path.join(projectRoot, "story", "6");
-const storyImageDirectory = path.join(storyDirectory, "img");
+
+/*
+ * Story 6 layout.
+ *
+ * Every path and every reference asserted below is derived from these four
+ * values, so relocating the story only requires updating this block.
+ */
+const storyPage = "story/6/index.html";
+const storyDir = "story/6";
+const storyImageFolder = "images";
+const storyEntryScript = "js/story6.js";
+
+const storyPath = path.join(projectRoot, storyPage);
+const storyDirectory = path.join(projectRoot, storyDir);
+const storyImageDirectory = path.join(storyDirectory, storyImageFolder);
+const storyPageDirectory = path.dirname(storyPath);
+
+/**
+ * Rewrites a repository-relative path as the story page would reference it.
+ *
+ * @param {string} target Repository-relative path
+ * @returns {string} Reference as it appears in the page source
+ */
+function ref(target) {
+    return path.posix.join(...path.relative(storyPageDirectory, path.join(projectRoot, target)).split(path.sep));
+}
+
+const imageRef = ref(path.posix.join(storyDir, storyImageFolder));
 const chartSvgNames = [
     "2m-cde-600x600.svg",
     "2m-violin-800x533.svg",
@@ -22,7 +47,7 @@ const chartSvgNames = [
 const files = {
     html: await readFile(storyPath, "utf8"),
     endMatter: JSON.parse(await readFile(path.join(storyDirectory, "end-matter.json"), "utf8")),
-    entry: await readFile(path.join(storyDirectory, "story6.js"), "utf8"),
+    entry: await readFile(path.join(storyDirectory, storyEntryScript), "utf8"),
     animations: await readFile(path.join(storyDirectory, "js", "animations.js"), "utf8"),
     base: await readFile(path.join(storyDirectory, "css", "base.css"), "utf8"),
     cde: await readFile(path.join(storyDirectory, "css", "cde.css"), "utf8"),
@@ -87,12 +112,12 @@ function check(condition, message) {
  */
 function checkMarkupContracts() {
     check(!files.html.includes('href="style.css"'), "Story 6 must not load the legacy root style.css");
-    check(files.html.includes('href="shared/css/story-navigation.css"'), "Story 6 must load the maintained story-navigation stylesheet");
-    check(files.html.includes('href="shared/css/story-end-matter.css"'), "Story 6 must load the shared end-matter stylesheet");
-    check(files.html.includes('src="shared/js/story-end-matter.js"'), "Story 6 must load the shared end-matter runtime");
+    check(files.html.includes(`href="${ref("shared/css/story-navigation.css")}"`), "Story 6 must load the maintained story-navigation stylesheet");
+    check(files.html.includes(`href="${ref("shared/css/story-end-matter.css")}"`), "Story 6 must load the shared end-matter stylesheet");
+    check(files.html.includes(`src="${ref("shared/js/story-end-matter.js")}"`), "Story 6 must load the shared end-matter runtime");
     check(files.html.includes('class="site-story-navigation site-chrome"'), "Story 6 must use the shared story-navigation component");
     check(
-        files.html.includes('class="story-end-matter site-chrome" data-story-end-matter-source="story/6/end-matter.json"'),
+        files.html.includes(`class="story-end-matter site-chrome" data-story-end-matter-source="${ref(path.posix.join(storyDir, "end-matter.json"))}"`),
         "Story 6 must use its story-owned runtime end-matter source",
     );
     check(!files.html.includes("story-end-matter__section"), "Story 6 must not duplicate JSON-authored end matter in HTML");
@@ -106,7 +131,7 @@ function checkMarkupContracts() {
     check(countMatches(files.html, /class="organ-comparison"/gu) === 3, "The tissue comparison must contain three organ cards");
     check(countMatches(files.html, /class="tissue-sample"/gu) === 9, "The tissue comparison must contain nine sample cards");
     check(countMatches(files.html, /class="tutorial-callout tutorial-callout--\d"/gu) === 5, "The CDE tutorial must contain five semantic steps");
-    check(files.html.includes('href="story/6/css/cde-comparison.css"'), "Story 6 must load the CDE comparison stylesheet");
+    check(files.html.includes(`href="${ref(path.posix.join(storyDir, "css", "cde-comparison.css"))}"`), "Story 6 must load the CDE comparison stylesheet");
     check(countMatches(files.html, /class="cde-comparison__figure/gu) === 6, "The CDE comparison must contain six semantic figures");
     check(countMatches(files.html, /class="cell-type-legend/gu) === 2, "The network and histogram comparisons must each retain a shared legend");
     check(
@@ -257,17 +282,22 @@ function checkAnimationGeometry() {
             /window\.addEventListener\(\s*'scroll',[\s\S]*?\{ passive: true \}/u.test(files.layout),
         "ScrollTrigger refreshes must wait until active scrolling settles before rebuilding pin spacers",
     );
+    // The overlay itself now lives in shared/css/loading-gate.css and
+    // shared/js/loading-gate.js, which tools/check-maintained-pages.mjs asserts
+    // every page loads. What stays Story 6's own is the settle step: the veil
+    // must not lift until this story's pin geometry has been refreshed.
     check(
-        files.html.includes('root.classList.add("story6-loading")') &&
-            files.html.includes('root.classList.add("story6-ready")') &&
-            files.entry.includes("void revealStoryWhenReady(refreshStoryLayout)") &&
-            files.entry.includes("await Promise.allSettled(preparation)") &&
-            /html\.story6-loading #six::before\s*\{[\s\S]*?transition:\s*opacity 1250ms/u.test(files.base),
-        "Story 6 must retain its fail-safe page-color loading overlay and settled fade-in",
+        files.html.includes(`src="${ref("shared/js/loading-gate.js")}"`) &&
+            !files.html.includes('classList.add("story6-loading")'),
+        "Story 6 must use the shared loading gate rather than a story-local overlay",
     );
     check(
-        /html\.story6-loading\s*\{[\s\S]*?overflow:\s*hidden;/u.test(files.base),
-        "Story 6 must hold scroll position while loading so a scene can't be reached before initial ScrollTrigger geometry settles",
+        files.html.includes("data-loading-gate-hero"),
+        "Story 6 must nominate its splash artwork so the gate waits for it to decode",
+    );
+    check(
+        files.entry.includes("void releaseWhenReady(refreshStoryLayout)"),
+        "Story 6 must hold the loading gate until its settled pin geometry has been refreshed",
     );
     check(
         /class="transition transition5[\s\S]*?class="transition__stage"/u.test(files.html) &&
@@ -323,7 +353,10 @@ function checkAnimationGeometry() {
  * @returns {void}
  */
 function checkImagePolicy() {
-    const storyImages = Array.from(files.html.matchAll(/<img\b[^>]*(?:src|data-src)="story\/6\/img\/[^>]*>/giu), (match) => match[0]);
+    const storyImagePattern = new RegExp(`<img\\b[^>]*(?:src|data-src)="${imageRef}/[^>]*>`, "giu");
+    const storyImages = Array.from(files.html.matchAll(storyImagePattern), (match) => match[0]);
+
+    check(storyImages.length > 0, "Story 6 image policy checks matched no images; the image path may have changed");
 
     for (const image of storyImages) {
         check(/\balt="[^"]*"/u.test(image), `Story 6 image is missing alt text: ${summarizeTag(image)}`);
@@ -343,7 +376,7 @@ function checkImagePolicy() {
     check(countMatches(files.html, /tutorial\d-1320\.png\s+1320w/gu) === 5, "All tutorial frames must retain 1320px candidates");
     check(countMatches(files.html, /cell-distance-vis-(?:560|800)\.png\s+(?:560|800)w/gu) === 4, "Both cell networks must retain 560px and 800px candidates");
     check(countMatches(files.html, /histogram-(?:640x560|900x600|1200x600)\.svg/gu) === 6, "Both histograms must retain all three responsive layouts");
-    check(countMatches(files.html, /\bdata-src="story\/6\/img\//gu) === 8, "Four mouse layers and four tutorial frames must stay request-staged");
+    check(countMatches(files.html, new RegExp(`\\bdata-src="${imageRef}/`, "gu")) === 8, "Four mouse layers and four tutorial frames must stay request-staged");
     check(files.media.includes("prepareImagesSequentially"), "Story 6 media preparation must remain sequential");
     check(!files.media.includes("DEFAULT_PRELOAD_MARGIN = '300% 0px'"), "The former 300% tissue preload burst must stay removed");
 }
@@ -396,21 +429,22 @@ function checkSvgTypography() {
  */
 async function checkLocalImageReferences() {
     const attributePattern = /\b(?:data-src|data-srcset|src|srcset)="([^"]+)"/giu;
-    const references = new Set();
+    const references = new Map();
 
     for (const match of files.html.matchAll(attributePattern)) {
         for (const candidate of match[1].split(",")) {
             const reference = candidate.trim().split(/\s+/u)[0];
+            const resolved = path.resolve(storyPageDirectory, reference);
 
-            if (reference.startsWith("story/6/img/")) {
-                references.add(reference);
+            if (resolved.startsWith(`${storyImageDirectory}${path.sep}`)) {
+                references.set(reference, resolved);
             }
         }
     }
 
-    for (const reference of references) {
+    for (const [reference, resolved] of references) {
         try {
-            await access(path.join(projectRoot, reference));
+            await access(resolved);
         } catch {
             issues.push(`Missing Story 6 image candidate: ${reference}`);
         }
@@ -429,7 +463,7 @@ async function checkAssetInventory() {
     for (const filename of removed) {
         try {
             await access(path.join(storyImageDirectory, filename));
-            issues.push(`Verified dead asset was reintroduced: story/6/img/${filename}`);
+            issues.push(`Verified dead asset was reintroduced: ${imageRef}/${filename}`);
         } catch {
             // Absence is the expected state.
         }
@@ -439,7 +473,7 @@ async function checkAssetInventory() {
         try {
             await access(path.join(storyImageDirectory, filename));
         } catch {
-            issues.push(`Required Story 6 transition asset is missing: story/6/img/${filename}`);
+            issues.push(`Required Story 6 transition asset is missing: ${imageRef}/${filename}`);
         }
     }
 }

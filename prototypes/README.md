@@ -20,7 +20,7 @@ Organ Example owns its presentation in `organ-example/styles.css` and no longer 
 Visualizing Cells owns its presentation in `visualizing-cells/styles.css` and its images and videos beneath the same
 directory. Both prototypes are independent of the root legacy stylesheet. Every prototype uses the cross-device HRA
 favicon set under `../shared/assets/icons/`, while the small content offset needed by Organ Example and Visualizing
-Cells beside the shared Menu lives in `shared/chrome.css`.
+Cells beside the shared Menu lives in `prototypes/shared/chrome.css`.
 
 The Scrollytelling Effects prototype owns its page and demonstration presentation in
 `scrollytelling-effects/styles.css`, interactive effects in `scrollytelling-effects/effects.css`, navigation framing
@@ -35,7 +35,7 @@ shared footer. Scrollytelling Effects' lightweight right-side table of contents 
 owned by `scrollytelling-effects/navigation.css`.
 
 All prototype entry points load the approved self-hosted fonts from `shared/css/fonts.css` and the prototype typography
-contract in `shared/typography.css`. Prototype-owned content defaults to Nunito Sans; existing prototype-owned rules
+contract in `prototypes/shared/typography.css`. Prototype-owned content defaults to Nunito Sans; existing prototype-owned rules
 may select Metropolis where specified. The generated Scrollytelling Effects web-component bundle retains its
 encapsulated internal typography.
 

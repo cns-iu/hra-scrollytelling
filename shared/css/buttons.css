@@ -1,0 +1,322 @@
+/*
+ * Shared button component.
+ *
+ * The one source of button appearance for the landing page and every story.
+ * Before this file each story carried its own `.linkbutton` - three unrelated
+ * definitions under the same name, disagreeing on borders, units and colour -
+ * plus a bespoke pill for each motion toggle. Those are gone; a button is now
+ * `.hra-button` plus one variant.
+ *
+ * The variants follow the Material 3 button set, built on the HRA palette
+ * rather than on a framework: text, outlined, elevated, filled, tonal, the
+ * extended FAB, and a round icon-only button for media controls.
+ *
+ * No colour value is written here. Buttons read the semantic roles from
+ * component-roles.css, and re-alias them to the --site-chrome-* roles inside
+ * `.site-chrome` so one class works both in story content and in page chrome
+ * that is pinned to a single appearance.
+ *
+ * The interaction model is the state layer the Menu FAB already established
+ * in navigation.css: a `::before` overlay whose opacity steps on hover, focus
+ * and press. Those opacities live in tokens.css as --hra-state-*-opacity.
+ */
+
+.hra-button {
+    /*
+     * Role aliases. A variant overrides these, never the rules below.
+     *
+     * Only the landing page and Story 1 load component-roles.css, so the
+     * --color-* roles cannot be relied on here; every page does load
+     * tokens.css, so the --hra-* palette is the fallback and the real
+     * contract. Where a page supplies the semantic role, it wins.
+     */
+    --hra-button-action: var(--color-action);
+    --hra-button-on-action: var(--color-on-action);
+    --hra-button-container: transparent;
+    --hra-button-content: var(--hra-button-action);
+    --hra-button-outline: transparent;
+    --hra-button-elevation: none;
+    --hra-button-elevation-hover: none;
+    --hra-button-focus-ring: var(--focus-color);
+    /* Boundary for containers that are too close in luminance to the page to
+       meet the 3:1 non-text minimum on their own. */
+    --hra-button-edge: var(--hra-outline-strong);
+
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    min-width: 2.75rem;
+    /* 44px: the minimum pointer target the accessibility baseline requires. */
+    min-height: 2.75rem;
+    padding: 0.625rem 1.5rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 0.0625rem solid var(--hra-button-outline);
+    /* Full corner radius, per current Material 3. */
+    border-radius: 999px;
+    color: var(--hra-button-content);
+    background: var(--hra-button-container);
+    box-shadow: var(--hra-button-elevation);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: var(--type-label-large-size, 0.875rem);
+    font-weight: var(--type-label-emphasized-weight, 600);
+    line-height: var(--type-label-large-line-height, 1.25rem);
+    letter-spacing: var(--type-label-large-letter-spacing, 0.00625rem);
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+    user-select: none;
+}
+
+/* `display` here would otherwise defeat the hidden attribute. */
+.hra-button[hidden] {
+    display: none;
+}
+
+/*
+ * State layer.
+ *
+ * A separate element rather than a background-colour change, so the layer
+ * composites over the container colour at a fixed opacity the way Material
+ * specifies, and so translucent and outlined variants tint correctly.
+ */
+.hra-button::before {
+    position: absolute;
+    z-index: 0;
+    border-radius: inherit;
+    background: currentColor;
+    content: "";
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Content rides above the state layer. */
+.hra-button > * {
+    position: relative;
+    z-index: 1;
+}
+
+.hra-button:hover {
+    box-shadow: var(--hra-button-elevation-hover);
+}
+
+.hra-button:hover::before {
+    opacity: var(--hra-state-hover-opacity);
+}
+
+.hra-button:focus-visible::before {
+    opacity: var(--hra-state-focus-opacity);
+}
+
+.hra-button:active::before {
+    opacity: var(--hra-state-pressed-opacity);
+}
+
+.hra-button:focus-visible {
+    outline: 0.2rem solid var(--hra-button-focus-ring);
+    outline-offset: 0.2rem;
+}
+
+.hra-button[disabled],
+.hra-button[aria-disabled="true"] {
+    cursor: default;
+    opacity: 0.38;
+    pointer-events: none;
+}
+
+/* Icons sized to the Material 3 label-large pairing. */
+.hra-button svg,
+.hra-button img {
+    display: block;
+    width: 1.125rem;
+    height: 1.125rem;
+    flex: 0 0 auto;
+}
+
+/* --- Variants ---------------------------------------------------------- */
+
+/* Text: lowest emphasis. Tighter side padding, since there is no container. */
+.hra-button--text {
+    padding-inline: 0.75rem;
+}
+
+.hra-button--outlined {
+    --hra-button-outline: var(--hra-outline);
+}
+
+/*
+ * Elevated, tonal and the extended FAB sit within about 1.2:1 of the page
+ * surface, so their shape rests entirely on a shadow - which does not count
+ * toward non-text contrast. Each takes a boundary; filled needs none, its
+ * container already measures 8.8:1 in Light and 10.6:1 in Dark.
+ */
+.hra-button--elevated {
+    --hra-button-outline: var(--hra-button-edge);
+    --hra-button-container: var(--hra-surface-container-low);
+    --hra-button-elevation: 0 1px 2px 0 rgb(0 0 0 / 30%), 0 1px 3px 1px rgb(0 0 0 / 15%);
+    --hra-button-elevation-hover: 0 1px 2px 0 rgb(0 0 0 / 30%), 0 2px 6px 2px rgb(0 0 0 / 15%);
+}
+
+.hra-button--filled {
+    --hra-button-container: var(--hra-button-action);
+    --hra-button-content: var(--hra-button-on-action);
+}
+
+.hra-button--tonal {
+    --hra-button-outline: var(--hra-button-edge);
+    --hra-button-container: var(--hra-secondary-container);
+    --hra-button-content: var(--hra-on-secondary-container);
+}
+
+/*
+ * Extended FAB: the geometry the Menu FAB already uses.
+ *
+ * The --site-chrome-fab-* tokens are declared inside `.site-chrome`, so they
+ * do not resolve for a FAB in story content; the palette roles they alias are
+ * the fallback, which is the same pairing.
+ */
+.hra-button--fab-extended {
+    --hra-button-outline: var(--hra-button-edge);
+    --hra-button-container: var(--site-chrome-fab-container, var(--hra-primary-container));
+    --hra-button-content: var(--site-chrome-fab-content, var(--hra-on-primary-container));
+    --hra-button-elevation: var(--site-chrome-shadow-fab, 0 3px 5px -1px rgb(0 0 0 / 20%),
+        0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%));
+    --hra-button-elevation-hover: var(--site-chrome-shadow-fab-raised, 0 5px 5px -3px rgb(0 0 0 / 20%),
+        0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%));
+
+    min-width: 7rem;
+    min-height: 3.5rem;
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+    border-radius: 1rem;
+    font-size: var(--site-chrome-title-size);
+    line-height: var(--site-chrome-title-line-height);
+}
+
+.hra-button--fab-extended:active {
+    box-shadow: var(--site-chrome-shadow-fab-pressed, 0 7px 8px -4px rgb(0 0 0 / 20%),
+        0 12px 17px 2px rgb(0 0 0 / 14%), 0 5px 22px 4px rgb(0 0 0 / 12%));
+}
+
+/* Icon-only: square target, fully round, no label padding. */
+.hra-button--icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    gap: 0;
+}
+
+.hra-button--icon svg,
+.hra-button--icon img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/*
+ * Dark appearance.
+ *
+ * Only the outline changes here. --color-action, --color-on-action and
+ * --focus-color already flip in component-roles.css, which every maintained
+ * page loads, so restating them would duplicate that mapping.
+ */
+:root[data-theme="dark"] .hra-button {
+    --hra-button-edge: var(--hra-outline);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .hra-button {
+        --hra-button-edge: var(--hra-outline);
+    }
+}
+
+/*
+ * Page chrome.
+ *
+ * Inside .site-chrome the palette may be pinned to one appearance, so the
+ * buttons follow the chrome roles instead of the theme-reactive ones.
+ */
+.site-chrome .hra-button {
+    --hra-button-edge: var(--site-chrome-color-border);
+    --hra-button-action: var(--site-chrome-color-action);
+    --hra-button-on-action: var(--site-chrome-color-on-action);
+    --hra-button-content: var(--site-chrome-color-action);
+    --hra-button-focus-ring: var(--site-chrome-color-focus);
+
+    font-family: var(--site-chrome-font-body);
+}
+
+.site-chrome .hra-button--outlined {
+    --hra-button-outline: var(--site-chrome-color-border);
+}
+
+.site-chrome .hra-button--elevated {
+    --hra-button-container: var(--site-chrome-color-surface-muted);
+}
+
+.site-chrome .hra-button--filled {
+    --hra-button-container: var(--hra-button-action);
+    --hra-button-content: var(--hra-button-on-action);
+}
+
+.site-chrome .hra-button--tonal {
+    --hra-button-container: var(--site-chrome-color-menu-active);
+    --hra-button-content: var(--site-chrome-color-on-menu-active);
+}
+
+/* --- Preference and mode branches -------------------------------------- */
+
+/* The state layer is the only animated surface; nothing here needs disabling
+   for reduced motion, but a transition would, so it is declared only here. */
+@media (prefers-reduced-motion: no-preference) {
+    .hra-button::before {
+        transition: opacity 0.15s ease;
+    }
+
+    .hra-button {
+        transition: box-shadow 0.15s ease;
+    }
+}
+
+/* Increased contrast: give every variant a visible boundary. */
+:root[data-contrast="more"] .hra-button {
+    --hra-button-outline: currentColor;
+
+    border-width: 0.125rem;
+}
+
+@media (prefers-contrast: more) {
+    :root:not([data-contrast="standard"]) .hra-button {
+        --hra-button-outline: currentColor;
+
+        border-width: 0.125rem;
+    }
+}
+
+/*
+ * Forced colours: the system palette replaces every role. The state layer must
+ * go, or it paints over the system colours it is meant to reveal.
+ */
+@media (forced-colors: active) {
+    .hra-button {
+        border: 0.125rem solid ButtonBorder;
+        color: ButtonText;
+        background: ButtonFace;
+    }
+
+    .hra-button::before {
+        display: none;
+    }
+
+    .hra-button:focus-visible {
+        outline-color: Highlight;
+    }
+
+    .hra-button[disabled],
+    .hra-button[aria-disabled="true"] {
+        color: GrayText;
+        opacity: 1;
+    }
+}

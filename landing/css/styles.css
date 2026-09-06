@@ -71,18 +71,6 @@ samp {
     outline-offset: 0.2rem;
 }
 
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-    border: 0;
-}
-
 .hero-brand-link {
     display: flex;
     width: fit-content;
@@ -267,21 +255,10 @@ h1 {
     --story-card-fill: var(--color-surface-muted);
 }
 
+/* Appearance comes from the shared .hra-number in shared/css/numbers.css;
+   only the card's own spacing is the landing page's. */
 .story-number {
-    display: inline-flex;
-    width: 2.75rem;
-    height: 2.75rem;
     margin-bottom: 1.25rem;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    color: var(--color-on-badge);
-    background: var(--color-badge);
-    font-size: var(--type-label-large-size);
-    font-variant-numeric: tabular-nums;
-    font-weight: var(--type-label-emphasized-weight);
-    letter-spacing: var(--type-label-large-letter-spacing);
-    line-height: var(--type-label-large-line-height);
 }
 
 .story-title {
@@ -302,7 +279,6 @@ h1 {
     letter-spacing: var(--type-body-large-letter-spacing);
     line-height: var(--type-body-large-line-height);
 }
-
 
 @media (max-width: 72rem) {
     .story-grid {

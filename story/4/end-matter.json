@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "resources": {
+        "title": "Resources",
+        "items": [
+            {
+                "eyebrow": "Documentation",
+                "title": "Explore HRA apps",
+                "description": "Discover the many ways to explore Human Reference Atlas data.",
+                "href": "https://docs.humanatlas.io/apps",
+                "newTab": true
+            },
+            {
+                "eyebrow": "Apps",
+                "title": "APIs",
+                "description": "Use HRA data in your own applications.",
+                "href": "https://apps.humanatlas.io/api",
+                "newTab": true
+            },
+            {
+                "eyebrow": "Story",
+                "title": "What is a Human Reference Atlas?",
+                "description": "Read the first scrollytale to learn about the Human Reference Atlas and how it is being built.",
+                "href": "../1/",
+                "newTab": false
+            }
+        ]
+    }
+}

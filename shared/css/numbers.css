@@ -1,0 +1,48 @@
+/*
+ * Shared step number.
+ *
+ * The filled circle the landing page uses to number its story cards, lifted
+ * out so stories can number their own sequences with the same mark. Story 1
+ * previously drew its numbers as inline Bootstrap glyph SVGs, which shared
+ * neither the size, the palette, nor the typography.
+ *
+ * Written for an inline element carrying the visible numeral plus a
+ * visually-hidden label, so the number reads as "Story 1:" or "Step 1" to
+ * assistive technology rather than as a bare digit.
+ */
+
+.hra-number {
+    display: inline-flex;
+    width: 2.75rem;
+    height: 2.75rem;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--color-on-badge);
+    background: var(--color-badge);
+    font-family: var(--font-body);
+    font-size: var(--type-label-large-size);
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--type-label-emphasized-weight);
+    letter-spacing: var(--type-label-large-letter-spacing);
+    line-height: var(--type-label-large-line-height);
+}
+
+/* A compact size for numbers set alongside body copy rather than heading a
+   card, where the 2.75rem circle would outweigh the text it labels. */
+.hra-number--compact {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: var(--type-label-medium-size);
+    letter-spacing: var(--type-label-medium-letter-spacing);
+    line-height: var(--type-label-medium-line-height);
+}
+
+@media (forced-colors: active) {
+    .hra-number {
+        border: 0.125rem solid CanvasText;
+        color: CanvasText;
+        background: Canvas;
+    }
+}

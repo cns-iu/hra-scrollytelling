@@ -117,7 +117,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        background-color: var(--hra-secondary);
+        background-color: var(--story6-secondary);
     }
 
     .transition__stage {
@@ -150,10 +150,10 @@
         opacity: 0;
         background: linear-gradient(
             90deg,
-            var(--hra-secondary) 0%,
-            color-mix(in srgb, var(--hra-secondary) 92%, transparent) 68%,
-            color-mix(in srgb, var(--hra-secondary) 74%, transparent) 80%,
-            color-mix(in srgb, var(--hra-secondary) 30%, transparent) 92%,
+            var(--story6-secondary) 0%,
+            color-mix(in srgb, var(--story6-secondary) 92%, transparent) 68%,
+            color-mix(in srgb, var(--story6-secondary) 74%, transparent) 80%,
+            color-mix(in srgb, var(--story6-secondary) 30%, transparent) 92%,
             transparent 100%
         );
         pointer-events: none;
@@ -335,8 +335,8 @@
         .transition__overlay {
             background: linear-gradient(
                 90deg,
-                color-mix(in srgb, var(--hra-secondary) 90%, transparent),
-                color-mix(in srgb, var(--hra-secondary) 68%, transparent)
+                color-mix(in srgb, var(--story6-secondary) 90%, transparent),
+                color-mix(in srgb, var(--story6-secondary) 68%, transparent)
             );
         }
 
@@ -384,7 +384,7 @@
             height: var(--story-viewport-height);
             overflow: hidden;
             padding-inline: 1.25rem;
-            background: var(--hra-secondary);
+            background: var(--story6-secondary);
             will-change: transform;
         }
     }
@@ -466,10 +466,12 @@
     }
 }
 
-/* Transition roles intentionally remain theme-invariant in Story 6 */
+/* Transition roles intentionally remain theme-invariant in Story 6. These are
+ * story-private names: overriding the shared --hra-secondary here would also
+ * pin the shared badge, selection and focus-ring roles on this page. */
 @media (prefers-color-scheme: light), (prefers-color-scheme: dark) {
     #six {
-        --hra-secondary: var(--hra-secondary-40);
+        --story6-secondary: var(--hra-secondary-40);
         --hra-secondary-fixed-dim: var(--hra-secondary-80);
     }
 }

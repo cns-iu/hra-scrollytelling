@@ -5,18 +5,70 @@ the maintained landing page and story pages.
 
 ## Loading order
 
-Pages adopting the shared components load the stylesheets directly:
+The appearance bootstrap comes first, before any stylesheet. It is a blocking
+classic script on purpose: a `type="module"` script is deferred, which would let
+the page paint in the system appearance and then flash to the stored one.
+
+```html
+<script src="shared/js/theme-bootstrap.js"></script>
+```
+
+Then the critical font preloads and the loading gate, still ahead of the
+stylesheets. The gate holds an opaque, page-coloured veil over the document
+until the first paint is trustworthy; it is a blocking classic script for the
+same reason the bootstrap is, and it adds the veil from JavaScript so a reader
+without it sees content immediately:
+
+```html
+<link rel="preload" as="font" type="font/woff2" crossorigin
+  href="shared/assets/fonts/nunito-sans/nunito-sans-latin-wght-normal.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin
+  href="shared/assets/fonts/metropolis/metropolis-latin-500-normal.woff2">
+<script src="shared/js/loading-gate.js"></script>
+```
+
+The fonts are preloaded because they are otherwise not discoverable until
+`fonts.css` has parsed and matched a rule, which paints text in the fallback
+and then re-wraps it. Only these two faces are preloaded; adding the latin-ext
+and mono faces would put bandwidth back in front of the first paint.
+
+Pages configure the gate from the script tag itself — `data-page-classes`,
+`data-preload-image` (which accepts a `{theme}` placeholder), and
+`data-watchdog` — and mark the artwork it should wait for with
+`data-loading-gate-hero`. `shared/js/loading-readiness.js` provides the
+promises and `releaseWhenReady()`.
+
+`shared/js/main.js` calls `releaseWhenReady()` for every page, so the veil
+normally lifts as soon as the fonts and the nominated hero artwork have
+settled. A page needing more releases the gate itself first — Story 6 waits for
+its settled pin geometry — and the first call wins. The gate's own watchdog is
+only a ceiling for when a release never arrives at all.
+
+`loading-gate.css` also sets `scrollbar-gutter: stable` on `html`. The gate
+holds scroll with `overflow: hidden`, which takes the classic scrollbar away;
+without a reserved gutter the content re-centres into that width and jogs
+sideways when the veil lifts. Reserving it document-wide also keeps
+`--site-viewport-width`, which `shared/js/menu.js` publishes from
+`clientWidth`, the same before and after the release.
+
+Then the stylesheets, loaded directly. All seven maintained pages carry the
+appearance controls and the story navigation, so no line here is conditional:
 
 ```html
 <link rel="stylesheet" href="shared/css/fonts.css">
+<link rel="stylesheet" href="shared/css/loading-gate.css">
 <link rel="stylesheet" href="shared/css/tokens.css">
 <link rel="stylesheet" href="shared/css/selection.css">
 <link rel="stylesheet" href="shared/css/navigation.css">
-<!-- Only on index.html and story6.html: -->
 <link rel="stylesheet" href="shared/css/appearance-controls.css">
 <link rel="stylesheet" href="shared/css/story-navigation.css">
 <link rel="stylesheet" href="shared/css/footer.css">
 ```
+
+`tools/check-maintained-pages.mjs` asserts the bootstrap is present, is the
+shared file rather than an inlined copy, and precedes the stylesheets. It makes
+the same assertions for the loading gate, additionally checking that the gate is
+not deferred and that both critical font faces are preloaded.
 
 Pages with the enhanced shared Menu load the module entry point:
 
@@ -24,8 +76,8 @@ Pages with the enhanced shared Menu load the module entry point:
 <script type="module" src="shared/js/main.js"></script>
 ```
 
-Story 1 through Story 5 and the organized Scrollytelling Effects, Organ Example, and Visualizing Cells prototypes load
-only navigation and back-to-top behavior:
+The Scrollytelling Effects, Organ Example, and Visualizing Cells prototypes load only navigation and back-to-top
+behavior, because they offer no appearance controls:
 
 ```html
 <script type="module" src="shared/js/navigation-only.js"></script>
@@ -37,18 +89,19 @@ select Metropolis where specified.
 
 The current page may omit a component stylesheet it does not use. Font declarations and typography roles must load
 before component tokens and styles. `navigation.css` owns only the core Menu and skip link;
-`appearance-controls.css` is optional and belongs immediately after it on pages that offer theme and contrast
-controls.
+`appearance-controls.css` follows it on every maintained page; all seven offer theme and contrast controls.
 
-The landing page keeps `landing/js/main.js` as its page entry point; that module initializes the canonical shared
-Menu, appearance, contrast, and back-to-top modules.
+Every maintained page, landing and story alike, loads `shared/js/main.js` as its entry point; that module initializes
+the canonical shared Menu, appearance, contrast, and back-to-top modules. `shared/js/navigation-only.js` is the
+entry point for the three prototypes above, which deliberately omit appearance controls; no maintained page uses it.
 
 ## Markup contract
 
 - Add `site-chrome` to each shared component root, including the skip link, so theme tokens remain scoped away from
   story artwork.
-- Add `site-chrome--light` to the Menu root when the page does not offer appearance selection. This keeps that Menu
-  light regardless of the operating-system preference without changing other shared components.
+- Add `site-chrome--light` to the Menu root only on a page that offers no appearance selection, which today means
+  the prototype pages. It keeps that Menu light regardless of the operating-system preference. Maintained pages must
+  not carry it: `shared/fixtures/menu.html` omits it, and the maintained-page check fails if a page adds it.
 - Implement the Menu with a `details[data-site-menu]` root and a visible `summary` labeled “Menu.”
 - Add `data-site-menu-panel`, `role="region"`, an accessible label, and `tabindex="-1"` to the disclosure panel.
 - Add `data-site-menu-close` to the explicit close button.
@@ -59,13 +112,14 @@ Menu, appearance, contrast, and back-to-top modules.
   input and `data-site-theme-status` to the visually hidden polite status region.
 - Omit the complete appearance fieldset and theme-status region when appearance is not an available page option, and
   apply the light-only Menu modifier described above.
-- On `index.html` and `story6.html`, add a hidden fieldset with `data-contrast-controls`, a visible High contrast button
+- On every maintained page, add a hidden fieldset with `data-contrast-controls`, a visible High contrast button
   with `role="switch"`, `aria-checked`, and `data-contrast-toggle`, plus visible state text marked with
   `data-contrast-state`. The shared module reveals the fieldset only after the control is functional.
 - Use `aria-current="page"` on the current internal page link.
 - Keep the footer in a native `footer` and each link collection in an appropriately named `nav`.
 - Use the organization marks under `shared/assets/logos/` for the landing hero and canonical footer.
-- Add `site-chrome--dark` to footers on Story 1 through Story 5 so they use the fixed Dark treatment.
+- Do not add `site-chrome--light` or `site-chrome--dark` to a maintained page: those modifiers pin the chrome to one
+  appearance and would override the visitor's choice. They belong only to the prototypes, which offer no controls.
 - Add `data-back-to-top` to the footer's same-page link so the shared enhancement moves focus to the main target.
 - Keep previous and next story links in a separate `nav` labeled “Story navigation.”
 
@@ -78,9 +132,14 @@ Essential landmarks and links must remain in the page HTML. Shared JavaScript en
 available appearance controls; it does not fetch or inject component markup. Appearance choices remain hidden if
 JavaScript is unavailable so the page does not present controls that cannot change the saved preference.
 
-The landing page and Story 6 use the complete shared Menu with System settings, Light, Dark, and High contrast
-controls. Story 1 through Story 5 use the navigation-only variant. Shared component styles remain scoped to the Menu,
-skip link, footer, and any shared story navigation.
+All seven maintained pages, landing and Stories 1 through 6 alike, use the complete shared Menu with System settings,
+Light, Dark, and High contrast controls. Shared component styles remain scoped to the Menu, skip link, footer, and any
+shared story navigation.
+
+`navigation.css` also defines the repository's one visually-hidden utility. Prefer
+`.site-chrome-visually-hidden` in new markup; the rule aliases the older names (`.visually-hidden`,
+`.story-end-matter__visually-hidden`, `.story4-scene-summary`, and the narrative heading and summary classes) so
+existing pages keep working. Do not re-declare those properties in a story or landing stylesheet.
 
 `selection.css` applies theme-aware selection colors only inside `.site-chrome` components. Light chrome uses deep
 plum with white text, while Dark chrome uses pale pink with deep burgundy text. The stylesheet defers to operating-

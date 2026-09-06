@@ -5,8 +5,10 @@ import path from "node:path";
 
 const projectRoot = process.cwd();
 const allowKnown = process.argv.includes("--allow-known");
-const ignoredDirectories = new Set([".agents", ".codex", ".git"]);
-const scannableExtensions = new Set([".css", ".html"]);
+// "fixtures" holds canonical chrome templates whose {{root}} placeholders are
+// resolved per page by check-maintained-pages.mjs, not by a browser.
+const ignoredDirectories = new Set([".agents", ".codex", ".git", "fixtures"]);
+const scannableExtensions = new Set([".css", ".html", ".json"]);
 
 // Remove an entry when its underlying reference is repaired or intentionally deleted.
 const knownMissingReferences = new Set([
@@ -35,7 +37,9 @@ async function collectFiles(directory) {
 }
 
 function extractHtmlReferences(source) {
-    const attributePattern = /\b(href|poster|src|srcset)\s*=\s*(?:"([^"]*)"|'([^']*)')/gi;
+    // `xlink:href` included so inline-SVG <image> references are checked too;
+    // Story 4's illustration rasters are addressed that way.
+    const attributePattern = /\b(?:xlink:)?(href|poster|src|srcset)\s*=\s*(?:"([^"]*)"|'([^']*)')/gi;
     const references = [];
     let match;
 
@@ -54,6 +58,37 @@ function extractHtmlReferences(source) {
         } else {
             references.push(value);
         }
+    }
+
+    return references;
+}
+
+/*
+ * Local links authored in JSON, which today means the story end-matter files.
+ * Three of them cross-link to sibling stories, and nothing validated those
+ * paths while the scan covered only markup and stylesheets.
+ */
+function extractJsonReferences(source) {
+    const references = [];
+
+    const walk = (node) => {
+        if (Array.isArray(node)) {
+            node.forEach(walk);
+        } else if (node && typeof node === "object") {
+            for (const [key, value] of Object.entries(node)) {
+                if (typeof value === "string" && /^(?:href|image|logo|src)$/iu.test(key)) {
+                    references.push(value);
+                } else {
+                    walk(value);
+                }
+            }
+        }
+    };
+
+    try {
+        walk(JSON.parse(source));
+    } catch {
+        // A malformed end-matter file is reported by the maintained-page check.
     }
 
     return references;
@@ -138,9 +173,15 @@ for (const file of files.filter((candidate) => path.extname(candidate) === ".htm
 for (const file of files) {
     const extension = path.extname(file).toLowerCase();
     const source = await readFile(file, "utf8");
-    const references = extension === ".html"
-        ? extractHtmlReferences(source)
-        : extractCssReferences(source);
+    let references;
+
+    if (extension === ".html") {
+        references = extractHtmlReferences(source);
+    } else if (extension === ".json") {
+        references = extractJsonReferences(source);
+    } else {
+        references = extractCssReferences(source);
+    }
 
     for (const reference of new Set(references)) {
         const trimmedReference = reference.trim();

@@ -1,0 +1,183 @@
+/*
+ * Story 2 quiz.
+ *
+ * Semantics, layout and feedback. The controls come from the shared button
+ * component and every colour from the story's own token block in styles.css,
+ * so nothing here writes a value: the quiz previously carried its own
+ * #b20a2f palette that had no relationship to the rest of the story.
+ */
+
+.story2-page .story-quiz__lead {
+    max-width: 60ch;
+    margin-block: 0 1.5rem;
+}
+
+/*
+ * Task list.
+ *
+ * Numbered steps rather than assorted advice, so the numerals carry the
+ * sequence and the marker stays outside the text column.
+ */
+.story2-page .story-quiz__instructions {
+    max-width: 60ch;
+    padding-inline-start: 1.5rem;
+    margin-block: 0 1.5rem;
+}
+
+.story2-page .story-quiz__instructions li + li {
+    margin-top: 0.75rem;
+}
+
+/*
+ * Inline link buttons.
+ *
+ * They keep the full 2.75rem pointer target, but an inline-flex box that tall
+ * would stretch its line box and leave the step it sits in taller than its
+ * neighbours. Centring it on the text and pulling the extra height back out of
+ * the line keeps the list rhythm even without shrinking the target.
+ */
+.story2-page .story-quiz__instructions .hra-button,
+.story2-page .story-quiz__hint-content .hra-button {
+    margin-block: -0.5rem;
+    vertical-align: middle;
+}
+
+/* --- Hint ---------------------------------------------------------- */
+
+.story2-page .story-quiz__hint {
+    margin-block: 0 1.5rem;
+}
+
+.story2-page .story-quiz__hint summary {
+    width: fit-content;
+    /* The shared button sets its own layout; the marker would sit outside it. */
+    list-style: none;
+}
+
+.story2-page .story-quiz__hint summary::-webkit-details-marker {
+    display: none;
+}
+
+.story2-page .story-quiz__hint summary img {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.story2-page .story-quiz__hint-content {
+    padding: 1rem 0 0;
+}
+
+.story2-page .story-quiz__hint-content p {
+    max-width: 60ch;
+    margin-block: 0 0.75rem;
+}
+
+.story2-page .story-quiz__hint-content p:last-child {
+    margin-block-end: 0;
+}
+
+/* --- Choices ------------------------------------------------------- */
+
+.story2-page .story-quiz__choices {
+    padding: 0;
+    margin: 0 0 1.5rem;
+    border: 0;
+}
+
+.story2-page .story-quiz__choices legend {
+    padding: 0;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-heading);
+    font-size: var(--type-title-large-size);
+    font-weight: var(--type-title-large-primary-weight);
+    line-height: var(--type-title-large-line-height);
+}
+
+/*
+ * Selection rows.
+ *
+ * Discrete cards rather than a run of grey bars divided by hairlines: each
+ * row is a full pointer target, and the selected row is legible from its
+ * container and border rather than from the radio alone.
+ */
+.story2-page .story-quiz__choices > .radiochoice {
+    display: flex;
+    min-height: 3.25rem;
+    padding: 0.75rem 1rem;
+    align-items: center;
+    gap: 0.75rem;
+    border: 0.0625rem solid var(--story2-color-choice-border);
+    border-radius: var(--radius-small);
+    background: var(--story2-color-choice-surface);
+    cursor: pointer;
+}
+
+.story2-page .story-quiz__choices > .radiochoice + .radiochoice {
+    margin-top: 0.5rem;
+}
+
+.story2-page .story-quiz__choices > .radiochoice:hover {
+    background: var(--story2-color-choice-surface-hover);
+}
+
+.story2-page .story-quiz__choices > .radiochoice:has(:checked) {
+    border-color: var(--story2-color-accent);
+    background: var(--story2-color-choice-surface-selected);
+}
+
+.story2-page .story-quiz .radiochoice input {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0;
+    flex: 0 0 auto;
+    accent-color: var(--story2-color-accent);
+}
+
+/* --- Result -------------------------------------------------------- */
+
+.story2-page .story-quiz__result {
+    display: flex;
+    max-width: 60ch;
+    min-height: 2.75rem;
+    padding: 0.625rem 0.875rem;
+    margin-top: 1rem;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: var(--radius-small);
+    background: var(--story2-color-correct-surface);
+    visibility: visible;
+}
+
+.story2-page .story-quiz__result:empty {
+    min-height: 0;
+    padding: 0;
+    margin-top: 0;
+    background: none;
+}
+
+.story2-page .story-quiz__result--incorrect {
+    background: var(--story2-color-incorrect-surface);
+}
+
+.story2-page .story-quiz :focus-visible {
+    outline: 0.2rem solid var(--story2-color-focus);
+    outline-offset: 0.2rem;
+}
+
+@media (forced-colors: active) {
+    .story2-page .story-quiz__choices > .radiochoice {
+        border: 0.125rem solid ButtonText;
+    }
+
+    .story2-page .story-quiz__choices > .radiochoice:has(:checked) {
+        border-color: Highlight;
+    }
+
+    .story2-page .story-quiz__result {
+        border: 0.125rem solid CanvasText;
+    }
+
+    .story2-page .story-quiz :focus-visible {
+        outline-color: Highlight;
+    }
+}

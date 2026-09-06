@@ -14,6 +14,15 @@ html {
     --narrative-color-on-inverse-muted: #d4dde6;
     --narrative-color-intro-shadow: #fff;
 
+    /*
+     * Dark appearance.
+     *
+     * Only the reading surface and its text follow the theme. The scene roles
+     * below stay black-on-white in both themes on purpose: the full-bleed
+     * scenes are cinematic backdrops for illustration artwork, and inverting
+     * them would invert the artwork's own contrast.
+     */
+
     /* Stable enhanced-scene geometry */
     --narrative-viewport-height: 100vh;
 
@@ -22,6 +31,8 @@ html {
         var(--font-body);
     --narrative-type-dialogue: var(--type-body-primary-weight) clamp(1.125rem, 1.075rem + 0.25vw, 1.25rem) / 1.5
         var(--font-body);
+    --narrative-color-episode-accent: var(--hra-dark-primary);
+    --narrative-color-episode-rule: color-mix(in srgb, var(--narrative-color-on-inverse) 32%, transparent);
     --narrative-type-intro-lead: var(--type-headline-primary-weight) var(--type-headline-small-size) /
         var(--type-headline-small-line-height) var(--font-heading);
     --narrative-type-episode-title: var(--type-display-primary-weight) clamp(2rem, 5vw, var(--type-display-medium-size)) /
@@ -37,22 +48,25 @@ html {
     letter-spacing: var(--type-body-large-letter-spacing);
 }
 
+:root[data-theme="dark"] :where(body.story-narrative) {
+    --narrative-color-text: var(--hra-dark-on-surface);
+    --narrative-color-page: var(--hra-dark-surface);
+    --narrative-color-intro-shadow: var(--hra-dark-surface-container-lowest);
+}
+
+/* System-theme fallback when JavaScript is unavailable. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) :where(body.story-narrative) {
+        --narrative-color-text: var(--hra-dark-on-surface);
+        --narrative-color-page: var(--hra-dark-surface);
+        --narrative-color-intro-shadow: var(--hra-dark-surface-container-lowest);
+    }
+}
+
 @supports (height: 100svh) {
     :where(body.story-narrative) {
         --narrative-viewport-height: 100svh;
     }
-}
-
-.story-narrative :where(.story-chapter-heading, .story-scene-summary) {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-    border: 0;
 }
 
 :where(body.story-narrative) p {
@@ -62,8 +76,15 @@ html {
     text-wrap: pretty;
 }
 
+/*
+ * The intro is exactly one viewport tall, so it cannot also carry a top
+ * margin: the margin pushed the total to 100vh + 70px and cropped the bottom
+ * of the human image below the fold. Story 5 had overridden this to 0 for
+ * itself; Stories 2 and 3 never did, which is why only they were affected.
+ * The fixed Menu sits above the intro and needs no reserved space here.
+ */
 :where(body.story-narrative) .intro {
-    margin-top: 70px;
+    margin-top: 0;
 }
 
 :where(.story-narrative) .section1,
@@ -115,46 +136,104 @@ html {
     letter-spacing: var(--type-body-large-letter-spacing);
 }
 
+/*
+ * Episode title block.
+ *
+ * An editorial kicker / title / deck stack on an accent rule, following the
+ * pattern Story 4's splash established. It was centred flow text in which the
+ * kicker, the title and the deck all read at the same weight, so the block
+ * had no entry point.
+ */
+:where(.story-narrative) .container2.introline {
+    align-items: flex-start;
+    justify-content: center;
+    text-align: start;
+}
+
+/*
+ * The eyebrow, title and description take the full intro column and then add an
+ * inline-start padding and accent border. Without border-box those sit outside
+ * the declared width, so each ran past the viewport and scrolled the page
+ * sideways on phones.
+ */
+:where(.story-narrative) .introline > :where(p, h1) {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 42rem;
+}
+
+:where(.story-narrative) .introline > p:first-of-type {
+    margin-block: 0;
+    padding-inline-start: clamp(0.875rem, 2.5vw, 1.5rem);
+    border-inline-start: 0.25rem solid var(--narrative-color-episode-accent);
+    color: var(--narrative-color-episode-accent);
+    font-family: var(--font-body);
+    font-size: var(--type-body-large-size);
+    font-weight: var(--type-label-emphasized-weight);
+    line-height: var(--type-body-large-line-height);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+:where(.story-narrative) .introline .story-episode-title {
+    padding-inline-start: clamp(0.875rem, 2.5vw, 1.5rem);
+    border-inline-start: 0.25rem solid var(--narrative-color-episode-accent);
+}
+
 :where(.story-narrative) .introline .descriptionsection {
+    max-width: 42rem;
+    padding-block-start: 1rem;
+    padding-inline-start: clamp(0.875rem, 2.5vw, 1.5rem);
+    margin-top: 0;
+    border-block-start: 0.125rem solid var(--narrative-color-episode-rule);
     color: var(--narrative-color-on-inverse-muted);
     font: var(--narrative-type-body);
     letter-spacing: var(--type-body-large-letter-spacing);
-    max-width: 600px;
-    margin-top: -10px;
     opacity: 1;
     text-wrap: pretty;
 }
 
+/* The characters keep their own centred row beneath the stack. */
+:where(.story-narrative) .introline .popupsection {
+    margin-top: clamp(1.5rem, 5vh, 3rem);
+}
+
+/*
+ * CeCe and Squiggy.
+ *
+ * They were positioned absolutely from opposite edges at different offsets -
+ * left: 10%/top: 25% against right: 10%/top: 31% - so the pair never sat
+ * level, and on phones the 20% insets plus a 22% width put them off centre.
+ * A flex row centres them as a pair at every width and keeps them level, so
+ * only the entrance animation stays on the images themselves.
+ */
+:where(.story-narrative) .popupsection {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 12vw, 8rem);
+}
+
 :where(.story-narrative) .introlineimg {
-    position: absolute;
-    width: 10%;
-    top: 32%;
     animation: pulse-white 3.5s infinite;
 }
 
-:where(.story-narrative) .introcharcece {
-    left: 10%;
-    top: 25%;
-    width: 15%;
-}
-
+:where(.story-narrative) .introcharcece,
 :where(.story-narrative) .introcharsquiggy {
-    right: 10%;
-    top: 31%;
-    width: 15%;
+    width: min(15%, 8rem);
+    height: auto;
+    flex: 0 0 auto;
 }
 
 @media all and (max-width: 750px) {
-    :where(.story-narrative) .introcharcece {
-        left: 20%;
-        width: 22%;
-        top: 85%;
+    :where(.story-narrative) .popupsection {
+        gap: clamp(1rem, 8vw, 3rem);
     }
 
+    :where(.story-narrative) .introcharcece,
     :where(.story-narrative) .introcharsquiggy {
-        top: 85%;
-        width: 22%;
-        right: 20%;
+        width: min(22%, 6rem);
     }
 }
 
@@ -233,20 +312,8 @@ html {
 
 :where(.story-narrative) .story-episode-title {
     max-width: 42rem;
-    margin-block: 0.5rem 1rem;
+    margin-block: 0 1rem;
     font: var(--narrative-type-episode-title);
     letter-spacing: var(--type-display-medium-letter-spacing);
     text-wrap: balance;
-}
-
-:where(.story-narrative) .story-intro-summary {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    border: 0;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
 }

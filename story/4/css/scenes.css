@@ -1,0 +1,395 @@
+/*
+ * Story 4 scenes: the plate-and-prose sequence.
+ *
+ * Every scene is a sticky outlined plate beside a scrolling prose column. The
+ * original pinned-overlay pattern - centred .talkbubble text drawn over a
+ * ScrollTrigger-pinned illustration - is gone; scene 8 was the last holdout.
+ */
+
+#four .svgparts {
+    /* clip, not hidden, so the sticky scene stages inside can stick. */
+    overflow: clip;
+}
+
+#four .svgparts svg {
+    position: relative;
+    display: flex;
+    top: 50vh;
+    max-width: 56.25rem !important;
+    margin: auto;
+    transform: translateY(-50%);
+}
+
+#four :is(
+    #Systempt4,
+    #Systempt3,
+    #Systempt2,
+    #Purple,
+    #Combined,
+    #SideLogos,
+    #RDF1,
+    #RDF2,
+    #Brand1,
+    #Brand2,
+    #Brand3,
+    #Brand4,
+    #closeup3,
+    #closeup2,
+    #closeup1,
+    #Data2,
+    #likedthing,
+    #Locks,
+    #Mess,
+    #TypeLogos,
+    #Like1,
+    #Like2,
+    #Like3,
+    #Like4,
+    #Like5,
+    #Like6,
+    #Like7,
+    #Like8,
+    #closeuplinks1,
+    #closeuplinks2,
+    #closeuplinks3,
+    #closeuplinks4,
+    #closeuplinks5,
+    #closeuplinks6,
+    #closeuplinks65,
+    #closeuplinks66,
+    #closeuplinks68,
+    #closeuplinks7,
+    #closeuplinks8,
+    #closeuplinks9,
+    #closeuplinks10,
+    #predicatehighlight,
+    #objecthighlight,
+    #subjecthighlight
+) {
+    opacity: 0;
+}
+
+#four :is(#LogoLine1, #LogoLine2, #LogoLine3) {
+    stroke: url("#gradient1");
+    stroke-width: 5;
+}
+
+/*
+ * Readable scene layout.
+ *
+ * The illustration holds still in its own column while the prose scrolls past,
+ * so text never sits on top of artwork. The scroll budget comes from the prose
+ * column's height and a native `position: sticky` stage - the same idiom Story 6
+ * uses in cde.css - rather than a ScrollTrigger pin.
+ *
+ * Prose is first in source order and placed into the second column, so Reader
+ * View, screen readers and the no-JS document get the narrative before the
+ * decorative artwork.
+ */
+#four .story4-scene {
+    /* Trailing space below the last step, and the reason the plate outlives the
+       prose. The stage unsticks when the section's bottom reaches the bottom of
+       the viewport, so the space after the last step has to exceed one viewport
+       before the plate is still present while that step is read - and exceed it
+       by enough that the scene's last artwork beat finishes first. Per-scene
+       override if an artwork sequence needs longer. See README, "Outro budget". */
+    --story4-scene-outro: 90svh;
+    /* The artwork's aspect ratio. Declared here rather than on the plate so the
+       stacked prose can size its measure from the same value. */
+    --story4-scene-ratio: 1922 / 1082;
+    display: grid;
+    /* The illustration is always width-constrained - it letterboxes inside its
+       box - so every pixel taken from the prose column, the gap or the outer
+       padding goes straight into how large the artwork renders. The prose is
+       given a range rather than a fixed width so it yields on narrower
+       viewports instead of squeezing the artwork. */
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 26rem);
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: start;
+    padding-inline: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+/*
+ * A held scene stops its prose as well as its artwork, so the reader scrolls
+ * through the illustration's beats with the text standing still, and only then
+ * does the column move on. Scene 3 is the case for it: one short paragraph
+ * against an illustration that changes twice, where the artwork is the content.
+ *
+ * The step sticks at the prose column's own leading padding, so it locks exactly
+ * where it already sits when the section reaches the top of the viewport - it
+ * settles rather than jumps.
+ *
+ * The hold's length is the SPACER's height, not the step's margin. A sticky box
+ * is constrained to its containing block's content box reduced by its own
+ * margins, so a step's `margin-bottom` buys it exactly nothing: margin box and
+ * content box grow together and the travel stays zero. Only a sibling adds room.
+ * That is what `.story4-scene__hold` is - an empty block after the step whose
+ * height is the distance the step can travel before it unsticks.
+ *
+ * The beats span 90svh of it - two transitions with a dwell between them, so
+ * each state can be read before the next begins - and the remaining 30svh
+ * leaves the finished artwork on screen, still held, before the prose releases.
+ * They are keyed to the section rather than to the step, because ScrollTrigger
+ * measures a trigger's position once per refresh and would read a stuck
+ * element's shifted rect. See js/diagram-overview.js, which also has to know
+ * the band height below.
+ */
+#four .story4-scene--hold {
+    --story4-scene-hold: 120svh;
+}
+
+/* Scene 5 holds only its closing step. The first step scrolls normally while the
+   list fills in; the last one locks so the finished node diagram and the
+   sentence describing it stay on screen together. Its sequence is shorter than
+   scene 3's, so it needs less travel. */
+#four .story4-scene--hold-last {
+    --story4-scene-hold: 70svh;
+}
+
+/* Scene 6 holds longest. Its artwork is static - three panels, no beats - so the
+   hold is the only thing giving the reader time with it; there is no sequence
+   resolving to carry the pause. It was also the shortest section on the page. */
+#four .story4-scene:has(.scene6) {
+    --story4-scene-hold: 150svh;
+}
+
+/* Scene 7's triple is the densest single image in the story - three labelled
+   panels to read across - so it holds longer than the shared default. */
+#four .story4-scene:has(.scene7) {
+    --story4-scene-hold: 110svh;
+}
+
+#four .story4-scene--hold-last .story4-step:last-of-type {
+    position: sticky;
+    top: 35svh;
+}
+
+#four .story4-scene--hold .story4-step {
+    position: sticky;
+    top: 35svh;
+}
+
+#four .story4-scene__hold {
+    height: var(--story4-scene-hold);
+}
+
+/* The stage is only the sticky positioning context; the plate inside carries
+   the visual treatment, so it can hug the artwork rather than framing a
+   viewport-tall block of empty surface. */
+#four .story4-scene__stage {
+    box-sizing: border-box;
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 0;
+    display: grid;
+    height: 100svh;
+    place-items: center;
+    /* makes cqw/cqh available to the plate, so it can fit itself to whichever
+       dimension binds without needing a breakpoint for each regime */
+    container-type: size;
+}
+
+/*
+ * Scenes alternate which side holds the artwork. nth-of-type counts <section>
+ * elements, and unconverted scenes are still <div>, so this stays correct
+ * during the rollout. Prose is first in source order throughout; only the
+ * column assignment changes.
+ */
+#four .story4-scene:nth-of-type(even) {
+    grid-template-columns: minmax(16rem, 26rem) minmax(0, 1fr);
+}
+
+#four .story4-scene:nth-of-type(even) .story4-scene__prose {
+    grid-column: 1;
+}
+
+#four .story4-scene:nth-of-type(even) .story4-scene__stage {
+    grid-column: 2;
+}
+
+#four .story4-scene__prose {
+    grid-column: 2;
+    grid-row: 1;
+    /* Leading space so each step arrives near the middle of the viewport, level
+       with the centred illustration, rather than at the very top. */
+    padding-block: 35svh var(--story4-scene-outro);
+}
+
+#four .story4-step {
+    /* The column governs the measure; no max-width needed here. */
+    margin: 0 0 55svh;
+    text-align: start;
+    text-wrap: pretty;
+}
+
+/*
+ * The plate. It hugs the illustration - no inner padding by default; set
+ * --story4-stage-padding on an individual scene when one needs breathing room.
+ *
+ * The surface is fixed light in both appearances. These illustrations are
+ * black-stroke, white-fill line art, so on a themed surface their strokes
+ * disappear and their filled panels float: measured on scene 1, a themed plate
+ * left 43% of the frame very dark against 53% very light, where the light plate
+ * gives 1% against 95%. surface-bright's dark value (#34383c) puts the black
+ * strokes at 1.78:1; its light value (#fafbfc) at 20.27:1, so the plate takes
+ * the light value in both appearances.
+ */
+#four .story4-scene .story4-scene__stage [class^="scene"] {
+    /* Inherited from the scene so the stacked prose can size itself to match the
+       plate; a per-scene override still wins, because it is set on the scene. */
+    --story4-stage-ratio: var(--story4-scene-ratio);
+    --story4-stage-padding: 0;
+    --story4-stage-radius: 1rem;
+    /* Scene 1's viewBox. Set per scene when an illustration has a different
+       shape; the plate then shrinks to fit whichever of width or height binds
+       first, so the artwork is never cropped or letterboxed. */
+
+    box-sizing: border-box;
+    /*
+     * Fit the plate to the stage, preserving the artwork's ratio, whichever
+     * dimension binds. aspect-ratio alone cannot do this: it only fills in an
+     * unspecified dimension, so once one axis is clamped the other stops
+     * following. Both axes are stated here against the stage's container size.
+     * Height must also be reset from the base scene rule's `height: 100vh`.
+     */
+    width: min(100cqw, calc(100cqh * (var(--story4-stage-ratio))));
+    min-width: 0;
+    max-width: 100%;
+    height: min(100cqh, calc(100cqw / (var(--story4-stage-ratio))));
+    padding: var(--story4-stage-padding);
+    overflow: hidden;
+    background: var(--hra-light-surface-bright);
+    border: 2px solid var(--hra-outline-variant);
+    /* overflow: hidden above means this clips the artwork's full-bleed edges,
+       which is what makes the radius read */
+    border-radius: var(--story4-stage-radius);
+    box-shadow: 0 0.5rem 1.5rem rgb(23 23 23 / 10%);
+}
+
+/* Scene 3's illustration is a different shape from the rest. Set on the scene,
+   so the plate and the stacked prose measure both pick it up. */
+#four .story4-scene:has(.scene3) {
+    --story4-scene-ratio: 1921 / 1180;
+}
+
+#four .story4-scene .story4-scene__stage svg {
+    position: static;
+    top: auto;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    /* overrides the !important on `#four .svgparts svg` */
+    max-width: 100% !important;
+    max-height: 100%;
+    transform: none;
+}
+
+/* Below this the illustration is bigger stacked above the prose than it is
+   beside it - at 1100px a full-width band renders it about 960px across against
+   roughly 600px in two columns - so the stage becomes a band. Story 6 collapses
+   at 48rem; these diagrams carry baked-in labels and need far more room. */
+@media (max-width: 75rem) {
+    /* The alternation selectors carry an extra pseudo-class, so they outrank a
+       bare `#four .story4-scene` here and kept both columns on narrow screens.
+       Every stacked rule has to match their specificity to win. */
+    #four .story4-scene,
+    #four .story4-scene:nth-of-type(even) {
+        /* The band is 42svh rather than a full viewport, so the stage unsticks
+           much later relative to the section's end and needs far less trailing
+           space than the two-column layout to outlive its prose. */
+        --story4-scene-outro: 30svh;
+        /* Whitespace above and below each plate. Around the collapse two plates
+           can be on screen at once and were meeting edge to edge. */
+        --story4-band-gap: 40px;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+
+    /*
+     * Stacked, the stage becomes a sticky band at the top of the viewport and
+     * the prose scrolls beneath it. A grid item's sticky containing block is the
+     * grid CONTAINER, not its row, so the band stays for the whole section - and
+     * because the stage follows the prose in source order it paints above it.
+     * That is the intended sticky-header behaviour, but it only reads correctly
+     * if the band is opaque; left transparent, text showed through the artwork
+     * and appeared to pop out on top of it.
+     */
+    #four .story4-scene__stage,
+    #four .story4-scene:nth-of-type(even) .story4-scene__stage {
+        z-index: 1;
+        grid-column: 1;
+        grid-row: 1;
+        /* A held scene's step sticks just below this band, so the offset in
+           `.story4-scene--hold .story4-step` below tracks this value. */
+        height: 42svh;
+        /* Breathing room around the plate, as padding rather than margin: the
+           band's height is what the sticky geometry and the beat offsets are
+           measured against, so it has to stay exactly 42svh. Padding insets the
+           plate within that; margin would move the band itself. Just above the
+           collapse the previous scene's plate is still on screen, and without
+           this the two met edge to edge. */
+        padding-block: var(--story4-band-gap);
+        /* opaque, so prose scrolling beneath the band is hidden rather than
+           showing through around the plate */
+        background: var(--story4-page-background);
+    }
+
+    #four .story4-scene__prose,
+    #four .story4-scene:nth-of-type(even) .story4-scene__prose {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    #four .story4-scene__prose {
+        /*
+         * Stacked, the column is the full page width, so the measure has to be
+         * capped here or lines run to 100+ characters. `margin-inline: auto`
+         * centres that capped column under the artwork; the text inside stays
+         * left aligned, and the inline padding brings it in from the edges so
+         * it does not sit flush against the plate's outline above it.
+         *
+         * The cap is the narrower of a readable measure and the plate's own
+         * width, so the text never overhangs the artwork it sits beneath. The
+         * plate is letterboxed inside the band, so its width is the band's
+         * usable height times the artwork's ratio - hence `--story4-scene-ratio`
+         * living on the scene rather than on the plate, where it would not
+         * inherit up to this column.
+         */
+        box-sizing: border-box;
+        width: min(
+            100%,
+            34rem,
+            calc((42svh - 2 * var(--story4-band-gap)) * var(--story4-scene-ratio))
+        );
+        margin-inline: auto;
+        padding-block: 6svh var(--story4-scene-outro);
+        padding-inline: 1rem;
+    }
+
+    #four .story4-step {
+        margin-bottom: 40svh;
+    }
+
+    /*
+     * Stacked, the scene still holds - it just holds lower. The stage is an
+     * opaque band across the top 42svh, so the step sticks just BELOW that band
+     * rather than at the top of the viewport, where it would be covered. Without
+     * the hold the step is only on screen for about half a viewport of scroll,
+     * which is not enough to carry three artwork states: the sequence used to
+     * finish several hundred pixels after the text had slid behind the band.
+     */
+    #four .story4-scene--hold .story4-step,
+    #four .story4-scene--hold-last .story4-step:last-of-type {
+        top: calc(42svh + 1.5rem);
+    }
+
+    #four .story4-scene--hold {
+        /* The stacked sequence starts later than the held one - the step has to
+           clear the band first - so it finishes at 120svh and the hold has to
+           outlast that. */
+        --story4-scene-hold: 140svh;
+        --story4-scene-outro: 40svh;
+    }
+}

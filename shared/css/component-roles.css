@@ -1,0 +1,70 @@
+/*
+ * Component roles.
+ *
+ * Semantic pairings built on the colour roles in tokens.css, shared by the
+ * landing page and by any story that follows the site palette. No colour value
+ * is written here - only role-to-role mappings - so the palette stays the single
+ * source of truth.
+ *
+ * `color-scheme` is not declared here. A page opts into it alongside its own
+ * theme controls, so a story without them cannot pick up dark form controls
+ * from a dark system preference.
+ */
+:root {
+    --color-ink: var(--hra-on-surface-variant);
+    --color-card-ink: var(--hra-on-surface);
+    --color-heading: var(--hra-secondary);
+    --color-accent-text: var(--hra-on-primary-container);
+    --color-page: var(--hra-surface-variant);
+    --color-surface: var(--hra-surface);
+    --color-surface-muted: var(--hra-surface-container);
+    --color-surface-hover: var(--hra-surface-container-low);
+    --color-card: var(--hra-surface);
+    --color-card-hover: var(--hra-surface-container-low);
+    --color-border: var(--hra-outline-strong);
+    --color-outline-variant: var(--hra-outline-variant);
+    --color-card-outline-start: var(--hra-on-primary-container);
+    --color-card-outline-highlight: var(--hra-primary);
+    --color-card-outline-middle: var(--hra-secondary);
+    --color-card-outline-deep: var(--hra-on-secondary-container);
+    --color-card-outline-end: var(--hra-tertiary);
+    --color-card-outline-neutral: var(--color-border);
+    --color-card-outline-inverse: var(--hra-inverse-surface);
+    --color-selection: var(--hra-secondary);
+    --color-on-selection: var(--hra-on-secondary);
+    --color-action: var(--hra-on-primary-container);
+    --color-on-action: var(--hra-on-primary);
+    --color-badge: var(--hra-secondary);
+    --color-on-badge: var(--hra-on-secondary);
+    --focus-color: var(--hra-secondary);
+
+    /* Layout roles. */
+    --content-width: 72rem;
+    --reading-width: 65ch;
+    --radius-small: 0.5rem;
+    --radius-card: 0.75rem;
+    --radius-large: 1rem;
+}
+
+:root[data-theme="dark"] {
+    --color-accent-text: var(--hra-primary);
+    --color-border: var(--hra-outline);
+    --color-action: var(--hra-primary);
+    --color-on-action: var(--hra-on-primary);
+    --color-selection: var(--hra-primary-fixed);
+    --color-on-selection: var(--hra-on-primary-fixed);
+    --focus-color: var(--hra-primary);
+}
+
+/* System-theme fallback when JavaScript is unavailable. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --color-accent-text: var(--hra-primary);
+        --color-border: var(--hra-outline);
+        --color-action: var(--hra-primary);
+        --color-on-action: var(--hra-on-primary);
+        --color-selection: var(--hra-primary-fixed);
+        --color-on-selection: var(--hra-on-primary-fixed);
+        --focus-color: var(--hra-primary);
+    }
+}

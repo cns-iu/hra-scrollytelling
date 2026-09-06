@@ -1,0 +1,81 @@
+/*
+ * Story 4 colour roles and canvas appearance.
+ *
+ * The token layer, mirroring story/6/css/theme.css: this file owns every value,
+ * and nothing else in Story 4 writes a colour.
+ */
+
+/*
+ * Canvas appearance.
+ *
+ * The page advertises `color-scheme: light dark` in its meta tag, so without a
+ * declaration the browser paints the canvas from the OS preference - a dark
+ * canvas even when the visitor has chosen Light, showing through anything that
+ * does not paint its own background. This must sit on the ROOT element: on the
+ * body it styles only that box and leaves the canvas untouched. This file is
+ * loaded by exactly one page, so :root is already story-scoped.
+ */
+:root {
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        color-scheme: dark;
+    }
+}
+
+#four {
+    /*
+     * Splash surfaces.
+     *
+     * These were pinned dark in both appearances because they carried white
+     * text. The splash now follows the theme on surface-variant, so the text
+     * and accent are re-derived per appearance instead: on the light band
+     * on-surface-variant reads 8.41:1, and the kicker uses
+     * on-primary-container at 7.22:1 - HRA red itself is only 3.87:1 there
+     * and fails AA for small bold text.
+     */
+    --story4-splash-surface: var(--hra-light-surface-variant);
+    --story4-splash-surface-muted: var(--hra-light-surface-container-highest);
+    --story4-splash-text: var(--hra-light-on-surface-variant);
+    --story4-splash-accent: var(--hra-light-on-primary-container);
+    --story4-splash-particle: var(--hra-light-outline-strong);
+    --story4-splash-rule: color-mix(in srgb, var(--story4-splash-text) 32%, transparent);
+    --story4-splash-scrim: color-mix(in srgb, var(--story4-splash-surface) 88%, transparent);
+    --story4-page-background: #ffffff;
+    --story4-text: #0e1825;
+    --story4-muted-text: #4c4c58;
+}
+
+/* --- Dark appearance -------------------------------------------------- */
+:root[data-theme="dark"] #four {
+    /* On the dark band on-surface-variant reads 8.41:1 and the kicker's
+       primary-fixed 8.26:1; dark-primary would sit at 6.27:1, under AAA. */
+    --story4-splash-surface: var(--hra-dark-surface-variant);
+    --story4-splash-surface-muted: var(--hra-dark-surface-container-highest);
+    --story4-splash-text: var(--hra-dark-on-surface-variant);
+    --story4-splash-accent: var(--hra-dark-primary-fixed);
+    --story4-splash-particle: var(--hra-dark-outline);
+    --story4-page-background: var(--hra-dark-surface);
+    --story4-text: var(--hra-dark-on-surface);
+    --story4-muted-text: var(--hra-dark-outline);
+}
+
+/* System-theme fallback when JavaScript is unavailable. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) #four {
+        --story4-splash-surface: var(--hra-dark-surface-variant);
+        --story4-splash-surface-muted: var(--hra-dark-surface-container-highest);
+        --story4-splash-text: var(--hra-dark-on-surface-variant);
+        --story4-splash-accent: var(--hra-dark-primary-fixed);
+        --story4-splash-particle: var(--hra-dark-outline);
+        --story4-page-background: var(--hra-dark-surface);
+        --story4-text: var(--hra-dark-on-surface);
+        --story4-muted-text: var(--hra-dark-outline);
+    }
+}
