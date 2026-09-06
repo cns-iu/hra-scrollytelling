@@ -101,11 +101,23 @@ html.story-flowing .story-narrative .story-intro-summary {
     white-space: normal;
 }
 
-html.story-flowing .story-narrative :where(.story-intro-summary, .story-scene-summary) {
+html.story-flowing .story-narrative .story-scene-summary {
     font: var(--narrative-type-body);
     letter-spacing: var(--type-body-large-letter-spacing);
     line-height: var(--type-body-large-line-height);
     text-wrap: pretty;
+}
+
+/*
+ * The opening line.
+ *
+ * In flowing mode this is the story's first sentence rather than a text
+ * equivalent for the typed line, so it reads at lead weight instead of body.
+ */
+html.story-flowing .story-narrative .story-intro-summary {
+    font: var(--narrative-type-intro-lead);
+    letter-spacing: var(--type-headline-small-primary-letter-spacing);
+    text-wrap: balance;
 }
 
 html.story-flowing .story-narrative :where(.story-chapter-heading, .story-scene-summary) {

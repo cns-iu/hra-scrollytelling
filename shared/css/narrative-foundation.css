@@ -31,6 +31,8 @@ html {
         var(--font-body);
     --narrative-type-dialogue: var(--type-body-primary-weight) clamp(1.125rem, 1.075rem + 0.25vw, 1.25rem) / 1.5
         var(--font-body);
+    --narrative-color-episode-accent: var(--hra-dark-primary);
+    --narrative-color-episode-rule: color-mix(in srgb, var(--narrative-color-on-inverse) 32%, transparent);
     --narrative-type-intro-lead: var(--type-headline-primary-weight) var(--type-headline-small-size) /
         var(--type-headline-small-line-height) var(--font-heading);
     --narrative-type-episode-title: var(--type-display-primary-weight) clamp(2rem, 5vw, var(--type-display-medium-size)) /
@@ -146,14 +148,59 @@ html {
     letter-spacing: var(--type-body-large-letter-spacing);
 }
 
+/*
+ * Episode title block.
+ *
+ * An editorial kicker / title / deck stack on an accent rule, following the
+ * pattern Story 4's splash established. It was centred flow text in which the
+ * kicker, the title and the deck all read at the same weight, so the block
+ * had no entry point.
+ */
+:where(.story-narrative) .container2.introline {
+    align-items: flex-start;
+    justify-content: center;
+    text-align: start;
+}
+
+:where(.story-narrative) .introline > :where(p, h1) {
+    width: 100%;
+    max-width: 42rem;
+}
+
+:where(.story-narrative) .introline > p:first-of-type {
+    margin-block: 0;
+    padding-inline-start: clamp(0.875rem, 2.5vw, 1.5rem);
+    border-inline-start: 0.25rem solid var(--narrative-color-episode-accent);
+    color: var(--narrative-color-episode-accent);
+    font-family: var(--font-body);
+    font-size: var(--type-body-large-size);
+    font-weight: var(--type-label-emphasized-weight);
+    line-height: var(--type-body-large-line-height);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+:where(.story-narrative) .introline .story-episode-title {
+    padding-inline-start: clamp(0.875rem, 2.5vw, 1.5rem);
+    border-inline-start: 0.25rem solid var(--narrative-color-episode-accent);
+}
+
 :where(.story-narrative) .introline .descriptionsection {
+    max-width: 42rem;
+    padding-block-start: 1rem;
+    padding-inline-start: clamp(0.875rem, 2.5vw, 1.5rem);
+    margin-top: 0;
+    border-block-start: 0.125rem solid var(--narrative-color-episode-rule);
     color: var(--narrative-color-on-inverse-muted);
     font: var(--narrative-type-body);
     letter-spacing: var(--type-body-large-letter-spacing);
-    max-width: 600px;
-    margin-top: -10px;
     opacity: 1;
     text-wrap: pretty;
+}
+
+/* The characters keep their own centred row beneath the stack. */
+:where(.story-narrative) .introline .popupsection {
+    margin-top: clamp(1.5rem, 5vh, 3rem);
 }
 
 /*
@@ -270,7 +317,7 @@ html {
 
 :where(.story-narrative) .story-episode-title {
     max-width: 42rem;
-    margin-block: 0.5rem 1rem;
+    margin-block: 0 1rem;
     font: var(--narrative-type-episode-title);
     letter-spacing: var(--type-display-medium-letter-spacing);
     text-wrap: balance;
