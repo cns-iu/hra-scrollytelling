@@ -348,7 +348,10 @@ function checkAnimationGeometry() {
  * @returns {void}
  */
 function checkImagePolicy() {
-    const storyImages = Array.from(files.html.matchAll(/<img\b[^>]*(?:src|data-src)="story\/6\/img\/[^>]*>/giu), (match) => match[0]);
+    const storyImagePattern = new RegExp(`<img\\b[^>]*(?:src|data-src)="${imageRef}/[^>]*>`, "giu");
+    const storyImages = Array.from(files.html.matchAll(storyImagePattern), (match) => match[0]);
+
+    check(storyImages.length > 0, "Story 6 image policy checks matched no images; the image path may have changed");
 
     for (const image of storyImages) {
         check(/\balt="[^"]*"/u.test(image), `Story 6 image is missing alt text: ${summarizeTag(image)}`);
