@@ -188,10 +188,12 @@ former root `js/` directory was removed after repository-wide auditing confirmed
 `jquery-3.6.3.min.js` and `magnifier.js` had no remaining consumers and that `runtime.js`, `polyfills.js`, and `main.js`
 were redundant build fragments embedded byte-for-byte within the consumed prototype bundle.
 
-Story 4's embedded SVG illustrations contain 47 repeated ID values across 519 ID attributes. Some of those values are
-consumed by Story 4 animation selectors, gradients, masks, or other SVG fragment references, so they were intentionally
-left unchanged during the stylesheet migration. Treat them as a known invalid-markup baseline and clean them up only
-as a separate embedded-SVG migration with before-and-after animation and illustration regression testing.
+Story 4's embedded SVG identifiers are unique; the 47 repeated ID values it used to carry were resolved in a dedicated
+migration and its duplicate-ID baseline was removed from `tools/check-maintained-pages.mjs`. Most were unreferenced
+Sketch export noise and were deleted outright. The eight that were consumed by animation selectors or gradient
+references had been silently broken by the duplication, since `getElementById` and `url(#id)` both resolve to the first
+match: scene 5 rendered scene 1's gradient, scene 1's file-type icons never faded in, and several label groups animated
+only their first copy. Sibling elements meant to animate together now share a `js-` class rather than an ID.
 
 Story 5 owns its story-specific scene and media-control presentation under `story/5/css/styles.css`, its scene
 backgrounds, narrative illustrations, and media-control icons under `story/5/images/`, and its six videos
@@ -203,8 +205,9 @@ previous-section, and next-section controls. Flowing mode removes autoplay and e
 
 `tools/check-maintained-pages.mjs` enforces maintained-page metadata, shared chrome, stylesheet order, heading and
 motion contracts, fragment and ARIA references, new-tab safety, and the absence of inline event handlers and retired
-runtimes. It also freezes the known duplicate-ID signatures in the embedded SVG artwork for Stories 2–4 so new ID
-regressions fail without presenting existing generated-artwork debt as newly introduced.
+runtimes. It also freezes the known duplicate-ID signatures in the embedded SVG artwork for Stories 2 and 3 so new ID
+regressions fail without presenting existing generated-artwork debt as newly introduced. Story 4 has no such entry;
+its IDs are unique and the checker asserts that directly.
 
 Each retained prototype owns its exclusive images, videos, models, and dedicated presentation beneath its directory.
 Prototype-only shared artwork lives under `prototypes/shared/`; assets shared with a maintained story live under

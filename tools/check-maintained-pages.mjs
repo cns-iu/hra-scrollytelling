@@ -35,18 +35,6 @@ const knownDuplicateIds = {
         "Page-1:2", "Path:5", "Rectangle:8", "Screenshot-2023-09-29-at-14.22.11:2",
         "filter-1:2", "filter-3:2", "filter-4:2", "path-2:2",
     ],
-    4: [
-        "Artboard:8", "Bitmap:4", "CenterLogo:6", "Digestive-System:2", "Group-2:10",
-        "Group-3:9", "Group-4:7", "Group-5:3", "Group-6:2", "Group:14",
-        "Ice-cream:2", "KidneyExtractionCode-(1):2", "Large-Intestine:2", "Left-Female-Kidney:7",
-        "Line-10:2", "Line-12:10", "Line-2:13", "Line-9:18", "Line:24", "Oval:47",
-        "Path:24", "Pure-data:2", "Rectangle-2:3", "Rectangle-3:3", "Rectangle:22",
-        "Respiratory-System:2", "Shape:31", "Systempt3:2", "Systempt4:2", "Trachea:2",
-        "Tuft-cell:3", "TypeLogos:3", "bg:3", "check-circle-fill:3", "closeuplinks3:2",
-        "database:2", "hra-logo-with-text-black:6", "linearGradient-2:2", "located_in:4",
-        "lock-fill:2", "lungs-fill-(1):3", "ok:10", "part_of:4", "pc-display-horizontal-(2):2",
-        "person-fill:2", "radialGradient-1:4", "rect-1:2",
-    ],
 };
 
 const errors = [];

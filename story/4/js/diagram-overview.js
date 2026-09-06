@@ -18,7 +18,7 @@ export function setupDiagramOverview() {
           pin: false,
         },
       })
-      .to("#LogoLine1,#Line,#LogoLine2,#LogoLine3", {
+      .to("#LogoLine1,#LogoLine2,#LogoLine3,.js-logo-lines", {
         stroke: "rgb(0,0,0)",
       })
       .to("#SideLogos", {
@@ -53,7 +53,7 @@ export function setupDiagramOverview() {
           pin: false,
         },
       })
-      .to("#TypeLogos", {
+      .to(".js-type-logos", {
         opacity: 1,
       });
 
@@ -73,7 +73,7 @@ export function setupDiagramOverview() {
         opacity: 1,
       })
 
-      .to("#TypeLogos", {
+      .to(".js-type-logos", {
         opacity: 1,
       });
 
@@ -105,48 +105,26 @@ export function setupDiagramOverview() {
           pin: false,
         },
       })
-      .to("#Locks,#Mess,#TypeLogos,#SideLogos", {
+      .to("#Locks,#Mess,.js-type-logos,#SideLogos", {
         opacity: 0,
       })
-      .to("#LogoLine1,#Line,#LogoLine2,#LogoLine3", {
+      .to("#LogoLine1,#LogoLine2,#LogoLine3,.js-logo-lines", {
         stroke: "rgb(0,0,0)",
         strokeWidth: 4,
       });
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#Change6",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#EatingSystem,#BreathingSystem", {
-        opacity: 0,
-      })
-      .to("#Systempt2", {
-        opacity: 1,
-      });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          autoAlpha: 1,
-          trigger: "#Change7",
-          start: "top",
-          end: "+=20%",
-          scrub: true,
-          duration: 3,
-          pin: false,
-        },
-      })
-      .to("#Systempt3", {
-        opacity: 1,
-      });
+    /*
+     * The #Change6 and #Change7 timelines used to live here. Their trigger
+     * elements were prose fragments that no longer exist - scene 3's three steps
+     * were merged into one - so both had been targeting nothing and never ran.
+     * They faded out #EatingSystem/#BreathingSystem to reveal #Systempt2, and
+     * faded in the Systempt3 labels.
+     *
+     * Consequence worth knowing: #Systempt2 is authored at opacity 0 and had no
+     * other reveal, so it is currently unreachable artwork. Restoring it means
+     * re-choreographing scene 3 against its merged prose, which is a content
+     * decision rather than a cleanup.
+     */
 
     /*
      * Scene 3's prose is one short paragraph carrying two artwork beats, and the
@@ -204,7 +182,7 @@ export function setupDiagramOverview() {
               pin: false,
             },
           })
-          .to("#Systempt4,#Purple", {
+          .to(".js-systempt4,#Purple", {
             opacity: 1,
           });
 

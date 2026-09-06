@@ -228,9 +228,9 @@ npm run check
 
 The maintained-page checker requires the `story4-flowing` default class,
 `js/motion.js`, the `data-story4-ambient-toggle` control, and that `story4.js`
-gates `setupParticles` on `window.hraStory4MotionEnabled`. It also holds a frozen
-45-entry duplicate-ID baseline for the inline SVGs — if that moves, something
-changed inside the artwork.
+gates `setupParticles` on `window.hraStory4MotionEnabled`. Story 4 has no
+duplicate-ID baseline entry: its inline SVG IDs are unique, so the checker
+asserts that outright and any new duplicate fails.
 
 Beyond the checkers, exercise all four states: light and dark, and enhanced and
 reduced motion. Reduced motion switches to the flowing fallback, where the scene
