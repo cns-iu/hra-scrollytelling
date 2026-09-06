@@ -113,6 +113,22 @@ offsets differ. That split lives in a `gsap.matchMedia()` block in
 `js/diagram-overview.js`, keyed to the same 75rem breakpoint as the CSS - change
 one and change the other.
 
+### Holding only the last step
+
+`.story4-scene--hold-last` is the lighter variant: instead of locking the whole
+scene, it sticks only `.story4-step:last-of-type`, so earlier steps scroll
+normally and just the closing pair holds. Scene 5 uses it - the list fills in
+while the first paragraph scrolls past, then the node diagram and the sentence
+naming it lock together. It needs the same `.story4-scene__hold` spacer, placed
+after the last step, for the same reason: a sticky box gets no travel from its
+own margin.
+
+Measure the pairing, not the beat. Scene 5's node beat finished 701px before the
+plate released, which sounded generous, but the *text* left 332px in - so the
+finished diagram spent more time alone than beside the words explaining it. What
+matters is the span where both are on screen: now 111-116% of a viewport in two
+columns, 60% stacked, where the band caps it.
+
 ### Dwell
 
 Three artwork states need three rests. Each beat is a short transition followed

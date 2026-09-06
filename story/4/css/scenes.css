@@ -183,6 +183,19 @@
     --story4-scene-hold: 120svh;
 }
 
+/* Scene 5 holds only its closing step. The first step scrolls normally while the
+   list fills in; the last one locks so the finished node diagram and the
+   sentence describing it stay on screen together. Its sequence is shorter than
+   scene 3's, so it needs less travel. */
+#four .story4-scene--hold-last {
+    --story4-scene-hold: 70svh;
+}
+
+#four .story4-scene--hold-last .story4-step:last-of-type {
+    position: sticky;
+    top: 35svh;
+}
+
 #four .story4-scene--hold .story4-step {
     position: sticky;
     top: 35svh;
@@ -289,7 +302,7 @@
 
 /* Scene 3's illustration is a different shape from the rest. Set on the scene,
    so the plate and the stacked prose measure both pick it up. */
-#four .story4-scene--hold {
+#four .story4-scene:has(.scene3) {
     --story4-scene-ratio: 1921 / 1180;
 }
 
@@ -399,7 +412,8 @@
      * which is not enough to carry three artwork states: the sequence used to
      * finish several hundred pixels after the text had slid behind the band.
      */
-    #four .story4-scene--hold .story4-step {
+    #four .story4-scene--hold .story4-step,
+    #four .story4-scene--hold-last .story4-step:last-of-type {
         top: calc(42svh + 1.5rem);
     }
 
