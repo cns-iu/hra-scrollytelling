@@ -11,12 +11,11 @@ css/
   theme.css     canvas appearance, #four tokens, dark overrides
   base.css      document layout, typography, link roles
   splash.css    editorial title block, reading scrim, particle field
-  scenes.css    pinned scene sequence, dialogue bubbles, SVG reveal hooks
+  scenes.css    plate-and-prose scenes, holds, SVG reveal hooks
   accessibility.css  motion toggle, flowing fallback, forced colors
 js/
-  story4.js            entry point; gates on motion, then calls the four setups
+  story4.js            entry point; gates on motion, then calls the three setups
   app.js               setupParticles()
-  animations.js        setupSceneTriggers()
   diagram-overview.js  setupDiagramOverview()
   diagram-detail.js    setupDiagramDetail()
   motion.js            classic script, runs in <head> before first paint
@@ -27,29 +26,38 @@ config/         particles.json, kept as a reference copy
 
 ## Scene sequence
 
-Scenes are numbered in the order they play, `.scene1` through `.scene8`, and the
-class name, the DOM order and the reading order all agree.
+All eight scenes use the plate-and-prose pattern; the original pinned-overlay
+pattern is gone. Scenes are numbered in the order they play, `.scene1` through
+`.scene8`, and the class name, the DOM order and the reading order all agree.
 
-Converted scenes use a native sticky stage: a tall section supplies the scroll
-budget while the plate holds still and the prose column scrolls beside it. They
-have no `ScrollTrigger.create` pin at all — only the `#Change*` timelines, which
-are `pin: false` and scrub against the prose step that carries the matching id.
+Each scene is a tall section supplying the scroll budget while a native sticky
+stage holds the plate still and the prose column scrolls beside it. There are no
+`ScrollTrigger.create` pins anywhere — only the `#change*` timelines, which are
+`pin: false` and scrub against the prose step carrying the matching id.
 
-Scenes still on the old mechanism are pinned with `pinSpacing: false`, so they
-reserve no scroll space of their own; the budget comes from the natural height of
-each full-viewport block, and each `end: "+=N%"` says how long that layer stays
-pinned.
-
-| scene | mechanism | beats |
+| scene | steps | beats |
 | --- | --- | --- |
-| `.scene1` | sticky plate | Change1–Change5 |
-| `.scene2` | sticky plate | datachange1 |
-| `.scene3` | sticky plate | Change8, Change9 |
-| `.scene4` | sticky plate | change13 |
-| `.scene5` | pinned overlay | — |
-| `.scene6` | pinned overlay | — |
-| `.scene7` | pinned overlay | — |
-| `.scene8` | pinned overlay | 9 beats |
+| `.scene1` | 6 | Change1–Change5 |
+| `.scene2` | 2 | datachange1 |
+| `.scene3` | 1 (held) | Change8 ×2 |
+| `.scene4` | 2 | change13 |
+| `.scene5` | 2 (hold-last) | change11, change12 |
+| `.scene6` | 1 (hold-last) | — static artwork |
+| `.scene7` | 2 (hold-last) | change14 |
+| `.scene8` | 10 | change15–change22, changecloseup1–2 |
+
+**Beat timing.** Every beat starts at `top 75%` — the step entering from the
+bottom of the viewport. These timelines were authored with `start: "top"`, which
+GSAP reads as `"top top"`: the step reaching the top of the *viewport*, roughly a
+full viewport after the reader has read it. That suited the overlay pattern,
+where text was drawn over the artwork, but beside a prose column it meant the
+artwork resolved only once its paragraph had scrolled away. Scene 7 starts
+earlier still, at `top 95%`.
+
+**Scene 8 does not hold.** With ten steps its sequence spans most of the section,
+so the plate has to outlive all of it anyway; a `hold-last` there would lock the
+final step long before the beats finish. Its budget comes from the ordinary
+outro instead.
 
 ## Outro budget
 
@@ -161,42 +169,6 @@ keeps it off that edge. Where the plate is width-bound rather than height-bound 
 the narrowest phones - the plate spans the full width and the 1rem is measured
 from the viewport instead.
 
-## Remaining: scene 8
-
-Scenes 1-7 use the plate-and-prose pattern. **Scene 8 is the only scene still on
-the original pinned-overlay pattern**, and the only thing keeping that pattern's
-code alive. It is the largest scene on the page:
-
-| bubbles | beats | words | rasters | viewBox |
-| --- | --- | --- | --- | --- |
-| 14 | 8 | 315 | 13 | `1922 1082` (default - no ratio override needed) |
-
-Everything serving it is isolated, so converting it and deleting the old pattern
-are one job:
-
-- `css/scenes.css` - the first block: `#four .scene8` and `#four .talkbubble`.
-  The `height: 100vh` there is the original of the first plate-sizing trap below;
-  narrowing that rule to `.scene8` means it no longer reaches converted scenes.
-- `css/accessibility.css` - `html.story4-flowing #four .talkbubble`, its `> *`
-  and `:empty` variants, and the forced-colors `> *` rule.
-- `js/animations.js` - the `.scene8` `ScrollTrigger.create` pin and the
-  `hraNarrativeTimeline.fadeTalkBubbles()` call.
-
-**`.talkbubble` is deliberately not scoped to `.scene8`.** The bubbles are
-siblings that follow the scene div rather than children of it, so
-`.scene8 .talkbubble` matches nothing and silently drops the styling. Every
-remaining `.talkbubble` in the document belongs to scene 8, so the bare selector
-is already exact - verify with a count before assuming otherwise.
-
-To convert it, follow scenes 5-7: prose first in source order, each untriggered
-lead-in merged into the triggered fragment it introduces so every beat keeps a
-step, ids moved from the bubbles onto the paragraphs, trailing empty bubble and
-inline `top: -25vh` dropped. Then check the outro budget and, because it has
-eight beats, the dwell between each - see "Dwell".
-
-The frozen duplicate-ID baseline must not move; it is what proves no `id` was
-lost while regrouping.
-
 ## Traps
 
 Things that look like bugs but are not, and things that are easy to break:
@@ -216,10 +188,11 @@ Things that look like bugs but are not, and things that are easy to break:
   `:nth-of-type(even)` adds a pseudo-class, so a bare `#four .story4-scene` in
   the narrow media query loses to it and the two-column layout survives onto
   phones.
-- **Do not set `top` on a scene or bubble in CSS.** They are `position: static`
-  until ScrollTrigger pins them, and the flowing fallback sets
-  `inset: auto !important`. Four such declarations existed and had never applied
-  once. Scroll position belongs to the triggers.
+- **`top` on a step means sticky, nothing else.** The only `top` declarations
+  here belong to the hold treatments, where the step is `position: sticky`. The
+  overlay pattern carried inline `top: -25vh` on every bubble; those were
+  positioning for a pinned layer and never applied, since the flowing fallback
+  sets `inset: auto !important`. Scroll position belongs to the triggers.
 - **Two SVGs are deliberately short.** `.scene7`'s SVG is `height="90%"` and
   `.scene8`'s is `height="70%"` while the rest are `100%`. `.scene3` also has a
   different `viewBox` aspect (1921×1180 against 1922×1082) and an inline
@@ -260,5 +233,6 @@ gates `setupParticles` on `window.hraStory4MotionEnabled`. It also holds a froze
 changed inside the artwork.
 
 Beyond the checkers, exercise all four states: light and dark, and enhanced and
-reduced motion. Reduced motion switches to the flowing fallback, where the
-scene summary becomes visible and the bubbles read in source order.
+reduced motion. Reduced motion switches to the flowing fallback, where the scene
+summary becomes visible, each stage goes static and full width, and prose reads
+before its artwork in source order.

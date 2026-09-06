@@ -96,35 +96,6 @@ html.story4-flowing #four [class*=" scene"] {
     transform: none !important;
 }
 
-html.story4-flowing #four .talkbubble {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    width: min(100% - 2rem, 52rem);
-    height: auto;
-    min-height: 0;
-    margin-inline: auto;
-    padding: clamp(2rem, 7vw, 5rem) 1rem;
-    position: relative;
-    inset: auto !important;
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-}
-
-html.story4-flowing #four .talkbubble > * {
-    inset: auto !important;
-    margin-block: 0;
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-}
-
-html.story4-flowing #four .talkbubble:empty {
-    display: none;
-}
-
 .story4-scene-summary {
     position: absolute;
     width: 1px;
@@ -168,8 +139,7 @@ html.story4-flowing #four .story4-scene-summary {
         border-block-start-color: CanvasText;
     }
 
-    #four .story4-motion-toggle,
-    #four .talkbubble > * {
+    #four .story4-motion-toggle {
         border: 2px solid CanvasText;
         background: Canvas;
         color: CanvasText;

@@ -3,6 +3,14 @@
  * reference organ it resolves to.
  *
  * @returns {void}
+ *
+ * Every beat here starts at `top 75%` - the step entering from the bottom of the
+ * viewport - rather than the `start: "top"` these timelines were authored with.
+ * `"top"` means `"top top"`, the step reaching the top of the VIEWPORT, which is
+ * roughly a full viewport after the reader has read it: the artwork resolved
+ * only once its paragraph had scrolled away. That timing suited the original
+ * pinned-overlay pattern, where text was drawn over the artwork; it does not
+ * suit a prose column beside it.
  */
 export function setupDiagramDetail() {
     gsap
@@ -10,7 +18,7 @@ export function setupDiagramDetail() {
         scrollTrigger: {
           autoAlpha: 1,
           trigger: "#change13",
-          start: "top",
+          start: "top 75%",
           end: "+=50%",
           scrub: true,
           duration: 3,
@@ -34,11 +42,9 @@ export function setupDiagramDetail() {
       .timeline({
         scrollTrigger: {
           autoAlpha: 1,
-          /* Fires as the step rises into the reading zone, not when it hits
-             the top of the viewport - `start: "top"` is `"top top"`, which left
-             the RDF triple blank for the whole time its paragraph was readable
-             and revealed it only once that text had scrolled away. Runs long,
-             because this is the diagram the sentence is describing. */
+          /* Starts earlier than the file default and runs long: this is the
+             diagram its sentence is describing, and the densest image in the
+             story. */
           trigger: "#change14",
           start: "top 95%",
           end: "+=45%",
@@ -59,7 +65,7 @@ export function setupDiagramDetail() {
         scrollTrigger: {
           autoAlpha: 1,
           trigger: "#change15",
-          start: "top",
+          start: "top 75%",
           end: "+=20%",
           scrub: true,
           duration: 3,
@@ -75,7 +81,7 @@ export function setupDiagramDetail() {
         scrollTrigger: {
           autoAlpha: 1,
           trigger: "#change16",
-          start: "top",
+          start: "top 75%",
           end: "+=20%",
           scrub: true,
           duration: 3,
@@ -91,7 +97,7 @@ export function setupDiagramDetail() {
         scrollTrigger: {
           autoAlpha: 1,
           trigger: "#change17",
-          start: "top",
+          start: "top 75%",
           end: "+=20%",
           scrub: true,
           duration: 3,
@@ -110,7 +116,7 @@ export function setupDiagramDetail() {
         scrollTrigger: {
           autoAlpha: 1,
           trigger: "#change18",
-          start: "top",
+          start: "top 75%",
           end: "+=20%",
           scrub: true,
           duration: 3,
@@ -129,7 +135,7 @@ export function setupDiagramDetail() {
         scrollTrigger: {
           autoAlpha: 1,
           trigger: "#change19",
-          start: "top",
+          start: "top 75%",
           end: "+=20%",
           scrub: true,
           duration: 0,
@@ -157,7 +163,7 @@ export function setupDiagramDetail() {
         scrollTrigger: {
           autoAlpha: 1,
           trigger: "#changecloseup1",
-          start: "top",
+          start: "top 75%",
           end: "+=20%",
           scrub: true,
           duration: 0,
@@ -176,7 +182,7 @@ export function setupDiagramDetail() {
         scrollTrigger: {
           autoAlpha: 1,
           trigger: "#changecloseup2",
-          start: "top",
+          start: "top 75%",
           end: "+=20%",
           scrub: true,
           duration: 0,
@@ -195,7 +201,7 @@ export function setupDiagramDetail() {
         scrollTrigger: {
           autoAlpha: 1,
           trigger: "#change20",
-          start: "top",
+          start: "top 75%",
           end: "+=20%",
           scrub: true,
           duration: 0,
@@ -214,9 +220,13 @@ export function setupDiagramDetail() {
       .timeline({
         scrollTrigger: {
           autoAlpha: 1,
+          /* These last two beats are long multi-step sequences, and their steps
+             sit closer together than the sequences are long - at +=80% each they
+             overlapped by 90px, so the network was still cycling when the next
+             beat began recolouring it. Shortened to fit the gap between them. */
           trigger: "#change21",
-          start: "top",
-          end: "+=80%",
+          start: "top 75%",
+          end: "+=45%",
           scrub: true,
           duration: 10,
           pin: false,
@@ -268,8 +278,8 @@ export function setupDiagramDetail() {
         scrollTrigger: {
           autoAlpha: 1,
           trigger: "#change22",
-          start: "top",
-          end: "+=80%",
+          start: "top 75%",
+          end: "+=45%",
           scrub: true,
           duration: 10,
           pin: false,
