@@ -486,6 +486,29 @@ assertPage(
     story4Entry,
     "Story 4's entry point does not motion-gate its scroll and particle setup",
 );
+/*
+ * The intro columns are pinned by ScrollTrigger. A pinned element sized as a
+ * percentage and centred with auto margins makes the pin-spacer copy the
+ * resolved margin and add its own inset offset, so the same centring is counted
+ * twice and the splash sits off centre on phones. Two rules keep that from
+ * returning: the timeline pins the full-width parent, and the episode-block
+ * children stay border-box so their padding and accent border cannot push the
+ * page into horizontal scroll.
+ */
+const narrativeTimelineSource = await readFile("shared/js/narrative-timeline.js", "utf8");
+
+assertPage(
+    !/trigger:\s*container2,[\s\S]{0,600}?pin:\s*true\b/.test(narrativeTimelineSource) &&
+        !/trigger:\s*container,[\s\S]{0,600}?pin:\s*true\b/.test(narrativeTimelineSource),
+    "shared/js/narrative-timeline.js",
+    "pin the full-width parent, not the centred .container/.container2, or the pinned splash goes off centre",
+);
+assertPage(
+    /\.introline > :where\(p, h1\) \{[^}]*box-sizing: border-box/.test(narrativeFoundation),
+    "shared/css/narrative-foundation.css",
+    "the episode block children must stay border-box so their padding cannot overflow the viewport",
+);
+
 assertPage(
     storyEndMatterRuntime.includes("validateEndMatter") &&
         storyEndMatterRuntime.includes("fetch(source") &&

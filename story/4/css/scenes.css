@@ -358,6 +358,7 @@
          * living on the scene rather than on the plate, where it would not
          * inherit up to this column.
          */
+        box-sizing: border-box;
         width: min(
             100%,
             34rem,

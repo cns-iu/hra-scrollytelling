@@ -150,7 +150,14 @@ html {
     text-align: start;
 }
 
+/*
+ * The eyebrow, title and description take the full intro column and then add an
+ * inline-start padding and accent border. Without border-box those sit outside
+ * the declared width, so each ran past the viewport and scrolled the page
+ * sideways on phones.
+ */
 :where(.story-narrative) .introline > :where(p, h1) {
+    box-sizing: border-box;
     width: 100%;
     max-width: 42rem;
 }

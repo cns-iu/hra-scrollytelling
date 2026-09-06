@@ -121,7 +121,15 @@ window.hraNarrativeTimeline = (() => {
           start: "top top",
           end: "+=100%",
           trigger: container2,
-          pin: true,
+          /*
+           * Pin the section, not the caption. .container2 is 90% wide and
+           * centred with auto margins; pinning it makes ScrollTrigger copy the
+           * resolved margin onto the pin-spacer AND add its own inset offset,
+           * so the same 5% is counted twice and the block sits off centre on
+           * narrow viewports. The parent is full width, so pinning it moves
+           * nothing horizontally.
+           */
+          pin: container2.parentElement ?? true,
           scrub: true,
           markers: false,
         },
@@ -182,7 +190,8 @@ window.hraNarrativeTimeline = (() => {
           onRefresh: (self) => self.progress && self.animation.progress(1),
           start: "top top",
           trigger: container,
-          pin: true,
+          /* Pin the full-width parent; see fadeContainers2 above. */
+          pin: container.parentElement ?? true,
           pinSpacing: false,
           scrub: true,
           markers: false,

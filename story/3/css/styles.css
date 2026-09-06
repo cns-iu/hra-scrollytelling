@@ -251,10 +251,17 @@
     left: 5%;
 }
 
+/*
+ * Decorative horizontal offsets. The bubble is 90% wide, so a fixed percentage
+ * offset pushes it past the right edge once the viewport is narrow: at 320px
+ * the 18% variant overhung by 3px and scrolled the whole page sideways. Cap
+ * each offset at the space actually left over, so the nudge degrades to flush
+ * instead of overflowing, at any width.
+ */
 .story3-page .story3-dialogue--left-16 {
-    left: 16%;
+    left: min(16%, 100% - 90%);
 }
 
 .story3-page .story3-dialogue--left-18 {
-    left: 18%;
+    left: min(18%, 100% - 90%);
 }
