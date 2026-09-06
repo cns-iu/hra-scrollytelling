@@ -171,14 +171,16 @@
  * That is what `.story4-scene__hold` is - an empty block after the step whose
  * height is the distance the step can travel before it unsticks.
  *
- * The beats span 55svh of it; the remaining 25svh leaves the finished artwork on
- * screen, still held, before the prose releases. They are keyed to the section
- * rather than to the step, because ScrollTrigger measures a trigger's position
- * once per refresh and would read a stuck element's shifted rect. See
- * js/diagram-overview.js.
+ * The beats span 90svh of it - two transitions with a dwell between them, so
+ * each state can be read before the next begins - and the remaining 30svh
+ * leaves the finished artwork on screen, still held, before the prose releases.
+ * They are keyed to the section rather than to the step, because ScrollTrigger
+ * measures a trigger's position once per refresh and would read a stuck
+ * element's shifted rect. See js/diagram-overview.js, which also has to know
+ * the band height below.
  */
 #four .story4-scene--hold {
-    --story4-scene-hold: 80svh;
+    --story4-scene-hold: 120svh;
 }
 
 #four .story4-scene--hold .story4-step {
@@ -333,6 +335,8 @@
         z-index: 1;
         grid-column: 1;
         grid-row: 1;
+        /* A held scene's step sticks just below this band, so the offset in
+           `.story4-scene--hold .story4-step` below tracks this value. */
         height: 42svh;
         /* opaque, so prose scrolling beneath the band is hidden rather than
            showing through around the plate */
@@ -358,17 +362,22 @@
     }
 
     /*
-     * No hold when stacked. The stage is a band across the top 42svh, so a step
-     * held near the top of the viewport would sit behind it. The prose scrolls
-     * beneath the band as it does in every other scene, and the beats stay keyed
-     * to the step - see the matchMedia block in js/diagram-overview.js.
+     * Stacked, the scene still holds - it just holds lower. The stage is an
+     * opaque band across the top 42svh, so the step sticks just BELOW that band
+     * rather than at the top of the viewport, where it would be covered. Without
+     * the hold the step is only on screen for about half a viewport of scroll,
+     * which is not enough to carry three artwork states: the sequence used to
+     * finish several hundred pixels after the text had slid behind the band.
      */
     #four .story4-scene--hold .story4-step {
-        position: static;
+        top: calc(42svh + 1.5rem);
     }
 
     #four .story4-scene--hold {
-        --story4-scene-hold: 0px;
-        --story4-scene-outro: 60svh;
+        /* The stacked sequence starts later than the held one - the step has to
+           clear the band first - so it finishes at 120svh and the hold has to
+           outlast that. */
+        --story4-scene-hold: 140svh;
+        --story4-scene-outro: 40svh;
     }
 }

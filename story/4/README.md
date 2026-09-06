@@ -104,11 +104,25 @@ Three things have to line up, and each has a reason:
   rect, so a sticky element must never be a trigger. `#scene3-hold` is that
   handle, and its top is also the moment the step locks.
 
-Stacked, there is no hold: the stage is a band across the top 42svh, so a held
-step would sit behind it. The spacer collapses to `0`, the step goes back to
-`static`, and the beats return to `#Change8` with their original spans. That
-split lives in a `gsap.matchMedia()` block in `js/diagram-overview.js`, keyed to
-the same 75rem breakpoint as the CSS - change one and change the other.
+Stacked, the scene still holds - it just holds lower. The stage is an opaque band
+across the top 42svh, so the step sticks just *below* that band rather than at
+the top of the viewport, where it would be covered. The sequence starts later to
+let the step clear the band, so it finishes at 120svh and the stacked hold is
+140svh to outlast it. Both layouts key their beats to `#scene3-hold`; only the
+offsets differ. That split lives in a `gsap.matchMedia()` block in
+`js/diagram-overview.js`, keyed to the same 75rem breakpoint as the CSS - change
+one and change the other.
+
+### Dwell
+
+Three artwork states need three rests. Each beat is a short transition followed
+by a stretch where nothing moves, and the gap between one beat's `end` and the
+next one's `start` is that dwell. **They must not be equal.** Set back to back,
+the first state changes the instant the scene sticks and the second lasts about
+18% of a viewport - too fast to read, which is exactly how this scene shipped
+before. Each state now rests for 42-77% of a viewport. Measure dwell by sampling
+opacity across the scene and timing the runs where a state is pure, not by
+reading the trigger offsets, which hide how little screen time a state gets.
 
 ## Traps
 
@@ -139,6 +153,9 @@ Things that look like bugs but are not, and things that are easy to break:
   the plate had left, while scenes 1 and 3 ran 172px and 529px of animation past
   it. Scene 3's was self-inflicted - a `start: "top -40%"` added when its three
   steps were merged into one. See "Outro budget".
+- **Back-to-back beats read as one instant jump.** A beat that ends where the
+  next begins gives the reader nothing to rest on. Scene 3's two beats were
+  contiguous and its middle state held for 18% of a viewport. See "Dwell".
 - **A step's own margin cannot make it sticky.** The sticky constraint rect is
   the containing block's content box minus the element's own margins, so a step
   with `margin-bottom: 80svh` inside a column sized by that same margin has zero

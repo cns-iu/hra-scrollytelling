@@ -152,16 +152,30 @@ export function setupDiagramOverview() {
      * Scene 3's prose is one short paragraph carrying two artwork beats, and the
      * two layouts want different timing for them.
      *
+     * The illustration has three states - the initial diagram, the system with
+     * Systempt4/Purple added, and the combined view - so the reader needs to
+     * rest on each one. A change that lands and immediately begins the next
+     * cannot be read. Each beat therefore gets a short transition followed by a
+     * DWELL, a stretch of scrolling where nothing moves and the state can be
+     * taken in. The gap between `first.end` and `second.start` is that dwell;
+     * they must not be equal, which is the bug this replaced - the second beat
+     * started on the exact scroll position the first one finished.
+     *
      * Held (two columns): the step is sticky, so the beats hang off the SECTION
      * instead. ScrollTrigger measures a trigger's position once per refresh and
      * would read a stuck element's shifted rect, so a sticky element must never
-     * be a trigger. The section's top is also the moment the step locks, which
-     * is where the sequence should begin. It runs long - 55% of a viewport - so
-     * there is something to scroll through while the text stands still.
+     * be a trigger. The section's top is also the moment the step locks, so the
+     * first beat is delayed past it to leave the opening state readable while
+     * the text settles.
      *
-     * Stacked: the stage is a band across the top of the viewport and the prose
-     * scrolls beneath it as in every other scene, so the beats stay keyed to the
-     * step and keep their original, shorter spans. See css/scenes.css.
+     * Stacked works the same way, only lower: the stage is an opaque band across
+     * the top of the viewport, so the step holds just below it. Both layouts
+     * therefore key to the section and differ only in how far past its top the
+     * sequence begins - stacked starts later because the step needs to clear the
+     * band first. Keying to the step instead is what broke this: `start: "top"`
+     * fires when the step reaches the top of the VIEWPORT, by which point it is
+     * behind the band, and the sequence ran several hundred pixels after the
+     * prose had gone.
      */
     gsap.matchMedia().add(
       {
@@ -170,13 +184,13 @@ export function setupDiagramOverview() {
       },
       (context) => {
         const { held } = context.conditions;
-        const trigger = held ? "#scene3-hold" : "#Change8";
         const first = held
-          ? { start: "top top", end: "+=25%" }
-          : { start: "top", end: "+=15%" };
+          ? { start: "top -15%", end: "+=20%" }
+          : { start: "top -45%", end: "+=20%" };
         const second = held
-          ? { start: "top -25%", end: "+=30%" }
-          : { start: "top -15%", end: "+=20%" };
+          ? { start: "top -70%", end: "+=20%" }
+          : { start: "top -100%", end: "+=20%" };
+        const trigger = "#scene3-hold";
 
         gsap
           .timeline({
