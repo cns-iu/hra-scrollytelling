@@ -193,12 +193,16 @@ function duplicateIdSignature(ids) {
  * Two differences are legitimate and normalised away before comparison:
  * the page's path back to the repository root, and the aria-current marker on
  * whichever navigation item is active.
+ *
+ * The appearance and contrast fieldsets live inside the Menu, so they are sliced
+ * out of menu.html rather than stored again beside it. `derivedFrom` marks those:
+ * one copy on disk, asserted on its own so a drifting fieldset names itself.
  */
 const chromeBlocks = [
     { fixture: "menu.html", open: '<details class="site-menu', close: "</details>" },
     { fixture: "footer.html", open: '<footer class="site-footer', close: "</footer>" },
-    { fixture: "appearance.html", open: '<fieldset class="site-appearance">', close: "</fieldset>" },
-    { fixture: "contrast.html", open: '<fieldset class="site-accessibility"', close: "</fieldset>" },
+    { fixture: "appearance.html", open: '<fieldset class="site-appearance">', close: "</fieldset>", derivedFrom: "menu.html" },
+    { fixture: "contrast.html", open: '<fieldset class="site-accessibility"', close: "</fieldset>", derivedFrom: "menu.html" },
 ];
 
 /**
@@ -283,6 +287,20 @@ function checkPage(entry, source) {
     assertPage(JSON.stringify(actualDuplicates) === JSON.stringify(expectedDuplicates), file, "duplicate-ID baseline changed");
     assertPage(html.lastIndexOf("<script") < html.indexOf("</body>"), file, "loads scripts outside the body");
 
+    // The appearance bootstrap must stay a shared blocking script ahead of the
+    // stylesheets; inlining it again would reintroduce seven copies to maintain.
+    const bootstrapRef = relativeRef(file, "shared/js/theme-bootstrap.js");
+    const bootstrapAt = html.indexOf(`<script src="${bootstrapRef}"></script>`);
+
+    assertPage(bootstrapAt >= 0, file, `must load ${bootstrapRef} as a blocking script`);
+    assertPage(!html.includes("localStorage.getItem(\"hra-landing-theme\")"), file, "inlines the appearance bootstrap instead of loading the shared script");
+
+    if (bootstrapAt >= 0) {
+        const firstStylesheet = html.indexOf("<link rel=\"stylesheet\"");
+
+        assertPage(firstStylesheet < 0 || bootstrapAt < firstStylesheet, file, "the appearance bootstrap must precede the stylesheets");
+    }
+
     attributeValues(html, "aria-labelledby")
         .concat(attributeValues(html, "aria-describedby"), attributeValues(html, "aria-controls"))
         .flatMap((value) => value.split(/\s+/))
@@ -348,12 +366,22 @@ function checkPage(entry, source) {
     }
 }
 
-const fixtures = Object.fromEntries(
-    await Promise.all(chromeBlocks.map(async (block) => [
-        block.fixture,
-        await readSource(joinPath("shared/fixtures", block.fixture)),
-    ])),
-);
+const fixtures = {};
+
+for (const block of chromeBlocks.filter((candidate) => !candidate.derivedFrom)) {
+    fixtures[block.fixture] = await readSource(joinPath("shared/fixtures", block.fixture));
+}
+
+for (const block of chromeBlocks.filter((candidate) => candidate.derivedFrom)) {
+    const parent = fixtures[block.derivedFrom];
+    const slice = parent === undefined ? null : extractBlock(parent, block);
+
+    if (slice === null) {
+        errors.push(`shared/fixtures/${block.derivedFrom} no longer contains the ${block.fixture} block`);
+    }
+
+    fixtures[block.fixture] = slice ?? "";
+}
 
 
 /**
@@ -378,7 +406,7 @@ function checkChrome(entry, source) {
         assertPage(
             normalizeChrome(found) === renderFixture(fixtures[block.fixture], root),
             entry.page,
-            `${block.fixture.replace(".html", "")} chrome has drifted from shared/fixtures/${block.fixture}`,
+            `${block.fixture.replace(".html", "")} chrome has drifted from shared/fixtures/${block.derivedFrom ?? block.fixture}`,
         );
     });
 }

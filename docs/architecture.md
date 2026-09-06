@@ -72,13 +72,12 @@ previously shared URLs keep resolving:
 │   │   ├── redirect-stub.css
 │   │   └── story-end-matter.css
 │   ├── fixtures/                # canonical chrome markup, asserted per page
-│   │   ├── appearance.html
-│   │   ├── contrast.html
 │   │   ├── footer.html
-│   │   └── menu.html
+│   │   └── menu.html            # also the source of the appearance and contrast blocks
 │   └── js/
 │       ├── main.js
 │       ├── motion-preferences.js  # shared motion gate
+│       ├── theme-bootstrap.js     # blocking pre-paint appearance and contrast
 │       ├── narrative-motion.js
 │       ├── narrative-timeline.js  # shared scroll timelines for Stories 2-5
 │       ├── story-end-matter-schema.mjs

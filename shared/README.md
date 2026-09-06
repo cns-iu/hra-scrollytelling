@@ -5,18 +5,29 @@ the maintained landing page and story pages.
 
 ## Loading order
 
-Pages adopting the shared components load the stylesheets directly:
+The appearance bootstrap comes first, before any stylesheet. It is a blocking
+classic script on purpose: a `type="module"` script is deferred, which would let
+the page paint in the system appearance and then flash to the stored one.
+
+```html
+<script src="shared/js/theme-bootstrap.js"></script>
+```
+
+Then the stylesheets, loaded directly. All seven maintained pages carry the
+appearance controls and the story navigation, so no line here is conditional:
 
 ```html
 <link rel="stylesheet" href="shared/css/fonts.css">
 <link rel="stylesheet" href="shared/css/tokens.css">
 <link rel="stylesheet" href="shared/css/selection.css">
 <link rel="stylesheet" href="shared/css/navigation.css">
-<!-- Only on index.html and story6.html: -->
 <link rel="stylesheet" href="shared/css/appearance-controls.css">
 <link rel="stylesheet" href="shared/css/story-navigation.css">
 <link rel="stylesheet" href="shared/css/footer.css">
 ```
+
+`tools/check-maintained-pages.mjs` asserts the bootstrap is present, is the
+shared file rather than an inlined copy, and precedes the stylesheets.
 
 Pages with the enhanced shared Menu load the module entry point:
 
