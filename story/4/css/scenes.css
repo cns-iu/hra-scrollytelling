@@ -142,6 +142,9 @@
        by enough that the scene's last artwork beat finishes first. Per-scene
        override if an artwork sequence needs longer. See README, "Outro budget". */
     --story4-scene-outro: 90svh;
+    /* The artwork's aspect ratio. Declared here rather than on the plate so the
+       stacked prose can size its measure from the same value. */
+    --story4-scene-ratio: 1922 / 1082;
     display: grid;
     /* The illustration is always width-constrained - it letterboxes inside its
        box - so every pixel taken from the prose column, the gap or the outer
@@ -256,12 +259,14 @@
  * the light value in both appearances.
  */
 #four .story4-scene .story4-scene__stage [class^="scene"] {
+    /* Inherited from the scene so the stacked prose can size itself to match the
+       plate; a per-scene override still wins, because it is set on the scene. */
+    --story4-stage-ratio: var(--story4-scene-ratio);
     --story4-stage-padding: 0;
     --story4-stage-radius: 1rem;
     /* Scene 1's viewBox. Set per scene when an illustration has a different
        shape; the plate then shrinks to fit whichever of width or height binds
        first, so the artwork is never cropped or letterboxed. */
-    --story4-stage-ratio: 1922 / 1082;
 
     box-sizing: border-box;
     /*
@@ -285,9 +290,10 @@
     box-shadow: 0 0.5rem 1.5rem rgb(23 23 23 / 10%);
 }
 
-/* Scene 3's illustration is a different shape from the rest. */
-#four .story4-scene .story4-scene__stage .scene3 {
-    --story4-stage-ratio: 1921 / 1180;
+/* Scene 3's illustration is a different shape from the rest. Set on the scene,
+   so the plate and the stacked prose measure both pick it up. */
+#four .story4-scene--hold {
+    --story4-scene-ratio: 1921 / 1180;
 }
 
 #four .story4-scene .story4-scene__stage svg {
@@ -317,6 +323,9 @@
            much later relative to the section's end and needs far less trailing
            space than the two-column layout to outlive its prose. */
         --story4-scene-outro: 30svh;
+        /* Whitespace above and below each plate. Around the collapse two plates
+           can be on screen at once and were meeting edge to edge. */
+        --story4-band-gap: 40px;
         grid-template-columns: minmax(0, 1fr);
     }
 
@@ -338,6 +347,13 @@
         /* A held scene's step sticks just below this band, so the offset in
            `.story4-scene--hold .story4-step` below tracks this value. */
         height: 42svh;
+        /* Breathing room around the plate, as padding rather than margin: the
+           band's height is what the sticky geometry and the beat offsets are
+           measured against, so it has to stay exactly 42svh. Padding insets the
+           plate within that; margin would move the band itself. Just above the
+           collapse the previous scene's plate is still on screen, and without
+           this the two met edge to edge. */
+        padding-block: var(--story4-band-gap);
         /* opaque, so prose scrolling beneath the band is hidden rather than
            showing through around the plate */
         background: var(--story4-page-background);
@@ -350,11 +366,28 @@
     }
 
     #four .story4-scene__prose {
-        /* Stacked, the column is the full page width, so the measure has to be
-           capped here or lines run to 100+ characters. */
-        width: min(100%, 34rem);
+        /*
+         * Stacked, the column is the full page width, so the measure has to be
+         * capped here or lines run to 100+ characters. `margin-inline: auto`
+         * centres that capped column under the artwork; the text inside stays
+         * left aligned, and the inline padding brings it in from the edges so
+         * it does not sit flush against the plate's outline above it.
+         *
+         * The cap is the narrower of a readable measure and the plate's own
+         * width, so the text never overhangs the artwork it sits beneath. The
+         * plate is letterboxed inside the band, so its width is the band's
+         * usable height times the artwork's ratio - hence `--story4-scene-ratio`
+         * living on the scene rather than on the plate, where it would not
+         * inherit up to this column.
+         */
+        width: min(
+            100%,
+            34rem,
+            calc((42svh - 2 * var(--story4-band-gap)) * var(--story4-scene-ratio))
+        );
         margin-inline: auto;
         padding-block: 6svh var(--story4-scene-outro);
+        padding-inline: 1rem;
     }
 
     #four .story4-step {

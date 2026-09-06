@@ -124,6 +124,22 @@ before. Each state now rests for 42-77% of a viewport. Measure dwell by sampling
 opacity across the scene and timing the runs where a state is pure, not by
 reading the trigger offsets, which hide how little screen time a state gets.
 
+## Stacked spacing
+
+Below 75rem the stage is a 42svh band and two plates can be on screen at once
+during a handoff. `--story4-band-gap` (40px) is the whitespace above and below
+each plate, applied as the band's `padding-block`, **not** as margin: the band's
+height is what the sticky geometry and scene 3's beat offsets are measured
+against, so it has to stay exactly 42svh. Padding insets the plate within the
+band; margin would move the band itself and shift every offset that tracks it.
+
+The prose column is capped to the narrower of a readable measure (34rem) and the
+plate's own width, then centred with `margin-inline: auto` so the text block and
+the artwork share an edge. Text inside stays left aligned. `padding-inline: 1rem`
+keeps it off that edge. Where the plate is width-bound rather than height-bound -
+the narrowest phones - the plate spans the full width and the 1rem is measured
+from the viewport instead.
+
 ## Traps
 
 Things that look like bugs but are not, and things that are easy to break:
@@ -132,9 +148,13 @@ Things that look like bugs but are not, and things that are easy to break:
   sequential now, but nothing enforces that. They were originally 1, 15, 2, 17,
   16, 18, 19, 20 and played in that DOM order regardless, which read as a bug and
   was not one. If a scene is reordered, renumber it too.
-- **A per-scene `--story4-stage-ratio` override must come after the plate rule.**
-  Both selectors carry one id and three classes, so source order decides. Placed
-  earlier it loses silently and the plate renders at the wrong shape.
+- **The artwork's aspect ratio lives on the scene, not the plate.**
+  `--story4-scene-ratio` is declared on `.story4-scene` and read by the plate as
+  well as by the stacked prose's measure, which sizes itself to the plate so the
+  text never overhangs the artwork above it. Declared on the plate it cannot
+  inherit up to the prose column, and the `calc` there silently falls back and
+  lets lines run *wider* than the uncapped column. A per-scene override goes on
+  the scene for the same reason.
 - **Stacked-layout rules must match the alternation's specificity.**
   `:nth-of-type(even)` adds a pseudo-class, so a bare `#four .story4-scene` in
   the narrow media query loses to it and the two-column layout survives onto
