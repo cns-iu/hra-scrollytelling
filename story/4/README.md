@@ -292,9 +292,18 @@ Things that look like bugs but are not, and things that are easy to break:
   travel and silently behaves as `static` - computed style still reads `sticky`,
   which makes it look like a browser bug. Hold distance comes from a sibling. See
   "Held scenes".
-- **The splash gradient must stay dark.** `--story4-inverse-surface` and
-  `-muted` carry white text, so they do not follow the theme. See the comment in
-  `theme.css`.
+- **The splash follows the theme.** `--story4-splash-surface` and its text,
+  accent and particle roles are re-derived per appearance in `theme.css`. HRA
+  red is only 3.87:1 on the light band, so the kicker uses
+  `on-primary-container` (7.22:1) in Light and `primary-fixed` (8.26:1) in Dark
+  rather than the primary role. Re-measure both bands when changing any of them.
+- **The particle colour is read from CSS, not written in JS.** particles.js
+  takes colour literals, so `app.js` reads `--story4-splash-particle` at start
+  and rebuilds the field when the appearance changes. Do not reintroduce a
+  hardcoded value.
+- **Pausing the ambient effect needs `#four` in the selector.** `#four .header`
+  sets the `animation` shorthand, which resets `animation-play-state`; a
+  lower-specificity pause rule silently loses.
 - **The particle field brightens whatever is behind it.** It is why the splash
   has a reading scrim; without it the kicker measured 2.89:1. If the splash text
   or its colours change, re-measure against the gradient's lightest phase, not a

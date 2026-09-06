@@ -1,46 +1,15 @@
 /* Story 4 accessibility affordances. */
 
-#four {
-    --story4-control-surface: #ffffff;
-    --story4-control-text: #202124;
-}
-
-:root[data-theme="dark"] #four {
-    --story4-control-surface: var(--hra-dark-surface-container-high);
-    --story4-control-text: var(--hra-dark-on-surface);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) #four {
-        --story4-control-surface: var(--hra-dark-surface-container-high);
-        --story4-control-text: var(--hra-dark-on-surface);
-    }
-}
-
+/* Placement only; appearance comes from the shared tonal button. */
 .story4-motion-toggle {
     position: absolute;
     right: 1rem;
     bottom: 1rem;
     z-index: 3;
-    min-width: 2.75rem;
-    min-height: 2.75rem;
-    padding: 0.625rem 0.875rem;
-    border: 2px solid currentColor;
-    border-radius: 999px;
-    background: var(--story4-control-surface);
-    color: var(--story4-control-text);
-    font: 700 1rem/1.2 var(--font-body);
-    cursor: pointer;
 }
 
 #four .header {
     position: relative;
-}
-
-.story4-motion-toggle:focus-visible {
-    outline: 0.2rem solid var(--story4-control-surface);
-    outline-offset: 0.2rem;
-    box-shadow: 0 0 0 0.45rem var(--story4-control-text);
 }
 
 html:not(.story4-motion-enabled) .story4-motion-toggle,
@@ -48,7 +17,16 @@ html.story4-ambient-hidden #particles-js {
     display: none;
 }
 
-html.story4-ambient-hidden .header {
+/*
+ * Stopping the ambient gradient.
+ *
+ * This needs the #four the splash rule carries. `#four .header` is 0-1-0-1
+ * against this selector's 0-0-2-1, so the lower-specificity rule never
+ * applied - and because the splash sets the `animation` shorthand, every
+ * declaration of it reset animation-play-state back to running. Source order
+ * does not help: specificity is resolved first.
+ */
+html.story4-ambient-hidden #four .header {
     animation-play-state: paused;
 }
 
@@ -116,9 +94,9 @@ html.story4-flowing #four .story4-scene-summary {
     margin: 0 auto;
     overflow: visible;
     clip: auto;
-    /* Inside the navy header, so it takes the inverse text colour rather than
-       the body colour, which was unreadable against the gradient in light mode. */
-    color: var(--story4-inverse-text);
+    /* Inside the splash header, so it takes the splash text colour rather than
+       the body colour, which was unreadable against the gradient. */
+    color: var(--story4-splash-text);
     text-align: center;
     white-space: normal;
 }

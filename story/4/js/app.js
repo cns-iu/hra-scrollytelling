@@ -11,6 +11,32 @@ particlesJS.load('particles-js', 'config/particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
+let appearanceWatched = false;
+let activeColor = '';
+
+/**
+ * Reads the particle colour from the stylesheet.
+ *
+ * particles.js takes colours as literals, so the splash token cannot reach it
+ * through CSS. The computed value is read once per start instead, which keeps
+ * the palette in theme.css authoritative and lets the field follow the theme.
+ *
+ * @returns {string} Resolved CSS colour for the particles and their links
+ */
+function readParticleColor() {
+    const story = document.getElementById('four');
+    const fallback = '#ffffff';
+
+    if (!story) {
+        return fallback;
+    }
+
+    return (
+        getComputedStyle(story).getPropertyValue('--story4-splash-particle').trim() ||
+        fallback
+    );
+}
+
 /**
  * Starts the ambient particle field behind the splash.
  *
@@ -20,6 +46,10 @@ particlesJS.load('particles-js', 'config/particles.json', function() {
  * @returns {void}
  */
 export function setupParticles() {
+const particleColor = readParticleColor();
+
+activeColor = particleColor;
+
 particlesJS('particles-js',
   
   {
@@ -32,7 +62,7 @@ particlesJS('particles-js',
         }
       },
       "color": {
-        "value": "#ffffff"
+        "value": particleColor
       },
       "shape": {
         "type": "circle",
@@ -72,7 +102,7 @@ particlesJS('particles-js',
       "line_linked": {
         "enable": true,
         "distance": 150,
-        "color": "#ffffff",
+        "color": particleColor,
         "opacity": 0.4,
         "width": 1
       },
@@ -128,16 +158,60 @@ particlesJS('particles-js',
         }
       }
     },
-    "retina_detect": true,
-    "config_demo": {
-      "hide_card": false,
-      "background_color": "#b61924",
-      "background_image": "",
-      "background_position": "50% 50%",
-      "background_repeat": "no-repeat",
-      "background_size": "cover"
-    }
+    "retina_detect": true
   }
 
 );
+
+watchAppearance();
+}
+
+/**
+ * Restarts the field when the appearance changes.
+ *
+ * The colour is baked into the running instance, so a theme change needs a
+ * rebuild rather than a repaint.
+ *
+ * @returns {void}
+ */
+function watchAppearance() {
+    if (appearanceWatched) {
+        return;
+    }
+
+    appearanceWatched = true;
+
+    const restart = () => {
+        if (readParticleColor() === activeColor) {
+            return;
+        }
+
+        destroyParticles();
+        setupParticles();
+    };
+
+    new MutationObserver(restart).observe(document.documentElement, {
+        attributeFilter: ['data-theme'],
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', restart);
+}
+
+/**
+ * Tears down the running particle instance before a rebuild.
+ *
+ * @returns {void}
+ */
+function destroyParticles() {
+    const instances = window.pJSDom;
+
+    if (!Array.isArray(instances)) {
+        return;
+    }
+
+    instances.forEach((instance) => {
+        instance?.pJS?.fn?.vendors?.destroypJS?.();
+    });
+
+    window.pJSDom = [];
 }

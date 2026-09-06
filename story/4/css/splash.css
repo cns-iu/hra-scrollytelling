@@ -11,12 +11,12 @@
     min-height: 100vh;
     padding: clamp(1.5rem, 4vw, 4rem);
     margin: 0;
-    color: var(--story4-inverse-text);
+    color: var(--story4-splash-text);
     background: linear-gradient(
         270deg,
-        var(--story4-inverse-surface),
-        var(--story4-inverse-surface-muted),
-        var(--story4-inverse-surface)
+        var(--story4-splash-surface),
+        var(--story4-splash-surface-muted),
+        var(--story4-splash-surface)
     );
     background-size: 600% 600%;
     text-align: start;
@@ -30,8 +30,12 @@
  * The gradient's muted stop plus a particle dot behind a glyph measured 2.89:1
  * for the kicker - the particle field brightens local patches well past the
  * stop colour. Story 6 solves the same problem the same way, with a scrim over
- * its splash photo (`.page-header::after`). It darkens the column the text
+ * its splash photo (`.page-header::after`). It settles the column the text
  * occupies and fades out, so the particle field still reads across the rest.
+ *
+ * Derived from the splash surface rather than written as a fixed navy: the
+ * splash follows the theme now, so a hardcoded dark wash would be wrong on
+ * the light band.
  */
 #four .header::after {
     content: "";
@@ -41,9 +45,9 @@
     pointer-events: none;
     background: linear-gradient(
         90deg,
-        rgb(32 30 61 / 94%),
-        rgb(32 30 61 / 88%) 34%,
-        rgb(32 30 61 / 46%) 56%,
+        var(--story4-splash-scrim),
+        var(--story4-splash-scrim) 34%,
+        color-mix(in srgb, var(--story4-splash-surface) 46%, transparent) 56%,
         transparent 78%
     );
 }
@@ -98,9 +102,9 @@
     margin: 0;
     padding-top: 1rem;
     border-block-start: 0.125rem solid var(--story4-splash-rule);
-    /* On the inverse surface, so it must not inherit the body text colour that
+    /* On the splash surface, so it must not inherit the body text colour that
        `#four main p` would otherwise apply. */
-    color: var(--story4-inverse-text);
+    color: var(--story4-splash-text);
     font-family: var(--font-body);
     font-size: clamp(var(--type-title-large-size), 2vw, var(--type-headline-small-size));
     font-weight: var(--type-title-large-primary-weight);
@@ -153,8 +157,8 @@
         background: linear-gradient(
             180deg,
             transparent,
-            rgb(32 30 61 / 62%) 28%,
-            rgb(32 30 61 / 88%)
+            color-mix(in srgb, var(--story4-splash-surface) 62%, transparent) 28%,
+            var(--story4-splash-scrim)
         );
     }
 }
@@ -177,8 +181,10 @@
 
 /* The deck rule is the only translucent value on the splash. */
 @media (prefers-reduced-transparency: reduce) {
+    /* An opaque rule in place of the translucent one. The splash follows the
+       theme, so this takes the theme-reactive outline, not a fixed dark value. */
     #four {
-        --story4-splash-rule: var(--hra-dark-outline);
+        --story4-splash-rule: var(--hra-outline);
     }
 
     #four .header::after {
@@ -189,6 +195,12 @@
        its bright particles are what push the kicker under AA. */
     #four #particles-js {
         display: none;
+    }
+
+    /* The gradient is the other half of the ambient effect; hiding only the
+       particles left it drifting. */
+    #four .header {
+        animation: none;
     }
 }
 
