@@ -36,19 +36,15 @@
 
 .story5-page .intro {
     background-color: var(--story5-color-page-surface);
-    margin-top: 0;
 }
 
 html:not(.story5-animation-ready) .story5-page .talkbubble {
     visibility: visible;
 }
 
-.story5-page .introcharcece {
-    width: 12%;
-}
-
+.story5-page .introcharcece,
 .story5-page .introcharsquiggy {
-    width: 10%;
+    width: min(12%, 7rem);
 }
 
 #main-content.story-main--intrinsic-height > .section2 {

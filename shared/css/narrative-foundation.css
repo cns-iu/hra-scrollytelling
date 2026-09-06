@@ -86,8 +86,15 @@ html {
     text-wrap: pretty;
 }
 
+/*
+ * The intro is exactly one viewport tall, so it cannot also carry a top
+ * margin: the margin pushed the total to 100vh + 70px and cropped the bottom
+ * of the human image below the fold. Story 5 had overridden this to 0 for
+ * itself; Stories 2 and 3 never did, which is why only they were affected.
+ * The fixed Menu sits above the intro and needs no reserved space here.
+ */
 :where(body.story-narrative) .intro {
-    margin-top: 70px;
+    margin-top: 0;
 }
 
 :where(.story-narrative) .section1,
@@ -149,36 +156,42 @@ html {
     text-wrap: pretty;
 }
 
+/*
+ * CeCe and Squiggy.
+ *
+ * They were positioned absolutely from opposite edges at different offsets -
+ * left: 10%/top: 25% against right: 10%/top: 31% - so the pair never sat
+ * level, and on phones the 20% insets plus a 22% width put them off centre.
+ * A flex row centres them as a pair at every width and keeps them level, so
+ * only the entrance animation stays on the images themselves.
+ */
+:where(.story-narrative) .popupsection {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 12vw, 8rem);
+}
+
 :where(.story-narrative) .introlineimg {
-    position: absolute;
-    width: 10%;
-    top: 32%;
     animation: pulse-white 3.5s infinite;
 }
 
-:where(.story-narrative) .introcharcece {
-    left: 10%;
-    top: 25%;
-    width: 15%;
-}
-
+:where(.story-narrative) .introcharcece,
 :where(.story-narrative) .introcharsquiggy {
-    right: 10%;
-    top: 31%;
-    width: 15%;
+    width: min(15%, 8rem);
+    height: auto;
+    flex: 0 0 auto;
 }
 
 @media all and (max-width: 750px) {
-    :where(.story-narrative) .introcharcece {
-        left: 20%;
-        width: 22%;
-        top: 85%;
+    :where(.story-narrative) .popupsection {
+        gap: clamp(1rem, 8vw, 3rem);
     }
 
+    :where(.story-narrative) .introcharcece,
     :where(.story-narrative) .introcharsquiggy {
-        top: 85%;
-        width: 22%;
-        right: 20%;
+        width: min(22%, 6rem);
     }
 }
 

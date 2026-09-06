@@ -15,6 +15,12 @@ window.hraNarrativeTimeline = (() => {
   /**
    * Builds the pinned intro sequence and types the opening line.
    *
+   * The line is typed from the ScrollTrigger rather than from `load`, so it
+   * begins when the reader actually reaches the intro instead of running
+   * itself out beforehand. The typed paragraph is `aria-hidden`; the same
+   * sentence sits in the source as `.story-intro-summary` for assistive
+   * technology, Reader View, and the no-JS case.
+   *
    * @param {object} [options] Optional overrides
    * @param {string} [options.trigger] Pinned intro trigger selector
    * @param {string} [options.text] Line typed into the intro
@@ -30,6 +36,40 @@ window.hraNarrativeTimeline = (() => {
       lineId = "introTypeLine",
     } = options;
 
+    const line = document.getElementById(lineId);
+
+    let typewriterIndex = 0;
+    let typing = false;
+
+    /**
+     * Reveals the animated intro line one character at a time.
+     *
+     * @returns {void}
+     */
+    function typeWriter() {
+      if (!line || typewriterIndex >= text.length) {
+        return;
+      }
+
+      line.textContent += text.charAt(typewriterIndex);
+      typewriterIndex++;
+      setTimeout(typeWriter, speed);
+    }
+
+    /**
+     * Starts the typed line once, when the intro is actually on screen.
+     *
+     * @returns {void}
+     */
+    function startTypeWriter() {
+      if (typing) {
+        return;
+      }
+
+      typing = true;
+      typeWriter();
+    }
+
     gsap
       .timeline({
         scrollTrigger: {
@@ -40,6 +80,11 @@ window.hraNarrativeTimeline = (() => {
           scrub: 1,
           duration: 1,
           pin: true,
+          onEnter: startTypeWriter,
+          onEnterBack: startTypeWriter,
+          /* The intro sits at the top of the page, so it is usually already
+             in view and onEnter never fires; refresh reports that case. */
+          onRefresh: (self) => self.isActive && startTypeWriter(),
         },
       })
 
@@ -60,22 +105,6 @@ window.hraNarrativeTimeline = (() => {
         "+=2",
       );
 
-    let typewriterIndex = 0;
-
-    /**
-     * Reveals the animated intro line one character at a time.
-     *
-     * @returns {void}
-     */
-    function typeWriter() {
-      if (typewriterIndex < text.length) {
-        document.getElementById(lineId).textContent += text.charAt(typewriterIndex);
-        typewriterIndex++;
-        setTimeout(typeWriter, speed);
-      }
-    }
-
-    window.addEventListener("load", typeWriter, { once: true });
   }
 
   /**

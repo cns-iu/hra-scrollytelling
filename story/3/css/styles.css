@@ -51,7 +51,7 @@
 
 .story3-page .introcharcece,
 .story3-page .introcharsquiggy {
-    width: 12%;
+    width: min(12%, 7rem);
 }
 
 .story3-page #introImageSection,
