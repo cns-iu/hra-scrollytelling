@@ -3,6 +3,10 @@
 /*
  * Downscales Story 4's raster artwork to roughly twice its rendered size.
  *
+ * SPENT: this has already run, and `generate-story4-webp.mjs` has since
+ * rewritten the `<image xlink:href>` targets this reads from `.png` to `.webp`,
+ * so it now finds nothing to rewrite. Kept as the record of the downscale.
+ *
  * The illustrations ship as Sketch exports at their original capture
  * resolution, several of them far larger than the box they are drawn into -
  * scene2-kidney-extraction-network.png was 5476px wide for a 512px slot. At 2x

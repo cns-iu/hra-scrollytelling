@@ -3,6 +3,11 @@
 /*
  * Re-encodes Story 4's raster artwork as WebP and repoints the markup at it.
  *
+ * SPENT: this has already run. It selects sources by their `.png` reference in
+ * the markup, and it rewrote every one of those to `.webp`, so a second run
+ * finds no sources and exits with `No referenced PNG sources found`. Kept as
+ * the record of how the WebP files were produced.
+ *
  * WebP roughly halves these files: 4.18 MB of PNG becomes about 1.87 MB at
  * quality 0.9, with alpha preserved exactly - 17 of the 22 sources have a
  * transparency channel, and a round-trip check found zero difference in the

@@ -20,7 +20,8 @@ js/
   diagram-detail.js    setupDiagramDetail()
   motion.js            classic script, runs in <head> before first paint
   particles.js         vendored particles.js, defines the particlesJS global
-images/         22 PNGs referenced by the inline SVGs via xlink:href
+images/         21 WebP served via xlink:href, plus 22 PNG archival masters
+                (only scene8-pub-med.png is still referenced; see docs/asset-map.md)
 config/         particles.json, kept as a reference copy
 ```
 
@@ -204,10 +205,17 @@ defers is authoring `data-href` in the markup, which blanks every illustration
 with JavaScript disabled and drops the artwork out of `check-local-links.mjs`,
 which scans only `href`/`src`/`srcset`. Weigh those costs before trying again.
 
-`npm run images:story4` keeps the rasters near twice their rendered size, taking
-targets from each `<image>`'s width attribute. It is idempotent and skips any
-file the resample would enlarge — photographic sources compress better at their
-original scale.
+`npm run images:story4` kept the rasters near twice their rendered size, taking
+targets from each `<image>`'s width attribute. It skipped any file the resample
+would enlarge — photographic sources compress better at their original scale.
+
+Both Story 4 image generators are now spent. `npm run webp:story4` converted the
+rasters and rewrote every `xlink:href` from `.png` to `.webp`; because it selects
+sources by their `.png` reference in the markup, a second run finds none and
+exits with `No referenced PNG sources found`. That rewrite also removed
+`images:story4`'s inputs, since it reads targets from those same `.png`
+references, so it now rewrites nothing. Re-running either is harmless but has no
+effect. The PNGs left behind are archival masters — see `docs/asset-map.md`.
 
 ## Deferred: compressing the embedded SVG path data
 
