@@ -41,6 +41,8 @@
     --story2-color-choice-surface-selected: var(--hra-light-primary-container);
     --story2-color-choice-border: var(--hra-light-outline-strong);
     --story2-color-correct-surface: var(--hra-light-secondary-container);
+    /* No error-container role exists in the palette; this is the one raw
+       value Story 2 still owns. 13.87:1 against the body ink. */
     --story2-color-incorrect-surface: #fee2cf;
 }
 

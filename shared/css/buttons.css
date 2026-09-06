@@ -38,6 +38,9 @@
     --hra-button-elevation: none;
     --hra-button-elevation-hover: none;
     --hra-button-focus-ring: var(--focus-color, var(--hra-secondary));
+    /* Boundary for containers that are too close in luminance to the page to
+       meet the 3:1 non-text minimum on their own. */
+    --hra-button-edge: var(--hra-outline-strong);
 
     position: relative;
     isolation: isolate;
@@ -144,7 +147,14 @@
     --hra-button-outline: var(--hra-outline);
 }
 
+/*
+ * Elevated, tonal and the extended FAB sit within about 1.2:1 of the page
+ * surface, so their shape rests entirely on a shadow - which does not count
+ * toward non-text contrast. Each takes a boundary; filled needs none, its
+ * container already measures 8.8:1 in Light and 10.6:1 in Dark.
+ */
 .hra-button--elevated {
+    --hra-button-outline: var(--hra-button-edge);
     --hra-button-container: var(--hra-surface-container-low);
     --hra-button-elevation: 0 1px 2px 0 rgb(0 0 0 / 30%), 0 1px 3px 1px rgb(0 0 0 / 15%);
     --hra-button-elevation-hover: 0 1px 2px 0 rgb(0 0 0 / 30%), 0 2px 6px 2px rgb(0 0 0 / 15%);
@@ -156,16 +166,26 @@
 }
 
 .hra-button--tonal {
+    --hra-button-outline: var(--hra-button-edge);
     --hra-button-container: var(--hra-secondary-container);
     --hra-button-content: var(--hra-on-secondary-container);
 }
 
-/* Extended FAB: the geometry the Menu FAB already uses. */
+/*
+ * Extended FAB: the geometry the Menu FAB already uses.
+ *
+ * The --site-chrome-fab-* tokens are declared inside `.site-chrome`, so they
+ * do not resolve for a FAB in story content; the palette roles they alias are
+ * the fallback, which is the same pairing.
+ */
 .hra-button--fab-extended {
-    --hra-button-container: var(--site-chrome-fab-container);
-    --hra-button-content: var(--site-chrome-fab-content);
-    --hra-button-elevation: var(--site-chrome-shadow-fab);
-    --hra-button-elevation-hover: var(--site-chrome-shadow-fab-raised);
+    --hra-button-outline: var(--hra-button-edge);
+    --hra-button-container: var(--site-chrome-fab-container, var(--hra-primary-container));
+    --hra-button-content: var(--site-chrome-fab-content, var(--hra-on-primary-container));
+    --hra-button-elevation: var(--site-chrome-shadow-fab, 0 3px 5px -1px rgb(0 0 0 / 20%),
+        0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%));
+    --hra-button-elevation-hover: var(--site-chrome-shadow-fab-raised, 0 5px 5px -3px rgb(0 0 0 / 20%),
+        0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%));
 
     min-width: 7rem;
     min-height: 3.5rem;
@@ -177,7 +197,8 @@
 }
 
 .hra-button--fab-extended:active {
-    box-shadow: var(--site-chrome-shadow-fab-pressed);
+    box-shadow: var(--site-chrome-shadow-fab-pressed, 0 7px 8px -4px rgb(0 0 0 / 20%),
+        0 12px 17px 2px rgb(0 0 0 / 14%), 0 5px 22px 4px rgb(0 0 0 / 12%));
 }
 
 /* Icon-only: square target, fully round, no label padding. */
@@ -201,6 +222,7 @@
  * the stories that do not load it need the same flip from their fallbacks.
  */
 :root[data-theme="dark"] .hra-button {
+    --hra-button-edge: var(--hra-outline);
     --hra-button-action: var(--color-action, var(--hra-primary));
     --hra-button-on-action: var(--color-on-action, var(--hra-on-primary));
     --hra-button-focus-ring: var(--focus-color, var(--hra-primary));
@@ -208,6 +230,7 @@
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) .hra-button {
+        --hra-button-edge: var(--hra-outline);
         --hra-button-action: var(--color-action, var(--hra-primary));
         --hra-button-on-action: var(--color-on-action, var(--hra-on-primary));
         --hra-button-focus-ring: var(--focus-color, var(--hra-primary));
@@ -221,6 +244,7 @@
  * buttons follow the chrome roles instead of the theme-reactive ones.
  */
 .site-chrome .hra-button {
+    --hra-button-edge: var(--site-chrome-color-border);
     --hra-button-action: var(--site-chrome-color-action);
     --hra-button-on-action: var(--site-chrome-color-on-action);
     --hra-button-content: var(--site-chrome-color-action);
