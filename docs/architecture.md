@@ -24,7 +24,9 @@ The site is served directly by GitHub Pages, so file locations and letter casing
   tokens and positioning variants.
 - Do not restore a root `js/` directory; scripts belong under their owning page, story, prototype, or shared component.
 - Keep shared story and prototype audio under `shared/assets/music/`.
-- Do not mechanically format `story/3/index.html` or `story/4/index.html`; both contain large embedded data.
+- Do not mechanically format `story/3/index.html` or `story/4/index.html`. Their embedded rasters have been
+  extracted, but both are still dominated by inline SVG `d="..."` path data - 71% and 63% of the file - on single
+  lines thousands of characters long, which a reformatter will mangle.
 - Move files in small batches and run the local-reference checker before and after every batch.
 
 ## Current ownership
@@ -48,6 +50,7 @@ previously shared URLs keep resolving:
 ```text
 .
 ├── index.html
+├── .github/workflows/check.yml  # CI: npm run check on push and pull request
 ├── package.json
 ├── story1.html … story6.html   # redirect stubs -> story/<number>/
 ├── story0.html, VisualizingCells.html, organExample.html   # redirect stubs -> prototypes/
@@ -180,9 +183,10 @@ too short for pinned scenes. Portrait phone widths retain the enhanced presentat
 visible control to hide ambient animation.
 The unused ScrollMagic, MotionPathPlugin, Bootstrap bundle, and blank Bootstrap starter hook were removed. Story 4 is
 independent of the former root legacy
-`style.css`; all three page and embedded-SVG stylesheet references resolve to `story/4/css/styles.css`. Its inline SVG image elements remain embedded in `story/4/index.html`, referencing 22 PNGs under `story/4/images/`
-that `npm run images:story4` keeps at roughly twice their rendered size; its common favicon uses the organized shared
-asset directory. The Scrollytelling Effects prototype owns its complete `wc.js` web-component
+`style.css`; its presentation is split by concern across `story/4/css/` (`theme.css`, `base.css`, `splash.css`,
+`scenes.css`, `accessibility.css`). Its inline SVG image elements remain embedded in `story/4/index.html`, referencing
+21 WebP files under `story/4/images/`, which also holds the PNG masters those were encoded from; its common favicon
+uses the organized shared asset directory. The Scrollytelling Effects prototype owns its complete `wc.js` web-component
 bundle alongside its prototype script. The
 former root `js/` directory was removed after repository-wide auditing confirmed that
 `jquery-3.6.3.min.js` and `magnifier.js` had no remaining consumers and that `runtime.js`, `polyfills.js`, and `main.js`

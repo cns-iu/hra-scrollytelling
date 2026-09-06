@@ -74,7 +74,10 @@ original URLs retained as compatibility pages. These are not primary entry point
 ```text
 .
 ├── index.html          # Accessible landing-page structure and content
-├── package.json        # Names the repository checks; no dependencies, no build step
+├── package.json        # Names the repository checks and asset generators; no dependencies, no build step
+├── .github/
+│   └── workflows/
+│       └── check.yml   # Runs npm run check on every push and pull request
 ├── landing/            # Isolated landing-page implementation
 │   ├── assets/
 │   │   ├── backgrounds/
@@ -304,12 +307,15 @@ mobile-browser testing.
 ## Development guidelines
 
 - Keep the site dependency-free.
+- Pin every external script to an exact version with a Subresource Integrity digest, `crossorigin="anonymous"`
+  and `referrerpolicy="no-referrer"`; see [`AGENTS.md`](AGENTS.md#dependencies-and-runtime) for how digests are
+  obtained and where Story 4 keeps its own.
 - Use semantic HTML, modern CSS, and small vanilla JavaScript.
 - Keep shared webfonts and their licenses under `shared/assets/fonts/`; retain only required WOFF2 files.
 - Preserve progressive enhancement and no-JavaScript access.
 - Keep landing-specific work isolated to `index.html` and `landing/`; place approved cross-page foundations under
   `shared/`.
-- Do not make broad edits to large embedded story documents.
+- Do not make broad edits to the story documents dominated by inline SVG path data, currently Stories 3 and 4.
 - Avoid reorganizing files as part of unrelated feature work.
 - Explain and approve dependency or repository-structure changes before implementing them.
 - Use canonical `https://doi.org/<doi>` links for papers, scholarly publications, and Zenodo-hosted SOPs whenever a DOI exists; retain an authoritative stable URL only when no DOI has been assigned

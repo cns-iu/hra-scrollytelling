@@ -141,6 +141,13 @@ discard, commit, push, or publish changes unless those operations are explicitly
 
 - Do not add, install, remove, or upgrade dependencies.
 - Do not run package installation commands.
+- Every external script is pinned to an exact version and carries `integrity`, `crossorigin="anonymous"` and
+  `referrerpolicy="no-referrer"`. Keep it that way: never point a script at a floating version or a bare package path,
+  which lets a CDN change the code underneath the page. The maintained stories share one GSAP version; changing it
+  means changing every page and every digest together. Digests come from the CDN's published SRI - cdnjs exposes them
+  at `https://api.cdnjs.com/libraries/<library>/<version>?fields=sri` - and should be checked against the bytes the
+  CDN actually serves. Story 4 loads GSAP from JavaScript, so its digests live in `GSAP_INTEGRITY` in
+  `story/4/js/story4.js` rather than in the markup.
 - Prefer semantic HTML, modern CSS, and small vanilla JavaScript.
 - The site must remain usable when JavaScript is unavailable.
 - Preserve Google Analytics unless its removal is explicitly requested.
@@ -230,7 +237,9 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
   repository landing-page `index.html` into a story directory.
 - Stories 1–6 are published at `story/<number>/`. The root `story1.html`–`story6.html` files are redirect stubs that
   preserve the former URLs; keep them, and keep them pointing at the matching story.
-- Avoid broad formatting or mechanical rewrites of `story/3/index.html` and `story/4/index.html`; they contain large embedded data.
+- Avoid broad formatting or mechanical rewrites of `story/3/index.html` and `story/4/index.html`. Their embedded
+  rasters now live in `images/`, but inline SVG path data still makes up most of both files, on very long single
+  lines that reformatting would destroy.
 - Keep the drag-and-drop answer demo fully owned by `prototypes/drag-and-drop/`; do not recreate a root `img/`
   directory.
 - Keep story-exclusive assets under their owning `story/<number>/` directory, assets shared by maintained stories or
@@ -242,8 +251,9 @@ The repository contains tightly coupled relative paths, filenames with spaces, l
 - Keep Story 4's particle scripts under `story/4/` and the Scrollytelling Effects web-component bundle under
   `prototypes/scrollytelling-effects/`. Do not recreate removed root copies or promote story- or prototype-owned code
   into `shared/js/`.
-- Keep Story 4 presentation under `story/4/css/styles.css`; do not reconnect `story/4/index.html` or its embedded SVGs to
-  root `style.css`.
+- Keep Story 4 presentation under `story/4/css/`, split by concern across `theme.css`, `base.css`, `splash.css`,
+  `scenes.css` and `accessibility.css`; do not reconnect `story/4/index.html` or its embedded SVGs to root
+  `style.css`, and do not recombine those files into a single stylesheet.
 - Keep Story 4's static fallback in `story/4/css/accessibility.css`, its motion gate in `motion.js`, and its
   focused scroll timelines in story-owned animation modules. Do not restore the retired Bootstrap, ScrollMagic,
   MotionPathPlugin, or blank starter-script integrations.
