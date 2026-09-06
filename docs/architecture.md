@@ -180,9 +180,9 @@ too short for pinned scenes. Portrait phone widths retain the enhanced presentat
 visible control to hide ambient animation.
 The unused ScrollMagic, MotionPathPlugin, Bootstrap bundle, and blank Bootstrap starter hook were removed. Story 4 is
 independent of the former root legacy
-`style.css`; all three page and embedded-SVG stylesheet references resolve to `story/4/css/styles.css`. Its 24
-inline SVG image elements remain embedded in `story/4/index.html`; its common favicon uses the organized shared asset
-directory. The Scrollytelling Effects prototype owns its complete `wc.js` web-component
+`style.css`; all three page and embedded-SVG stylesheet references resolve to `story/4/css/styles.css`. Its inline SVG image elements remain embedded in `story/4/index.html`, referencing 22 PNGs under `story/4/images/`
+that `npm run images:story4` keeps at roughly twice their rendered size; its common favicon uses the organized shared
+asset directory. The Scrollytelling Effects prototype owns its complete `wc.js` web-component
 bundle alongside its prototype script. The
 former root `js/` directory was removed after repository-wide auditing confirmed that
 `jquery-3.6.3.min.js` and `magnifier.js` had no remaining consumers and that `runtime.js`, `polyfills.js`, and `main.js`
