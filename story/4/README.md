@@ -123,6 +123,11 @@ naming it lock together. It needs the same `.story4-scene__hold` spacer, placed
 after the last step, for the same reason: a sticky box gets no travel from its
 own margin.
 
+Scenes 5, 6 and 7 all use it. Scene 6 overrides `--story4-scene-hold` to 150svh
+via `:has(.scene6)` - its artwork is static, three panels with no beats, so the
+hold is the only thing giving the reader time with it; there is no sequence
+resolving to carry the pause, and it was the shortest section on the page.
+
 Measure the pairing, not the beat. Scene 5's node beat finished 701px before the
 plate released, which sounded generous, but the *text* left 332px in - so the
 finished diagram spent more time alone than beside the words explaining it. What

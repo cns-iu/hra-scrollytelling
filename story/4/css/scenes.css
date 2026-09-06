@@ -191,6 +191,13 @@
     --story4-scene-hold: 70svh;
 }
 
+/* Scene 6 holds longest. Its artwork is static - three panels, no beats - so the
+   hold is the only thing giving the reader time with it; there is no sequence
+   resolving to carry the pause. It was also the shortest section on the page. */
+#four .story4-scene:has(.scene6) {
+    --story4-scene-hold: 150svh;
+}
+
 #four .story4-scene--hold-last .story4-step:last-of-type {
     position: sticky;
     top: 35svh;

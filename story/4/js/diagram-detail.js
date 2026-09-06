@@ -34,9 +34,14 @@ export function setupDiagramDetail() {
       .timeline({
         scrollTrigger: {
           autoAlpha: 1,
+          /* Fires as the step rises into the reading zone, not when it hits
+             the top of the viewport - `start: "top"` is `"top top"`, which left
+             the RDF triple blank for the whole time its paragraph was readable
+             and revealed it only once that text had scrolled away. Runs long,
+             because this is the diagram the sentence is describing. */
           trigger: "#change14",
-          start: "top",
-          end: "+=20%",
+          start: "top 75%",
+          end: "+=45%",
           scrub: true,
           duration: 3,
           pin: false,
