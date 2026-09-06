@@ -267,21 +267,10 @@ h1 {
     --story-card-fill: var(--color-surface-muted);
 }
 
+/* Appearance comes from the shared .hra-number in shared/css/numbers.css;
+   only the card's own spacing is the landing page's. */
 .story-number {
-    display: inline-flex;
-    width: 2.75rem;
-    height: 2.75rem;
     margin-bottom: 1.25rem;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    color: var(--color-on-badge);
-    background: var(--color-badge);
-    font-size: var(--type-label-large-size);
-    font-variant-numeric: tabular-nums;
-    font-weight: var(--type-label-emphasized-weight);
-    letter-spacing: var(--type-label-large-letter-spacing);
-    line-height: var(--type-label-large-line-height);
 }
 
 .story-title {

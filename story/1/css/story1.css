@@ -134,14 +134,22 @@ html.story1-page {
     grid-template-columns: minmax(16rem, 0.85fr) minmax(18rem, 1.15fr);
 }
 
+/*
+ * Splash figure card.
+ *
+ * The card hugs the footage: no padding, and the video fills the frame rather
+ * than being letterboxed inside it. It previously carried an inset on three
+ * sides plus `object-fit: contain`, which left a visible margin of card
+ * surface around the human.
+ */
 #one .story1-figure-card {
     display: flex;
     width: 100%;
     min-width: 0;
     max-height: 38rem;
-    padding: clamp(0.5rem, 1.5vw, 1rem) clamp(0.5rem, 1.5vw, 1rem) 0;
+    padding: 0;
     overflow: hidden;
-    align-items: flex-end;
+    align-items: stretch;
     border: 0.125rem solid var(--color-border);
     border-radius: var(--radius-large);
     background: var(--color-surface);
@@ -155,9 +163,9 @@ html.story1-page {
     display: block;
     width: 100%;
     height: auto;
-    max-height: 36rem;
+    max-height: 38rem;
     inset: auto;
-    object-fit: contain;
+    object-fit: cover;
     opacity: 0.68;
     pointer-events: none;
     transform: none;
@@ -322,8 +330,27 @@ html.story1-page {
     --story1-gif-focus: 50% 51%;
 }
 
+/*
+ * Caption band.
+ *
+ * Its own opaque surface below the frame, so artwork that reaches the bottom
+ * of its box - image3's outline does - cannot bleed behind the words. The
+ * number leads the line as a flex row rather than sitting inline, where a
+ * circular mark would ride on the text baseline.
+ */
 #one .img-above-text .scroll-caption {
+    position: relative;
+    z-index: 1;
     padding: 1rem;
+    border-block-start: 0.0625rem solid var(--color-border);
+    background: var(--color-surface);
+}
+
+#one .img-above-text .scroll-caption p {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    margin: 0;
 }
 
 #one .scroll-caption p {
