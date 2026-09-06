@@ -269,10 +269,11 @@ html.story1-page {
 /*
  * GIF card.
  *
- * The card hugs its artwork: no padding around the image, and no forced
- * square. `aspect-ratio: 1` with `object-fit: contain` letterboxed the 400x415
- * GIFs inside their own box, which read as padding that no padding rule
- * controlled. Only the caption is inset.
+ * The card hugs its artwork: no padding around the image, and only the
+ * caption is inset. The frame ratio the artwork below uses is deliberate;
+ * what caused the original gap was `aspect-ratio: 1` with `object-fit:
+ * contain`, which letterboxed the 400x415 GIFs inside their own box and read
+ * as padding that no padding rule controlled.
  */
 #one .img-above-text {
     display: flex;
@@ -295,8 +296,10 @@ html.story1-page {
  * image1's 400px on the left, 79px of image3's 303px on every side - so a card
  * with no padding still showed a gap. Each image is scaled and re-centred on
  * its own content box, measured from the files, and the surplus clipped by the
- * card. Values are per-file: re-measure if the artwork is replaced, or trim
- * the margins in the source files and drop these.
+ * card. Only the zoom and centre vary per file: all three share one frame
+ * ratio so the divider rule sits at the same height on every card, which a
+ * per-file ratio visibly broke. Re-measure if the artwork is replaced, or
+ * trim the margins in the source files and drop these.
  *
  * The image area keeps a fixed light backing in both appearances: the drawings
  * are transparent line art in near-black ink, so on the dark card their
@@ -308,7 +311,7 @@ html.story1-page {
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: var(--story1-gif-ratio, 0.94);
+    aspect-ratio: 0.94;
     background: var(--hra-light-surface-container-lowest);
     object-fit: cover;
     object-position: var(--story1-gif-focus, 50% 50%);
@@ -328,11 +331,9 @@ html.story1-page {
     --story1-gif-focus: 46.8% 51.4%;
 }
 
-/* image3: 303x303, content inset L79 R79 T79 B73. Its content box is nearly
-   square, so it takes its own frame ratio rather than the shared 0.94. */
+/* image3: 303x303, content inset L79 R79 T79 B73. */
 #one .cell3 img {
-    --story1-gif-ratio: 0.96;
-    --story1-gif-zoom: 1.75;
+    --story1-gif-zoom: 1.85;
     --story1-gif-focus: 50% 51%;
 }
 
