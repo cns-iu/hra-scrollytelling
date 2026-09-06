@@ -28,10 +28,17 @@
     margin-top: 0.75rem;
 }
 
-/* The inline link buttons sit in running text, so they lose the block
-   alignment the shared component assumes. */
+/*
+ * Inline link buttons.
+ *
+ * They keep the full 2.75rem pointer target, but an inline-flex box that tall
+ * would stretch its line box and leave the step it sits in taller than its
+ * neighbours. Centring it on the text and pulling the extra height back out of
+ * the line keeps the list rhythm even without shrinking the target.
+ */
 .story2-page .story-quiz__instructions .hra-button,
 .story2-page .story-quiz__hint-content .hra-button {
+    margin-block: -0.5rem;
     vertical-align: middle;
 }
 
