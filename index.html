@@ -61,8 +61,22 @@
     />
     <script src="shared/js/theme-bootstrap.js"></script>
 
+    <!-- Critical typography: discovered here rather than after fonts.css parses. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="shared/assets/fonts/nunito-sans/nunito-sans-latin-wght-normal.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="shared/assets/fonts/metropolis/metropolis-latin-500-normal.woff2" />
+
+    <!-- Holds an opaque veil until the first paint is trustworthy. Must stay a
+         blocking classic script after the appearance bootstrap and ahead of the
+         stylesheets: a module script is deferred and would paint bare first. -->
+    <script
+      data-preload-image="landing/assets/backgrounds/splash-human-{theme}.png"
+      src="shared/js/loading-gate.js"></script>
+
     <!-- Landing-page assets -->
     <link rel="stylesheet" href="shared/css/fonts.css" />
+    <link rel="stylesheet" href="shared/css/loading-gate.css" />
     <link rel="stylesheet" href="landing/css/tokens.css" />
     <link rel="stylesheet" href="shared/css/tokens.css" />
     <link rel="stylesheet" href="shared/css/component-roles.css" />

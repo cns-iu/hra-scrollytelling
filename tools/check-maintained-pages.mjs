@@ -301,6 +301,37 @@ function checkPage(entry, source) {
         assertPage(firstStylesheet < 0 || bootstrapAt < firstStylesheet, file, "the appearance bootstrap must precede the stylesheets");
     }
 
+    // The loading gate has the same constraint as the appearance bootstrap: a
+    // module script is deferred, so the page would paint bare and then flash.
+    const gateRef = relativeRef(file, "shared/js/loading-gate.js");
+    const gateAt = html.indexOf(`src="${gateRef}"`);
+
+    assertPage(gateAt >= 0, file, `must load ${gateRef}`);
+    const gateTag = html.slice(html.lastIndexOf("<script", gateAt), html.indexOf(">", gateAt) + 1);
+
+    assertPage(gateAt < 0 || !/\stype="module"|\sdefer\b|\sasync\b/u.test(gateTag), file, "must load the loading gate as a blocking classic script");
+    assertPage(!html.includes('classList.add("hra-loading")'), file, "inlines the loading gate instead of loading the shared script");
+    assertPage(html.includes(`href="${relativeRef(file, "shared/css/loading-gate.css")}"`), file, "must load the shared loading-gate stylesheet");
+
+    if (gateAt >= 0) {
+        const firstStylesheet = html.indexOf("<link rel=\"stylesheet\"");
+
+        assertPage(bootstrapAt < 0 || bootstrapAt < gateAt, file, "the appearance bootstrap must precede the loading gate");
+        assertPage(firstStylesheet < 0 || gateAt < firstStylesheet, file, "the loading gate must precede the stylesheets");
+    }
+
+    // Both faces are needed for the first paint of every page. Preloading them
+    // is what keeps text from painting in the fallback and then re-wrapping.
+    for (const font of [
+        "shared/assets/fonts/nunito-sans/nunito-sans-latin-wght-normal.woff2",
+        "shared/assets/fonts/metropolis/metropolis-latin-500-normal.woff2",
+    ]) {
+        const fontRef = relativeRef(file, font);
+        const preload = new RegExp(`rel="preload"[^>]*href="${fontRef.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&")}"|href="${fontRef.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&")}"[^>]*rel="preload"`, "su");
+
+        assertPage(preload.test(html), file, `must preload ${fontRef}`);
+    }
+
     attributeValues(html, "aria-labelledby")
         .concat(attributeValues(html, "aria-describedby"), attributeValues(html, "aria-controls"))
         .flatMap((value) => value.split(/\s+/))

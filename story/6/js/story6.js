@@ -2,13 +2,13 @@ import { setupStoryAnimations } from './animations.js';
 import { setupBackToTopAnimationReset, setupLayoutStability } from './layout.js';
 import { setupStoryImagePreparation } from './media.js';
 import { setupContentReveals } from './reveals.js';
+import { releaseWhenReady } from '../../shared/js/loading-readiness.js';
 
 const STORY_MOTION_QUERY = '(prefers-reduced-motion: no-preference)';
 const STORY_HEIGHT_QUERY = '(min-height: 36rem)';
 const COARSE_POINTER_QUERY = '(hover: none) and (pointer: coarse)';
 const MINIMUM_ANIMATION_HEIGHT = 36 * 16;
 const ORIENTATION_SETTLE_DELAY = 350;
-const LOADING_OVERLAY_CLEANUP_DELAY = 1400;
 const gsap = window.gsap;
 const ScrollTrigger = window.ScrollTrigger;
 const animationsAvailable = Boolean(gsap && ScrollTrigger);
@@ -28,34 +28,12 @@ if (animationsAvailable) {
     setupResponsiveStoryAnimations(gsap, ScrollTrigger, refreshStoryLayout);
 }
 
-void revealStoryWhenReady(refreshStoryLayout);
-
-/**
- * Reveals Story 6 after its opening artwork, fonts, and initial pin geometry settle.
- *
- * @param {() => Promise<void>} refreshLayout Function that refreshes geometry after scrolling settles
- * @returns {Promise<void>} Promise resolved after the loading overlay begins fading
+/*
+ * The shared gate already waits for the fonts and the splash artwork; Story 6
+ * adds its settled pin geometry, so the veil cannot lift while ScrollTrigger is
+ * still measuring against pre-font-load layout.
  */
-async function revealStoryWhenReady(refreshLayout) {
-    const splashImage = document.querySelector('.splash-image');
-    const preparation = [];
-
-    if (document.fonts?.ready) {
-        preparation.push(document.fonts.ready);
-    }
-
-    if (typeof splashImage?.decode === 'function') {
-        preparation.push(splashImage.decode());
-    }
-
-    await Promise.allSettled(preparation);
-    await refreshLayout();
-
-    document.documentElement.classList.add('story6-ready');
-    window.setTimeout(() => {
-        document.documentElement.classList.remove('story6-loading', 'story6-ready');
-    }, LOADING_OVERLAY_CLEANUP_DELAY);
-}
+void releaseWhenReady(refreshStoryLayout);
 
 /**
  * Enables pinned animation only when motion and viewport conditions can support it.

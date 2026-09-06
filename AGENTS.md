@@ -71,6 +71,18 @@ footer, and end-of-story navigation use namespaced foundations under:
 - `shared/js/theme-bootstrap.js` for the stored appearance and contrast preferences. It must stay a blocking classic
   script in `<head>` ahead of the stylesheets: a module script is deferred and would flash the system appearance
   first. Every maintained page loads it, and `tools/check-maintained-pages.mjs` asserts that it does.
+- `shared/js/loading-gate.js` and `shared/css/loading-gate.css` for the shared loading gate: an opaque,
+  page-coloured veil held over the document until the fonts, the page's nominated hero artwork, and any
+  page-supplied settle step have finished. Like the appearance bootstrap it must stay a blocking classic script
+  in `<head>`, after `theme-bootstrap.js` and ahead of the stylesheets. The veil is added by the script rather
+  than by CSS, so a reader without JavaScript never sees it. Pages configure it from the script tag:
+  `data-page-classes` sets state classes before first paint (Stories 1 and 5 use this for state their deferred
+  modules used to apply afterwards, which made content appear and then blink out), `data-preload-image` takes a
+  `{theme}` placeholder, and `data-watchdog` overrides the release ceiling. Mark the artwork the veil should
+  wait for with `data-loading-gate-hero`. `shared/js/loading-readiness.js` supplies the matching promises and
+  `releaseWhenReady()`, which `shared/js/main.js` calls for every page; a story needing a further settle step
+  releases the gate itself first and the first call wins. The watchdog is only a ceiling. `tools/check-maintained-pages.mjs` asserts every page loads the gate, that it is not
+  deferred, and that both critical font faces are preloaded.
 - `shared/js/main.js`, `shared/js/menu.js`, `shared/js/theme.js`, `shared/js/contrast.js`, and
   `shared/js/back-to-top.js` for progressive enhancement. All seven maintained pages load `main.js`.
   `shared/js/navigation-only.js` is the entry point for the three prototypes, which deliberately omit appearance

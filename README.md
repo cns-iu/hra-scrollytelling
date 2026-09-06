@@ -184,9 +184,14 @@ The landing page is deliberately separated from the legacy story implementation:
 - `landing/css/styles.css` owns landing content, layout, responsive rules, and page-specific accessibility adaptations.
 - `shared/js/main.js` initializes the shared Menu, appearance, contrast, and back-to-top modules for every maintained
   page, including the landing page.
+- `shared/js/loading-gate.js` and `shared/css/loading-gate.css` hold an opaque, page-coloured veil over the document
+  until the fonts, the page's nominated hero artwork, and any page-supplied settle step have finished, so the first
+  paint is trustworthy rather than a second of shifting elements. It is a blocking classic script in `<head>`, after
+  the appearance bootstrap and ahead of the stylesheets. The veil is added by the script, not by CSS, so a reader
+  without JavaScript sees content immediately. `shared/js/loading-readiness.js` supplies the readiness promises.
 
 Load the landing stylesheets in the documented order so font and design tokens exist before component rules use them.
-The inline script in `index.html` applies a saved theme before paint; keep its storage key aligned with
+`shared/js/theme-bootstrap.js` applies a saved theme before paint; keep its storage key aligned with
 `shared/js/theme.js`.
 The landing page does not use a root stylesheet, prototype or story scripts, remote fonts, or a JavaScript framework.
 

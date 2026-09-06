@@ -1,12 +1,20 @@
 /* Story 1 progressive motion states and user-preference adaptations. */
 
+/*
+ * The waiting state must hold from the very first paint. These rules used to
+ * also require data-reveal-state="waiting", which js/reveals.js sets — but that
+ * module is deferred, so the targets painted fully opaque and then blinked out.
+ * Matching on :not([data-reveal-state="revealed"]) keeps the same end state
+ * while making the initial one correct before any script runs;
+ * shared/js/loading-gate.js supplies story1-reveals-enhanced pre-paint.
+ */
 html.story1-reveals-enhanced #one[data-motion-state="running"]
-    [data-story-reveal][data-reveal-state="waiting"] {
+    [data-story-reveal]:not([data-reveal-state="revealed"]) {
     opacity: 0;
 }
 
 html.story1-reveals-enhanced #one[data-motion-state="running"]
-    .story1-scale-figure[data-reveal-state="waiting"] {
+    .story1-scale-figure:not([data-reveal-state="revealed"]) {
     opacity: 0.9;
     transform: translateY(1rem) scale(0.98);
 }

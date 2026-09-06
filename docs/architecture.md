@@ -70,6 +70,7 @@ previously shared URLs keep resolving:
 │   │   ├── component-roles.css  # semantic roles built on those colours
 │   │   ├── appearance-controls.css
 │   │   ├── character-dialogue.css
+│   │   ├── loading-gate.css     # the pre-paint veil and its scrollbar gutter
 │   │   ├── narrative-accessibility.css
 │   │   ├── narrative-foundation.css
 │   │   ├── redirect-stub.css
@@ -79,6 +80,8 @@ previously shared URLs keep resolving:
 │   │   └── menu.html            # also the source of the appearance and contrast blocks
 │   └── js/
 │       ├── main.js
+│       ├── loading-gate.js        # blocking pre-paint loading veil
+│       ├── loading-readiness.js   # the promises that release the veil
 │       ├── motion-preferences.js  # shared motion gate
 │       ├── theme-bootstrap.js     # blocking pre-paint appearance and contrast
 │       ├── narrative-motion.js
@@ -253,6 +256,35 @@ Shared font binaries and licenses live under `shared/assets/fonts/`; shared inte
 `shared/assets/icons/`; theme-aware organization marks live under `shared/assets/logos/`; and cross-experience animated
 media live under `shared/assets/images/` and `shared/assets/videos/`. Maintained pages must not create a second
 root-level copy of these assets.
+
+Every maintained page holds an opaque, page-coloured veil over the document until its first paint is trustworthy.
+`shared/js/loading-gate.js` adds the veil and `shared/css/loading-gate.css` presents it. Like the appearance
+bootstrap it is a blocking classic script in `<head>`, placed after `theme-bootstrap.js` and ahead of the
+stylesheets: a `type="module"` script is deferred, which would let the page paint bare and then flash.
+`tools/check-maintained-pages.mjs` asserts that ordering, that the gate is not deferred, and that both critical
+font faces are preloaded.
+
+Three properties of the gate are deliberate and should not be traded away:
+
+- The veil is added by JavaScript, never by CSS. A reader without JavaScript therefore never receives it and sees
+  content immediately; a CSS-applied veil removed by script would strand the page when script fails.
+- The veil lifts on readiness, not on a timer. `shared/js/main.js` calls `releaseWhenReady()` from
+  `shared/js/loading-readiness.js` for every page, which waits for the fonts and for any element marked
+  `data-loading-gate-hero`. A page needing a further settle step releases the gate itself first and the first call
+  wins — Story 6 waits for its settled ScrollTrigger geometry. The gate's watchdog is only a ceiling for a release
+  that never arrives. There is no minimum display time.
+- While the veil is up the page content is `inert` and `<html>` carries `aria-busy`, so keyboard focus cannot land
+  on content hidden behind it and a screen reader does not read a page that is still settling. A visually hidden
+  `role="status"` region announces the transition. `prefers-reduced-motion` collapses both the fade and the hold
+  rather than only the fade.
+
+The gate holds scroll with `overflow: hidden`, so `loading-gate.css` also reserves the scrollbar's space with
+`scrollbar-gutter: stable` on `html`. Without it the content re-centres into the reclaimed width and jogs sideways
+when the veil lifts.
+
+Because the gate depends on state being correct at first paint, state classes that CSS hides content with belong on
+the gate's script tag through `data-page-classes`, not in a deferred module. Stories 1 and 5 previously applied
+theirs from modules and so painted content that then blinked out.
 
 Theme-aware text selection is a shared foundation under `shared/css/selection.css`. It applies only within
 `.site-chrome` roots, uses roles from `shared/css/tokens.css`, and defers to operating-system colors in forced-colors

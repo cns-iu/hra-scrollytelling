@@ -41,7 +41,25 @@
     />
     <script src="../../shared/js/theme-bootstrap.js"></script>
 
+    <!-- Critical typography: discovered here rather than after fonts.css parses. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../shared/assets/fonts/nunito-sans/nunito-sans-latin-wght-normal.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../shared/assets/fonts/metropolis/metropolis-latin-500-normal.woff2" />
+
+    <!-- The scroll runtime is fetched from a third-party origin at the end of
+         the body; warming the connection here removes that wait from the point
+         where hidden content is still waiting to be revealed. -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+    <!-- Holds an opaque veil until the first paint is trustworthy. Must stay a
+         blocking classic script after the appearance bootstrap and ahead of the
+         stylesheets: a module script is deferred and would paint bare first. -->
+    <script
+      src="../../shared/js/loading-gate.js"></script>
+
     <link rel="stylesheet" href="../../shared/css/fonts.css" />
+    <link rel="stylesheet" href="../../shared/css/loading-gate.css" />
     <link rel="stylesheet" href="../../shared/css/tokens.css" />
     <link rel="stylesheet" href="../../shared/css/component-roles.css" />
     <link rel="stylesheet" href="../../shared/css/buttons.css" />
@@ -67,9 +85,17 @@
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-E1811WRJJD"
     ></script>
+    <!--
+      These three scenes are ~1.3 MB each. Preloading all of them put nearly
+      4 MB at the front of the queue, ahead of the fonts and the scroll
+      runtime, which delayed readable text on this page more than it helped
+      the artwork. Only the scene that styles.css paints first is preloaded;
+      the two collision states are swapped in later by js/rui-animations.js,
+      so they are fetched at prefetch priority instead.
+    -->
     <link rel="preload" as="image" href="images/rui-registration-scene.svg" />
-    <link rel="preload" as="image" href="images/rui-collision-reaction.svg" />
-    <link rel="preload" as="image" href="images/rui-collision-resolved.svg" />
+    <link rel="prefetch" as="image" href="images/rui-collision-reaction.svg" />
+    <link rel="prefetch" as="image" href="images/rui-collision-resolved.svg" />
 
     <script>
       window.dataLayer = window.dataLayer || [];

@@ -1,0 +1,63 @@
+/*
+ * Shared loading gate: an opaque, page-coloured veil held over the document
+ * until fonts, the nominated hero artwork, and any page-supplied layout step
+ * have settled.
+ *
+ * The veil is keyed off <html> rather than <body>, because body tags differ
+ * across the maintained pages (#six, #four, .story-narrative, and the landing
+ * page carries neither). html::before is unused elsewhere in the repository.
+ *
+ * shared/js/loading-gate.js adds .hra-loading, so a reader without JavaScript
+ * never gets the veil and sees content immediately. That is the same reason
+ * the appearance bootstrap is safe, and it is why the veil must be opt-in
+ * through a class rather than a default-on style that JavaScript removes.
+ */
+
+html.hra-loading::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    /* Above the sticky site chrome, the GSAP pin spacers, and the open Menu. */
+    z-index: 2147483647;
+    pointer-events: auto;
+    background: var(--story-color-page, var(--narrative-color-page, var(--color-page, #fff)));
+    transition: opacity var(--hra-loading-fade, 1250ms) cubic-bezier(0.2, 0, 0, 1);
+}
+
+/*
+ * Holding scroll keeps a reader from reaching a scene before the initial
+ * scroll geometry has settled; the veil only blocks pointer events.
+ *
+ * Reserving the scrollbar's space for the whole document, not just while the
+ * veil is up, is what keeps the page still. `overflow: hidden` below takes the
+ * classic scrollbar away, so without a reserved gutter the content re-centres
+ * into the reclaimed width and then shifts back when the veil lifts and the
+ * scrollbar returns — a visible sideways jog on Chromium and Firefox, and on
+ * any platform set to always-visible scrollbars. Overlay scrollbars (macOS by
+ * default, and touch) take no width, so this is a no-op there.
+ */
+html {
+    scrollbar-gutter: stable;
+}
+
+html.hra-loading {
+    overflow: hidden;
+}
+
+html.hra-loading.hra-ready::before {
+    pointer-events: none;
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.hra-loading::before {
+        transition-duration: 1ms;
+    }
+}
+
+@media (forced-colors: active) {
+    /* Author backgrounds are dropped in forced colours; Canvas stays opaque. */
+    html.hra-loading::before {
+        background: Canvas;
+    }
+}

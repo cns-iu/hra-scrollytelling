@@ -19,7 +19,8 @@ function enableStory5FlowingFallback(error) {
 if (window.hraStoryMotionEnabled && window.gsap && window.ScrollTrigger) {
   try {
     gsap.registerPlugin(ScrollTrigger);
-    document.documentElement.classList.add("story5-animation-ready");
+    // story5-animation-ready is set pre-paint by shared/js/loading-gate.js, so
+    // the talkbubbles never paint visible and then snap to hidden here.
     hraNarrativeTimeline.setupIntroTypewriter();
 
     hraNarrativeTimeline.fadeContainers2();

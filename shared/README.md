@@ -13,11 +13,50 @@ the page paint in the system appearance and then flash to the stored one.
 <script src="shared/js/theme-bootstrap.js"></script>
 ```
 
+Then the critical font preloads and the loading gate, still ahead of the
+stylesheets. The gate holds an opaque, page-coloured veil over the document
+until the first paint is trustworthy; it is a blocking classic script for the
+same reason the bootstrap is, and it adds the veil from JavaScript so a reader
+without it sees content immediately:
+
+```html
+<link rel="preload" as="font" type="font/woff2" crossorigin
+  href="shared/assets/fonts/nunito-sans/nunito-sans-latin-wght-normal.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin
+  href="shared/assets/fonts/metropolis/metropolis-latin-500-normal.woff2">
+<script src="shared/js/loading-gate.js"></script>
+```
+
+The fonts are preloaded because they are otherwise not discoverable until
+`fonts.css` has parsed and matched a rule, which paints text in the fallback
+and then re-wraps it. Only these two faces are preloaded; adding the latin-ext
+and mono faces would put bandwidth back in front of the first paint.
+
+Pages configure the gate from the script tag itself — `data-page-classes`,
+`data-preload-image` (which accepts a `{theme}` placeholder), and
+`data-watchdog` — and mark the artwork it should wait for with
+`data-loading-gate-hero`. `shared/js/loading-readiness.js` provides the
+promises and `releaseWhenReady()`.
+
+`shared/js/main.js` calls `releaseWhenReady()` for every page, so the veil
+normally lifts as soon as the fonts and the nominated hero artwork have
+settled. A page needing more releases the gate itself first — Story 6 waits for
+its settled pin geometry — and the first call wins. The gate's own watchdog is
+only a ceiling for when a release never arrives at all.
+
+`loading-gate.css` also sets `scrollbar-gutter: stable` on `html`. The gate
+holds scroll with `overflow: hidden`, which takes the classic scrollbar away;
+without a reserved gutter the content re-centres into that width and jogs
+sideways when the veil lifts. Reserving it document-wide also keeps
+`--site-viewport-width`, which `shared/js/menu.js` publishes from
+`clientWidth`, the same before and after the release.
+
 Then the stylesheets, loaded directly. All seven maintained pages carry the
 appearance controls and the story navigation, so no line here is conditional:
 
 ```html
 <link rel="stylesheet" href="shared/css/fonts.css">
+<link rel="stylesheet" href="shared/css/loading-gate.css">
 <link rel="stylesheet" href="shared/css/tokens.css">
 <link rel="stylesheet" href="shared/css/selection.css">
 <link rel="stylesheet" href="shared/css/navigation.css">
@@ -27,7 +66,9 @@ appearance controls and the story navigation, so no line here is conditional:
 ```
 
 `tools/check-maintained-pages.mjs` asserts the bootstrap is present, is the
-shared file rather than an inlined copy, and precedes the stylesheets.
+shared file rather than an inlined copy, and precedes the stylesheets. It makes
+the same assertions for the loading gate, additionally checking that the gate is
+not deferred and that both critical font faces are preloaded.
 
 Pages with the enhanced shared Menu load the module entry point:
 

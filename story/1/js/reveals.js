@@ -30,7 +30,8 @@ if (storyRoot && revealTargets.length > 0) {
     revealTargets.forEach((element) => {
         element.dataset.revealState = 'waiting';
     });
-    document.documentElement.classList.add('story1-reveals-enhanced');
+    // story1-reveals-enhanced is set pre-paint by shared/js/loading-gate.js;
+    // adding it here as well would arrive after the first paint.
 
     if (reducedMotion.matches || !('IntersectionObserver' in window)) {
         revealAll();

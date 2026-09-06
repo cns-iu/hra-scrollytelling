@@ -39,24 +39,23 @@
     />
     <!-- Apply saved appearance and contrast preferences before shared chrome paints. -->
     <script src="../../shared/js/theme-bootstrap.js"></script>
-    <script>
-      (() => {
-        const root = document.documentElement;
 
-        root.classList.add("story6-loading");
-        window.setTimeout(() => {
-          if (!root.classList.contains("story6-loading")) {
-            return;
-          }
+    <!-- Critical typography: discovered here rather than after fonts.css parses. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../shared/assets/fonts/nunito-sans/nunito-sans-latin-wght-normal.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../shared/assets/fonts/metropolis/metropolis-latin-500-normal.woff2" />
 
-          root.classList.add("story6-ready");
-          window.setTimeout(
-            () => root.classList.remove("story6-loading", "story6-ready"),
-            1400,
-          );
-        }, 3000);
-      })();
-    </script>
+    <!-- The scroll runtime is fetched from a third-party origin at the end of
+         the body; warming the connection here removes that wait from the point
+         where hidden content is still waiting to be revealed. -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+    <!-- Holds an opaque veil until the first paint is trustworthy. Must stay a
+         blocking classic script after the appearance bootstrap and ahead of the
+         stylesheets: a module script is deferred and would paint bare first. -->
+    <script
+      src="../../shared/js/loading-gate.js"></script>
     <script>
       const story6NavigationEntry =
         performance.getEntriesByType("navigation")[0];
@@ -80,6 +79,7 @@
       }
     </script>
     <link rel="stylesheet" href="../../shared/css/fonts.css" />
+    <link rel="stylesheet" href="../../shared/css/loading-gate.css" />
     <link rel="stylesheet" href="../../shared/css/tokens.css" />
     <link rel="stylesheet" href="../../shared/css/component-roles.css" />
     <link rel="stylesheet" href="../../shared/css/buttons.css" />
@@ -254,6 +254,7 @@
         <header class="page-header article-header">
           <img
             class="splash-image"
+            data-loading-gate-hero
             src="images/splash-bg-1920.webp"
             srcset="
               images/splash-bg-960.webp   960w,

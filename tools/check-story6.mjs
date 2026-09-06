@@ -282,17 +282,22 @@ function checkAnimationGeometry() {
             /window\.addEventListener\(\s*'scroll',[\s\S]*?\{ passive: true \}/u.test(files.layout),
         "ScrollTrigger refreshes must wait until active scrolling settles before rebuilding pin spacers",
     );
+    // The overlay itself now lives in shared/css/loading-gate.css and
+    // shared/js/loading-gate.js, which tools/check-maintained-pages.mjs asserts
+    // every page loads. What stays Story 6's own is the settle step: the veil
+    // must not lift until this story's pin geometry has been refreshed.
     check(
-        files.html.includes('root.classList.add("story6-loading")') &&
-            files.html.includes('root.classList.add("story6-ready")') &&
-            files.entry.includes("void revealStoryWhenReady(refreshStoryLayout)") &&
-            files.entry.includes("await Promise.allSettled(preparation)") &&
-            /html\.story6-loading #six::before\s*\{[\s\S]*?transition:\s*opacity 1250ms/u.test(files.base),
-        "Story 6 must retain its fail-safe page-color loading overlay and settled fade-in",
+        files.html.includes(`src="${ref("shared/js/loading-gate.js")}"`) &&
+            !files.html.includes('classList.add("story6-loading")'),
+        "Story 6 must use the shared loading gate rather than a story-local overlay",
     );
     check(
-        /html\.story6-loading\s*\{[\s\S]*?overflow:\s*hidden;/u.test(files.base),
-        "Story 6 must hold scroll position while loading so a scene can't be reached before initial ScrollTrigger geometry settles",
+        files.html.includes("data-loading-gate-hero"),
+        "Story 6 must nominate its splash artwork so the gate waits for it to decode",
+    );
+    check(
+        files.entry.includes("void releaseWhenReady(refreshStoryLayout)"),
+        "Story 6 must hold the loading gate until its settled pin geometry has been refreshed",
     );
     check(
         /class="transition transition5[\s\S]*?class="transition__stage"/u.test(files.html) &&
