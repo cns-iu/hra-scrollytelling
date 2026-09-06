@@ -1,7 +1,7 @@
 /* Story 1 presentation built from the maintained landing typography and light-theme roles. */
 
 html.story1-page {
-    color-scheme: light;
+    color-scheme: light dark;
     width: 100%;
     height: 100%;
     padding: 0;
@@ -60,7 +60,14 @@ html.story1-page {
     text-wrap: balance;
 }
 
-#one #main-content p {
+/*
+ * Story body copy.
+ *
+ * Scoped away from the runtime end matter: this rule outranks the shared
+ * .story-resource-card__eyebrow rule on specificity, and was overriding the
+ * card's uppercase label with body type.
+ */
+#one #main-content p:not([class*="story-resource-card"], [class*="story-end-matter"]) {
     color: var(--color-ink);
     font-family: var(--font-body);
     font-size: var(--type-body-large-size);
@@ -112,29 +119,6 @@ html.story1-page {
 
 #one .story-motion-control[hidden] {
     display: none;
-}
-
-#one .story-motion-control__button {
-    min-height: 2.75rem;
-    padding: 0.625rem 0.875rem;
-    border: 0.125rem solid transparent;
-    border-radius: var(--radius-small);
-    color: var(--color-on-action);
-    background: var(--color-action);
-    cursor: pointer;
-    font: inherit;
-    font-weight: var(--type-label-emphasized-weight);
-}
-
-#one .story-motion-control__button:hover {
-    background: var(--color-heading);
-}
-
-#one .story-motion-control__button:focus-visible,
-#one .linkbutton:focus-visible {
-    outline: 0.2rem solid var(--focus-color);
-    outline-offset: 0.2rem;
-    box-shadow: 0 0 0 0.4rem var(--color-surface);
 }
 
 #one .introSection {
@@ -274,12 +258,21 @@ html.story1-page {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+/*
+ * GIF card.
+ *
+ * The card hugs its artwork: no padding around the image, and no forced
+ * square. `aspect-ratio: 1` with `object-fit: contain` letterboxed the 400x415
+ * GIFs inside their own box, which read as padding that no padding rule
+ * controlled. Only the caption is inset.
+ */
 #one .img-above-text {
     display: flex;
     width: auto;
     min-width: 0;
-    padding: 1rem;
+    padding: 0;
     margin: 0;
+    overflow: hidden;
     flex-direction: column;
     border: 0.125rem solid var(--color-outline-variant);
     border-radius: var(--radius-card);
@@ -287,9 +280,13 @@ html.story1-page {
 }
 
 #one .img-above-text img {
+    display: block;
     width: 100%;
-    aspect-ratio: 1;
-    object-fit: contain;
+    height: auto;
+}
+
+#one .img-above-text .scroll-caption {
+    padding: 1rem;
 }
 
 #one .scroll-caption p {
@@ -347,31 +344,6 @@ html.story1-page {
     object-fit: contain;
 }
 
-#one .linkbutton {
-    display: inline-flex;
-    min-height: 2.75rem;
-    padding: 0.625rem 0.875rem;
-    align-items: center;
-    gap: 0.25rem;
-    border: 0.125rem solid var(--color-accent-text);
-    border-radius: var(--radius-small);
-    color: var(--color-accent-text);
-    background: var(--color-surface);
-    font-family: var(--font-body);
-    font-weight: var(--type-label-emphasized-weight);
-    text-decoration: underline;
-    text-decoration-thickness: 0.12em;
-    text-underline-offset: 0.2em;
-}
-
-#one .linkbutton:hover {
-    background: var(--color-surface-hover);
-}
-
-#one .linkbutton__icon {
-    width: 1.25rem;
-    height: 1.25rem;
-}
 
 @media (max-width: 48rem) {
     #one #intro {
@@ -419,6 +391,15 @@ html.story1-page {
     color-scheme: dark;
 }
 
+/*
+ * The decorative splash rules consume --color-outline-variant and friends, but
+ * component-roles.css only remaps a few roles for dark, so the lines kept
+ * their light value against a dark hero. Remap what Story 1 actually uses.
+ */
+:root[data-theme="dark"] {
+    --color-outline-variant: var(--hra-dark-outline-variant);
+}
+
 :root[data-theme="dark"] #one {
     --story1-hero-mesh:
         radial-gradient(circle at 8% 12%, rgb(149 0 30 / 44%) 0%, transparent 34%),
@@ -431,6 +412,10 @@ html.story1-page {
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
         color-scheme: dark;
+    }
+
+    :root:not([data-theme]) {
+        --color-outline-variant: var(--hra-dark-outline-variant);
     }
 
     :root:not([data-theme]) #one {

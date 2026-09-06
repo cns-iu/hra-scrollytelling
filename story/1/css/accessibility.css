@@ -125,9 +125,7 @@ html.story1-reveals-enhanced #one[data-motion-state="running"]
     #one .story1-figure-card,
     #one .story1-heading,
     #one .story1-scale-figure,
-    #one .img-above-text,
-    #one .linkbutton,
-    #one .story-motion-control__button {
+    #one .img-above-text {
         border-width: 0.25rem;
     }
 
@@ -141,18 +139,10 @@ html.story1-reveals-enhanced #one[data-motion-state="running"]
 
 @media (forced-colors: active) {
     #one .story1-scale-figure,
-    #one .img-above-text,
-    #one .linkbutton,
-    #one .story-motion-control__button {
+    #one .img-above-text {
         border: 2px solid CanvasText;
         color: CanvasText;
         background: Canvas;
-        box-shadow: none;
-    }
-
-    #one .story-motion-control__button:focus-visible,
-    #one .linkbutton:focus-visible {
-        outline-color: Highlight;
         box-shadow: none;
     }
 }
