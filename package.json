@@ -16,6 +16,7 @@
     "images:story4": "node tools/generate-story4-images.mjs",
     "images:story6": "node tools/generate-story6-images.mjs",
     "serve": "python3 -m http.server 8000",
-    "splash:story6": "node tools/generate-story6-splash.mjs"
+    "splash:story6": "node tools/generate-story6-splash.mjs",
+    "webp:story4": "node tools/generate-story4-webp.mjs"
   }
 }
