@@ -35,34 +35,8 @@ html {
     text-decoration: none;
 }
 
-#four .linkbutton {
-    padding: 0.5625rem 1rem;
-    color: var(--story4-link);
-    cursor: pointer;
-    font-size: 0.875rem;
-}
-
-#four .linkbutton:hover {
-    background-color: var(--story4-link-hover);
-}
-
-#four .linkbutton:active {
-    background-color: var(--story4-link-active);
-}
-
-#four .linkbutton:focus-visible {
-    outline: 0.2rem solid var(--story4-link-focus);
-    outline-offset: 0.125rem;
-}
-
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
-    }
-}
-
-@media (forced-colors: active) {
-    #four .linkbutton:focus-visible {
-        outline-color: Highlight;
     }
 }

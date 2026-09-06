@@ -50,10 +50,6 @@
     --story4-page-background: #ffffff;
     --story4-text: #0e1825;
     --story4-muted-text: #4c4c58;
-    --story4-link: #6a061c;
-    --story4-link-focus: #e00d3a;
-    --story4-link-hover: rgba(178, 10, 47, 0.08);
-    --story4-link-active: rgba(178, 10, 47, 0.16);
 }
 
 /* --- Dark appearance -------------------------------------------------- */
@@ -68,10 +64,6 @@
     --story4-page-background: var(--hra-dark-surface);
     --story4-text: var(--hra-dark-on-surface);
     --story4-muted-text: var(--hra-dark-outline);
-    --story4-link: var(--hra-dark-primary);
-    --story4-link-focus: var(--hra-dark-primary);
-    --story4-link-hover: rgb(255 179 179 / 12%);
-    --story4-link-active: rgb(255 179 179 / 20%);
 }
 
 /* System-theme fallback when JavaScript is unavailable. */
@@ -85,9 +77,5 @@
         --story4-page-background: var(--hra-dark-surface);
         --story4-text: var(--hra-dark-on-surface);
         --story4-muted-text: var(--hra-dark-outline);
-        --story4-link: var(--hra-dark-primary);
-        --story4-link-focus: var(--hra-dark-primary);
-        --story4-link-hover: rgb(255 179 179 / 12%);
-        --story4-link-active: rgb(255 179 179 / 20%);
     }
 }
