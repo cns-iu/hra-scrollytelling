@@ -189,6 +189,11 @@ former root `js/` directory was removed after repository-wide auditing confirmed
 `jquery-3.6.3.min.js` and `magnifier.js` had no remaining consumers and that `runtime.js`, `polyfills.js`, and `main.js`
 were redundant build fragments embedded byte-for-byte within the consumed prototype bundle.
 
+Story 4's `index.html` remains 368 KB, 63% of it inline SVG path data exported at six decimal places. Reducing that
+precision to two decimals measures at 35% off the gzipped page, and is deferred to a dedicated session with
+screenshot-diff regression testing because rounding coordinates moves artwork. See `story/4/README.md`,
+"Deferred: compressing the embedded SVG path data".
+
 Story 4's embedded SVG identifiers are unique; the 47 repeated ID values it used to carry were resolved in a dedicated
 migration and its duplicate-ID baseline was removed from `tools/check-maintained-pages.mjs`. Most were unreferenced
 Sketch export noise and were deleted outright. The eight that were consumed by animation selectors or gradient

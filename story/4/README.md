@@ -209,6 +209,46 @@ targets from each `<image>`'s width attribute. It is idempotent and skips any
 file the resample would enlarge — photographic sources compress better at their
 original scale.
 
+## Deferred: compressing the embedded SVG path data
+
+`index.html` is 368 KB, and **63% of it (233 KB) is `d="…"` path data across 101
+paths**. It is the single largest remaining win on this page, and it is deferred
+rather than dismissed — it needs its own session because it touches the geometry
+of every illustration.
+
+The opportunity is precision, not structure. Coordinate counts by decimal place:
+
+| decimals | 1 | 2 | 3 | 4 | 5 | **6** | 7 | 8+ |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| count | 288 | 138 | 259 | 270 | 1553 | **14425** | 4170 | 269 |
+
+Sketch exported nearly everything at six decimal places. On a `1922`-unit
+viewBox rendered into roughly 900 CSS pixels, the third decimal is already far
+below a device pixel; the sixth is noise. Rounding to 2dp measures at:
+
+- **raw** 368 KB → 282 KB (23% smaller)
+- **gzipped** 97.6 KB → 63.9 KB (35% smaller)
+
+Gzip is the number that matters, since GitHub Pages serves compressed. Note that
+gzip benefits *more* than the raw figure suggests, because shorter numbers repeat.
+
+**Why it needs its own session.** Rounding coordinates moves artwork. The risk is
+not a crash — it is a shape drifting by a fraction of a pixel in a way no checker
+catches, so it needs the screenshot sweep as the primary gate, and 2dp should be
+validated against 3dp rather than assumed safe. Some paths may need higher
+precision than others; a path with a very small `transform` scale has its
+coordinates multiplied up, so uniform rounding is not automatically correct.
+
+**Suggested approach.** Round in place with a script, sweep all eight scenes at
+several viewports, and compare per-pixel like the WebP conversion did — mean
+delta and share of differing pixels, not just "looks right". Keep the tool in
+`tools/` so it can be re-run if the artwork is ever re-exported. Do not hand-edit
+path data.
+
+Out of scope for that session too, and worth stating: minifying the surrounding
+markup, and re-exporting the illustrations from source. Both are bigger changes
+than reducing coordinate precision on what is already committed.
+
 ## Traps
 
 Things that look like bugs but are not, and things that are easy to break:
