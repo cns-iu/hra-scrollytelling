@@ -248,13 +248,26 @@ export function setupDiagramOverview() {
         opacity: 1,
       });
 
+    /*
+     * Scene 5's two beats fire as their step rises into the reading zone, not
+     * when it reaches the top of the viewport. `start: "top"` is `"top top"`,
+     * which lands about a full viewport too late here: the list stayed empty for
+     * the whole time its paragraph was readable and only filled in once that
+     * paragraph had scrolled off the top edge, so the reader watched a blank
+     * notepad while reading about it.
+     *
+     * `top 75%` puts the beat just after the step enters from the bottom, so the
+     * artwork resolves while the words are still moving up the column.
+     */
     gsap
       .timeline({
         scrollTrigger: {
           autoAlpha: 1,
           trigger: "#change12",
-          start: "top",
-          end: "+=20%",
+          start: "top 75%",
+          /* Longer than the list beat: this is the payoff image, and it wants
+             time on screen before the plate releases. */
+          end: "+=45%",
           scrub: true,
           duration: 3,
           pin: false,
@@ -272,8 +285,8 @@ export function setupDiagramOverview() {
         scrollTrigger: {
           autoAlpha: 1,
           trigger: "#change11",
-          start: "top",
-          end: "+=20%",
+          start: "top 75%",
+          end: "+=25%",
           scrub: true,
           duration: 3,
           pin: false,
